@@ -1,7 +1,4 @@
 const path = require('path');
-const argv = require('yargs').argv;
-
-const env = argv.env || 'development';
 
 module.exports = [{
   devServer: {
@@ -23,12 +20,6 @@ module.exports = [{
         test: /\.(js|jsx)$/,
         include: path.join(__dirname, 'src'),
         use: [{ loader: 'babel-loader' }],
-      },
-      {
-        include: /\.json$/,
-        loaders: [
-          'json-loader',
-        ],
       },
     ],
   },

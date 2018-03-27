@@ -1,6 +1,7 @@
-import React from 'react';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
+import React from 'react';
+import WorkLogCalendar from '../../components/WorkLogCalendar';
 
 class IndexComponent extends React.Component {
   componentDidMount() {
@@ -8,14 +9,16 @@ class IndexComponent extends React.Component {
   }
 
   render() {
-    if (this.props.isFetching) {
-      return 'Loading...';
-    }
-
     return (
       <div>
-        <h1>{this.props.data.get('title')}</h1>
-        <p>{this.props.data.get('description')}</p>
+        {this.props.isFetching ? 'Loading...' : (
+          <div>
+            <h1>{this.props.data.get('title')}</h1>
+            <p>{this.props.data.get('description')}</p>
+          </div>
+        )}
+        <h2>Work log</h2>
+        <WorkLogCalendar />
       </div>
     );
   }

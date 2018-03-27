@@ -1,0 +1,2115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly with all props 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "textAlign": "center",
+      }
+    }
+  >
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-block",
+          "float": "left",
+        }
+      }
+    >
+      Previous
+    </button>
+    <span
+      style={
+        Object {
+          "display": "inline-block",
+          "margin": "0 auto",
+        }
+      }
+    >
+      January 2018
+    </span>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-block",
+          "float": "right",
+        }
+      }
+    >
+      Next
+    </button>
+  </div>
+  <div>
+    <table
+      style={
+        Object {
+          "width": "100%",
+        }
+      }
+    >
+      <tbody>
+        <tr
+          key="1"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/01/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Monday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="2"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/02/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Tuesday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="3"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/03/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Wednesday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="4"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/04/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Thursday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="5"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/05/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Friday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="6"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/06/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Saturday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="7"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/07/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Sunday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="8"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/08/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Monday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="9"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/09/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Tuesday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="10"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/10/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Wednesday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="11"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/11/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Thursday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="12"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/12/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Friday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="13"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/13/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Saturday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="14"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/14/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Sunday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="15"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/15/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Monday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="16"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/16/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Tuesday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="17"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/17/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Wednesday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="18"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/18/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Thursday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="19"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/19/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Friday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="20"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/20/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Saturday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="21"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/21/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Sunday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="22"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/22/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Monday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="23"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/23/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Tuesday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="24"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/24/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Wednesday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="25"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/25/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Thursday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="26"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/26/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Friday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="27"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/27/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Saturday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="28"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/28/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Sunday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="29"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/29/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Monday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="30"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/30/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Tuesday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="31"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/31/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Wednesday
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`rendering renders correctly with mandatory props only 1`] = `
+<div>
+  <div
+    style={
+      Object {
+        "textAlign": "center",
+      }
+    }
+  >
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-block",
+          "float": "left",
+        }
+      }
+    >
+      Previous
+    </button>
+    <span
+      style={
+        Object {
+          "display": "inline-block",
+          "margin": "0 auto",
+        }
+      }
+    >
+      January 2018
+    </span>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "display": "inline-block",
+          "float": "right",
+        }
+      }
+    >
+      Next
+    </button>
+  </div>
+  <div>
+    <table
+      style={
+        Object {
+          "width": "100%",
+        }
+      }
+    >
+      <tbody>
+        <tr
+          key="1"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/01/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Monday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="2"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/02/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Tuesday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="3"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/03/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Wednesday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="4"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/04/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Thursday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="5"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/05/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Friday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="6"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/06/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Saturday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="7"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/07/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Sunday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="8"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/08/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Monday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="9"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/09/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Tuesday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="10"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/10/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Wednesday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="11"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/11/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Thursday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="12"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/12/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Friday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="13"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/13/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Saturday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="14"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/14/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Sunday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="15"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/15/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Monday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="16"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/16/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Tuesday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="17"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/17/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Wednesday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="18"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/18/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Thursday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="19"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/19/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Friday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="20"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/20/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Saturday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="21"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/21/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Sunday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="22"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/22/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Monday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="23"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/23/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Tuesday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="24"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/24/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Wednesday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="25"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/25/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Thursday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="26"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/26/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Friday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="27"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/27/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Saturday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="28"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/28/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Sunday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="29"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/29/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Monday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="30"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/30/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Tuesday
+            </span>
+          </td>
+        </tr>
+        <tr
+          key="31"
+        >
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
+              }
+            }
+          >
+            <span
+              style={
+                Object {
+                  "display": "block",
+                }
+              }
+            >
+              01/31/2018
+            </span>
+            <span
+              style={
+                Object {
+                  "display": "block",
+                  "fontSize": "0.75em",
+                }
+              }
+            >
+              Wednesday
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
