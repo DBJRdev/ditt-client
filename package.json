@@ -36,6 +36,7 @@
     "react-pointable": "^1.1.1",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
+    "react-ui": "git+https://bitbucket.visionapps.cz/scm/va/react-ui.git#develop",
     "redux": "^3.7.2",
     "redux-api-middleware": "^2.3.0",
     "redux-devtools-extension": "^2.13.2",
