@@ -1,11 +1,8 @@
 import Immutable from 'immutable';
 
 export default Immutable.fromJS({
-  data: {
-    data: {
-      description: '',
-      title: '',
-    },
+  workLogList: {
+    data: [],
     isFetching: false,
     isFetchingFailure: false,
   },

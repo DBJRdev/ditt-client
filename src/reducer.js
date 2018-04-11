@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux-immutable';
-import { reducer as globalReducer } from './resources/global/index';
+import { reducer as workLogReducer } from './resources/workLog';
 
 const appReducers = combineReducers({
-  global: globalReducer,
+  workLog: workLogReducer,
 });
 
 export default (state, action) => appReducers(state, action);

@@ -1,3 +1,0 @@
-export const FETCH_DATA_REQUEST = 'global/FETCH_DATA_REQUEST';
-export const FETCH_DATA_SUCCESS = 'global/FETCH_DATA_SUCCESS';
-export const FETCH_DATA_FAILURE = 'global/FETCH_DATA_FAILURE';

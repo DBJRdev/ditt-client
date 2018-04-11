@@ -6,12 +6,9 @@ import IndexComponent from '../IndexComponent';
 describe('rendering', () => {
   it('renders correctly', () => {
     const props = {
-      data: Immutable.fromJS({
-        description: 'Description',
-        title: 'Title',
-      }),
-      fetchData: () => {},
+      fetchWorkLogList: () => {},
       isFetching: false,
+      workLogList: Immutable.List(),
     };
     const tree = shallow(<IndexComponent {...props} />);
 

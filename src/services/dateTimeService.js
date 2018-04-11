@@ -29,6 +29,14 @@ export const toDayFormat = (momentDateTime) => {
   throw new Error('Invalid datetime');
 };
 
+export const toHourMinuteFormat = (momentDateTime) => {
+  if (momentDateTime && moment.isMoment(momentDateTime) && momentDateTime.isValid()) {
+    return momentDateTime.format('HH:mm');
+  }
+
+  throw new Error('Invalid datetime');
+};
+
 export const toMonthYearFormat = (momentDateTime) => {
   if (momentDateTime && moment.isMoment(momentDateTime) && momentDateTime.isValid()) {
     return momentDateTime.format('MMMM YYYY');

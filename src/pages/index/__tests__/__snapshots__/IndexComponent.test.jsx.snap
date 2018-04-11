@@ -2,19 +2,12 @@
 
 exports[`rendering renders correctly 1`] = `
 <div>
-  <div>
-    <h1>
-      Title
-    </h1>
-    <p>
-      Description
-    </p>
-  </div>
   <h2>
     Work log
   </h2>
   <WorkLogCalendar
     onSelectedDateChanged={[Function]}
+    workLogList={Immutable.List []}
   />
 </div>
 `;

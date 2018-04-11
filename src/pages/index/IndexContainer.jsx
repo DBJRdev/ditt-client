@@ -1,22 +1,22 @@
 import { connect } from 'react-redux';
 import {
-  fetchData,
-  selectData,
-  selectDataMeta,
-} from '../../resources/global';
+  fetchWorkLogList,
+  selectWorkLogList,
+  selectWorkLogListMeta,
+} from '../../resources/workLog';
 import IndexComponent from './IndexComponent';
 
 const mapStateToProps = (state) => {
-  const meta = selectDataMeta(state);
+  const meta = selectWorkLogListMeta(state);
 
   return ({
-    data: selectData(state),
     isFetching: meta.isFetching,
+    workLogList: selectWorkLogList(state),
   });
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchData: () => dispatch(fetchData()),
+  fetchWorkLogList: () => dispatch(fetchWorkLogList()),
 });
 
 export default connect(

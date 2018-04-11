@@ -1,6 +1,10 @@
+import Immutable from 'immutable';
 import React from 'react';
 import sinon from 'sinon';
-import { shallow } from 'enzyme';
+import {
+  mount,
+  shallow,
+} from 'enzyme';
 import WorkLogCalendar from '../WorkLogCalendar';
 import { localizedMoment } from '../../../services/dateTimeService';
 
@@ -18,13 +22,18 @@ afterEach(() => {
 
 describe('rendering', () => {
   it('renders correctly with mandatory props only', () => {
-    const tree = shallow(<WorkLogCalendar />);
+    const tree = shallow(<WorkLogCalendar
+      workLogList={Immutable.List()}
+    />);
 
     expect(tree).toMatchSnapshot();
   });
 
   it('renders correctly with all props', () => {
-    const tree = shallow(<WorkLogCalendar onSelectedDateChanged={() => {}} />);
+    const tree = shallow(<WorkLogCalendar
+      onSelectedDateChanged={() => {}}
+      workLogList={Immutable.List()}
+    />);
 
     expect(tree).toMatchSnapshot();
   });
@@ -33,10 +42,13 @@ describe('rendering', () => {
 describe('functionality', () => {
   it('calls onSelectedDateChanged() date when previous month button is clicked', () => {
     const spy = sinon.spy();
-    const tree = shallow(<WorkLogCalendar onSelectedDateChanged={spy} />);
+    const tree = mount(<WorkLogCalendar
+      onSelectedDateChanged={spy}
+      workLogList={Immutable.List()}
+    />);
     const expectedArgs = fakeMomentDateTime.clone().subtract(1, 'month');
 
-    tree.find('button').first().simulate('click');
+    tree.find('Button').first().simulate('click');
 
     expect(spy.calledOnce).toEqual(true);
     expect(spy.getCall(0).args[0]).toEqual(expectedArgs);
@@ -44,10 +56,13 @@ describe('functionality', () => {
 
   it('calls onSelectedDateChanged() date when next month button is clicked', () => {
     const spy = sinon.spy();
-    const tree = shallow(<WorkLogCalendar onSelectedDateChanged={spy} />);
+    const tree = mount(<WorkLogCalendar
+      onSelectedDateChanged={spy}
+      workLogList={Immutable.List()}
+    />);
     const expectedArgs = fakeMomentDateTime.clone().add(1, 'month');
 
-    tree.find('button').last().simulate('click');
+    tree.find('Button').last().simulate('click');
 
     expect(spy.calledOnce).toEqual(true);
     expect(spy.getCall(0).args[0]).toEqual(expectedArgs);

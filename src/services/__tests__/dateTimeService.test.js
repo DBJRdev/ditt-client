@@ -1,8 +1,10 @@
 import {
+  isWeekend,
   toMomentDateTime,
   toDayFormat,
   toDayMonthYearFormat,
-  toMonthYearFormat, isWeekend,
+  toHourMinuteFormat,
+  toMonthYearFormat,
 } from '../dateTimeService';
 
 describe('isWeekend()', () => {
@@ -32,22 +34,29 @@ describe('toMomentDateTime()', () => {
   });
 });
 
-describe('toTimeFormat()', () => {
-  it('should get local time string', () => {
+describe('toDayFormat()', () => {
+  it('should get day string', () => {
     const momentDateTime = toMomentDateTime('2017-12-24T20:15:30.100Z');
     expect(toDayFormat(momentDateTime)).toEqual('Sunday');
   });
 });
 
 describe('toTimeFormat()', () => {
-  it('should get local time string', () => {
+  it('should get hour with minute string', () => {
+    const momentDateTime = toMomentDateTime('2017-12-24T20:15:30.100Z');
+    expect(toHourMinuteFormat(momentDateTime)).toEqual('21:15');
+  });
+});
+
+describe('toDayMonthYearFormat()', () => {
+  it('should get day with month and year string', () => {
     const momentDateTime = toMomentDateTime('2017-12-24T20:15:30.100Z');
     expect(toDayMonthYearFormat(momentDateTime)).toEqual('12/24/2017');
   });
 });
 
-describe('toTimeFormat()', () => {
-  it('should get local time string', () => {
+describe('toMonthYearFormat()', () => {
+  it('should get month with year string', () => {
     const momentDateTime = toMomentDateTime('2017-12-24T20:15:30.100Z');
     expect(toMonthYearFormat(momentDateTime)).toEqual('December 2017');
   });

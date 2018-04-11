@@ -5,32 +5,27 @@ import WorkLogCalendar from '../../components/WorkLogCalendar';
 
 class IndexComponent extends React.Component {
   componentDidMount() {
-    this.props.fetchData();
+    this.props.fetchWorkLogList();
   }
 
   render() {
     return (
       <div>
-        {this.props.isFetching ? 'Loading...' : (
-          <div>
-            <h1>{this.props.data.get('title')}</h1>
-            <p>{this.props.data.get('description')}</p>
-          </div>
-        )}
         <h2>Work log</h2>
-        <WorkLogCalendar />
+        {this.props.isFetching ? 'Loading...' : <WorkLogCalendar workLogList={this.props.workLogList} />}
       </div>
     );
   }
 }
 
 IndexComponent.propTypes = {
-  data: ImmutablePropTypes.mapContains({
-    description: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  }).isRequired,
-  fetchData: PropTypes.func.isRequired,
+  fetchWorkLogList: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
+  workLogList: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+    endTime: PropTypes.shape.isRequired,
+    id: PropTypes.number.isRequired,
+    startTime: PropTypes.shape.isRequired,
+  })).isRequired,
 };
 
 export default IndexComponent;
