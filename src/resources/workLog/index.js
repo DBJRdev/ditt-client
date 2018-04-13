@@ -1,6 +1,11 @@
-export { default as fetchWorkLogList } from './actions';
+export {
+  addWorkLog,
+  fetchWorkLogList,
+} from './actions';
 
 export {
+  selectAddWorkLog,
+  selectAddWorkLogMeta,
   selectWorkLogList,
   selectWorkLogListMeta,
 } from './selectors';

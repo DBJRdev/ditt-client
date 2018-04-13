@@ -6,8 +6,10 @@ import IndexComponent from '../IndexComponent';
 describe('rendering', () => {
   it('renders correctly', () => {
     const props = {
+      addWorkLog: () => {},
       fetchWorkLogList: () => {},
-      isFetching: false,
+      isFetchingWorkLogList: false,
+      isPostingWorkLog: false,
       workLogList: Immutable.List(),
     };
     const tree = shallow(<IndexComponent {...props} />);

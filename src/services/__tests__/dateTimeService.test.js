@@ -1,4 +1,5 @@
 import {
+  isOverlapping,
   isWeekend,
   toMomentDateTime,
   toDayFormat,
@@ -6,6 +7,20 @@ import {
   toHourMinuteFormat,
   toMonthYearFormat,
 } from '../dateTimeService';
+
+describe('isOverlapping()', () => {
+  it('should check whether is overlapping or not', () => {
+    const dt1 = toMomentDateTime('2017-12-24T20:15:30.100Z');
+    const dt2 = toMomentDateTime('2017-12-24T21:15:30.100Z');
+    const dt3 = toMomentDateTime('2017-12-24T22:15:30.100Z');
+    const dt4 = toMomentDateTime('2017-12-24T23:15:30.100Z');
+    expect(isOverlapping(dt1, dt2, dt3, dt4)).toEqual(false);
+    expect(isOverlapping(dt3, dt4, dt1, dt2)).toEqual(false);
+    expect(isOverlapping(dt1, dt3, dt2, dt4)).toEqual(true);
+    expect(isOverlapping(dt2, dt4, dt1, dt3)).toEqual(true);
+    expect(isOverlapping(dt1, dt4, dt2, dt3)).toEqual(true);
+  });
+});
 
 describe('isWeekend()', () => {
   it('should check whether is weekend or not', () => {

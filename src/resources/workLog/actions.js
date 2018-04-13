@@ -1,8 +1,26 @@
 import { RSAA } from 'redux-api-middleware';
 import { API_URL } from '../../../config/envspecific';
+import { toJson } from '../../services/dateTimeService';
 import * as types from './actionTypes';
 
-const fetchWorkLogList = () => dispatch => dispatch({
+export const addWorkLog = data => dispatch => dispatch({
+  [RSAA]: {
+    body: JSON.stringify({
+      endTime: toJson(data.endTime),
+      startTime: toJson(data.startTime),
+    }),
+    endpoint: `${API_URL}/work_logs`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'POST',
+    types: [
+      types.ADD_WORK_LOG_REQUEST,
+      types.ADD_WORK_LOG_SUCCESS,
+      types.ADD_WORK_LOG_FAILURE,
+    ],
+  },
+});
+
+export const fetchWorkLogList = () => dispatch => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/work_logs`,
     headers: { 'Content-Type': 'application/json' },
@@ -14,5 +32,3 @@ const fetchWorkLogList = () => dispatch => dispatch({
     ],
   },
 });
-
-export default fetchWorkLogList;

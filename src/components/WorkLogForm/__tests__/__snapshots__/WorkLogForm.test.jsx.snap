@@ -1,0 +1,187 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly with all props 1`] = `
+<Modal
+  actions={
+    Array [
+      Object {
+        "clickHandler": [Function],
+        "label": "Save",
+        "loading": false,
+      },
+    ]
+  }
+  closeHandler={[Function]}
+  title="Add work log"
+>
+  <p
+    style={
+      Object {
+        "color": "#a32100",
+        "textAlign": "center",
+      }
+    }
+  />
+  <form>
+    <fieldset
+      style={
+        Object {
+          "borderStyle": "none",
+          "marginLeft": "auto",
+          "marginRight": "auto",
+          "maxWidth": "17em",
+          "padding": "0",
+        }
+      }
+    >
+      <legend>
+        Date
+      </legend>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <TextField
+          changeHandler={null}
+          description={null}
+          disabled={true}
+          error={null}
+          fieldId="date"
+          isLabelVisible={false}
+          label="Date"
+          placeholder={null}
+          required={false}
+          type="text"
+          value="01/01/2018"
+        />
+      </div>
+    </fieldset>
+    <fieldset
+      style={
+        Object {
+          "borderStyle": "none",
+          "marginLeft": "auto",
+          "marginRight": "auto",
+          "maxWidth": "17em",
+          "padding": "0",
+        }
+      }
+    >
+      <legend>
+        Start time:
+      </legend>
+      <div>
+        <div
+          style={
+            Object {
+              "display": "inline-block",
+            }
+          }
+        >
+          <TextField
+            autoFocus={true}
+            changeHandler={[Function]}
+            description={null}
+            disabled={false}
+            error={null}
+            fieldId="startHour"
+            isLabelVisible={false}
+            label="Start hour"
+            placeholder={null}
+            required={false}
+            type="text"
+            value={1}
+          />
+        </div>
+        :
+        <div
+          style={
+            Object {
+              "display": "inline-block",
+            }
+          }
+        >
+          <TextField
+            changeHandler={[Function]}
+            description={null}
+            disabled={false}
+            error={null}
+            fieldId="startMinute"
+            isLabelVisible={false}
+            label="Start minute"
+            placeholder={null}
+            required={false}
+            type="text"
+            value=""
+          />
+        </div>
+         h
+      </div>
+    </fieldset>
+    <fieldset
+      style={
+        Object {
+          "borderStyle": "none",
+          "marginLeft": "auto",
+          "marginRight": "auto",
+          "maxWidth": "17em",
+          "padding": "0",
+        }
+      }
+    >
+      <legend>
+        End time:
+      </legend>
+      <div>
+        <div
+          style={
+            Object {
+              "display": "inline-block",
+            }
+          }
+        >
+          <TextField
+            changeHandler={[Function]}
+            description={null}
+            disabled={false}
+            error={null}
+            fieldId="endHour"
+            isLabelVisible={false}
+            label="End hour"
+            placeholder={null}
+            required={false}
+            type="text"
+            value={1}
+          />
+        </div>
+        :
+        <div
+          style={
+            Object {
+              "display": "inline-block",
+            }
+          }
+        >
+          <TextField
+            changeHandler={[Function]}
+            description={null}
+            disabled={false}
+            error={null}
+            fieldId="endMinute"
+            isLabelVisible={false}
+            label="End minute"
+            placeholder={null}
+            required={false}
+            type="text"
+            value=""
+          />
+        </div>
+         h
+      </div>
+    </fieldset>
+  </form>
+</Modal>
+`;

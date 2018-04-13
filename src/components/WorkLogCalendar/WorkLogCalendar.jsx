@@ -3,6 +3,7 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Button } from 'react-ui';
+import WorkLogForm from '../WorkLogForm';
 import {
   isWeekend,
   localizedMoment,
@@ -18,11 +19,17 @@ class WorkLogCalendar extends React.Component {
 
     this.state = {
       selectedDate: localizedMoment(),
+      showWorkLogForm: false,
+      showWorkLogFormDate: localizedMoment(),
     };
 
     this.getDaysOfSelectedMonth = this.getDaysOfSelectedMonth.bind(this);
     this.selectPreviousMonth = this.selectPreviousMonth.bind(this);
     this.selectNextMonth = this.selectNextMonth.bind(this);
+    this.openWorkLogForm = this.openWorkLogForm.bind(this);
+    this.saveWorkLogForm = this.saveWorkLogForm.bind(this);
+    this.closeWorkLogForm = this.closeWorkLogForm.bind(this);
+    this.renderWorkLogForm = this.renderWorkLogForm.bind(this);
 
     this.headerContainer = {
       textAlign: 'center',
@@ -61,10 +68,14 @@ class WorkLogCalendar extends React.Component {
     };
 
     this.tableCellDateStyle = {
+      width: '7em',
+    };
+
+    this.dateStyle = {
       display: 'block',
     };
 
-    this.tableCellDayStyle = {
+    this.dayStyle = {
       display: 'block',
       fontSize: '0.75em',
     };
@@ -74,8 +85,13 @@ class WorkLogCalendar extends React.Component {
       paddingLeft: '0.5em',
     };
 
-    this.workTimeStyle = {
+    this.addWorkLogButtonWrapperStyle = {
+      float: 'right',
+    };
+
+    this.tableCellWorkTimeStyle = {
       textAlign: 'right',
+      width: '5em',
     };
   }
 
@@ -119,6 +135,38 @@ class WorkLogCalendar extends React.Component {
     }), () => this.props.onSelectedDateChanged(this.state.selectedDate));
   }
 
+  openWorkLogForm(date) {
+    const todayDate = localizedMoment();
+    date.hour(todayDate.hour()).minute(todayDate.minute());
+
+    this.setState({
+      showWorkLogForm: true,
+      showWorkLogFormDate: date,
+    });
+  }
+
+  saveWorkLogForm(data) {
+    return this.props.addWorkLog(data);
+  }
+
+  closeWorkLogForm() {
+    this.setState({ showWorkLogForm: false });
+  }
+
+  renderWorkLogForm() {
+    return (
+      <WorkLogForm
+        closeHandler={this.closeWorkLogForm}
+        date={this.state.showWorkLogFormDate}
+        isPosting={this.props.isPostingWorkLog}
+        saveHandler={this.saveWorkLogForm}
+        workLogsOfDay={this.props.workLogList.filter(workLog => (
+          this.state.showWorkLogFormDate.isSame(workLog.get('startTime'), 'day')
+        ))}
+      />
+    );
+  }
+
   render() {
     return (
       <div>
@@ -154,11 +202,11 @@ class WorkLogCalendar extends React.Component {
 
                 return (
                   <tr key={day.date.date()}>
-                    <td style={cellStyle}>
-                      <span style={this.tableCellDateStyle}>
+                    <td style={Object.assign({}, cellStyle, this.tableCellDateStyle)}>
+                      <span style={this.dateStyle}>
                         {toDayMonthYearFormat(day.date)}
                       </span>
-                      <span style={this.tableCellDayStyle}>
+                      <span style={this.dayStyle}>
                         {toDayFormat(day.date)}
                       </span>
                     </td>
@@ -175,8 +223,18 @@ class WorkLogCalendar extends React.Component {
                         </div>
                       ))}
                     </td>
-                    <td style={Object.assign({}, cellStyle, this.workTimeStyle)}>
-                      {day.workTime.hours()}:{day.workTime.minutes() < 10 && '0'}{day.workTime.minutes()} h
+                    <td style={cellStyle}>
+                      <div style={this.addWorkLogButtonWrapperStyle}>
+                        <Button
+                          clickHandler={() => this.openWorkLogForm(day.date)}
+                          icon="add"
+                          label="Add work log"
+                          priority="primary"
+                        />
+                      </div>
+                    </td>
+                    <td style={Object.assign({}, cellStyle, this.tableCellWorkTimeStyle)}>
+                      {day.workTime.hours()}:{day.workTime.minutes() < 10 && '0'}{day.workTime.minutes()}&nbsp;h
                     </td>
                   </tr>
                 );
@@ -184,6 +242,7 @@ class WorkLogCalendar extends React.Component {
             </tbody>
           </table>
         </div>
+        {this.state.showWorkLogForm ? this.renderWorkLogForm() : null}
       </div>
     );
   }
@@ -194,6 +253,8 @@ WorkLogCalendar.defaultProps = {
 };
 
 WorkLogCalendar.propTypes = {
+  addWorkLog: PropTypes.func.isRequired,
+  isPostingWorkLog: PropTypes.bool.isRequired,
   onSelectedDateChanged: PropTypes.func,
   workLogList: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
     endTime: PropTypes.shape.isRequired,

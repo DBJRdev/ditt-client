@@ -85,6 +85,7 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -121,7 +122,39 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -129,7 +162,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -140,6 +173,7 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -176,7 +210,39 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -184,7 +250,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -195,6 +261,7 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -231,7 +298,39 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -239,7 +338,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -250,6 +349,7 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -286,7 +386,39 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -294,7 +426,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -305,6 +437,7 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -341,7 +474,39 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -349,7 +514,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -361,6 +526,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -399,7 +565,40 @@ exports[`rendering renders correctly with all props 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -407,7 +606,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -419,6 +618,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -457,7 +657,40 @@ exports[`rendering renders correctly with all props 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -465,7 +698,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -476,6 +709,7 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -512,7 +746,39 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -520,7 +786,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -531,6 +797,7 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -567,7 +834,39 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -575,7 +874,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -586,6 +885,7 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -622,7 +922,39 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -630,7 +962,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -641,6 +973,7 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -677,7 +1010,39 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -685,7 +1050,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -696,6 +1061,7 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -732,7 +1098,39 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -740,7 +1138,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -752,6 +1150,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -790,7 +1189,40 @@ exports[`rendering renders correctly with all props 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -798,7 +1230,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -810,6 +1242,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -848,7 +1281,40 @@ exports[`rendering renders correctly with all props 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -856,7 +1322,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -867,6 +1333,7 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -903,7 +1370,39 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -911,7 +1410,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -922,6 +1421,7 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -958,7 +1458,39 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -966,7 +1498,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -977,6 +1509,7 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -1013,7 +1546,39 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -1021,7 +1586,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -1032,6 +1597,7 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -1068,7 +1634,39 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -1076,7 +1674,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -1087,6 +1685,7 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -1123,7 +1722,39 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -1131,7 +1762,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -1143,6 +1774,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -1181,7 +1813,40 @@ exports[`rendering renders correctly with all props 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -1189,7 +1854,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -1201,6 +1866,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -1239,7 +1905,40 @@ exports[`rendering renders correctly with all props 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -1247,7 +1946,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -1258,6 +1957,7 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -1294,7 +1994,39 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -1302,7 +2034,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -1313,6 +2045,7 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -1349,7 +2082,39 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -1357,7 +2122,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -1368,6 +2133,7 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -1404,7 +2170,39 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -1412,7 +2210,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -1423,6 +2221,7 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -1459,7 +2258,39 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -1467,7 +2298,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -1478,6 +2309,7 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -1514,7 +2346,39 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -1522,7 +2386,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -1534,6 +2398,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -1572,7 +2437,40 @@ exports[`rendering renders correctly with all props 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -1580,7 +2478,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -1592,6 +2490,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -1630,7 +2529,40 @@ exports[`rendering renders correctly with all props 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -1638,7 +2570,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -1649,6 +2581,7 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -1685,7 +2618,39 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -1693,7 +2658,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -1704,6 +2669,7 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -1740,7 +2706,39 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -1748,7 +2746,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -1759,6 +2757,7 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -1795,7 +2794,39 @@ exports[`rendering renders correctly with all props 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -1803,7 +2834,7 @@ exports[`rendering renders correctly with all props 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
       </tbody>
@@ -1897,6 +2928,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -1933,7 +2965,39 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -1941,7 +3005,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -1952,6 +3016,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -1988,7 +3053,39 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -1996,7 +3093,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -2007,6 +3104,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -2043,7 +3141,39 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -2051,7 +3181,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -2062,6 +3192,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -2098,7 +3229,39 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -2106,7 +3269,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -2117,6 +3280,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -2153,7 +3317,39 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -2161,7 +3357,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -2173,6 +3369,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -2211,7 +3408,40 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -2219,7 +3449,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -2231,6 +3461,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -2269,7 +3500,40 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -2277,7 +3541,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -2288,6 +3552,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -2324,7 +3589,39 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -2332,7 +3629,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -2343,6 +3640,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -2379,7 +3677,39 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -2387,7 +3717,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -2398,6 +3728,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -2434,7 +3765,39 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -2442,7 +3805,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -2453,6 +3816,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -2489,7 +3853,39 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -2497,7 +3893,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -2508,6 +3904,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -2544,7 +3941,39 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -2552,7 +3981,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -2564,6 +3993,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -2602,7 +4032,40 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -2610,7 +4073,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -2622,6 +4085,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -2660,7 +4124,40 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -2668,7 +4165,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -2679,6 +4176,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -2715,7 +4213,39 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -2723,7 +4253,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -2734,6 +4264,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -2770,7 +4301,39 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -2778,7 +4341,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -2789,6 +4352,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -2825,7 +4389,39 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -2833,7 +4429,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -2844,6 +4440,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -2880,7 +4477,39 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -2888,7 +4517,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -2899,6 +4528,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -2935,7 +4565,39 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -2943,7 +4605,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -2955,6 +4617,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -2993,7 +4656,40 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -3001,7 +4697,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -3013,6 +4709,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -3051,7 +4748,40 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -3059,7 +4789,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -3070,6 +4800,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -3106,7 +4837,39 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -3114,7 +4877,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -3125,6 +4888,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -3161,7 +4925,39 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -3169,7 +4965,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -3180,6 +4976,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -3216,7 +5013,39 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -3224,7 +5053,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -3235,6 +5064,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -3271,7 +5101,39 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -3279,7 +5141,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -3290,6 +5152,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -3326,7 +5189,39 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -3334,7 +5229,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -3346,6 +5241,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -3384,7 +5280,40 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -3392,7 +5321,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -3404,6 +5333,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -3442,7 +5372,40 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 "borderBottom": "1px solid black",
                 "color": "gray",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "color": "gray",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -3450,7 +5413,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -3461,6 +5424,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -3497,7 +5461,39 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -3505,7 +5501,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -3516,6 +5512,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -3552,7 +5549,39 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -3560,7 +5589,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
         <tr
@@ -3571,6 +5600,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+                "width": "7em",
               }
             }
           >
@@ -3607,7 +5637,39 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
               Object {
                 "borderBottom": "1px solid black",
                 "padding": "0.25em",
+              }
+            }
+          >
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="add"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="Add work log"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid black",
+                "padding": "0.25em",
                 "textAlign": "right",
+                "width": "5em",
               }
             }
           >
@@ -3615,7 +5677,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             :
             0
             0
-             h
+             h
           </td>
         </tr>
       </tbody>

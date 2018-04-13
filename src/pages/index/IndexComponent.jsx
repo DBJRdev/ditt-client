@@ -12,15 +12,27 @@ class IndexComponent extends React.Component {
     return (
       <div>
         <h2>Work log</h2>
-        {this.props.isFetching ? 'Loading...' : <WorkLogCalendar workLogList={this.props.workLogList} />}
+        {
+          this.props.isFetchingWorkLogList
+          ? 'Loading...'
+          : (
+            <WorkLogCalendar
+              addWorkLog={this.props.addWorkLog}
+              isPostingWorkLog={this.props.isPostingWorkLog}
+              workLogList={this.props.workLogList}
+            />
+          )
+        }
       </div>
     );
   }
 }
 
 IndexComponent.propTypes = {
+  addWorkLog: PropTypes.func.isRequired,
   fetchWorkLogList: PropTypes.func.isRequired,
-  isFetching: PropTypes.bool.isRequired,
+  isFetchingWorkLogList: PropTypes.bool.isRequired,
+  isPostingWorkLog: PropTypes.bool.isRequired,
   workLogList: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
     endTime: PropTypes.shape.isRequired,
     id: PropTypes.number.isRequired,

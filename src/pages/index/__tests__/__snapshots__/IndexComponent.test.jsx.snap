@@ -6,6 +6,8 @@ exports[`rendering renders correctly 1`] = `
     Work log
   </h2>
   <WorkLogCalendar
+    addWorkLog={[Function]}
+    isPostingWorkLog={false}
     onSelectedDateChanged={[Function]}
     workLogList={Immutable.List []}
   />

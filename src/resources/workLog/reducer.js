@@ -13,6 +13,36 @@ export default (state, action) => {
     type,
   } = action;
 
+  if (type === actionTypes.ADD_WORK_LOG_REQUEST) {
+    return state
+      .setIn(['addWorkLog', 'isPosting'], true)
+      .setIn(['addWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.ADD_WORK_LOG_SUCCESS) {
+    const addWorkLogData = {
+      endTime: toMomentDateTime(payload.endTime),
+      id: payload.id,
+      startTime: toMomentDateTime(payload.startTime),
+    };
+
+    let workLogList = state.getIn(['workLogList', 'data']);
+    workLogList = workLogList.set(workLogList.size, Immutable.fromJS(addWorkLogData));
+
+    return state
+      .setIn(['workLogList', 'data'], Immutable.fromJS(workLogList))
+      .setIn(['addWorkLog', 'data'], Immutable.fromJS(addWorkLogData))
+      .setIn(['addWorkLog', 'isPosting'], false)
+      .setIn(['addWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.ADD_WORK_LOG_FAILURE) {
+    return state
+      .setIn(['addWorkLog', 'data'], null)
+      .setIn(['addWorkLog', 'isPosting'], false)
+      .setIn(['addWorkLog', 'isPostingFailure'], true);
+  }
+
   if (type === actionTypes.FETCH_WORK_LOG_LIST_REQUEST) {
     return state
       .setIn(['workLogList', 'isFetching'], true)
@@ -34,7 +64,7 @@ export default (state, action) => {
 
   if (type === actionTypes.FETCH_WORK_LOG_LIST_FAILURE) {
     return state
-      .setIn(['workLogList', 'data'])
+      .setIn(['workLogList', 'data'], Immutable.fromJS([]))
       .setIn(['workLogList', 'isFetching'], false)
       .setIn(['workLogList', 'isFetchingFailure'], true);
   }
