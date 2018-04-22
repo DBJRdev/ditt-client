@@ -36,8 +36,7 @@ def deployBranches = [
         siteUrl: 'http://ditt-client.dev.visionapps.cz',
         config: [
             environment: 'dev',
-            apiUrl: '.',
-            // apiUrl: 'http://ditt-api.dev.visionapps.cz',
+            apiUrl: 'http://ditt-api.dev.visionapps.cz',
         ],
     ],
 ]
