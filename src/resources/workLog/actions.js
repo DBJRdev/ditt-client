@@ -20,6 +20,21 @@ export const addWorkLog = data => dispatch => dispatch({
   },
 });
 
+export const deleteWorkLog = id => dispatch => dispatch({
+  [RSAA]: {
+    endpoint: `${API_URL}/work_logs/${id}`,
+    method: 'DELETE',
+    types: [
+      types.DELETE_WORK_LOG_REQUEST,
+      {
+        meta: { id },
+        type: types.DELETE_WORK_LOG_SUCCESS,
+      },
+      types.DELETE_WORK_LOG_FAILURE,
+    ],
+  },
+});
+
 export const fetchWorkLogList = () => dispatch => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/work_logs`,

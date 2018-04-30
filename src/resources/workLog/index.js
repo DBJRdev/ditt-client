@@ -1,11 +1,13 @@
 export {
   addWorkLog,
+  deleteWorkLog,
   fetchWorkLogList,
 } from './actions';
 
 export {
   selectAddWorkLog,
   selectAddWorkLogMeta,
+  selectDeleteWorkLogMeta,
   selectWorkLogList,
   selectWorkLogListMeta,
 } from './selectors';

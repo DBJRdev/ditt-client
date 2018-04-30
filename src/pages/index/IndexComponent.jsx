@@ -18,6 +18,7 @@ class IndexComponent extends React.Component {
           : (
             <WorkLogCalendar
               addWorkLog={this.props.addWorkLog}
+              deleteWorkLog={this.props.deleteWorkLog}
               isPostingWorkLog={this.props.isPostingWorkLog}
               workLogList={this.props.workLogList}
             />
@@ -30,6 +31,7 @@ class IndexComponent extends React.Component {
 
 IndexComponent.propTypes = {
   addWorkLog: PropTypes.func.isRequired,
+  deleteWorkLog: PropTypes.func.isRequired,
   fetchWorkLogList: PropTypes.func.isRequired,
   isFetchingWorkLogList: PropTypes.bool.isRequired,
   isPostingWorkLog: PropTypes.bool.isRequired,

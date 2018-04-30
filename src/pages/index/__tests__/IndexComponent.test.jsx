@@ -7,6 +7,7 @@ describe('rendering', () => {
   it('renders correctly', () => {
     const props = {
       addWorkLog: () => {},
+      deleteWorkLog: () => {},
       fetchWorkLogList: () => {},
       isFetchingWorkLogList: false,
       isPostingWorkLog: false,

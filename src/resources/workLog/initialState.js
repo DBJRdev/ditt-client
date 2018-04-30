@@ -6,6 +6,10 @@ export default Immutable.fromJS({
     isPosting: false,
     isPostingFailure: false,
   },
+  deleteWorkLog: {
+    isPosting: false,
+    isPostingFailure: false,
+  },
   workLogList: {
     data: [],
     isFetching: false,

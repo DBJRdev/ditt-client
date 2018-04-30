@@ -9,6 +9,7 @@ export default (state, action) => {
   }
 
   const {
+    meta,
     payload,
     type,
   } = action;
@@ -41,6 +42,30 @@ export default (state, action) => {
       .setIn(['addWorkLog', 'data'], null)
       .setIn(['addWorkLog', 'isPosting'], false)
       .setIn(['addWorkLog', 'isPostingFailure'], true);
+  }
+
+  if (type === actionTypes.DELETE_WORK_LOG_REQUEST) {
+    return state
+      .setIn(['deleteWorkLog', 'isPosting'], true)
+      .setIn(['deleteWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.DELETE_WORK_LOG_SUCCESS) {
+    let workLogList = state.getIn(['workLogList', 'data']);
+    workLogList = workLogList.filter(workLog => (
+      workLog.get('id') !== meta.id
+    ));
+
+    return state
+      .setIn(['workLogList', 'data'], Immutable.fromJS(workLogList))
+      .setIn(['deleteWorkLog', 'isPosting'], false)
+      .setIn(['deleteWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.DELETE_WORK_LOG_FAILURE) {
+    return state
+      .setIn(['deleteWorkLog', 'isPosting'], false)
+      .setIn(['deleteWorkLog', 'isPostingFailure'], true);
   }
 
   if (type === actionTypes.FETCH_WORK_LOG_LIST_REQUEST) {

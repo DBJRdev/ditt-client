@@ -24,6 +24,7 @@ describe('rendering', () => {
   it('renders correctly with mandatory props only', () => {
     const tree = shallow(<WorkLogCalendar
       addWorkLog={() => {}}
+      deleteWorkLog={() => {}}
       isPostingWorkLog={false}
       workLogList={Immutable.List()}
     />);
@@ -34,6 +35,7 @@ describe('rendering', () => {
   it('renders correctly with all props', () => {
     const tree = shallow(<WorkLogCalendar
       addWorkLog={() => {}}
+      deleteWorkLog={() => {}}
       isPostingWorkLog={false}
       onSelectedDateChanged={() => {}}
       workLogList={Immutable.List()}
@@ -48,6 +50,7 @@ describe('functionality', () => {
     const spy = sinon.spy();
     const tree = mount(<WorkLogCalendar
       addWorkLog={() => {}}
+      deleteWorkLog={() => {}}
       isPostingWorkLog={false}
       onSelectedDateChanged={spy}
       workLogList={Immutable.List()}
@@ -64,6 +67,7 @@ describe('functionality', () => {
     const spy = sinon.spy();
     const tree = mount(<WorkLogCalendar
       addWorkLog={() => {}}
+      deleteWorkLog={() => {}}
       isPostingWorkLog={false}
       onSelectedDateChanged={spy}
       workLogList={Immutable.List()}
