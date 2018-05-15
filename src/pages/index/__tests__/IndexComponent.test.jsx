@@ -11,6 +11,8 @@ describe('rendering', () => {
       fetchWorkLogList: () => {},
       isFetchingWorkLogList: false,
       isPostingWorkLog: false,
+      logout: () => {},
+      uid: 1,
       workLogList: Immutable.List(),
     };
     const tree = shallow(<IndexComponent {...props} />);

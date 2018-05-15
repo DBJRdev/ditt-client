@@ -11,6 +11,7 @@ import routes from './routes';
 import store from './store';
 import ErrorPage from './pages/error';
 import IndexPage from './pages/index';
+import LoginPage from './pages/login';
 
 ReactDOM.render(
   (
@@ -18,6 +19,7 @@ ReactDOM.render(
       <Router history={history} onUpdate={() => window.scrollTo(0, 0)}>
         <Switch>
           <Route exact path={routes.index} component={IndexPage} />
+          <Route exact path={routes.login} component={LoginPage} />
           <Route component={ErrorPage} />
         </Switch>
       </Router>

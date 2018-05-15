@@ -5,12 +5,13 @@ import WorkLogCalendar from '../../components/WorkLogCalendar';
 
 class IndexComponent extends React.Component {
   componentDidMount() {
-    this.props.fetchWorkLogList();
+    this.props.fetchWorkLogList(this.props.uid);
   }
 
   render() {
     return (
       <div>
+        <button onClick={this.props.logout}>Logout</button>
         <h2>Work log</h2>
         {
           this.props.isFetchingWorkLogList
@@ -35,6 +36,8 @@ IndexComponent.propTypes = {
   fetchWorkLogList: PropTypes.func.isRequired,
   isFetchingWorkLogList: PropTypes.bool.isRequired,
   isPostingWorkLog: PropTypes.bool.isRequired,
+  logout: PropTypes.func.isRequired,
+  uid: PropTypes.number.isRequired,
   workLogList: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
     endTime: PropTypes.shape.isRequired,
     id: PropTypes.number.isRequired,

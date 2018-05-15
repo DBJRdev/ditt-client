@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly 1`] = `
+<div>
+  <Login
+    footer={null}
+    hasError={false}
+    logoUrl={null}
+    onChangeHandler={[Function]}
+    submitHandler={[Function]}
+    title="Login"
+    usernameType="email"
+  />
+</div>
+`;

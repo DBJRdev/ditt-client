@@ -2,6 +2,11 @@
 
 exports[`rendering renders correctly 1`] = `
 <div>
+  <button
+    onClick={[Function]}
+  >
+    Logout
+  </button>
   <h2>
     Work log
   </h2>
