@@ -19,13 +19,16 @@ const mapStateToProps = (state) => {
   const addWorkLogMeta = selectAddWorkLogMeta(state);
   const deleteWorkLogMeta = selectDeleteWorkLogMeta(state);
   const workLogListMeta = selectWorkLogListMeta(state);
+  let decodedToken = null;
   const token = selectJwtToken(state);
-  const decodedToken = jwt.decode(token);
+  if (token !== null) {
+    decodedToken = jwt.decode(token);
+  }
 
   return ({
     isFetchingWorkLogList: workLogListMeta.isFetching,
     isPostingWorkLog: addWorkLogMeta.isPosting || deleteWorkLogMeta.isPosting,
-    uid: decodedToken.uid,
+    uid: decodedToken ? decodedToken.uid : null,
     workLogList: selectWorkLogList(state),
   });
 };
