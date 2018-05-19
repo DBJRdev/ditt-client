@@ -30,6 +30,10 @@ class IndexComponent extends React.Component {
   }
 }
 
+IndexComponent.defaultProps = {
+  uid: null,
+};
+
 IndexComponent.propTypes = {
   addWorkLog: PropTypes.func.isRequired,
   deleteWorkLog: PropTypes.func.isRequired,
@@ -37,7 +41,7 @@ IndexComponent.propTypes = {
   isFetchingWorkLogList: PropTypes.bool.isRequired,
   isPostingWorkLog: PropTypes.bool.isRequired,
   logout: PropTypes.func.isRequired,
-  uid: PropTypes.number.isRequired,
+  uid: PropTypes.number,
   workLogList: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
     endTime: PropTypes.shape.isRequired,
     id: PropTypes.number.isRequired,
