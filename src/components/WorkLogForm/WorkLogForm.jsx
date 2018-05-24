@@ -11,7 +11,7 @@ import {
   ADD_WORK_LOG_SUCCESS,
 } from '../../resources/workLog/actionTypes';
 import { toDayMonthYearFormat } from '../../services/dateTimeService';
-import validateWorkLog from '../../services/validatorService';
+import { validateWorkLog } from '../../services/validatorService';
 
 class WorkLogForm extends React.Component {
   constructor(props) {

@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import {
   login,
+  selectJwtToken,
   selectJwtMeta,
 } from '../../resources/auth';
 import LoginComponent from './LoginComponent';
@@ -11,6 +12,7 @@ const mapStateToProps = (state) => {
   return ({
     isPosting: jwtMeta.isPosting,
     isPostingFailure: jwtMeta.isPostingFailure,
+    token: selectJwtToken(state),
   });
 };
 

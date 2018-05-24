@@ -1,18 +1,21 @@
+import Immutable from 'immutable';
 import React from 'react';
 import { shallow } from 'enzyme';
-import LoginComponent from '../LoginComponent';
+import AddComponent from '../AddComponent';
 
 describe('rendering', () => {
   it('renders correctly', () => {
     const props = {
+      addUser: () => {},
+      fetchUserList: () => {},
       history: {
         push: () => {},
       },
+      isFetching: false,
       isPosting: false,
-      isPostingFailure: false,
-      login: () => {},
+      userList: Immutable.List([]),
     };
-    const tree = shallow(<LoginComponent {...props} />);
+    const tree = shallow(<AddComponent {...props} />);
 
     expect(tree).toMatchSnapshot();
   });

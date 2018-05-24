@@ -50,5 +50,12 @@ export default (state, action) => {
       .setIn(['jwt', 'isFetchingFailure'], true);
   }
 
+  if (type === actionTypes.RESET) {
+    return state
+      .setIn(['jwt', 'isFetching'], false)
+      .setIn(['jwt', 'isFetchingFailure'], false)
+      .setIn(['jwt', 'token'], null);
+  }
+
   return state;
 };

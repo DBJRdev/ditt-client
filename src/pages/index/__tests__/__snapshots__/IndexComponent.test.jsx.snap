@@ -1,15 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering renders correctly 1`] = `
-<div>
-  <button
-    onClick={[Function]}
-  >
-    Logout
-  </button>
-  <h2>
-    Work log
-  </h2>
+<Connect(LayoutComponent)
+  loading={false}
+  title="Work logs"
+>
   <WorkLogCalendar
     addWorkLog={[Function]}
     deleteWorkLog={[Function]}
@@ -17,5 +12,5 @@ exports[`rendering renders correctly 1`] = `
     onSelectedDateChanged={[Function]}
     workLogList={Immutable.List []}
   />
-</div>
+</Connect(LayoutComponent)>
 `;

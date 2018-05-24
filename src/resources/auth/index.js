@@ -1,6 +1,7 @@
 export {
   login,
   logout,
+  reset,
 } from './actions';
 
 export {

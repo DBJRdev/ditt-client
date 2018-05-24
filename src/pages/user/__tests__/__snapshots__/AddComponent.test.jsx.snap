@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly 1`] = `
+<Connect(LayoutComponent)
+  loading={false}
+  title="Add user"
+>
+  <form>
+    <p
+      style={
+        Object {
+          "color": "#a32100",
+          "textAlign": "center",
+        }
+      }
+    />
+    <TextField
+      changeHandler={[Function]}
+      description={null}
+      disabled={false}
+      error={null}
+      fieldId="firstName"
+      isLabelVisible={true}
+      label="First name"
+      placeholder={null}
+      required={true}
+      type="text"
+      value=""
+    />
+    <TextField
+      changeHandler={[Function]}
+      description={null}
+      disabled={false}
+      error={null}
+      fieldId="lastName"
+      isLabelVisible={true}
+      label="Last name"
+      placeholder={null}
+      required={true}
+      type="text"
+      value=""
+    />
+    <SelectField
+      changeHandler={[Function]}
+      description={null}
+      disabled={false}
+      error={null}
+      fieldId="supervisor"
+      isLabelVisible={true}
+      label="Supervisor"
+      options={
+        Array [
+          Object {
+            "label": "-",
+            "value": null,
+          },
+        ]
+      }
+      required={false}
+      value=""
+    />
+    <TextField
+      changeHandler={[Function]}
+      description={null}
+      disabled={false}
+      error={null}
+      fieldId="email"
+      isLabelVisible={true}
+      label="E-mail"
+      placeholder={null}
+      required={true}
+      type="text"
+      value=""
+    />
+    <TextField
+      changeHandler={[Function]}
+      description={null}
+      disabled={false}
+      error={null}
+      fieldId="plainPassword"
+      isLabelVisible={true}
+      label="Password"
+      placeholder={null}
+      required={true}
+      type="password"
+      value=""
+    />
+    <CheckboxField
+      changeHandler={[Function]}
+      checked={false}
+      description={null}
+      disabled={false}
+      error={null}
+      fieldId="isActive"
+      label="Active"
+      required={true}
+    />
+    <Button
+      block={false}
+      clickHandler={[Function]}
+      disabled={false}
+      icon={null}
+      iconPosition="before"
+      isLabelVisible={true}
+      label="Save"
+      loading={false}
+      priority="primary"
+      size="medium"
+      type="button"
+      variant="default"
+    />
+  </form>
+</Connect(LayoutComponent)>
+`;

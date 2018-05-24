@@ -9,6 +9,9 @@ describe('rendering', () => {
       addWorkLog: () => {},
       deleteWorkLog: () => {},
       fetchWorkLogList: () => {},
+      history: {
+        push: () => {},
+      },
       isFetchingWorkLogList: false,
       isPostingWorkLog: false,
       logout: () => {},

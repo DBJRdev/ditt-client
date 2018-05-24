@@ -31,7 +31,7 @@ export default (state, action) => {
     workLogList = workLogList.set(workLogList.size, Immutable.fromJS(addWorkLogData));
 
     return state
-      .setIn(['workLogList', 'data'], Immutable.fromJS(workLogList))
+      .setIn(['workLogList', 'data'], workLogList)
       .setIn(['addWorkLog', 'data'], Immutable.fromJS(addWorkLogData))
       .setIn(['addWorkLog', 'isPosting'], false)
       .setIn(['addWorkLog', 'isPostingFailure'], false);
@@ -57,7 +57,7 @@ export default (state, action) => {
     ));
 
     return state
-      .setIn(['workLogList', 'data'], Immutable.fromJS(workLogList))
+      .setIn(['workLogList', 'data'], workLogList)
       .setIn(['deleteWorkLog', 'isPosting'], false)
       .setIn(['deleteWorkLog', 'isPostingFailure'], false);
   }

@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly 1`] = `
+<Connect(LayoutComponent)
+  loading={false}
+  title="Users"
+>
+  <Button
+    block={false}
+    clickHandler={[Function]}
+    disabled={false}
+    icon={null}
+    iconPosition="before"
+    isLabelVisible={true}
+    label="Add user"
+    loading={false}
+    priority="primary"
+    size="medium"
+    type="button"
+    variant="default"
+  />
+  <Table
+    columns={
+      Array [
+        Object {
+          "format": [Function],
+          "isSortable": true,
+          "label": "Name",
+          "name": "lastName",
+        },
+        Object {
+          "format": [Function],
+          "isSortable": true,
+          "label": "Supervisor",
+          "name": "supervisor.lastName",
+        },
+        Object {
+          "format": [Function],
+          "isSortable": false,
+          "label": "Hours per current month",
+          "name": "hoursPerCurrentMonth",
+        },
+      ]
+    }
+    rows={Array []}
+    sort={
+      Object {
+        "changeHandler": [Function],
+        "column": "lastName",
+        "direction": "asc",
+      }
+    }
+  />
+</Connect(LayoutComponent)>
+`;

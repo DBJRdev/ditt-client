@@ -1,7 +1,80 @@
 import validator from 'validator';
 import { isOverlapping } from './dateTimeService';
 
-const validateWorkLog = (workLog, workLogsOfDay) => {
+export const validateUser = (user, userList) => {
+  const errors = {
+    elements: {
+      email: null,
+      firstName: null,
+      form: null,
+      isActive: null,
+      lastName: null,
+      plainPassword: null,
+      supervisor: null,
+    },
+    isValid: true,
+  };
+
+  const emptyCheck = [
+    'firstName',
+    'lastName',
+    'email',
+    'isActive',
+  ];
+
+  if (!user.id) {
+    emptyCheck.push('plainPassword');
+  }
+
+  emptyCheck.forEach((element) => {
+    if (
+      user[element] === null
+      || validator.isEmpty(user[element].toString())
+    ) {
+      errors.elements[element] = 'This field is required.';
+      errors.isValid = false;
+    }
+  });
+
+  if (!errors.elements.email && !validator.isEmail(user.email)) {
+    errors.elements.email = 'It is not a valid e-mail address.';
+    errors.isValid = false;
+  }
+
+  if (!errors.elements.firstName && !(user.firstName.length >= 2 && user.firstName.length <= 200)) {
+    errors.elements.firstName = 'It must be long between 2 and 200 characters.';
+    errors.isValid = false;
+  }
+
+  if (!errors.elements.lastName && !(user.lastName.length >= 2 && user.lastName.length <= 200)) {
+    errors.elements.lastName = 'It must be long between 2 and 200 characters.';
+    errors.isValid = false;
+  }
+
+  if (!errors.elements.plainPassword && user.plainPassword && user.plainPassword.length < 8) {
+    errors.elements.plainPassword = 'It must be at least 8 characters long.';
+    errors.isValid = false;
+  }
+
+  if (!errors.elements.email && userList.length > 0) {
+    let isUnique = true;
+
+    userList.forEach((existingUser) => {
+      if (user.id !== existingUser.id && user.email === existingUser.email) {
+        isUnique = false;
+      }
+    });
+
+    if (!isUnique) {
+      errors.elements.email = 'This e-mail has been already registered.';
+      errors.isValid = false;
+    }
+  }
+
+  return errors;
+};
+
+export const validateWorkLog = (workLog, workLogsOfDay) => {
   const errors = {
     elements: {
       endHour: null,
@@ -88,5 +161,3 @@ const validateWorkLog = (workLog, workLogsOfDay) => {
 
   return errors;
 };
-
-export default validateWorkLog;

@@ -19,6 +19,7 @@ const mapStateToProps = (state) => {
   const addWorkLogMeta = selectAddWorkLogMeta(state);
   const deleteWorkLogMeta = selectDeleteWorkLogMeta(state);
   const workLogListMeta = selectWorkLogListMeta(state);
+
   let decodedToken = null;
   const token = selectJwtToken(state);
   if (token !== null) {
