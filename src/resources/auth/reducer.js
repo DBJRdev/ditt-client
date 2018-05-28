@@ -18,6 +18,9 @@ export default (state, action) => {
   }
 
   if (type === actionTypes.LOGIN_SUCCESS) {
+    if (window.localStorage) {
+      window.localStorage.setItem('jwt', payload.token);
+    }
     return state
       .setIn(['jwt', 'isPosting'], false)
       .setIn(['jwt', 'isPostingFailure'], false)
@@ -38,6 +41,10 @@ export default (state, action) => {
   }
 
   if (type === actionTypes.LOGOUT_SUCCESS) {
+    if (window.localStorage) {
+      window.localStorage.removeItem('jwt');
+    }
+
     return state
       .setIn(['jwt', 'isFetching'], false)
       .setIn(['jwt', 'isFetchingFailure'], false)
