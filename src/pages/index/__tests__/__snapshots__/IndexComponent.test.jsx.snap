@@ -10,6 +10,7 @@ exports[`rendering renders correctly 1`] = `
     deleteWorkLog={[Function]}
     isPostingWorkLog={false}
     onSelectedDateChanged={[Function]}
+    workHoursList={Immutable.List []}
     workLogList={Immutable.List []}
   />
 </Connect(LayoutComponent)>

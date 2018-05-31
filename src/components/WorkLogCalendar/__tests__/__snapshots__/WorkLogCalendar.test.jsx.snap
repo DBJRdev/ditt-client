@@ -41,6 +41,9 @@ exports[`rendering renders correctly with all props 1`] = `
       }
     >
       January 2018
+       (
+      0:00 h out of 0 h
+      )
     </span>
     <div
       style={
@@ -2884,6 +2887,9 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
       }
     >
       January 2018
+       (
+      0:00 h out of 0 h
+      )
     </span>
     <div
       style={

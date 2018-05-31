@@ -8,14 +8,16 @@ describe('rendering', () => {
     const props = {
       addWorkLog: () => {},
       deleteWorkLog: () => {},
+      fetchWorkHoursList: () => {},
       fetchWorkLogList: () => {},
       history: {
         push: () => {},
       },
-      isFetchingWorkLogList: false,
-      isPostingWorkLog: false,
+      isFetching: false,
+      isPosting: false,
       logout: () => {},
       uid: 1,
+      workHoursList: Immutable.List(),
       workLogList: Immutable.List(),
     };
     const tree = shallow(<IndexComponent {...props} />);

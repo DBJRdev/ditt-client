@@ -174,6 +174,35 @@ class WorkLogCalendar extends React.Component {
     this.setState({ showWorkLogForm: false });
   }
 
+  renderWorkHoursInfo() {
+    const { selectedDate } = this.state;
+    const {
+      workHoursList,
+      workLogList,
+    } = this.props;
+    let requiredHours = 0;
+
+    const workHours = workHoursList.find(item => (
+      item.get('year') === selectedDate.year()
+      && item.get('month') === selectedDate.month() + 1
+    ));
+
+    if (workHours) {
+      requiredHours = workHours.get('requiredHours');
+    }
+
+    const workedSeconds = workLogList
+      .filter(workLog => (
+        selectedDate.isSame(workLog.get('startTime'), 'month')
+      ))
+      .reduce((total, workLog) => (
+        (workLog.get('endTime').diff(workLog.get('startTime')) / 1000) + total
+      ), 0);
+    const workedTime = moment.duration({ seconds: workedSeconds });
+
+    return `${workedTime.hours()}:${workedTime.minutes() < 10 ? '0' : ''}${workedTime.minutes()} h out of ${requiredHours} h`;
+  }
+
   renderWorkLogForm() {
     return (
       <WorkLogForm
@@ -219,7 +248,7 @@ class WorkLogCalendar extends React.Component {
             />
           </div>
           <span style={this.selectedDateStyle}>
-            {toMonthYearFormat(this.state.selectedDate)}
+            {toMonthYearFormat(this.state.selectedDate)} ({this.renderWorkHoursInfo()})
           </span>
           <div style={this.nextMonthButtonStyle}>
             <Button
@@ -298,6 +327,11 @@ WorkLogCalendar.propTypes = {
   deleteWorkLog: PropTypes.func.isRequired,
   isPostingWorkLog: PropTypes.bool.isRequired,
   onSelectedDateChanged: PropTypes.func,
+  workHoursList: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+    month: PropTypes.number.isRequired,
+    requiredHours: PropTypes.number.isRequired,
+    year: PropTypes.number.isRequired,
+  })).isRequired,
   workLogList: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
     endTime: PropTypes.shape.isRequired,
     id: PropTypes.number.isRequired,

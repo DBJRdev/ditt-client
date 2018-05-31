@@ -26,6 +26,7 @@ describe('rendering', () => {
       addWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPostingWorkLog={false}
+      workHoursList={Immutable.List()}
       workLogList={Immutable.List()}
     />);
 
@@ -38,6 +39,7 @@ describe('rendering', () => {
       deleteWorkLog={() => {}}
       isPostingWorkLog={false}
       onSelectedDateChanged={() => {}}
+      workHoursList={Immutable.List()}
       workLogList={Immutable.List()}
     />);
 
@@ -53,6 +55,7 @@ describe('functionality', () => {
       deleteWorkLog={() => {}}
       isPostingWorkLog={false}
       onSelectedDateChanged={spy}
+      workHoursList={Immutable.List()}
       workLogList={Immutable.List()}
     />);
     const expectedArgs = fakeMomentDateTime.clone().subtract(1, 'month');
@@ -70,6 +73,7 @@ describe('functionality', () => {
       deleteWorkLog={() => {}}
       isPostingWorkLog={false}
       onSelectedDateChanged={spy}
+      workHoursList={Immutable.List()}
       workLogList={Immutable.List()}
     />);
     const expectedArgs = fakeMomentDateTime.clone().add(1, 'month');

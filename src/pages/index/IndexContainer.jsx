@@ -1,6 +1,11 @@
 import { connect } from 'react-redux';
 import jwt from 'jsonwebtoken';
 import {
+  fetchWorkHoursList,
+  selectWorkHoursList,
+  selectWorkHoursListMeta,
+} from '../../resources/workHours';
+import {
   addWorkLog,
   deleteWorkLog,
   fetchWorkLogList,
@@ -18,6 +23,7 @@ import IndexComponent from './IndexComponent';
 const mapStateToProps = (state) => {
   const addWorkLogMeta = selectAddWorkLogMeta(state);
   const deleteWorkLogMeta = selectDeleteWorkLogMeta(state);
+  const workHourListMeta = selectWorkHoursListMeta(state);
   const workLogListMeta = selectWorkLogListMeta(state);
 
   let decodedToken = null;
@@ -27,9 +33,10 @@ const mapStateToProps = (state) => {
   }
 
   return ({
-    isFetchingWorkLogList: workLogListMeta.isFetching,
-    isPostingWorkLog: addWorkLogMeta.isPosting || deleteWorkLogMeta.isPosting,
+    isFetching: workLogListMeta.isFetching || workHourListMeta.isFetching,
+    isPosting: addWorkLogMeta.isPosting || deleteWorkLogMeta.isPosting,
     uid: decodedToken ? decodedToken.uid : null,
+    workHoursList: selectWorkHoursList(state),
     workLogList: selectWorkLogList(state),
   });
 };
@@ -37,6 +44,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => ({
   addWorkLog: data => dispatch(addWorkLog(data)),
   deleteWorkLog: id => dispatch(deleteWorkLog(id)),
+  fetchWorkHoursList: uid => dispatch(fetchWorkHoursList(uid)),
   fetchWorkLogList: uid => dispatch(fetchWorkLogList(uid)),
   logout: () => dispatch(logout()),
 });
