@@ -364,7 +364,6 @@ EditComponent.propTypes = {
     lastName: PropTypes.string.isRequired,
   })).isRequired,
   workHours: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
-    id: PropTypes.number.isRequired,
     month: PropTypes.number.isRequired,
     requiredHours: PropTypes.number.isRequired,
     year: PropTypes.number.isRequired,

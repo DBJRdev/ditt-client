@@ -111,7 +111,7 @@ class AddComponent extends React.Component {
         formData.workHours[year].forEach((requiredHours, monthIndex) => {
           workHours.push({
             month: monthIndex + 1,
-            requiredHours: parseInt(year, 10),
+            requiredHours: parseInt(requiredHours, 10),
             year: parseInt(year, 10),
           });
         });
