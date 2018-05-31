@@ -5,4 +5,4 @@ export const ENVIRONMENT = 'dev';
 export const COMMIT = 'commithash';
 
 // Including protocol and must not end with /
-export const API_URL = 'http://localhost:8080';
+export const API_URL = 'http://localhost';
