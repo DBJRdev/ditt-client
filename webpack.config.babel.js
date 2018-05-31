@@ -25,6 +25,13 @@ module.exports = [{
           { loader: 'sass-loader' },
         ],
       },
+      {
+        test: /\.(svg)$/,
+        use: [
+          { loader: 'file-loader?hash=sha512&digest=hex&name=[hash].[ext]' },
+          { loader: 'image-webpack-loader?bypassOnDebug' },
+        ],
+      },
     ],
   },
   output: {
