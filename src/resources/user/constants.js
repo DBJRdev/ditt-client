@@ -1,3 +1,5 @@
 export const ROLE_ADMIN = 'ROLE_ADMIN';
 export const ROLE_EMPLOYEE = 'ROLE_EMPLOYEE';
 export const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
+
+export const SUPPORTED_WORK_HOURS_YEARS = [2018, 2019, 2020, 2021];

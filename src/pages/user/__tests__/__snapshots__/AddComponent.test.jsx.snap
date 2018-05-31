@@ -95,6 +95,70 @@ exports[`rendering renders correctly 1`] = `
       label="Active"
       required={true}
     />
+    <h2>
+      Required working hours per month
+    </h2>
+    <p>
+      Insert as amount of hours divided by 
+      ";"
+      , starting with January.
+    </p>
+    <TextField
+      changeHandler={[Function]}
+      description={null}
+      disabled={false}
+      error={null}
+      fieldId="2018"
+      isLabelVisible={true}
+      key="2018"
+      label="2018"
+      placeholder={null}
+      required={false}
+      type="text"
+      value="0,0,0,0,0,0,0,0,0,0,0,0"
+    />
+    <TextField
+      changeHandler={[Function]}
+      description={null}
+      disabled={false}
+      error={null}
+      fieldId="2019"
+      isLabelVisible={true}
+      key="2019"
+      label="2019"
+      placeholder={null}
+      required={false}
+      type="text"
+      value="0,0,0,0,0,0,0,0,0,0,0,0"
+    />
+    <TextField
+      changeHandler={[Function]}
+      description={null}
+      disabled={false}
+      error={null}
+      fieldId="2020"
+      isLabelVisible={true}
+      key="2020"
+      label="2020"
+      placeholder={null}
+      required={false}
+      type="text"
+      value="0,0,0,0,0,0,0,0,0,0,0,0"
+    />
+    <TextField
+      changeHandler={[Function]}
+      description={null}
+      disabled={false}
+      error={null}
+      fieldId="2021"
+      isLabelVisible={true}
+      key="2021"
+      label="2021"
+      placeholder={null}
+      required={false}
+      type="text"
+      value="0,0,0,0,0,0,0,0,0,0,0,0"
+    />
     <Button
       block={false}
       clickHandler={[Function]}

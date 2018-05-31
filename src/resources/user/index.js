@@ -10,6 +10,7 @@ export {
   ROLE_ADMIN,
   ROLE_EMPLOYEE,
   ROLE_SUPER_ADMIN,
+  SUPPORTED_WORK_HOURS_YEARS,
 } from './constants';
 
 export {

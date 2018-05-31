@@ -12,6 +12,11 @@ import {
   selectUserList,
   selectUserListMeta,
 } from '../../resources/user';
+import {
+  fetchWorkHoursList,
+  selectWorkHoursList,
+  selectWorkHoursListMeta,
+} from '../../resources/workHours';
 import EditComponent from './EditComponent';
 
 const mapStateToProps = (state) => {
@@ -19,13 +24,15 @@ const mapStateToProps = (state) => {
   const deleteUserMeta = selectDeleteUserMeta(state);
   const userMeta = selectUserMeta(state);
   const userListMeta = selectUserListMeta(state);
+  const workHoursListMeta = selectWorkHoursListMeta(state);
 
   return ({
-    isFetching: userMeta.isFetching || userListMeta.isFetching,
+    isFetching: userMeta.isFetching || userListMeta.isFetching || workHoursListMeta.isFetching,
     isPosting: editUserMeta.isPosting || deleteUserMeta.isPosting,
     token: selectJwtToken(state),
     user: selectUser(state),
     userList: selectUserList(state),
+    workHours: selectWorkHoursList(state),
   });
 };
 
@@ -34,6 +41,7 @@ const mapDispatchToProps = dispatch => ({
   editUser: data => dispatch(editUser(data)),
   fetchUser: id => dispatch(fetchUser(id)),
   fetchUserList: () => dispatch(fetchUserList()),
+  fetchWorkHoursList: id => dispatch(fetchWorkHoursList(id)),
 });
 
 export default connect(

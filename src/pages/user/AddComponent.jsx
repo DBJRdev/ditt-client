@@ -11,6 +11,7 @@ import {
   ADD_USER_SUCCESS,
   ADD_USER_FAILURE,
 } from '../../resources/user/actionTypes';
+import { SUPPORTED_WORK_HOURS_YEARS } from '../../resources/user';
 import { validateUser } from '../../services/validatorService';
 import Layout from '../../components/Layout';
 import routes from '../../routes';
@@ -26,7 +27,7 @@ class AddComponent extends React.Component {
         isActive: false,
         lastName: null,
         plainPassword: null,
-        supervisor: null,
+        workHours: {},
       },
       formValidity: {
         elements: {
@@ -37,12 +38,23 @@ class AddComponent extends React.Component {
           lastName: null,
           plainPassword: null,
           supervisor: null,
+          workHours: {},
         },
         isValid: false,
       },
     };
 
+    SUPPORTED_WORK_HOURS_YEARS.forEach((year) => {
+      this.state.formData.workHours[year] = [];
+
+      for (let month = 0; month < 12; month += 1) {
+        this.state.formData.workHours[year][month] = '0';
+        this.state.formValidity.elements.workHours[year] = null;
+      }
+    });
+
     this.changeHandler = this.changeHandler.bind(this);
+    this.changeWorkHourHandler = this.changeWorkHourHandler.bind(this);
     this.saveHandler = this.saveHandler.bind(this);
 
     this.formErrorStyle = {
@@ -71,13 +83,43 @@ class AddComponent extends React.Component {
     });
   }
 
+  changeWorkHourHandler(e) {
+    const eventTarget = e.target;
+
+    this.setState((prevState) => {
+      const formData = Object.assign({}, prevState.formData);
+      formData.workHours[eventTarget.id] = eventTarget.value.split(',');
+
+      return { formData };
+    });
+  }
+
   saveHandler() {
-    const formValidity = validateUser(this.state.formData, this.props.userList.toJS());
+    const formValidity = validateUser(
+      this.state.formData,
+      this.props.userList.toJS(),
+      SUPPORTED_WORK_HOURS_YEARS
+    );
 
     this.setState({ formValidity });
 
     if (formValidity.isValid) {
-      this.props.addUser(this.state.formData)
+      const formData = Object.assign({}, this.state.formData);
+      const workHours = [];
+
+      Object.keys(formData.workHours).forEach((year) => {
+        formData.workHours[year].forEach((requiredHours, monthIndex) => {
+          workHours.push({
+            month: monthIndex + 1,
+            requiredHours: parseInt(year, 10),
+            year: parseInt(year, 10),
+          });
+        });
+      });
+
+      formData.workHours = workHours;
+
+      this.props.addUser(formData)
         .then((response) => {
           if (response.type === ADD_USER_SUCCESS) {
             this.props.history.push(routes.userList);
@@ -156,6 +198,24 @@ class AddComponent extends React.Component {
             label="Active"
             required
           />
+          <h2>Required working hours per month</h2>
+          <p>Insert as amount of hours divided by {'";"'}, starting with January.</p>
+          {SUPPORTED_WORK_HOURS_YEARS.map(year => (
+            <TextField
+              changeHandler={this.changeWorkHourHandler}
+              error={this.state.formValidity.elements.workHours[year]}
+              fieldId={year.toString()}
+              key={year}
+              label={year.toString()}
+              value={this.state.formData.workHours[year].reduce((accValue, requiredHours) => {
+                if (!accValue) {
+                  return requiredHours.toString();
+                }
+
+                return `${accValue},${requiredHours}`;
+              }, null)}
+            />
+          ))}
           <Button
             clickHandler={this.saveHandler}
             label="Save"

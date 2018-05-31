@@ -1,7 +1,10 @@
 import validator from 'validator';
-import { isOverlapping } from './dateTimeService';
+import {
+  isOverlapping,
+  localizedMoment,
+} from './dateTimeService';
 
-export const validateUser = (user, userList) => {
+export const validateUser = (user, userList, supportedWorkHours) => {
   const errors = {
     elements: {
       email: null,
@@ -11,6 +14,7 @@ export const validateUser = (user, userList) => {
       lastName: null,
       plainPassword: null,
       supervisor: null,
+      workHours: {},
     },
     isValid: true,
   };
@@ -33,6 +37,26 @@ export const validateUser = (user, userList) => {
     ) {
       errors.elements[element] = 'This field is required.';
       errors.isValid = false;
+    }
+  });
+
+  supportedWorkHours.forEach((year) => {
+    if (!user.workHours[year] || user.workHours[year].length !== 12) {
+      errors.elements.workHours[year] = 'This field requires 12 values separated by comma.';
+      errors.isValid = false;
+
+      return;
+    }
+
+    for (let month = 0; month < 12; month += 1) {
+      if (Number.isNaN(user.workHours[year][month])) {
+        const date = localizedMoment().set({ month });
+
+        errors.elements.workHours[year] = `Value for ${date.format('MMMM')} is not a number.`;
+        errors.isValid = false;
+
+        break;
+      }
     }
   });
 

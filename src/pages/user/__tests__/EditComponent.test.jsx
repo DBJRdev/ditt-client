@@ -10,6 +10,7 @@ describe('rendering', () => {
       editUser: () => {},
       fetchUser: () => new Promise(() => {}),
       fetchUserList: () => {},
+      fetchWorkHoursList: () => {},
       history: {
         push: () => {},
       },
@@ -30,6 +31,7 @@ describe('rendering', () => {
         supervisor: null,
       }),
       userList: Immutable.List([]),
+      workHours: Immutable.List([]),
     };
     const tree = shallow(<EditComponent {...props} />);
 

@@ -18,6 +18,7 @@ import {
 import { validateUser } from '../../services/validatorService';
 import Layout from '../../components/Layout';
 import routes from '../../routes';
+import { SUPPORTED_WORK_HOURS_YEARS } from '../../resources/user';
 
 class EditComponent extends React.Component {
   constructor(props) {
@@ -32,6 +33,7 @@ class EditComponent extends React.Component {
         lastName: null,
         plainPassword: null,
         supervisor: null,
+        workHours: {},
       },
       formValidity: {
         elements: {
@@ -41,13 +43,24 @@ class EditComponent extends React.Component {
           isActive: null,
           lastName: null,
           supervisor: null,
+          workHours: {},
         },
         isValid: false,
       },
       showDeleteUserDialog: false,
     };
 
+    SUPPORTED_WORK_HOURS_YEARS.forEach((year) => {
+      this.state.formData.workHours[year] = [];
+
+      for (let month = 0; month < 12; month += 1) {
+        this.state.formData.workHours[year][month] = '0';
+        this.state.formValidity.elements.workHours[year] = null;
+      }
+    });
+
     this.changeHandler = this.changeHandler.bind(this);
+    this.changeWorkHourHandler = this.changeWorkHourHandler.bind(this);
     this.deleteHandler = this.deleteHandler.bind(this);
     this.saveHandler = this.saveHandler.bind(this);
 
@@ -62,20 +75,31 @@ class EditComponent extends React.Component {
 
   componentDidMount() {
     this.props.fetchUser(this.props.match.params.id).then(() => {
-      this.props.fetchUserList();
+      this.props.fetchWorkHoursList(this.props.match.params.id).then(() => {
+        const {
+          user,
+          workHours,
+        } = this.props;
+        const mergedWorkHours = this.state.formData.workHours;
 
-      const user = this.props.user.toJS();
+        workHours.forEach((workHoursItem) => {
+          mergedWorkHours[workHoursItem.get('year')][workHoursItem.get('month') - 1] = workHoursItem.get('requiredHours');
+        });
 
-      this.setState({
-        formData: {
-          email: user.email,
-          firstName: user.firstName,
-          id: user.id,
-          isActive: user.isActive,
-          lastName: user.lastName,
-          supervisor: user.supervisor ? user.supervisor.id : null,
-        },
+        this.setState({
+          formData: {
+            email: user.get('email'),
+            firstName: user.get('firstName'),
+            id: user.get('id'),
+            isActive: user.get('isActive'),
+            lastName: user.get('lastName'),
+            supervisor: user.getIn(['supervisor', 'id']) ? user.getIn(['supervisor', 'id']) : null,
+            workHours: mergedWorkHours,
+          },
+        });
       });
+
+      this.props.fetchUserList();
     });
   }
 
@@ -90,6 +114,17 @@ class EditComponent extends React.Component {
       } else {
         formData[eventTarget.id] = eventTarget.value;
       }
+
+      return { formData };
+    });
+  }
+
+  changeWorkHourHandler(e) {
+    const eventTarget = e.target;
+
+    this.setState((prevState) => {
+      const formData = Object.assign({}, prevState.formData);
+      formData.workHours[eventTarget.id] = eventTarget.value.split(',');
 
       return { formData };
     });
@@ -111,12 +146,31 @@ class EditComponent extends React.Component {
   }
 
   saveHandler() {
-    const formValidity = validateUser(this.state.formData, this.props.userList.toJS());
+    const formValidity = validateUser(
+      this.state.formData,
+      this.props.userList.toJS(),
+      SUPPORTED_WORK_HOURS_YEARS
+    );
 
     this.setState({ formValidity });
 
     if (formValidity.isValid) {
-      this.props.editUser(this.state.formData)
+      const formData = Object.assign({}, this.state.formData);
+      const workHours = [];
+
+      Object.keys(formData.workHours).forEach((year) => {
+        formData.workHours[year].forEach((requiredHours, monthIndex) => {
+          workHours.push({
+            month: monthIndex + 1,
+            requiredHours: parseInt(requiredHours, 10),
+            year: parseInt(year, 10),
+          });
+        });
+      });
+
+      formData.workHours = workHours;
+
+      this.props.editUser(formData)
         .then((response) => {
           if (response.type === EDIT_USER_SUCCESS) {
             this.props.history.push(routes.userList);
@@ -240,6 +294,24 @@ class EditComponent extends React.Component {
             label="Active"
             required
           />
+          <h2>Required working hours per month</h2>
+          <p>Insert as amount of hours divided by {'";"'}, starting with January.</p>
+          {SUPPORTED_WORK_HOURS_YEARS.map(year => (
+            <TextField
+              changeHandler={this.changeWorkHourHandler}
+              error={this.state.formValidity.elements.workHours[year]}
+              fieldId={year.toString()}
+              key={year}
+              label={year.toString()}
+              value={this.state.formData.workHours[year].reduce((accValue, requiredHours) => {
+                if (!accValue) {
+                  return requiredHours.toString();
+                }
+
+                return `${accValue},${requiredHours}`;
+              }, null)}
+            />
+          ))}
           <Button
             clickHandler={this.saveHandler}
             label="Save"
@@ -262,6 +334,7 @@ EditComponent.propTypes = {
   editUser: PropTypes.func.isRequired,
   fetchUser: PropTypes.func.isRequired,
   fetchUserList: PropTypes.func.isRequired,
+  fetchWorkHoursList: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
@@ -289,6 +362,12 @@ EditComponent.propTypes = {
     firstName: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     lastName: PropTypes.string.isRequired,
+  })).isRequired,
+  workHours: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+    id: PropTypes.number.isRequired,
+    month: PropTypes.number.isRequired,
+    requiredHours: PropTypes.number.isRequired,
+    year: PropTypes.number.isRequired,
   })).isRequired,
 };
 

@@ -1,6 +1,7 @@
 import { RSAA } from 'redux-api-middleware';
 import { API_URL } from '../../../config/envspecific';
 import * as types from './actionTypes';
+import { SUPPORTED_WORK_HOURS_YEARS } from './constants';
 
 export const addUser = data => dispatch => dispatch({
   [RSAA]: {
@@ -11,6 +12,10 @@ export const addUser = data => dispatch => dispatch({
       lastName: data.lastName,
       plainPassword: data.plainPassword,
       supervisor: data.supervisor ? `/users/${data.supervisor}` : null,
+      workHours: data.workHours.filter(workHours => SUPPORTED_WORK_HOURS_YEARS.includes(parseInt(
+        workHours.year,
+        10
+      ))),
     }),
     endpoint: `${API_URL}/users`,
     headers: { 'Content-Type': 'application/json' },
@@ -47,6 +52,10 @@ export const editUser = data => dispatch => dispatch({
       lastName: data.lastName,
       plainPassword: data.plainPassword ? data.plainPassword : null,
       supervisor: data.supervisor ? `/users/${data.supervisor}` : null,
+      workHours: data.workHours.filter(workHours => SUPPORTED_WORK_HOURS_YEARS.includes(parseInt(
+        workHours.year,
+        10
+      ))),
     }),
     endpoint: `${API_URL}/users/${data.id}`,
     headers: { 'Content-Type': 'application/json' },
