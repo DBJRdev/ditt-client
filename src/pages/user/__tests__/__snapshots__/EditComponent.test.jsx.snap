@@ -114,7 +114,7 @@ exports[`rendering renders correctly 1`] = `
     </h2>
     <p>
       Insert as amount of hours divided by 
-      ";"
+      ","
       , starting with January.
     </p>
     <TextField

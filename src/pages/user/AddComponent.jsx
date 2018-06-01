@@ -199,7 +199,7 @@ class AddComponent extends React.Component {
             required
           />
           <h2>Required working hours per month</h2>
-          <p>Insert as amount of hours divided by {'";"'}, starting with January.</p>
+          <p>Insert as amount of hours divided by {'","'}, starting with January.</p>
           {SUPPORTED_WORK_HOURS_YEARS.map(year => (
             <TextField
               changeHandler={this.changeWorkHourHandler}
