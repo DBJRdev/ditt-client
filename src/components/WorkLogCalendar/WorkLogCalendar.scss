@@ -50,11 +50,19 @@ $_table-cell-padding-y: 0.25rem;
 
 .tableRow {
   background-color: #fff;
+
+  &:hover {
+    background-color: lighten(#f6f5f4, 2%);
+  }
 }
 
 .tableRowWeekend {
   color: #666;
   background-color: #f6f5f4;
+
+  &:hover {
+    background-color: darken(#f6f5f4, 3%);
+  }
 }
 
 .tableCell {

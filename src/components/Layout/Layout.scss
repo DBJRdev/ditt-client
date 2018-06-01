@@ -18,12 +18,14 @@ $_layout-padding-x: 4vw;
 
 .logo {
   display: block;
+  width: 10rem;
+  height: auto;
 }
 
 .title {
   display: block;
-  padding-left: $_layout-spacer-x / 2;
-  margin-left: $_layout-spacer-x * 2/3;
+  padding-left: $_layout-spacer-x;
+  margin-left: $_layout-spacer-x;
   font-weight: 500;
   line-height: 3rem;
   border-left: 1px solid #ccc;
