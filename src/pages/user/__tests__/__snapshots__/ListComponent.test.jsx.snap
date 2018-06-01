@@ -5,20 +5,24 @@ exports[`rendering renders correctly 1`] = `
   loading={false}
   title="Users"
 >
-  <Button
-    block={false}
-    clickHandler={[Function]}
-    disabled={false}
-    icon={null}
-    iconPosition="before"
-    isLabelVisible={true}
-    label="Add user"
-    loading={false}
-    priority="primary"
-    size="medium"
-    type="button"
-    variant="default"
-  />
+  <div
+    className="actions"
+  >
+    <Button
+      block={false}
+      clickHandler={[Function]}
+      disabled={false}
+      icon={null}
+      iconPosition="before"
+      isLabelVisible={true}
+      label="Add user"
+      loading={false}
+      priority="primary"
+      size="medium"
+      type="button"
+      variant="default"
+    />
+  </div>
   <Table
     columns={
       Array [

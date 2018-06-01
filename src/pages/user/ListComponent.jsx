@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import routes from '../../routes';
 import { localizedMoment } from '../../services/dateTimeService';
 import Layout from '../../components/Layout';
+import styles from './user.scss';
 
 class ListComponent extends React.Component {
   constructor(props) {
@@ -32,11 +33,13 @@ class ListComponent extends React.Component {
   render() {
     return (
       <Layout title="Users" loading={this.props.isFetching}>
-        <Button
-          clickHandler={() => this.props.history.push(routes.addUser)}
-          label="Add user"
-          priority="primary"
-        />
+        <div className={styles.actions}>
+          <Button
+            clickHandler={() => this.props.history.push(routes.addUser)}
+            label="Add user"
+            priority="primary"
+          />
+        </div>
         <Table
           columns={[
             {

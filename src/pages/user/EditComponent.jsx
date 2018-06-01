@@ -19,6 +19,7 @@ import { validateUser } from '../../services/validatorService';
 import Layout from '../../components/Layout';
 import routes from '../../routes';
 import { SUPPORTED_WORK_HOURS_YEARS } from '../../resources/user';
+import styles from './user.scss';
 
 class EditComponent extends React.Component {
   constructor(props) {
@@ -235,12 +236,14 @@ class EditComponent extends React.Component {
 
     return (
       <Layout title="Edit user" loading={this.props.isFetching}>
-        <Button
-          clickHandler={this.openDeleteUserDialog}
-          label="Delete"
-          priority="primary"
-          variant="danger"
-        />
+        <div className={styles.actions}>
+          <Button
+            clickHandler={this.openDeleteUserDialog}
+            label="Delete"
+            priority="primary"
+            variant="danger"
+          />
+        </div>
         <form>
           <p style={this.formErrorStyle}>
             {this.state.formValidity.elements.form}
