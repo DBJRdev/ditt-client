@@ -9,6 +9,8 @@ import {
 } from '../../resources/user';
 import history from '../../history';
 import routes from '../../routes';
+import styles from './Layout.scss';
+import logoImage from './images/logo.svg';
 
 class LayoutComponent extends React.Component {
   isAuthorized(roles) {
@@ -27,32 +29,52 @@ class LayoutComponent extends React.Component {
     return (
       <div>
         {this.isAuthorized([ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]) && (
-          <div>
-            {this.isAuthorized([ROLE_EMPLOYEE]) && (
-              <Button
-                clickHandler={() => history.push(routes.index)}
-                label="Work logs"
-                priority="primary"
+          <header className={styles.header}>
+            <div className={styles.brand}>
+              <img
+                src={logoImage}
+                width={180}
+                height={85}
+                className={styles.logo}
+                alt="DBJR Internal Time Tracking"
               />
-            )}
-            {this.isAuthorized([ROLE_ADMIN, ROLE_SUPER_ADMIN]) && (
-              <Button
-                clickHandler={() => history.push(routes.userList)}
-                label="Users"
-                priority="primary"
-              />
-            )}
-            <Button
-              clickHandler={this.props.logout}
-              label="Logout"
-              priority="primary"
-            />
-          </div>
+              <span className={styles.title}>DBJR Internal Time Tracking</span>
+            </div>
+            <div className={styles.navigation}>
+              {this.isAuthorized([ROLE_EMPLOYEE]) && (
+                <div className={styles.navigationItem}>
+                  <Button
+                    clickHandler={() => history.push(routes.index)}
+                    label="Work logs"
+                    priority="default"
+                  />
+                </div>
+              )}
+              {this.isAuthorized([ROLE_ADMIN, ROLE_SUPER_ADMIN]) && (
+                <div className={styles.navigationItem}>
+                  <Button
+                    clickHandler={() => history.push(routes.userList)}
+                    label="Users"
+                    priority="default"
+                  />
+                </div>
+              )}
+              <div className={styles.navigationItem}>
+                <Button
+                  clickHandler={this.props.logout}
+                  label="Logout"
+                  priority="flat"
+                />
+              </div>
+            </div>
+          </header>
         )}
-        <h1>{this.props.title}</h1>
-        <div>
-          {this.props.loading ? 'Loading ...' : this.props.children}
-        </div>
+        <main className={styles.main}>
+          <div className={styles.body}>
+            <h1 className={styles.bodyTitle}>{this.props.title}</h1>
+            {this.props.loading ? 'Loading…' : this.props.children}
+          </div>
+        </main>
       </div>
     );
   }

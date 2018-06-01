@@ -8,6 +8,8 @@ import {
   ROLE_SUPER_ADMIN,
 } from '../../resources/user';
 import routes from '../../routes';
+import styles from './Login.scss';
+import logoImage from './images/logo.svg';
 
 class LoginComponent extends React.Component {
   constructor(props) {
@@ -44,10 +46,17 @@ class LoginComponent extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.container}>
+        <img
+          src={logoImage}
+          width={240}
+          height={141}
+          className={styles.logo}
+          alt="DBJR Internal Time Tracking"
+        />
         {
           this.props.isPosting
-            ? 'Loading...'
+            ? 'Loading…'
             : (
               <Login
                 hasError={this.props.isPostingFailure}
@@ -60,7 +69,7 @@ class LoginComponent extends React.Component {
                   return false;
                 }}
                 onChangeHandler={this.onChangeHandler}
-                title="Login"
+                title="DBJR Internal Time Tracking"
                 usernameType="email"
               />
             )

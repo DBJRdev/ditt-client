@@ -1,0 +1,57 @@
+$_layout-spacer-x: 2rem;
+$_layout-spacer-y: 2rem;
+$_layout-padding-x: 4vw;
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: ($_layout-spacer-y / 2) $_layout-padding-x;
+  background-color: #fff;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  padding-right: $_layout-spacer-x / 2;
+}
+
+.logo {
+  display: block;
+}
+
+.title {
+  display: block;
+  padding-left: $_layout-spacer-x / 2;
+  margin-left: $_layout-spacer-x * 2/3;
+  font-weight: 500;
+  line-height: 3rem;
+  border-left: 1px solid #ccc;
+}
+
+.navigation {
+  display: flex;
+  margin-right: -0.5rem;
+}
+
+.navigationItem {
+  margin-left: 1rem;
+}
+
+.main {
+  padding: $_layout-spacer-y $_layout-padding-x (2 * $_layout-spacer-y) $_layout-padding-x;
+  background-color: #f6f5f4;
+}
+
+.body {
+  padding: $_layout-spacer-y $_layout-spacer-x;
+  background-color: #fff;
+  box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.05);
+}
+
+.bodyTitle {
+  margin-top: $_layout-spacer-y / 4;
+  margin-bottom: $_layout-spacer-y;
+  font-weight: 500;
+  font-size: 1.75rem;
+}
