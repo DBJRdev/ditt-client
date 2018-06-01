@@ -113,7 +113,7 @@ def build(envName, commit, apiUrl) {
     for (confOption in [
         [orig: "export const ENVIRONMENT = 'dev';", new: "export const ENVIRONMENT = '${envName}';"],
         [orig: "export const COMMIT = 'commithash';", new: "export const COMMIT = '${commit}';"],
-        [orig: "export const API_URL = 'http://localhost:8080';", new: "export const API_URL = '${apiUrl}';"],
+        [orig: "export const API_URL = 'http://localhost';", new: "export const API_URL = '${apiUrl}';"],
     ]) {
         sh "sed -i \"s@${confOption.orig}@${confOption.new}@g\" config/envspecific.js"
     }
