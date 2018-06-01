@@ -15,6 +15,7 @@ import {
   toHourMinuteFormat,
   toMonthYearFormat,
 } from '../../services/dateTimeService';
+import styles from './WorkLogCalendar.scss';
 
 class WorkLogCalendar extends React.Component {
   constructor(props) {
@@ -33,69 +34,6 @@ class WorkLogCalendar extends React.Component {
     this.saveWorkLogForm = this.saveWorkLogForm.bind(this);
     this.closeWorkLogForm = this.closeWorkLogForm.bind(this);
     this.closeDeleteWorkLogDialog = this.closeDeleteWorkLogDialog.bind(this);
-
-    this.headerContainer = {
-      textAlign: 'center',
-    };
-
-    this.previousMonthButtonStyle = {
-      display: 'inline-block',
-      float: 'left',
-    };
-
-    this.selectedDateStyle = {
-      display: 'inline-block',
-      margin: '0 auto',
-    };
-
-    this.nextMonthButtonStyle = {
-      display: 'inline-block',
-      float: 'right',
-    };
-
-    this.tableStyle = {
-      borderCollapse: 'collapse',
-      marginTop: '0.5em',
-      width: '100%',
-    };
-
-    this.tableCellStyle = {
-      borderBottom: '1px solid black',
-      padding: '0.25em',
-    };
-
-    this.tableCellWeekendStyle = {
-      borderBottom: '1px solid black',
-      color: 'gray',
-      padding: '0.25em',
-    };
-
-    this.tableCellDateStyle = {
-      width: '7em',
-    };
-
-    this.dateStyle = {
-      display: 'block',
-    };
-
-    this.dayStyle = {
-      display: 'block',
-      fontSize: '0.75em',
-    };
-
-    this.workLogButtonWrapperStyle = {
-      float: 'left',
-      paddingLeft: '0.5em',
-    };
-
-    this.addWorkLogButtonWrapperStyle = {
-      float: 'right',
-    };
-
-    this.tableCellWorkTimeStyle = {
-      textAlign: 'right',
-      width: '5em',
-    };
   }
 
   getDaysOfSelectedMonth() {
@@ -238,8 +176,8 @@ class WorkLogCalendar extends React.Component {
   render() {
     return (
       <div>
-        <div style={this.headerContainer}>
-          <div style={this.previousMonthButtonStyle}>
+        <nav className={styles.navigation}>
+          <div className={styles.navigationPrevious}>
             <Button
               clickHandler={this.selectPreviousMonth}
               icon="keyboard_arrow_left"
@@ -247,10 +185,11 @@ class WorkLogCalendar extends React.Component {
               priority="primary"
             />
           </div>
-          <span style={this.selectedDateStyle}>
-            {toMonthYearFormat(this.state.selectedDate)} ({this.renderWorkHoursInfo()})
-          </span>
-          <div style={this.nextMonthButtonStyle}>
+          <div>
+            <h2 className={styles.navigationTitle}>{toMonthYearFormat(this.state.selectedDate)}</h2>
+            <span className={styles.navigationSubtitle}>{this.renderWorkHoursInfo()}</span>
+          </div>
+          <div className={styles.navigationNext}>
             <Button
               clickHandler={this.selectNextMonth}
               icon="keyboard_arrow_right"
@@ -259,30 +198,30 @@ class WorkLogCalendar extends React.Component {
               priority="primary"
             />
           </div>
-        </div>
-        <div>
-          <table style={this.tableStyle}>
+        </nav>
+        <div className={styles.tableWrapper}>
+          <table className={styles.table}>
             <tbody>
               {this.getDaysOfSelectedMonth().map((day) => {
-                const cellStyle = isWeekend(day.date)
-                  ? this.tableCellWeekendStyle
-                  : this.tableCellStyle;
+                const rowClassName = isWeekend(day.date)
+                  ? styles.tableRowWeekend
+                  : styles.tableRow;
 
                 return (
-                  <tr key={day.date.date()}>
-                    <td style={Object.assign({}, cellStyle, this.tableCellDateStyle)}>
-                      <span style={this.dateStyle}>
+                  <tr key={day.date.date()} className={rowClassName}>
+                    <td className={styles.tableCell}>
+                      <div className={styles.date}>
                         {toDayMonthYearFormat(day.date)}
-                      </span>
-                      <span style={this.dayStyle}>
+                      </div>
+                      <div className={styles.dayInWeek}>
                         {toDayFormat(day.date)}
-                      </span>
+                      </div>
                     </td>
-                    <td style={cellStyle}>
+                    <td className={styles.tableCell}>
                       {day.workLogList.map(workLog => (
                         <div
                           key={workLog.id}
-                          style={this.workLogButtonWrapperStyle}
+                          className={styles.workLogButtonWrapper}
                         >
                           <Button
                             clickHandler={() => this.openDeleteWorkLogDialog(workLog.id)}
@@ -292,17 +231,17 @@ class WorkLogCalendar extends React.Component {
                         </div>
                       ))}
                     </td>
-                    <td style={cellStyle}>
-                      <div style={this.addWorkLogButtonWrapperStyle}>
+                    <td className={styles.tableCellRight}>
+                      <div className={styles.addWorkLogButtonWrapper}>
                         <Button
                           clickHandler={() => this.openWorkLogForm(day.date)}
                           icon="add"
                           label="Add work log"
-                          priority="primary"
+                          priority="default"
                         />
                       </div>
                     </td>
-                    <td style={Object.assign({}, cellStyle, this.tableCellWorkTimeStyle)}>
+                    <td className={styles.tableCellRight}>
                       {day.workTime.hours()}:{day.workTime.minutes() < 10 && '0'}{day.workTime.minutes()}&nbsp;h
                     </td>
                   </tr>

@@ -1,0 +1,77 @@
+$_table-cell-padding-x: 0.5rem;
+$_table-cell-padding-y: 0.25rem;
+
+.navigation,
+.tableWrapper {
+  margin-right: -$_table-cell-padding-x;
+  margin-left: -$_table-cell-padding-x;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.navigationPrevious {
+  padding-right: 1rem;
+}
+
+.navigationTitle {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
+.navigationSubtitle {
+  color: #666;
+}
+
+.navigationNext {
+  padding-left: 1rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableRow {
+  background-color: #fff;
+}
+
+.tableRowWeekend {
+  color: #666;
+  background-color: #f6f5f4;
+}
+
+.tableCell {
+  padding: $_table-cell-padding-y $_table-cell-padding-x;
+  border-bottom: 1px solid #ccc;
+}
+
+.tableCellRight {
+  composes: tableCell;
+  text-align: right;
+}
+
+.date {
+  font-weight: 500;
+}
+
+.dayInWeek {
+  font-size: 0.75em;
+  color: #666;
+}
+
+.workLogButtonWrapper {
+  float: left;
+  padding-right: 0.5rem;
+}
+
+.addWorkLogButtonWrapper {
+  float: right;
+}

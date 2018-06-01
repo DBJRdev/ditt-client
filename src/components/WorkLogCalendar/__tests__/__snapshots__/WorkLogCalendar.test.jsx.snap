@@ -2,20 +2,11 @@
 
 exports[`rendering renders correctly with all props 1`] = `
 <div>
-  <div
-    style={
-      Object {
-        "textAlign": "center",
-      }
-    }
+  <nav
+    className="navigation"
   >
     <div
-      style={
-        Object {
-          "display": "inline-block",
-          "float": "left",
-        }
-      }
+      className="navigationPrevious"
     >
       <Button
         block={false}
@@ -32,26 +23,20 @@ exports[`rendering renders correctly with all props 1`] = `
         variant="default"
       />
     </div>
-    <span
-      style={
-        Object {
-          "display": "inline-block",
-          "margin": "0 auto",
-        }
-      }
-    >
-      January 2018
-       (
-      0:00 h out of 0 h
-      )
-    </span>
+    <div>
+      <h2
+        className="navigationTitle"
+      >
+        January 2018
+      </h2>
+      <span
+        className="navigationSubtitle"
+      >
+        0:00 h out of 0 h
+      </span>
+    </div>
     <div
-      style={
-        Object {
-          "display": "inline-block",
-          "float": "right",
-        }
-      }
+      className="navigationNext"
     >
       <Button
         block={false}
@@ -68,72 +53,40 @@ exports[`rendering renders correctly with all props 1`] = `
         variant="default"
       />
     </div>
-  </div>
-  <div>
+  </nav>
+  <div
+    className="tableWrapper"
+  >
     <table
-      style={
-        Object {
-          "borderCollapse": "collapse",
-          "marginTop": "0.5em",
-          "width": "100%",
-        }
-      }
+      className="table"
     >
       <tbody>
         <tr
+          className="tableRow"
           key="1"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/01/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Monday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/01/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Monday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -144,7 +97,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -152,14 +105,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -169,59 +115,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="2"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/02/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Tuesday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/02/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Tuesday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -232,7 +150,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -240,14 +158,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -257,59 +168,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="3"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/03/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Wednesday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/03/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Wednesday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -320,7 +203,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -328,14 +211,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -345,59 +221,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="4"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/04/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Thursday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/04/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Thursday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -408,7 +256,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -416,14 +264,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -433,59 +274,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="5"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/05/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Friday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/05/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Friday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -496,7 +309,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -504,14 +317,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -521,62 +327,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRowWeekend"
           key="6"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/06/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Saturday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/06/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Saturday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -587,7 +362,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -595,15 +370,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -613,62 +380,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRowWeekend"
           key="7"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/07/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Sunday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/07/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Sunday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -679,7 +415,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -687,15 +423,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -705,59 +433,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="8"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/08/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Monday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/08/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Monday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -768,7 +468,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -776,14 +476,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -793,59 +486,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="9"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/09/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Tuesday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/09/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Tuesday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -856,7 +521,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -864,14 +529,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -881,59 +539,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="10"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/10/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Wednesday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/10/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Wednesday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -944,7 +574,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -952,14 +582,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -969,59 +592,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="11"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/11/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Thursday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/11/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Thursday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -1032,7 +627,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -1040,14 +635,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -1057,59 +645,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="12"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/12/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Friday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/12/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Friday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -1120,7 +680,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -1128,14 +688,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -1145,62 +698,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRowWeekend"
           key="13"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/13/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Saturday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/13/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Saturday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -1211,7 +733,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -1219,15 +741,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -1237,62 +751,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRowWeekend"
           key="14"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/14/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Sunday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/14/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Sunday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -1303,7 +786,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -1311,15 +794,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -1329,59 +804,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="15"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/15/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Monday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/15/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Monday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -1392,7 +839,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -1400,14 +847,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -1417,59 +857,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="16"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/16/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Tuesday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/16/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Tuesday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -1480,7 +892,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -1488,14 +900,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -1505,59 +910,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="17"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/17/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Wednesday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/17/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Wednesday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -1568,7 +945,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -1576,14 +953,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -1593,59 +963,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="18"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/18/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Thursday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/18/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Thursday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -1656,7 +998,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -1664,14 +1006,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -1681,59 +1016,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="19"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/19/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Friday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/19/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Friday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -1744,7 +1051,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -1752,14 +1059,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -1769,62 +1069,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRowWeekend"
           key="20"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/20/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Saturday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/20/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Saturday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -1835,7 +1104,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -1843,15 +1112,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -1861,62 +1122,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRowWeekend"
           key="21"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/21/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Sunday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/21/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Sunday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -1927,7 +1157,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -1935,15 +1165,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -1953,59 +1175,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="22"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/22/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Monday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/22/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Monday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -2016,7 +1210,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -2024,14 +1218,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -2041,59 +1228,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="23"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/23/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Tuesday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/23/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Tuesday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -2104,7 +1263,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -2112,14 +1271,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -2129,59 +1281,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="24"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/24/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Wednesday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/24/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Wednesday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -2192,7 +1316,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -2200,14 +1324,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -2217,59 +1334,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="25"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/25/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Thursday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/25/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Thursday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -2280,7 +1369,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -2288,14 +1377,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -2305,59 +1387,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="26"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/26/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Friday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/26/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Friday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -2368,7 +1422,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -2376,14 +1430,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -2393,62 +1440,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRowWeekend"
           key="27"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/27/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Saturday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/27/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Saturday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -2459,7 +1475,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -2467,15 +1483,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -2485,62 +1493,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRowWeekend"
           key="28"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/28/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Sunday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/28/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Sunday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -2551,7 +1528,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -2559,15 +1536,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -2577,59 +1546,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="29"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/29/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Monday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/29/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Monday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -2640,7 +1581,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -2648,14 +1589,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -2665,59 +1599,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="30"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/30/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Tuesday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/30/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Tuesday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -2728,7 +1634,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -2736,14 +1642,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -2753,59 +1652,31 @@ exports[`rendering renders correctly with all props 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="31"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/31/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Wednesday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/31/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Wednesday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -2816,7 +1687,7 @@ exports[`rendering renders correctly with all props 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -2824,14 +1695,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -2848,20 +1712,11 @@ exports[`rendering renders correctly with all props 1`] = `
 
 exports[`rendering renders correctly with mandatory props only 1`] = `
 <div>
-  <div
-    style={
-      Object {
-        "textAlign": "center",
-      }
-    }
+  <nav
+    className="navigation"
   >
     <div
-      style={
-        Object {
-          "display": "inline-block",
-          "float": "left",
-        }
-      }
+      className="navigationPrevious"
     >
       <Button
         block={false}
@@ -2878,26 +1733,20 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
         variant="default"
       />
     </div>
-    <span
-      style={
-        Object {
-          "display": "inline-block",
-          "margin": "0 auto",
-        }
-      }
-    >
-      January 2018
-       (
-      0:00 h out of 0 h
-      )
-    </span>
+    <div>
+      <h2
+        className="navigationTitle"
+      >
+        January 2018
+      </h2>
+      <span
+        className="navigationSubtitle"
+      >
+        0:00 h out of 0 h
+      </span>
+    </div>
     <div
-      style={
-        Object {
-          "display": "inline-block",
-          "float": "right",
-        }
-      }
+      className="navigationNext"
     >
       <Button
         block={false}
@@ -2914,72 +1763,40 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
         variant="default"
       />
     </div>
-  </div>
-  <div>
+  </nav>
+  <div
+    className="tableWrapper"
+  >
     <table
-      style={
-        Object {
-          "borderCollapse": "collapse",
-          "marginTop": "0.5em",
-          "width": "100%",
-        }
-      }
+      className="table"
     >
       <tbody>
         <tr
+          className="tableRow"
           key="1"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/01/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Monday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/01/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Monday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -2990,7 +1807,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -2998,14 +1815,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -3015,59 +1825,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="2"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/02/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Tuesday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/02/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Tuesday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -3078,7 +1860,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -3086,14 +1868,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -3103,59 +1878,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="3"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/03/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Wednesday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/03/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Wednesday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -3166,7 +1913,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -3174,14 +1921,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -3191,59 +1931,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="4"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/04/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Thursday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/04/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Thursday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -3254,7 +1966,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -3262,14 +1974,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -3279,59 +1984,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="5"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/05/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Friday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/05/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Friday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -3342,7 +2019,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -3350,14 +2027,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -3367,62 +2037,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRowWeekend"
           key="6"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/06/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Saturday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/06/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Saturday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -3433,7 +2072,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -3441,15 +2080,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -3459,62 +2090,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRowWeekend"
           key="7"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/07/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Sunday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/07/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Sunday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -3525,7 +2125,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -3533,15 +2133,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -3551,59 +2143,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="8"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/08/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Monday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/08/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Monday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -3614,7 +2178,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -3622,14 +2186,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -3639,59 +2196,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="9"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/09/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Tuesday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/09/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Tuesday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -3702,7 +2231,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -3710,14 +2239,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -3727,59 +2249,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="10"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/10/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Wednesday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/10/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Wednesday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -3790,7 +2284,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -3798,14 +2292,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -3815,59 +2302,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="11"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/11/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Thursday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/11/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Thursday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -3878,7 +2337,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -3886,14 +2345,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -3903,59 +2355,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="12"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/12/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Friday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/12/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Friday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -3966,7 +2390,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -3974,14 +2398,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -3991,62 +2408,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRowWeekend"
           key="13"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/13/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Saturday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/13/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Saturday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -4057,7 +2443,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -4065,15 +2451,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -4083,62 +2461,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRowWeekend"
           key="14"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/14/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Sunday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/14/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Sunday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -4149,7 +2496,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -4157,15 +2504,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -4175,59 +2514,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="15"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/15/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Monday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/15/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Monday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -4238,7 +2549,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -4246,14 +2557,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -4263,59 +2567,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="16"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/16/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Tuesday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/16/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Tuesday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -4326,7 +2602,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -4334,14 +2610,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -4351,59 +2620,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="17"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/17/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Wednesday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/17/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Wednesday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -4414,7 +2655,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -4422,14 +2663,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -4439,59 +2673,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="18"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/18/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Thursday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/18/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Thursday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -4502,7 +2708,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -4510,14 +2716,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -4527,59 +2726,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="19"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/19/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Friday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/19/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Friday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -4590,7 +2761,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -4598,14 +2769,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -4615,62 +2779,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRowWeekend"
           key="20"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/20/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Saturday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/20/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Saturday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -4681,7 +2814,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -4689,15 +2822,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -4707,62 +2832,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRowWeekend"
           key="21"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/21/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Sunday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/21/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Sunday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -4773,7 +2867,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -4781,15 +2875,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -4799,59 +2885,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="22"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/22/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Monday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/22/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Monday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -4862,7 +2920,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -4870,14 +2928,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -4887,59 +2938,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="23"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/23/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Tuesday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/23/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Tuesday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -4950,7 +2973,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -4958,14 +2981,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -4975,59 +2991,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="24"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/24/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Wednesday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/24/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Wednesday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -5038,7 +3026,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -5046,14 +3034,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -5063,59 +3044,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="25"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/25/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Thursday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/25/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Thursday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -5126,7 +3079,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -5134,14 +3087,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -5151,59 +3097,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="26"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/26/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Friday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/26/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Friday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -5214,7 +3132,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -5222,14 +3140,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -5239,62 +3150,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRowWeekend"
           key="27"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/27/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Saturday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/27/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Saturday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -5305,7 +3185,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -5313,15 +3193,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -5331,62 +3203,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRowWeekend"
           key="28"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/28/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Sunday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/28/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Sunday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -5397,7 +3238,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -5405,15 +3246,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "color": "gray",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -5423,59 +3256,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="29"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/29/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Monday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/29/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Monday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -5486,7 +3291,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -5494,14 +3299,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -5511,59 +3309,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="30"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/30/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Tuesday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/30/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Tuesday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -5574,7 +3344,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -5582,14 +3352,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
@@ -5599,59 +3362,31 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
           </td>
         </tr>
         <tr
+          className="tableRow"
           key="31"
         >
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "width": "7em",
-              }
-            }
-          >
-            <span
-              style={
-                Object {
-                  "display": "block",
-                }
-              }
-            >
-              01/31/2018
-            </span>
-            <span
-              style={
-                Object {
-                  "display": "block",
-                  "fontSize": "0.75em",
-                }
-              }
-            >
-              Wednesday
-            </span>
-          </td>
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
-          />
-          <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-              }
-            }
+            className="tableCell"
           >
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="date"
+            >
+              01/31/2018
+            </div>
+            <div
+              className="dayInWeek"
+            >
+              Wednesday
+            </div>
+          </td>
+          <td
+            className="tableCell"
+          />
+          <td
+            className="tableCellRight"
+          >
+            <div
+              className="addWorkLogButtonWrapper"
             >
               <Button
                 block={false}
@@ -5662,7 +3397,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
                 isLabelVisible={true}
                 label="Add work log"
                 loading={false}
-                priority="primary"
+                priority="default"
                 size="medium"
                 type="button"
                 variant="default"
@@ -5670,14 +3405,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
             </div>
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid black",
-                "padding": "0.25em",
-                "textAlign": "right",
-                "width": "5em",
-              }
-            }
+            className="tableCellRight"
           >
             0
             :
