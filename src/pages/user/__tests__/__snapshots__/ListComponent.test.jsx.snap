@@ -38,12 +38,6 @@ exports[`rendering renders correctly 1`] = `
           "label": "Supervisor",
           "name": "supervisor.lastName",
         },
-        Object {
-          "format": [Function],
-          "isSortable": false,
-          "label": "Hours per current month",
-          "name": "hoursPerCurrentMonth",
-        },
       ]
     }
     rows={Array []}

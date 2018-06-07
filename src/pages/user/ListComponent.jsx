@@ -7,7 +7,6 @@ import {
 } from 'react-ui';
 import { Link } from 'react-router-dom';
 import routes from '../../routes';
-import { localizedMoment } from '../../services/dateTimeService';
 import Layout from '../../components/Layout';
 import styles from './user.scss';
 
@@ -64,29 +63,6 @@ class ListComponent extends React.Component {
               isSortable: true,
               label: 'Supervisor',
               name: 'supervisor.lastName',
-            },
-            {
-              format: (row) => {
-                const currentDate = localizedMoment();
-                let requiredHours = 0;
-
-                if (row.workHours) {
-                  const workHours = row.workHours.find(item => (
-                    item.year === currentDate.year()
-                    && item.month === currentDate.month() + 1
-                  ));
-
-                  if (workHours) {
-                    // eslint-disable-next-line prefer-destructuring
-                    requiredHours = workHours.requiredHours;
-                  }
-                }
-
-                return requiredHours;
-              },
-              isSortable: false,
-              label: 'Hours per current month',
-              name: 'hoursPerCurrentMonth',
             },
           ]}
           rows={this.props.userList.toJS()}
