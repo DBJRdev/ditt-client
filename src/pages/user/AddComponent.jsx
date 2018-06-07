@@ -11,7 +11,7 @@ import {
   ADD_USER_SUCCESS,
   ADD_USER_FAILURE,
 } from '../../resources/user/actionTypes';
-import { SUPPORTED_WORK_HOURS_YEARS } from '../../resources/user';
+import parameters from '../../../config/parameters';
 import { validateUser } from '../../services/validatorService';
 import Layout from '../../components/Layout';
 import routes from '../../routes';
@@ -44,7 +44,7 @@ class AddComponent extends React.Component {
       },
     };
 
-    SUPPORTED_WORK_HOURS_YEARS.forEach((year) => {
+    parameters.get('supportedYear').forEach((year) => {
       this.state.formData.workHours[year] = [];
 
       for (let month = 0; month < 12; month += 1) {
@@ -98,7 +98,7 @@ class AddComponent extends React.Component {
     const formValidity = validateUser(
       this.state.formData,
       this.props.userList.toJS(),
-      SUPPORTED_WORK_HOURS_YEARS
+      parameters.get('supportedYear')
     );
 
     this.setState({ formValidity });
@@ -200,7 +200,7 @@ class AddComponent extends React.Component {
           />
           <h2>Required working hours per month</h2>
           <p>Insert as amount of hours divided by {'","'}, starting with January.</p>
-          {SUPPORTED_WORK_HOURS_YEARS.map(year => (
+          {parameters.get('supportedYear').map(year => (
             <TextField
               changeHandler={this.changeWorkHourHandler}
               error={this.state.formValidity.elements.workHours[year]}
