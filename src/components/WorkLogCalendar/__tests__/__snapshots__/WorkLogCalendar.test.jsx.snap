@@ -62,7 +62,7 @@ exports[`rendering renders correctly with all props 1`] = `
     >
       <tbody>
         <tr
-          className="tableRow"
+          className="tableRowWeekend"
           key="1"
         >
           <td
@@ -1772,7 +1772,7 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
     >
       <tbody>
         <tr
-          className="tableRow"
+          className="tableRowWeekend"
           key="1"
         >
           <td

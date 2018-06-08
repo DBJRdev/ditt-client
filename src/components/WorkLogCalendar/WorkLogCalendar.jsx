@@ -8,6 +8,7 @@ import {
 } from 'react-ui';
 import WorkLogForm from '../WorkLogForm';
 import {
+  includesSameDate,
   isWeekend,
   localizedMoment,
   toDayFormat,
@@ -15,6 +16,7 @@ import {
   toHourMinuteFormat,
   toMonthYearFormat,
 } from '../../services/dateTimeService';
+import parameters from '../../../config/parameters';
 import styles from './WorkLogCalendar.scss';
 
 class WorkLogCalendar extends React.Component {
@@ -203,7 +205,7 @@ class WorkLogCalendar extends React.Component {
           <table className={styles.table}>
             <tbody>
               {this.getDaysOfSelectedMonth().map((day) => {
-                const rowClassName = isWeekend(day.date)
+                const rowClassName = (isWeekend(day.date) || includesSameDate(day.date, parameters.get('supportedHolidays')))
                   ? styles.tableRowWeekend
                   : styles.tableRow;
 
