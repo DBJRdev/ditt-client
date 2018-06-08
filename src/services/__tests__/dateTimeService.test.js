@@ -1,4 +1,5 @@
 import {
+  includesSameDate,
   isOverlapping,
   isWeekend,
   toMomentDateTime,
@@ -7,6 +8,19 @@ import {
   toHourMinuteFormat,
   toMonthYearFormat,
 } from '../dateTimeService';
+
+describe('dateTimeService.js()', () => {
+  it('should check whether includes same date or not', () => {
+    const dt1 = toMomentDateTime('2017-12-24T20:15:30.100Z');
+    const dt2 = toMomentDateTime('2017-12-25T21:15:30.100Z');
+    const dt3 = toMomentDateTime('2017-12-25T22:15:30.100Z');
+    const dt4 = toMomentDateTime('2017-12-26T23:15:30.100Z');
+    expect(includesSameDate(dt1, [dt1, dt2, dt3])).toEqual(true);
+    expect(includesSameDate(dt3, [dt1, dt2])).toEqual(true);
+    expect(includesSameDate(dt4, [dt1, dt2, dt3])).toEqual(false);
+    expect(includesSameDate(dt4, [])).toEqual(false);
+  });
+});
 
 describe('isOverlapping()', () => {
   it('should check whether is overlapping or not', () => {

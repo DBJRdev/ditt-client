@@ -4,12 +4,37 @@ const TIMEZONE = 'Europe/Prague';
 
 export const localizedMoment = () => moment().tz(TIMEZONE);
 
+const isMomentValid = momentDateTime =>
+  momentDateTime && moment.isMoment(momentDateTime) && momentDateTime.isValid();
+
+export const createDate = (year, month, date) => moment({
+  date,
+  month,
+  year,
+}).tz(TIMEZONE);
+
+export const includesSameDate = (momentDateTime, momentDateTimeArr) => {
+  if (isMomentValid(momentDateTime)) {
+    const sameDate = momentDateTimeArr.find((date) => {
+      if (isMomentValid(date)) {
+        return momentDateTime.isSame(date, 'day');
+      }
+
+      throw new Error('Invalid datetime');
+    });
+
+    return !!sameDate;
+  }
+
+  throw new Error('Invalid datetime');
+};
+
 export const isOverlapping = (dt1Start, dt1End, dt2Start, dt2End) => {
   if (
-    dt1Start && moment.isMoment(dt1Start) && dt1Start.isValid()
-    && dt1End && moment.isMoment(dt1End) && dt1End.isValid()
-    && dt2Start && moment.isMoment(dt2Start) && dt2Start.isValid()
-    && dt2End && moment.isMoment(dt2End) && dt2End.isValid()
+    isMomentValid(dt1Start)
+    && isMomentValid(dt1Start)
+    && isMomentValid(dt2Start)
+    && isMomentValid(dt2End)
   ) {
     return (dt1Start > dt2Start && dt1Start < dt2End)
       || (dt2Start > dt1Start && dt2Start < dt1End)
@@ -20,7 +45,7 @@ export const isOverlapping = (dt1Start, dt1End, dt2Start, dt2End) => {
 };
 
 export const isWeekend = (momentDateTime) => {
-  if (momentDateTime && moment.isMoment(momentDateTime) && momentDateTime.isValid()) {
+  if (isMomentValid(momentDateTime)) {
     return momentDateTime.day() === 0 || momentDateTime.day() === 6;
   }
 
@@ -32,7 +57,7 @@ export const toJson = momentDateTime => momentDateTime.local().format();
 export const toMomentDateTime = (dateTimeString) => {
   const momentDateTime = moment(dateTimeString, moment.ISO_8601).tz(TIMEZONE);
 
-  if (momentDateTime.isValid()) {
+  if (isMomentValid(momentDateTime)) {
     return momentDateTime;
   }
 
@@ -40,7 +65,7 @@ export const toMomentDateTime = (dateTimeString) => {
 };
 
 export const toDayFormat = (momentDateTime) => {
-  if (momentDateTime && moment.isMoment(momentDateTime) && momentDateTime.isValid()) {
+  if (isMomentValid(momentDateTime)) {
     return momentDateTime.format('dddd');
   }
 
@@ -48,7 +73,7 @@ export const toDayFormat = (momentDateTime) => {
 };
 
 export const toHourMinuteFormat = (momentDateTime) => {
-  if (momentDateTime && moment.isMoment(momentDateTime) && momentDateTime.isValid()) {
+  if (isMomentValid(momentDateTime)) {
     return momentDateTime.format('HH:mm');
   }
 
@@ -56,7 +81,7 @@ export const toHourMinuteFormat = (momentDateTime) => {
 };
 
 export const toMonthYearFormat = (momentDateTime) => {
-  if (momentDateTime && moment.isMoment(momentDateTime) && momentDateTime.isValid()) {
+  if (isMomentValid(momentDateTime)) {
     return momentDateTime.format('MMMM YYYY');
   }
 
@@ -64,7 +89,7 @@ export const toMonthYearFormat = (momentDateTime) => {
 };
 
 export const toDayMonthYearFormat = (momentDateTime) => {
-  if (momentDateTime && moment.isMoment(momentDateTime) && momentDateTime.isValid()) {
+  if (isMomentValid(momentDateTime)) {
     return momentDateTime.format('L');
   }
 
