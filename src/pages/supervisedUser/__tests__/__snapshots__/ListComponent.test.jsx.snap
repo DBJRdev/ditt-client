@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly 1`] = `
+<Connect(LayoutComponent)
+  loading={false}
+  title="Supervised users"
+>
+  <Table
+    columns={
+      Array [
+        Object {
+          "format": [Function],
+          "isSortable": true,
+          "label": "Name",
+          "name": "lastName",
+        },
+        Object {
+          "format": [Function],
+          "label": "Need approval",
+          "name": "needApproval",
+        },
+        Object {
+          "format": [Function],
+          "label": "Show worklog",
+          "name": "showWorklog",
+        },
+      ]
+    }
+    rows={Array []}
+    sort={
+      Object {
+        "changeHandler": [Function],
+        "column": "lastName",
+        "direction": "asc",
+      }
+    }
+  />
+</Connect(LayoutComponent)>
+`;

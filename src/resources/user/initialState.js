@@ -15,6 +15,11 @@ export default Immutable.fromJS({
     isPosting: false,
     isPostingFailure: false,
   },
+  supervisedUserList: {
+    data: [],
+    isFetching: false,
+    isFetchingFailure: false,
+  },
   user: {
     data: null,
     isFetching: false,

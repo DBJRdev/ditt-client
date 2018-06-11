@@ -2,6 +2,7 @@ export {
   addUser,
   deleteUser,
   editUser,
+  fetchSupervisedUserList,
   fetchUser,
   fetchUserList,
 } from './actions';
@@ -18,6 +19,8 @@ export {
   selectDeleteUserMeta,
   selectEditUser,
   selectEditUserMeta,
+  selectSupervisedUserList,
+  selectSupervisedUserListMeta,
   selectUser,
   selectUserMeta,
   selectUserList,

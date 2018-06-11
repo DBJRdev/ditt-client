@@ -91,6 +91,26 @@ export default (state, action) => {
       .setIn(['editUser', 'isPostingFailure'], true);
   }
 
+  if (type === actionTypes.FETCH_SUPERVISED_USER_LIST_REQUEST) {
+    return state
+      .setIn(['supervisedUserList', 'isFetching'], true)
+      .setIn(['supervisedUserList', 'isFetchingFailure'], false);
+  }
+
+  if (type === actionTypes.FETCH_SUPERVISED_USER_LIST_SUCCESS) {
+    return state
+      .setIn(['supervisedUserList', 'data'], Immutable.fromJS(payload))
+      .setIn(['supervisedUserList', 'isFetching'], false)
+      .setIn(['supervisedUserList', 'isFetchingFailure'], false);
+  }
+
+  if (type === actionTypes.FETCH_SUPERVISED_USER_LIST_FAILURE) {
+    return state
+      .setIn(['supervisedUserList', 'data'], Immutable.fromJS([]))
+      .setIn(['supervisedUserList', 'isFetching'], false)
+      .setIn(['supervisedUserList', 'isFetchingFailure'], true);
+  }
+
   if (type === actionTypes.FETCH_USER_REQUEST) {
     return state
       .setIn(['user', 'isFetching'], true)

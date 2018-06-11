@@ -223,7 +223,6 @@ class EditComponent extends React.Component {
 
     let userList = this.props.userList.toJS();
     userList = userList
-      .filter(user => user.id !== loggedUserId)
       .map(user => ({
         label: `${user.firstName} ${user.lastName}`,
         value: user.id,

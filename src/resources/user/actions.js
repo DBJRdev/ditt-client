@@ -71,6 +71,21 @@ export const editUser = data => dispatch => dispatch({
   },
 });
 
+export const fetchSupervisedUserList = (uid, options) => dispatch => dispatch({
+  [RSAA]: {
+    endpoint: (options && options.order)
+      ? `${API_URL}/users/${uid}/supervised_users?isActive=true&order[${options.order.column}]=${options.order.direction}`
+      : `${API_URL}/users/${uid}/supervised_users?isActive=true`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'GET',
+    types: [
+      types.FETCH_SUPERVISED_USER_LIST_REQUEST,
+      types.FETCH_SUPERVISED_USER_LIST_SUCCESS,
+      types.FETCH_SUPERVISED_USER_LIST_FAILURE,
+    ],
+  },
+});
+
 export const fetchUser = id => dispatch => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/users/${id}`,

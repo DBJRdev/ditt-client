@@ -3,5 +3,6 @@ export default {
   editUser: '/users/:id/edit',
   index: '/',
   login: '/login',
+  supervisedUserList: '/supervised-users',
   userList: '/users',
 };
