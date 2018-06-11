@@ -1,5 +1,4 @@
 import ImmutablePropTypes from 'react-immutable-proptypes';
-import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {
@@ -16,6 +15,11 @@ import {
   toHourMinuteFormat,
   toMonthYearFormat,
 } from '../../services/dateTimeService';
+import {
+  getWorkedTime,
+  getWorkLogsByDay,
+  getWorkLogsByMonth,
+} from '../../services/workLogService';
 import parameters from '../../../config/parameters';
 import styles from './WorkLogCalendar.scss';
 
@@ -47,17 +51,12 @@ class WorkLogCalendar extends React.Component {
     const days = [];
 
     while (renderingDay <= lastDayOfMonth) {
-      const workLogListForRenderingDay = workLogList.filter(workLog => (
-        renderingDay.isSame(workLog.get('startTime'), 'day')
-      ));
-      const workedSeconds = workLogListForRenderingDay.reduce((total, workLog) => (
-        (workLog.get('endTime').diff(workLog.get('startTime')) / 1000) + total
-      ), 0);
+      const workLogListForRenderingDay = getWorkLogsByDay(renderingDay, workLogList.toJS());
 
       days.push({
         date: renderingDay.clone(),
-        workLogList: workLogListForRenderingDay.toJS(),
-        workTime: moment.duration({ seconds: workedSeconds }),
+        workLogList: workLogListForRenderingDay,
+        workTime: getWorkedTime(workLogListForRenderingDay),
       });
 
       renderingDay.add(1, 'day');
@@ -131,14 +130,7 @@ class WorkLogCalendar extends React.Component {
       requiredHours = workHours.get('requiredHours');
     }
 
-    const workedSeconds = workLogList
-      .filter(workLog => (
-        selectedDate.isSame(workLog.get('startTime'), 'month')
-      ))
-      .reduce((total, workLog) => (
-        (workLog.get('endTime').diff(workLog.get('startTime')) / 1000) + total
-      ), 0);
-    const workedTime = moment.duration({ seconds: workedSeconds });
+    const workedTime = getWorkedTime(getWorkLogsByMonth(selectedDate, workLogList.toJS()));
 
     return `${workedTime.hours()}:${workedTime.minutes() < 10 ? '0' : ''}${workedTime.minutes()} h out of ${requiredHours} h`;
   }
