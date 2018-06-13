@@ -1,7 +1,6 @@
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
-import ImmutablePropTypes from 'react-immutable-proptypes';
 import {
   Modal,
   TextField,
@@ -71,7 +70,7 @@ class WorkLogForm extends React.Component {
   saveHandler() {
     const { date } = this.props;
     const { formData } = this.state;
-    const formValidity = validateWorkLog(formData, this.props.workLogsOfDay.toJS());
+    const formValidity = validateWorkLog(formData, this.props.workLogsOfDay);
 
     this.setState({ formValidity });
 
@@ -187,7 +186,7 @@ WorkLogForm.propTypes = {
   date: PropTypes.instanceOf(moment).isRequired,
   isPosting: PropTypes.bool.isRequired,
   saveHandler: PropTypes.func.isRequired,
-  workLogsOfDay: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+  workLogsOfDay: PropTypes.arrayOf(PropTypes.shape({
     endTime: PropTypes.shape.isRequired,
     id: PropTypes.number.isRequired,
     startTime: PropTypes.shape.isRequired,

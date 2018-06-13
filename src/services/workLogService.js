@@ -35,3 +35,8 @@ export const getWorkLogsByDay = (date, workLogList) => workLogList.filter(workLo
 export const getWorkLogsByMonth = (date, workLogList) => workLogList.filter(workLog => (
   date.isSame(workLog.startTime, 'month')
 ));
+
+export const getWorkMonthByMonth = (date, workMonthList) => workMonthList.find(workMonth => (
+  date.month() + 1 === workMonth.month
+  && date.year() === workMonth.year
+));

@@ -21,26 +21,41 @@ afterEach(() => {
 });
 
 describe('rendering', () => {
-  it('renders correctly with mandatory props only', () => {
+  it('renders correctly', () => {
     const tree = shallow(<WorkLogCalendar
       addWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPostingWorkLog={false}
+      changeSelectedDate={() => {}}
+      selectedDate={fakeMomentDateTime}
       workHoursList={Immutable.List()}
-      workLogList={Immutable.List()}
-    />);
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('renders correctly with all props', () => {
-    const tree = shallow(<WorkLogCalendar
-      addWorkLog={() => {}}
-      deleteWorkLog={() => {}}
-      isPostingWorkLog={false}
-      onSelectedDateChanged={() => {}}
-      workHoursList={Immutable.List()}
-      workLogList={Immutable.List()}
+      workMonth={
+        Immutable.fromJS({
+          id: 2,
+          month: 1,
+          workLogs: [],
+          year: 2018,
+        })
+      }
+      workMonthList={
+        Immutable.fromJS([
+          {
+            id: 1,
+            month: 12,
+            year: 2017,
+          },
+          {
+            id: 2,
+            month: 1,
+            year: 2018,
+          },
+          {
+            id: 3,
+            month: 2,
+            year: 2018,
+          },
+        ])
+      }
     />);
 
     expect(tree).toMatchSnapshot();
@@ -48,15 +63,42 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls onSelectedDateChanged() date when previous month button is clicked', () => {
+  it('calls changeSelectedDate() date when previous month button is clicked', () => {
     const spy = sinon.spy();
     const tree = mount(<WorkLogCalendar
       addWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPostingWorkLog={false}
-      onSelectedDateChanged={spy}
+      changeSelectedDate={spy}
+      selectedDate={fakeMomentDateTime}
       workHoursList={Immutable.List()}
-      workLogList={Immutable.List()}
+      workMonth={
+        Immutable.fromJS({
+          id: 2,
+          month: 1,
+          workLogs: [],
+          year: 2018,
+        })
+      }
+      workMonthList={
+        Immutable.fromJS([
+          {
+            id: 1,
+            month: 12,
+            year: 2017,
+          },
+          {
+            id: 2,
+            month: 1,
+            year: 2018,
+          },
+          {
+            id: 3,
+            month: 2,
+            year: 2018,
+          },
+        ])
+      }
     />);
     const expectedArgs = fakeMomentDateTime.clone().subtract(1, 'month');
 
@@ -66,15 +108,42 @@ describe('functionality', () => {
     expect(spy.getCall(0).args[0]).toEqual(expectedArgs);
   });
 
-  it('calls onSelectedDateChanged() date when next month button is clicked', () => {
+  it('calls changeSelectedDate() date when next month button is clicked', () => {
     const spy = sinon.spy();
     const tree = mount(<WorkLogCalendar
       addWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPostingWorkLog={false}
-      onSelectedDateChanged={spy}
+      changeSelectedDate={spy}
+      selectedDate={fakeMomentDateTime}
       workHoursList={Immutable.List()}
-      workLogList={Immutable.List()}
+      workMonth={
+        Immutable.fromJS({
+          id: 2,
+          month: 1,
+          workLogs: [],
+          year: 2018,
+        })
+      }
+      workMonthList={
+        Immutable.fromJS([
+          {
+            id: 1,
+            month: 12,
+            year: 2017,
+          },
+          {
+            id: 2,
+            month: 1,
+            year: 2018,
+          },
+          {
+            id: 3,
+            month: 2,
+            year: 2018,
+          },
+        ])
+      }
     />);
     const expectedArgs = fakeMomentDateTime.clone().add(1, 'month');
 

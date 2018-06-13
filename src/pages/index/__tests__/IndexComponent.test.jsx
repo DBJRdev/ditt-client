@@ -9,7 +9,8 @@ describe('rendering', () => {
       addWorkLog: () => {},
       deleteWorkLog: () => {},
       fetchWorkHoursList: () => {},
-      fetchWorkLogList: () => {},
+      fetchWorkMonth: () => {},
+      fetchWorkMonthList: () => new Promise(() => {}),
       history: {
         push: () => {},
       },
@@ -18,7 +19,8 @@ describe('rendering', () => {
       logout: () => {},
       uid: 1,
       workHoursList: Immutable.List(),
-      workLogList: Immutable.List(),
+      workMonth: null,
+      workMonthList: Immutable.List(),
     };
     const tree = shallow(<IndexComponent {...props} />);
 

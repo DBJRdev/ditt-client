@@ -19,6 +19,7 @@ import {
   getWorkedTime,
   getWorkLogsByDay,
   getWorkLogsByMonth,
+  getWorkMonthByMonth,
 } from '../../services/workLogService';
 import parameters from '../../../config/parameters';
 import styles from './WorkLogCalendar.scss';
@@ -28,7 +29,6 @@ class WorkLogCalendar extends React.Component {
     super(props);
 
     this.state = {
-      selectedDate: localizedMoment(),
       showDeleteWorkLogDialog: false,
       showDeleteWorkLogDialogId: null,
       showWorkLogForm: false,
@@ -43,15 +43,21 @@ class WorkLogCalendar extends React.Component {
   }
 
   getDaysOfSelectedMonth() {
-    const { selectedDate } = this.state;
-    const { workLogList } = this.props;
+    const {
+      selectedDate,
+      workMonth,
+    } = this.props;
     const lastDayOfMonth = selectedDate.clone().endOf('month');
     const renderingDay = selectedDate.clone().startOf('month');
 
     const days = [];
 
     while (renderingDay <= lastDayOfMonth) {
-      const workLogListForRenderingDay = getWorkLogsByDay(renderingDay, workLogList.toJS());
+      let workLogListForRenderingDay = [];
+
+      if (workMonth) {
+        workLogListForRenderingDay = getWorkLogsByDay(renderingDay, workMonth.get('workLogs').toJS());
+      }
 
       days.push({
         date: renderingDay.clone(),
@@ -66,15 +72,11 @@ class WorkLogCalendar extends React.Component {
   }
 
   selectNextMonth() {
-    this.setState(prevState => ({
-      selectedDate: prevState.selectedDate.clone().add(1, 'month'),
-    }), () => this.props.onSelectedDateChanged(this.state.selectedDate));
+    this.props.changeSelectedDate(this.props.selectedDate.clone().add(1, 'month'));
   }
 
   selectPreviousMonth() {
-    this.setState(prevState => ({
-      selectedDate: prevState.selectedDate.clone().subtract(1, 'month'),
-    }), () => this.props.onSelectedDateChanged(this.state.selectedDate));
+    this.props.changeSelectedDate(this.props.selectedDate.clone().subtract(1, 'month'));
   }
 
   openDeleteWorkLogDialog(id) {
@@ -114,10 +116,10 @@ class WorkLogCalendar extends React.Component {
   }
 
   renderWorkHoursInfo() {
-    const { selectedDate } = this.state;
     const {
+      selectedDate,
       workHoursList,
-      workLogList,
+      workMonth,
     } = this.props;
     let requiredHours = 0;
 
@@ -130,7 +132,10 @@ class WorkLogCalendar extends React.Component {
       requiredHours = workHours.get('requiredHours');
     }
 
-    const workedTime = getWorkedTime(getWorkLogsByMonth(selectedDate, workLogList.toJS()));
+    const workedTime = getWorkedTime(getWorkLogsByMonth(
+      selectedDate,
+      workMonth ? workMonth.get('workLogs').toJS() : []
+    ));
 
     return `${workedTime.hours()}:${workedTime.minutes() < 10 ? '0' : ''}${workedTime.minutes()} h out of ${requiredHours} h`;
   }
@@ -142,9 +147,11 @@ class WorkLogCalendar extends React.Component {
         date={this.state.showWorkLogFormDate}
         isPosting={this.props.isPostingWorkLog}
         saveHandler={this.saveWorkLogForm}
-        workLogsOfDay={this.props.workLogList.filter(workLog => (
-          this.state.showWorkLogFormDate.isSame(workLog.get('startTime'), 'day')
-        ))}
+        workLogsOfDay={
+          this.props.workMonth
+            ? getWorkLogsByDay(this.state.showWorkLogFormDate, this.props.workMonth.get('workLogs').toJS())
+            : []
+        }
       />
     );
   }
@@ -174,18 +181,30 @@ class WorkLogCalendar extends React.Component {
           <div className={styles.navigationPrevious}>
             <Button
               clickHandler={this.selectPreviousMonth}
+              disabled={
+                !getWorkMonthByMonth(
+                  this.props.selectedDate.clone().subtract(1, 'month'),
+                  this.props.workMonthList.toJS()
+                )
+              }
               icon="keyboard_arrow_left"
               label="Previous"
               priority="primary"
             />
           </div>
           <div>
-            <h2 className={styles.navigationTitle}>{toMonthYearFormat(this.state.selectedDate)}</h2>
+            <h2 className={styles.navigationTitle}>{toMonthYearFormat(this.props.selectedDate)}</h2>
             <span className={styles.navigationSubtitle}>{this.renderWorkHoursInfo()}</span>
           </div>
           <div className={styles.navigationNext}>
             <Button
               clickHandler={this.selectNextMonth}
+              disabled={
+                !getWorkMonthByMonth(
+                  this.props.selectedDate.clone().add(1, 'month'),
+                  this.props.workMonthList.toJS()
+                )
+              }
               icon="keyboard_arrow_right"
               iconPosition="after"
               label="Next"
@@ -252,23 +271,36 @@ class WorkLogCalendar extends React.Component {
 }
 
 WorkLogCalendar.defaultProps = {
-  onSelectedDateChanged: () => {},
+  workMonth: null,
 };
 
 WorkLogCalendar.propTypes = {
   addWorkLog: PropTypes.func.isRequired,
+  changeSelectedDate: PropTypes.func.isRequired,
   deleteWorkLog: PropTypes.func.isRequired,
   isPostingWorkLog: PropTypes.bool.isRequired,
-  onSelectedDateChanged: PropTypes.func,
+  selectedDate: PropTypes.shape({
+    clone: PropTypes.func.isRequired,
+  }).isRequired,
   workHoursList: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
     month: PropTypes.number.isRequired,
     requiredHours: PropTypes.number.isRequired,
     year: PropTypes.number.isRequired,
   })).isRequired,
-  workLogList: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
-    endTime: PropTypes.shape.isRequired,
+  workMonth: ImmutablePropTypes.mapContains({
     id: PropTypes.number.isRequired,
-    startTime: PropTypes.shape.isRequired,
+    month: PropTypes.shape.isRequired,
+    workLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+      endTime: PropTypes.shape.isRequired,
+      id: PropTypes.number.isRequired,
+      startTime: PropTypes.shape.isRequired,
+    })).isRequired,
+    year: PropTypes.number,
+  }),
+  workMonthList: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+    id: PropTypes.number.isRequired,
+    month: PropTypes.shape.isRequired,
+    year: PropTypes.number.isRequired,
   })).isRequired,
 };
 

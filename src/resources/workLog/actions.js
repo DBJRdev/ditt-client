@@ -34,16 +34,3 @@ export const deleteWorkLog = id => dispatch => dispatch({
     ],
   },
 });
-
-export const fetchWorkLogList = uid => dispatch => dispatch({
-  [RSAA]: {
-    endpoint: `${API_URL}/users/${uid}/work_logs`,
-    headers: { 'Content-Type': 'application/json' },
-    method: 'GET',
-    types: [
-      types.FETCH_WORK_LOG_LIST_REQUEST,
-      types.FETCH_WORK_LOG_LIST_SUCCESS,
-      types.FETCH_WORK_LOG_LIST_FAILURE,
-    ],
-  },
-});

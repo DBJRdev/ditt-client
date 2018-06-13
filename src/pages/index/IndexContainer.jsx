@@ -1,6 +1,10 @@
 import { connect } from 'react-redux';
 import jwt from 'jsonwebtoken';
 import {
+  logout,
+  selectJwtToken,
+} from '../../resources/auth';
+import {
   fetchWorkHoursList,
   selectWorkHoursList,
   selectWorkHoursListMeta,
@@ -8,23 +12,25 @@ import {
 import {
   addWorkLog,
   deleteWorkLog,
-  fetchWorkLogList,
   selectAddWorkLogMeta,
   selectDeleteWorkLogMeta,
-  selectWorkLogList,
-  selectWorkLogListMeta,
 } from '../../resources/workLog';
 import {
-  logout,
-  selectJwtToken,
-} from '../../resources/auth';
+  fetchWorkMonth,
+  fetchWorkMonthList,
+  selectWorkMonth,
+  selectWorkMonthMeta,
+  selectWorkMonthList,
+  selectWorkMonthListMeta,
+} from '../../resources/workMonth';
 import IndexComponent from './IndexComponent';
 
 const mapStateToProps = (state) => {
   const addWorkLogMeta = selectAddWorkLogMeta(state);
   const deleteWorkLogMeta = selectDeleteWorkLogMeta(state);
   const workHourListMeta = selectWorkHoursListMeta(state);
-  const workLogListMeta = selectWorkLogListMeta(state);
+  const workMonthListMeta = selectWorkMonthListMeta(state);
+  const workMonthMeta = selectWorkMonthMeta(state);
 
   let decodedToken = null;
   const token = selectJwtToken(state);
@@ -33,11 +39,14 @@ const mapStateToProps = (state) => {
   }
 
   return ({
-    isFetching: workLogListMeta.isFetching || workHourListMeta.isFetching,
+    isFetching: workHourListMeta.isFetching
+      || workMonthListMeta.isFetching
+      || workMonthMeta.isFetching,
     isPosting: addWorkLogMeta.isPosting || deleteWorkLogMeta.isPosting,
     uid: decodedToken ? decodedToken.uid : null,
     workHoursList: selectWorkHoursList(state),
-    workLogList: selectWorkLogList(state),
+    workMonth: selectWorkMonth(state),
+    workMonthList: selectWorkMonthList(state),
   });
 };
 
@@ -45,7 +54,8 @@ const mapDispatchToProps = dispatch => ({
   addWorkLog: data => dispatch(addWorkLog(data)),
   deleteWorkLog: id => dispatch(deleteWorkLog(id)),
   fetchWorkHoursList: uid => dispatch(fetchWorkHoursList(uid)),
-  fetchWorkLogList: uid => dispatch(fetchWorkLogList(uid)),
+  fetchWorkMonth: id => dispatch(fetchWorkMonth(id)),
+  fetchWorkMonthList: uid => dispatch(fetchWorkMonthList(uid)),
   logout: () => dispatch(logout()),
 });
 

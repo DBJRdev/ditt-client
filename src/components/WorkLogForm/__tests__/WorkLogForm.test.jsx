@@ -1,4 +1,3 @@
-import Immutable from 'immutable';
 import React from 'react';
 import sinon from 'sinon';
 import {
@@ -27,7 +26,7 @@ describe('rendering', () => {
       date={fakeMomentDateTime}
       isPosting={false}
       saveHandler={() => {}}
-      workLogsOfDay={Immutable.List()}
+      workLogsOfDay={[]}
     />);
 
     expect(tree).toMatchSnapshot();
@@ -42,7 +41,7 @@ describe('functionality', () => {
       date={fakeMomentDateTime}
       isPosting={false}
       saveHandler={() => {}}
-      workLogsOfDay={Immutable.List()}
+      workLogsOfDay={[]}
     />);
 
     tree.find('Button').last().simulate('click');
