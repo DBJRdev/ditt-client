@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import WorkLogCalendar from '../../components/WorkLogCalendar';
 import Layout from '../../components/Layout';
+import {
+  STATUS_APPROVED,
+  STATUS_OPENED,
+  STATUS_WAITING_FOR_APPROVAL,
+} from '../../resources/workMonth';
 import { localizedMoment } from '../../services/dateTimeService';
 import { getWorkMonthByMonth } from '../../services/workLogService';
 
@@ -94,6 +99,11 @@ IndexComponent.propTypes = {
   workMonth: ImmutablePropTypes.mapContains({
     id: PropTypes.number.isRequired,
     month: PropTypes.shape.isRequired,
+    status: PropTypes.oneOf([
+      STATUS_APPROVED,
+      STATUS_OPENED,
+      STATUS_WAITING_FOR_APPROVAL,
+    ]).isRequired,
     workLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
       endTime: PropTypes.shape.isRequired,
       id: PropTypes.number.isRequired,

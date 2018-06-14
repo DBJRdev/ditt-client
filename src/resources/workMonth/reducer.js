@@ -23,6 +23,7 @@ export default (state, action) => {
     const workMonthData = {
       id: payload.id,
       month: parseInt(payload.month, 10),
+      status: payload.status,
       workLogs: payload.workLogs.map(workLogData => ({
         endTime: toMomentDateTime(workLogData.endTime),
         id: parseInt(workLogData.id, 10),

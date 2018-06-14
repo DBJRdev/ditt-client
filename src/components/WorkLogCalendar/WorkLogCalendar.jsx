@@ -7,6 +7,11 @@ import {
 } from 'react-ui';
 import WorkLogForm from '../WorkLogForm';
 import {
+  STATUS_APPROVED,
+  STATUS_OPENED,
+  STATUS_WAITING_FOR_APPROVAL,
+} from '../../resources/workMonth';
+import {
   includesSameDate,
   isWeekend,
   localizedMoment,
@@ -175,6 +180,12 @@ class WorkLogCalendar extends React.Component {
   }
 
   render() {
+    let status = null;
+
+    if (this.props.workMonth) {
+      status = this.props.workMonth.get('status');
+    }
+
     return (
       <div>
         <nav className={styles.navigation}>
@@ -193,8 +204,34 @@ class WorkLogCalendar extends React.Component {
             />
           </div>
           <div>
-            <h2 className={styles.navigationTitle}>{toMonthYearFormat(this.props.selectedDate)}</h2>
-            <span className={styles.navigationSubtitle}>{this.renderWorkHoursInfo()}</span>
+            <div>
+              <h2 className={styles.navigationTitle}>
+                {toMonthYearFormat(this.props.selectedDate)}
+              </h2>
+              <span className={styles.navigationSubtitle}>
+                {this.renderWorkHoursInfo()}
+              </span>
+            </div>
+            {
+              status === STATUS_WAITING_FOR_APPROVAL
+              && (
+                <Button
+                  clickHandler={() => {}}
+                  label="Waiting for approval"
+                  priority="primary"
+                  variant="warning"
+                />
+              )}
+            {
+              status === STATUS_APPROVED
+              && (
+                <Button
+                  clickHandler={() => {}}
+                  label="Approved"
+                  priority="primary"
+                  variant="success"
+                />
+              )}
           </div>
           <div className={styles.navigationNext}>
             <Button
@@ -238,22 +275,28 @@ class WorkLogCalendar extends React.Component {
                         >
                           <Button
                             clickHandler={() => this.openDeleteWorkLogDialog(workLog.id)}
+                            disabled={status === STATUS_APPROVED}
                             icon="work"
                             label={`${toHourMinuteFormat(workLog.startTime)} - ${toHourMinuteFormat(workLog.endTime)}`}
                           />
                         </div>
                       ))}
                     </td>
-                    <td className={styles.tableCellRight}>
-                      <div className={styles.addWorkLogButtonWrapper}>
-                        <Button
-                          clickHandler={() => this.openWorkLogForm(day.date)}
-                          icon="add"
-                          label="Add work log"
-                          priority="default"
-                        />
-                      </div>
-                    </td>
+                    {
+                      (status === STATUS_OPENED || status === STATUS_WAITING_FOR_APPROVAL)
+                      && (
+                        <td className={styles.tableCellRight}>
+                          <div className={styles.addWorkLogButtonWrapper}>
+                            <Button
+                              clickHandler={() => this.openWorkLogForm(day.date)}
+                              icon="add"
+                              label="Add work log"
+                              priority="default"
+                            />
+                          </div>
+                        </td>
+                      )
+                    }
                     <td className={styles.tableCellRight}>
                       {day.workTime.hours()}:{day.workTime.minutes() < 10 && '0'}{day.workTime.minutes()}&nbsp;h
                     </td>
@@ -290,6 +333,11 @@ WorkLogCalendar.propTypes = {
   workMonth: ImmutablePropTypes.mapContains({
     id: PropTypes.number.isRequired,
     month: PropTypes.shape.isRequired,
+    status: PropTypes.oneOf([
+      STATUS_APPROVED,
+      STATUS_OPENED,
+      STATUS_WAITING_FOR_APPROVAL,
+    ]).isRequired,
     workLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
       endTime: PropTypes.shape.isRequired,
       id: PropTypes.number.isRequired,

@@ -21,7 +21,7 @@ afterEach(() => {
 });
 
 describe('rendering', () => {
-  it('renders correctly', () => {
+  it('renders correctly with opened work month', () => {
     const tree = shallow(<WorkLogCalendar
       addWorkLog={() => {}}
       deleteWorkLog={() => {}}
@@ -33,6 +33,89 @@ describe('rendering', () => {
         Immutable.fromJS({
           id: 2,
           month: 1,
+          status: 'OPENED',
+          workLogs: [],
+          year: 2018,
+        })
+      }
+      workMonthList={
+        Immutable.fromJS([
+          {
+            id: 1,
+            month: 12,
+            year: 2017,
+          },
+          {
+            id: 2,
+            month: 1,
+            year: 2018,
+          },
+          {
+            id: 3,
+            month: 2,
+            year: 2018,
+          },
+        ])
+      }
+    />);
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders correctly with work month waiting for approval', () => {
+    const tree = shallow(<WorkLogCalendar
+      addWorkLog={() => {}}
+      deleteWorkLog={() => {}}
+      isPostingWorkLog={false}
+      changeSelectedDate={() => {}}
+      selectedDate={fakeMomentDateTime}
+      workHoursList={Immutable.List()}
+      workMonth={
+        Immutable.fromJS({
+          id: 2,
+          month: 1,
+          status: 'WAITING_FOR_APPROVAL',
+          workLogs: [],
+          year: 2018,
+        })
+      }
+      workMonthList={
+        Immutable.fromJS([
+          {
+            id: 1,
+            month: 12,
+            year: 2017,
+          },
+          {
+            id: 2,
+            month: 1,
+            year: 2018,
+          },
+          {
+            id: 3,
+            month: 2,
+            year: 2018,
+          },
+        ])
+      }
+    />);
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders correctly with closed work month', () => {
+    const tree = shallow(<WorkLogCalendar
+      addWorkLog={() => {}}
+      deleteWorkLog={() => {}}
+      isPostingWorkLog={false}
+      changeSelectedDate={() => {}}
+      selectedDate={fakeMomentDateTime}
+      workHoursList={Immutable.List()}
+      workMonth={
+        Immutable.fromJS({
+          id: 2,
+          month: 1,
+          status: 'APPROVED',
           workLogs: [],
           year: 2018,
         })
@@ -76,6 +159,7 @@ describe('functionality', () => {
         Immutable.fromJS({
           id: 2,
           month: 1,
+          status: 'OPENED',
           workLogs: [],
           year: 2018,
         })
@@ -121,6 +205,7 @@ describe('functionality', () => {
         Immutable.fromJS({
           id: 2,
           month: 1,
+          status: 'OPENED',
           workLogs: [],
           year: 2018,
         })
