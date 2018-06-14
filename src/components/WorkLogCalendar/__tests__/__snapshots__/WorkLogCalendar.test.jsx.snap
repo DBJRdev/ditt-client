@@ -2753,6 +2753,24 @@ exports[`rendering renders correctly with opened work month 1`] = `
       </tbody>
     </table>
   </div>
+  <div
+    className="sendForApprovalButtonWrapper"
+  >
+    <Button
+      block={false}
+      clickHandler={[Function]}
+      disabled={false}
+      icon="send"
+      iconPosition="before"
+      isLabelVisible={true}
+      label="Send for approval"
+      loading={false}
+      priority="primary"
+      size="medium"
+      type="button"
+      variant="default"
+    />
+  </div>
 </div>
 `;
 

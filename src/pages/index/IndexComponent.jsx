@@ -66,7 +66,8 @@ class IndexComponent extends React.Component {
           addWorkLog={this.addWorkLog}
           deleteWorkLog={this.deleteWorkLog}
           changeSelectedDate={this.changeSelectedDate}
-          isPostingWorkLog={this.props.isPosting}
+          isPosting={this.props.isPosting}
+          markWaitingForApproval={this.props.markWaitingForApproval}
           selectedDate={this.state.selectedDate}
           workHoursList={this.props.workHoursList}
           workMonth={this.props.workMonth}
@@ -90,6 +91,7 @@ IndexComponent.propTypes = {
   fetchWorkMonthList: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
   isPosting: PropTypes.bool.isRequired,
+  markWaitingForApproval: PropTypes.func.isRequired,
   uid: PropTypes.number,
   workHoursList: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
     month: PropTypes.number.isRequired,

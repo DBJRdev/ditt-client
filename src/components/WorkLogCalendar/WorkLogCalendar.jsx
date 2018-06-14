@@ -150,7 +150,7 @@ class WorkLogCalendar extends React.Component {
       <WorkLogForm
         closeHandler={this.closeWorkLogForm}
         date={this.state.showWorkLogFormDate}
-        isPosting={this.props.isPostingWorkLog}
+        isPosting={this.props.isPosting}
         saveHandler={this.saveWorkLogForm}
         workLogsOfDay={
           this.props.workMonth
@@ -168,7 +168,7 @@ class WorkLogCalendar extends React.Component {
           {
             clickHandler: () => this.deleteWorkLog(this.state.showDeleteWorkLogDialogId),
             label: 'Delete',
-            loading: this.props.isPostingWorkLog,
+            loading: this.props.isPosting,
           },
         ]}
         closeHandler={this.closeDeleteWorkLogDialog}
@@ -306,6 +306,25 @@ class WorkLogCalendar extends React.Component {
             </tbody>
           </table>
         </div>
+        {
+          status === STATUS_OPENED
+          && (
+            <div className={styles.sendForApprovalButtonWrapper}>
+              <Button
+                clickHandler={() => {
+                  if (this.props.workMonth) {
+                    this.props.markWaitingForApproval(this.props.workMonth.get('id'));
+                  }
+                }}
+                disabled={!this.props.workMonth}
+                icon="send"
+                label="Send for approval"
+                loading={this.props.isPosting}
+                priority="primary"
+              />
+            </div>
+          )
+        }
         {this.state.showDeleteWorkLogDialog ? this.renderDeleteWorkLogModal() : null}
         {this.state.showWorkLogForm ? this.renderWorkLogForm() : null}
       </div>
@@ -321,7 +340,8 @@ WorkLogCalendar.propTypes = {
   addWorkLog: PropTypes.func.isRequired,
   changeSelectedDate: PropTypes.func.isRequired,
   deleteWorkLog: PropTypes.func.isRequired,
-  isPostingWorkLog: PropTypes.bool.isRequired,
+  isPosting: PropTypes.bool.isRequired,
+  markWaitingForApproval: PropTypes.func.isRequired,
   selectedDate: PropTypes.shape({
     clone: PropTypes.func.isRequired,
   }).isRequired,

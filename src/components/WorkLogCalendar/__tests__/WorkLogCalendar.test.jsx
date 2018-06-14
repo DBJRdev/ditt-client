@@ -25,8 +25,9 @@ describe('rendering', () => {
     const tree = shallow(<WorkLogCalendar
       addWorkLog={() => {}}
       deleteWorkLog={() => {}}
-      isPostingWorkLog={false}
+      isPosting={false}
       changeSelectedDate={() => {}}
+      markWaitingForApproval={() => {}}
       selectedDate={fakeMomentDateTime}
       workHoursList={Immutable.List()}
       workMonth={
@@ -66,8 +67,9 @@ describe('rendering', () => {
     const tree = shallow(<WorkLogCalendar
       addWorkLog={() => {}}
       deleteWorkLog={() => {}}
-      isPostingWorkLog={false}
+      isPosting={false}
       changeSelectedDate={() => {}}
+      markWaitingForApproval={() => {}}
       selectedDate={fakeMomentDateTime}
       workHoursList={Immutable.List()}
       workMonth={
@@ -107,8 +109,9 @@ describe('rendering', () => {
     const tree = shallow(<WorkLogCalendar
       addWorkLog={() => {}}
       deleteWorkLog={() => {}}
-      isPostingWorkLog={false}
+      isPosting={false}
       changeSelectedDate={() => {}}
+      markWaitingForApproval={() => {}}
       selectedDate={fakeMomentDateTime}
       workHoursList={Immutable.List()}
       workMonth={
@@ -151,8 +154,9 @@ describe('functionality', () => {
     const tree = mount(<WorkLogCalendar
       addWorkLog={() => {}}
       deleteWorkLog={() => {}}
-      isPostingWorkLog={false}
+      isPosting={false}
       changeSelectedDate={spy}
+      markWaitingForApproval={() => {}}
       selectedDate={fakeMomentDateTime}
       workHoursList={Immutable.List()}
       workMonth={
@@ -197,8 +201,9 @@ describe('functionality', () => {
     const tree = mount(<WorkLogCalendar
       addWorkLog={() => {}}
       deleteWorkLog={() => {}}
-      isPostingWorkLog={false}
+      isPosting={false}
       changeSelectedDate={spy}
+      markWaitingForApproval={() => {}}
       selectedDate={fakeMomentDateTime}
       workHoursList={Immutable.List()}
       workMonth={
@@ -236,5 +241,50 @@ describe('functionality', () => {
 
     expect(spy.calledOnce).toEqual(true);
     expect(spy.getCall(0).args[0]).toEqual(expectedArgs);
+  });
+
+  it('calls markWaitingForApproval() when send for approval button is clicked', () => {
+    const spy = sinon.spy();
+    const tree = mount(<WorkLogCalendar
+      addWorkLog={() => {}}
+      deleteWorkLog={() => {}}
+      isPosting={false}
+      changeSelectedDate={() => {}}
+      markWaitingForApproval={spy}
+      selectedDate={fakeMomentDateTime}
+      workHoursList={Immutable.List()}
+      workMonth={
+        Immutable.fromJS({
+          id: 2,
+          month: 1,
+          status: 'OPENED',
+          workLogs: [],
+          year: 2018,
+        })
+      }
+      workMonthList={
+        Immutable.fromJS([
+          {
+            id: 1,
+            month: 12,
+            year: 2017,
+          },
+          {
+            id: 2,
+            month: 1,
+            year: 2018,
+          },
+          {
+            id: 3,
+            month: 2,
+            year: 2018,
+          },
+        ])
+      }
+    />);
+    tree.find('Button').last().simulate('click');
+
+    expect(spy.calledOnce).toEqual(true);
+    expect(spy.getCall(0).args[0]).toEqual(2);
   });
 });

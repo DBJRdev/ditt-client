@@ -92,3 +92,9 @@ $_table-cell-padding-y: 0.25rem;
 .addWorkLogButtonWrapper {
   float: right;
 }
+
+.sendForApprovalButtonWrapper {
+  margin-top: 1rem;
+  margin-right: -$_table-cell-padding-x;
+  margin-left: -$_table-cell-padding-x;
+}

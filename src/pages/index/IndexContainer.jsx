@@ -18,6 +18,7 @@ import {
 import {
   fetchWorkMonth,
   fetchWorkMonthList,
+  markWaitingForApproval,
   selectWorkMonth,
   selectWorkMonthMeta,
   selectWorkMonthList,
@@ -42,7 +43,9 @@ const mapStateToProps = (state) => {
     isFetching: workHourListMeta.isFetching
       || workMonthListMeta.isFetching
       || workMonthMeta.isFetching,
-    isPosting: addWorkLogMeta.isPosting || deleteWorkLogMeta.isPosting,
+    isPosting: addWorkLogMeta.isPosting
+    || deleteWorkLogMeta.isPosting
+    || workMonthMeta.isPosting,
     uid: decodedToken ? decodedToken.uid : null,
     workHoursList: selectWorkHoursList(state),
     workMonth: selectWorkMonth(state),
@@ -57,6 +60,7 @@ const mapDispatchToProps = dispatch => ({
   fetchWorkMonth: id => dispatch(fetchWorkMonth(id)),
   fetchWorkMonthList: uid => dispatch(fetchWorkMonthList(uid)),
   logout: () => dispatch(logout()),
+  markWaitingForApproval: id => dispatch(markWaitingForApproval(id)),
 });
 
 export default connect(
