@@ -7,6 +7,8 @@ export const selectWorkMonth = createSelector([getWorkMonth], data => data.get('
 export const selectWorkMonthMeta = createSelector([getWorkMonth], data => ({
   isFetching: data.get('isFetching'),
   isFetchingFailure: data.get('isFetchingFailure'),
+  isPosting: data.get('isPosting'),
+  isPostingFailure: data.get('isPostingFailure'),
 }));
 
 export const selectWorkMonthList = createSelector([getWorkMonthList], data => data.get('data'));

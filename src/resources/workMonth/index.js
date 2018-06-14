@@ -1,6 +1,8 @@
 export {
   fetchWorkMonth,
   fetchWorkMonthList,
+  markApproved,
+  markWaitingForApproval,
 } from './actions';
 
 export {

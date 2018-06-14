@@ -65,5 +65,67 @@ export default (state, action) => {
       .setIn(['workMonthList', 'isFetchingFailure'], true);
   }
 
+  if (type === actionTypes.MARK_WORK_MONTH_APPROVED_REQUEST) {
+    return state
+      .setIn(['workMonth', 'isPosting'], true)
+      .setIn(['workMonth', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.MARK_WORK_MONTH_APPROVED_SUCCESS) {
+    const workMonthData = {
+      id: payload.id,
+      month: parseInt(payload.month, 10),
+      status: payload.status,
+      workLogs: payload.workLogs.map(workLogData => ({
+        endTime: toMomentDateTime(workLogData.endTime),
+        id: parseInt(workLogData.id, 10),
+        startTime: toMomentDateTime(workLogData.startTime),
+      })),
+      year: parseInt(payload.year, 10),
+    };
+
+    return state
+      .setIn(['workMonth', 'data'], Immutable.fromJS(workMonthData))
+      .setIn(['workMonth', 'isPosting'], false)
+      .setIn(['workMonth', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.MARK_WORK_MONTH_APPROVED_FAILURE) {
+    return state
+      .setIn(['workMonth', 'isPosting'], false)
+      .setIn(['workMonth', 'isPostingFailure'], true);
+  }
+
+  if (type === actionTypes.MARK_WORK_MONTH_WAITING_FOR_APPROVAL_REQUEST) {
+    return state
+      .setIn(['workMonth', 'isPosting'], true)
+      .setIn(['workMonth', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.MARK_WORK_MONTH_WAITING_FOR_APPROVAL_SUCCESS) {
+    const workMonthData = {
+      id: payload.id,
+      month: parseInt(payload.month, 10),
+      status: payload.status,
+      workLogs: payload.workLogs.map(workLogData => ({
+        endTime: toMomentDateTime(workLogData.endTime),
+        id: parseInt(workLogData.id, 10),
+        startTime: toMomentDateTime(workLogData.startTime),
+      })),
+      year: parseInt(payload.year, 10),
+    };
+
+    return state
+      .setIn(['workMonth', 'data'], Immutable.fromJS(workMonthData))
+      .setIn(['workMonth', 'isPosting'], false)
+      .setIn(['workMonth', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.MARK_WORK_MONTH_WAITING_FOR_APPROVAL_FAILURE) {
+    return state
+      .setIn(['workMonth', 'isPosting'], false)
+      .setIn(['workMonth', 'isPostingFailure'], true);
+  }
+
   return state;
 };

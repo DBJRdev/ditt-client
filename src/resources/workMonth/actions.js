@@ -27,3 +27,29 @@ export const fetchWorkMonthList = uid => dispatch => dispatch({
     ],
   },
 });
+
+export const markApproved = id => dispatch => dispatch({
+  [RSAA]: {
+    endpoint: `${API_URL}/work_months/${id}/mark_approved`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.MARK_WORK_MONTH_APPROVED_REQUEST,
+      types.MARK_WORK_MONTH_APPROVED_SUCCESS,
+      types.MARK_WORK_MONTH_APPROVED_FAILURE,
+    ],
+  },
+});
+
+export const markWaitingForApproval = id => dispatch => dispatch({
+  [RSAA]: {
+    endpoint: `${API_URL}/work_months/${id}/mark_waiting_for_approval`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.MARK_WORK_MONTH_WAITING_FOR_APPROVAL_REQUEST,
+      types.MARK_WORK_MONTH_WAITING_FOR_APPROVAL_SUCCESS,
+      types.MARK_WORK_MONTH_WAITING_FOR_APPROVAL_FAILURE,
+    ],
+  },
+});
