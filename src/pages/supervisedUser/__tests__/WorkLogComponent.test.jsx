@@ -32,7 +32,6 @@ describe('rendering', () => {
           id: '1',
         },
       },
-      uid: 1,
       workHoursList: Immutable.List(),
       workMonth: null,
       workMonthList: Immutable.List(),

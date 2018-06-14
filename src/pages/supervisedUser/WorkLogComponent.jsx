@@ -65,7 +65,6 @@ class WorkLogComponent extends React.Component {
 }
 
 WorkLogComponent.defaultProps = {
-  uid: null,
   workMonth: null,
 };
 
@@ -81,7 +80,6 @@ WorkLogComponent.propTypes = {
       id: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-  uid: PropTypes.number,
   workHoursList: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
     month: PropTypes.number.isRequired,
     requiredHours: PropTypes.number.isRequired,

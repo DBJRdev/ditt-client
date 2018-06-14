@@ -6,6 +6,11 @@ import { Link } from 'react-router-dom';
 import { Table } from 'react-ui';
 import Layout from '../../components/Layout';
 import routes from '../../routes';
+import {
+  STATUS_APPROVED,
+  STATUS_OPENED,
+  STATUS_WAITING_FOR_APPROVAL,
+} from '../../resources/workMonth';
 
 class ListComponent extends React.Component {
   constructor(props) {
@@ -47,7 +52,13 @@ class ListComponent extends React.Component {
               name: 'lastName',
             },
             {
-              format: () => '-',
+              format: (row) => {
+                const waitingForApproval = row.workMonths.find(workMonth => (
+                  workMonth.status === STATUS_WAITING_FOR_APPROVAL
+                ));
+
+                return waitingForApproval ? 'Yes' : 'No';
+              },
               label: 'Need approval',
               name: 'needApproval',
             },
@@ -109,6 +120,13 @@ ListComponent.propTypes = {
       id: PropTypes.number.isRequired,
       lastName: PropTypes.string.isRequired,
     }),
+    workMonths: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+      status: PropTypes.oneOf([
+        STATUS_APPROVED,
+        STATUS_OPENED,
+        STATUS_WAITING_FOR_APPROVAL,
+      ]).isRequired,
+    })).isRequired,
   })).isRequired,
   token: PropTypes.string.isRequired,
 };

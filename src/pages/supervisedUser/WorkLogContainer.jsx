@@ -1,8 +1,6 @@
 import { connect } from 'react-redux';
-import jwt from 'jsonwebtoken';
 import {
   logout,
-  selectJwtToken,
 } from '../../resources/auth';
 import {
   fetchWorkHoursList,
@@ -25,18 +23,11 @@ const mapStateToProps = (state) => {
   const workMonthListMeta = selectWorkMonthListMeta(state);
   const workMonthMeta = selectWorkMonthMeta(state);
 
-  let decodedToken = null;
-  const token = selectJwtToken(state);
-  if (token !== null) {
-    decodedToken = jwt.decode(token);
-  }
-
   return ({
     isFetching: workHourListMeta.isFetching
       || workMonthListMeta.isFetching
       || workMonthMeta.isFetching,
     isPosting: workMonthMeta.isPosting,
-    uid: decodedToken ? decodedToken.uid : null,
     workHoursList: selectWorkHoursList(state),
     workMonth: selectWorkMonth(state),
     workMonthList: selectWorkMonthList(state),
