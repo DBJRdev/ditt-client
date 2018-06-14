@@ -10,7 +10,7 @@ import history from './history';
 import routes from './routes';
 import store from './store';
 import ErrorPage from './pages/error';
-import IndexPage from './pages/index';
+import IndexPage from './pages/workLog';
 import LoginPage from './pages/login';
 import SupervisedUserListPage from './pages/supervisedUser';
 import AuthorizedRoute from './resources/auth/components/AuthorizedRoute';

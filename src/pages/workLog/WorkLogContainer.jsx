@@ -24,7 +24,7 @@ import {
   selectWorkMonthList,
   selectWorkMonthListMeta,
 } from '../../resources/workMonth';
-import IndexComponent from './IndexComponent';
+import WorkLogComponent from './WorkLogComponent';
 
 const mapStateToProps = (state) => {
   const addWorkLogMeta = selectAddWorkLogMeta(state);
@@ -66,4 +66,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(IndexComponent);
+)(WorkLogComponent);

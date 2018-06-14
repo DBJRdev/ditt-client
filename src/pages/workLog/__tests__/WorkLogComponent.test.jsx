@@ -2,7 +2,7 @@ import Immutable from 'immutable';
 import React from 'react';
 import sinon from 'sinon';
 import { shallow } from 'enzyme';
-import IndexComponent from '../IndexComponent';
+import WorkLogComponent from '../WorkLogComponent';
 
 let fakeTimestamp = null;
 
@@ -34,7 +34,7 @@ describe('rendering', () => {
       workMonth: null,
       workMonthList: Immutable.List(),
     };
-    const tree = shallow(<IndexComponent {...props} />);
+    const tree = shallow(<WorkLogComponent {...props} />);
 
     expect(tree).toMatchSnapshot();
   });

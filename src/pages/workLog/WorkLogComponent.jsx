@@ -11,7 +11,7 @@ import {
 import { localizedMoment } from '../../services/dateTimeService';
 import { getWorkMonthByMonth } from '../../services/workLogService';
 
-class IndexComponent extends React.Component {
+class WorkLogComponent extends React.Component {
   constructor(props) {
     super(props);
 
@@ -78,12 +78,12 @@ class IndexComponent extends React.Component {
   }
 }
 
-IndexComponent.defaultProps = {
+WorkLogComponent.defaultProps = {
   uid: null,
   workMonth: null,
 };
 
-IndexComponent.propTypes = {
+WorkLogComponent.propTypes = {
   addWorkLog: PropTypes.func.isRequired,
   deleteWorkLog: PropTypes.func.isRequired,
   fetchWorkHoursList: PropTypes.func.isRequired,
@@ -120,4 +120,4 @@ IndexComponent.propTypes = {
   })).isRequired,
 };
 
-export default IndexComponent;
+export default WorkLogComponent;
