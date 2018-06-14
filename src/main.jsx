@@ -12,7 +12,10 @@ import store from './store';
 import ErrorPage from './pages/error';
 import IndexPage from './pages/workLog';
 import LoginPage from './pages/login';
-import SupervisedUserListPage from './pages/supervisedUser';
+import {
+  ListContainer as SupervisedUserListPage,
+  WorkLogContainer as SupervisedUserWorkLogPage,
+} from './pages/supervisedUser';
 import AuthorizedRoute from './resources/auth/components/AuthorizedRoute';
 import {
   ROLE_ADMIN,
@@ -35,6 +38,12 @@ ReactDOM.render(
             path={routes.index}
             roles={[ROLE_EMPLOYEE]}
             component={IndexPage}
+          />
+          <AuthorizedRoute
+            exact
+            path={routes.supervisedUserWorkLog}
+            roles={[ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]}
+            component={SupervisedUserWorkLogPage}
           />
           <AuthorizedRoute
             exact

@@ -213,7 +213,24 @@ class WorkLogCalendar extends React.Component {
               </span>
             </div>
             {
-              status === STATUS_WAITING_FOR_APPROVAL
+              this.props.supervisorView
+              && status === STATUS_WAITING_FOR_APPROVAL
+              && (
+                <Button
+                  clickHandler={() => {
+                    if (this.props.workMonth) {
+                      this.props.markApproved(this.props.workMonth.get('id'));
+                    }
+                  }}
+                  label="Approve"
+                  priority="primary"
+                  variant="success"
+                />
+              )
+            }
+            {
+              !this.props.supervisorView
+              && status === STATUS_WAITING_FOR_APPROVAL
               && (
                 <Button
                   clickHandler={() => {}}
@@ -221,7 +238,8 @@ class WorkLogCalendar extends React.Component {
                   priority="primary"
                   variant="warning"
                 />
-              )}
+              )
+            }
             {
               status === STATUS_APPROVED
               && (
@@ -231,7 +249,8 @@ class WorkLogCalendar extends React.Component {
                   priority="primary"
                   variant="success"
                 />
-              )}
+              )
+            }
           </div>
           <div className={styles.navigationNext}>
             <Button
@@ -275,7 +294,7 @@ class WorkLogCalendar extends React.Component {
                         >
                           <Button
                             clickHandler={() => this.openDeleteWorkLogDialog(workLog.id)}
-                            disabled={status === STATUS_APPROVED}
+                            disabled={this.props.supervisorView || status === STATUS_APPROVED}
                             icon="work"
                             label={`${toHourMinuteFormat(workLog.startTime)} - ${toHourMinuteFormat(workLog.endTime)}`}
                           />
@@ -283,7 +302,8 @@ class WorkLogCalendar extends React.Component {
                       ))}
                     </td>
                     {
-                      (status === STATUS_OPENED || status === STATUS_WAITING_FOR_APPROVAL)
+                      !this.props.supervisorView
+                      && (status === STATUS_OPENED || status === STATUS_WAITING_FOR_APPROVAL)
                       && (
                         <td className={styles.tableCellRight}>
                           <div className={styles.addWorkLogButtonWrapper}>
@@ -307,7 +327,8 @@ class WorkLogCalendar extends React.Component {
           </table>
         </div>
         {
-          status === STATUS_OPENED
+          !this.props.supervisorView
+          && status === STATUS_OPENED
           && (
             <div className={styles.sendForApprovalButtonWrapper}>
               <Button
@@ -333,6 +354,7 @@ class WorkLogCalendar extends React.Component {
 }
 
 WorkLogCalendar.defaultProps = {
+  supervisorView: false,
   workMonth: null,
 };
 
@@ -341,10 +363,12 @@ WorkLogCalendar.propTypes = {
   changeSelectedDate: PropTypes.func.isRequired,
   deleteWorkLog: PropTypes.func.isRequired,
   isPosting: PropTypes.bool.isRequired,
+  markApproved: PropTypes.func.isRequired,
   markWaitingForApproval: PropTypes.func.isRequired,
   selectedDate: PropTypes.shape({
     clone: PropTypes.func.isRequired,
   }).isRequired,
+  supervisorView: PropTypes.bool,
   workHoursList: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
     month: PropTypes.number.isRequired,
     requiredHours: PropTypes.number.isRequired,

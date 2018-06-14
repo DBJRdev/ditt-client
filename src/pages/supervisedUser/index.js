@@ -1,3 +1,7 @@
 import ListContainer from './ListContainer';
+import WorkLogContainer from './WorkLogContainer';
 
-export default ListContainer;
+export {
+  ListContainer,
+  WorkLogContainer,
+};

@@ -21,8 +21,8 @@ exports[`rendering renders correctly 1`] = `
         },
         Object {
           "format": [Function],
-          "label": "Show worklog",
-          "name": "showWorklog",
+          "label": "Show work log",
+          "name": "showWorkLog",
         },
       ]
     }

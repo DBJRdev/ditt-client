@@ -4,5 +4,6 @@ export default {
   index: '/',
   login: '/login',
   supervisedUserList: '/supervised-users',
+  supervisedUserWorkLog: '/supervised-users/:id/work-log',
   userList: '/users',
 };

@@ -27,6 +27,7 @@ describe('rendering', () => {
       deleteWorkLog={() => {}}
       isPosting={false}
       changeSelectedDate={() => {}}
+      markApproved={() => {}}
       markWaitingForApproval={() => {}}
       selectedDate={fakeMomentDateTime}
       workHoursList={Immutable.List()}
@@ -69,6 +70,7 @@ describe('rendering', () => {
       deleteWorkLog={() => {}}
       isPosting={false}
       changeSelectedDate={() => {}}
+      markApproved={() => {}}
       markWaitingForApproval={() => {}}
       selectedDate={fakeMomentDateTime}
       workHoursList={Immutable.List()}
@@ -111,8 +113,141 @@ describe('rendering', () => {
       deleteWorkLog={() => {}}
       isPosting={false}
       changeSelectedDate={() => {}}
+      markApproved={() => {}}
       markWaitingForApproval={() => {}}
       selectedDate={fakeMomentDateTime}
+      workHoursList={Immutable.List()}
+      workMonth={
+        Immutable.fromJS({
+          id: 2,
+          month: 1,
+          status: 'APPROVED',
+          workLogs: [],
+          year: 2018,
+        })
+      }
+      workMonthList={
+        Immutable.fromJS([
+          {
+            id: 1,
+            month: 12,
+            year: 2017,
+          },
+          {
+            id: 2,
+            month: 1,
+            year: 2018,
+          },
+          {
+            id: 3,
+            month: 2,
+            year: 2018,
+          },
+        ])
+      }
+    />);
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders correctly supervisor view with opened work month', () => {
+    const tree = shallow(<WorkLogCalendar
+      addWorkLog={() => {}}
+      deleteWorkLog={() => {}}
+      isPosting={false}
+      changeSelectedDate={() => {}}
+      markApproved={() => {}}
+      markWaitingForApproval={() => {}}
+      selectedDate={fakeMomentDateTime}
+      supervisorView
+      workHoursList={Immutable.List()}
+      workMonth={
+        Immutable.fromJS({
+          id: 2,
+          month: 1,
+          status: 'OPENED',
+          workLogs: [],
+          year: 2018,
+        })
+      }
+      workMonthList={
+        Immutable.fromJS([
+          {
+            id: 1,
+            month: 12,
+            year: 2017,
+          },
+          {
+            id: 2,
+            month: 1,
+            year: 2018,
+          },
+          {
+            id: 3,
+            month: 2,
+            year: 2018,
+          },
+        ])
+      }
+    />);
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders correctly supervisor view with work month waiting for approval', () => {
+    const tree = shallow(<WorkLogCalendar
+      addWorkLog={() => {}}
+      deleteWorkLog={() => {}}
+      isPosting={false}
+      changeSelectedDate={() => {}}
+      markApproved={() => {}}
+      markWaitingForApproval={() => {}}
+      selectedDate={fakeMomentDateTime}
+      supervisorView
+      workHoursList={Immutable.List()}
+      workMonth={
+        Immutable.fromJS({
+          id: 2,
+          month: 1,
+          status: 'WAITING_FOR_APPROVAL',
+          workLogs: [],
+          year: 2018,
+        })
+      }
+      workMonthList={
+        Immutable.fromJS([
+          {
+            id: 1,
+            month: 12,
+            year: 2017,
+          },
+          {
+            id: 2,
+            month: 1,
+            year: 2018,
+          },
+          {
+            id: 3,
+            month: 2,
+            year: 2018,
+          },
+        ])
+      }
+    />);
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders correctly supervisor view with closed work month', () => {
+    const tree = shallow(<WorkLogCalendar
+      addWorkLog={() => {}}
+      deleteWorkLog={() => {}}
+      isPosting={false}
+      changeSelectedDate={() => {}}
+      markApproved={() => {}}
+      markWaitingForApproval={() => {}}
+      selectedDate={fakeMomentDateTime}
+      supervisorView
       workHoursList={Immutable.List()}
       workMonth={
         Immutable.fromJS({
@@ -156,6 +291,7 @@ describe('functionality', () => {
       deleteWorkLog={() => {}}
       isPosting={false}
       changeSelectedDate={spy}
+      markApproved={() => {}}
       markWaitingForApproval={() => {}}
       selectedDate={fakeMomentDateTime}
       workHoursList={Immutable.List()}
@@ -203,6 +339,7 @@ describe('functionality', () => {
       deleteWorkLog={() => {}}
       isPosting={false}
       changeSelectedDate={spy}
+      markApproved={() => {}}
       markWaitingForApproval={() => {}}
       selectedDate={fakeMomentDateTime}
       workHoursList={Immutable.List()}
@@ -250,6 +387,7 @@ describe('functionality', () => {
       deleteWorkLog={() => {}}
       isPosting={false}
       changeSelectedDate={() => {}}
+      markApproved={() => {}}
       markWaitingForApproval={spy}
       selectedDate={fakeMomentDateTime}
       workHoursList={Immutable.List()}
@@ -283,6 +421,53 @@ describe('functionality', () => {
       }
     />);
     tree.find('Button').last().simulate('click');
+
+    expect(spy.calledOnce).toEqual(true);
+    expect(spy.getCall(0).args[0]).toEqual(2);
+  });
+
+  it('calls markApproved() when approve button is clicked', () => {
+    const spy = sinon.spy();
+    const tree = mount(<WorkLogCalendar
+      addWorkLog={() => {}}
+      deleteWorkLog={() => {}}
+      isPosting={false}
+      changeSelectedDate={() => {}}
+      markApproved={spy}
+      markWaitingForApproval={() => {}}
+      selectedDate={fakeMomentDateTime}
+      supervisorView
+      workHoursList={Immutable.List()}
+      workMonth={
+        Immutable.fromJS({
+          id: 2,
+          month: 1,
+          status: 'WAITING_FOR_APPROVAL',
+          workLogs: [],
+          year: 2018,
+        })
+      }
+      workMonthList={
+        Immutable.fromJS([
+          {
+            id: 1,
+            month: 12,
+            year: 2017,
+          },
+          {
+            id: 2,
+            month: 1,
+            year: 2018,
+          },
+          {
+            id: 3,
+            month: 2,
+            year: 2018,
+          },
+        ])
+      }
+    />);
+    tree.find('Button').at(1).simulate('click');
 
     expect(spy.calledOnce).toEqual(true);
     expect(spy.getCall(0).args[0]).toEqual(2);

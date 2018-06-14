@@ -2,8 +2,10 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
 import jwt from 'jsonwebtoken';
+import { Link } from 'react-router-dom';
 import { Table } from 'react-ui';
 import Layout from '../../components/Layout';
+import routes from '../../routes';
 
 class ListComponent extends React.Component {
   constructor(props) {
@@ -50,9 +52,14 @@ class ListComponent extends React.Component {
               name: 'needApproval',
             },
             {
-              format: () => '-',
-              label: 'Show worklog',
-              name: 'showWorklog',
+              format: row => (
+                /* eslint-disable-next-line jsx-a11y/anchor-is-valid */
+                <Link to={routes.supervisedUserWorkLog.replace(':id', row.id)}>
+                  Show work log
+                </Link>
+              ),
+              label: 'Show work log',
+              name: 'showWorkLog',
             },
           ]}
           rows={this.props.supervisedUserList.toJS()}

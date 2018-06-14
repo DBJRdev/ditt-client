@@ -19,29 +19,13 @@ class WorkLogComponent extends React.Component {
       selectedDate: localizedMoment(),
     };
 
-    this.addWorkLog = this.addWorkLog.bind(this);
-    this.deleteWorkLog = this.deleteWorkLog.bind(this);
     this.changeSelectedDate = this.changeSelectedDate.bind(this);
   }
 
   componentDidMount() {
-    this.props.fetchWorkHoursList(this.props.uid);
-    this.props.fetchWorkMonthList(this.props.uid).then(() => {
+    this.props.fetchWorkHoursList(this.props.match.params.id);
+    this.props.fetchWorkMonthList(this.props.match.params.id).then(() => {
       this.fetchWorkMonth(this.state.selectedDate);
-    });
-  }
-
-  addWorkLog(data) {
-    return this.props.addWorkLog(data).then((response) => {
-      this.fetchWorkMonth(this.state.selectedDate);
-      return response;
-    });
-  }
-
-  deleteWorkLog(id) {
-    return this.props.deleteWorkLog(id).then((response) => {
-      this.fetchWorkMonth(this.state.selectedDate);
-      return response;
     });
   }
 
@@ -63,13 +47,14 @@ class WorkLogComponent extends React.Component {
     return (
       <Layout title="Work logs" loading={this.props.isFetching}>
         <WorkLogCalendar
-          addWorkLog={this.addWorkLog}
-          deleteWorkLog={this.deleteWorkLog}
+          addWorkLog={() => {}}
+          deleteWorkLog={() => {}}
           changeSelectedDate={this.changeSelectedDate}
           isPosting={this.props.isPosting}
-          markApproved={() => {}}
-          markWaitingForApproval={this.props.markWaitingForApproval}
+          markApproved={this.props.markApproved}
+          markWaitingForApproval={() => {}}
           selectedDate={this.state.selectedDate}
+          supervisorView
           workHoursList={this.props.workHoursList}
           workMonth={this.props.workMonth}
           workMonthList={this.props.workMonthList}
@@ -85,14 +70,17 @@ WorkLogComponent.defaultProps = {
 };
 
 WorkLogComponent.propTypes = {
-  addWorkLog: PropTypes.func.isRequired,
-  deleteWorkLog: PropTypes.func.isRequired,
   fetchWorkHoursList: PropTypes.func.isRequired,
   fetchWorkMonth: PropTypes.func.isRequired,
   fetchWorkMonthList: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
   isPosting: PropTypes.bool.isRequired,
-  markWaitingForApproval: PropTypes.func.isRequired,
+  markApproved: PropTypes.func.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
   uid: PropTypes.number,
   workHoursList: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
     month: PropTypes.number.isRequired,
