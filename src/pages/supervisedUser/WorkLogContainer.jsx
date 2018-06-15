@@ -1,8 +1,5 @@
 import { connect } from 'react-redux';
 import {
-  logout,
-} from '../../resources/auth';
-import {
   fetchWorkHoursList,
   selectWorkHoursList,
   selectWorkHoursListMeta,
@@ -38,7 +35,6 @@ const mapDispatchToProps = dispatch => ({
   fetchWorkHoursList: uid => dispatch(fetchWorkHoursList(uid)),
   fetchWorkMonth: id => dispatch(fetchWorkMonth(id)),
   fetchWorkMonthList: uid => dispatch(fetchWorkMonthList(uid)),
-  logout: () => dispatch(logout()),
   markApproved: id => dispatch(markApproved(id)),
 });
 

@@ -25,7 +25,6 @@ describe('rendering', () => {
       },
       isFetching: false,
       isPosting: false,
-      logout: () => {},
       markApproved: () => {},
       match: {
         params: {

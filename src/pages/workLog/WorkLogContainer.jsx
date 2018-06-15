@@ -1,9 +1,6 @@
 import { connect } from 'react-redux';
 import jwt from 'jsonwebtoken';
-import {
-  logout,
-  selectJwtToken,
-} from '../../resources/auth';
+import { selectJwtToken } from '../../resources/auth';
 import {
   fetchWorkHoursList,
   selectWorkHoursList,
@@ -59,7 +56,6 @@ const mapDispatchToProps = dispatch => ({
   fetchWorkHoursList: uid => dispatch(fetchWorkHoursList(uid)),
   fetchWorkMonth: id => dispatch(fetchWorkMonth(id)),
   fetchWorkMonthList: uid => dispatch(fetchWorkMonthList(uid)),
-  logout: () => dispatch(logout()),
   markWaitingForApproval: id => dispatch(markWaitingForApproval(id)),
 });
 

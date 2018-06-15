@@ -27,7 +27,6 @@ describe('rendering', () => {
       },
       isFetching: false,
       isPosting: false,
-      logout: () => {},
       markWaitingForApproval: () => {},
       uid: 1,
       workHoursList: Immutable.List(),
