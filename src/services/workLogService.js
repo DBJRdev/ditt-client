@@ -29,7 +29,7 @@ export const getWorkedTime = (workLogList) => {
 };
 
 export const getWorkLogsByDay = (date, workLogList) => workLogList.filter(workLog => (
-  date.isSame(workLog.startTime, 'day')
+  date.isSame(workLog.get('startTime'), 'day')
 ));
 
 export const getWorkLogsByMonth = (date, workLogList) => workLogList.filter(workLog => (

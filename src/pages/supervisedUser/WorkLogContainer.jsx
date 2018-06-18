@@ -1,3 +1,4 @@
+import Immutable from 'immutable';
 import { connect } from 'react-redux';
 import {
   fetchWorkHoursList,
@@ -12,6 +13,7 @@ import {
   selectWorkMonthMeta,
   selectWorkMonthList,
   selectWorkMonthListMeta,
+  STATUS_OPENED,
 } from '../../resources/workMonth';
 import WorkLogComponent from './WorkLogComponent';
 
@@ -19,6 +21,11 @@ const mapStateToProps = (state) => {
   const workHourListMeta = selectWorkHoursListMeta(state);
   const workMonthListMeta = selectWorkMonthListMeta(state);
   const workMonthMeta = selectWorkMonthMeta(state);
+  let workMonth = selectWorkMonth(state);
+
+  if (workMonth && workMonth.get('status') === STATUS_OPENED) {
+    workMonth = workMonth.set('workLogs', Immutable.List([]));
+  }
 
   return ({
     isFetching: workHourListMeta.isFetching
@@ -26,7 +33,7 @@ const mapStateToProps = (state) => {
       || workMonthMeta.isFetching,
     isPosting: workMonthMeta.isPosting,
     workHoursList: selectWorkHoursList(state),
-    workMonth: selectWorkMonth(state),
+    workMonth,
     workMonthList: selectWorkMonthList(state),
   });
 };

@@ -61,7 +61,7 @@ class WorkLogCalendar extends React.Component {
       let workLogListForRenderingDay = [];
 
       if (workMonth) {
-        workLogListForRenderingDay = getWorkLogsByDay(renderingDay, workMonth.get('workLogs').toJS());
+        workLogListForRenderingDay = getWorkLogsByDay(renderingDay, workMonth.get('workLogs')).toJS();
       }
 
       days.push({
@@ -154,7 +154,7 @@ class WorkLogCalendar extends React.Component {
         saveHandler={this.saveWorkLogForm}
         workLogsOfDay={
           this.props.workMonth
-            ? getWorkLogsByDay(this.state.showWorkLogFormDate, this.props.workMonth.get('workLogs').toJS())
+            ? getWorkLogsByDay(this.state.showWorkLogFormDate, this.props.workMonth.get('workLogs'))
             : []
         }
       />
