@@ -36,20 +36,9 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           0:00 h out of 0 h
         </span>
       </div>
-      <Button
-        block={false}
-        clickHandler={[Function]}
-        disabled={false}
-        icon={null}
-        iconPosition="before"
-        isLabelVisible={true}
-        label="Approved"
-        loading={false}
-        priority="primary"
-        size="medium"
-        type="button"
-        variant="success"
-      />
+      <p>
+        Approved
+      </p>
     </div>
     <div
       className="navigationNext"
@@ -3154,20 +3143,9 @@ exports[`rendering renders correctly with closed work month 1`] = `
           0:00 h out of 0 h
         </span>
       </div>
-      <Button
-        block={false}
-        clickHandler={[Function]}
-        disabled={false}
-        icon={null}
-        iconPosition="before"
-        isLabelVisible={true}
-        label="Approved"
-        loading={false}
-        priority="primary"
-        size="medium"
-        type="button"
-        variant="success"
-      />
+      <p>
+        Approved
+      </p>
     </div>
     <div
       className="navigationNext"
@@ -5928,20 +5906,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           0:00 h out of 0 h
         </span>
       </div>
-      <Button
-        block={false}
-        clickHandler={[Function]}
-        disabled={false}
-        icon={null}
-        iconPosition="before"
-        isLabelVisible={true}
-        label="Waiting for approval"
-        loading={false}
-        priority="primary"
-        size="medium"
-        type="button"
-        variant="warning"
-      />
+      <p>
+        Waiting for approval
+      </p>
     </div>
     <div
       className="navigationNext"

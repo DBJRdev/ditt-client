@@ -231,25 +231,11 @@ class WorkLogCalendar extends React.Component {
             {
               !this.props.supervisorView
               && status === STATUS_WAITING_FOR_APPROVAL
-              && (
-                <Button
-                  clickHandler={() => {}}
-                  label="Waiting for approval"
-                  priority="primary"
-                  variant="warning"
-                />
-              )
+              && <p>Waiting for approval</p>
             }
             {
               status === STATUS_APPROVED
-              && (
-                <Button
-                  clickHandler={() => {}}
-                  label="Approved"
-                  priority="primary"
-                  variant="success"
-                />
-              )
+              && <p>Approved</p>
             }
           </div>
           <div className={styles.navigationNext}>
