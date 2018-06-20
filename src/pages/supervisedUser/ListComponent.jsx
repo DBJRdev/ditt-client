@@ -43,66 +43,73 @@ class ListComponent extends React.Component {
   render() {
     return (
       <Layout title="Supervised users" loading={this.props.isFetching}>
-        <Table
-          columns={[
-            {
-              format: row => `${row.firstName} ${row.lastName}`,
-              isSortable: true,
-              label: 'Name',
-              name: 'lastName',
-            },
-            {
-              format: (row) => {
-                const waitingForApproval = row.workMonths.find(workMonth => (
-                  workMonth.status === STATUS_WAITING_FOR_APPROVAL
-                ));
-
-                return waitingForApproval ? 'Yes' : 'No';
+        {this.props.supervisedUserList.count() > 0 ? (
+          <Table
+            columns={[
+              {
+                format: row => `${row.firstName} ${row.lastName}`,
+                isSortable: true,
+                label: 'Name',
+                name: 'lastName',
               },
-              label: 'Need approval',
-              name: 'needApproval',
-            },
-            {
-              format: row => (
-                /* eslint-disable-next-line jsx-a11y/anchor-is-valid */
-                <Link to={routes.supervisedUserWorkLog.replace(':id', row.id)}>
-                  Show work log
-                </Link>
-              ),
-              label: 'Show work log',
-              name: 'showWorkLog',
-            },
-          ]}
-          rows={this.props.supervisedUserList.toJS()}
-          sort={{
-            changeHandler: (column, direction) => {
-              if (this.props.token) {
-                const decodedToken = jwt.decode(this.props.token);
+              {
+                format: (row) => {
+                  const waitingForApproval = row.workMonths.find(workMonth => (
+                    workMonth.status === STATUS_WAITING_FOR_APPROVAL
+                  ));
 
-                if (decodedToken) {
-                  const orderDirection = direction === 'asc' ? 'desc' : 'asc';
+                  return waitingForApproval ? 'Yes' : 'No';
+                },
+                label: 'Need approval',
+                name: 'needApproval',
+              },
+              {
+                format: row => (
+                  /* eslint-disable-next-line jsx-a11y/anchor-is-valid */
+                  <Link to={routes.supervisedUserWorkLog.replace(':id', row.id)}>
+                    Show work log
+                  </Link>
+                ),
+                label: 'Show work log',
+                name: 'showWorkLog',
+              },
+            ]}
+            rows={this.props.supervisedUserList.toJS()}
+            sort={{
+              changeHandler: (column, direction) => {
+                if (this.props.token) {
+                  const decodedToken = jwt.decode(this.props.token);
 
-                  this.props.fetchSupervisedUserList(
-                    decodedToken.uid,
-                    {
-                      order: {
-                        column,
-                        direction: orderDirection,
-                      },
-                    }
-                  ).then(() => {
-                    this.setState({
-                      tableSortColumn: column,
-                      tableSortDirection: orderDirection,
+                  if (decodedToken) {
+                    const orderDirection = direction === 'asc' ? 'desc' : 'asc';
+
+                    this.props.fetchSupervisedUserList(
+                      decodedToken.uid,
+                      {
+                        order: {
+                          column,
+                          direction: orderDirection,
+                        },
+                      }
+                    ).then(() => {
+                      this.setState({
+                        tableSortColumn: column,
+                        tableSortDirection: orderDirection,
+                      });
                     });
-                  });
+                  }
                 }
-              }
-            },
-            column: this.state.tableSortColumn,
-            direction: this.state.tableSortDirection,
-          }}
-        />
+              },
+              column: this.state.tableSortColumn,
+              direction: this.state.tableSortDirection,
+            }}
+          />
+        ) : (
+          <div>
+            You do not seem to be supervising anyone.
+            Please contact HR in case you think this is a mistake.
+          </div>
+        )}
       </Layout>
     );
   }
