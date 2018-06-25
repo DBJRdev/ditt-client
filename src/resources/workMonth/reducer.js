@@ -32,12 +32,12 @@ export default (state, action) => {
 
   const filterWorkMonth = date => ({
     businessTripWorkLogs: date.businessTripWorkLogs.map(businessTripWorkLogsData => ({
-      data: toMomentDateTime(businessTripWorkLogsData.data),
+      date: toMomentDateTime(businessTripWorkLogsData.date),
       id: parseInt(businessTripWorkLogsData.id, 10),
       status: resolveWorkLogStatus(businessTripWorkLogsData),
     })),
     homeOfficeWorkLogs: date.homeOfficeWorkLogs.map(homeOfficeWorkLogsData => ({
-      data: toMomentDateTime(homeOfficeWorkLogsData.data),
+      date: toMomentDateTime(homeOfficeWorkLogsData.date),
       id: parseInt(homeOfficeWorkLogsData.id, 10),
       status: resolveWorkLogStatus(homeOfficeWorkLogsData),
     })),
@@ -45,7 +45,7 @@ export default (state, action) => {
     month: parseInt(date.month, 10),
     status: date.status,
     timeOffWorkLogs: date.timeOffWorkLogs.map(timeOffWorkLogsData => ({
-      data: toMomentDateTime(timeOffWorkLogsData.data),
+      date: toMomentDateTime(timeOffWorkLogsData.date),
       id: parseInt(timeOffWorkLogsData.id, 10),
       status: resolveWorkLogStatus(timeOffWorkLogsData),
     })),
@@ -56,6 +56,80 @@ export default (state, action) => {
     })),
     year: parseInt(date.year, 10),
   });
+
+  if (type === actionTypes.FETCH_SPECIAL_APPROVAL_LIST_REQUEST) {
+    return state
+      .setIn(['specialApprovalList', 'isFetching'], true)
+      .setIn(['specialApprovalList', 'isFetchingFailure'], false);
+  }
+
+  if (type === actionTypes.FETCH_SPECIAL_APPROVAL_LIST_SUCCESS) {
+    const specialApprovalListData = {
+      businessTripWorkLogs: payload.businessTripWorkLogs.map(businessTripWorkLogsData => ({
+        date: toMomentDateTime(businessTripWorkLogsData.date),
+        id: parseInt(businessTripWorkLogsData.id, 10),
+        status: resolveWorkLogStatus(businessTripWorkLogsData),
+        workMonth: {
+          id: parseInt(businessTripWorkLogsData.workMonth.id, 10),
+          month: parseInt(businessTripWorkLogsData.workMonth.month, 10),
+          status: businessTripWorkLogsData.workMonth.status,
+          user: {
+            email: businessTripWorkLogsData.workMonth.user.email,
+            firstName: businessTripWorkLogsData.workMonth.user.firstName,
+            id: businessTripWorkLogsData.workMonth.user.id,
+            lastName: businessTripWorkLogsData.workMonth.user.lastName,
+          },
+          year: parseInt(businessTripWorkLogsData.workMonth.year, 10),
+        },
+      })),
+      homeOfficeWorkLogs: payload.homeOfficeWorkLogs.map(homeOfficeWorkLogsData => ({
+        date: toMomentDateTime(homeOfficeWorkLogsData.date),
+        id: parseInt(homeOfficeWorkLogsData.id, 10),
+        status: resolveWorkLogStatus(homeOfficeWorkLogsData),
+        workMonth: {
+          id: parseInt(homeOfficeWorkLogsData.workMonth.id, 10),
+          month: parseInt(homeOfficeWorkLogsData.workMonth.month, 10),
+          status: homeOfficeWorkLogsData.workMonth.status,
+          user: {
+            email: homeOfficeWorkLogsData.workMonth.user.email,
+            firstName: homeOfficeWorkLogsData.workMonth.user.firstName,
+            id: homeOfficeWorkLogsData.workMonth.user.id,
+            lastName: homeOfficeWorkLogsData.workMonth.user.lastName,
+          },
+          year: parseInt(homeOfficeWorkLogsData.workMonth.year, 10),
+        },
+      })),
+      timeOffWorkLogs: payload.timeOffWorkLogs.map(timeOffWorkLogsData => ({
+        date: toMomentDateTime(timeOffWorkLogsData.date),
+        id: parseInt(timeOffWorkLogsData.id, 10),
+        status: resolveWorkLogStatus(timeOffWorkLogsData),
+        workMonth: {
+          id: parseInt(timeOffWorkLogsData.workMonth.id, 10),
+          month: parseInt(timeOffWorkLogsData.workMonth.month, 10),
+          status: timeOffWorkLogsData.workMonth.status,
+          user: {
+            email: timeOffWorkLogsData.workMonth.user.email,
+            firstName: timeOffWorkLogsData.workMonth.user.firstName,
+            id: timeOffWorkLogsData.workMonth.user.id,
+            lastName: timeOffWorkLogsData.workMonth.user.lastName,
+          },
+          year: parseInt(timeOffWorkLogsData.workMonth.year, 10),
+        },
+      })),
+    };
+
+    return state
+      .setIn(['specialApprovalList', 'data'], Immutable.fromJS(specialApprovalListData))
+      .setIn(['specialApprovalList', 'isFetching'], false)
+      .setIn(['specialApprovalList', 'isFetchingFailure'], false);
+  }
+
+  if (type === actionTypes.FETCH_SPECIAL_APPROVAL_LIST_FAILURE) {
+    return state
+      .setIn(['specialApprovalList', 'data'], null)
+      .setIn(['specialApprovalList', 'isFetching'], false)
+      .setIn(['specialApprovalList', 'isFetchingFailure'], true);
+  }
 
   if (type === actionTypes.FETCH_WORK_MONTH_REQUEST) {
     return state
