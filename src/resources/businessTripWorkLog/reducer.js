@@ -1,5 +1,10 @@
 import Immutable from 'immutable';
 import { toMomentDateTime } from '../../services/dateTimeService';
+import {
+  STATUS_APPROVED,
+  STATUS_REJECTED,
+  STATUS_WAITING_FOR_APPROVAL,
+} from '../workMonth';
 import initialState from './initialState';
 import * as actionTypes from './actionTypes';
 
@@ -13,49 +18,109 @@ export default (state, action) => {
     type,
   } = action;
 
+  const resolveWorkLogStatus = (workLog) => {
+    if (workLog.timeApproved) {
+      return STATUS_APPROVED;
+    }
+
+    if (workLog.timeRejected) {
+      return STATUS_REJECTED;
+    }
+
+    return STATUS_WAITING_FOR_APPROVAL;
+  };
+
+  const filterWorkLog = data => ({
+    date: toMomentDateTime(data.date),
+    id: parseInt(data.id, 10),
+    rejectionMessage: data.rejectionMessage,
+    status: resolveWorkLogStatus(data),
+    timeApproved: toMomentDateTime(data.timeApproved),
+    timeRejected: toMomentDateTime(data.timeRejected),
+  });
+
   if (type === actionTypes.ADD_BUSINESS_TRIP_WORK_LOG_REQUEST) {
     return state
-      .setIn(['addBusinessTripWorkLog', 'isPosting'], true)
-      .setIn(['addBusinessTripWorkLog', 'isPostingFailure'], false);
+      .setIn(['businessTripWorkLog', 'isPosting'], true)
+      .setIn(['businessTripWorkLog', 'isPostingFailure'], false);
   }
 
   if (type === actionTypes.ADD_BUSINESS_TRIP_WORK_LOG_SUCCESS) {
-    const addBusinessTripWorkLogData = {
-      date: toMomentDateTime(payload.date),
-      id: parseInt(payload.id, 10),
-    };
-
     // Fetch is required to reload business trip work log list with added work log
     return state
-      .setIn(['addBusinessTripWorkLog', 'data'], Immutable.fromJS(addBusinessTripWorkLogData))
-      .setIn(['addBusinessTripWorkLog', 'isPosting'], false)
-      .setIn(['addBusinessTripWorkLog', 'isPostingFailure'], false);
+      .setIn(['businessTripWorkLog', 'data'], Immutable.fromJS(filterWorkLog(payload)))
+      .setIn(['businessTripWorkLog', 'isPosting'], false)
+      .setIn(['businessTripWorkLog', 'isPostingFailure'], false);
   }
 
   if (type === actionTypes.ADD_BUSINESS_TRIP_WORK_LOG_FAILURE) {
     return state
-      .setIn(['addBusinessTripWorkLog', 'data'], null)
-      .setIn(['addBusinessTripWorkLog', 'isPosting'], false)
-      .setIn(['addBusinessTripWorkLog', 'isPostingFailure'], true);
+      .setIn(['businessTripWorkLog', 'data'], null)
+      .setIn(['businessTripWorkLog', 'isPosting'], false)
+      .setIn(['businessTripWorkLog', 'isPostingFailure'], true);
   }
 
   if (type === actionTypes.DELETE_BUSINESS_TRIP_WORK_LOG_REQUEST) {
     return state
-      .setIn(['deleteBusinessTripWorkLog', 'isPosting'], true)
-      .setIn(['deleteBusinessTripWorkLog', 'isPostingFailure'], false);
+      .setIn(['businessTripWorkLog', 'isPosting'], true)
+      .setIn(['businessTripWorkLog', 'isPostingFailure'], false);
   }
 
   if (type === actionTypes.DELETE_BUSINESS_TRIP_WORK_LOG_SUCCESS) {
     // Fetch is required to reload business trip  work log list with deleted work log
     return state
-      .setIn(['deleteBusinessTripWorkLog', 'isPosting'], false)
-      .setIn(['deleteBusinessTripWorkLog', 'isPostingFailure'], false);
+      .setIn(['businessTripWorkLog', 'data'], null)
+      .setIn(['businessTripWorkLog', 'isPosting'], false)
+      .setIn(['businessTripWorkLog', 'isPostingFailure'], false);
   }
 
   if (type === actionTypes.DELETE_BUSINESS_TRIP_WORK_LOG_FAILURE) {
     return state
-      .setIn(['deleteBusinessTripWorkLog', 'isPosting'], false)
-      .setIn(['deleteBusinessTripWorkLog', 'isPostingFailure'], true);
+      .setIn(['businessTripWorkLog', 'data'], null)
+      .setIn(['businessTripWorkLog', 'isPosting'], false)
+      .setIn(['businessTripWorkLog', 'isPostingFailure'], true);
+  }
+
+  if (type === actionTypes.MARK_BUSINESS_TRIP_WORK_LOG_APPROVED_REQUEST) {
+    // Fetch is required to reload business trip work log list with marked work log
+    return state
+      .setIn(['businessTripWorkLog', 'data'], Immutable.fromJS(filterWorkLog(payload)))
+      .setIn(['businessTripWorkLog', 'isPosting'], false)
+      .setIn(['businessTripWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.MARK_BUSINESS_TRIP_WORK_LOG_APPROVED_SUCCESS) {
+    return state
+      .setIn(['businessTripWorkLog', 'data'], null)
+      .setIn(['businessTripWorkLog', 'isPosting'], false)
+      .setIn(['businessTripWorkLog', 'isPostingFailure'], true);
+  }
+
+  if (type === actionTypes.MARK_BUSINESS_TRIP_WORK_LOG_APPROVED_FAILURE) {
+    return state
+      .setIn(['businessTripWorkLog', 'isPosting'], true)
+      .setIn(['businessTripWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.MARK_BUSINESS_TRIP_WORK_LOG_REJECTED_REQUEST) {
+    // Fetch is required to reload business trip work log list with marked work log
+    return state
+      .setIn(['businessTripWorkLog', 'data'], Immutable.fromJS(filterWorkLog(payload)))
+      .setIn(['businessTripWorkLog', 'isPosting'], false)
+      .setIn(['businessTripWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.MARK_BUSINESS_TRIP_WORK_LOG_REJECTED_SUCCESS) {
+    return state
+      .setIn(['businessTripWorkLog', 'data'], null)
+      .setIn(['businessTripWorkLog', 'isPosting'], false)
+      .setIn(['businessTripWorkLog', 'isPostingFailure'], true);
+  }
+
+  if (type === actionTypes.MARK_BUSINESS_TRIP_WORK_LOG_REJECTED_FAILURE) {
+    return state
+      .setIn(['businessTripWorkLog', 'isPosting'], true)
+      .setIn(['businessTripWorkLog', 'isPostingFailure'], false);
   }
 
   return state;

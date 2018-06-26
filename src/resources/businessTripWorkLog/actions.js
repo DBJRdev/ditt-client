@@ -33,3 +33,29 @@ export const deleteBusinessTripWorkLog = id => dispatch => dispatch({
     ],
   },
 });
+
+export const markBusinessTripWorkLogApproved = id => dispatch => dispatch({
+  [RSAA]: {
+    endpoint: `${API_URL}/business_trip_work_logs/${id}/mark_approved`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.MARK_BUSINESS_TRIP_WORK_LOG_APPROVED_REQUEST,
+      types.MARK_BUSINESS_TRIP_WORK_LOG_APPROVED_SUCCESS,
+      types.MARK_BUSINESS_TRIP_WORK_LOG_APPROVED_FAILURE,
+    ],
+  },
+});
+
+export const markBusinessTripWorkLogRejected = id => dispatch => dispatch({
+  [RSAA]: {
+    endpoint: `${API_URL}/business_trip_work_logs/${id}/mark_rejected`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.MARK_BUSINESS_TRIP_WORK_LOG_REJECTED_REQUEST,
+      types.MARK_BUSINESS_TRIP_WORK_LOG_REJECTED_SUCCESS,
+      types.MARK_BUSINESS_TRIP_WORK_LOG_REJECTED_FAILURE,
+    ],
+  },
+});

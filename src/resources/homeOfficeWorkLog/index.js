@@ -1,12 +1,13 @@
 export {
   addHomeOfficeWorkLog,
   deleteHomeOfficeWorkLog,
+  markHomeOfficeWorkLogApproved,
+  markHomeOfficeTripWorkLogRejected,
 } from './actions';
 
 export {
-  selectAddHomeOfficeWorkLog,
-  selectAddHomeOfficeWorkLogMeta,
-  selectDeleteHomeOfficeWorkLogMeta,
+  selectHomeOfficeWorkLog,
+  selectHomeOfficeWorkLogMeta,
 } from './selectors';
 
 export { default as reducer } from './reducer';

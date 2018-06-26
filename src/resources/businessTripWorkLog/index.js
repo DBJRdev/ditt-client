@@ -1,12 +1,13 @@
 export {
   addBusinessTripWorkLog,
   deleteBusinessTripWorkLog,
+  markBusinessTripWorkLogApproved,
+  markBusinessTripWorkLogRejected,
 } from './actions';
 
 export {
-  selectAddBusinessTripWorkLog,
-  selectAddBusinessTripWorkLogMeta,
-  selectDeleteBusinessTripWorkLogMeta,
+  selectBusinessTripWorkLog,
+  selectBusinessTripWorkLogMeta,
 } from './selectors';
 
 export { default as reducer } from './reducer';

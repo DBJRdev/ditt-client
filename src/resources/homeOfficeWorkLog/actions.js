@@ -33,3 +33,29 @@ export const deleteHomeOfficeWorkLog = id => dispatch => dispatch({
     ],
   },
 });
+
+export const markHomeOfficeWorkLogApproved = id => dispatch => dispatch({
+  [RSAA]: {
+    endpoint: `${API_URL}/home_office_work_logs/${id}/mark_approved`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.MARK_HOME_OFFICE_WORK_LOG_APPROVED_REQUEST,
+      types.MARK_HOME_OFFICE_WORK_LOG_APPROVED_SUCCESS,
+      types.MARK_HOME_OFFICE_WORK_LOG_APPROVED_FAILURE,
+    ],
+  },
+});
+
+export const markHomeOfficeTripWorkLogRejected = id => dispatch => dispatch({
+  [RSAA]: {
+    endpoint: `${API_URL}/home_office_work_logs/${id}/mark_rejected`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.MARK_HOME_OFFICE_WORK_LOG_REJECTED_REQUEST,
+      types.MARK_HOME_OFFICE_WORK_LOG_REJECTED_SUCCESS,
+      types.MARK_HOME_OFFICE_WORK_LOG_REJECTED_FAILURE,
+    ],
+  },
+});

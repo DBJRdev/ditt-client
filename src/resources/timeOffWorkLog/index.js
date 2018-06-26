@@ -1,12 +1,13 @@
 export {
   addTimeOffWorkLog,
   deleteTimeOffWorkLog,
+  markTimeOffWorkLogApproved,
+  markTimeOffTripWorkLogRejected,
 } from './actions';
 
 export {
-  selectAddTimeOffWorkLog,
-  selectAddTimeOffWorkLogMeta,
-  selectDeleteTimeOffWorkLogMeta,
+  selectTimeOffWorkLog,
+  selectTimeOffWorkLogMeta,
 } from './selectors';
 
 export { default as reducer } from './reducer';

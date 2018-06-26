@@ -30,31 +30,31 @@ export default (state, action) => {
     return STATUS_WAITING_FOR_APPROVAL;
   };
 
-  const filterWorkMonth = date => ({
-    businessTripWorkLogs: date.businessTripWorkLogs.map(businessTripWorkLogsData => ({
+  const filterWorkMonth = data => ({
+    businessTripWorkLogs: data.businessTripWorkLogs.map(businessTripWorkLogsData => ({
       date: toMomentDateTime(businessTripWorkLogsData.date),
       id: parseInt(businessTripWorkLogsData.id, 10),
       status: resolveWorkLogStatus(businessTripWorkLogsData),
     })),
-    homeOfficeWorkLogs: date.homeOfficeWorkLogs.map(homeOfficeWorkLogsData => ({
+    homeOfficeWorkLogs: data.homeOfficeWorkLogs.map(homeOfficeWorkLogsData => ({
       date: toMomentDateTime(homeOfficeWorkLogsData.date),
       id: parseInt(homeOfficeWorkLogsData.id, 10),
       status: resolveWorkLogStatus(homeOfficeWorkLogsData),
     })),
-    id: date.id,
-    month: parseInt(date.month, 10),
-    status: date.status,
-    timeOffWorkLogs: date.timeOffWorkLogs.map(timeOffWorkLogsData => ({
+    id: data.id,
+    month: parseInt(data.month, 10),
+    status: data.status,
+    timeOffWorkLogs: data.timeOffWorkLogs.map(timeOffWorkLogsData => ({
       date: toMomentDateTime(timeOffWorkLogsData.date),
       id: parseInt(timeOffWorkLogsData.id, 10),
       status: resolveWorkLogStatus(timeOffWorkLogsData),
     })),
-    workLogs: date.workLogs.map(workLogData => ({
+    workLogs: data.workLogs.map(workLogData => ({
       endTime: toMomentDateTime(workLogData.endTime),
       id: parseInt(workLogData.id, 10),
       startTime: toMomentDateTime(workLogData.startTime),
     })),
-    year: parseInt(date.year, 10),
+    year: parseInt(data.year, 10),
   });
 
   if (type === actionTypes.FETCH_SPECIAL_APPROVAL_LIST_REQUEST) {

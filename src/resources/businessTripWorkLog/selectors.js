@@ -1,24 +1,16 @@
 import { createSelector } from 'reselect';
 
-const getAddBusinessTripWorkLog = state => state.getIn(['businessTripWorkLog', 'addBusinessTripWorkLog']);
-const getDeleteBusinessTripWorkLog = state => state.getIn(['businessTripWorkLog', 'deleteBusinessTripWorkLog']);
+const getBusinessTripWorkLog = state => state.getIn(['businessTripWorkLog', 'businessTripWorkLog']);
 
-export const selectAddBusinessTripWorkLog = createSelector(
-  [getAddBusinessTripWorkLog],
+export const selectBusinessTripWorkLog = createSelector(
+  [getBusinessTripWorkLog],
   data => data.get('data')
 );
-export const selectAddBusinessTripWorkLogMeta = createSelector(
-  [getAddBusinessTripWorkLog],
+export const selectBusinessTripWorkLogMeta = createSelector(
+  [getBusinessTripWorkLog],
   data => ({
     isPosting: data.get('isPosting'),
     isPostingFailure: data.get('isPostingFailure'),
   })
 );
 
-export const selectDeleteBusinessTripWorkLogMeta = createSelector(
-  [getDeleteBusinessTripWorkLog],
-  data => ({
-    isPosting: data.get('isPosting'),
-    isPostingFailure: data.get('isPostingFailure'),
-  })
-);

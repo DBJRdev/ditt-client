@@ -1,12 +1,8 @@
 import Immutable from 'immutable';
 
 export default Immutable.fromJS({
-  addHomeOfficeWorkLog: {
+  homeOfficeWorkLog: {
     data: null,
-    isPosting: false,
-    isPostingFailure: false,
-  },
-  deleteHomeOfficeWorkLog: {
     isPosting: false,
     isPostingFailure: false,
   },

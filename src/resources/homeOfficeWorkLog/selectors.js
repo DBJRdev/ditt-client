@@ -1,22 +1,13 @@
 import { createSelector } from 'reselect';
 
-const getAddHomeOfficeWorkLog = state => state.getIn(['homeOfficeWorkLog', 'addHomeOfficeWorkLog']);
-const getDeleteHomeOfficeWorkLog = state => state.getIn(['homeOfficeWorkLog', 'deleteHomeOfficeWorkLog']);
+const getHomeOfficeWorkLog = state => state.getIn(['homeOfficeWorkLog', 'homeOfficeWorkLog']);
 
-export const selectAddHomeOfficeWorkLog = createSelector(
-  [getAddHomeOfficeWorkLog],
+export const selectHomeOfficeWorkLog = createSelector(
+  [getHomeOfficeWorkLog],
   data => data.get('data')
 );
-export const selectAddHomeOfficeWorkLogMeta = createSelector(
-  [getAddHomeOfficeWorkLog],
-  data => ({
-    isPosting: data.get('isPosting'),
-    isPostingFailure: data.get('isPostingFailure'),
-  })
-);
-
-export const selectDeleteHomeOfficeWorkLogMeta = createSelector(
-  [getDeleteHomeOfficeWorkLog],
+export const selectHomeOfficeWorkLogMeta = createSelector(
+  [getHomeOfficeWorkLog],
   data => ({
     isPosting: data.get('isPosting'),
     isPostingFailure: data.get('isPostingFailure'),
