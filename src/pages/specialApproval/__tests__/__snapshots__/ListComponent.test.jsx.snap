@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly 1`] = `
+<Connect(LayoutComponent)
+  loading={false}
+  title="Special approvals"
+>
+  <div>
+    You do not seem to have any pending special approvals.
+  </div>
+</Connect(LayoutComponent)>
+`;

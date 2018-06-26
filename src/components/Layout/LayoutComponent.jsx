@@ -53,6 +53,15 @@ class LayoutComponent extends React.Component {
               {this.isAuthorized([ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]) && (
                 <div className={styles.navigationItem}>
                   <Button
+                    clickHandler={() => history.push(routes.specialApprovalList)}
+                    label="Special approvals"
+                    priority="default"
+                  />
+                </div>
+              )}
+              {this.isAuthorized([ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]) && (
+                <div className={styles.navigationItem}>
+                  <Button
                     clickHandler={() => history.push(routes.supervisedUserList)}
                     label="Supervised users"
                     priority="default"
