@@ -6,6 +6,9 @@ exports[`rendering renders correctly 1`] = `
   title="Work logs"
 >
   <WorkLogCalendar
+    addBusinessTripWorkLog={[Function]}
+    addHomeOfficeWorkLog={[Function]}
+    addTimeOffWorkLog={[Function]}
     addWorkLog={[Function]}
     changeSelectedDate={[Function]}
     deleteWorkLog={[Function]}

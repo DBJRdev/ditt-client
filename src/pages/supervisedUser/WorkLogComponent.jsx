@@ -47,6 +47,9 @@ class WorkLogComponent extends React.Component {
     return (
       <Layout title="Work logs" loading={this.props.isFetching}>
         <WorkLogCalendar
+          addBusinessTripWorkLog={() => {}}
+          addHomeOfficeWorkLog={() => {}}
+          addTimeOffWorkLog={() => {}}
           addWorkLog={() => {}}
           deleteWorkLog={() => {}}
           changeSelectedDate={this.changeSelectedDate}

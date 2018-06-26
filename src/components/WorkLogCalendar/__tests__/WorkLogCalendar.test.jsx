@@ -23,6 +23,9 @@ afterEach(() => {
 describe('rendering', () => {
   it('renders correctly with opened work month', () => {
     const tree = shallow(<WorkLogCalendar
+      addBusinessTripWorkLog={() => {}}
+      addHomeOfficeWorkLog={() => {}}
+      addTimeOffWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
@@ -69,6 +72,9 @@ describe('rendering', () => {
 
   it('renders correctly with work month waiting for approval', () => {
     const tree = shallow(<WorkLogCalendar
+      addBusinessTripWorkLog={() => {}}
+      addHomeOfficeWorkLog={() => {}}
+      addTimeOffWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
@@ -115,6 +121,9 @@ describe('rendering', () => {
 
   it('renders correctly with closed work month', () => {
     const tree = shallow(<WorkLogCalendar
+      addBusinessTripWorkLog={() => {}}
+      addHomeOfficeWorkLog={() => {}}
+      addTimeOffWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
@@ -161,6 +170,9 @@ describe('rendering', () => {
 
   it('renders correctly supervisor view with opened work month', () => {
     const tree = shallow(<WorkLogCalendar
+      addBusinessTripWorkLog={() => {}}
+      addHomeOfficeWorkLog={() => {}}
+      addTimeOffWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
@@ -208,6 +220,9 @@ describe('rendering', () => {
 
   it('renders correctly supervisor view with work month waiting for approval', () => {
     const tree = shallow(<WorkLogCalendar
+      addBusinessTripWorkLog={() => {}}
+      addHomeOfficeWorkLog={() => {}}
+      addTimeOffWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
@@ -255,6 +270,9 @@ describe('rendering', () => {
 
   it('renders correctly supervisor view with closed work month', () => {
     const tree = shallow(<WorkLogCalendar
+      addBusinessTripWorkLog={() => {}}
+      addHomeOfficeWorkLog={() => {}}
+      addTimeOffWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
@@ -305,6 +323,9 @@ describe('functionality', () => {
   it('calls changeSelectedDate() date when previous month button is clicked', () => {
     const spy = sinon.spy();
     const tree = mount(<WorkLogCalendar
+      addBusinessTripWorkLog={() => {}}
+      addHomeOfficeWorkLog={() => {}}
+      addTimeOffWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
@@ -356,6 +377,9 @@ describe('functionality', () => {
   it('calls changeSelectedDate() date when next month button is clicked', () => {
     const spy = sinon.spy();
     const tree = mount(<WorkLogCalendar
+      addBusinessTripWorkLog={() => {}}
+      addHomeOfficeWorkLog={() => {}}
+      addTimeOffWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
@@ -407,6 +431,9 @@ describe('functionality', () => {
   it('calls markWaitingForApproval() when send for approval button is clicked', () => {
     const spy = sinon.spy();
     const tree = mount(<WorkLogCalendar
+      addBusinessTripWorkLog={() => {}}
+      addHomeOfficeWorkLog={() => {}}
+      addTimeOffWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
@@ -456,6 +483,9 @@ describe('functionality', () => {
   it('calls markApproved() when approve button is clicked', () => {
     const spy = sinon.spy();
     const tree = mount(<WorkLogCalendar
+      addBusinessTripWorkLog={() => {}}
+      addHomeOfficeWorkLog={() => {}}
+      addTimeOffWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}

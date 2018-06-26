@@ -1,5 +1,11 @@
 import validator from 'validator';
 import {
+  BUSINESS_TRIP_WORK_LOG,
+  HOME_OFFICE_WORK_LOG,
+  TIME_OFF_WORK_LOG,
+  WORK_LOG,
+} from '../resources/workMonth';
+import {
   isOverlapping,
   localizedMoment,
 } from './dateTimeService';
@@ -106,9 +112,26 @@ export const validateWorkLog = (workLog, workLogsOfDay) => {
       form: null,
       startHour: null,
       startMinute: null,
+      type: null,
     },
     isValid: true,
   };
+
+  if ([
+    BUSINESS_TRIP_WORK_LOG,
+    HOME_OFFICE_WORK_LOG,
+    TIME_OFF_WORK_LOG,
+    WORK_LOG,
+  ].indexOf(workLog.type) === -1) {
+    errors.elements.type = 'Invalid type.';
+    errors.isValid = false;
+
+    return errors;
+  }
+
+  if (workLog.type !== WORK_LOG) {
+    return errors;
+  }
 
   const hourCheck = [
     'endHour',

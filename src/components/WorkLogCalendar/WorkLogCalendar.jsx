@@ -149,7 +149,20 @@ class WorkLogCalendar extends React.Component {
   }
 
   saveWorkLogForm(data) {
-    return this.props.addWorkLog(data);
+    if (BUSINESS_TRIP_WORK_LOG === data.type) {
+      return this.props.addBusinessTripWorkLog({ date: data.date });
+    } else if (HOME_OFFICE_WORK_LOG === data.type) {
+      return this.props.addHomeOfficeWorkLog({ date: data.date });
+    } else if (TIME_OFF_WORK_LOG === data.type) {
+      return this.props.addTimeOffWorkLog({ date: data.date });
+    } else if (WORK_LOG === data.type) {
+      return this.props.addWorkLog({
+        endTime: data.endTime,
+        startTime: data.startTime,
+      });
+    }
+
+    throw new Error(`Unknown type ${data.type}`);
   }
 
   closeWorkLogForm() {
@@ -476,6 +489,9 @@ WorkLogCalendar.defaultProps = {
 };
 
 WorkLogCalendar.propTypes = {
+  addBusinessTripWorkLog: PropTypes.func.isRequired,
+  addHomeOfficeWorkLog: PropTypes.func.isRequired,
+  addTimeOffWorkLog: PropTypes.func.isRequired,
   addWorkLog: PropTypes.func.isRequired,
   changeSelectedDate: PropTypes.func.isRequired,
   deleteWorkLog: PropTypes.func.isRequired,

@@ -19,6 +19,9 @@ class WorkLogComponent extends React.Component {
       selectedDate: localizedMoment(),
     };
 
+    this.addBusinessTripWorkLog = this.addBusinessTripWorkLog.bind(this);
+    this.addHomeOfficeWorkLog = this.addHomeOfficeWorkLog.bind(this);
+    this.addTimeOffWorkLog = this.addTimeOffWorkLog.bind(this);
     this.addWorkLog = this.addWorkLog.bind(this);
     this.deleteWorkLog = this.deleteWorkLog.bind(this);
     this.changeSelectedDate = this.changeSelectedDate.bind(this);
@@ -28,6 +31,27 @@ class WorkLogComponent extends React.Component {
     this.props.fetchWorkHoursList(this.props.uid);
     this.props.fetchWorkMonthList(this.props.uid).then(() => {
       this.fetchWorkMonth(this.state.selectedDate);
+    });
+  }
+
+  addBusinessTripWorkLog(data) {
+    return this.props.addBusinessTripWorkLog(data).then((response) => {
+      this.fetchWorkMonth(this.state.selectedDate);
+      return response;
+    });
+  }
+
+  addHomeOfficeWorkLog(data) {
+    return this.props.addHomeOfficeWorkLog(data).then((response) => {
+      this.fetchWorkMonth(this.state.selectedDate);
+      return response;
+    });
+  }
+
+  addTimeOffWorkLog(data) {
+    return this.props.addTimeOffWorkLog(data).then((response) => {
+      this.fetchWorkMonth(this.state.selectedDate);
+      return response;
     });
   }
 
@@ -63,6 +87,9 @@ class WorkLogComponent extends React.Component {
     return (
       <Layout title="Work logs" loading={this.props.isFetching}>
         <WorkLogCalendar
+          addBusinessTripWorkLog={this.addBusinessTripWorkLog}
+          addHomeOfficeWorkLog={this.addHomeOfficeWorkLog}
+          addTimeOffWorkLog={this.addTimeOffWorkLog}
           addWorkLog={this.addWorkLog}
           deleteWorkLog={this.deleteWorkLog}
           changeSelectedDate={this.changeSelectedDate}
@@ -85,6 +112,9 @@ WorkLogComponent.defaultProps = {
 };
 
 WorkLogComponent.propTypes = {
+  addBusinessTripWorkLog: PropTypes.func.isRequired,
+  addHomeOfficeWorkLog: PropTypes.func.isRequired,
+  addTimeOffWorkLog: PropTypes.func.isRequired,
   addWorkLog: PropTypes.func.isRequired,
   deleteWorkLog: PropTypes.func.isRequired,
   fetchWorkHoursList: PropTypes.func.isRequired,
