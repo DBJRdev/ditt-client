@@ -1,9 +1,13 @@
 import Immutable from 'immutable';
 import { toMomentDateTime } from '../../services/dateTimeService';
 import {
+  BUSINESS_TRIP_WORK_LOG,
+  HOME_OFFICE_WORK_LOG,
   STATUS_APPROVED,
   STATUS_REJECTED,
   STATUS_WAITING_FOR_APPROVAL,
+  TIME_OFF_WORK_LOG,
+  WORK_LOG,
 } from './constants';
 import initialState from './initialState';
 import * as actionTypes from './actionTypes';
@@ -35,11 +39,13 @@ export default (state, action) => {
       date: toMomentDateTime(businessTripWorkLogsData.date),
       id: parseInt(businessTripWorkLogsData.id, 10),
       status: resolveWorkLogStatus(businessTripWorkLogsData),
+      type: BUSINESS_TRIP_WORK_LOG,
     })),
     homeOfficeWorkLogs: data.homeOfficeWorkLogs.map(homeOfficeWorkLogsData => ({
       date: toMomentDateTime(homeOfficeWorkLogsData.date),
       id: parseInt(homeOfficeWorkLogsData.id, 10),
       status: resolveWorkLogStatus(homeOfficeWorkLogsData),
+      type: HOME_OFFICE_WORK_LOG,
     })),
     id: data.id,
     month: parseInt(data.month, 10),
@@ -48,11 +54,13 @@ export default (state, action) => {
       date: toMomentDateTime(timeOffWorkLogsData.date),
       id: parseInt(timeOffWorkLogsData.id, 10),
       status: resolveWorkLogStatus(timeOffWorkLogsData),
+      type: TIME_OFF_WORK_LOG,
     })),
     workLogs: data.workLogs.map(workLogData => ({
       endTime: toMomentDateTime(workLogData.endTime),
       id: parseInt(workLogData.id, 10),
       startTime: toMomentDateTime(workLogData.startTime),
+      type: WORK_LOG,
     })),
     year: parseInt(data.year, 10),
   });

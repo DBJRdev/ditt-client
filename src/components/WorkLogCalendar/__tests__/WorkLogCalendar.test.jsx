@@ -33,9 +33,12 @@ describe('rendering', () => {
       workHoursList={Immutable.List()}
       workMonth={
         Immutable.fromJS({
+          businessTripWorkLogs: [],
+          homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
           status: 'OPENED',
+          timeOffWorkLogs: [],
           workLogs: [],
           year: 2018,
         })
@@ -76,9 +79,12 @@ describe('rendering', () => {
       workHoursList={Immutable.List()}
       workMonth={
         Immutable.fromJS({
+          businessTripWorkLogs: [],
+          homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
           status: 'WAITING_FOR_APPROVAL',
+          timeOffWorkLogs: [],
           workLogs: [],
           year: 2018,
         })
@@ -119,9 +125,12 @@ describe('rendering', () => {
       workHoursList={Immutable.List()}
       workMonth={
         Immutable.fromJS({
+          businessTripWorkLogs: [],
+          homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
           status: 'APPROVED',
+          timeOffWorkLogs: [],
           workLogs: [],
           year: 2018,
         })
@@ -163,9 +172,12 @@ describe('rendering', () => {
       workHoursList={Immutable.List()}
       workMonth={
         Immutable.fromJS({
+          businessTripWorkLogs: [],
+          homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
           status: 'OPENED',
+          timeOffWorkLogs: [],
           workLogs: [],
           year: 2018,
         })
@@ -207,9 +219,12 @@ describe('rendering', () => {
       workHoursList={Immutable.List()}
       workMonth={
         Immutable.fromJS({
+          businessTripWorkLogs: [],
+          homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
           status: 'WAITING_FOR_APPROVAL',
+          timeOffWorkLogs: [],
           workLogs: [],
           year: 2018,
         })
@@ -251,9 +266,12 @@ describe('rendering', () => {
       workHoursList={Immutable.List()}
       workMonth={
         Immutable.fromJS({
+          businessTripWorkLogs: [],
+          homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
           status: 'APPROVED',
+          timeOffWorkLogs: [],
           workLogs: [],
           year: 2018,
         })
@@ -297,9 +315,12 @@ describe('functionality', () => {
       workHoursList={Immutable.List()}
       workMonth={
         Immutable.fromJS({
+          businessTripWorkLogs: [],
+          homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
           status: 'OPENED',
+          timeOffWorkLogs: [],
           workLogs: [],
           year: 2018,
         })
@@ -345,9 +366,12 @@ describe('functionality', () => {
       workHoursList={Immutable.List()}
       workMonth={
         Immutable.fromJS({
+          businessTripWorkLogs: [],
+          homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
           status: 'OPENED',
+          timeOffWorkLogs: [],
           workLogs: [],
           year: 2018,
         })
@@ -393,9 +417,12 @@ describe('functionality', () => {
       workHoursList={Immutable.List()}
       workMonth={
         Immutable.fromJS({
+          businessTripWorkLogs: [],
+          homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
           status: 'OPENED',
+          timeOffWorkLogs: [],
           workLogs: [],
           year: 2018,
         })
@@ -440,9 +467,12 @@ describe('functionality', () => {
       workHoursList={Immutable.List()}
       workMonth={
         Immutable.fromJS({
+          businessTripWorkLogs: [],
+          homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
           status: 'WAITING_FOR_APPROVAL',
+          timeOffWorkLogs: [],
           workLogs: [],
           year: 2018,
         })

@@ -1,3 +1,4 @@
+import Immutable from 'immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -7,9 +8,14 @@ import {
 } from 'react-ui';
 import WorkLogForm from '../WorkLogForm';
 import {
+  BUSINESS_TRIP_WORK_LOG,
+  HOME_OFFICE_WORK_LOG,
   STATUS_APPROVED,
   STATUS_OPENED,
+  STATUS_REJECTED,
   STATUS_WAITING_FOR_APPROVAL,
+  TIME_OFF_WORK_LOG,
+  WORK_LOG,
 } from '../../resources/workMonth';
 import {
   includesSameDate,
@@ -36,6 +42,7 @@ class WorkLogCalendar extends React.Component {
     this.state = {
       showDeleteWorkLogDialog: false,
       showDeleteWorkLogDialogId: null,
+      showDeleteWorkLogDialogType: null,
       showWorkLogForm: false,
       showWorkLogFormDate: localizedMoment(),
     };
@@ -58,10 +65,35 @@ class WorkLogCalendar extends React.Component {
     const days = [];
 
     while (renderingDay <= lastDayOfMonth) {
-      let workLogListForRenderingDay = [];
+      let workLogListForRenderingDay = Immutable.List();
 
       if (workMonth) {
-        workLogListForRenderingDay = getWorkLogsByDay(renderingDay, workMonth.get('workLogs')).toJS();
+        workLogListForRenderingDay = workLogListForRenderingDay.concat((
+          getWorkLogsByDay(
+            renderingDay,
+            workMonth.get('workLogs')
+          )
+        ));
+        workLogListForRenderingDay = workLogListForRenderingDay.concat((
+          getWorkLogsByDay(
+            renderingDay,
+            workMonth.get('businessTripWorkLogs')
+          )
+        ));
+        workLogListForRenderingDay = workLogListForRenderingDay.concat((
+          getWorkLogsByDay(
+            renderingDay,
+            workMonth.get('homeOfficeWorkLogs')
+          )
+        ));
+        workLogListForRenderingDay = workLogListForRenderingDay.concat((
+          getWorkLogsByDay(
+            renderingDay,
+            workMonth.get('timeOffWorkLogs')
+          )
+        ));
+
+        workLogListForRenderingDay = workLogListForRenderingDay.toJS();
       }
 
       days.push({
@@ -84,14 +116,17 @@ class WorkLogCalendar extends React.Component {
     this.props.changeSelectedDate(this.props.selectedDate.clone().subtract(1, 'month'));
   }
 
-  openDeleteWorkLogDialog(id) {
+  openDeleteWorkLogDialog(id, type) {
     this.setState({
       showDeleteWorkLogDialog: true,
       showDeleteWorkLogDialogId: id,
+      showDeleteWorkLogDialogType: type,
     });
   }
 
-  deleteWorkLog(id) {
+  deleteWorkLog(id, type) {
+    console.log(type);
+
     return this.props.deleteWorkLog(id).then(this.closeDeleteWorkLogDialog);
   }
 
@@ -99,6 +134,7 @@ class WorkLogCalendar extends React.Component {
     this.setState({
       showDeleteWorkLogDialog: false,
       showDeleteWorkLogDialogId: null,
+      showDeleteWorkLogDialogType: null,
     });
   }
 
@@ -166,7 +202,10 @@ class WorkLogCalendar extends React.Component {
       <Modal
         actions={[
           {
-            clickHandler: () => this.deleteWorkLog(this.state.showDeleteWorkLogDialogId),
+            clickHandler: () => this.deleteWorkLog(
+              this.state.showDeleteWorkLogDialogId,
+              this.state.showDeleteWorkLogDialogType
+            ),
             label: 'Delete',
             loading: this.props.isPosting,
           },
@@ -273,19 +312,111 @@ class WorkLogCalendar extends React.Component {
                       </div>
                     </td>
                     <td className={styles.tableCell}>
-                      {day.workLogList.map(workLog => (
-                        <div
-                          key={workLog.id}
-                          className={styles.workLogButtonWrapper}
-                        >
-                          <Button
-                            clickHandler={() => this.openDeleteWorkLogDialog(workLog.id)}
-                            disabled={this.props.supervisorView || status === STATUS_APPROVED}
-                            icon="work"
-                            label={`${toHourMinuteFormat(workLog.startTime)} - ${toHourMinuteFormat(workLog.endTime)}`}
-                          />
-                        </div>
-                      ))}
+                      {day.workLogList.map((workLog) => {
+                        const resolveLabel = (workLogData) => {
+                          let label = '';
+
+                          if (BUSINESS_TRIP_WORK_LOG === workLogData.type) {
+                            label = 'Business trip';
+                          } else if (HOME_OFFICE_WORK_LOG === workLogData.type) {
+                            label = 'Home office';
+                          } else if (TIME_OFF_WORK_LOG === workLogData.type) {
+                            label = 'Time off';
+                          } else {
+                            throw new Error(`Unknown type ${workLog.type}`);
+                          }
+
+                          if (STATUS_WAITING_FOR_APPROVAL === workLogData.status) {
+                            label += ' (Waiting)';
+                          } else if (STATUS_WAITING_FOR_APPROVAL === workLogData.status) {
+                            label += ' (Rejected)';
+                          }
+
+                          return label;
+                        };
+
+                        if (workLog.type === BUSINESS_TRIP_WORK_LOG) {
+                          return (
+                            <div
+                              key={`BT-${workLog.id}`}
+                              className={styles.workLogButtonWrapper}
+                            >
+                              <Button
+                                clickHandler={
+                                  () => this.openDeleteWorkLogDialog(
+                                    workLog.id,
+                                    BUSINESS_TRIP_WORK_LOG
+                                  )
+                                }
+                                disabled={this.props.supervisorView || status === STATUS_APPROVED}
+                                icon="directions_car"
+                                label={resolveLabel(workLog)}
+                              />
+                            </div>
+                          );
+                        }
+
+                        if (workLog.type === HOME_OFFICE_WORK_LOG) {
+                          return (
+                            <div
+                              key={`HO-${workLog.id}`}
+                              className={styles.workLogButtonWrapper}
+                            >
+                              <Button
+                                clickHandler={
+                                  () => this.openDeleteWorkLogDialog(
+                                    workLog.id,
+                                    HOME_OFFICE_WORK_LOG
+                                  )
+                                }
+                                disabled={this.props.supervisorView || status === STATUS_APPROVED}
+                                icon="home"
+                                label={resolveLabel(workLog)}
+                              />
+                            </div>
+                          );
+                        }
+
+                        if (workLog.type === TIME_OFF_WORK_LOG) {
+                          return (
+                            <div
+                              key={`TO-${workLog.id}`}
+                              className={styles.workLogButtonWrapper}
+                            >
+                              <Button
+                                clickHandler={
+                                  () => this.openDeleteWorkLogDialog(
+                                    workLog.id,
+                                    TIME_OFF_WORK_LOG
+                                  )
+                                }
+                                disabled={this.props.supervisorView || status === STATUS_APPROVED}
+                                icon="flag"
+                                label={resolveLabel(workLog)}
+                              />
+                            </div>
+                          );
+                        }
+
+                        return (
+                          <div
+                            key={`WL-${workLog.id}`}
+                            className={styles.workLogButtonWrapper}
+                          >
+                            <Button
+                              clickHandler={
+                                () => this.openDeleteWorkLogDialog(
+                                  workLog.id,
+                                  WORK_LOG
+                                )
+                              }
+                              disabled={this.props.supervisorView || status === STATUS_APPROVED}
+                              icon="work"
+                              label={`${toHourMinuteFormat(workLog.startTime)} - ${toHourMinuteFormat(workLog.endTime)}`}
+                            />
+                          </div>
+                        );
+                      })}
                     </td>
                     {
                       !this.props.supervisorView
@@ -361,6 +492,24 @@ WorkLogCalendar.propTypes = {
     year: PropTypes.number.isRequired,
   })).isRequired,
   workMonth: ImmutablePropTypes.mapContains({
+    businessTripWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+      date: PropTypes.shape.isRequired,
+      id: PropTypes.number.isRequired,
+      status: PropTypes.oneOf([
+        STATUS_APPROVED,
+        STATUS_REJECTED,
+        STATUS_WAITING_FOR_APPROVAL,
+      ]).isRequired,
+    })).isRequired,
+    homeOfficeWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+      date: PropTypes.shape.isRequired,
+      id: PropTypes.number.isRequired,
+      status: PropTypes.oneOf([
+        STATUS_APPROVED,
+        STATUS_REJECTED,
+        STATUS_WAITING_FOR_APPROVAL,
+      ]).isRequired,
+    })).isRequired,
     id: PropTypes.number.isRequired,
     month: PropTypes.shape.isRequired,
     status: PropTypes.oneOf([
@@ -368,6 +517,15 @@ WorkLogCalendar.propTypes = {
       STATUS_OPENED,
       STATUS_WAITING_FOR_APPROVAL,
     ]).isRequired,
+    timeOffWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+      date: PropTypes.shape.isRequired,
+      id: PropTypes.number.isRequired,
+      status: PropTypes.oneOf([
+        STATUS_APPROVED,
+        STATUS_REJECTED,
+        STATUS_WAITING_FOR_APPROVAL,
+      ]).isRequired,
+    })).isRequired,
     workLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
       endTime: PropTypes.shape.isRequired,
       id: PropTypes.number.isRequired,
