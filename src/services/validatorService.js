@@ -185,3 +185,23 @@ export const validateWorkLog = (workLog, workLogsOfDay) => {
 
   return errors;
 };
+
+export const validateRejectWorkLog = (rejectWorkLog) => {
+  const errors = {
+    elements: {
+      form: null,
+      rejectionMessage: null,
+    },
+    isValid: true,
+  };
+
+  if (
+    rejectWorkLog.rejectionMessage === null
+    || validator.isEmpty(rejectWorkLog.rejectionMessage)
+  ) {
+    errors.elements.rejectionMessage = 'This field is required.';
+    errors.isValid = false;
+  }
+
+  return errors;
+};

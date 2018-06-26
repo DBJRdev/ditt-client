@@ -8,6 +8,13 @@ describe('rendering', () => {
     const props = {
       fetchSpecialApprovalList: () => {},
       isFetching: false,
+      isPosting: false,
+      markBusinessTripWorkLogApproved: () => {},
+      markBusinessTripWorkLogRejected: () => {},
+      markHomeOfficeWorkLogApproved: () => {},
+      markHomeOfficeWorkLogRejected: () => {},
+      markTimeOffWorkLogApproved: () => {},
+      markTimeOffWorkLogRejected: () => {},
       specialApprovalList: Immutable.fromJS({
         businessTripWorkLogs: [],
         homeOfficeWorkLogs: [],

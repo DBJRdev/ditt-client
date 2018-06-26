@@ -3,7 +3,12 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
 import jwt from 'jsonwebtoken';
-import { Table } from 'react-ui';
+import {
+  Button,
+  Modal,
+  TextField,
+  Table,
+} from 'react-ui';
 import Layout from '../../components/Layout';
 import {
   BUSINESS_TRIP_WORK_LOG,
@@ -13,8 +18,39 @@ import {
 import {
   toDayMonthYearFormat,
 } from '../../services/dateTimeService';
+import { validateRejectWorkLog } from '../../services/validatorService';
+import styles from './specialApproval.scss';
 
 class ListComponent extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      rejectWorkLogForm: {
+        rejectionMessage: null,
+      },
+      rejectWorkLogFormValidity: {
+        elements: {
+          form: null,
+          rejectionMessage: null,
+        },
+        isValid: false,
+      },
+      showRejectWorkLogForm: false,
+      showRejectWorkLogFormId: null,
+      showRejectWorkLogFormType: null,
+    };
+
+    this.changeRejectWorkLogFormHandler = this.changeRejectWorkLogFormHandler.bind(this);
+    this.closeDeleteWorkLogForm = this.closeDeleteWorkLogForm.bind(this);
+    this.rejectWorkLogHandler = this.rejectWorkLogHandler.bind(this);
+
+    this.formErrorStyle = {
+      color: '#a32100',
+      textAlign: 'center',
+    };
+  }
+
   componentDidMount() {
     if (this.props.token) {
       const decodedToken = jwt.decode(this.props.token);
@@ -31,6 +67,7 @@ class ListComponent extends React.Component {
     specialApprovalList = specialApprovalList.concat((
       this.props.specialApprovalList.get('businessTripWorkLogs').map((
         workLog => workLog
+          .set('rawId', workLog.get('id'))
           .set('id', `BT-${workLog.get('id')}`)
           .set('type', BUSINESS_TRIP_WORK_LOG)
       ))
@@ -38,6 +75,7 @@ class ListComponent extends React.Component {
     specialApprovalList = specialApprovalList.concat((
       this.props.specialApprovalList.get('homeOfficeWorkLogs').map((
         workLog => workLog
+          .set('rawId', workLog.get('id'))
           .set('id', `HO-${workLog.get('id')}`)
           .set('type', HOME_OFFICE_WORK_LOG)
       ))
@@ -45,6 +83,7 @@ class ListComponent extends React.Component {
     specialApprovalList = specialApprovalList.concat((
       this.props.specialApprovalList.get('timeOffWorkLogs').map((
         workLog => workLog
+          .set('rawId', workLog.get('id'))
           .set('id', `TO-${workLog.get('id')}`)
           .set('type', TIME_OFF_WORK_LOG)
       ))
@@ -52,6 +91,158 @@ class ListComponent extends React.Component {
     specialApprovalList = specialApprovalList.sortBy(workLog => -workLog.get('date'));
 
     return specialApprovalList;
+  }
+
+  handleMarkApproved(id, type) {
+    if (this.props.token) {
+      const decodedToken = jwt.decode(this.props.token);
+
+      if (decodedToken) {
+        let action = null;
+
+        switch (type) {
+          case BUSINESS_TRIP_WORK_LOG:
+            action = this.props.markBusinessTripWorkLogApproved;
+            break;
+          case HOME_OFFICE_WORK_LOG:
+            action = this.props.markHomeOfficeWorkLogApproved;
+            break;
+          case TIME_OFF_WORK_LOG:
+            action = this.props.markTimeOffWorkLogApproved;
+            break;
+          default:
+            throw new Error(`Unknown type ${type}`);
+        }
+
+        return action(id).then((response) => {
+          this.props.fetchSpecialApprovalList(decodedToken.uid);
+
+          return response;
+        });
+      }
+    }
+
+    return null;
+  }
+
+  handleMarkRejected(id, type, rejectionMessage) {
+    if (this.props.token) {
+      const decodedToken = jwt.decode(this.props.token);
+
+      if (decodedToken) {
+        let action = null;
+
+        switch (type) {
+          case BUSINESS_TRIP_WORK_LOG:
+            action = this.props.markBusinessTripWorkLogRejected;
+            break;
+          case HOME_OFFICE_WORK_LOG:
+            action = this.props.markHomeOfficeWorkLogRejected;
+            break;
+          case TIME_OFF_WORK_LOG:
+            action = this.props.markTimeOffWorkLogRejected;
+            break;
+          default:
+            throw new Error(`Unknown type ${type}`);
+        }
+
+        return action(id, { rejectionMessage }).then((response) => {
+          this.props.fetchSpecialApprovalList(decodedToken.uid);
+
+          return response;
+        });
+      }
+    }
+
+    return null;
+  }
+
+  openRejectWorkLogForm(id, type) {
+    this.setState({
+      showRejectWorkLogForm: true,
+      showRejectWorkLogFormId: id,
+      showRejectWorkLogFormType: type,
+    });
+  }
+
+  closeDeleteWorkLogForm() {
+    this.setState({
+      rejectWorkLogForm: {
+        rejectionMessage: null,
+      },
+      showRejectWorkLogForm: false,
+      showRejectWorkLogFormId: null,
+      showRejectWorkLogFormType: null,
+    });
+  }
+
+  changeRejectWorkLogFormHandler(e) {
+    const eventTarget = e.target;
+
+    this.setState((prevState) => {
+      const rejectWorkLogForm = Object.assign({}, prevState.rejectWorkLogForm);
+      rejectWorkLogForm[eventTarget.id] = eventTarget.value;
+
+      return { rejectWorkLogForm };
+    });
+  }
+
+  rejectWorkLogHandler() {
+    const {
+      rejectWorkLogForm,
+      showRejectWorkLogFormId,
+      showRejectWorkLogFormType,
+    } = this.state;
+    const rejectWorkLogFormValidity = validateRejectWorkLog(rejectWorkLogForm);
+
+    this.setState({ rejectWorkLogFormValidity });
+
+    if (rejectWorkLogFormValidity.isValid) {
+      this.handleMarkRejected(
+        showRejectWorkLogFormId,
+        showRejectWorkLogFormType,
+        rejectWorkLogForm.rejectionMessage
+      )
+        .then((response) => {
+          if (response.type.endsWith('SUCCESS')) {
+            this.closeDeleteWorkLogForm();
+          } else if (response.type.endsWith('FAILURE')) {
+            rejectWorkLogFormValidity.elements.form = 'Work log cannot be rejected.';
+
+            this.setState({ rejectWorkLogFormValidity });
+          }
+        });
+    }
+  }
+
+  renderWorkLogForm() {
+    return (
+      <Modal
+        actions={[
+          {
+            clickHandler: this.rejectWorkLogHandler,
+            label: 'Reject',
+            loading: this.props.isPosting,
+          },
+        ]}
+        closeHandler={this.closeDeleteWorkLogForm}
+        title="Reject"
+      >
+        <form>
+          <p style={this.formErrorStyle}>
+            {this.state.rejectWorkLogFormValidity.elements.form}
+          </p>
+          <p>Are you sure your want to reject this work log?</p>
+          <TextField
+            changeHandler={this.changeRejectWorkLogFormHandler}
+            error={this.state.rejectWorkLogFormValidity.elements.rejectionMessage}
+            fieldId="rejectionMessage"
+            label="Rejection message"
+            value={this.state.rejectWorkLogForm.rejectionMessage || ''}
+          />
+        </form>
+      </Modal>
+    );
   }
 
   render() {
@@ -89,10 +280,26 @@ class ListComponent extends React.Component {
                 name: 'type',
               },
               {
-                format: () => (
+                format: row => (
                   <div>
-                    <span>Approved</span>
-                    <span>Rejected</span>
+                    <div className={styles.workLogButtonWrapper}>
+                      <Button
+                        clickHandler={() => this.handleMarkApproved(row.rawId, row.type)}
+                        label="Approve"
+                        loading={this.props.isPosting}
+                        priority="default"
+                        variant="success"
+                      />
+                    </div>
+                    <div className={styles.workLogButtonWrapper}>
+                      <Button
+                        clickHandler={() => this.openRejectWorkLogForm(row.rawId, row.type)}
+                        label="Reject"
+                        loading={this.props.isPosting}
+                        priority="default"
+                        variant="danger"
+                      />
+                    </div>
                   </div>
                 ),
                 label: 'Actions',
@@ -106,6 +313,7 @@ class ListComponent extends React.Component {
             You do not seem to have any pending special approvals.
           </div>
         )}
+        {this.state.showRejectWorkLogForm ? this.renderWorkLogForm() : null}
       </Layout>
     );
   }
@@ -114,6 +322,13 @@ class ListComponent extends React.Component {
 ListComponent.propTypes = {
   fetchSpecialApprovalList: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
+  isPosting: PropTypes.bool.isRequired,
+  markBusinessTripWorkLogApproved: PropTypes.func.isRequired,
+  markBusinessTripWorkLogRejected: PropTypes.func.isRequired,
+  markHomeOfficeWorkLogApproved: PropTypes.func.isRequired,
+  markHomeOfficeWorkLogRejected: PropTypes.func.isRequired,
+  markTimeOffWorkLogApproved: PropTypes.func.isRequired,
+  markTimeOffWorkLogRejected: PropTypes.func.isRequired,
   specialApprovalList: ImmutablePropTypes.mapContains({
     businessTripWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
       date: PropTypes.shape.isRequired,
