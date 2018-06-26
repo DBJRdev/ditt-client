@@ -2,7 +2,7 @@ export {
   addTimeOffWorkLog,
   deleteTimeOffWorkLog,
   markTimeOffWorkLogApproved,
-  markTimeOffTripWorkLogRejected,
+  markTimeOffWorkLogRejected,
 } from './actions';
 
 export {

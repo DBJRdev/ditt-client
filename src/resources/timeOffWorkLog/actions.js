@@ -47,8 +47,11 @@ export const markTimeOffWorkLogApproved = id => dispatch => dispatch({
   },
 });
 
-export const markTimeOffTripWorkLogRejected = id => dispatch => dispatch({
+export const markTimeOffWorkLogRejected = (id, data) => dispatch => dispatch({
   [RSAA]: {
+    body: JSON.stringify({
+      rejectionMessage: data.rejectionMessage,
+    }),
     endpoint: `${API_URL}/time_off_work_logs/${id}/mark_rejected`,
     headers: { 'Content-Type': 'application/json' },
     method: 'PUT',

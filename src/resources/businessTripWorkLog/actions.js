@@ -47,8 +47,11 @@ export const markBusinessTripWorkLogApproved = id => dispatch => dispatch({
   },
 });
 
-export const markBusinessTripWorkLogRejected = id => dispatch => dispatch({
+export const markBusinessTripWorkLogRejected = (id, data) => dispatch => dispatch({
   [RSAA]: {
+    body: JSON.stringify({
+      rejectionMessage: data.rejectionMessage,
+    }),
     endpoint: `${API_URL}/business_trip_work_logs/${id}/mark_rejected`,
     headers: { 'Content-Type': 'application/json' },
     method: 'PUT',

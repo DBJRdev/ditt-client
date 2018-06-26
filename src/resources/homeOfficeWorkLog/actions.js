@@ -47,8 +47,11 @@ export const markHomeOfficeWorkLogApproved = id => dispatch => dispatch({
   },
 });
 
-export const markHomeOfficeTripWorkLogRejected = id => dispatch => dispatch({
+export const markHomeOfficeWorkLogRejected = (id, data) => dispatch => dispatch({
   [RSAA]: {
+    body: JSON.stringify({
+      rejectionMessage: data.rejectionMessage,
+    }),
     endpoint: `${API_URL}/home_office_work_logs/${id}/mark_rejected`,
     headers: { 'Content-Type': 'application/json' },
     method: 'PUT',

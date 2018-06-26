@@ -35,8 +35,8 @@ export default (state, action) => {
     id: parseInt(data.id, 10),
     rejectionMessage: data.rejectionMessage,
     status: resolveWorkLogStatus(data),
-    timeApproved: toMomentDateTime(data.timeApproved),
-    timeRejected: toMomentDateTime(data.timeRejected),
+    timeApproved: data.timeApproved ? toMomentDateTime(data.timeApproved) : null,
+    timeRejected: data.timeRejected ? toMomentDateTime(data.timeRejected) : null,
   });
 
   if (type === actionTypes.ADD_TIME_OFF_WORK_LOG_REQUEST) {
@@ -82,27 +82,12 @@ export default (state, action) => {
   }
 
   if (type === actionTypes.MARK_TIME_OFF_WORK_LOG_APPROVED_REQUEST) {
-    // Fetch is required to reload time off work log list with marked work log
     return state
-      .setIn(['timeOffWorkLog', 'data'], Immutable.fromJS(filterWorkLog(payload)))
-      .setIn(['timeOffWorkLog', 'isPosting'], false)
+      .setIn(['timeOffWorkLog', 'isPosting'], true)
       .setIn(['timeOffWorkLog', 'isPostingFailure'], false);
   }
 
   if (type === actionTypes.MARK_TIME_OFF_WORK_LOG_APPROVED_SUCCESS) {
-    return state
-      .setIn(['timeOffWorkLog', 'data'], null)
-      .setIn(['timeOffWorkLog', 'isPosting'], false)
-      .setIn(['timeOffWorkLog', 'isPostingFailure'], true);
-  }
-
-  if (type === actionTypes.MARK_TIME_OFF_WORK_LOG_APPROVED_FAILURE) {
-    return state
-      .setIn(['timeOffWorkLog', 'isPosting'], true)
-      .setIn(['timeOffWorkLog', 'isPostingFailure'], false);
-  }
-
-  if (type === actionTypes.MARK_TIME_OFF_WORK_LOG_REJECTED_REQUEST) {
     // Fetch is required to reload time off work log list with marked work log
     return state
       .setIn(['timeOffWorkLog', 'data'], Immutable.fromJS(filterWorkLog(payload)))
@@ -110,17 +95,32 @@ export default (state, action) => {
       .setIn(['timeOffWorkLog', 'isPostingFailure'], false);
   }
 
-  if (type === actionTypes.MARK_TIME_OFF_WORK_LOG_REJECTED_SUCCESS) {
+  if (type === actionTypes.MARK_TIME_OFF_WORK_LOG_APPROVED_FAILURE) {
     return state
       .setIn(['timeOffWorkLog', 'data'], null)
       .setIn(['timeOffWorkLog', 'isPosting'], false)
       .setIn(['timeOffWorkLog', 'isPostingFailure'], true);
   }
 
-  if (type === actionTypes.MARK_TIME_OFF_WORK_LOG_REJECTED_FAILURE) {
+  if (type === actionTypes.MARK_TIME_OFF_WORK_LOG_REJECTED_REQUEST) {
     return state
       .setIn(['timeOffWorkLog', 'isPosting'], true)
       .setIn(['timeOffWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.MARK_TIME_OFF_WORK_LOG_REJECTED_SUCCESS) {
+    // Fetch is required to reload time off work log list with marked work log
+    return state
+      .setIn(['timeOffWorkLog', 'data'], Immutable.fromJS(filterWorkLog(payload)))
+      .setIn(['timeOffWorkLog', 'isPosting'], false)
+      .setIn(['timeOffWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.MARK_TIME_OFF_WORK_LOG_REJECTED_FAILURE) {
+    return state
+      .setIn(['timeOffWorkLog', 'data'], null)
+      .setIn(['timeOffWorkLog', 'isPosting'], false)
+      .setIn(['timeOffWorkLog', 'isPostingFailure'], true);
   }
 
   return state;

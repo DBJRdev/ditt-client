@@ -2,7 +2,7 @@ export {
   addHomeOfficeWorkLog,
   deleteHomeOfficeWorkLog,
   markHomeOfficeWorkLogApproved,
-  markHomeOfficeTripWorkLogRejected,
+  markHomeOfficeWorkLogRejected,
 } from './actions';
 
 export {
