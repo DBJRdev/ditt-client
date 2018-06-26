@@ -125,9 +125,17 @@ class WorkLogCalendar extends React.Component {
   }
 
   deleteWorkLog(id, type) {
-    console.log(type);
+    if (BUSINESS_TRIP_WORK_LOG === type) {
+      return this.props.deleteBusinessTripWorkLog(id).then(this.closeDeleteWorkLogDialog);
+    } else if (HOME_OFFICE_WORK_LOG === type) {
+      return this.props.deleteHomeOfficeWorkLog(id).then(this.closeDeleteWorkLogDialog);
+    } else if (TIME_OFF_WORK_LOG === type) {
+      return this.props.deleteTimeOffWorkLog(id).then(this.closeDeleteWorkLogDialog);
+    } else if (WORK_LOG === type) {
+      return this.props.deleteWorkLog(id).then(this.closeDeleteWorkLogDialog);
+    }
 
-    return this.props.deleteWorkLog(id).then(this.closeDeleteWorkLogDialog);
+    throw new Error(`Unknown type ${type}`);
   }
 
   closeDeleteWorkLogDialog() {
@@ -494,6 +502,9 @@ WorkLogCalendar.propTypes = {
   addTimeOffWorkLog: PropTypes.func.isRequired,
   addWorkLog: PropTypes.func.isRequired,
   changeSelectedDate: PropTypes.func.isRequired,
+  deleteBusinessTripWorkLog: PropTypes.func.isRequired,
+  deleteHomeOfficeWorkLog: PropTypes.func.isRequired,
+  deleteTimeOffWorkLog: PropTypes.func.isRequired,
   deleteWorkLog: PropTypes.func.isRequired,
   isPosting: PropTypes.bool.isRequired,
   markApproved: PropTypes.func.isRequired,

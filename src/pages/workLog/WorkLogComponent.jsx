@@ -23,6 +23,9 @@ class WorkLogComponent extends React.Component {
     this.addHomeOfficeWorkLog = this.addHomeOfficeWorkLog.bind(this);
     this.addTimeOffWorkLog = this.addTimeOffWorkLog.bind(this);
     this.addWorkLog = this.addWorkLog.bind(this);
+    this.deleteBusinessTripWorkLog = this.deleteBusinessTripWorkLog.bind(this);
+    this.deleteHomeOfficeWorkLog = this.deleteHomeOfficeWorkLog.bind(this);
+    this.deleteTimeOffWorkLog = this.deleteTimeOffWorkLog.bind(this);
     this.deleteWorkLog = this.deleteWorkLog.bind(this);
     this.changeSelectedDate = this.changeSelectedDate.bind(this);
   }
@@ -62,6 +65,27 @@ class WorkLogComponent extends React.Component {
     });
   }
 
+  deleteBusinessTripWorkLog(id) {
+    return this.props.deleteBusinessTripWorkLog(id).then((response) => {
+      this.fetchWorkMonth(this.state.selectedDate);
+      return response;
+    });
+  }
+
+  deleteHomeOfficeWorkLog(id) {
+    return this.props.deleteHomeOfficeWorkLog(id).then((response) => {
+      this.fetchWorkMonth(this.state.selectedDate);
+      return response;
+    });
+  }
+
+  deleteTimeOffWorkLog(id) {
+    return this.props.deleteTimeOffWorkLog(id).then((response) => {
+      this.fetchWorkMonth(this.state.selectedDate);
+      return response;
+    });
+  }
+
   deleteWorkLog(id) {
     return this.props.deleteWorkLog(id).then((response) => {
       this.fetchWorkMonth(this.state.selectedDate);
@@ -91,6 +115,9 @@ class WorkLogComponent extends React.Component {
           addHomeOfficeWorkLog={this.addHomeOfficeWorkLog}
           addTimeOffWorkLog={this.addTimeOffWorkLog}
           addWorkLog={this.addWorkLog}
+          deleteBusinessTripWorkLog={this.deleteBusinessTripWorkLog}
+          deleteHomeOfficeWorkLog={this.deleteHomeOfficeWorkLog}
+          deleteTimeOffWorkLog={this.deleteTimeOffWorkLog}
           deleteWorkLog={this.deleteWorkLog}
           changeSelectedDate={this.changeSelectedDate}
           isPosting={this.props.isPosting}
@@ -116,6 +143,9 @@ WorkLogComponent.propTypes = {
   addHomeOfficeWorkLog: PropTypes.func.isRequired,
   addTimeOffWorkLog: PropTypes.func.isRequired,
   addWorkLog: PropTypes.func.isRequired,
+  deleteBusinessTripWorkLog: PropTypes.func.isRequired,
+  deleteHomeOfficeWorkLog: PropTypes.func.isRequired,
+  deleteTimeOffWorkLog: PropTypes.func.isRequired,
   deleteWorkLog: PropTypes.func.isRequired,
   fetchWorkHoursList: PropTypes.func.isRequired,
   fetchWorkMonth: PropTypes.func.isRequired,

@@ -27,6 +27,9 @@ describe('rendering', () => {
       addHomeOfficeWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addWorkLog={() => {}}
+      deleteBusinessTripWorkLog={() => {}}
+      deleteHomeOfficeWorkLog={() => {}}
+      deleteTimeOffWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
       changeSelectedDate={() => {}}
@@ -76,6 +79,9 @@ describe('rendering', () => {
       addHomeOfficeWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addWorkLog={() => {}}
+      deleteBusinessTripWorkLog={() => {}}
+      deleteHomeOfficeWorkLog={() => {}}
+      deleteTimeOffWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
       changeSelectedDate={() => {}}
@@ -125,6 +131,9 @@ describe('rendering', () => {
       addHomeOfficeWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addWorkLog={() => {}}
+      deleteBusinessTripWorkLog={() => {}}
+      deleteHomeOfficeWorkLog={() => {}}
+      deleteTimeOffWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
       changeSelectedDate={() => {}}
@@ -174,6 +183,9 @@ describe('rendering', () => {
       addHomeOfficeWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addWorkLog={() => {}}
+      deleteBusinessTripWorkLog={() => {}}
+      deleteHomeOfficeWorkLog={() => {}}
+      deleteTimeOffWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
       changeSelectedDate={() => {}}
@@ -224,6 +236,9 @@ describe('rendering', () => {
       addHomeOfficeWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addWorkLog={() => {}}
+      deleteBusinessTripWorkLog={() => {}}
+      deleteHomeOfficeWorkLog={() => {}}
+      deleteTimeOffWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
       changeSelectedDate={() => {}}
@@ -274,6 +289,9 @@ describe('rendering', () => {
       addHomeOfficeWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addWorkLog={() => {}}
+      deleteBusinessTripWorkLog={() => {}}
+      deleteHomeOfficeWorkLog={() => {}}
+      deleteTimeOffWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
       changeSelectedDate={() => {}}
@@ -327,6 +345,9 @@ describe('functionality', () => {
       addHomeOfficeWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addWorkLog={() => {}}
+      deleteBusinessTripWorkLog={() => {}}
+      deleteHomeOfficeWorkLog={() => {}}
+      deleteTimeOffWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
       changeSelectedDate={spy}
@@ -381,6 +402,9 @@ describe('functionality', () => {
       addHomeOfficeWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addWorkLog={() => {}}
+      deleteBusinessTripWorkLog={() => {}}
+      deleteHomeOfficeWorkLog={() => {}}
+      deleteTimeOffWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
       changeSelectedDate={spy}
@@ -435,6 +459,9 @@ describe('functionality', () => {
       addHomeOfficeWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addWorkLog={() => {}}
+      deleteBusinessTripWorkLog={() => {}}
+      deleteHomeOfficeWorkLog={() => {}}
+      deleteTimeOffWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
       changeSelectedDate={() => {}}
@@ -487,6 +514,9 @@ describe('functionality', () => {
       addHomeOfficeWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addWorkLog={() => {}}
+      deleteBusinessTripWorkLog={() => {}}
+      deleteHomeOfficeWorkLog={() => {}}
+      deleteTimeOffWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
       changeSelectedDate={() => {}}

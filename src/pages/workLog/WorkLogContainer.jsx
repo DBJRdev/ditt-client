@@ -3,14 +3,17 @@ import jwt from 'jsonwebtoken';
 import { selectJwtToken } from '../../resources/auth';
 import {
   addBusinessTripWorkLog,
+  deleteBusinessTripWorkLog,
   selectBusinessTripWorkLogMeta,
 } from '../../resources/businessTripWorkLog';
 import {
   addHomeOfficeWorkLog,
+  deleteHomeOfficeWorkLog,
   selectHomeOfficeWorkLogMeta,
 } from '../../resources/homeOfficeWorkLog';
 import {
   addTimeOffWorkLog,
+  deleteTimeOffWorkLog,
   selectTimeOffWorkLogMeta,
 } from '../../resources/timeOffWorkLog';
 import {
@@ -73,6 +76,9 @@ const mapDispatchToProps = dispatch => ({
   addHomeOfficeWorkLog: data => dispatch(addHomeOfficeWorkLog(data)),
   addTimeOffWorkLog: data => dispatch(addTimeOffWorkLog(data)),
   addWorkLog: data => dispatch(addWorkLog(data)),
+  deleteBusinessTripWorkLog: id => dispatch(deleteBusinessTripWorkLog(id)),
+  deleteHomeOfficeWorkLog: id => dispatch(deleteHomeOfficeWorkLog(id)),
+  deleteTimeOffWorkLog: id => dispatch(deleteTimeOffWorkLog(id)),
   deleteWorkLog: id => dispatch(deleteWorkLog(id)),
   fetchWorkHoursList: uid => dispatch(fetchWorkHoursList(uid)),
   fetchWorkMonth: id => dispatch(fetchWorkMonth(id)),
