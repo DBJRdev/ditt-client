@@ -26,10 +26,12 @@ describe('rendering', () => {
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
+      deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
       changeSelectedDate={() => {}}
@@ -45,6 +47,7 @@ describe('rendering', () => {
           month: 1,
           status: 'OPENED',
           timeOffWorkLogs: [],
+          vacationWorkLogs: [],
           workLogs: [],
           year: 2018,
         })
@@ -78,10 +81,12 @@ describe('rendering', () => {
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
+      deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
       changeSelectedDate={() => {}}
@@ -97,6 +102,7 @@ describe('rendering', () => {
           month: 1,
           status: 'WAITING_FOR_APPROVAL',
           timeOffWorkLogs: [],
+          vacationWorkLogs: [],
           workLogs: [],
           year: 2018,
         })
@@ -130,10 +136,12 @@ describe('rendering', () => {
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
+      deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
       changeSelectedDate={() => {}}
@@ -149,6 +157,7 @@ describe('rendering', () => {
           month: 1,
           status: 'APPROVED',
           timeOffWorkLogs: [],
+          vacationWorkLogs: [],
           workLogs: [],
           year: 2018,
         })
@@ -182,10 +191,12 @@ describe('rendering', () => {
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
+      deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
       changeSelectedDate={() => {}}
@@ -202,6 +213,7 @@ describe('rendering', () => {
           month: 1,
           status: 'OPENED',
           timeOffWorkLogs: [],
+          vacationWorkLogs: [],
           workLogs: [],
           year: 2018,
         })
@@ -235,10 +247,12 @@ describe('rendering', () => {
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
+      deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
       changeSelectedDate={() => {}}
@@ -255,6 +269,7 @@ describe('rendering', () => {
           month: 1,
           status: 'WAITING_FOR_APPROVAL',
           timeOffWorkLogs: [],
+          vacationWorkLogs: [],
           workLogs: [],
           year: 2018,
         })
@@ -288,10 +303,12 @@ describe('rendering', () => {
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
+      deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
       changeSelectedDate={() => {}}
@@ -308,6 +325,7 @@ describe('rendering', () => {
           month: 1,
           status: 'APPROVED',
           timeOffWorkLogs: [],
+          vacationWorkLogs: [],
           workLogs: [],
           year: 2018,
         })
@@ -344,10 +362,12 @@ describe('functionality', () => {
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
+      deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
       changeSelectedDate={spy}
@@ -363,6 +383,7 @@ describe('functionality', () => {
           month: 1,
           status: 'OPENED',
           timeOffWorkLogs: [],
+          vacationWorkLogs: [],
           workLogs: [],
           year: 2018,
         })
@@ -401,10 +422,12 @@ describe('functionality', () => {
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
+      deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
       changeSelectedDate={spy}
@@ -420,6 +443,7 @@ describe('functionality', () => {
           month: 1,
           status: 'OPENED',
           timeOffWorkLogs: [],
+          vacationWorkLogs: [],
           workLogs: [],
           year: 2018,
         })
@@ -458,10 +482,12 @@ describe('functionality', () => {
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
+      deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
       changeSelectedDate={() => {}}
@@ -477,6 +503,7 @@ describe('functionality', () => {
           month: 1,
           status: 'OPENED',
           timeOffWorkLogs: [],
+          vacationWorkLogs: [],
           workLogs: [],
           year: 2018,
         })
@@ -513,10 +540,12 @@ describe('functionality', () => {
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
+      deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
       isPosting={false}
       changeSelectedDate={() => {}}
@@ -533,6 +562,7 @@ describe('functionality', () => {
           month: 1,
           status: 'WAITING_FOR_APPROVAL',
           timeOffWorkLogs: [],
+          vacationWorkLogs: [],
           workLogs: [],
           year: 2018,
         })

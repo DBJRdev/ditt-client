@@ -11,6 +11,7 @@ import {
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,
   TIME_OFF_WORK_LOG,
+  VACATION_WORK_LOG,
   WORK_LOG,
 } from '../../resources/workMonth';
 import { toDayMonthYearFormat } from '../../services/dateTimeService';
@@ -215,6 +216,10 @@ class WorkLogForm extends React.Component {
                   {
                     label: 'Time off',
                     value: TIME_OFF_WORK_LOG,
+                  },
+                  {
+                    label: 'Vacation',
+                    value: VACATION_WORK_LOG,
                   },
                 ]}
                 value={this.state.formData.type || ''}

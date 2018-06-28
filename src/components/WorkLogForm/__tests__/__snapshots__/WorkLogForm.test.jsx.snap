@@ -106,6 +106,10 @@ exports[`rendering renders correctly with all props 1`] = `
                 "label": "Time off",
                 "value": "TIME_OFF_WORK_LOG",
               },
+              Object {
+                "label": "Vacation",
+                "value": "VACATION_WORK_LOG",
+              },
             ]
           }
           required={false}

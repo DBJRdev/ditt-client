@@ -50,10 +50,12 @@ class WorkLogComponent extends React.Component {
           addBusinessTripWorkLog={() => {}}
           addHomeOfficeWorkLog={() => {}}
           addTimeOffWorkLog={() => {}}
+          addVacationWorkLog={() => {}}
           addWorkLog={() => {}}
           deleteBusinessTripWorkLog={() => {}}
           deleteHomeOfficeWorkLog={() => {}}
           deleteTimeOffWorkLog={() => {}}
+          deleteVacationWorkLog={() => {}}
           deleteWorkLog={() => {}}
           changeSelectedDate={this.changeSelectedDate}
           isPosting={this.props.isPosting}

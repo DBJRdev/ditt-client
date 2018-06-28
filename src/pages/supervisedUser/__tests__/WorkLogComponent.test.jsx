@@ -17,9 +17,6 @@ afterEach(() => {
 describe('rendering', () => {
   it('renders correctly', () => {
     const props = {
-      addBusinessTripWorkLog: () => {},
-      addHomeOfficeWorkLog: () => {},
-      addTimeOffWorkLog: () => {},
       fetchWorkHoursList: () => {},
       fetchWorkMonth: () => {},
       fetchWorkMonthList: () => new Promise(() => {}),

@@ -3,6 +3,7 @@ import {
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,
   TIME_OFF_WORK_LOG,
+  VACATION_WORK_LOG,
   WORK_LOG,
 } from '../resources/workMonth';
 import {
@@ -133,6 +134,7 @@ export const validateWorkLog = (workLog, workLogsOfDay) => {
     BUSINESS_TRIP_WORK_LOG,
     HOME_OFFICE_WORK_LOG,
     TIME_OFF_WORK_LOG,
+    VACATION_WORK_LOG,
     WORK_LOG,
   ].indexOf(workLog.type) === -1) {
     errors.elements.type = 'Invalid type.';

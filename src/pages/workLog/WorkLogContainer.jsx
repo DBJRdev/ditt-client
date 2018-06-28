@@ -17,6 +17,11 @@ import {
   selectTimeOffWorkLogMeta,
 } from '../../resources/timeOffWorkLog';
 import {
+  addVacationWorkLog,
+  deleteVacationWorkLog,
+  selectVacationWorkLogMeta,
+} from '../../resources/vacationWorkLog';
+import {
   fetchWorkHoursList,
   selectWorkHoursList,
   selectWorkHoursListMeta,
@@ -43,6 +48,7 @@ const mapStateToProps = (state) => {
   const businessTripWorkLogMeta = selectBusinessTripWorkLogMeta(state);
   const homeOfficeWorkLogMeta = selectHomeOfficeWorkLogMeta(state);
   const timeOffWorkLogMeta = selectTimeOffWorkLogMeta(state);
+  const vacationWorkLogMeta = selectVacationWorkLogMeta(state);
   const deleteWorkLogMeta = selectDeleteWorkLogMeta(state);
   const workHourListMeta = selectWorkHoursListMeta(state);
   const workMonthListMeta = selectWorkMonthListMeta(state);
@@ -63,6 +69,7 @@ const mapStateToProps = (state) => {
       || deleteWorkLogMeta.isPosting
       || homeOfficeWorkLogMeta.isPosting
       || timeOffWorkLogMeta.isPosting
+      || vacationWorkLogMeta.isPosting
       || workMonthMeta.isPosting,
     uid: decodedToken ? decodedToken.uid : null,
     workHoursList: selectWorkHoursList(state),
@@ -75,10 +82,12 @@ const mapDispatchToProps = dispatch => ({
   addBusinessTripWorkLog: data => dispatch(addBusinessTripWorkLog(data)),
   addHomeOfficeWorkLog: data => dispatch(addHomeOfficeWorkLog(data)),
   addTimeOffWorkLog: data => dispatch(addTimeOffWorkLog(data)),
+  addVacationWorkLog: data => dispatch(addVacationWorkLog(data)),
   addWorkLog: data => dispatch(addWorkLog(data)),
   deleteBusinessTripWorkLog: id => dispatch(deleteBusinessTripWorkLog(id)),
   deleteHomeOfficeWorkLog: id => dispatch(deleteHomeOfficeWorkLog(id)),
   deleteTimeOffWorkLog: id => dispatch(deleteTimeOffWorkLog(id)),
+  deleteVacationWorkLog: id => dispatch(deleteVacationWorkLog(id)),
   deleteWorkLog: id => dispatch(deleteWorkLog(id)),
   fetchWorkHoursList: uid => dispatch(fetchWorkHoursList(uid)),
   fetchWorkMonth: id => dispatch(fetchWorkMonth(id)),

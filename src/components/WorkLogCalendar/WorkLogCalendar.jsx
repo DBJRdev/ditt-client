@@ -14,7 +14,7 @@ import {
   STATUS_OPENED,
   STATUS_REJECTED,
   STATUS_WAITING_FOR_APPROVAL,
-  TIME_OFF_WORK_LOG,
+  TIME_OFF_WORK_LOG, VACATION_WORK_LOG,
   WORK_LOG,
 } from '../../resources/workMonth';
 import {
@@ -68,30 +68,17 @@ class WorkLogCalendar extends React.Component {
       let workLogListForRenderingDay = Immutable.List();
 
       if (workMonth) {
-        workLogListForRenderingDay = workLogListForRenderingDay.concat((
-          getWorkLogsByDay(
-            renderingDay,
-            workMonth.get('workLogs')
-          )
-        ));
-        workLogListForRenderingDay = workLogListForRenderingDay.concat((
-          getWorkLogsByDay(
-            renderingDay,
-            workMonth.get('businessTripWorkLogs')
-          )
-        ));
-        workLogListForRenderingDay = workLogListForRenderingDay.concat((
-          getWorkLogsByDay(
-            renderingDay,
-            workMonth.get('homeOfficeWorkLogs')
-          )
-        ));
-        workLogListForRenderingDay = workLogListForRenderingDay.concat((
-          getWorkLogsByDay(
-            renderingDay,
-            workMonth.get('timeOffWorkLogs')
-          )
-        ));
+        [
+          'workLogs',
+          'businessTripWorkLogs',
+          'homeOfficeWorkLogs',
+          'timeOffWorkLogs',
+          'vacationWorkLogs',
+        ].forEach((key) => {
+          workLogListForRenderingDay = workLogListForRenderingDay.concat((
+            getWorkLogsByDay(renderingDay, workMonth.get(key))
+          ));
+        });
 
         workLogListForRenderingDay = workLogListForRenderingDay.toJS();
       }
@@ -131,6 +118,8 @@ class WorkLogCalendar extends React.Component {
       return this.props.deleteHomeOfficeWorkLog(id).then(this.closeDeleteWorkLogDialog);
     } else if (TIME_OFF_WORK_LOG === type) {
       return this.props.deleteTimeOffWorkLog(id).then(this.closeDeleteWorkLogDialog);
+    } else if (VACATION_WORK_LOG === type) {
+      return this.props.deleteVacationWorkLog(id).then(this.closeDeleteWorkLogDialog);
     } else if (WORK_LOG === type) {
       return this.props.deleteWorkLog(id).then(this.closeDeleteWorkLogDialog);
     }
@@ -163,6 +152,8 @@ class WorkLogCalendar extends React.Component {
       return this.props.addHomeOfficeWorkLog({ date: data.date });
     } else if (TIME_OFF_WORK_LOG === data.type) {
       return this.props.addTimeOffWorkLog({ date: data.date });
+    } else if (VACATION_WORK_LOG === data.type) {
+      return this.props.addVacationWorkLog({ date: data.date });
     } else if (WORK_LOG === data.type) {
       return this.props.addWorkLog({
         endTime: data.endTime,
@@ -343,6 +334,8 @@ class WorkLogCalendar extends React.Component {
                             label = 'Home office';
                           } else if (TIME_OFF_WORK_LOG === workLogData.type) {
                             label = 'Time off';
+                          } else if (VACATION_WORK_LOG === workLogData.type) {
+                            label = 'Vacation';
                           } else {
                             throw new Error(`Unknown type ${workLog.type}`);
                           }
@@ -409,6 +402,27 @@ class WorkLogCalendar extends React.Component {
                                   () => this.openDeleteWorkLogDialog(
                                     workLog.id,
                                     TIME_OFF_WORK_LOG
+                                  )
+                                }
+                                disabled={this.props.supervisorView || status === STATUS_APPROVED}
+                                icon="flag"
+                                label={resolveLabel(workLog)}
+                              />
+                            </div>
+                          );
+                        }
+
+                        if (workLog.type === VACATION_WORK_LOG) {
+                          return (
+                            <div
+                              key={`V-${workLog.id}`}
+                              className={styles.workLogButtonWrapper}
+                            >
+                              <Button
+                                clickHandler={
+                                  () => this.openDeleteWorkLogDialog(
+                                    workLog.id,
+                                    VACATION_WORK_LOG
                                   )
                                 }
                                 disabled={this.props.supervisorView || status === STATUS_APPROVED}
@@ -500,11 +514,13 @@ WorkLogCalendar.propTypes = {
   addBusinessTripWorkLog: PropTypes.func.isRequired,
   addHomeOfficeWorkLog: PropTypes.func.isRequired,
   addTimeOffWorkLog: PropTypes.func.isRequired,
+  addVacationWorkLog: PropTypes.func.isRequired,
   addWorkLog: PropTypes.func.isRequired,
   changeSelectedDate: PropTypes.func.isRequired,
   deleteBusinessTripWorkLog: PropTypes.func.isRequired,
   deleteHomeOfficeWorkLog: PropTypes.func.isRequired,
   deleteTimeOffWorkLog: PropTypes.func.isRequired,
+  deleteVacationWorkLog: PropTypes.func.isRequired,
   deleteWorkLog: PropTypes.func.isRequired,
   isPosting: PropTypes.bool.isRequired,
   markApproved: PropTypes.func.isRequired,
@@ -545,6 +561,15 @@ WorkLogCalendar.propTypes = {
       STATUS_WAITING_FOR_APPROVAL,
     ]).isRequired,
     timeOffWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+      date: PropTypes.shape.isRequired,
+      id: PropTypes.number.isRequired,
+      status: PropTypes.oneOf([
+        STATUS_APPROVED,
+        STATUS_REJECTED,
+        STATUS_WAITING_FOR_APPROVAL,
+      ]).isRequired,
+    })).isRequired,
+    vacationWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
       date: PropTypes.shape.isRequired,
       id: PropTypes.number.isRequired,
       status: PropTypes.oneOf([
