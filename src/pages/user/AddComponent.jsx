@@ -27,6 +27,7 @@ class AddComponent extends React.Component {
         isActive: false,
         lastName: null,
         plainPassword: null,
+        vacationDays: null,
         workHours: {},
       },
       formValidity: {
@@ -38,6 +39,7 @@ class AddComponent extends React.Component {
           lastName: null,
           plainPassword: null,
           supervisor: null,
+          vacationDays: null,
           workHours: {},
         },
         isValid: false,
@@ -197,6 +199,15 @@ class AddComponent extends React.Component {
             fieldId="isActive"
             label="Active"
             required
+          />
+          <TextField
+            changeHandler={this.changeHandler}
+            error={this.state.formValidity.elements.vacationDays}
+            fieldId="vacationDays"
+            label="Vacation days"
+            required
+            type="number"
+            value={this.state.formData.vacationDays || ''}
           />
           <h2>Required working hours per month</h2>
           <p>Insert as amount of hours divided by {'","'}, starting with January.</p>

@@ -113,6 +113,19 @@ exports[`rendering renders correctly 1`] = `
       label="Active"
       required={true}
     />
+    <TextField
+      changeHandler={[Function]}
+      description={null}
+      disabled={false}
+      error={null}
+      fieldId="vacationDays"
+      isLabelVisible={true}
+      label="Vacation days"
+      placeholder={null}
+      required={false}
+      type="text"
+      value=""
+    />
     <h2>
       Required working hours per month
     </h2>

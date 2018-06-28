@@ -12,6 +12,7 @@ export const addUser = data => dispatch => dispatch({
       lastName: data.lastName,
       plainPassword: data.plainPassword,
       supervisor: data.supervisor ? `/users/${data.supervisor}` : null,
+      vacationDays: parseInt(data.vacationDays, 10),
       workHours: data.workHours.filter(workHours => parameters.get('supportedYear').includes(parseInt(
         workHours.year,
         10
@@ -52,6 +53,7 @@ export const editUser = data => dispatch => dispatch({
       lastName: data.lastName,
       plainPassword: data.plainPassword ? data.plainPassword : null,
       supervisor: data.supervisor ? `/users/${data.supervisor}` : null,
+      vacationDays: parseInt(data.vacationDays, 10),
       workHours: data.workHours.filter(workHours => parameters.get('supportedYear').includes(parseInt(
         workHours.year,
         10

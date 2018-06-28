@@ -34,6 +34,7 @@ class EditComponent extends React.Component {
         lastName: null,
         plainPassword: null,
         supervisor: null,
+        vacationDays: null,
         workHours: {},
       },
       formValidity: {
@@ -44,6 +45,7 @@ class EditComponent extends React.Component {
           isActive: null,
           lastName: null,
           supervisor: null,
+          vacationDays: null,
           workHours: {},
         },
         isValid: false,
@@ -95,6 +97,7 @@ class EditComponent extends React.Component {
             isActive: user.get('isActive'),
             lastName: user.get('lastName'),
             supervisor: user.getIn(['supervisor', 'id']) ? user.getIn(['supervisor', 'id']) : null,
+            vacationDays: user.get('vacationDays'),
             workHours: mergedWorkHours,
           },
         });
@@ -296,6 +299,14 @@ class EditComponent extends React.Component {
             label="Active"
             required
           />
+          <TextField
+            changeHandler={this.changeHandler}
+            error={this.state.formValidity.elements.vacationDays}
+            fieldId="vacationDays"
+            label="Vacation days"
+            type="text"
+            value={this.state.formData.vacationDays || ''}
+          />
           <h2>Required working hours per month</h2>
           <p>Insert as amount of hours divided by {'","'}, starting with January.</p>
           {parameters.get('supportedYear').map(year => (
@@ -359,6 +370,7 @@ EditComponent.propTypes = {
       id: PropTypes.number.isRequired,
       lastName: PropTypes.string.isRequired,
     }),
+    vacationDays: PropTypes.number.isRequired,
   }),
   userList: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
     firstName: PropTypes.string.isRequired,

@@ -29,6 +29,7 @@ describe('rendering', () => {
         isActive: true,
         lastName: 'Last',
         supervisor: null,
+        vacationDays: 10,
       }),
       userList: Immutable.List([]),
       workHours: Immutable.List([]),

@@ -20,6 +20,7 @@ export const validateUser = (user, userList, supportedWorkHours) => {
       lastName: null,
       plainPassword: null,
       supervisor: null,
+      vacationDays: null,
       workHours: {},
     },
     isValid: true,
@@ -30,6 +31,7 @@ export const validateUser = (user, userList, supportedWorkHours) => {
     'lastName',
     'email',
     'isActive',
+    'vacationDays',
   ];
 
   if (!user.id) {
@@ -99,6 +101,16 @@ export const validateUser = (user, userList, supportedWorkHours) => {
       errors.elements.email = 'This e-mail has been already registered.';
       errors.isValid = false;
     }
+  }
+
+  if (!errors.elements.vacationDays && !validator.isNumeric(user.vacationDays.toString())) {
+    errors.elements.vacationDays = 'Not a number.';
+    errors.isValid = false;
+  }
+
+  if (!errors.elements.vacationDays && user.vacationDays < 0) {
+    errors.elements.vacationDays = 'It must be at least 0.';
+    errors.isValid = false;
   }
 
   return errors;
