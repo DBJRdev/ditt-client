@@ -6,6 +6,7 @@ export default Immutable.fromJS({
       businessTripWorkLogs: [],
       homeOfficeWorkLogs: [],
       timeOffWorkLogs: [],
+      vacationWorkLogs: [],
     },
     isFetching: false,
     isFetchingFailure: false,

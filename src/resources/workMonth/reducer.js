@@ -7,6 +7,7 @@ import {
   STATUS_REJECTED,
   STATUS_WAITING_FOR_APPROVAL,
   TIME_OFF_WORK_LOG,
+  VACATION_WORK_LOG,
   WORK_LOG,
 } from './constants';
 import initialState from './initialState';
@@ -55,6 +56,12 @@ export default (state, action) => {
       id: parseInt(timeOffWorkLogsData.id, 10),
       status: resolveWorkLogStatus(timeOffWorkLogsData),
       type: TIME_OFF_WORK_LOG,
+    })),
+    vacationWorkLogs: data.vacationWorkLogs.map(vacationWorkLogsData => ({
+      date: toMomentDateTime(vacationWorkLogsData.date),
+      id: parseInt(vacationWorkLogsData.id, 10),
+      status: resolveWorkLogStatus(vacationWorkLogsData),
+      type: VACATION_WORK_LOG,
     })),
     workLogs: data.workLogs.map(workLogData => ({
       endTime: toMomentDateTime(workLogData.endTime),
@@ -122,6 +129,23 @@ export default (state, action) => {
             lastName: timeOffWorkLogsData.workMonth.user.lastName,
           },
           year: parseInt(timeOffWorkLogsData.workMonth.year, 10),
+        },
+      })),
+      vacationWorkLogs: payload.vacationWorkLogs.map(vacationWorkLogsData => ({
+        date: toMomentDateTime(vacationWorkLogsData.date),
+        id: parseInt(vacationWorkLogsData.id, 10),
+        status: resolveWorkLogStatus(vacationWorkLogsData),
+        workMonth: {
+          id: parseInt(vacationWorkLogsData.workMonth.id, 10),
+          month: parseInt(vacationWorkLogsData.workMonth.month, 10),
+          status: vacationWorkLogsData.workMonth.status,
+          user: {
+            email: vacationWorkLogsData.workMonth.user.email,
+            firstName: vacationWorkLogsData.workMonth.user.firstName,
+            id: vacationWorkLogsData.workMonth.user.id,
+            lastName: vacationWorkLogsData.workMonth.user.lastName,
+          },
+          year: parseInt(vacationWorkLogsData.workMonth.year, 10),
         },
       })),
     };

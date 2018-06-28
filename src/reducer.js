@@ -4,6 +4,7 @@ import { reducer as businessTripWorkLogReducer } from './resources/businessTripW
 import { reducer as homeOfficeWorkLogReducer } from './resources/homeOfficeWorkLog';
 import { reducer as timeOffWorkLogReducer } from './resources/timeOffWorkLog';
 import { reducer as userReducer } from './resources/user';
+import { reducer as vacationWorkLogReducer } from './resources/vacationWorkLog';
 import { reducer as workHoursReducer } from './resources/workHours';
 import { reducer as workLogReducer } from './resources/workLog';
 import { reducer as workMonthReducer } from './resources/workMonth';
@@ -14,6 +15,7 @@ const appReducers = combineReducers({
   homeOfficeWorkLog: homeOfficeWorkLogReducer,
   timeOffWorkLog: timeOffWorkLogReducer,
   user: userReducer,
+  vacationWorkLog: vacationWorkLogReducer,
   workHours: workHoursReducer,
   workLog: workLogReducer,
   workMonth: workMonthReducer,

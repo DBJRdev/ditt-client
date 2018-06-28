@@ -14,6 +14,7 @@ export {
   STATUS_REJECTED,
   STATUS_WAITING_FOR_APPROVAL,
   TIME_OFF_WORK_LOG,
+  VACATION_WORK_LOG,
   WORK_LOG,
 } from './constants';
 
