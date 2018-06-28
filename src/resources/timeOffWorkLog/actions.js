@@ -25,10 +25,7 @@ export const deleteTimeOffWorkLog = id => dispatch => dispatch({
     method: 'DELETE',
     types: [
       types.DELETE_TIME_OFF_WORK_LOG_REQUEST,
-      {
-        meta: { id },
-        type: types.DELETE_TIME_OFF_WORK_LOG_SUCCESS,
-      },
+      types.DELETE_TIME_OFF_WORK_LOG_SUCCESS,
       types.DELETE_TIME_OFF_WORK_LOG_FAILURE,
     ],
   },

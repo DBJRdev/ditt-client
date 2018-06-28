@@ -349,7 +349,7 @@ class WorkLogCalendar extends React.Component {
 
                           if (STATUS_WAITING_FOR_APPROVAL === workLogData.status) {
                             label += ' (Waiting)';
-                          } else if (STATUS_WAITING_FOR_APPROVAL === workLogData.status) {
+                          } else if (STATUS_REJECTED === workLogData.status) {
                             label += ' (Rejected)';
                           }
 

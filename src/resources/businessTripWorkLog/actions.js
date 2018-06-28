@@ -25,10 +25,7 @@ export const deleteBusinessTripWorkLog = id => dispatch => dispatch({
     method: 'DELETE',
     types: [
       types.DELETE_BUSINESS_TRIP_WORK_LOG_REQUEST,
-      {
-        meta: { id },
-        type: types.DELETE_BUSINESS_TRIP_WORK_LOG_SUCCESS,
-      },
+      types.DELETE_BUSINESS_TRIP_WORK_LOG_SUCCESS,
       types.DELETE_BUSINESS_TRIP_WORK_LOG_FAILURE,
     ],
   },

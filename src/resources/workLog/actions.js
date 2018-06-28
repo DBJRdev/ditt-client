@@ -26,10 +26,7 @@ export const deleteWorkLog = id => dispatch => dispatch({
     method: 'DELETE',
     types: [
       types.DELETE_WORK_LOG_REQUEST,
-      {
-        meta: { id },
-        type: types.DELETE_WORK_LOG_SUCCESS,
-      },
+      types.DELETE_WORK_LOG_SUCCESS,
       types.DELETE_WORK_LOG_FAILURE,
     ],
   },
