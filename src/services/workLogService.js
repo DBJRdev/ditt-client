@@ -1,6 +1,7 @@
 import moment from 'moment';
 import parameters from '../../config/parameters';
 import {
+  SICK_DAY_WORK_LOG,
   STATUS_APPROVED,
   VACATION_WORK_LOG,
   WORK_LOG,
@@ -11,7 +12,10 @@ export const getWorkedTime = (workLogList, workHoursList) => {
   const workedHoursLimits = parameters.get('workedHoursLimits').toJS();
 
   const workedSeconds = workLogList.reduce((total, workLog) => {
-    if (workLog.type === VACATION_WORK_LOG && workLog.status === STATUS_APPROVED) {
+    if (
+      (workLog.type === VACATION_WORK_LOG && workLog.status === STATUS_APPROVED)
+      || workLog.type === SICK_DAY_WORK_LOG
+    ) {
       const workHours = workHoursList.find((
         workHour => workHour.get('month') === (workLog.date.month() + 1)
       ));
