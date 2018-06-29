@@ -41,70 +41,98 @@ class WorkLogComponent extends React.Component {
 
   addBusinessTripWorkLog(data) {
     return this.props.addBusinessTripWorkLog(data).then((response) => {
-      this.fetchWorkMonth(this.state.selectedDate);
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+
       return response;
     });
   }
 
   addHomeOfficeWorkLog(data) {
     return this.props.addHomeOfficeWorkLog(data).then((response) => {
-      this.fetchWorkMonth(this.state.selectedDate);
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+
       return response;
     });
   }
 
   addTimeOffWorkLog(data) {
     return this.props.addTimeOffWorkLog(data).then((response) => {
-      this.fetchWorkMonth(this.state.selectedDate);
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
       return response;
     });
   }
 
   addVacationWorkLog(data) {
     return this.props.addVacationWorkLog(data).then((response) => {
-      this.fetchWorkMonth(this.state.selectedDate);
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
       return response;
     });
   }
 
   addWorkLog(data) {
     return this.props.addWorkLog(data).then((response) => {
-      this.fetchWorkMonth(this.state.selectedDate);
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+
       return response;
     });
   }
 
   deleteBusinessTripWorkLog(id) {
     return this.props.deleteBusinessTripWorkLog(id).then((response) => {
-      this.fetchWorkMonth(this.state.selectedDate);
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+
       return response;
     });
   }
 
   deleteHomeOfficeWorkLog(id) {
     return this.props.deleteHomeOfficeWorkLog(id).then((response) => {
-      this.fetchWorkMonth(this.state.selectedDate);
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+
       return response;
     });
   }
 
   deleteTimeOffWorkLog(id) {
     return this.props.deleteTimeOffWorkLog(id).then((response) => {
-      this.fetchWorkMonth(this.state.selectedDate);
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+
       return response;
     });
   }
 
   deleteVacationWorkLog(id) {
     return this.props.deleteVacationWorkLog(id).then((response) => {
-      this.fetchWorkMonth(this.state.selectedDate);
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+
       return response;
     });
   }
 
   deleteWorkLog(id) {
     return this.props.deleteWorkLog(id).then((response) => {
-      this.fetchWorkMonth(this.state.selectedDate);
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+
       return response;
     });
   }

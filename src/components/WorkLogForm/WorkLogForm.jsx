@@ -89,10 +89,10 @@ class WorkLogForm extends React.Component {
         type: formData.type,
       })
         .then((response) => {
-          if (response.type.startsWith('SUCCESS')) {
+          if (response.type.endsWith('WORK_LOG_SUCCESS')) {
             this.props.closeHandler();
-          } else if (response.type.startsWith('FAILURE')) {
-            formValidity.elements.form = 'Work log cannot be added.';
+          } else if (response.type.endsWith('WORK_LOG_FAILURE')) {
+            formValidity.elements.form = response.payload.response.detail;
 
             this.setState({ formValidity });
           }
