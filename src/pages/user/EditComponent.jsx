@@ -305,7 +305,7 @@ class EditComponent extends React.Component {
             fieldId="vacationDays"
             label="Vacation days"
             type="text"
-            value={this.state.formData.vacationDays || ''}
+            value={this.state.formData.vacationDays || '0'}
           />
           <h2>Required working hours per month</h2>
           <p>Insert as amount of hours divided by {'","'}, starting with January.</p>

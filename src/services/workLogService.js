@@ -1,16 +1,35 @@
 import moment from 'moment';
 import parameters from '../../config/parameters';
-import { WORK_LOG } from '../resources/workMonth';
+import {
+  STATUS_APPROVED,
+  VACATION_WORK_LOG,
+  WORK_LOG,
+} from '../resources/workMonth';
+import { getNumberOfWorkingDays } from './dateTimeService';
 
-export const getWorkedTime = (workLogList) => {
+export const getWorkedTime = (workLogList, workHoursList) => {
   const workedHoursLimits = parameters.get('workedHoursLimits').toJS();
 
   const workedSeconds = workLogList.reduce((total, workLog) => {
-    if (workLog.type !== WORK_LOG) {
-      return total;
+    if (workLog.type === VACATION_WORK_LOG && workLog.status === STATUS_APPROVED) {
+      const workHours = workHoursList.find((
+        workHour => workHour.get('month') === (workLog.date.month() + 1)
+      ));
+      const requiredHours = workHours.get('requiredHours');
+      const workingDays = getNumberOfWorkingDays(
+        workLog.date.clone().startOf('month'),
+        workLog.date.clone().endOf('month'),
+        parameters.get('supportedHolidays')
+      );
+
+      return ((requiredHours / workingDays) * 3600) + total;
     }
 
-    return (workLog.endTime.diff(workLog.startTime) / 1000) + total;
+    if (workLog.type === WORK_LOG) {
+      return (workLog.endTime.diff(workLog.startTime) / 1000) + total;
+    }
+
+    return total;
   }, 0);
 
   let workedTime = null;

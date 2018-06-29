@@ -95,3 +95,18 @@ export const toDayMonthYearFormat = (momentDateTime) => {
 
   throw new Error('Invalid datetime');
 };
+
+export const getNumberOfWorkingDays = (firstDay, lastDay, holidays) => {
+  const currentDay = firstDay;
+  let workingDays = 0;
+
+  while (currentDay <= lastDay) {
+    if (!isWeekend(currentDay) && !includesSameDate(currentDay, holidays)) {
+      workingDays += 1;
+    }
+
+    currentDay.add(1, 'day');
+  }
+
+  return workingDays;
+};

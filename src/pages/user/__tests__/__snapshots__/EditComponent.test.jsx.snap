@@ -124,7 +124,7 @@ exports[`rendering renders correctly 1`] = `
       placeholder={null}
       required={false}
       type="text"
-      value=""
+      value="0"
     />
     <h2>
       Required working hours per month

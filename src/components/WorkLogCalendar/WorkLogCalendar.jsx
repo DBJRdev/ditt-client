@@ -14,7 +14,8 @@ import {
   STATUS_OPENED,
   STATUS_REJECTED,
   STATUS_WAITING_FOR_APPROVAL,
-  TIME_OFF_WORK_LOG, VACATION_WORK_LOG,
+  TIME_OFF_WORK_LOG,
+  VACATION_WORK_LOG,
   WORK_LOG,
 } from '../../resources/workMonth';
 import {
@@ -57,6 +58,7 @@ class WorkLogCalendar extends React.Component {
   getDaysOfSelectedMonth() {
     const {
       selectedDate,
+      workHoursList,
       workMonth,
     } = this.props;
     const lastDayOfMonth = selectedDate.clone().endOf('month');
@@ -86,7 +88,7 @@ class WorkLogCalendar extends React.Component {
       days.push({
         date: renderingDay.clone(),
         workLogList: workLogListForRenderingDay,
-        workTime: getWorkedTime(workLogListForRenderingDay),
+        workTime: getWorkedTime(workLogListForRenderingDay, workHoursList),
       });
 
       renderingDay.add(1, 'day');
@@ -185,10 +187,23 @@ class WorkLogCalendar extends React.Component {
       requiredHours = workHours.get('requiredHours');
     }
 
-    const workedTime = getWorkedTime(getWorkLogsByMonth(
-      selectedDate,
-      workMonth ? workMonth.get('workLogs').toJS() : []
-    ));
+    let workLogListForRenderingMonth = Immutable.List();
+    [
+      'workLogs',
+      'businessTripWorkLogs',
+      'homeOfficeWorkLogs',
+      'timeOffWorkLogs',
+      'vacationWorkLogs',
+    ].forEach((key) => {
+      workLogListForRenderingMonth = workLogListForRenderingMonth.concat((
+        getWorkLogsByMonth(selectedDate, workMonth ? workMonth.get(key).toJS() : [])
+      ));
+    });
+
+    const workedTime = getWorkedTime(
+      workLogListForRenderingMonth,
+      workHoursList
+    );
 
     return `${workedTime.hours()}:${workedTime.minutes() < 10 ? '0' : ''}${workedTime.minutes()} h out of ${requiredHours} h`;
   }
