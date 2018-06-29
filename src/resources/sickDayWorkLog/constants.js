@@ -1,0 +1,3 @@
+export const VARIANT_WITH_NOTE = 'WITH_NOTE';
+export const VARIANT_WITHOUT_NOTE = 'WITHOUT_NOTE';
+export const VARIANT_SICK_CHILD = 'SICK_CHILD';

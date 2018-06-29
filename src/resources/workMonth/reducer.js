@@ -3,6 +3,7 @@ import { toMomentDateTime } from '../../services/dateTimeService';
 import {
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,
+  SICK_DAY_WORK_LOG,
   STATUS_APPROVED,
   STATUS_REJECTED,
   STATUS_WAITING_FOR_APPROVAL,
@@ -50,6 +51,12 @@ export default (state, action) => {
     })),
     id: data.id,
     month: parseInt(data.month, 10),
+    sickDayWorkLogs: data.sickDayWorkLogs.map(sickDayWorkLogsData => ({
+      date: toMomentDateTime(sickDayWorkLogsData.date),
+      id: parseInt(sickDayWorkLogsData.id, 10),
+      type: SICK_DAY_WORK_LOG,
+      variant: sickDayWorkLogsData.variant,
+    })),
     status: data.status,
     timeOffWorkLogs: data.timeOffWorkLogs.map(timeOffWorkLogsData => ({
       date: toMomentDateTime(timeOffWorkLogsData.date),

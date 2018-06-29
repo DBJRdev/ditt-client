@@ -5,6 +5,7 @@ export default Immutable.fromJS({
     data: {
       businessTripWorkLogs: [],
       homeOfficeWorkLogs: [],
+      sickDayWorkLogs: [],
       timeOffWorkLogs: [],
       vacationWorkLogs: [],
     },
