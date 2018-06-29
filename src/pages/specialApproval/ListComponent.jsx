@@ -14,6 +14,7 @@ import {
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,
   TIME_OFF_WORK_LOG,
+  VACATION_WORK_LOG,
 } from '../../resources/workMonth';
 import {
   toDayMonthYearFormat,
@@ -64,30 +65,21 @@ class ListComponent extends React.Component {
   getFilteredSpecialApprovals() {
     let specialApprovalList = Immutable.List();
 
-    specialApprovalList = specialApprovalList.concat((
-      this.props.specialApprovalList.get('businessTripWorkLogs').map((
-        workLog => workLog
-          .set('rawId', workLog.get('id'))
-          .set('id', `BT-${workLog.get('id')}`)
-          .set('type', BUSINESS_TRIP_WORK_LOG)
-      ))
-    ));
-    specialApprovalList = specialApprovalList.concat((
-      this.props.specialApprovalList.get('homeOfficeWorkLogs').map((
-        workLog => workLog
-          .set('rawId', workLog.get('id'))
-          .set('id', `HO-${workLog.get('id')}`)
-          .set('type', HOME_OFFICE_WORK_LOG)
-      ))
-    ));
-    specialApprovalList = specialApprovalList.concat((
-      this.props.specialApprovalList.get('timeOffWorkLogs').map((
-        workLog => workLog
-          .set('rawId', workLog.get('id'))
-          .set('id', `TO-${workLog.get('id')}`)
-          .set('type', TIME_OFF_WORK_LOG)
-      ))
-    ));
+    [
+      'businessTripWorkLogs',
+      'homeOfficeWorkLogs',
+      'timeOffWorkLogs',
+      'vacationWorkLogs',
+    ].forEach((key) => {
+      specialApprovalList = specialApprovalList.concat((
+        this.props.specialApprovalList.get(key).map((
+          workLog => workLog
+            .set('rawId', workLog.get('id'))
+            .set('id', `${workLog.get('type')}-${workLog.get('id')}`)
+        ))
+      ));
+    });
+
     specialApprovalList = specialApprovalList.sortBy(workLog => -workLog.get('date'));
 
     return specialApprovalList;
@@ -109,6 +101,9 @@ class ListComponent extends React.Component {
             break;
           case TIME_OFF_WORK_LOG:
             action = this.props.markTimeOffWorkLogApproved;
+            break;
+          case VACATION_WORK_LOG:
+            action = this.props.markVacationWorkLogApproved;
             break;
           default:
             throw new Error(`Unknown type ${type}`);
@@ -141,6 +136,9 @@ class ListComponent extends React.Component {
             break;
           case TIME_OFF_WORK_LOG:
             action = this.props.markTimeOffWorkLogRejected;
+            break;
+          case VACATION_WORK_LOG:
+            action = this.props.markVacationWorkLogRejected;
             break;
           default:
             throw new Error(`Unknown type ${type}`);
@@ -272,6 +270,8 @@ class ListComponent extends React.Component {
                       return 'Home office';
                     case TIME_OFF_WORK_LOG:
                       return 'Time off';
+                    case VACATION_WORK_LOG:
+                      return 'Vacation';
                     default:
                       return '-';
                   }
@@ -329,10 +329,13 @@ ListComponent.propTypes = {
   markHomeOfficeWorkLogRejected: PropTypes.func.isRequired,
   markTimeOffWorkLogApproved: PropTypes.func.isRequired,
   markTimeOffWorkLogRejected: PropTypes.func.isRequired,
+  markVacationWorkLogApproved: PropTypes.func.isRequired,
+  markVacationWorkLogRejected: PropTypes.func.isRequired,
   specialApprovalList: ImmutablePropTypes.mapContains({
     businessTripWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
       date: PropTypes.shape.isRequired,
       id: PropTypes.number.isRequired,
+      type: PropTypes.oneOf([BUSINESS_TRIP_WORK_LOG]).isRequired,
       workMonth: ImmutablePropTypes.mapContains({
         user: ImmutablePropTypes.mapContains({
           firstName: PropTypes.string.isRequired,
@@ -343,6 +346,7 @@ ListComponent.propTypes = {
     homeOfficeWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
       date: PropTypes.shape.isRequired,
       id: PropTypes.number.isRequired,
+      type: PropTypes.oneOf([HOME_OFFICE_WORK_LOG]).isRequired,
       workMonth: ImmutablePropTypes.mapContains({
         user: ImmutablePropTypes.mapContains({
           firstName: PropTypes.string.isRequired,
@@ -353,6 +357,18 @@ ListComponent.propTypes = {
     timeOffWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
       date: PropTypes.shape.isRequired,
       id: PropTypes.number.isRequired,
+      type: PropTypes.oneOf([TIME_OFF_WORK_LOG]).isRequired,
+      workMonth: ImmutablePropTypes.mapContains({
+        user: ImmutablePropTypes.mapContains({
+          firstName: PropTypes.string.isRequired,
+          lastName: PropTypes.string.isRequired,
+        }).isRequired,
+      }).isRequired,
+    })).isRequired,
+    vacationWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+      date: PropTypes.shape.isRequired,
+      id: PropTypes.number.isRequired,
+      type: PropTypes.oneOf([VACATION_WORK_LOG]).isRequired,
       workMonth: ImmutablePropTypes.mapContains({
         user: ImmutablePropTypes.mapContains({
           firstName: PropTypes.string.isRequired,

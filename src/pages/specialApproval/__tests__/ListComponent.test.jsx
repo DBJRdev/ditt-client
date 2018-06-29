@@ -15,10 +15,13 @@ describe('rendering', () => {
       markHomeOfficeWorkLogRejected: () => {},
       markTimeOffWorkLogApproved: () => {},
       markTimeOffWorkLogRejected: () => {},
+      markVacationWorkLogApproved: () => {},
+      markVacationWorkLogRejected: () => {},
       specialApprovalList: Immutable.fromJS({
         businessTripWorkLogs: [],
         homeOfficeWorkLogs: [],
         timeOffWorkLogs: [],
+        vacationWorkLogs: [],
       }),
       token: 'token',
     };

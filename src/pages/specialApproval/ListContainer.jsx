@@ -16,6 +16,11 @@ import {
   selectTimeOffWorkLogMeta,
 } from '../../resources/timeOffWorkLog';
 import {
+  markVacationWorkLogApproved,
+  markVacationWorkLogRejected,
+  selectVacationWorkLogMeta,
+} from '../../resources/vacationWorkLog';
+import {
   fetchSpecialApprovalList,
   selectSpecialApprovalList,
   selectSpecialApprovalListMeta,
@@ -26,13 +31,15 @@ const mapStateToProps = (state) => {
   const businessTripWorkLogMeta = selectBusinessTripWorkLogMeta(state);
   const homeOfficeWorkLogMeta = selectHomeOfficeWorkLogMeta(state);
   const timeOffWorkLogMeta = selectTimeOffWorkLogMeta(state);
+  const vacationWorkLogMeta = selectVacationWorkLogMeta(state);
   const specialApprovalListMeta = selectSpecialApprovalListMeta(state);
 
   return ({
     isFetching: specialApprovalListMeta.isFetching,
     isPosting: businessTripWorkLogMeta.isPosting
       || homeOfficeWorkLogMeta.isPosting
-      || timeOffWorkLogMeta.isPosting,
+      || timeOffWorkLogMeta.isPosting
+      || vacationWorkLogMeta.isPosting,
     specialApprovalList: selectSpecialApprovalList(state),
     token: selectJwtToken(state),
   });
@@ -47,6 +54,8 @@ const mapDispatchToProps = dispatch => ({
   markHomeOfficeWorkLogRejected: (id, data) => dispatch(markHomeOfficeWorkLogRejected(id, data)),
   markTimeOffWorkLogApproved: id => dispatch(markTimeOffWorkLogApproved(id)),
   markTimeOffWorkLogRejected: (id, data) => dispatch(markTimeOffWorkLogRejected(id, data)),
+  markVacationWorkLogApproved: id => dispatch(markVacationWorkLogApproved(id)),
+  markVacationWorkLogRejected: (id, data) => dispatch(markVacationWorkLogRejected(id, data)),
 });
 
 export default connect(

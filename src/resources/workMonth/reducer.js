@@ -84,6 +84,7 @@ export default (state, action) => {
         date: toMomentDateTime(businessTripWorkLogsData.date),
         id: parseInt(businessTripWorkLogsData.id, 10),
         status: resolveWorkLogStatus(businessTripWorkLogsData),
+        type: BUSINESS_TRIP_WORK_LOG,
         workMonth: {
           id: parseInt(businessTripWorkLogsData.workMonth.id, 10),
           month: parseInt(businessTripWorkLogsData.workMonth.month, 10),
@@ -101,6 +102,7 @@ export default (state, action) => {
         date: toMomentDateTime(homeOfficeWorkLogsData.date),
         id: parseInt(homeOfficeWorkLogsData.id, 10),
         status: resolveWorkLogStatus(homeOfficeWorkLogsData),
+        type: HOME_OFFICE_WORK_LOG,
         workMonth: {
           id: parseInt(homeOfficeWorkLogsData.workMonth.id, 10),
           month: parseInt(homeOfficeWorkLogsData.workMonth.month, 10),
@@ -118,6 +120,7 @@ export default (state, action) => {
         date: toMomentDateTime(timeOffWorkLogsData.date),
         id: parseInt(timeOffWorkLogsData.id, 10),
         status: resolveWorkLogStatus(timeOffWorkLogsData),
+        type: TIME_OFF_WORK_LOG,
         workMonth: {
           id: parseInt(timeOffWorkLogsData.workMonth.id, 10),
           month: parseInt(timeOffWorkLogsData.workMonth.month, 10),
@@ -135,6 +138,7 @@ export default (state, action) => {
         date: toMomentDateTime(vacationWorkLogsData.date),
         id: parseInt(vacationWorkLogsData.id, 10),
         status: resolveWorkLogStatus(vacationWorkLogsData),
+        type: VACATION_WORK_LOG,
         workMonth: {
           id: parseInt(vacationWorkLogsData.workMonth.id, 10),
           month: parseInt(vacationWorkLogsData.workMonth.month, 10),
