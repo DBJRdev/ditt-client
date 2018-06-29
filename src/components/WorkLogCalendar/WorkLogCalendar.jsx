@@ -8,8 +8,13 @@ import {
 } from 'react-ui';
 import WorkLogForm from '../WorkLogForm';
 import {
+  VARIANT_SICK_CHILD,
+  VARIANT_WITH_NOTE,
+  VARIANT_WITHOUT_NOTE,
+} from '../../resources/sickDayWorkLog';
+import {
   BUSINESS_TRIP_WORK_LOG,
-  HOME_OFFICE_WORK_LOG,
+  HOME_OFFICE_WORK_LOG, SICK_DAY_WORK_LOG,
   STATUS_APPROVED,
   STATUS_OPENED,
   STATUS_REJECTED,
@@ -74,6 +79,7 @@ class WorkLogCalendar extends React.Component {
           'workLogs',
           'businessTripWorkLogs',
           'homeOfficeWorkLogs',
+          'sickDayWorkLogs',
           'timeOffWorkLogs',
           'vacationWorkLogs',
         ].forEach((key) => {
@@ -118,6 +124,8 @@ class WorkLogCalendar extends React.Component {
       return this.props.deleteBusinessTripWorkLog(id).then(this.closeDeleteWorkLogDialog);
     } else if (HOME_OFFICE_WORK_LOG === type) {
       return this.props.deleteHomeOfficeWorkLog(id).then(this.closeDeleteWorkLogDialog);
+    } else if (SICK_DAY_WORK_LOG === type) {
+      return this.props.deleteSickDayWorkLog(id).then(this.closeDeleteWorkLogDialog);
     } else if (TIME_OFF_WORK_LOG === type) {
       return this.props.deleteTimeOffWorkLog(id).then(this.closeDeleteWorkLogDialog);
     } else if (VACATION_WORK_LOG === type) {
@@ -152,6 +160,11 @@ class WorkLogCalendar extends React.Component {
       return this.props.addBusinessTripWorkLog({ date: data.date });
     } else if (HOME_OFFICE_WORK_LOG === data.type) {
       return this.props.addHomeOfficeWorkLog({ date: data.date });
+    } else if (SICK_DAY_WORK_LOG === data.type) {
+      return this.props.addSickDayWorkLog({
+        date: data.date,
+        variant: data.variant,
+      });
     } else if (TIME_OFF_WORK_LOG === data.type) {
       return this.props.addTimeOffWorkLog({ date: data.date });
     } else if (VACATION_WORK_LOG === data.type) {
@@ -192,6 +205,7 @@ class WorkLogCalendar extends React.Component {
       'workLogs',
       'businessTripWorkLogs',
       'homeOfficeWorkLogs',
+      'sickDayWorkLogs',
       'timeOffWorkLogs',
       'vacationWorkLogs',
     ].forEach((key) => {
@@ -347,6 +361,16 @@ class WorkLogCalendar extends React.Component {
                             label = 'Business trip';
                           } else if (HOME_OFFICE_WORK_LOG === workLogData.type) {
                             label = 'Home office';
+                          } else if (SICK_DAY_WORK_LOG === workLogData.type) {
+                            label = 'Sick day';
+
+                            if (VARIANT_WITH_NOTE === workLogData.variant) {
+                              label += ' – With note';
+                            } else if (VARIANT_WITHOUT_NOTE === workLogData.variant) {
+                              label += ' – Without note';
+                            } else if (VARIANT_SICK_CHILD === workLogData.variant) {
+                              label += ' – Sick child';
+                            }
                           } else if (TIME_OFF_WORK_LOG === workLogData.type) {
                             label = 'Time off';
                           } else if (VACATION_WORK_LOG === workLogData.type) {
@@ -400,6 +424,27 @@ class WorkLogCalendar extends React.Component {
                                 }
                                 disabled={this.props.supervisorView || status === STATUS_APPROVED}
                                 icon="home"
+                                label={resolveLabel(workLog)}
+                              />
+                            </div>
+                          );
+                        }
+
+                        if (workLog.type === SICK_DAY_WORK_LOG) {
+                          return (
+                            <div
+                              key={`SD-${workLog.id}`}
+                              className={styles.workLogButtonWrapper}
+                            >
+                              <Button
+                                clickHandler={
+                                  () => this.openDeleteWorkLogDialog(
+                                    workLog.id,
+                                    SICK_DAY_WORK_LOG
+                                  )
+                                }
+                                disabled={this.props.supervisorView || status === STATUS_APPROVED}
+                                icon="pregnant_woman"
                                 label={resolveLabel(workLog)}
                               />
                             </div>
@@ -528,12 +573,14 @@ WorkLogCalendar.defaultProps = {
 WorkLogCalendar.propTypes = {
   addBusinessTripWorkLog: PropTypes.func.isRequired,
   addHomeOfficeWorkLog: PropTypes.func.isRequired,
+  addSickDayWorkLog: PropTypes.func.isRequired,
   addTimeOffWorkLog: PropTypes.func.isRequired,
   addVacationWorkLog: PropTypes.func.isRequired,
   addWorkLog: PropTypes.func.isRequired,
   changeSelectedDate: PropTypes.func.isRequired,
   deleteBusinessTripWorkLog: PropTypes.func.isRequired,
   deleteHomeOfficeWorkLog: PropTypes.func.isRequired,
+  deleteSickDayWorkLog: PropTypes.func.isRequired,
   deleteTimeOffWorkLog: PropTypes.func.isRequired,
   deleteVacationWorkLog: PropTypes.func.isRequired,
   deleteWorkLog: PropTypes.func.isRequired,
@@ -570,6 +617,15 @@ WorkLogCalendar.propTypes = {
     })).isRequired,
     id: PropTypes.number.isRequired,
     month: PropTypes.shape.isRequired,
+    sickDayWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+      date: PropTypes.shape.isRequired,
+      id: PropTypes.number.isRequired,
+      variant: PropTypes.oneOf([
+        VARIANT_SICK_CHILD,
+        VARIANT_WITH_NOTE,
+        VARIANT_WITHOUT_NOTE,
+      ]).isRequired,
+    })).isRequired,
     status: PropTypes.oneOf([
       STATUS_APPROVED,
       STATUS_OPENED,

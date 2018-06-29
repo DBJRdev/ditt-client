@@ -21,11 +21,13 @@ class WorkLogComponent extends React.Component {
 
     this.addBusinessTripWorkLog = this.addBusinessTripWorkLog.bind(this);
     this.addHomeOfficeWorkLog = this.addHomeOfficeWorkLog.bind(this);
+    this.addSickDayWorkLog = this.addSickDayWorkLog.bind(this);
     this.addTimeOffWorkLog = this.addTimeOffWorkLog.bind(this);
     this.addVacationWorkLog = this.addVacationWorkLog.bind(this);
     this.addWorkLog = this.addWorkLog.bind(this);
     this.deleteBusinessTripWorkLog = this.deleteBusinessTripWorkLog.bind(this);
     this.deleteHomeOfficeWorkLog = this.deleteHomeOfficeWorkLog.bind(this);
+    this.deleteSickDayWorkLog = this.deleteSickDayWorkLog.bind(this);
     this.deleteTimeOffWorkLog = this.deleteTimeOffWorkLog.bind(this);
     this.deleteVacationWorkLog = this.deleteVacationWorkLog.bind(this);
     this.deleteWorkLog = this.deleteWorkLog.bind(this);
@@ -51,6 +53,16 @@ class WorkLogComponent extends React.Component {
 
   addHomeOfficeWorkLog(data) {
     return this.props.addHomeOfficeWorkLog(data).then((response) => {
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+
+      return response;
+    });
+  }
+
+  addSickDayWorkLog(data) {
+    return this.props.addSickDayWorkLog(data).then((response) => {
       if (!response.error) {
         this.fetchWorkMonth(this.state.selectedDate);
       }
@@ -99,6 +111,16 @@ class WorkLogComponent extends React.Component {
 
   deleteHomeOfficeWorkLog(id) {
     return this.props.deleteHomeOfficeWorkLog(id).then((response) => {
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+
+      return response;
+    });
+  }
+
+  deleteSickDayWorkLog(id) {
+    return this.props.deleteSickDayWorkLog(id).then((response) => {
       if (!response.error) {
         this.fetchWorkMonth(this.state.selectedDate);
       }
@@ -157,11 +179,13 @@ class WorkLogComponent extends React.Component {
         <WorkLogCalendar
           addBusinessTripWorkLog={this.addBusinessTripWorkLog}
           addHomeOfficeWorkLog={this.addHomeOfficeWorkLog}
+          addSickDayWorkLog={this.addSickDayWorkLog}
           addTimeOffWorkLog={this.addTimeOffWorkLog}
           addVacationWorkLog={this.addVacationWorkLog}
           addWorkLog={this.addWorkLog}
           deleteBusinessTripWorkLog={this.deleteBusinessTripWorkLog}
           deleteHomeOfficeWorkLog={this.deleteHomeOfficeWorkLog}
+          deleteSickDayWorkLog={this.deleteSickDayWorkLog}
           deleteTimeOffWorkLog={this.deleteTimeOffWorkLog}
           deleteVacationWorkLog={this.deleteVacationWorkLog}
           deleteWorkLog={this.deleteWorkLog}
@@ -187,11 +211,13 @@ WorkLogComponent.defaultProps = {
 WorkLogComponent.propTypes = {
   addBusinessTripWorkLog: PropTypes.func.isRequired,
   addHomeOfficeWorkLog: PropTypes.func.isRequired,
+  addSickDayWorkLog: PropTypes.func.isRequired,
   addTimeOffWorkLog: PropTypes.func.isRequired,
   addVacationWorkLog: PropTypes.func.isRequired,
   addWorkLog: PropTypes.func.isRequired,
   deleteBusinessTripWorkLog: PropTypes.func.isRequired,
   deleteHomeOfficeWorkLog: PropTypes.func.isRequired,
+  deleteSickDayWorkLog: PropTypes.func.isRequired,
   deleteTimeOffWorkLog: PropTypes.func.isRequired,
   deleteVacationWorkLog: PropTypes.func.isRequired,
   deleteWorkLog: PropTypes.func.isRequired,

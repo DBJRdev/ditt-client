@@ -2,6 +2,7 @@ import validator from 'validator';
 import {
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,
+  SICK_DAY_WORK_LOG,
   TIME_OFF_WORK_LOG,
   VACATION_WORK_LOG,
   WORK_LOG,
@@ -126,6 +127,7 @@ export const validateWorkLog = (workLog, workLogsOfDay) => {
       startHour: null,
       startMinute: null,
       type: null,
+      variant: null,
     },
     isValid: true,
   };
@@ -133,6 +135,7 @@ export const validateWorkLog = (workLog, workLogsOfDay) => {
   if ([
     BUSINESS_TRIP_WORK_LOG,
     HOME_OFFICE_WORK_LOG,
+    SICK_DAY_WORK_LOG,
     TIME_OFF_WORK_LOG,
     VACATION_WORK_LOG,
     WORK_LOG,

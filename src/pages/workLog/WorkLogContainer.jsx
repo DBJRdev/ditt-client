@@ -12,6 +12,11 @@ import {
   selectHomeOfficeWorkLogMeta,
 } from '../../resources/homeOfficeWorkLog';
 import {
+  addSickDayWorkLog,
+  deleteSickDayWorkLog,
+  selectSickDayWorkLogMeta,
+} from '../../resources/sickDayWorkLog';
+import {
   addTimeOffWorkLog,
   deleteTimeOffWorkLog,
   selectTimeOffWorkLogMeta,
@@ -47,6 +52,7 @@ const mapStateToProps = (state) => {
   const addWorkLogMeta = selectAddWorkLogMeta(state);
   const businessTripWorkLogMeta = selectBusinessTripWorkLogMeta(state);
   const homeOfficeWorkLogMeta = selectHomeOfficeWorkLogMeta(state);
+  const sickDayWorkLogMeta = selectSickDayWorkLogMeta(state);
   const timeOffWorkLogMeta = selectTimeOffWorkLogMeta(state);
   const vacationWorkLogMeta = selectVacationWorkLogMeta(state);
   const deleteWorkLogMeta = selectDeleteWorkLogMeta(state);
@@ -68,6 +74,7 @@ const mapStateToProps = (state) => {
       || businessTripWorkLogMeta.isPosting
       || deleteWorkLogMeta.isPosting
       || homeOfficeWorkLogMeta.isPosting
+      || sickDayWorkLogMeta.isPosting
       || timeOffWorkLogMeta.isPosting
       || vacationWorkLogMeta.isPosting
       || workMonthMeta.isPosting,
@@ -81,11 +88,13 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => ({
   addBusinessTripWorkLog: data => dispatch(addBusinessTripWorkLog(data)),
   addHomeOfficeWorkLog: data => dispatch(addHomeOfficeWorkLog(data)),
+  addSickDayWorkLog: data => dispatch(addSickDayWorkLog(data)),
   addTimeOffWorkLog: data => dispatch(addTimeOffWorkLog(data)),
   addVacationWorkLog: data => dispatch(addVacationWorkLog(data)),
   addWorkLog: data => dispatch(addWorkLog(data)),
   deleteBusinessTripWorkLog: id => dispatch(deleteBusinessTripWorkLog(id)),
   deleteHomeOfficeWorkLog: id => dispatch(deleteHomeOfficeWorkLog(id)),
+  deleteSickDayWorkLog: id => dispatch(deleteSickDayWorkLog(id)),
   deleteTimeOffWorkLog: id => dispatch(deleteTimeOffWorkLog(id)),
   deleteVacationWorkLog: id => dispatch(deleteVacationWorkLog(id)),
   deleteWorkLog: id => dispatch(deleteWorkLog(id)),

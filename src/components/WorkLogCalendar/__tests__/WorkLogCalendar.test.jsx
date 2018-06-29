@@ -25,11 +25,13 @@ describe('rendering', () => {
     const tree = shallow(<WorkLogCalendar
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
+      addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
@@ -45,6 +47,7 @@ describe('rendering', () => {
           homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
+          sickDayWorkLogs: [],
           status: 'OPENED',
           timeOffWorkLogs: [],
           vacationWorkLogs: [],
@@ -80,11 +83,13 @@ describe('rendering', () => {
     const tree = shallow(<WorkLogCalendar
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
+      addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
@@ -100,6 +105,7 @@ describe('rendering', () => {
           homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
+          sickDayWorkLogs: [],
           status: 'WAITING_FOR_APPROVAL',
           timeOffWorkLogs: [],
           vacationWorkLogs: [],
@@ -135,11 +141,13 @@ describe('rendering', () => {
     const tree = shallow(<WorkLogCalendar
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
+      addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
@@ -155,6 +163,7 @@ describe('rendering', () => {
           homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
+          sickDayWorkLogs: [],
           status: 'APPROVED',
           timeOffWorkLogs: [],
           vacationWorkLogs: [],
@@ -190,11 +199,13 @@ describe('rendering', () => {
     const tree = shallow(<WorkLogCalendar
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
+      addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
@@ -211,6 +222,7 @@ describe('rendering', () => {
           homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
+          sickDayWorkLogs: [],
           status: 'OPENED',
           timeOffWorkLogs: [],
           vacationWorkLogs: [],
@@ -246,11 +258,13 @@ describe('rendering', () => {
     const tree = shallow(<WorkLogCalendar
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
+      addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
@@ -267,6 +281,7 @@ describe('rendering', () => {
           homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
+          sickDayWorkLogs: [],
           status: 'WAITING_FOR_APPROVAL',
           timeOffWorkLogs: [],
           vacationWorkLogs: [],
@@ -302,11 +317,13 @@ describe('rendering', () => {
     const tree = shallow(<WorkLogCalendar
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
+      addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
@@ -323,6 +340,7 @@ describe('rendering', () => {
           homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
+          sickDayWorkLogs: [],
           status: 'APPROVED',
           timeOffWorkLogs: [],
           vacationWorkLogs: [],
@@ -361,11 +379,13 @@ describe('functionality', () => {
     const tree = mount(<WorkLogCalendar
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
+      addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
@@ -381,6 +401,7 @@ describe('functionality', () => {
           homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
+          sickDayWorkLogs: [],
           status: 'OPENED',
           timeOffWorkLogs: [],
           vacationWorkLogs: [],
@@ -421,11 +442,13 @@ describe('functionality', () => {
     const tree = mount(<WorkLogCalendar
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
+      addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
@@ -441,6 +464,7 @@ describe('functionality', () => {
           homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
+          sickDayWorkLogs: [],
           status: 'OPENED',
           timeOffWorkLogs: [],
           vacationWorkLogs: [],
@@ -481,11 +505,13 @@ describe('functionality', () => {
     const tree = mount(<WorkLogCalendar
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
+      addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
@@ -501,6 +527,7 @@ describe('functionality', () => {
           homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
+          sickDayWorkLogs: [],
           status: 'OPENED',
           timeOffWorkLogs: [],
           vacationWorkLogs: [],
@@ -539,11 +566,13 @@ describe('functionality', () => {
     const tree = mount(<WorkLogCalendar
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
+      addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
@@ -560,6 +589,7 @@ describe('functionality', () => {
           homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
+          sickDayWorkLogs: [],
           status: 'WAITING_FOR_APPROVAL',
           timeOffWorkLogs: [],
           vacationWorkLogs: [],

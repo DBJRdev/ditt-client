@@ -8,8 +8,14 @@ import {
   TextField,
 } from 'react-ui';
 import {
+  VARIANT_WITH_NOTE,
+  VARIANT_WITHOUT_NOTE,
+  VARIANT_SICK_CHILD,
+} from '../../resources/sickDayWorkLog';
+import {
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,
+  SICK_DAY_WORK_LOG,
   TIME_OFF_WORK_LOG,
   VACATION_WORK_LOG,
   WORK_LOG,
@@ -28,6 +34,7 @@ class WorkLogForm extends React.Component {
         startHour: props.date.hour(),
         startMinute: props.date.minute(),
         type: WORK_LOG,
+        variant: VARIANT_WITH_NOTE,
       },
       formValidity: {
         elements: {
@@ -87,6 +94,7 @@ class WorkLogForm extends React.Component {
         endTime: date.clone().hour(formData.endHour).minute(formData.endMinute).second(0),
         startTime: date.clone().hour(formData.startHour).minute(formData.startMinute).second(0),
         type: formData.type,
+        variant: formData.variant,
       })
         .then((response) => {
           if (response.type.endsWith('WORK_LOG_SUCCESS')) {
@@ -98,6 +106,38 @@ class WorkLogForm extends React.Component {
           }
         });
     }
+  }
+
+  renderSickDayWorkLogFields() {
+    return (
+      <fieldset style={this.fieldSetStyle}>
+        <legend>Type</legend>
+        <div style={this.fieldStyle}>
+          <SelectField
+            changeHandler={this.changeHandler}
+            error={this.state.formValidity.elements.variant}
+            fieldId="variant"
+            isLabelVisible={false}
+            label="Type"
+            options={[
+              {
+                label: 'With note',
+                value: VARIANT_WITH_NOTE,
+              },
+              {
+                label: 'Without note',
+                value: VARIANT_WITHOUT_NOTE,
+              },
+              {
+                label: 'Sick child',
+                value: VARIANT_SICK_CHILD,
+              },
+            ]}
+            value={this.state.formData.variant || ''}
+          />
+        </div>
+      </fieldset>
+    );
   }
 
   renderWorkLogFields() {
@@ -214,6 +254,10 @@ class WorkLogForm extends React.Component {
                     value: HOME_OFFICE_WORK_LOG,
                   },
                   {
+                    label: 'Sick day',
+                    value: SICK_DAY_WORK_LOG,
+                  },
+                  {
                     label: 'Time off',
                     value: TIME_OFF_WORK_LOG,
                   },
@@ -226,6 +270,7 @@ class WorkLogForm extends React.Component {
               />
             </div>
           </fieldset>
+          {this.state.formData.type === SICK_DAY_WORK_LOG && this.renderSickDayWorkLogFields()}
           {this.state.formData.type === WORK_LOG && this.renderWorkLogFields()}
         </form>
       </Modal>

@@ -49,11 +49,13 @@ class WorkLogComponent extends React.Component {
         <WorkLogCalendar
           addBusinessTripWorkLog={() => {}}
           addHomeOfficeWorkLog={() => {}}
+          addSickDayWorkLog={() => {}}
           addTimeOffWorkLog={() => {}}
           addVacationWorkLog={() => {}}
           addWorkLog={() => {}}
           deleteBusinessTripWorkLog={() => {}}
           deleteHomeOfficeWorkLog={() => {}}
+          deleteSickDayWorkLog={() => {}}
           deleteTimeOffWorkLog={() => {}}
           deleteVacationWorkLog={() => {}}
           deleteWorkLog={() => {}}
