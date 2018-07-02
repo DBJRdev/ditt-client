@@ -1,42 +1,21 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import jwt from 'jsonwebtoken';
 import { Link } from 'react-router-dom';
-import { Login } from 'react-ui';
-import {
-  ROLE_ADMIN,
-  ROLE_EMPLOYEE,
-  ROLE_SUPER_ADMIN,
-} from '../../resources/user';
+import { NewPassword } from 'react-ui';
 import routes from '../../routes';
 import styles from './Login.scss';
 import logoImage from './images/logo.svg';
 
-class LoginComponent extends React.Component {
+class NewPasswordComponent extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      password: null,
-      username: null,
+      newPassword: null,
+      newPasswordRepeat: null,
     };
 
     this.onChangeHandler = this.onChangeHandler.bind(this);
-  }
-
-  componentDidMount() {
-    if (this.props.token) {
-      const decodedToken = jwt.decode(this.props.token);
-
-      if (decodedToken) {
-        const { roles } = decodedToken;
-
-        if (roles.includes(ROLE_ADMIN) || roles.includes(ROLE_SUPER_ADMIN)) {
-          this.props.history.push(routes.userList);
-        } else if (roles.includes(ROLE_EMPLOYEE)) {
-          this.props.history.push(routes.index);
-        }
-      }
-    }
   }
 
   onChangeHandler(field, value) {
@@ -59,18 +38,18 @@ class LoginComponent extends React.Component {
           this.props.isPosting
             ? 'Loading…'
             : (
-              <Login
+              <NewPassword
                 footer={
                   // eslint-disable-next-line jsx-a11y/anchor-is-valid
-                  <Link to={routes.forgotPassword}>
-                    Forgot your password?
+                  <Link to={routes.login}>
+                    Go to Log in
                   </Link>
                 }
                 hasError={this.props.isPostingFailure}
                 submitHandler={() => {
-                  this.props.login({
-                    password: this.state.password,
-                    username: this.state.username,
+                  this.props.newPassword({
+                    newPassword: this.state.newPassword,
+                    newPasswordRepeat: this.state.newPasswordRepeat,
                   });
 
                   return false;
@@ -86,18 +65,10 @@ class LoginComponent extends React.Component {
   }
 }
 
-LoginComponent.defaultProps = {
-  token: null,
-};
-
-LoginComponent.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
-  }).isRequired,
+NewPasswordComponent.propTypes = {
   isPosting: PropTypes.bool.isRequired,
   isPostingFailure: PropTypes.bool.isRequired,
-  login: PropTypes.func.isRequired,
-  token: PropTypes.string,
+  newPassword: PropTypes.func.isRequired,
 };
 
-export default LoginComponent;
+export default NewPasswordComponent;

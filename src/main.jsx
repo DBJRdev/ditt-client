@@ -11,7 +11,11 @@ import routes from './routes';
 import store from './store';
 import ErrorPage from './pages/error';
 import IndexPage from './pages/workLog';
-import LoginPage from './pages/login';
+import {
+  ForgotPasswordPage,
+  LoginPage,
+  NewPasswordPage,
+} from './pages/login';
 import SpecialApprovalListPage from './pages/specialApproval';
 import {
   ListContainer as SupervisedUserListPage,
@@ -80,6 +84,16 @@ ReactDOM.render(
             exact
             path={routes.login}
             component={LoginPage}
+          />
+          <Route
+            exact
+            path={routes.forgotPassword}
+            component={ForgotPasswordPage}
+          />
+          <Route
+            exact
+            path={routes.newPassword}
+            component={NewPasswordPage}
           />
           <Route component={ErrorPage} />
         </Switch>

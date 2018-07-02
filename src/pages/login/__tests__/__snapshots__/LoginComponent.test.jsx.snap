@@ -12,7 +12,14 @@ exports[`rendering renders correctly 1`] = `
     width={240}
   />
   <Login
-    footer={null}
+    footer={
+      <Link
+        replace={false}
+        to="/forgot-password"
+      >
+        Forgot your password?
+      </Link>
+    }
     hasError={false}
     logoUrl={null}
     onChangeHandler={[Function]}
