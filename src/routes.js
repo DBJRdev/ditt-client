@@ -4,7 +4,7 @@ export default {
   forgotPassword: '/forgot-password',
   index: '/',
   login: '/login',
-  newPassword: '/new-password',
+  newPassword: '/new-password/:resetPasswordToken',
   specialApprovalList: '/special-approvals',
   supervisedUserList: '/supervised-users',
   supervisedUserWorkLog: '/supervised-users/:id/work-log',

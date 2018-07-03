@@ -11,4 +11,12 @@ export default Immutable.fromJS({
     isPostingFailure: false,
     token: jwt || null,
   },
+  newPassword: {
+    isPosting: false,
+    isPostingFailure: false,
+  },
+  resetPassword: {
+    isPosting: false,
+    isPostingFailure: false,
+  },
 });

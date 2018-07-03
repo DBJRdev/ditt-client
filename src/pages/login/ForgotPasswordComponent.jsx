@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ForgotPassword } from 'react-ui';
+import { RESET_PASSWORD_SUCCESS } from '../../resources/auth/actionTypes';
 import routes from '../../routes';
 import styles from './Login.scss';
 import logoImage from './images/logo.svg';
@@ -12,9 +13,11 @@ class ForgotPasswordComponent extends React.Component {
 
     this.state = {
       email: null,
+      isSubmitted: false,
     };
 
     this.onChangeHandler = this.onChangeHandler.bind(this);
+    this.resetPasswordHandler = this.resetPasswordHandler.bind(this);
   }
 
   onChangeHandler(field, value) {
@@ -23,8 +26,20 @@ class ForgotPasswordComponent extends React.Component {
     });
   }
 
+  resetPasswordHandler() {
+    this.props.resetPassword({
+      email: this.state.email,
+    }).then((response) => {
+      if (response.type === RESET_PASSWORD_SUCCESS) {
+        this.setState({ isSubmitted: true });
+      }
+    });
+
+    return false;
+  }
+
   render() {
-    return (
+    const layout = children => (
       <div className={styles.container}>
         <img
           src={logoImage}
@@ -33,40 +48,45 @@ class ForgotPasswordComponent extends React.Component {
           className={styles.logo}
           alt="DBJR Internal Time Tracking"
         />
-        {
-          this.props.isPosting
-            ? 'Loading…'
-            : (
-              <ForgotPassword
-                footer={
-                  // eslint-disable-next-line jsx-a11y/anchor-is-valid
-                  <Link to={routes.login}>
-                    Go to Log in
-                  </Link>
-                }
-                hasError={this.props.isPostingFailure}
-                submitHandler={() => {
-                  this.props.forgotPassword({
-                    email: this.state.email,
-                  });
-
-                  return false;
-                }}
-                onChangeHandler={this.onChangeHandler}
-                title="DBJR Internal Time Tracking"
-                usernameType="email"
-              />
-            )
-        }
+        {children}
       </div>
     );
+
+    if (this.props.isPosting) {
+      return layout('Loading…');
+    }
+
+    if (this.state.isSubmitted) {
+      return layout((
+        <p className={styles.message}>
+          Password has been successfully reset.
+          Click on a link in e-mail to be able to set a new password.
+        </p>
+      ));
+    }
+
+    return layout((
+      <ForgotPassword
+        footer={
+          // eslint-disable-next-line jsx-a11y/anchor-is-valid
+          <Link to={routes.login}>
+            Go to login
+          </Link>
+        }
+        hasError={this.props.isPostingFailure}
+        submitHandler={this.resetPasswordHandler}
+        onChangeHandler={this.onChangeHandler}
+        title="DBJR Internal Time Tracking"
+        usernameType="email"
+      />
+    ));
   }
 }
 
 ForgotPasswordComponent.propTypes = {
-  forgotPassword: PropTypes.func.isRequired,
   isPosting: PropTypes.bool.isRequired,
   isPostingFailure: PropTypes.bool.isRequired,
+  resetPassword: PropTypes.func.isRequired,
 };
 
 export default ForgotPasswordComponent;
