@@ -2,7 +2,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ForgotPassword } from 'react-ui';
-import { RESET_PASSWORD_SUCCESS } from '../../resources/auth/actionTypes';
+import {
+  RESET_PASSWORD_FAILURE,
+  RESET_PASSWORD_SUCCESS,
+} from '../../resources/auth/actionTypes';
 import routes from '../../routes';
 import styles from './Login.scss';
 import logoImage from './images/logo.svg';
@@ -13,6 +16,7 @@ class ForgotPasswordComponent extends React.Component {
 
     this.state = {
       email: null,
+      error: null,
       isSubmitted: false,
     };
 
@@ -31,7 +35,12 @@ class ForgotPasswordComponent extends React.Component {
       email: this.state.email,
     }).then((response) => {
       if (response.type === RESET_PASSWORD_SUCCESS) {
-        this.setState({ isSubmitted: true });
+        this.setState({
+          error: null,
+          isSubmitted: true,
+        });
+      } else if (response.type === RESET_PASSWORD_FAILURE) {
+        this.setState({ error: response.payload.response.detail });
       }
     });
 
@@ -67,13 +76,13 @@ class ForgotPasswordComponent extends React.Component {
 
     return layout((
       <ForgotPassword
+        error={this.state.error}
         footer={
           // eslint-disable-next-line jsx-a11y/anchor-is-valid
           <Link to={routes.login}>
             Go to login
           </Link>
         }
-        hasError={this.props.isPostingFailure}
         submitHandler={this.resetPasswordHandler}
         onChangeHandler={this.onChangeHandler}
         title="DBJR Internal Time Tracking"
@@ -85,7 +94,6 @@ class ForgotPasswordComponent extends React.Component {
 
 ForgotPasswordComponent.propTypes = {
   isPosting: PropTypes.bool.isRequired,
-  isPostingFailure: PropTypes.bool.isRequired,
   resetPassword: PropTypes.func.isRequired,
 };
 

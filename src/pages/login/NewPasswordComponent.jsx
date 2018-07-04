@@ -3,7 +3,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { NewPassword } from 'react-ui';
 import routes from '../../routes';
-import { NEW_PASSWORD_SUCCESS } from '../../resources/auth/actionTypes';
+import {
+  NEW_PASSWORD_SUCCESS,
+  NEW_PASSWORD_FAILURE,
+} from '../../resources/auth/actionTypes';
 import styles from './Login.scss';
 import logoImage from './images/logo.svg';
 
@@ -12,7 +15,7 @@ class NewPasswordComponent extends React.Component {
     super(props);
 
     this.state = {
-      isNotValid: false,
+      error: null,
       isSubmitted: false,
       newPassword: null,
       newPasswordRepeat: null,
@@ -29,17 +32,21 @@ class NewPasswordComponent extends React.Component {
   }
 
   newPasswordHandler(e) {
-    if (
-      this.state.newPassword !== this.state.newPasswordRepeat
-      || (this.state.newPassword && this.state.newPassword.length < 8)
-    ) {
+    if (this.state.newPassword !== this.state.newPasswordRepeat) {
       e.preventDefault();
-      this.setState({ isNotValid: true });
+      this.setState({ error: 'Entered passwords are not same.' });
 
       return;
     }
 
-    this.setState({ isNotValid: false });
+    if (this.state.newPassword && this.state.newPassword.length < 8) {
+      e.preventDefault();
+      this.setState({ error: 'Entered password has to be at least 8 characters long.' });
+
+      return;
+    }
+
+    this.setState({ error: null });
 
     this.props.newPassword({
       newPlainPassword: this.state.newPassword,
@@ -47,6 +54,8 @@ class NewPasswordComponent extends React.Component {
     }).then((response) => {
       if (response.type === NEW_PASSWORD_SUCCESS) {
         this.setState({ isSubmitted: true });
+      } else if (response.type === NEW_PASSWORD_FAILURE) {
+        this.setState({ error: response.payload.response.detail });
       }
     });
   }
@@ -80,13 +89,13 @@ class NewPasswordComponent extends React.Component {
 
     return layout((
       <NewPassword
+        error={this.state.error}
         footer={
           // eslint-disable-next-line jsx-a11y/anchor-is-valid
           <Link to={routes.login}>
             Go to login
           </Link>
         }
-        hasError={this.props.isPostingFailure || this.state.isNotValid}
         submitHandler={this.newPasswordHandler}
         onChangeHandler={this.onChangeHandler}
         title="DBJR Internal Time Tracking"
@@ -98,7 +107,6 @@ class NewPasswordComponent extends React.Component {
 
 NewPasswordComponent.propTypes = {
   isPosting: PropTypes.bool.isRequired,
-  isPostingFailure: PropTypes.bool.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       resetPasswordToken: PropTypes.string.isRequired,

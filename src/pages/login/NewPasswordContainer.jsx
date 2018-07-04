@@ -10,7 +10,6 @@ const mapStateToProps = (state) => {
 
   return ({
     isPosting: newPasswordMeta.isPosting,
-    isPostingFailure: newPasswordMeta.isPostingFailure,
   });
 };
 
