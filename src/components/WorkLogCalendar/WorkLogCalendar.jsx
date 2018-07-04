@@ -1,3 +1,4 @@
+import moment from 'moment';
 import Immutable from 'immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
@@ -36,7 +37,6 @@ import {
 import {
   getWorkedTime,
   getWorkLogsByDay,
-  getWorkLogsByMonth,
   getWorkMonthByMonth,
 } from '../../services/workLogService';
 import parameters from '../../../config/parameters';
@@ -184,13 +184,13 @@ class WorkLogCalendar extends React.Component {
     this.setState({ showWorkLogForm: false });
   }
 
-  renderWorkHoursInfo() {
+  renderWorkHoursInfo(daysOfSelectedMonth) {
     const {
       selectedDate,
       workHoursList,
-      workMonth,
     } = this.props;
     let requiredHours = 0;
+    const workedTime = moment.duration();
 
     const workHours = workHoursList.find(item => (
       item.get('year') === selectedDate.year()
@@ -201,26 +201,11 @@ class WorkLogCalendar extends React.Component {
       requiredHours = workHours.get('requiredHours');
     }
 
-    let workLogListForRenderingMonth = Immutable.List();
-    [
-      'workLogs',
-      'businessTripWorkLogs',
-      'homeOfficeWorkLogs',
-      'sickDayWorkLogs',
-      'timeOffWorkLogs',
-      'vacationWorkLogs',
-    ].forEach((key) => {
-      workLogListForRenderingMonth = workLogListForRenderingMonth.concat((
-        getWorkLogsByMonth(selectedDate, workMonth ? workMonth.get(key).toJS() : [])
-      ));
+    daysOfSelectedMonth.forEach((day) => {
+      workedTime.add(day.workTime);
     });
 
-    const workedTime = getWorkedTime(
-      workLogListForRenderingMonth,
-      workHoursList
-    );
-
-    return `${workedTime.hours()}:${workedTime.minutes() < 10 ? '0' : ''}${workedTime.minutes()} h out of ${requiredHours} h`;
+    return `${workedTime.hours() + (workedTime.days() * 24)}:${workedTime.minutes() < 10 ? '0' : ''}${workedTime.minutes()} h out of ${requiredHours} h`;
   }
 
   renderWorkLogForm() {
@@ -267,6 +252,8 @@ class WorkLogCalendar extends React.Component {
       status = this.props.workMonth.get('status');
     }
 
+    const daysOfSelectedMonth = this.getDaysOfSelectedMonth();
+
     return (
       <div>
         <nav className={styles.navigation}>
@@ -290,7 +277,7 @@ class WorkLogCalendar extends React.Component {
                 {toMonthYearFormat(this.props.selectedDate)}
               </h2>
               <span className={styles.navigationSubtitle}>
-                {this.renderWorkHoursInfo()}
+                {this.renderWorkHoursInfo(daysOfSelectedMonth)}
               </span>
             </div>
             {
@@ -338,7 +325,7 @@ class WorkLogCalendar extends React.Component {
         <div className={styles.tableWrapper}>
           <table className={styles.table}>
             <tbody>
-              {this.getDaysOfSelectedMonth().map((day) => {
+              {daysOfSelectedMonth.map((day) => {
                 const rowClassName = (isWeekend(day.date) || includesSameDate(day.date, parameters.get('supportedHolidays')))
                   ? styles.tableRowWeekend
                   : styles.tableRow;

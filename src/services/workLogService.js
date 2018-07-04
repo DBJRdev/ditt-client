@@ -12,6 +12,14 @@ export const getWorkedTime = (workLogList, workHoursList) => {
   const workedHoursLimits = parameters.get('workedHoursLimits').toJS();
 
   const workedSeconds = workLogList.reduce((total, workLog) => {
+    if (workLog.type === WORK_LOG) {
+      return (workLog.endTime.diff(workLog.startTime) / 1000) + total;
+    }
+
+    return total;
+  }, 0);
+
+  const specialWorkedSeconds = workLogList.reduce((total, workLog) => {
     if (
       (workLog.type === VACATION_WORK_LOG && workLog.status === STATUS_APPROVED)
       || workLog.type === SICK_DAY_WORK_LOG
@@ -27,10 +35,6 @@ export const getWorkedTime = (workLogList, workHoursList) => {
       );
 
       return ((requiredHours / workingDays) * 3600) + total;
-    }
-
-    if (workLog.type === WORK_LOG) {
-      return (workLog.endTime.diff(workLog.startTime) / 1000) + total;
     }
 
     return total;
@@ -52,6 +56,8 @@ export const getWorkedTime = (workLogList, workHoursList) => {
   } else {
     workedTime = moment.duration({ seconds: workedSeconds });
   }
+
+  workedTime.add({ seconds: specialWorkedSeconds });
 
   return workedTime;
 };
