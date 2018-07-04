@@ -82,16 +82,16 @@ export const resetPassword = data => dispatch => dispatch({
   },
 });
 
-export const newPassword = data => dispatch => dispatch({
+export const setNewPassword = data => dispatch => dispatch({
   [RSAA]: {
     body: JSON.stringify(data),
     endpoint: `${API_URL}/new-password`,
     headers: { 'Content-Type': 'application/json' },
     method: 'PUT',
     types: [
-      types.NEW_PASSWORD_REQUEST,
-      types.NEW_PASSWORD_SUCCESS,
-      types.NEW_PASSWORD_FAILURE,
+      types.SET_NEW_PASSWORD_REQUEST,
+      types.SET_NEW_PASSWORD_SUCCESS,
+      types.SET_NEW_PASSWORD_FAILURE,
     ],
   },
 });

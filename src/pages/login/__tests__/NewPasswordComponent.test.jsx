@@ -12,7 +12,7 @@ describe('rendering', () => {
           resetPasswordToken: 'token',
         },
       },
-      newPassword: () => {},
+      setNewPassword: () => {},
     };
     const tree = shallow(<NewPasswordComponent {...props} />);
 

@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { NewPassword } from 'react-ui';
 import routes from '../../routes';
 import {
-  NEW_PASSWORD_SUCCESS,
-  NEW_PASSWORD_FAILURE,
+  SET_NEW_PASSWORD_SUCCESS,
+  SET_NEW_PASSWORD_FAILURE,
 } from '../../resources/auth/actionTypes';
 import styles from './Login.scss';
 import logoImage from './images/logo.svg';
@@ -48,13 +48,13 @@ class NewPasswordComponent extends React.Component {
 
     this.setState({ error: null });
 
-    this.props.newPassword({
+    this.props.setNewPassword({
       newPlainPassword: this.state.newPassword,
       resetPasswordToken: this.props.match.params.resetPasswordToken,
     }).then((response) => {
-      if (response.type === NEW_PASSWORD_SUCCESS) {
+      if (response.type === SET_NEW_PASSWORD_SUCCESS) {
         this.setState({ isSubmitted: true });
-      } else if (response.type === NEW_PASSWORD_FAILURE) {
+      } else if (response.type === SET_NEW_PASSWORD_FAILURE) {
         this.setState({ error: response.payload.response.detail });
       }
     });
@@ -112,7 +112,7 @@ NewPasswordComponent.propTypes = {
       resetPasswordToken: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-  newPassword: PropTypes.func.isRequired,
+  setNewPassword: PropTypes.func.isRequired,
 };
 
 export default NewPasswordComponent;

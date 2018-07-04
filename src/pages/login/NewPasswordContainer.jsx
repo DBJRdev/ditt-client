@@ -1,20 +1,20 @@
 import { connect } from 'react-redux';
 import {
-  newPassword,
-  selectNewPasswordMeta,
+  setNewPassword,
+  selectSetNewPasswordMeta,
 } from '../../resources/auth';
 import NewPasswordComponent from './NewPasswordComponent';
 
 const mapStateToProps = (state) => {
-  const newPasswordMeta = selectNewPasswordMeta(state);
+  const setNewPasswordMeta = selectSetNewPasswordMeta(state);
 
   return ({
-    isPosting: newPasswordMeta.isPosting,
+    isPosting: setNewPasswordMeta.isPosting,
   });
 };
 
 const mapDispatchToProps = dispatch => ({
-  newPassword: data => dispatch(newPassword(data)),
+  setNewPassword: data => dispatch(setNewPassword(data)),
 });
 
 export default connect(

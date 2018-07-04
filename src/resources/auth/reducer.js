@@ -64,24 +64,6 @@ export default (state, action) => {
       .setIn(['jwt', 'token'], null);
   }
 
-  if (type === actionTypes.NEW_PASSWORD_REQUEST) {
-    return state
-      .setIn(['newPassword', 'isPosting'], true)
-      .setIn(['newPassword', 'isPostingFailure'], false);
-  }
-
-  if (type === actionTypes.NEW_PASSWORD_SUCCESS) {
-    return state
-      .setIn(['newPassword', 'isPosting'], false)
-      .setIn(['newPassword', 'isPostingFailure'], false);
-  }
-
-  if (type === actionTypes.NEW_PASSWORD_FAILURE) {
-    return state
-      .setIn(['newPassword', 'isPosting'], false)
-      .setIn(['newPassword', 'isPostingFailure'], true);
-  }
-
   if (type === actionTypes.RESET_PASSWORD_REQUEST) {
     return state
       .setIn(['resetPassword', 'isPosting'], true)
@@ -98,6 +80,24 @@ export default (state, action) => {
     return state
       .setIn(['resetPassword', 'isPosting'], false)
       .setIn(['resetPassword', 'isPostingFailure'], true);
+  }
+
+  if (type === actionTypes.SET_NEW_PASSWORD_REQUEST) {
+    return state
+      .setIn(['setNewPassword', 'isPosting'], true)
+      .setIn(['setNewPassword', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.SET_NEW_PASSWORD_SUCCESS) {
+    return state
+      .setIn(['setNewPassword', 'isPosting'], false)
+      .setIn(['setNewPassword', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.SET_NEW_PASSWORD_FAILURE) {
+    return state
+      .setIn(['setNewPassword', 'isPosting'], false)
+      .setIn(['setNewPassword', 'isPostingFailure'], true);
   }
 
   return state;

@@ -1,16 +1,16 @@
 export {
   login,
   logout,
-  newPassword,
   reset,
   resetPassword,
+  setNewPassword,
 } from './actions';
 
 export {
   selectJwtToken,
   selectJwtMeta,
-  selectNewPasswordMeta,
   selectResetPasswordMeta,
+  selectSetNewPasswordMeta,
 } from './selectors';
 
 export { default as reducer } from './reducer';
