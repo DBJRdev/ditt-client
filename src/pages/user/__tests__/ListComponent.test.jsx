@@ -11,6 +11,7 @@ describe('rendering', () => {
         push: () => {},
       },
       isFetching: false,
+      token: 'token',
       userList: Immutable.List([]),
     };
     const tree = shallow(<ListComponent {...props} />);

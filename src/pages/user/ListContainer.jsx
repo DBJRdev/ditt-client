@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { selectJwtToken } from '../../resources/auth';
 import {
   fetchUserList,
   selectUserList,
@@ -11,6 +12,7 @@ const mapStateToProps = (state) => {
 
   return ({
     isFetching: userListMeta.isFetching,
+    token: selectJwtToken(state),
     userList: selectUserList(state),
   });
 };
