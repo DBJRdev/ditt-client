@@ -13,6 +13,18 @@ import styles from './Layout.scss';
 import logoImage from './images/logo.svg';
 
 class LayoutComponent extends React.Component {
+  getName() {
+    if (this.props.token) {
+      const decodedToken = jwt.decode(this.props.token);
+
+      if (decodedToken) {
+        return `${decodedToken.firstName} ${decodedToken.lastName}`;
+      }
+    }
+
+    return null;
+  }
+
   isAuthorized(roles) {
     if (this.props.token) {
       const decodedToken = jwt.decode(this.props.token);
@@ -80,7 +92,7 @@ class LayoutComponent extends React.Component {
               <div className={styles.navigationItem}>
                 <Button
                   clickHandler={this.props.logout}
-                  label="Logout"
+                  label={`Logout ${this.getName()}`}
                   priority="flat"
                 />
               </div>
