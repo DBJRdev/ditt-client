@@ -511,6 +511,7 @@ class WorkLogCalendar extends React.Component {
                               clickHandler={() => this.openWorkLogForm(day.date)}
                               icon="add"
                               label="Add work log"
+                              isLabelVisible={false}
                               priority="default"
                             />
                           </div>
