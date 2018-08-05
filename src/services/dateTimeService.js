@@ -90,7 +90,7 @@ export const toMonthYearFormat = (momentDateTime) => {
 
 export const toDayMonthYearFormat = (momentDateTime) => {
   if (isMomentValid(momentDateTime)) {
-    return momentDateTime.format('L');
+    return momentDateTime.format('DD. MM. YYYY');
   }
 
   throw new Error('Invalid datetime');
