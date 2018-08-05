@@ -2,6 +2,9 @@ import Immutable from 'immutable';
 import { createDate } from '../src/services/dateTimeService';
 
 export default Immutable.fromJS({
+  // Note that month are zero based, so 0=January and 11=December
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+
   supportedHolidays: [
     createDate(2018, 0, 1),
     createDate(2018, 11, 24),

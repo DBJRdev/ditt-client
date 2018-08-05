@@ -1,4 +1,5 @@
 import {
+  createDate,
   includesSameDate,
   isOverlapping,
   isWeekend,
@@ -8,6 +9,15 @@ import {
   toHourMinuteFormat,
   toMonthYearFormat,
 } from '../dateTimeService';
+
+describe('dateTimeService.js()', () => {
+  it('should check if returns valid date', () => {
+    const dt1 = createDate(2018, 12, 24);
+    const dt2 = createDate(2018, 0, 24);
+    expect(dt1.isValid()).toEqual(false);
+    expect(dt2.isValid()).toEqual(true);
+  });
+});
 
 describe('dateTimeService.js()', () => {
   it('should check whether includes same date or not', () => {
