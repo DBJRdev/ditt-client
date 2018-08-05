@@ -7,6 +7,7 @@ export const addUser = data => dispatch => dispatch({
   [RSAA]: {
     body: JSON.stringify({
       email: data.email,
+      employeeId: data.employeeId,
       firstName: data.firstName,
       isActive: data.isActive,
       lastName: data.lastName,
@@ -48,6 +49,7 @@ export const editUser = data => dispatch => dispatch({
   [RSAA]: {
     body: JSON.stringify({
       email: data.email,
+      employeeId: data.employeeId,
       firstName: data.firstName,
       isActive: data.isActive,
       lastName: data.lastName,

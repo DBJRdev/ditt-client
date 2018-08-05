@@ -23,6 +23,7 @@ class AddComponent extends React.Component {
     this.state = {
       formData: {
         email: null,
+        employeeId: null,
         firstName: null,
         isActive: false,
         lastName: null,
@@ -33,6 +34,7 @@ class AddComponent extends React.Component {
       formValidity: {
         elements: {
           email: null,
+          employeeId: null,
           firstName: null,
           form: null,
           isActive: null,
@@ -182,6 +184,14 @@ class AddComponent extends React.Component {
             label="E-mail"
             required
             value={this.state.formData.email || ''}
+          />
+          <TextField
+            changeHandler={this.changeHandler}
+            error={this.state.formValidity.elements.employeeId}
+            fieldId="employeeId"
+            label="Employee ID"
+            required
+            value={this.state.formData.employeeId || ''}
           />
           <TextField
             changeHandler={this.changeHandler}

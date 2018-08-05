@@ -16,6 +16,7 @@ export const validateUser = (user, userList, supportedWorkHours) => {
   const errors = {
     elements: {
       email: null,
+      employeeId: null,
       firstName: null,
       form: null,
       isActive: null,
@@ -32,6 +33,7 @@ export const validateUser = (user, userList, supportedWorkHours) => {
     'firstName',
     'lastName',
     'email',
+    'employeeId',
     'isActive',
     'vacationDays',
   ];
@@ -72,6 +74,13 @@ export const validateUser = (user, userList, supportedWorkHours) => {
 
   if (!errors.elements.email && !validator.isEmail(user.email)) {
     errors.elements.email = 'It is not a valid e-mail address.';
+    errors.isValid = false;
+  }
+
+  if (!errors.elements.employeeId
+    && !(user.employeeId.length >= 1 && user.employeeId.length <= 200)
+  ) {
+    errors.elements.employeeId = 'It must be long between 2 and 200 characters.';
     errors.isValid = false;
   }
 

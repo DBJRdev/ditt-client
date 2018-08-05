@@ -95,6 +95,19 @@ exports[`rendering renders correctly 1`] = `
       description={null}
       disabled={false}
       error={null}
+      fieldId="employeeId"
+      isLabelVisible={true}
+      label="Employee ID"
+      placeholder={null}
+      required={true}
+      type="text"
+      value=""
+    />
+    <TextField
+      changeHandler={[Function]}
+      description={null}
+      disabled={false}
+      error={null}
       fieldId="plainPassword"
       isLabelVisible={true}
       label="Password"

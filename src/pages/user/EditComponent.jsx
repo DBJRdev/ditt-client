@@ -28,6 +28,7 @@ class EditComponent extends React.Component {
     this.state = {
       formData: {
         email: null,
+        employeeId: null,
         firstName: null,
         id: null,
         isActive: false,
@@ -40,6 +41,7 @@ class EditComponent extends React.Component {
       formValidity: {
         elements: {
           email: null,
+          employeeId: null,
           firstName: null,
           form: null,
           isActive: null,
@@ -92,6 +94,7 @@ class EditComponent extends React.Component {
         this.setState({
           formData: {
             email: user.get('email'),
+            employeeId: user.get('employeeId'),
             firstName: user.get('firstName'),
             id: user.get('id'),
             isActive: user.get('isActive'),
@@ -282,6 +285,14 @@ class EditComponent extends React.Component {
             label="E-mail"
             required
             value={this.state.formData.email || ''}
+          />
+          <TextField
+            changeHandler={this.changeHandler}
+            error={this.state.formValidity.elements.employeeId}
+            fieldId="employeeId"
+            label="Employee ID"
+            required
+            value={this.state.formData.employeeId || ''}
           />
           <TextField
             changeHandler={this.changeHandler}
