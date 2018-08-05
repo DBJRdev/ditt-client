@@ -43,7 +43,7 @@ export const getWorkedTime = (workLogList, workHoursList) => {
   let workedTime = null;
 
   if (
-    workedSeconds >= workedHoursLimits.lowerLimit.limit
+    workedSeconds > workedHoursLimits.lowerLimit.limit
     && workedSeconds <= workedHoursLimits.upperLimit.limit
   ) {
     workedTime = moment.duration({
@@ -56,7 +56,6 @@ export const getWorkedTime = (workLogList, workHoursList) => {
   } else {
     workedTime = moment.duration({ seconds: workedSeconds });
   }
-
   workedTime.add({ seconds: specialWorkedSeconds });
 
   return workedTime;

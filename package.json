@@ -7,7 +7,8 @@
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development",
-    "test": "stylelint \"src/**/*.scss\" \"public/css/*.css\" --config stylelint.config.js && eslint --ext js,jsx src && jest"
+    "test": "stylelint \"src/**/*.scss\" \"public/css/*.css\" --config stylelint.config.js && eslint --ext js,jsx src && jest",
+    "jest": "jest"
   },
   "jest": {
     "verbose": true,
