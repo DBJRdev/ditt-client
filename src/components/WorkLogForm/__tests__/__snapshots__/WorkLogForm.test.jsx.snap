@@ -156,7 +156,7 @@ exports[`rendering renders correctly with all props 1`] = `
               placeholder={null}
               required={false}
               type="text"
-              value={1}
+              value="00"
             />
           </div>
           :
@@ -178,7 +178,7 @@ exports[`rendering renders correctly with all props 1`] = `
               placeholder={null}
               required={false}
               type="text"
-              value=""
+              value="57"
             />
           </div>
            h
@@ -217,7 +217,7 @@ exports[`rendering renders correctly with all props 1`] = `
               placeholder={null}
               required={false}
               type="text"
-              value={1}
+              value="01"
             />
           </div>
           :
@@ -239,7 +239,7 @@ exports[`rendering renders correctly with all props 1`] = `
               placeholder={null}
               required={false}
               type="text"
-              value=""
+              value="03"
             />
           </div>
            h

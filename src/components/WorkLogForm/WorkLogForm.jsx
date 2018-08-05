@@ -26,13 +26,15 @@ import { validateWorkLog } from '../../services/validatorService';
 class WorkLogForm extends React.Component {
   constructor(props) {
     super(props);
+    const startTime = props.date.clone().subtract(3, 'minutes');
+    const endTime = props.date.clone().add(3, 'minutes');
 
     this.state = {
       formData: {
-        endHour: props.date.hour(),
-        endMinute: props.date.minute(),
-        startHour: props.date.hour(),
-        startMinute: props.date.minute(),
+        endHour: endTime.format('HH'),
+        endMinute: endTime.format('mm'),
+        startHour: startTime.format('HH'),
+        startMinute: startTime.format('mm'),
         type: WORK_LOG,
         variant: VARIANT_WITH_NOTE,
       },
@@ -97,9 +99,7 @@ class WorkLogForm extends React.Component {
         variant: formData.variant,
       })
         .then((response) => {
-          if (response.type.endsWith('WORK_LOG_SUCCESS')) {
-            this.props.closeHandler();
-          } else if (response.type.endsWith('WORK_LOG_FAILURE')) {
+          if (response.type.endsWith('WORK_LOG_FAILURE')) {
             formValidity.elements.form = response.payload.response.detail;
 
             this.setState({ formValidity });
