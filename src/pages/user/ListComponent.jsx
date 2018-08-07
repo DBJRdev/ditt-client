@@ -1,3 +1,4 @@
+import moment from 'moment-timezone';
 import jwt from 'jsonwebtoken';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
@@ -32,6 +33,7 @@ class ListComponent extends React.Component {
   }
 
   render() {
+    const year = moment().year();
     const columns = [
       {
         format: row => (
@@ -55,6 +57,13 @@ class ListComponent extends React.Component {
         isSortable: true,
         label: 'Supervisor',
         name: 'supervisor.lastName',
+      },
+      {
+        format: row =>
+          `${row.yearStats.filter(stats => stats.year === year)[0].vacationDaysUsed}/${row.vacationDays}`,
+        isSortable: false,
+        label: 'Vacation Days Used',
+        name: 'vacationDaysUsed',
       },
     ];
 

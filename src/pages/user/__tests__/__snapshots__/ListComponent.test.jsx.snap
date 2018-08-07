@@ -38,6 +38,12 @@ exports[`rendering renders correctly 1`] = `
           "label": "Supervisor",
           "name": "supervisor.lastName",
         },
+        Object {
+          "format": [Function],
+          "isSortable": false,
+          "label": "Vacation Days Used",
+          "name": "vacationDaysUsed",
+        },
       ]
     }
     rows={Array []}
