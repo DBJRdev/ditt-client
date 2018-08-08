@@ -20,7 +20,10 @@ import {
   VACATION_WORK_LOG,
   WORK_LOG,
 } from '../../resources/workMonth';
-import { toDayMonthYearFormat } from '../../services/dateTimeService';
+import {
+  toDayMonthYearFormat,
+  toMomentDateTimeFromDayMonthYear,
+} from '../../services/dateTimeService';
 import { validateWorkLog } from '../../services/validatorService';
 
 class WorkLogForm extends React.Component {
@@ -31,6 +34,8 @@ class WorkLogForm extends React.Component {
 
     this.state = {
       formData: {
+        childDateOfBirth: null,
+        childName: null,
         endHour: endTime.format('HH'),
         endMinute: endTime.format('mm'),
         startHour: startTime.format('HH'),
@@ -40,6 +45,8 @@ class WorkLogForm extends React.Component {
       },
       formValidity: {
         elements: {
+          childDateOfBirth: null,
+          childName: null,
           endHour: null,
           endMinute: null,
           form: null,
@@ -92,6 +99,12 @@ class WorkLogForm extends React.Component {
 
     if (formValidity.isValid) {
       this.props.saveHandler({
+        childDateOfBirth: formData.variant === VARIANT_SICK_CHILD
+          ? toMomentDateTimeFromDayMonthYear(formData.childDateOfBirth)
+          : null,
+        childName: formData.variant === VARIANT_SICK_CHILD
+          ? formData.childName
+          : null,
         date: this.props.date,
         endTime: date.clone().hour(formData.endHour).minute(formData.endMinute).second(0),
         startTime: date.clone().hour(formData.startHour).minute(formData.startMinute).second(0),
@@ -134,6 +147,35 @@ class WorkLogForm extends React.Component {
               },
             ]}
             value={this.state.formData.variant || ''}
+          />
+        </div>
+      </fieldset>
+    );
+  }
+
+  renderSickDayWorkLogSickChildFields() {
+    return (
+      <fieldset style={this.fieldSetStyle}>
+        <legend>{'Child\'s name'}</legend>
+        <div style={this.fieldStyle}>
+          <TextField
+            changeHandler={this.changeHandler}
+            error={this.state.formValidity.elements.childName}
+            fieldId="childName"
+            isLabelVisible={false}
+            label="Child's name"
+            value={this.state.formData.childName || ''}
+          />
+        </div>
+        <legend>{'Child\'s date of birth'}</legend>
+        <div style={this.fieldStyle}>
+          <TextField
+            changeHandler={this.changeHandler}
+            error={this.state.formValidity.elements.childDateOfBirth}
+            fieldId="childDateOfBirth"
+            isLabelVisible={false}
+            label="Child's date of birth"
+            value={this.state.formData.childDateOfBirth || ''}
           />
         </div>
       </fieldset>
@@ -271,6 +313,11 @@ class WorkLogForm extends React.Component {
             </div>
           </fieldset>
           {this.state.formData.type === SICK_DAY_WORK_LOG && this.renderSickDayWorkLogFields()}
+          {
+            this.state.formData.type === SICK_DAY_WORK_LOG
+              && this.state.formData.variant === VARIANT_SICK_CHILD
+              && this.renderSickDayWorkLogSickChildFields()
+          }
           {this.state.formData.type === WORK_LOG && this.renderWorkLogFields()}
         </form>
       </Modal>

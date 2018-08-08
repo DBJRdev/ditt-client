@@ -6,6 +6,8 @@ import * as types from './actionTypes';
 export const addSickDayWorkLog = data => dispatch => dispatch({
   [RSAA]: {
     body: JSON.stringify({
+      childDateOfBirth: data.childDateOfBirth ? toJson(data.childDateOfBirth) : null,
+      childName: data.childName,
       date: toJson(data.date),
       variant: data.variant,
     }),

@@ -163,6 +163,8 @@ class WorkLogCalendar extends React.Component {
       return this.props.addHomeOfficeWorkLog({ date: data.date });
     } else if (SICK_DAY_WORK_LOG === data.type) {
       return this.props.addSickDayWorkLog({
+        childDateOfBirth: data.childDateOfBirth,
+        childName: data.childName,
         date: data.date,
         variant: data.variant,
       });

@@ -7,9 +7,11 @@ import {
   VACATION_WORK_LOG,
   WORK_LOG,
 } from '../resources/workMonth';
+import { VARIANT_SICK_CHILD } from '../resources/sickDayWorkLog';
 import {
   isOverlapping,
   localizedMoment,
+  toMomentDateTimeFromDayMonthYear,
 } from './dateTimeService';
 
 export const validateUser = (user, userList, supportedWorkHours) => {
@@ -151,6 +153,29 @@ export const validateWorkLog = (workLog, workLogsOfDay) => {
   ].indexOf(workLog.type) === -1) {
     errors.elements.type = 'Invalid type.';
     errors.isValid = false;
+
+    return errors;
+  }
+
+  if (workLog.type === SICK_DAY_WORK_LOG && workLog.variant === VARIANT_SICK_CHILD) {
+    if (workLog.childName === null || validator.isEmpty(workLog.childName)) {
+      errors.elements.childName = 'Required.';
+      errors.isValid = false;
+    }
+
+    if (workLog.childDateOfBirth === null || validator.isEmpty(workLog.childDateOfBirth)) {
+      errors.elements.childDateOfBirth = 'Required.';
+      errors.isValid = false;
+    }
+
+    if (!errors.elements.childDateOfBirth) {
+      try {
+        toMomentDateTimeFromDayMonthYear(workLog.childDateOfBirth);
+      } catch (ex) {
+        errors.elements.childDateOfBirth = 'Invalid date.';
+        errors.isValid = false;
+      }
+    }
 
     return errors;
   }
