@@ -1,6 +1,7 @@
 export {
   addHomeOfficeWorkLog,
   deleteHomeOfficeWorkLog,
+  fetchHomeOfficeWorkLog,
   markHomeOfficeWorkLogApproved,
   markHomeOfficeWorkLogRejected,
 } from './actions';

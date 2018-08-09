@@ -31,6 +31,19 @@ export const deleteHomeOfficeWorkLog = id => dispatch => dispatch({
   },
 });
 
+export const fetchHomeOfficeWorkLog = id => dispatch => dispatch({
+  [RSAA]: {
+    endpoint: `${API_URL}/home_office_work_logs/${id}`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'GET',
+    types: [
+      types.FETCH_HOME_OFFICE_WORK_LOG_REQUEST,
+      types.FETCH_HOME_OFFICE_WORK_LOG_SUCCESS,
+      types.FETCH_HOME_OFFICE_WORK_LOG_FAILURE,
+    ],
+  },
+});
+
 export const markHomeOfficeWorkLogApproved = id => dispatch => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/home_office_work_logs/${id}/mark_approved`,

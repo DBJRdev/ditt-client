@@ -63,5 +63,25 @@ export default (state, action) => {
       .setIn(['sickDayWorkLog', 'isPostingFailure'], true);
   }
 
+  if (type === actionTypes.FETCH_SICK_DAY_WORK_LOG_REQUEST) {
+    return state
+      .setIn(['sickDayWorkLog', 'isFetching'], true)
+      .setIn(['sickDayWorkLog', 'isFetchingFailure'], false);
+  }
+
+  if (type === actionTypes.FETCH_SICK_DAY_WORK_LOG_SUCCESS) {
+    return state
+      .setIn(['sickDayWorkLog', 'data'], Immutable.fromJS(filterWorkLog(payload)))
+      .setIn(['sickDayWorkLog', 'isFetching'], false)
+      .setIn(['sickDayWorkLog', 'isFetchingFailure'], false);
+  }
+
+  if (type === actionTypes.FETCH_SICK_DAY_WORK_LOG_FAILURE) {
+    return state
+      .setIn(['sickDayWorkLog', 'data'], null)
+      .setIn(['sickDayWorkLog', 'isFetching'], false)
+      .setIn(['sickDayWorkLog', 'isFetchingFailure'], true);
+  }
+
   return state;
 };

@@ -81,6 +81,26 @@ export default (state, action) => {
       .setIn(['businessTripWorkLog', 'isPostingFailure'], true);
   }
 
+  if (type === actionTypes.FETCH_BUSINESS_TRIP_WORK_LOG_REQUEST) {
+    return state
+      .setIn(['businessTripWorkLog', 'isFetching'], true)
+      .setIn(['businessTripWorkLog', 'isFetchingFailure'], false);
+  }
+
+  if (type === actionTypes.FETCH_BUSINESS_TRIP_WORK_LOG_SUCCESS) {
+    return state
+      .setIn(['businessTripWorkLog', 'data'], Immutable.fromJS(filterWorkLog(payload)))
+      .setIn(['businessTripWorkLog', 'isFetching'], false)
+      .setIn(['businessTripWorkLog', 'isFetchingFailure'], false);
+  }
+
+  if (type === actionTypes.FETCH_BUSINESS_TRIP_WORK_LOG_FAILURE) {
+    return state
+      .setIn(['businessTripWorkLog', 'data'], null)
+      .setIn(['businessTripWorkLog', 'isFetching'], false)
+      .setIn(['businessTripWorkLog', 'isFetchingFailure'], true);
+  }
+
   if (type === actionTypes.MARK_BUSINESS_TRIP_WORK_LOG_APPROVED_REQUEST) {
     return state
       .setIn(['businessTripWorkLog', 'isPosting'], true)

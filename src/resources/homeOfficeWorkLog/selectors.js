@@ -9,6 +9,8 @@ export const selectHomeOfficeWorkLog = createSelector(
 export const selectHomeOfficeWorkLogMeta = createSelector(
   [getHomeOfficeWorkLog],
   data => ({
+    isFetching: data.get('isFetching'),
+    isFetchingFailure: data.get('isFetchingFailure'),
     isPosting: data.get('isPosting'),
     isPostingFailure: data.get('isPostingFailure'),
   })

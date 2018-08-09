@@ -10,4 +10,9 @@ export default Immutable.fromJS({
     isPosting: false,
     isPostingFailure: false,
   },
+  workLog: {
+    data: null,
+    isFetching: false,
+    isFetchingFailure: false,
+  },
 });

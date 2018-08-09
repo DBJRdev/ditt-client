@@ -33,3 +33,16 @@ export const deleteSickDayWorkLog = id => dispatch => dispatch({
     ],
   },
 });
+
+export const fetchSickDayWorkLog = id => dispatch => dispatch({
+  [RSAA]: {
+    endpoint: `${API_URL}/sick_day_work_logs/${id}`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'GET',
+    types: [
+      types.FETCH_SICK_DAY_WORK_LOG_REQUEST,
+      types.FETCH_SICK_DAY_WORK_LOG_SUCCESS,
+      types.FETCH_SICK_DAY_WORK_LOG_FAILURE,
+    ],
+  },
+});

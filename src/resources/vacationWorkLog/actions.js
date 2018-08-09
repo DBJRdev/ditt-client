@@ -31,6 +31,19 @@ export const deleteVacationWorkLog = id => dispatch => dispatch({
   },
 });
 
+export const fetchVacationWorkLog = id => dispatch => dispatch({
+  [RSAA]: {
+    endpoint: `${API_URL}/vacation_work_logs/${id}`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'GET',
+    types: [
+      types.FETCH_VACATION_WORK_WORK_LOG_REQUEST,
+      types.FETCH_VACATION_WORK_WORK_LOG_SUCCESS,
+      types.FETCH_VACATION_WORK_WORK_LOG_FAILURE,
+    ],
+  },
+});
+
 export const markVacationWorkLogApproved = id => dispatch => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/vacation_work_logs/${id}/mark_approved`,

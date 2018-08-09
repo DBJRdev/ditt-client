@@ -81,6 +81,26 @@ export default (state, action) => {
       .setIn(['timeOffWorkLog', 'isPostingFailure'], true);
   }
 
+  if (type === actionTypes.FETCH_TIME_OFF_WORK_LOG_REQUEST) {
+    return state
+      .setIn(['timeOffWorkLog', 'isFetching'], true)
+      .setIn(['timeOffWorkLog', 'isFetchingFailure'], false);
+  }
+
+  if (type === actionTypes.FETCH_TIME_OFF_WORK_LOG_SUCCESS) {
+    return state
+      .setIn(['timeOffWorkLog', 'data'], Immutable.fromJS(filterWorkLog(payload)))
+      .setIn(['timeOffWorkLog', 'isFetching'], false)
+      .setIn(['timeOffWorkLog', 'isFetchingFailure'], false);
+  }
+
+  if (type === actionTypes.FETCH_TIME_OFF_WORK_LOG_FAILURE) {
+    return state
+      .setIn(['timeOffWorkLog', 'data'], null)
+      .setIn(['timeOffWorkLog', 'isFetching'], false)
+      .setIn(['timeOffWorkLog', 'isFetchingFailure'], true);
+  }
+
   if (type === actionTypes.MARK_TIME_OFF_WORK_LOG_APPROVED_REQUEST) {
     return state
       .setIn(['timeOffWorkLog', 'isPosting'], true)

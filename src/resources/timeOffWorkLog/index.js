@@ -1,6 +1,7 @@
 export {
   addTimeOffWorkLog,
   deleteTimeOffWorkLog,
+  fetchTimeOffWorkLog,
   markTimeOffWorkLogApproved,
   markTimeOffWorkLogRejected,
 } from './actions';

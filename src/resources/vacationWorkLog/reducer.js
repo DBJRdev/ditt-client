@@ -81,6 +81,26 @@ export default (state, action) => {
       .setIn(['vacationWorkLog', 'isPostingFailure'], true);
   }
 
+  if (type === actionTypes.FETCH_VACATION_WORK_WORK_LOG_REQUEST) {
+    return state
+      .setIn(['vacationWorkLog', 'isFetching'], true)
+      .setIn(['vacationWorkLog', 'isFetchingFailure'], false);
+  }
+
+  if (type === actionTypes.FETCH_VACATION_WORK_WORK_LOG_SUCCESS) {
+    return state
+      .setIn(['vacationWorkLog', 'data'], Immutable.fromJS(filterWorkLog(payload)))
+      .setIn(['vacationWorkLog', 'isFetching'], false)
+      .setIn(['vacationWorkLog', 'isFetchingFailure'], false);
+  }
+
+  if (type === actionTypes.FETCH_VACATION_WORK_WORK_LOG_FAILURE) {
+    return state
+      .setIn(['vacationWorkLog', 'data'], null)
+      .setIn(['vacationWorkLog', 'isFetching'], false)
+      .setIn(['vacationWorkLog', 'isFetchingFailure'], true);
+  }
+
   if (type === actionTypes.MARK_VACATION_WORK_LOG_APPROVED_REQUEST) {
     return state
       .setIn(['vacationWorkLog', 'isPosting'], true)

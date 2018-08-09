@@ -13,6 +13,12 @@ export default (state, action) => {
     type,
   } = action;
 
+  const filterWorkLog = data => ({
+    endTime: toMomentDateTime(data.endTime),
+    id: parseInt(data.id, 10),
+    startTime: toMomentDateTime(data.startTime),
+  });
+
   if (type === actionTypes.ADD_WORK_LOG_REQUEST) {
     return state
       .setIn(['addWorkLog', 'isPosting'], true)
@@ -20,15 +26,9 @@ export default (state, action) => {
   }
 
   if (type === actionTypes.ADD_WORK_LOG_SUCCESS) {
-    const addWorkLogData = {
-      endTime: toMomentDateTime(payload.endTime),
-      id: parseInt(payload.id, 10),
-      startTime: toMomentDateTime(payload.startTime),
-    };
-
     // Fetch is required to reload work log list with added work log
     return state
-      .setIn(['addWorkLog', 'data'], Immutable.fromJS(addWorkLogData))
+      .setIn(['addWorkLog', 'data'], Immutable.fromJS(filterWorkLog(payload)))
       .setIn(['addWorkLog', 'isPosting'], false)
       .setIn(['addWorkLog', 'isPostingFailure'], false);
   }
@@ -57,6 +57,26 @@ export default (state, action) => {
     return state
       .setIn(['deleteWorkLog', 'isPosting'], false)
       .setIn(['deleteWorkLog', 'isPostingFailure'], true);
+  }
+
+  if (type === actionTypes.FETCH_WORK_LOG_REQUEST) {
+    return state
+      .setIn(['workLog', 'isFetching'], true)
+      .setIn(['workLog', 'isFetchingFailure'], false);
+  }
+
+  if (type === actionTypes.FETCH_WORK_LOG_SUCCESS) {
+    return state
+      .setIn(['workLog', 'data'], Immutable.fromJS(filterWorkLog(payload)))
+      .setIn(['workLog', 'isFetching'], false)
+      .setIn(['workLog', 'isFetchingFailure'], false);
+  }
+
+  if (type === actionTypes.FETCH_WORK_LOG_FAILURE) {
+    return state
+      .setIn(['workLog', 'data'], null)
+      .setIn(['workLog', 'isFetching'], false)
+      .setIn(['workLog', 'isFetchingFailure'], true);
   }
 
   return state;

@@ -81,6 +81,26 @@ export default (state, action) => {
       .setIn(['homeOfficeWorkLog', 'isPostingFailure'], true);
   }
 
+  if (type === actionTypes.FETCH_HOME_OFFICE_WORK_LOG_REQUEST) {
+    return state
+      .setIn(['homeOfficeWorkLog', 'isFetching'], true)
+      .setIn(['homeOfficeWorkLog', 'isFetchingFailure'], false);
+  }
+
+  if (type === actionTypes.FETCH_HOME_OFFICE_WORK_LOG_SUCCESS) {
+    return state
+      .setIn(['homeOfficeWorkLog', 'data'], Immutable.fromJS(filterWorkLog(payload)))
+      .setIn(['homeOfficeWorkLog', 'isFetching'], false)
+      .setIn(['homeOfficeWorkLog', 'isFetchingFailure'], false);
+  }
+
+  if (type === actionTypes.FETCH_HOME_OFFICE_WORK_LOG_FAILURE) {
+    return state
+      .setIn(['homeOfficeWorkLog', 'data'], null)
+      .setIn(['homeOfficeWorkLog', 'isFetching'], false)
+      .setIn(['homeOfficeWorkLog', 'isFetchingFailure'], true);
+  }
+
   if (type === actionTypes.MARK_HOME_OFFICE_WORK_LOG_APPROVED_REQUEST) {
     return state
       .setIn(['homeOfficeWorkLog', 'isPosting'], true)

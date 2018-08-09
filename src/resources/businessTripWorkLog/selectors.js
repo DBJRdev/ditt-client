@@ -9,6 +9,8 @@ export const selectBusinessTripWorkLog = createSelector(
 export const selectBusinessTripWorkLogMeta = createSelector(
   [getBusinessTripWorkLog],
   data => ({
+    isFetching: data.get('isFetching'),
+    isFetchingFailure: data.get('isFetchingFailure'),
     isPosting: data.get('isPosting'),
     isPostingFailure: data.get('isPostingFailure'),
   })

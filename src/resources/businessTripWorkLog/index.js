@@ -1,6 +1,7 @@
 export {
   addBusinessTripWorkLog,
   deleteBusinessTripWorkLog,
+  fetchBusinessTripWorkLog,
   markBusinessTripWorkLogApproved,
   markBusinessTripWorkLogRejected,
 } from './actions';

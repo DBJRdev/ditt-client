@@ -4,6 +4,8 @@ const getTimeOffWorkLog = state => state.getIn(['timeOffWorkLog', 'timeOffWorkLo
 
 export const selectTimeOffWorkLog = createSelector([getTimeOffWorkLog], data => data.get('data'));
 export const selectTimeOffWorkLogMeta = createSelector([getTimeOffWorkLog], data => ({
+  isFetching: data.get('isFetching'),
+  isFetchingFailure: data.get('isFetchingFailure'),
   isPosting: data.get('isPosting'),
   isPostingFailure: data.get('isPostingFailure'),
 }));
