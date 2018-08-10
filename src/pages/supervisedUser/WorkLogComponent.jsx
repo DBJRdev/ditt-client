@@ -53,19 +53,31 @@ class WorkLogComponent extends React.Component {
           addTimeOffWorkLog={() => {}}
           addVacationWorkLog={() => {}}
           addWorkLog={() => {}}
+          businessTripWorkLog={this.props.businessTripWorkLog}
+          changeSelectedDate={this.changeSelectedDate}
           deleteBusinessTripWorkLog={() => {}}
           deleteHomeOfficeWorkLog={() => {}}
           deleteSickDayWorkLog={() => {}}
           deleteTimeOffWorkLog={() => {}}
           deleteVacationWorkLog={() => {}}
           deleteWorkLog={() => {}}
-          changeSelectedDate={this.changeSelectedDate}
+          fetchBusinessTripWorkLog={this.props.fetchBusinessTripWorkLog}
+          fetchHomeOfficeWorkLog={this.props.fetchHomeOfficeWorkLog}
+          fetchSickDayWorkLog={this.props.fetchSickDayWorkLog}
+          fetchTimeOffWorkLog={this.props.fetchTimeOffWorkLog}
+          fetchVacationWorkLog={this.props.fetchVacationWorkLog}
+          fetchWorkLog={this.props.fetchWorkLog}
+          homeOfficeWorkLog={this.props.homeOfficeWorkLog}
           isPosting={this.props.isPosting}
           markApproved={this.props.markApproved}
           markWaitingForApproval={() => {}}
           selectedDate={this.state.selectedDate}
           supervisorView
+          sickDayWorkLog={this.props.sickDayWorkLog}
+          timeOffWorkLog={this.props.timeOffWorkLog}
+          vacationWorkLog={this.props.vacationWorkLog}
           workHoursList={this.props.workHoursList}
+          workLog={this.props.workLog}
           workMonth={this.props.workMonth}
           workMonthList={this.props.workMonthList}
         />
@@ -75,13 +87,35 @@ class WorkLogComponent extends React.Component {
 }
 
 WorkLogComponent.defaultProps = {
+  businessTripWorkLog: null,
+  homeOfficeWorkLog: null,
+  sickDayWorkLog: null,
+  timeOffWorkLog: null,
+  vacationWorkLog: null,
+  workLog: null,
   workMonth: null,
 };
 
 WorkLogComponent.propTypes = {
+  businessTripWorkLog: ImmutablePropTypes.mapContains({
+    date: PropTypes.object.isRequired,
+    rejectionMessage: PropTypes.string,
+    status: PropTypes.string.isRequired,
+  }),
+  fetchBusinessTripWorkLog: PropTypes.func.isRequired,
+  fetchHomeOfficeWorkLog: PropTypes.func.isRequired,
+  fetchSickDayWorkLog: PropTypes.func.isRequired,
+  fetchTimeOffWorkLog: PropTypes.func.isRequired,
+  fetchVacationWorkLog: PropTypes.func.isRequired,
   fetchWorkHoursList: PropTypes.func.isRequired,
+  fetchWorkLog: PropTypes.func.isRequired,
   fetchWorkMonth: PropTypes.func.isRequired,
   fetchWorkMonthList: PropTypes.func.isRequired,
+  homeOfficeWorkLog: ImmutablePropTypes.mapContains({
+    date: PropTypes.object.isRequired,
+    rejectionMessage: PropTypes.string,
+    status: PropTypes.string.isRequired,
+  }),
   isFetching: PropTypes.bool.isRequired,
   isPosting: PropTypes.bool.isRequired,
   markApproved: PropTypes.func.isRequired,
@@ -90,11 +124,31 @@ WorkLogComponent.propTypes = {
       id: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  sickDayWorkLog: ImmutablePropTypes.mapContains({
+    childDateOfBirth: PropTypes.object,
+    childName: PropTypes.string,
+    date: PropTypes.object.isRequired,
+    variant: PropTypes.string.isRequired,
+  }),
+  timeOffWorkLog: ImmutablePropTypes.mapContains({
+    date: PropTypes.object.isRequired,
+    rejectionMessage: PropTypes.string,
+    status: PropTypes.string.isRequired,
+  }),
+  vacationWorkLog: ImmutablePropTypes.mapContains({
+    date: PropTypes.object.isRequired,
+    rejectionMessage: PropTypes.string,
+    status: PropTypes.string.isRequired,
+  }),
   workHoursList: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
     month: PropTypes.number.isRequired,
     requiredHours: PropTypes.number.isRequired,
     year: PropTypes.number.isRequired,
   })).isRequired,
+  workLog: ImmutablePropTypes.mapContains({
+    endTime: PropTypes.object.isRequired,
+    startTime: PropTypes.object.isRequired,
+  }),
   workMonth: ImmutablePropTypes.mapContains({
     id: PropTypes.number.isRequired,
     month: PropTypes.shape.isRequired,

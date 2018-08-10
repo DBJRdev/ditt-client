@@ -17,7 +17,13 @@ afterEach(() => {
 describe('rendering', () => {
   it('renders correctly', () => {
     const props = {
+      fetchBusinessTripWorkLog: () => {},
+      fetchHomeOfficeWorkLog: () => {},
+      fetchSickDayWorkLog: () => {},
+      fetchTimeOffWorkLog: () => {},
+      fetchVacationWorkLog: () => {},
       fetchWorkHoursList: () => {},
+      fetchWorkLog: () => {},
       fetchWorkMonth: () => {},
       fetchWorkMonthList: () => new Promise(() => {}),
       history: {

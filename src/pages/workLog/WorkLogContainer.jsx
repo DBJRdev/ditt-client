@@ -4,26 +4,36 @@ import { selectJwtToken } from '../../resources/auth';
 import {
   addBusinessTripWorkLog,
   deleteBusinessTripWorkLog,
+  fetchBusinessTripWorkLog,
+  selectBusinessTripWorkLog,
   selectBusinessTripWorkLogMeta,
 } from '../../resources/businessTripWorkLog';
 import {
   addHomeOfficeWorkLog,
   deleteHomeOfficeWorkLog,
+  fetchHomeOfficeWorkLog,
+  selectHomeOfficeWorkLog,
   selectHomeOfficeWorkLogMeta,
 } from '../../resources/homeOfficeWorkLog';
 import {
   addSickDayWorkLog,
   deleteSickDayWorkLog,
+  fetchSickDayWorkLog,
+  selectSickDayWorkLog,
   selectSickDayWorkLogMeta,
 } from '../../resources/sickDayWorkLog';
 import {
   addTimeOffWorkLog,
   deleteTimeOffWorkLog,
+  fetchTimeOffWorkLog,
+  selectTimeOffWorkLog,
   selectTimeOffWorkLogMeta,
 } from '../../resources/timeOffWorkLog';
 import {
   addVacationWorkLog,
   deleteVacationWorkLog,
+  fetchVacationWorkLog,
+  selectVacationWorkLog,
   selectVacationWorkLogMeta,
 } from '../../resources/vacationWorkLog';
 import {
@@ -34,8 +44,10 @@ import {
 import {
   addWorkLog,
   deleteWorkLog,
+  fetchWorkLog,
   selectAddWorkLogMeta,
   selectDeleteWorkLogMeta,
+  selectWorkLog,
 } from '../../resources/workLog';
 import {
   fetchWorkMonth,
@@ -67,6 +79,8 @@ const mapStateToProps = (state) => {
   }
 
   return ({
+    businessTripWorkLog: selectBusinessTripWorkLog(state),
+    homeOfficeWorkLog: selectHomeOfficeWorkLog(state),
     isFetching: workHourListMeta.isFetching
       || workMonthListMeta.isFetching
       || workMonthMeta.isFetching,
@@ -78,8 +92,12 @@ const mapStateToProps = (state) => {
       || timeOffWorkLogMeta.isPosting
       || vacationWorkLogMeta.isPosting
       || workMonthMeta.isPosting,
+    sickDayWorkLog: selectSickDayWorkLog(state),
+    timeOffWorkLog: selectTimeOffWorkLog(state),
     uid: decodedToken ? decodedToken.uid : null,
+    vacationWorkLog: selectVacationWorkLog(state),
     workHoursList: selectWorkHoursList(state),
+    workLog: selectWorkLog(state),
     workMonth: selectWorkMonth(state),
     workMonthList: selectWorkMonthList(state),
   });
@@ -98,7 +116,13 @@ const mapDispatchToProps = dispatch => ({
   deleteTimeOffWorkLog: id => dispatch(deleteTimeOffWorkLog(id)),
   deleteVacationWorkLog: id => dispatch(deleteVacationWorkLog(id)),
   deleteWorkLog: id => dispatch(deleteWorkLog(id)),
+  fetchBusinessTripWorkLog: id => dispatch(fetchBusinessTripWorkLog(id)),
+  fetchHomeOfficeWorkLog: id => dispatch(fetchHomeOfficeWorkLog(id)),
+  fetchSickDayWorkLog: id => dispatch(fetchSickDayWorkLog(id)),
+  fetchTimeOffWorkLog: id => dispatch(fetchTimeOffWorkLog(id)),
+  fetchVacationWorkLog: id => dispatch(fetchVacationWorkLog(id)),
   fetchWorkHoursList: uid => dispatch(fetchWorkHoursList(uid)),
+  fetchWorkLog: id => dispatch(fetchWorkLog(id)),
   fetchWorkMonth: id => dispatch(fetchWorkMonth(id)),
   fetchWorkMonthList: uid => dispatch(fetchWorkMonthList(uid)),
   markWaitingForApproval: id => dispatch(markWaitingForApproval(id)),

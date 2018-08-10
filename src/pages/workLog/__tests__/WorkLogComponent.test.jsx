@@ -29,7 +29,13 @@ describe('rendering', () => {
       deleteTimeOffWorkLog: () => {},
       deleteVacationWorkLog: () => {},
       deleteWorkLog: () => {},
+      fetchBusinessTripWorkLog: () => {},
+      fetchHomeOfficeWorkLog: () => {},
+      fetchSickDayWorkLog: () => {},
+      fetchTimeOffWorkLog: () => {},
+      fetchVacationWorkLog: () => {},
       fetchWorkHoursList: () => {},
+      fetchWorkLog: () => {},
       fetchWorkMonth: () => {},
       fetchWorkMonthList: () => new Promise(() => {}),
       history: {

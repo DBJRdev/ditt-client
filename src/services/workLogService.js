@@ -1,12 +1,79 @@
 import moment from 'moment';
 import parameters from '../../config/parameters';
 import {
+  BUSINESS_TRIP_WORK_LOG,
+  HOME_OFFICE_WORK_LOG,
   SICK_DAY_WORK_LOG,
   STATUS_APPROVED,
+  STATUS_OPENED,
+  STATUS_REJECTED,
+  STATUS_WAITING_FOR_APPROVAL,
+  TIME_OFF_WORK_LOG,
   VACATION_WORK_LOG,
   WORK_LOG,
 } from '../resources/workMonth';
+import {
+  VARIANT_SICK_CHILD,
+  VARIANT_WITH_NOTE,
+  VARIANT_WITHOUT_NOTE,
+} from '../resources/sickDayWorkLog';
 import { getNumberOfWorkingDays } from './dateTimeService';
+
+export const getSickDayVariantLabel = (sickDayVariant) => {
+  let sickDayVariantLabel = '';
+
+  if (VARIANT_WITH_NOTE === sickDayVariant) {
+    sickDayVariantLabel = 'With note';
+  } else if (VARIANT_WITHOUT_NOTE === sickDayVariant) {
+    sickDayVariantLabel = 'Without note';
+  } else if (VARIANT_SICK_CHILD === sickDayVariant) {
+    sickDayVariantLabel = 'Sick child';
+  } else {
+    throw new Error(`Unknown variant ${sickDayVariant}`);
+  }
+
+  return sickDayVariantLabel;
+};
+
+export const getStatusLabel = (status) => {
+  let statusLabel = '';
+
+  if (STATUS_APPROVED === status) {
+    statusLabel = 'Approved';
+  } else if (STATUS_OPENED === status) {
+    statusLabel = 'Opened';
+  } else if (STATUS_REJECTED === status) {
+    statusLabel = 'Rejected';
+  } else if (STATUS_WAITING_FOR_APPROVAL === status) {
+    statusLabel = 'Waiting for approval';
+  } else {
+    throw new Error(`Unknown status ${status}`);
+  }
+
+  return statusLabel;
+};
+
+export const getTypeLabel = (type) => {
+  let typeLabel = '';
+
+  if (BUSINESS_TRIP_WORK_LOG === type) {
+    typeLabel = 'Business trip';
+  } else if (HOME_OFFICE_WORK_LOG === type) {
+    typeLabel = 'Home office';
+  } else if (SICK_DAY_WORK_LOG === type) {
+    typeLabel = 'Sick day';
+  } else if (TIME_OFF_WORK_LOG === type) {
+    typeLabel = 'Time off';
+  } else if (VACATION_WORK_LOG === type) {
+    typeLabel = 'Vacation';
+  } else if (WORK_LOG === type) {
+    typeLabel = 'Work log';
+  } else {
+    throw new Error(`Unknown type ${type}`);
+  }
+
+  return typeLabel;
+};
 
 export const getWorkedTime = (workLogList, workHoursList) => {
   const workedHoursLimits = parameters.get('workedHoursLimits').toJS();

@@ -35,6 +35,9 @@ import {
   toMonthYearFormat,
 } from '../../services/dateTimeService';
 import {
+  getSickDayVariantLabel,
+  getStatusLabel,
+  getTypeLabel,
   getWorkedTime,
   getWorkLogsByDay,
   getWorkMonthByMonth,
@@ -113,6 +116,20 @@ class WorkLogCalendar extends React.Component {
   }
 
   openDeleteWorkLogDialog(id, type) {
+    if (BUSINESS_TRIP_WORK_LOG === type) {
+      this.props.fetchBusinessTripWorkLog(id);
+    } else if (HOME_OFFICE_WORK_LOG === type) {
+      this.props.fetchHomeOfficeWorkLog(id);
+    } else if (SICK_DAY_WORK_LOG === type) {
+      this.props.fetchSickDayWorkLog(id);
+    } else if (TIME_OFF_WORK_LOG === type) {
+      this.props.fetchTimeOffWorkLog(id);
+    } else if (VACATION_WORK_LOG === type) {
+      this.props.fetchVacationWorkLog(id);
+    } else if (WORK_LOG === type) {
+      this.props.fetchWorkLog(id);
+    }
+
     this.setState({
       showDeleteWorkLogDialog: true,
       showDeleteWorkLogDialogId: id,
@@ -227,22 +244,92 @@ class WorkLogCalendar extends React.Component {
   }
 
   renderDeleteWorkLogModal() {
+    const type = this.state.showDeleteWorkLogDialogType;
+    let content = 'Loading…';
+
+    if (BUSINESS_TRIP_WORK_LOG === type && this.props.businessTripWorkLog) {
+      content = (
+        <p>
+          Type: {getTypeLabel(type)}<br />
+          Date: {toDayMonthYearFormat(this.props.businessTripWorkLog.get('date'))}<br />
+          Status: {getStatusLabel(this.props.businessTripWorkLog.get('status'))}
+        </p>
+      );
+    } else if (HOME_OFFICE_WORK_LOG === type && this.props.homeOfficeWorkLog) {
+      content = (
+        <p>
+          Type: {getTypeLabel(type)}<br />
+          Date: {toDayMonthYearFormat(this.props.homeOfficeWorkLog.get('date'))}<br />
+          Status: {getStatusLabel(this.props.homeOfficeWorkLog.get('status'))}
+        </p>
+      );
+    } else if (SICK_DAY_WORK_LOG === type && this.props.sickDayWorkLog) {
+      content = (
+        <p>
+          Type: {getTypeLabel(type)}<br />
+          Date: {toDayMonthYearFormat(this.props.sickDayWorkLog.get('date'))}<br />
+          Variant: {getSickDayVariantLabel(this.props.sickDayWorkLog.get('variant'))}<br />
+          {VARIANT_SICK_CHILD === this.props.sickDayWorkLog.get('variant') && (
+            <React.Fragment>
+              {`Child's name: ${this.props.sickDayWorkLog.get('childName')}`}<br />
+              {`Child's date of birth: ${this.props.sickDayWorkLog.get('childDateOfBirth')}`}<br />
+            </React.Fragment>
+          )}
+        </p>
+      );
+    } else if (TIME_OFF_WORK_LOG === type && this.props.timeOffWorkLog) {
+      content = (
+        <p>
+          Type: {getTypeLabel(type)}<br />
+          Date: {toDayMonthYearFormat(this.props.timeOffWorkLog.get('date'))}<br />
+          Status: {getStatusLabel(this.props.timeOffWorkLog.get('status'))}
+        </p>
+      );
+    } else if (VACATION_WORK_LOG === type && this.props.vacationWorkLog) {
+      content = (
+        <p>
+          Type: {getTypeLabel(type)}<br />
+          Date: {toDayMonthYearFormat(this.props.vacationWorkLog.get('date'))}<br />
+          Status: {getStatusLabel(this.props.vacationWorkLog.get('status'))}
+        </p>
+      );
+    } else if (WORK_LOG === type && this.props.workLog) {
+      content = (
+        <p>
+          Type: {getTypeLabel(type)}<br />
+          Date: {toDayMonthYearFormat(this.props.workLog.get('startTime'))}<br />
+          Start time: {toHourMinuteFormat(this.props.workLog.get('startTime'))}<br />
+          End time: {toHourMinuteFormat(this.props.workLog.get('endTime'))}
+        </p>
+      );
+    }
+
+    const actions = [];
+    let status = null;
+
+    if (this.props.workMonth) {
+      status = this.props.workMonth.get('status');
+    }
+
+    if (!this.props.supervisorView && status !== STATUS_APPROVED) {
+      actions.push({
+        clickHandler: () => this.deleteWorkLog(
+          this.state.showDeleteWorkLogDialogId,
+          this.state.showDeleteWorkLogDialogType
+        ),
+        label: 'Delete',
+        loading: this.props.isPosting,
+        variant: 'danger',
+      });
+    }
+
     return (
       <Modal
-        actions={[
-          {
-            clickHandler: () => this.deleteWorkLog(
-              this.state.showDeleteWorkLogDialogId,
-              this.state.showDeleteWorkLogDialogType
-            ),
-            label: 'Delete',
-            loading: this.props.isPosting,
-          },
-        ]}
+        actions={actions}
         closeHandler={this.closeDeleteWorkLogDialog}
-        title="Delete work log"
+        title="Work log"
       >
-        Are you sure that you want to delete this work log?
+        {content}
       </Modal>
     );
   }
@@ -391,7 +478,6 @@ class WorkLogCalendar extends React.Component {
                                     BUSINESS_TRIP_WORK_LOG
                                   )
                                 }
-                                disabled={this.props.supervisorView || status === STATUS_APPROVED}
                                 icon="directions_car"
                                 label={resolveLabel(workLog)}
                               />
@@ -412,7 +498,6 @@ class WorkLogCalendar extends React.Component {
                                     HOME_OFFICE_WORK_LOG
                                   )
                                 }
-                                disabled={this.props.supervisorView || status === STATUS_APPROVED}
                                 icon="home"
                                 label={resolveLabel(workLog)}
                               />
@@ -433,7 +518,6 @@ class WorkLogCalendar extends React.Component {
                                     SICK_DAY_WORK_LOG
                                   )
                                 }
-                                disabled={this.props.supervisorView || status === STATUS_APPROVED}
                                 icon="pregnant_woman"
                                 label={resolveLabel(workLog)}
                               />
@@ -454,7 +538,6 @@ class WorkLogCalendar extends React.Component {
                                     TIME_OFF_WORK_LOG
                                   )
                                 }
-                                disabled={this.props.supervisorView || status === STATUS_APPROVED}
                                 icon="flag"
                                 label={resolveLabel(workLog)}
                               />
@@ -475,7 +558,6 @@ class WorkLogCalendar extends React.Component {
                                     VACATION_WORK_LOG
                                   )
                                 }
-                                disabled={this.props.supervisorView || status === STATUS_APPROVED}
                                 icon="flag"
                                 label={resolveLabel(workLog)}
                               />
@@ -495,7 +577,6 @@ class WorkLogCalendar extends React.Component {
                                   WORK_LOG
                                 )
                               }
-                              disabled={this.props.supervisorView || status === STATUS_APPROVED}
                               icon="work"
                               label={`${toHourMinuteFormat(workLog.startTime)} - ${toHourMinuteFormat(workLog.endTime)}`}
                             />
@@ -557,7 +638,13 @@ class WorkLogCalendar extends React.Component {
 }
 
 WorkLogCalendar.defaultProps = {
+  businessTripWorkLog: null,
+  homeOfficeWorkLog: null,
+  sickDayWorkLog: null,
   supervisorView: false,
+  timeOffWorkLog: null,
+  vacationWorkLog: null,
+  workLog: null,
   workMonth: null,
 };
 
@@ -568,6 +655,11 @@ WorkLogCalendar.propTypes = {
   addTimeOffWorkLog: PropTypes.func.isRequired,
   addVacationWorkLog: PropTypes.func.isRequired,
   addWorkLog: PropTypes.func.isRequired,
+  businessTripWorkLog: ImmutablePropTypes.mapContains({
+    date: PropTypes.object.isRequired,
+    rejectionMessage: PropTypes.string,
+    status: PropTypes.string.isRequired,
+  }),
   changeSelectedDate: PropTypes.func.isRequired,
   deleteBusinessTripWorkLog: PropTypes.func.isRequired,
   deleteHomeOfficeWorkLog: PropTypes.func.isRequired,
@@ -575,18 +667,49 @@ WorkLogCalendar.propTypes = {
   deleteTimeOffWorkLog: PropTypes.func.isRequired,
   deleteVacationWorkLog: PropTypes.func.isRequired,
   deleteWorkLog: PropTypes.func.isRequired,
+  fetchBusinessTripWorkLog: PropTypes.func.isRequired,
+  fetchHomeOfficeWorkLog: PropTypes.func.isRequired,
+  fetchSickDayWorkLog: PropTypes.func.isRequired,
+  fetchTimeOffWorkLog: PropTypes.func.isRequired,
+  fetchVacationWorkLog: PropTypes.func.isRequired,
+  fetchWorkLog: PropTypes.func.isRequired,
+  homeOfficeWorkLog: ImmutablePropTypes.mapContains({
+    date: PropTypes.object.isRequired,
+    rejectionMessage: PropTypes.string,
+    status: PropTypes.string.isRequired,
+  }),
   isPosting: PropTypes.bool.isRequired,
   markApproved: PropTypes.func.isRequired,
   markWaitingForApproval: PropTypes.func.isRequired,
   selectedDate: PropTypes.shape({
     clone: PropTypes.func.isRequired,
   }).isRequired,
+  sickDayWorkLog: ImmutablePropTypes.mapContains({
+    childDateOfBirth: PropTypes.object,
+    childName: PropTypes.string,
+    date: PropTypes.object.isRequired,
+    variant: PropTypes.string.isRequired,
+  }),
   supervisorView: PropTypes.bool,
+  timeOffWorkLog: ImmutablePropTypes.mapContains({
+    date: PropTypes.object.isRequired,
+    rejectionMessage: PropTypes.string,
+    status: PropTypes.string.isRequired,
+  }),
+  vacationWorkLog: ImmutablePropTypes.mapContains({
+    date: PropTypes.object.isRequired,
+    rejectionMessage: PropTypes.string,
+    status: PropTypes.string.isRequired,
+  }),
   workHoursList: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
     month: PropTypes.number.isRequired,
     requiredHours: PropTypes.number.isRequired,
     year: PropTypes.number.isRequired,
   })).isRequired,
+  workLog: ImmutablePropTypes.mapContains({
+    endTime: PropTypes.object.isRequired,
+    startTime: PropTypes.object.isRequired,
+  }),
   workMonth: ImmutablePropTypes.mapContains({
     businessTripWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
       date: PropTypes.shape.isRequired,

@@ -35,6 +35,13 @@ describe('rendering', () => {
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      fetchBusinessTripWorkLog={() => {}}
+      fetchHomeOfficeWorkLog={() => {}}
+      fetchSickDayWorkLog={() => {}}
+      fetchTimeOffWorkLog={() => {}}
+      fetchVacationWorkLog={() => {}}
+      fetchWorkLog={() => {}}
+      isFetching={false}
       isPosting={false}
       changeSelectedDate={() => {}}
       markApproved={() => {}}
@@ -93,6 +100,13 @@ describe('rendering', () => {
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      fetchBusinessTripWorkLog={() => {}}
+      fetchHomeOfficeWorkLog={() => {}}
+      fetchSickDayWorkLog={() => {}}
+      fetchTimeOffWorkLog={() => {}}
+      fetchVacationWorkLog={() => {}}
+      fetchWorkLog={() => {}}
+      isFetching={false}
       isPosting={false}
       changeSelectedDate={() => {}}
       markApproved={() => {}}
@@ -151,6 +165,13 @@ describe('rendering', () => {
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      fetchBusinessTripWorkLog={() => {}}
+      fetchHomeOfficeWorkLog={() => {}}
+      fetchSickDayWorkLog={() => {}}
+      fetchTimeOffWorkLog={() => {}}
+      fetchVacationWorkLog={() => {}}
+      fetchWorkLog={() => {}}
+      isFetching={false}
       isPosting={false}
       changeSelectedDate={() => {}}
       markApproved={() => {}}
@@ -209,6 +230,13 @@ describe('rendering', () => {
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      fetchBusinessTripWorkLog={() => {}}
+      fetchHomeOfficeWorkLog={() => {}}
+      fetchSickDayWorkLog={() => {}}
+      fetchTimeOffWorkLog={() => {}}
+      fetchVacationWorkLog={() => {}}
+      fetchWorkLog={() => {}}
+      isFetching={false}
       isPosting={false}
       changeSelectedDate={() => {}}
       markApproved={() => {}}
@@ -268,6 +296,13 @@ describe('rendering', () => {
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      fetchBusinessTripWorkLog={() => {}}
+      fetchHomeOfficeWorkLog={() => {}}
+      fetchSickDayWorkLog={() => {}}
+      fetchTimeOffWorkLog={() => {}}
+      fetchVacationWorkLog={() => {}}
+      fetchWorkLog={() => {}}
+      isFetching={false}
       isPosting={false}
       changeSelectedDate={() => {}}
       markApproved={() => {}}
@@ -327,6 +362,13 @@ describe('rendering', () => {
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      fetchBusinessTripWorkLog={() => {}}
+      fetchHomeOfficeWorkLog={() => {}}
+      fetchSickDayWorkLog={() => {}}
+      fetchTimeOffWorkLog={() => {}}
+      fetchVacationWorkLog={() => {}}
+      fetchWorkLog={() => {}}
+      isFetching={false}
       isPosting={false}
       changeSelectedDate={() => {}}
       markApproved={() => {}}
@@ -389,6 +431,13 @@ describe('functionality', () => {
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      fetchBusinessTripWorkLog={() => {}}
+      fetchHomeOfficeWorkLog={() => {}}
+      fetchSickDayWorkLog={() => {}}
+      fetchTimeOffWorkLog={() => {}}
+      fetchVacationWorkLog={() => {}}
+      fetchWorkLog={() => {}}
+      isFetching={false}
       isPosting={false}
       changeSelectedDate={spy}
       markApproved={() => {}}
@@ -452,6 +501,13 @@ describe('functionality', () => {
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      fetchBusinessTripWorkLog={() => {}}
+      fetchHomeOfficeWorkLog={() => {}}
+      fetchSickDayWorkLog={() => {}}
+      fetchTimeOffWorkLog={() => {}}
+      fetchVacationWorkLog={() => {}}
+      fetchWorkLog={() => {}}
+      isFetching={false}
       isPosting={false}
       changeSelectedDate={spy}
       markApproved={() => {}}
@@ -515,6 +571,13 @@ describe('functionality', () => {
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      fetchBusinessTripWorkLog={() => {}}
+      fetchHomeOfficeWorkLog={() => {}}
+      fetchSickDayWorkLog={() => {}}
+      fetchTimeOffWorkLog={() => {}}
+      fetchVacationWorkLog={() => {}}
+      fetchWorkLog={() => {}}
+      isFetching={false}
       isPosting={false}
       changeSelectedDate={() => {}}
       markApproved={() => {}}
@@ -576,6 +639,13 @@ describe('functionality', () => {
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      fetchBusinessTripWorkLog={() => {}}
+      fetchHomeOfficeWorkLog={() => {}}
+      fetchSickDayWorkLog={() => {}}
+      fetchTimeOffWorkLog={() => {}}
+      fetchVacationWorkLog={() => {}}
+      fetchWorkLog={() => {}}
+      isFetching={false}
       isPosting={false}
       changeSelectedDate={() => {}}
       markApproved={spy}
