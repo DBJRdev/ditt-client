@@ -76,14 +76,44 @@ export const getTypeLabel = (type) => {
 
 export const getWorkedTime = (workLogList, workHoursList) => {
   const workedHoursLimits = parameters.get('workedHoursLimits').toJS();
+  const businessTripWorkLogs = workLogList.filter((
+    workLog => workLog.type === BUSINESS_TRIP_WORK_LOG && workLog.status === STATUS_APPROVED
+  ));
 
-  const workedSeconds = workLogList.reduce((total, workLog) => {
+  // Standard work log time
+  let workedSeconds = workLogList.reduce((total, workLog) => {
     if (workLog.type === WORK_LOG) {
+      const foundBusinessTripWorkLog = businessTripWorkLogs.find((
+        businessTripWorkLog => businessTripWorkLog.date.isSame(workLog.startTime, 'day')
+      ));
+
+      if (foundBusinessTripWorkLog) {
+        return total;
+      }
+
       return (workLog.endTime.diff(workLog.startTime) / 1000) + total;
     }
 
     return total;
   }, 0);
+
+  // Business trip work log time
+  workedSeconds = businessTripWorkLogs.reduce((total, businessTripWorkLog) => {
+    const subWorkedSeconds = workLogList.filter((
+      workLog => workLog.type === WORK_LOG && workLog.startTime.isSame(businessTripWorkLog.date, 'day')
+    )).reduce(
+      (subtotal, workLog) => (workLog.endTime.diff(workLog.startTime) / 1000) + subtotal,
+      0
+    );
+
+    const workHours = workHoursList.find((
+      workHour => workHour.get('month') === (businessTripWorkLog.date.month() + 1)
+    ));
+    const requiredHours = workHours.get('requiredHours');
+    const requiredSeconds = (requiredHours * 3600) + total;
+
+    return Math.max(subWorkedSeconds, requiredSeconds);
+  }, workedSeconds);
 
   const specialWorkedSeconds = workLogList.reduce((total, workLog) => {
     if (
