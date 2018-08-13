@@ -21,12 +21,14 @@ class WorkLogComponent extends React.Component {
 
     this.addBusinessTripWorkLog = this.addBusinessTripWorkLog.bind(this);
     this.addHomeOfficeWorkLog = this.addHomeOfficeWorkLog.bind(this);
+    this.addOvertimeWorkLog = this.addOvertimeWorkLog.bind(this);
     this.addSickDayWorkLog = this.addSickDayWorkLog.bind(this);
     this.addTimeOffWorkLog = this.addTimeOffWorkLog.bind(this);
     this.addVacationWorkLog = this.addVacationWorkLog.bind(this);
     this.addWorkLog = this.addWorkLog.bind(this);
     this.deleteBusinessTripWorkLog = this.deleteBusinessTripWorkLog.bind(this);
     this.deleteHomeOfficeWorkLog = this.deleteHomeOfficeWorkLog.bind(this);
+    this.deleteOvertimeWorkLog = this.deleteOvertimeWorkLog.bind(this);
     this.deleteSickDayWorkLog = this.deleteSickDayWorkLog.bind(this);
     this.deleteTimeOffWorkLog = this.deleteTimeOffWorkLog.bind(this);
     this.deleteVacationWorkLog = this.deleteVacationWorkLog.bind(this);
@@ -53,6 +55,16 @@ class WorkLogComponent extends React.Component {
 
   addHomeOfficeWorkLog(data) {
     return this.props.addHomeOfficeWorkLog(data).then((response) => {
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+
+      return response;
+    });
+  }
+
+  addOvertimeWorkLog(data) {
+    return this.props.addOvertimeWorkLog(data).then((response) => {
       if (!response.error) {
         this.fetchWorkMonth(this.state.selectedDate);
       }
@@ -111,6 +123,16 @@ class WorkLogComponent extends React.Component {
 
   deleteHomeOfficeWorkLog(id) {
     return this.props.deleteHomeOfficeWorkLog(id).then((response) => {
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+
+      return response;
+    });
+  }
+
+  deleteOvertimeWorkLog(id) {
+    return this.props.deleteOvertimeWorkLog(id).then((response) => {
       if (!response.error) {
         this.fetchWorkMonth(this.state.selectedDate);
       }
@@ -179,6 +201,7 @@ class WorkLogComponent extends React.Component {
         <WorkLogCalendar
           addBusinessTripWorkLog={this.addBusinessTripWorkLog}
           addHomeOfficeWorkLog={this.addHomeOfficeWorkLog}
+          addOvertimeWorkLog={this.addOvertimeWorkLog}
           addSickDayWorkLog={this.addSickDayWorkLog}
           addTimeOffWorkLog={this.addTimeOffWorkLog}
           addVacationWorkLog={this.addVacationWorkLog}
@@ -187,12 +210,14 @@ class WorkLogComponent extends React.Component {
           changeSelectedDate={this.changeSelectedDate}
           deleteBusinessTripWorkLog={this.deleteBusinessTripWorkLog}
           deleteHomeOfficeWorkLog={this.deleteHomeOfficeWorkLog}
+          deleteOvertimeWorkLog={this.deleteOvertimeWorkLog}
           deleteSickDayWorkLog={this.deleteSickDayWorkLog}
           deleteTimeOffWorkLog={this.deleteTimeOffWorkLog}
           deleteVacationWorkLog={this.deleteVacationWorkLog}
           deleteWorkLog={this.deleteWorkLog}
           fetchBusinessTripWorkLog={this.props.fetchBusinessTripWorkLog}
           fetchHomeOfficeWorkLog={this.props.fetchHomeOfficeWorkLog}
+          fetchOvertimeWorkLog={this.props.fetchOvertimeWorkLog}
           fetchSickDayWorkLog={this.props.fetchSickDayWorkLog}
           fetchTimeOffWorkLog={this.props.fetchTimeOffWorkLog}
           fetchVacationWorkLog={this.props.fetchVacationWorkLog}
@@ -201,6 +226,7 @@ class WorkLogComponent extends React.Component {
           isPosting={this.props.isPosting}
           markApproved={() => {}}
           markWaitingForApproval={this.props.markWaitingForApproval}
+          overtimeWorkLog={this.props.overtimeWorkLog}
           selectedDate={this.state.selectedDate}
           sickDayWorkLog={this.props.sickDayWorkLog}
           timeOffWorkLog={this.props.timeOffWorkLog}
@@ -218,6 +244,7 @@ class WorkLogComponent extends React.Component {
 WorkLogComponent.defaultProps = {
   businessTripWorkLog: null,
   homeOfficeWorkLog: null,
+  overtimeWorkLog: null,
   sickDayWorkLog: null,
   timeOffWorkLog: null,
   uid: null,
@@ -229,6 +256,7 @@ WorkLogComponent.defaultProps = {
 WorkLogComponent.propTypes = {
   addBusinessTripWorkLog: PropTypes.func.isRequired,
   addHomeOfficeWorkLog: PropTypes.func.isRequired,
+  addOvertimeWorkLog: PropTypes.func.isRequired,
   addSickDayWorkLog: PropTypes.func.isRequired,
   addTimeOffWorkLog: PropTypes.func.isRequired,
   addVacationWorkLog: PropTypes.func.isRequired,
@@ -245,12 +273,14 @@ WorkLogComponent.propTypes = {
   }),
   deleteBusinessTripWorkLog: PropTypes.func.isRequired,
   deleteHomeOfficeWorkLog: PropTypes.func.isRequired,
+  deleteOvertimeWorkLog: PropTypes.func.isRequired,
   deleteSickDayWorkLog: PropTypes.func.isRequired,
   deleteTimeOffWorkLog: PropTypes.func.isRequired,
   deleteVacationWorkLog: PropTypes.func.isRequired,
   deleteWorkLog: PropTypes.func.isRequired,
   fetchBusinessTripWorkLog: PropTypes.func.isRequired,
   fetchHomeOfficeWorkLog: PropTypes.func.isRequired,
+  fetchOvertimeWorkLog: PropTypes.func.isRequired,
   fetchSickDayWorkLog: PropTypes.func.isRequired,
   fetchTimeOffWorkLog: PropTypes.func.isRequired,
   fetchVacationWorkLog: PropTypes.func.isRequired,
@@ -266,6 +296,11 @@ WorkLogComponent.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   isPosting: PropTypes.bool.isRequired,
   markWaitingForApproval: PropTypes.func.isRequired,
+  overtimeWorkLog: ImmutablePropTypes.mapContains({
+    date: PropTypes.object.isRequired,
+    rejectionMessage: PropTypes.string,
+    status: PropTypes.string.isRequired,
+  }),
   sickDayWorkLog: ImmutablePropTypes.mapContains({
     childDateOfBirth: PropTypes.object,
     childName: PropTypes.string,

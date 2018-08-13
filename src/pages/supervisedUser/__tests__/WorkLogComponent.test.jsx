@@ -19,6 +19,7 @@ describe('rendering', () => {
     const props = {
       fetchBusinessTripWorkLog: () => {},
       fetchHomeOfficeWorkLog: () => {},
+      fetchOvertimeWorkLog: () => {},
       fetchSickDayWorkLog: () => {},
       fetchTimeOffWorkLog: () => {},
       fetchVacationWorkLog: () => {},

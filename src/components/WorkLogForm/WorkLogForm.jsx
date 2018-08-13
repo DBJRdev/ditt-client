@@ -15,6 +15,7 @@ import {
 import {
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,
+  OVERTIME_WORK_LOG,
   SICK_DAY_WORK_LOG,
   TIME_OFF_WORK_LOG,
   VACATION_WORK_LOG,
@@ -390,6 +391,10 @@ class WorkLogForm extends React.Component {
                   {
                     label: 'Home office',
                     value: HOME_OFFICE_WORK_LOG,
+                  },
+                  {
+                    label: 'Overtime',
+                    value: OVERTIME_WORK_LOG,
                   },
                   {
                     label: 'Sick day',

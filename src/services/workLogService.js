@@ -3,6 +3,7 @@ import parameters from '../../config/parameters';
 import {
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,
+  OVERTIME_WORK_LOG,
   SICK_DAY_WORK_LOG,
   STATUS_APPROVED,
   STATUS_OPENED,
@@ -59,6 +60,8 @@ export const getTypeLabel = (type) => {
     typeLabel = 'Business trip';
   } else if (HOME_OFFICE_WORK_LOG === type) {
     typeLabel = 'Home office';
+  } else if (OVERTIME_WORK_LOG === type) {
+    typeLabel = 'Overtime';
   } else if (SICK_DAY_WORK_LOG === type) {
     typeLabel = 'Sick day';
   } else if (TIME_OFF_WORK_LOG === type) {

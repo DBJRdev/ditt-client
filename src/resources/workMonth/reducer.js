@@ -3,6 +3,7 @@ import { toMomentDateTime } from '../../services/dateTimeService';
 import {
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,
+  OVERTIME_WORK_LOG,
   SICK_DAY_WORK_LOG,
   STATUS_APPROVED,
   STATUS_REJECTED,
@@ -51,6 +52,12 @@ export default (state, action) => {
     })),
     id: data.id,
     month: parseInt(data.month, 10),
+    overtimeWorkLogs: data.overtimeWorkLogs.map(overtimeWorkLogsData => ({
+      date: toMomentDateTime(overtimeWorkLogsData.date),
+      id: parseInt(overtimeWorkLogsData.id, 10),
+      status: resolveWorkLogStatus(overtimeWorkLogsData),
+      type: OVERTIME_WORK_LOG,
+    })),
     sickDayWorkLogs: data.sickDayWorkLogs.map(sickDayWorkLogsData => ({
       date: toMomentDateTime(sickDayWorkLogsData.date),
       id: parseInt(sickDayWorkLogsData.id, 10),
@@ -121,6 +128,24 @@ export default (state, action) => {
             lastName: homeOfficeWorkLogsData.workMonth.user.lastName,
           },
           year: parseInt(homeOfficeWorkLogsData.workMonth.year, 10),
+        },
+      })),
+      overtimeWorkLogs: payload.overtimeWorkLogs.map(overtimeWorkLogsData => ({
+        date: toMomentDateTime(overtimeWorkLogsData.date),
+        id: parseInt(overtimeWorkLogsData.id, 10),
+        status: resolveWorkLogStatus(overtimeWorkLogsData),
+        type: OVERTIME_WORK_LOG,
+        workMonth: {
+          id: parseInt(overtimeWorkLogsData.workMonth.id, 10),
+          month: parseInt(overtimeWorkLogsData.workMonth.month, 10),
+          status: overtimeWorkLogsData.workMonth.status,
+          user: {
+            email: overtimeWorkLogsData.workMonth.user.email,
+            firstName: overtimeWorkLogsData.workMonth.user.firstName,
+            id: overtimeWorkLogsData.workMonth.user.id,
+            lastName: overtimeWorkLogsData.workMonth.user.lastName,
+          },
+          year: parseInt(overtimeWorkLogsData.workMonth.year, 10),
         },
       })),
       timeOffWorkLogs: payload.timeOffWorkLogs.map(timeOffWorkLogsData => ({

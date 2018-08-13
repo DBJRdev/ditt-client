@@ -16,6 +16,7 @@ import {
 import {
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,
+  OVERTIME_WORK_LOG,
   SICK_DAY_WORK_LOG,
   STATUS_APPROVED,
   STATUS_OPENED,
@@ -84,6 +85,7 @@ class WorkLogCalendar extends React.Component {
           'workLogs',
           'businessTripWorkLogs',
           'homeOfficeWorkLogs',
+          'overtimeWorkLogs',
           'sickDayWorkLogs',
           'timeOffWorkLogs',
           'vacationWorkLogs',
@@ -121,6 +123,8 @@ class WorkLogCalendar extends React.Component {
       this.props.fetchBusinessTripWorkLog(id);
     } else if (HOME_OFFICE_WORK_LOG === type) {
       this.props.fetchHomeOfficeWorkLog(id);
+    } else if (OVERTIME_WORK_LOG === type) {
+      this.props.fetchOvertimeWorkLog(id);
     } else if (SICK_DAY_WORK_LOG === type) {
       this.props.fetchSickDayWorkLog(id);
     } else if (TIME_OFF_WORK_LOG === type) {
@@ -143,6 +147,8 @@ class WorkLogCalendar extends React.Component {
       return this.props.deleteBusinessTripWorkLog(id).then(this.closeDeleteWorkLogDialog);
     } else if (HOME_OFFICE_WORK_LOG === type) {
       return this.props.deleteHomeOfficeWorkLog(id).then(this.closeDeleteWorkLogDialog);
+    } else if (OVERTIME_WORK_LOG === type) {
+      return this.props.deleteOvertimeWorkLog(id).then(this.closeDeleteWorkLogDialog);
     } else if (SICK_DAY_WORK_LOG === type) {
       return this.props.deleteSickDayWorkLog(id).then(this.closeDeleteWorkLogDialog);
     } else if (TIME_OFF_WORK_LOG === type) {
@@ -186,6 +192,8 @@ class WorkLogCalendar extends React.Component {
       });
     } else if (HOME_OFFICE_WORK_LOG === data.type) {
       return this.props.addHomeOfficeWorkLog({ date: data.date });
+    } else if (OVERTIME_WORK_LOG === data.type) {
+      return this.props.addOvertimeWorkLog({ date: data.date });
     } else if (SICK_DAY_WORK_LOG === data.type) {
       return this.props.addSickDayWorkLog({
         childDateOfBirth: data.childDateOfBirth,
@@ -279,6 +287,14 @@ class WorkLogCalendar extends React.Component {
           Type: {getTypeLabel(type)}<br />
           Date: {toDayMonthYearFormat(this.props.homeOfficeWorkLog.get('date'))}<br />
           Status: {getStatusLabel(this.props.homeOfficeWorkLog.get('status'))}
+        </p>
+      );
+    } else if (OVERTIME_WORK_LOG === type && this.props.overtimeWorkLog) {
+      content = (
+        <p>
+          Type: {getTypeLabel(type)}<br />
+          Date: {toDayMonthYearFormat(this.props.overtimeWorkLog.get('date'))}<br />
+          Status: {getStatusLabel(this.props.overtimeWorkLog.get('status'))}
         </p>
       );
     } else if (SICK_DAY_WORK_LOG === type && this.props.sickDayWorkLog) {
@@ -456,6 +472,8 @@ class WorkLogCalendar extends React.Component {
                             label = 'Business trip';
                           } else if (HOME_OFFICE_WORK_LOG === workLogData.type) {
                             label = 'Home office';
+                          } else if (OVERTIME_WORK_LOG === workLogData.type) {
+                            label = 'Overtime';
                           } else if (SICK_DAY_WORK_LOG === workLogData.type) {
                             label = 'Sick day';
 
@@ -517,6 +535,26 @@ class WorkLogCalendar extends React.Component {
                                   )
                                 }
                                 icon="home"
+                                label={resolveLabel(workLog)}
+                              />
+                            </div>
+                          );
+                        }
+
+                        if (workLog.type === OVERTIME_WORK_LOG) {
+                          return (
+                            <div
+                              key={`OT-${workLog.id}`}
+                              className={styles.workLogButtonWrapper}
+                            >
+                              <Button
+                                clickHandler={
+                                  () => this.openDeleteWorkLogDialog(
+                                    workLog.id,
+                                    OVERTIME_WORK_LOG
+                                  )
+                                }
+                                icon="access_time"
                                 label={resolveLabel(workLog)}
                               />
                             </div>
@@ -658,6 +696,7 @@ class WorkLogCalendar extends React.Component {
 WorkLogCalendar.defaultProps = {
   businessTripWorkLog: null,
   homeOfficeWorkLog: null,
+  overtimeWorkLog: null,
   sickDayWorkLog: null,
   supervisorView: false,
   timeOffWorkLog: null,
@@ -669,6 +708,7 @@ WorkLogCalendar.defaultProps = {
 WorkLogCalendar.propTypes = {
   addBusinessTripWorkLog: PropTypes.func.isRequired,
   addHomeOfficeWorkLog: PropTypes.func.isRequired,
+  addOvertimeWorkLog: PropTypes.func.isRequired,
   addSickDayWorkLog: PropTypes.func.isRequired,
   addTimeOffWorkLog: PropTypes.func.isRequired,
   addVacationWorkLog: PropTypes.func.isRequired,
@@ -686,12 +726,14 @@ WorkLogCalendar.propTypes = {
   changeSelectedDate: PropTypes.func.isRequired,
   deleteBusinessTripWorkLog: PropTypes.func.isRequired,
   deleteHomeOfficeWorkLog: PropTypes.func.isRequired,
+  deleteOvertimeWorkLog: PropTypes.func.isRequired,
   deleteSickDayWorkLog: PropTypes.func.isRequired,
   deleteTimeOffWorkLog: PropTypes.func.isRequired,
   deleteVacationWorkLog: PropTypes.func.isRequired,
   deleteWorkLog: PropTypes.func.isRequired,
   fetchBusinessTripWorkLog: PropTypes.func.isRequired,
   fetchHomeOfficeWorkLog: PropTypes.func.isRequired,
+  fetchOvertimeWorkLog: PropTypes.func.isRequired,
   fetchSickDayWorkLog: PropTypes.func.isRequired,
   fetchTimeOffWorkLog: PropTypes.func.isRequired,
   fetchVacationWorkLog: PropTypes.func.isRequired,
@@ -704,6 +746,11 @@ WorkLogCalendar.propTypes = {
   isPosting: PropTypes.bool.isRequired,
   markApproved: PropTypes.func.isRequired,
   markWaitingForApproval: PropTypes.func.isRequired,
+  overtimeWorkLog: ImmutablePropTypes.mapContains({
+    date: PropTypes.object.isRequired,
+    rejectionMessage: PropTypes.string,
+    status: PropTypes.string.isRequired,
+  }),
   selectedDate: PropTypes.shape({
     clone: PropTypes.func.isRequired,
   }).isRequired,
@@ -754,6 +801,15 @@ WorkLogCalendar.propTypes = {
     })).isRequired,
     id: PropTypes.number.isRequired,
     month: PropTypes.shape.isRequired,
+    overtimeWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+      date: PropTypes.shape.isRequired,
+      id: PropTypes.number.isRequired,
+      status: PropTypes.oneOf([
+        STATUS_APPROVED,
+        STATUS_REJECTED,
+        STATUS_WAITING_FOR_APPROVAL,
+      ]).isRequired,
+    })).isRequired,
     sickDayWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
       date: PropTypes.shape.isRequired,
       id: PropTypes.number.isRequired,

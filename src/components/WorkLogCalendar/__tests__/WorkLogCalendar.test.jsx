@@ -26,17 +26,20 @@ describe('rendering', () => {
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
+      addOvertimeWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteOvertimeWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
+      fetchOvertimeWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
       fetchVacationWorkLog={() => {}}
@@ -54,6 +57,7 @@ describe('rendering', () => {
           homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
+          overtimeWorkLogs: [],
           sickDayWorkLogs: [],
           status: 'OPENED',
           timeOffWorkLogs: [],
@@ -90,18 +94,21 @@ describe('rendering', () => {
     const tree = shallow(<WorkLogCalendar
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
+      addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteOvertimeWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
+      fetchOvertimeWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
       fetchVacationWorkLog={() => {}}
@@ -119,6 +126,7 @@ describe('rendering', () => {
           homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
+          overtimeWorkLogs: [],
           sickDayWorkLogs: [],
           status: 'WAITING_FOR_APPROVAL',
           timeOffWorkLogs: [],
@@ -155,18 +163,21 @@ describe('rendering', () => {
     const tree = shallow(<WorkLogCalendar
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
+      addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteOvertimeWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
+      fetchOvertimeWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
       fetchVacationWorkLog={() => {}}
@@ -184,6 +195,7 @@ describe('rendering', () => {
           homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
+          overtimeWorkLogs: [],
           sickDayWorkLogs: [],
           status: 'APPROVED',
           timeOffWorkLogs: [],
@@ -220,18 +232,21 @@ describe('rendering', () => {
     const tree = shallow(<WorkLogCalendar
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
+      addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteOvertimeWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
+      fetchOvertimeWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
       fetchVacationWorkLog={() => {}}
@@ -250,6 +265,7 @@ describe('rendering', () => {
           homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
+          overtimeWorkLogs: [],
           sickDayWorkLogs: [],
           status: 'OPENED',
           timeOffWorkLogs: [],
@@ -286,18 +302,21 @@ describe('rendering', () => {
     const tree = shallow(<WorkLogCalendar
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
+      addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteOvertimeWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
+      fetchOvertimeWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
       fetchVacationWorkLog={() => {}}
@@ -316,6 +335,7 @@ describe('rendering', () => {
           homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
+          overtimeWorkLogs: [],
           sickDayWorkLogs: [],
           status: 'WAITING_FOR_APPROVAL',
           timeOffWorkLogs: [],
@@ -352,18 +372,21 @@ describe('rendering', () => {
     const tree = shallow(<WorkLogCalendar
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
+      addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteOvertimeWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
+      fetchOvertimeWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
       fetchVacationWorkLog={() => {}}
@@ -382,6 +405,7 @@ describe('rendering', () => {
           homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
+          overtimeWorkLogs: [],
           sickDayWorkLogs: [],
           status: 'APPROVED',
           timeOffWorkLogs: [],
@@ -421,18 +445,21 @@ describe('functionality', () => {
     const tree = mount(<WorkLogCalendar
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
+      addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteOvertimeWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
+      fetchOvertimeWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
       fetchVacationWorkLog={() => {}}
@@ -450,6 +477,7 @@ describe('functionality', () => {
           homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
+          overtimeWorkLogs: [],
           sickDayWorkLogs: [],
           status: 'OPENED',
           timeOffWorkLogs: [],
@@ -491,18 +519,21 @@ describe('functionality', () => {
     const tree = mount(<WorkLogCalendar
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
+      addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteOvertimeWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
+      fetchOvertimeWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
       fetchVacationWorkLog={() => {}}
@@ -520,6 +551,7 @@ describe('functionality', () => {
           homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
+          overtimeWorkLogs: [],
           sickDayWorkLogs: [],
           status: 'OPENED',
           timeOffWorkLogs: [],
@@ -561,18 +593,21 @@ describe('functionality', () => {
     const tree = mount(<WorkLogCalendar
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
+      addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteOvertimeWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
+      fetchOvertimeWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
       fetchVacationWorkLog={() => {}}
@@ -590,6 +625,7 @@ describe('functionality', () => {
           homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
+          overtimeWorkLogs: [],
           sickDayWorkLogs: [],
           status: 'OPENED',
           timeOffWorkLogs: [],
@@ -629,18 +665,21 @@ describe('functionality', () => {
     const tree = mount(<WorkLogCalendar
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
+      addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
       addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteOvertimeWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
+      fetchOvertimeWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
       fetchVacationWorkLog={() => {}}
@@ -659,6 +698,7 @@ describe('functionality', () => {
           homeOfficeWorkLogs: [],
           id: 2,
           month: 1,
+          overtimeWorkLogs: [],
           sickDayWorkLogs: [],
           status: 'WAITING_FOR_APPROVAL',
           timeOffWorkLogs: [],

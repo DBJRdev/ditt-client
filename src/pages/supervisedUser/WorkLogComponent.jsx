@@ -49,6 +49,7 @@ class WorkLogComponent extends React.Component {
         <WorkLogCalendar
           addBusinessTripWorkLog={() => {}}
           addHomeOfficeWorkLog={() => {}}
+          addOvertimeWorkLog={() => {}}
           addSickDayWorkLog={() => {}}
           addTimeOffWorkLog={() => {}}
           addVacationWorkLog={() => {}}
@@ -57,12 +58,14 @@ class WorkLogComponent extends React.Component {
           changeSelectedDate={this.changeSelectedDate}
           deleteBusinessTripWorkLog={() => {}}
           deleteHomeOfficeWorkLog={() => {}}
+          deleteOvertimeWorkLog={() => {}}
           deleteSickDayWorkLog={() => {}}
           deleteTimeOffWorkLog={() => {}}
           deleteVacationWorkLog={() => {}}
           deleteWorkLog={() => {}}
           fetchBusinessTripWorkLog={this.props.fetchBusinessTripWorkLog}
           fetchHomeOfficeWorkLog={this.props.fetchHomeOfficeWorkLog}
+          fetchOvertimeWorkLog={this.props.fetchOvertimeWorkLog}
           fetchSickDayWorkLog={this.props.fetchSickDayWorkLog}
           fetchTimeOffWorkLog={this.props.fetchTimeOffWorkLog}
           fetchVacationWorkLog={this.props.fetchVacationWorkLog}
@@ -71,6 +74,7 @@ class WorkLogComponent extends React.Component {
           isPosting={this.props.isPosting}
           markApproved={this.props.markApproved}
           markWaitingForApproval={() => {}}
+          overtimeWorkLog={this.props.overtimeWorkLog}
           selectedDate={this.state.selectedDate}
           supervisorView
           sickDayWorkLog={this.props.sickDayWorkLog}
@@ -89,6 +93,7 @@ class WorkLogComponent extends React.Component {
 WorkLogComponent.defaultProps = {
   businessTripWorkLog: null,
   homeOfficeWorkLog: null,
+  overtimeWorkLog: null,
   sickDayWorkLog: null,
   timeOffWorkLog: null,
   vacationWorkLog: null,
@@ -109,6 +114,7 @@ WorkLogComponent.propTypes = {
   }),
   fetchBusinessTripWorkLog: PropTypes.func.isRequired,
   fetchHomeOfficeWorkLog: PropTypes.func.isRequired,
+  fetchOvertimeWorkLog: PropTypes.func.isRequired,
   fetchSickDayWorkLog: PropTypes.func.isRequired,
   fetchTimeOffWorkLog: PropTypes.func.isRequired,
   fetchVacationWorkLog: PropTypes.func.isRequired,
@@ -129,6 +135,11 @@ WorkLogComponent.propTypes = {
       id: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  overtimeWorkLog: ImmutablePropTypes.mapContains({
+    date: PropTypes.object.isRequired,
+    rejectionMessage: PropTypes.string,
+    status: PropTypes.string.isRequired,
+  }),
   sickDayWorkLog: ImmutablePropTypes.mapContains({
     childDateOfBirth: PropTypes.object,
     childName: PropTypes.string,

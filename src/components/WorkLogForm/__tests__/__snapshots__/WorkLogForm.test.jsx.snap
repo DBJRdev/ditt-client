@@ -103,6 +103,10 @@ exports[`rendering renders correctly with all props 1`] = `
                 "value": "HOME_OFFICE_WORK_LOG",
               },
               Object {
+                "label": "Overtime",
+                "value": "OVERTIME_WORK_LOG",
+              },
+              Object {
                 "label": "Sick day",
                 "value": "SICK_DAY_WORK_LOG",
               },
