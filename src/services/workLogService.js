@@ -17,7 +17,6 @@ import {
   VARIANT_WITH_NOTE,
   VARIANT_WITHOUT_NOTE,
 } from '../resources/sickDayWorkLog';
-import { getNumberOfWorkingDays } from './dateTimeService';
 
 export const getSickDayVariantLabel = (sickDayVariant) => {
   let sickDayVariantLabel = '';
@@ -95,13 +94,8 @@ export const getWorkedTime = (workLogList, workHoursList) => {
         workHour => workHour.get('month') === (workLog.date.month() + 1)
       ));
       const requiredHours = workHours.get('requiredHours');
-      const workingDays = getNumberOfWorkingDays(
-        workLog.date.clone().startOf('month'),
-        workLog.date.clone().endOf('month'),
-        parameters.get('supportedHolidays')
-      );
 
-      return ((requiredHours / workingDays) * 3600) + total;
+      return (requiredHours * 3600) + total;
     }
 
     return total;

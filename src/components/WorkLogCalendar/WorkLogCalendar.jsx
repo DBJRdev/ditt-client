@@ -26,6 +26,7 @@ import {
   WORK_LOG,
 } from '../../resources/workMonth';
 import {
+  getNumberOfWorkingDays,
   includesSameDate,
   isWeekend,
   localizedMoment,
@@ -217,7 +218,12 @@ class WorkLogCalendar extends React.Component {
     ));
 
     if (workHours) {
-      requiredHours = workHours.get('requiredHours');
+      const workingDays = getNumberOfWorkingDays(
+        selectedDate.clone().startOf('month'),
+        selectedDate.clone().endOf('month'),
+        parameters.get('supportedHolidays')
+      );
+      requiredHours = workHours.get('requiredHours') * workingDays;
     }
 
     daysOfSelectedMonth.forEach((day) => {

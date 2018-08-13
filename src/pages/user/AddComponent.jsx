@@ -219,8 +219,8 @@ class AddComponent extends React.Component {
             type="number"
             value={this.state.formData.vacationDays || ''}
           />
-          <h2>Required working hours per month</h2>
-          <p>Insert as amount of hours divided by {'","'}, starting with January.</p>
+          <h2>Average working hours per day</h2>
+          <p>Insert as amount of average working hours per day divided by {'","'}, starting with January.</p>
           {parameters.get('supportedYear').map(year => (
             <TextField
               changeHandler={this.changeWorkHourHandler}

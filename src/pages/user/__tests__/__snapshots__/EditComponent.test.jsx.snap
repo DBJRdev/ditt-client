@@ -140,10 +140,10 @@ exports[`rendering renders correctly 1`] = `
       value="0"
     />
     <h2>
-      Required working hours per month
+      Average working hours per day
     </h2>
     <p>
-      Insert as amount of hours divided by 
+      Insert as amount of average working hours per day divided by 
       ","
       , starting with January.
     </p>
