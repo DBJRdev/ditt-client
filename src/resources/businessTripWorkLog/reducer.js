@@ -32,11 +32,16 @@ export default (state, action) => {
 
   const filterWorkLog = data => ({
     date: toMomentDateTime(data.date),
+    destination: data.destination,
+    expectedArrival: data.expectedArrival,
+    expectedDeparture: data.expectedDeparture,
     id: parseInt(data.id, 10),
+    purpose: data.purpose,
     rejectionMessage: data.rejectionMessage,
     status: resolveWorkLogStatus(data),
     timeApproved: data.timeApproved ? toMomentDateTime(data.timeApproved) : null,
     timeRejected: data.timeRejected ? toMomentDateTime(data.timeRejected) : null,
+    transport: data.transport,
   });
 
   if (type === actionTypes.ADD_BUSINESS_TRIP_WORK_LOG_REQUEST) {

@@ -7,6 +7,11 @@ export const addBusinessTripWorkLog = data => dispatch => dispatch({
   [RSAA]: {
     body: JSON.stringify({
       date: toJson(data.date),
+      destination: data.destination,
+      expectedArrival: data.expectedArrival,
+      expectedDeparture: data.expectedDeparture,
+      purpose: data.purpose,
+      transport: data.transport,
     }),
     endpoint: `${API_URL}/business_trip_work_logs`,
     headers: { 'Content-Type': 'application/json' },

@@ -36,10 +36,15 @@ class WorkLogForm extends React.Component {
       formData: {
         childDateOfBirth: null,
         childName: null,
+        destination: null,
         endHour: endTime.format('HH'),
         endMinute: endTime.format('mm'),
+        expectedArrival: null,
+        expectedDeparture: null,
+        purpose: null,
         startHour: startTime.format('HH'),
         startMinute: startTime.format('mm'),
+        transport: null,
         type: WORK_LOG,
         variant: VARIANT_WITH_NOTE,
       },
@@ -47,11 +52,16 @@ class WorkLogForm extends React.Component {
         elements: {
           childDateOfBirth: null,
           childName: null,
+          destination: null,
           endHour: null,
           endMinute: null,
+          expectedArrival: null,
+          expectedDeparture: null,
           form: null,
+          purpose: null,
           startHour: null,
           startMinute: null,
+          transport: null,
           type: null,
         },
         isValid: false,
@@ -99,17 +109,41 @@ class WorkLogForm extends React.Component {
 
     if (formValidity.isValid) {
       this.props.saveHandler({
-        childDateOfBirth: formData.variant === VARIANT_SICK_CHILD
-          ? toMomentDateTimeFromDayMonthYear(formData.childDateOfBirth)
-          : null,
-        childName: formData.variant === VARIANT_SICK_CHILD
+        childDateOfBirth:
+          (formData.type === SICK_DAY_WORK_LOG && formData.variant === VARIANT_SICK_CHILD)
+            ? toMomentDateTimeFromDayMonthYear(formData.childDateOfBirth)
+            : null,
+        childName: (formData.type === SICK_DAY_WORK_LOG && formData.variant === VARIANT_SICK_CHILD)
           ? formData.childName
           : null,
-        date: this.props.date,
-        endTime: date.clone().hour(formData.endHour).minute(formData.endMinute).second(0),
-        startTime: date.clone().hour(formData.startHour).minute(formData.startMinute).second(0),
+        date: formData.type !== WORK_LOG
+          ? this.props.date
+          : null,
+        destination: formData.type === BUSINESS_TRIP_WORK_LOG
+          ? formData.destination
+          : null,
+        endTime: formData.type === WORK_LOG
+          ? date.clone().hour(formData.endHour).minute(formData.endMinute).second(0)
+          : null,
+        expectedArrival: formData.type === BUSINESS_TRIP_WORK_LOG
+          ? formData.expectedArrival
+          : null,
+        expectedDeparture: formData.type === BUSINESS_TRIP_WORK_LOG
+          ? formData.expectedDeparture
+          : null,
+        purpose: formData.type === BUSINESS_TRIP_WORK_LOG
+          ? formData.purpose
+          : null,
+        startTime: formData.type === WORK_LOG
+          ? date.clone().hour(formData.startHour).minute(formData.startMinute).second(0)
+          : null,
+        transport: formData.type === BUSINESS_TRIP_WORK_LOG
+          ? formData.transport
+          : null,
         type: formData.type,
-        variant: formData.variant,
+        variant: formData.type === SICK_DAY_WORK_LOG
+          ? formData.variant
+          : null,
       })
         .then((response) => {
           if (response.type.endsWith('WORK_LOG_FAILURE')) {
@@ -119,6 +153,68 @@ class WorkLogForm extends React.Component {
           }
         });
     }
+  }
+
+  renderBusinessTripWorkLogFields() {
+    return (
+      <fieldset style={this.fieldSetStyle}>
+        <legend>Purpose</legend>
+        <div style={this.fieldStyle}>
+          <TextField
+            changeHandler={this.changeHandler}
+            error={this.state.formValidity.elements.purpose}
+            fieldId="purpose"
+            isLabelVisible={false}
+            label="Purpose"
+            value={this.state.formData.purpose || ''}
+          />
+        </div>
+        <legend>Destination</legend>
+        <div style={this.fieldStyle}>
+          <TextField
+            changeHandler={this.changeHandler}
+            error={this.state.formValidity.elements.destination}
+            fieldId="destination"
+            isLabelVisible={false}
+            label="Destination"
+            value={this.state.formData.destination || ''}
+          />
+        </div>
+        <legend>Transport</legend>
+        <div style={this.fieldStyle}>
+          <TextField
+            changeHandler={this.changeHandler}
+            error={this.state.formValidity.elements.transport}
+            fieldId="transport"
+            isLabelVisible={false}
+            label="Transport"
+            value={this.state.formData.transport || ''}
+          />
+        </div>
+        <legend>Expected departure</legend>
+        <div style={this.fieldStyle}>
+          <TextField
+            changeHandler={this.changeHandler}
+            error={this.state.formValidity.elements.expectedDeparture}
+            fieldId="expectedDeparture"
+            isLabelVisible={false}
+            label="Expected departure"
+            value={this.state.formData.expectedDeparture || ''}
+          />
+        </div>
+        <legend>Expected arrival</legend>
+        <div style={this.fieldStyle}>
+          <TextField
+            changeHandler={this.changeHandler}
+            error={this.state.formValidity.elements.expectedArrival}
+            fieldId="expectedArrival"
+            isLabelVisible={false}
+            label="Expected arrival"
+            value={this.state.formData.expectedArrival || ''}
+          />
+        </div>
+      </fieldset>
+    );
   }
 
   renderSickDayWorkLogFields() {
@@ -312,6 +408,10 @@ class WorkLogForm extends React.Component {
               />
             </div>
           </fieldset>
+          {
+            this.state.formData.type === BUSINESS_TRIP_WORK_LOG
+            && this.renderBusinessTripWorkLogFields()
+          }
           {this.state.formData.type === SICK_DAY_WORK_LOG && this.renderSickDayWorkLogFields()}
           {
             this.state.formData.type === SICK_DAY_WORK_LOG

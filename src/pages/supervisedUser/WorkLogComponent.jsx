@@ -99,8 +99,13 @@ WorkLogComponent.defaultProps = {
 WorkLogComponent.propTypes = {
   businessTripWorkLog: ImmutablePropTypes.mapContains({
     date: PropTypes.object.isRequired,
+    destination: PropTypes.string.isRequired,
+    expectedArrival: PropTypes.string.isRequired,
+    expectedDeparture: PropTypes.string.isRequired,
+    purpose: PropTypes.string.isRequired,
     rejectionMessage: PropTypes.string,
     status: PropTypes.string.isRequired,
+    transport: PropTypes.string.isRequired,
   }),
   fetchBusinessTripWorkLog: PropTypes.func.isRequired,
   fetchHomeOfficeWorkLog: PropTypes.func.isRequired,

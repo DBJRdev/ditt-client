@@ -132,11 +132,16 @@ export const validateUser = (user, userList, supportedWorkHours) => {
 export const validateWorkLog = (workLog, workLogsOfDay) => {
   const errors = {
     elements: {
+      destination: null,
       endHour: null,
       endMinute: null,
+      expectedArrival: null,
+      expectedDeparture: null,
       form: null,
+      purpose: null,
       startHour: null,
       startMinute: null,
+      transport: null,
       type: null,
       variant: null,
     },
@@ -153,6 +158,28 @@ export const validateWorkLog = (workLog, workLogsOfDay) => {
   ].indexOf(workLog.type) === -1) {
     errors.elements.type = 'Invalid type.';
     errors.isValid = false;
+
+    return errors;
+  }
+
+  if (workLog.type === BUSINESS_TRIP_WORK_LOG) {
+    const emptyCheck = [
+      'destination',
+      'expectedArrival',
+      'expectedDeparture',
+      'purpose',
+      'transport',
+    ];
+
+    emptyCheck.forEach((element) => {
+      if (
+        workLog[element] === null
+        || validator.isEmpty(workLog[element])
+      ) {
+        errors.elements[element] = 'This field is required.';
+        errors.isValid = false;
+      }
+    });
 
     return errors;
   }

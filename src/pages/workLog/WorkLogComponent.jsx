@@ -235,8 +235,13 @@ WorkLogComponent.propTypes = {
   addWorkLog: PropTypes.func.isRequired,
   businessTripWorkLog: ImmutablePropTypes.mapContains({
     date: PropTypes.object.isRequired,
+    destination: PropTypes.string.isRequired,
+    expectedArrival: PropTypes.string.isRequired,
+    expectedDeparture: PropTypes.string.isRequired,
+    purpose: PropTypes.string.isRequired,
     rejectionMessage: PropTypes.string,
     status: PropTypes.string.isRequired,
+    transport: PropTypes.string.isRequired,
   }),
   deleteBusinessTripWorkLog: PropTypes.func.isRequired,
   deleteHomeOfficeWorkLog: PropTypes.func.isRequired,

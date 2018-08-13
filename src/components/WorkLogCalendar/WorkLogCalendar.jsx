@@ -176,7 +176,14 @@ class WorkLogCalendar extends React.Component {
 
   saveWorkLogForm(data) {
     if (BUSINESS_TRIP_WORK_LOG === data.type) {
-      return this.props.addBusinessTripWorkLog({ date: data.date });
+      return this.props.addBusinessTripWorkLog({
+        date: data.date,
+        destination: data.destination,
+        expectedArrival: data.expectedArrival,
+        expectedDeparture: data.expectedDeparture,
+        purpose: data.purpose,
+        transport: data.transport,
+      });
     } else if (HOME_OFFICE_WORK_LOG === data.type) {
       return this.props.addHomeOfficeWorkLog({ date: data.date });
     } else if (SICK_DAY_WORK_LOG === data.type) {
@@ -258,7 +265,12 @@ class WorkLogCalendar extends React.Component {
         <p>
           Type: {getTypeLabel(type)}<br />
           Date: {toDayMonthYearFormat(this.props.businessTripWorkLog.get('date'))}<br />
-          Status: {getStatusLabel(this.props.businessTripWorkLog.get('status'))}
+          Status: {getStatusLabel(this.props.businessTripWorkLog.get('status'))}<br />
+          Purpose: {this.props.businessTripWorkLog.get('purpose')}<br />
+          Destination: {this.props.businessTripWorkLog.get('destination')}<br />
+          Transport: {this.props.businessTripWorkLog.get('transport')}<br />
+          Expected departure: {this.props.businessTripWorkLog.get('expectedDeparture')}<br />
+          Expected arrival: {this.props.businessTripWorkLog.get('expectedArrival')}
         </p>
       );
     } else if (HOME_OFFICE_WORK_LOG === type && this.props.homeOfficeWorkLog) {
@@ -278,7 +290,7 @@ class WorkLogCalendar extends React.Component {
           {VARIANT_SICK_CHILD === this.props.sickDayWorkLog.get('variant') && (
             <React.Fragment>
               {`Child's name: ${this.props.sickDayWorkLog.get('childName')}`}<br />
-              {`Child's date of birth: ${this.props.sickDayWorkLog.get('childDateOfBirth')}`}<br />
+              {`Child's date of birth: ${toDayMonthYearFormat(this.props.sickDayWorkLog.get('childDateOfBirth'))}`}<br />
             </React.Fragment>
           )}
         </p>
@@ -663,8 +675,13 @@ WorkLogCalendar.propTypes = {
   addWorkLog: PropTypes.func.isRequired,
   businessTripWorkLog: ImmutablePropTypes.mapContains({
     date: PropTypes.object.isRequired,
+    destination: PropTypes.string.isRequired,
+    expectedArrival: PropTypes.string.isRequired,
+    expectedDeparture: PropTypes.string.isRequired,
+    purpose: PropTypes.string.isRequired,
     rejectionMessage: PropTypes.string,
     status: PropTypes.string.isRequired,
+    transport: PropTypes.string.isRequired,
   }),
   changeSelectedDate: PropTypes.func.isRequired,
   deleteBusinessTripWorkLog: PropTypes.func.isRequired,
