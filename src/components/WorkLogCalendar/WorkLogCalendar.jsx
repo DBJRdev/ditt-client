@@ -277,6 +277,11 @@ class WorkLogCalendar extends React.Component {
           Type: {getTypeLabel(type)}<br />
           Date: {toDayMonthYearFormat(this.props.businessTripWorkLog.get('date'))}<br />
           Status: {getStatusLabel(this.props.businessTripWorkLog.get('status'))}<br />
+          {STATUS_REJECTED === this.props.businessTripWorkLog.get('status') && (
+            <React.Fragment>
+              Rejection message: {this.props.businessTripWorkLog.get('rejectionMessage')}<br />
+            </React.Fragment>
+          )}
           Purpose: {this.props.businessTripWorkLog.get('purpose')}<br />
           Destination: {this.props.businessTripWorkLog.get('destination')}<br />
           Transport: {this.props.businessTripWorkLog.get('transport')}<br />
@@ -289,7 +294,12 @@ class WorkLogCalendar extends React.Component {
         <p>
           Type: {getTypeLabel(type)}<br />
           Date: {toDayMonthYearFormat(this.props.homeOfficeWorkLog.get('date'))}<br />
-          Status: {getStatusLabel(this.props.homeOfficeWorkLog.get('status'))}
+          Status: {getStatusLabel(this.props.homeOfficeWorkLog.get('status'))}<br />
+          {STATUS_REJECTED === this.props.homeOfficeWorkLog.get('status') && (
+            <React.Fragment>
+              Rejection message: {this.props.homeOfficeWorkLog.get('rejectionMessage')}<br />
+            </React.Fragment>
+          )}
         </p>
       );
     } else if (OVERTIME_WORK_LOG === type && this.props.overtimeWorkLog) {
@@ -298,7 +308,12 @@ class WorkLogCalendar extends React.Component {
           Type: {getTypeLabel(type)}<br />
           Date: {toDayMonthYearFormat(this.props.overtimeWorkLog.get('date'))}<br />
           Status: {getStatusLabel(this.props.overtimeWorkLog.get('status'))}<br />
-          Reason: {this.props.overtimeWorkLog.get('reason')}
+          {STATUS_REJECTED === this.props.overtimeWorkLog.get('status') && (
+            <React.Fragment>
+              Rejection message: {this.props.overtimeWorkLog.get('rejectionMessage')}<br />
+            </React.Fragment>
+          )}
+          Reason: {this.props.overtimeWorkLog.get('reason')}<br />
         </p>
       );
     } else if (SICK_DAY_WORK_LOG === type && this.props.sickDayWorkLog) {
@@ -320,7 +335,12 @@ class WorkLogCalendar extends React.Component {
         <p>
           Type: {getTypeLabel(type)}<br />
           Date: {toDayMonthYearFormat(this.props.timeOffWorkLog.get('date'))}<br />
-          Status: {getStatusLabel(this.props.timeOffWorkLog.get('status'))}
+          Status: {getStatusLabel(this.props.timeOffWorkLog.get('status'))}<br />
+          {STATUS_REJECTED === this.props.timeOffWorkLog.get('status') && (
+            <React.Fragment>
+              Rejection message: {this.props.timeOffWorkLog.get('rejectionMessage')}<br />
+            </React.Fragment>
+          )}
         </p>
       );
     } else if (VACATION_WORK_LOG === type && this.props.vacationWorkLog) {
@@ -328,7 +348,12 @@ class WorkLogCalendar extends React.Component {
         <p>
           Type: {getTypeLabel(type)}<br />
           Date: {toDayMonthYearFormat(this.props.vacationWorkLog.get('date'))}<br />
-          Status: {getStatusLabel(this.props.vacationWorkLog.get('status'))}
+          Status: {getStatusLabel(this.props.vacationWorkLog.get('status'))}<br />
+          {STATUS_REJECTED === this.props.vacationWorkLog.get('status') && (
+            <React.Fragment>
+              Rejection message: {this.props.vacationWorkLog.get('rejectionMessage')}<br />
+            </React.Fragment>
+          )}
         </p>
       );
     } else if (WORK_LOG === type && this.props.workLog) {
