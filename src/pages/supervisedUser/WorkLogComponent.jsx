@@ -137,6 +137,7 @@ WorkLogComponent.propTypes = {
   }).isRequired,
   overtimeWorkLog: ImmutablePropTypes.mapContains({
     date: PropTypes.object.isRequired,
+    reason: PropTypes.string,
     rejectionMessage: PropTypes.string,
     status: PropTypes.string.isRequired,
   }),

@@ -7,6 +7,7 @@ export const addOvertimeWorkLog = data => dispatch => dispatch({
   [RSAA]: {
     body: JSON.stringify({
       date: toJson(data.date),
+      reason: data.reason,
     }),
     endpoint: `${API_URL}/overtime_work_logs`,
     headers: { 'Content-Type': 'application/json' },

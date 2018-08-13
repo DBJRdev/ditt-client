@@ -193,7 +193,10 @@ class WorkLogCalendar extends React.Component {
     } else if (HOME_OFFICE_WORK_LOG === data.type) {
       return this.props.addHomeOfficeWorkLog({ date: data.date });
     } else if (OVERTIME_WORK_LOG === data.type) {
-      return this.props.addOvertimeWorkLog({ date: data.date });
+      return this.props.addOvertimeWorkLog({
+        date: data.date,
+        reason: data.reason,
+      });
     } else if (SICK_DAY_WORK_LOG === data.type) {
       return this.props.addSickDayWorkLog({
         childDateOfBirth: data.childDateOfBirth,
@@ -294,7 +297,8 @@ class WorkLogCalendar extends React.Component {
         <p>
           Type: {getTypeLabel(type)}<br />
           Date: {toDayMonthYearFormat(this.props.overtimeWorkLog.get('date'))}<br />
-          Status: {getStatusLabel(this.props.overtimeWorkLog.get('status'))}
+          Status: {getStatusLabel(this.props.overtimeWorkLog.get('status'))}<br />
+          Reason: {this.props.overtimeWorkLog.get('reason')}
         </p>
       );
     } else if (SICK_DAY_WORK_LOG === type && this.props.sickDayWorkLog) {
@@ -748,6 +752,7 @@ WorkLogCalendar.propTypes = {
   markWaitingForApproval: PropTypes.func.isRequired,
   overtimeWorkLog: ImmutablePropTypes.mapContains({
     date: PropTypes.object.isRequired,
+    reason: PropTypes.string,
     rejectionMessage: PropTypes.string,
     status: PropTypes.string.isRequired,
   }),

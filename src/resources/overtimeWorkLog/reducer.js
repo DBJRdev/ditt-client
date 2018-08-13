@@ -33,6 +33,7 @@ export default (state, action) => {
   const filterWorkLog = data => ({
     date: toMomentDateTime(data.date),
     id: parseInt(data.id, 10),
+    reason: data.reason,
     rejectionMessage: data.rejectionMessage,
     status: resolveWorkLogStatus(data),
     timeApproved: data.timeApproved ? toMomentDateTime(data.timeApproved) : null,

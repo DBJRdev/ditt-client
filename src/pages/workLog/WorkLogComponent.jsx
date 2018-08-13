@@ -298,6 +298,7 @@ WorkLogComponent.propTypes = {
   markWaitingForApproval: PropTypes.func.isRequired,
   overtimeWorkLog: ImmutablePropTypes.mapContains({
     date: PropTypes.object.isRequired,
+    reason: PropTypes.string,
     rejectionMessage: PropTypes.string,
     status: PropTypes.string.isRequired,
   }),

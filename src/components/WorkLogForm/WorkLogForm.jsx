@@ -43,6 +43,7 @@ class WorkLogForm extends React.Component {
         expectedArrival: null,
         expectedDeparture: null,
         purpose: null,
+        reason: null,
         startHour: startTime.format('HH'),
         startMinute: startTime.format('mm'),
         transport: null,
@@ -60,6 +61,7 @@ class WorkLogForm extends React.Component {
           expectedDeparture: null,
           form: null,
           purpose: null,
+          reason: null,
           startHour: null,
           startMinute: null,
           transport: null,
@@ -134,6 +136,9 @@ class WorkLogForm extends React.Component {
           : null,
         purpose: formData.type === BUSINESS_TRIP_WORK_LOG
           ? formData.purpose
+          : null,
+        reason: formData.type === OVERTIME_WORK_LOG
+          ? formData.reason
           : null,
         startTime: formData.type === WORK_LOG
           ? date.clone().hour(formData.startHour).minute(formData.startMinute).second(0)
@@ -212,6 +217,24 @@ class WorkLogForm extends React.Component {
             isLabelVisible={false}
             label="Expected arrival"
             value={this.state.formData.expectedArrival || ''}
+          />
+        </div>
+      </fieldset>
+    );
+  }
+
+  renderOvertimeWorkLogFields() {
+    return (
+      <fieldset style={this.fieldSetStyle}>
+        <legend>Reason</legend>
+        <div style={this.fieldStyle}>
+          <TextField
+            changeHandler={this.changeHandler}
+            error={this.state.formValidity.elements.reason}
+            fieldId="reason"
+            isLabelVisible={false}
+            label="Reason"
+            value={this.state.formData.reason || ''}
           />
         </div>
       </fieldset>
@@ -417,6 +440,7 @@ class WorkLogForm extends React.Component {
             this.state.formData.type === BUSINESS_TRIP_WORK_LOG
             && this.renderBusinessTripWorkLogFields()
           }
+          {this.state.formData.type === OVERTIME_WORK_LOG && this.renderOvertimeWorkLogFields()}
           {this.state.formData.type === SICK_DAY_WORK_LOG && this.renderSickDayWorkLogFields()}
           {
             this.state.formData.type === SICK_DAY_WORK_LOG

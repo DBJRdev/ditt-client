@@ -186,14 +186,23 @@ export const validateWorkLog = (workLog, workLogsOfDay) => {
     return errors;
   }
 
+  if (workLog.type === OVERTIME_WORK_LOG) {
+    if (workLog.reason === null || validator.isEmpty(workLog.reason)) {
+      errors.elements.reason = 'This field is required.';
+      errors.isValid = false;
+    }
+
+    return errors;
+  }
+
   if (workLog.type === SICK_DAY_WORK_LOG && workLog.variant === VARIANT_SICK_CHILD) {
     if (workLog.childName === null || validator.isEmpty(workLog.childName)) {
-      errors.elements.childName = 'Required.';
+      errors.elements.childName = 'This field is required.';
       errors.isValid = false;
     }
 
     if (workLog.childDateOfBirth === null || validator.isEmpty(workLog.childDateOfBirth)) {
-      errors.elements.childDateOfBirth = 'Required.';
+      errors.elements.childDateOfBirth = 'This field is required.';
       errors.isValid = false;
     }
 
