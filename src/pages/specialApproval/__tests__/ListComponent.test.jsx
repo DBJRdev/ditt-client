@@ -13,6 +13,8 @@ describe('rendering', () => {
       markBusinessTripWorkLogRejected: () => {},
       markHomeOfficeWorkLogApproved: () => {},
       markHomeOfficeWorkLogRejected: () => {},
+      markOvertimeWorkLogApproved: () => {},
+      markOvertimeWorkLogRejected: () => {},
       markTimeOffWorkLogApproved: () => {},
       markTimeOffWorkLogRejected: () => {},
       markVacationWorkLogApproved: () => {},
@@ -20,6 +22,7 @@ describe('rendering', () => {
       specialApprovalList: Immutable.fromJS({
         businessTripWorkLogs: [],
         homeOfficeWorkLogs: [],
+        overtimeWorkLogs: [],
         timeOffWorkLogs: [],
         vacationWorkLogs: [],
       }),

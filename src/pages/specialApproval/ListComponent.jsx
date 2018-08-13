@@ -13,13 +13,13 @@ import Layout from '../../components/Layout';
 import {
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,
+  OVERTIME_WORK_LOG,
   TIME_OFF_WORK_LOG,
   VACATION_WORK_LOG,
 } from '../../resources/workMonth';
-import {
-  toDayMonthYearFormat,
-} from '../../services/dateTimeService';
+import { toDayMonthYearFormat } from '../../services/dateTimeService';
 import { validateRejectWorkLog } from '../../services/validatorService';
+import { getTypeLabel } from '../../services/workLogService';
 import styles from './specialApproval.scss';
 
 class ListComponent extends React.Component {
@@ -68,6 +68,7 @@ class ListComponent extends React.Component {
     [
       'businessTripWorkLogs',
       'homeOfficeWorkLogs',
+      'overtimeWorkLogs',
       'timeOffWorkLogs',
       'vacationWorkLogs',
     ].forEach((key) => {
@@ -98,6 +99,9 @@ class ListComponent extends React.Component {
             break;
           case HOME_OFFICE_WORK_LOG:
             action = this.props.markHomeOfficeWorkLogApproved;
+            break;
+          case OVERTIME_WORK_LOG:
+            action = this.props.markOvertimeWorkLogApproved;
             break;
           case TIME_OFF_WORK_LOG:
             action = this.props.markTimeOffWorkLogApproved;
@@ -133,6 +137,9 @@ class ListComponent extends React.Component {
             break;
           case HOME_OFFICE_WORK_LOG:
             action = this.props.markHomeOfficeWorkLogRejected;
+            break;
+          case OVERTIME_WORK_LOG:
+            action = this.props.markOvertimeWorkLogRejected;
             break;
           case TIME_OFF_WORK_LOG:
             action = this.props.markTimeOffWorkLogRejected;
@@ -262,20 +269,7 @@ class ListComponent extends React.Component {
                 name: 'date',
               },
               {
-                format: (row) => {
-                  switch (row.type) {
-                    case BUSINESS_TRIP_WORK_LOG:
-                      return 'Business trip';
-                    case HOME_OFFICE_WORK_LOG:
-                      return 'Home office';
-                    case TIME_OFF_WORK_LOG:
-                      return 'Time off';
-                    case VACATION_WORK_LOG:
-                      return 'Vacation';
-                    default:
-                      return '-';
-                  }
-                },
+                format: row => getTypeLabel(row.type),
                 label: 'Type',
                 name: 'type',
               },
@@ -327,6 +321,8 @@ ListComponent.propTypes = {
   markBusinessTripWorkLogRejected: PropTypes.func.isRequired,
   markHomeOfficeWorkLogApproved: PropTypes.func.isRequired,
   markHomeOfficeWorkLogRejected: PropTypes.func.isRequired,
+  markOvertimeWorkLogApproved: PropTypes.func.isRequired,
+  markOvertimeWorkLogRejected: PropTypes.func.isRequired,
   markTimeOffWorkLogApproved: PropTypes.func.isRequired,
   markTimeOffWorkLogRejected: PropTypes.func.isRequired,
   markVacationWorkLogApproved: PropTypes.func.isRequired,
@@ -347,6 +343,17 @@ ListComponent.propTypes = {
       date: PropTypes.shape.isRequired,
       id: PropTypes.number.isRequired,
       type: PropTypes.oneOf([HOME_OFFICE_WORK_LOG]).isRequired,
+      workMonth: ImmutablePropTypes.mapContains({
+        user: ImmutablePropTypes.mapContains({
+          firstName: PropTypes.string.isRequired,
+          lastName: PropTypes.string.isRequired,
+        }).isRequired,
+      }).isRequired,
+    })).isRequired,
+    overtimeWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+      date: PropTypes.shape.isRequired,
+      id: PropTypes.number.isRequired,
+      type: PropTypes.oneOf([OVERTIME_WORK_LOG]).isRequired,
       workMonth: ImmutablePropTypes.mapContains({
         user: ImmutablePropTypes.mapContains({
           firstName: PropTypes.string.isRequired,
