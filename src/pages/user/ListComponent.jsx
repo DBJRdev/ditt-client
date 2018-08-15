@@ -59,10 +59,20 @@ class ListComponent extends React.Component {
         name: 'supervisor.lastName',
       },
       {
+        format: (row) => {
+          const userYearStats = row.yearStats.filter(stats => stats.year === year)[0];
+
+          return `${Math.round(userYearStats.workedHours * 10) / 10}/${userYearStats.requiredHours}`;
+        },
+        isSortable: false,
+        label: 'Worked / Required hours',
+        name: 'requiredWorkedHours',
+      },
+      {
         format: row =>
           `${row.yearStats.filter(stats => stats.year === year)[0].vacationDaysUsed}/${row.vacationDays}`,
         isSortable: false,
-        label: 'Vacation Days Used',
+        label: 'Vacation days used',
         name: 'vacationDaysUsed',
       },
     ];
