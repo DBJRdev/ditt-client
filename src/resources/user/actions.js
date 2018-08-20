@@ -1,9 +1,8 @@
 import { RSAA } from 'redux-api-middleware';
 import { API_URL } from '../../../config/envspecific';
-import parameters from '../../../config/parameters';
 import * as types from './actionTypes';
 
-export const addUser = data => dispatch => dispatch({
+export const addUser = (data, config) => dispatch => dispatch({
   [RSAA]: {
     body: JSON.stringify({
       email: data.email,
@@ -14,7 +13,7 @@ export const addUser = data => dispatch => dispatch({
       plainPassword: data.plainPassword,
       supervisor: data.supervisor ? `/users/${data.supervisor}` : null,
       vacationDays: parseInt(data.vacationDays, 10),
-      workHours: data.workHours.filter(workHours => parameters.get('supportedYear').includes(parseInt(
+      workHours: data.workHours.filter(workHours => config.get('supportedYear').includes(parseInt(
         workHours.year,
         10
       ))),
@@ -45,7 +44,7 @@ export const deleteUser = id => dispatch => dispatch({
   },
 });
 
-export const editUser = data => dispatch => dispatch({
+export const editUser = (data, config) => dispatch => dispatch({
   [RSAA]: {
     body: JSON.stringify({
       email: data.email,
@@ -56,7 +55,7 @@ export const editUser = data => dispatch => dispatch({
       plainPassword: data.plainPassword ? data.plainPassword : null,
       supervisor: data.supervisor ? `/users/${data.supervisor}` : null,
       vacationDays: parseInt(data.vacationDays, 10),
-      workHours: data.workHours.filter(workHours => parameters.get('supportedYear').includes(parseInt(
+      workHours: data.workHours.filter(workHours => config.get('supportedYear').includes(parseInt(
         workHours.year,
         10
       ))),

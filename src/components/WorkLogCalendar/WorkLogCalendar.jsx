@@ -44,7 +44,6 @@ import {
   getWorkLogsByDay,
   getWorkMonthByMonth,
 } from '../../services/workLogService';
-import parameters from '../../../config/parameters';
 import styles from './WorkLogCalendar.scss';
 
 class WorkLogCalendar extends React.Component {
@@ -101,7 +100,11 @@ class WorkLogCalendar extends React.Component {
       days.push({
         date: renderingDay.clone(),
         workLogList: workLogListForRenderingDay,
-        workTime: getWorkedTime(workLogListForRenderingDay, workHoursList),
+        workTime: getWorkedTime(
+          workLogListForRenderingDay,
+          workHoursList,
+          this.props.config.get('workedHoursLimits').toJS()
+        ),
       });
 
       renderingDay.add(1, 'day');
@@ -239,7 +242,7 @@ class WorkLogCalendar extends React.Component {
       const workingDays = getNumberOfWorkingDays(
         selectedDate.clone().startOf('month'),
         selectedDate.clone().endOf('month'),
-        parameters.get('supportedHolidays')
+        this.props.config.get('supportedHolidays')
       );
       requiredHours = workHours.get('requiredHours') * workingDays;
     }
@@ -478,7 +481,7 @@ class WorkLogCalendar extends React.Component {
           <table className={styles.table}>
             <tbody>
               {daysOfSelectedMonth.map((day) => {
-                const rowClassName = (isWeekend(day.date) || includesSameDate(day.date, parameters.get('supportedHolidays')))
+                const rowClassName = (isWeekend(day.date) || includesSameDate(day.date, this.props.config.get('supportedHolidays')))
                   ? styles.tableRowWeekend
                   : styles.tableRow;
 
@@ -753,6 +756,7 @@ WorkLogCalendar.propTypes = {
     transport: PropTypes.string.isRequired,
   }),
   changeSelectedDate: PropTypes.func.isRequired,
+  config: ImmutablePropTypes.mapContains({}).isRequired,
   deleteBusinessTripWorkLog: PropTypes.func.isRequired,
   deleteHomeOfficeWorkLog: PropTypes.func.isRequired,
   deleteOvertimeWorkLog: PropTypes.func.isRequired,

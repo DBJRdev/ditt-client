@@ -15,6 +15,48 @@ exports[`rendering renders correctly 1`] = `
     addWorkLog={[Function]}
     businessTripWorkLog={null}
     changeSelectedDate={[Function]}
+    config={
+      Immutable.Map {
+        "supportedHolidays": Immutable.List [
+          "2017-12-31T23:00:00.000Z",
+          "2018-12-23T23:00:00.000Z",
+          "2018-12-24T23:00:00.000Z",
+          "2018-12-25T23:00:00.000Z",
+          "2018-12-30T23:00:00.000Z",
+          "2018-12-31T23:00:00.000Z",
+          "2019-12-23T23:00:00.000Z",
+          "2019-12-24T23:00:00.000Z",
+          "2019-12-25T23:00:00.000Z",
+          "2019-12-30T23:00:00.000Z",
+          "2019-12-31T23:00:00.000Z",
+          "2020-12-23T23:00:00.000Z",
+          "2020-12-24T23:00:00.000Z",
+          "2020-12-25T23:00:00.000Z",
+          "2020-12-30T23:00:00.000Z",
+          "2020-12-31T23:00:00.000Z",
+          "2021-12-23T23:00:00.000Z",
+          "2021-12-24T23:00:00.000Z",
+          "2021-12-25T23:00:00.000Z",
+          "2021-12-30T23:00:00.000Z",
+        ],
+        "supportedYear": Immutable.List [
+          2018,
+          2019,
+          2020,
+          2021,
+        ],
+        "workedHoursLimits": Immutable.Map {
+          "lowerLimit": Immutable.Map {
+            "changeBy": -1800,
+            "limit": 21600,
+          },
+          "upperLimit": Immutable.Map {
+            "changeBy": -2700,
+            "limit": 32400,
+          },
+        },
+      }
+    }
     deleteBusinessTripWorkLog={[Function]}
     deleteHomeOfficeWorkLog={[Function]}
     deleteOvertimeWorkLog={[Function]}

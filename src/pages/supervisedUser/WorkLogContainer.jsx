@@ -5,6 +5,11 @@ import {
   selectBusinessTripWorkLog,
 } from '../../resources/businessTripWorkLog';
 import {
+  fetchConfig,
+  selectConfig,
+  selectConfigMeta,
+} from '../../resources/config';
+import {
   fetchHomeOfficeWorkLog,
   selectHomeOfficeWorkLog,
 } from '../../resources/homeOfficeWorkLog';
@@ -46,6 +51,7 @@ import {
 import WorkLogComponent from './WorkLogComponent';
 
 const mapStateToProps = (state) => {
+  const configMeta = selectConfigMeta(state);
   const workHourListMeta = selectWorkHoursListMeta(state);
   const workMonthListMeta = selectWorkMonthListMeta(state);
   const workMonthMeta = selectWorkMonthMeta(state);
@@ -57,8 +63,10 @@ const mapStateToProps = (state) => {
 
   return ({
     businessTripWorkLog: selectBusinessTripWorkLog(state),
+    config: selectConfig(state),
     homeOfficeWorkLog: selectHomeOfficeWorkLog(state),
-    isFetching: workHourListMeta.isFetching
+    isFetching: configMeta.isFetching
+      || workHourListMeta.isFetching
       || workMonthListMeta.isFetching
       || workMonthMeta.isFetching,
     isPosting: workMonthMeta.isPosting,
@@ -75,6 +83,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => ({
   fetchBusinessTripWorkLog: id => dispatch(fetchBusinessTripWorkLog(id)),
+  fetchConfig: () => dispatch(fetchConfig()),
   fetchHomeOfficeWorkLog: id => dispatch(fetchHomeOfficeWorkLog(id)),
   fetchOvertimeWorkLog: id => dispatch(fetchOvertimeWorkLog(id)),
   fetchSickDayWorkLog: id => dispatch(fetchSickDayWorkLog(id)),

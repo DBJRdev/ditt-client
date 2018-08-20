@@ -11,7 +11,6 @@ import {
   ADD_USER_SUCCESS,
   ADD_USER_FAILURE,
 } from '../../resources/user/actionTypes';
-import parameters from '../../../config/parameters';
 import { validateUser } from '../../services/validatorService';
 import Layout from '../../components/Layout';
 import routes from '../../routes';
@@ -48,15 +47,6 @@ class AddComponent extends React.Component {
       },
     };
 
-    parameters.get('supportedYear').forEach((year) => {
-      this.state.formData.workHours[year] = [];
-
-      for (let month = 0; month < 12; month += 1) {
-        this.state.formData.workHours[year][month] = '0';
-        this.state.formValidity.elements.workHours[year] = null;
-      }
-    });
-
     this.changeHandler = this.changeHandler.bind(this);
     this.changeWorkHourHandler = this.changeWorkHourHandler.bind(this);
     this.saveHandler = this.saveHandler.bind(this);
@@ -68,6 +58,24 @@ class AddComponent extends React.Component {
   }
 
   componentDidMount() {
+    this.props.fetchConfig().then(() => {
+      const formData = Object.assign({}, this.state.formData);
+      const formValidity = Object.assign({}, this.state.formValidity);
+
+      this.props.config.get('supportedYear').forEach((year) => {
+        this.state.formData.workHours[year] = [];
+
+        for (let month = 0; month < 12; month += 1) {
+          formData.workHours[year][month] = '0';
+          formValidity.elements.workHours[year] = null;
+        }
+      });
+
+      this.setState({
+        formData,
+        formValidity,
+      });
+    });
     this.props.fetchUserList();
   }
 
@@ -102,7 +110,7 @@ class AddComponent extends React.Component {
     const formValidity = validateUser(
       this.state.formData,
       this.props.userList.toJS(),
-      parameters.get('supportedYear')
+      this.props.config.get('supportedYear')
     );
 
     this.setState({ formValidity });
@@ -123,7 +131,7 @@ class AddComponent extends React.Component {
 
       formData.workHours = workHours;
 
-      this.props.addUser(formData)
+      this.props.addUser(formData, this.props.config)
         .then((response) => {
           if (response.type === ADD_USER_SUCCESS) {
             this.props.history.push(routes.userList);
@@ -221,20 +229,23 @@ class AddComponent extends React.Component {
           />
           <h2>Average working hours per day</h2>
           <p>Insert as amount of average working hours per day divided by {'","'}, starting with January.</p>
-          {parameters.get('supportedYear').map(year => (
+          {this.props.config && this.props.config.get('supportedYear').map(year => (
             <TextField
               changeHandler={this.changeWorkHourHandler}
               error={this.state.formValidity.elements.workHours[year]}
               fieldId={year.toString()}
               key={year}
               label={year.toString()}
-              value={this.state.formData.workHours[year].reduce((accValue, requiredHours) => {
-                if (!accValue) {
-                  return requiredHours.toString();
-                }
+              value={
+                this.state.formData.workHours[year]
+                && this.state.formData.workHours[year].reduce((accValue, requiredHours) => {
+                  if (!accValue) {
+                    return requiredHours.toString();
+                  }
 
-                return `${accValue},${requiredHours}`;
-              }, null)}
+                  return `${accValue},${requiredHours}`;
+                }, null)
+              }
             />
           ))}
           <Button
@@ -249,8 +260,14 @@ class AddComponent extends React.Component {
   }
 }
 
+AddComponent.defaultProps = {
+  config: null,
+};
+
 AddComponent.propTypes = {
   addUser: PropTypes.func.isRequired,
+  config: ImmutablePropTypes.mapContains({}),
+  fetchConfig: PropTypes.func.isRequired,
   fetchUserList: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,

@@ -3,6 +3,17 @@ import { toMomentDateTime } from '../dateTimeService';
 import { getWorkedTime } from '../workLogService';
 
 describe('getWorkedTime', () => {
+  const workedHoursLimits = {
+    lowerLimit: {
+      changeBy: -1800,
+      limit: 21600,
+    },
+    upperLimit: {
+      changeBy: -2700,
+      limit: 32400,
+    },
+  };
+
   it('should calculate WORK_LOG total time worked with no break', () => {
     const workLogs = [
       {
@@ -12,7 +23,11 @@ describe('getWorkedTime', () => {
       },
     ];
 
-    expect(getWorkedTime(workLogs, Immutable.fromJS([])).asSeconds()).toEqual(6 * 3600);
+    expect(getWorkedTime(
+      workLogs,
+      Immutable.fromJS([]),
+      workedHoursLimits
+    ).asSeconds()).toEqual(6 * 3600);
   });
 
   it('should calculate WORK_LOG total time worked with 30 minute break 1', () => {
@@ -24,7 +39,7 @@ describe('getWorkedTime', () => {
       },
     ];
 
-    expect(getWorkedTime(workLogs, Immutable.fromJS([])).asSeconds())
+    expect(getWorkedTime(workLogs, Immutable.fromJS([]), workedHoursLimits).asSeconds())
       .toEqual(((6 * 3600) + 1) - (30 * 60));
   });
 
@@ -37,7 +52,7 @@ describe('getWorkedTime', () => {
       },
     ];
 
-    expect(getWorkedTime(workLogs, Immutable.fromJS([])).asSeconds())
+    expect(getWorkedTime(workLogs, Immutable.fromJS([]), workedHoursLimits).asSeconds())
       .toEqual((9 * 3600) - (30 * 60));
   });
 
@@ -50,7 +65,7 @@ describe('getWorkedTime', () => {
       },
     ];
 
-    expect(getWorkedTime(workLogs, Immutable.fromJS([])).asSeconds())
+    expect(getWorkedTime(workLogs, Immutable.fromJS([]), workedHoursLimits).asSeconds())
       .toEqual(((9 * 3600) + 1) - (45 * 60));
   });
 });

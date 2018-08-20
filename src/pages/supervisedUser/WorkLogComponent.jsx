@@ -23,6 +23,7 @@ class WorkLogComponent extends React.Component {
   }
 
   componentDidMount() {
+    this.props.fetchConfig();
     this.props.fetchWorkHoursList(this.props.match.params.id);
     this.props.fetchWorkMonthList(this.props.match.params.id).then(() => {
       this.fetchWorkMonth(this.state.selectedDate);
@@ -46,45 +47,48 @@ class WorkLogComponent extends React.Component {
   render() {
     return (
       <Layout title="Work logs" loading={this.props.isFetching}>
-        <WorkLogCalendar
-          addBusinessTripWorkLog={() => {}}
-          addHomeOfficeWorkLog={() => {}}
-          addOvertimeWorkLog={() => {}}
-          addSickDayWorkLog={() => {}}
-          addTimeOffWorkLog={() => {}}
-          addVacationWorkLog={() => {}}
-          addWorkLog={() => {}}
-          businessTripWorkLog={this.props.businessTripWorkLog}
-          changeSelectedDate={this.changeSelectedDate}
-          deleteBusinessTripWorkLog={() => {}}
-          deleteHomeOfficeWorkLog={() => {}}
-          deleteOvertimeWorkLog={() => {}}
-          deleteSickDayWorkLog={() => {}}
-          deleteTimeOffWorkLog={() => {}}
-          deleteVacationWorkLog={() => {}}
-          deleteWorkLog={() => {}}
-          fetchBusinessTripWorkLog={this.props.fetchBusinessTripWorkLog}
-          fetchHomeOfficeWorkLog={this.props.fetchHomeOfficeWorkLog}
-          fetchOvertimeWorkLog={this.props.fetchOvertimeWorkLog}
-          fetchSickDayWorkLog={this.props.fetchSickDayWorkLog}
-          fetchTimeOffWorkLog={this.props.fetchTimeOffWorkLog}
-          fetchVacationWorkLog={this.props.fetchVacationWorkLog}
-          fetchWorkLog={this.props.fetchWorkLog}
-          homeOfficeWorkLog={this.props.homeOfficeWorkLog}
-          isPosting={this.props.isPosting}
-          markApproved={this.props.markApproved}
-          markWaitingForApproval={() => {}}
-          overtimeWorkLog={this.props.overtimeWorkLog}
-          selectedDate={this.state.selectedDate}
-          supervisorView
-          sickDayWorkLog={this.props.sickDayWorkLog}
-          timeOffWorkLog={this.props.timeOffWorkLog}
-          vacationWorkLog={this.props.vacationWorkLog}
-          workHoursList={this.props.workHoursList}
-          workLog={this.props.workLog}
-          workMonth={this.props.workMonth}
-          workMonthList={this.props.workMonthList}
-        />
+        {this.props.config && (
+          <WorkLogCalendar
+            addBusinessTripWorkLog={() => {}}
+            addHomeOfficeWorkLog={() => {}}
+            addOvertimeWorkLog={() => {}}
+            addSickDayWorkLog={() => {}}
+            addTimeOffWorkLog={() => {}}
+            addVacationWorkLog={() => {}}
+            addWorkLog={() => {}}
+            businessTripWorkLog={this.props.businessTripWorkLog}
+            changeSelectedDate={this.changeSelectedDate}
+            config={this.props.config}
+            deleteBusinessTripWorkLog={() => {}}
+            deleteHomeOfficeWorkLog={() => {}}
+            deleteOvertimeWorkLog={() => {}}
+            deleteSickDayWorkLog={() => {}}
+            deleteTimeOffWorkLog={() => {}}
+            deleteVacationWorkLog={() => {}}
+            deleteWorkLog={() => {}}
+            fetchBusinessTripWorkLog={this.props.fetchBusinessTripWorkLog}
+            fetchHomeOfficeWorkLog={this.props.fetchHomeOfficeWorkLog}
+            fetchOvertimeWorkLog={this.props.fetchOvertimeWorkLog}
+            fetchSickDayWorkLog={this.props.fetchSickDayWorkLog}
+            fetchTimeOffWorkLog={this.props.fetchTimeOffWorkLog}
+            fetchVacationWorkLog={this.props.fetchVacationWorkLog}
+            fetchWorkLog={this.props.fetchWorkLog}
+            homeOfficeWorkLog={this.props.homeOfficeWorkLog}
+            isPosting={this.props.isPosting}
+            markApproved={this.props.markApproved}
+            markWaitingForApproval={() => {}}
+            overtimeWorkLog={this.props.overtimeWorkLog}
+            selectedDate={this.state.selectedDate}
+            supervisorView
+            sickDayWorkLog={this.props.sickDayWorkLog}
+            timeOffWorkLog={this.props.timeOffWorkLog}
+            vacationWorkLog={this.props.vacationWorkLog}
+            workHoursList={this.props.workHoursList}
+            workLog={this.props.workLog}
+            workMonth={this.props.workMonth}
+            workMonthList={this.props.workMonthList}
+          />
+        )}
       </Layout>
     );
   }
@@ -112,7 +116,9 @@ WorkLogComponent.propTypes = {
     status: PropTypes.string.isRequired,
     transport: PropTypes.string.isRequired,
   }),
+  config: ImmutablePropTypes.mapContains({}).isRequired,
   fetchBusinessTripWorkLog: PropTypes.func.isRequired,
+  fetchConfig: PropTypes.func.isRequired,
   fetchHomeOfficeWorkLog: PropTypes.func.isRequired,
   fetchOvertimeWorkLog: PropTypes.func.isRequired,
   fetchSickDayWorkLog: PropTypes.func.isRequired,

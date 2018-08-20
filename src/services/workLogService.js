@@ -1,5 +1,4 @@
 import moment from 'moment';
-import parameters from '../../config/parameters';
 import {
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,
@@ -77,8 +76,7 @@ export const getTypeLabel = (type) => {
   return typeLabel;
 };
 
-export const getWorkedTime = (workLogList, workHoursList) => {
-  const workedHoursLimits = parameters.get('workedHoursLimits').toJS();
+export const getWorkedTime = (workLogList, workHoursList, workedHoursLimits) => {
   const businessTripWorkLogs = workLogList.filter((
     workLog => workLog.type === BUSINESS_TRIP_WORK_LOG && workLog.status === STATUS_APPROVED
   ));

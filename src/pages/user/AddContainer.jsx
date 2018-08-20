@@ -1,5 +1,10 @@
 import { connect } from 'react-redux';
 import {
+  fetchConfig,
+  selectConfig,
+  selectConfigMeta,
+} from '../../resources/config';
+import {
   addUser,
   fetchUserList,
   selectAddUserMeta,
@@ -10,17 +15,20 @@ import AddComponent from './AddComponent';
 
 const mapStateToProps = (state) => {
   const addUserMeta = selectAddUserMeta(state);
+  const configMeta = selectConfigMeta(state);
   const userListMeta = selectUserListMeta(state);
 
   return ({
-    isFetching: userListMeta.isFetching,
+    config: selectConfig(state),
+    isFetching: userListMeta.isFetching || configMeta.isFetching,
     isPosting: addUserMeta.isPosting,
     userList: selectUserList(state),
   });
 };
 
 const mapDispatchToProps = dispatch => ({
-  addUser: data => dispatch(addUser(data)),
+  addUser: (data, config) => dispatch(addUser(data, config)),
+  fetchConfig: () => dispatch(fetchConfig()),
   fetchUserList: () => dispatch(fetchUserList()),
 });
 

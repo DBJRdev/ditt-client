@@ -9,6 +9,11 @@ import {
   selectBusinessTripWorkLogMeta,
 } from '../../resources/businessTripWorkLog';
 import {
+  fetchConfig,
+  selectConfig,
+  selectConfigMeta,
+} from '../../resources/config';
+import {
   addHomeOfficeWorkLog,
   deleteHomeOfficeWorkLog,
   fetchHomeOfficeWorkLog,
@@ -70,6 +75,7 @@ import WorkLogComponent from './WorkLogComponent';
 const mapStateToProps = (state) => {
   const addWorkLogMeta = selectAddWorkLogMeta(state);
   const businessTripWorkLogMeta = selectBusinessTripWorkLogMeta(state);
+  const configMeta = selectConfigMeta(state);
   const homeOfficeWorkLogMeta = selectHomeOfficeWorkLogMeta(state);
   const overtimeWorkLogMeta = selectOvertimeWorkLogMeta(state);
   const sickDayWorkLogMeta = selectSickDayWorkLogMeta(state);
@@ -88,8 +94,10 @@ const mapStateToProps = (state) => {
 
   return ({
     businessTripWorkLog: selectBusinessTripWorkLog(state),
+    config: selectConfig(state),
     homeOfficeWorkLog: selectHomeOfficeWorkLog(state),
-    isFetching: workHourListMeta.isFetching
+    isFetching: configMeta.isFetching
+      || workHourListMeta.isFetching
       || workMonthListMeta.isFetching
       || workMonthMeta.isFetching,
     isPosting: addWorkLogMeta.isPosting
@@ -129,6 +137,7 @@ const mapDispatchToProps = dispatch => ({
   deleteVacationWorkLog: id => dispatch(deleteVacationWorkLog(id)),
   deleteWorkLog: id => dispatch(deleteWorkLog(id)),
   fetchBusinessTripWorkLog: id => dispatch(fetchBusinessTripWorkLog(id)),
+  fetchConfig: () => dispatch(fetchConfig()),
   fetchHomeOfficeWorkLog: id => dispatch(fetchHomeOfficeWorkLog(id)),
   fetchOvertimeWorkLog: id => dispatch(fetchOvertimeWorkLog(id)),
   fetchSickDayWorkLog: id => dispatch(fetchSickDayWorkLog(id)),
