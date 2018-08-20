@@ -102,7 +102,11 @@ class LayoutComponent extends React.Component {
         <main className={styles.main}>
           <div className={styles.body}>
             <h1 className={styles.bodyTitle}>{this.props.title}</h1>
-            {this.props.loading ? 'Loading…' : this.props.children}
+            {
+              this.props.loading
+                ? 'Loading…'
+                : this.props.children
+            }
           </div>
         </main>
       </div>
@@ -111,6 +115,7 @@ class LayoutComponent extends React.Component {
 }
 
 LayoutComponent.defaultProps = {
+  children: null,
   loading: false,
   token: null,
 };
@@ -119,7 +124,7 @@ LayoutComponent.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
-  ]).isRequired,
+  ]),
   loading: PropTypes.bool,
   logout: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
