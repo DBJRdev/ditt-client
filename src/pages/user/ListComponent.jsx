@@ -60,17 +60,32 @@ class ListComponent extends React.Component {
       },
       {
         format: (row) => {
-          const userYearStats = row.yearStats.filter(stats => stats.year === year)[0];
+          if (row.yearStats) {
+            const userYearStats = row.yearStats.filter(stats => stats.year === year)[0];
 
-          return `${Math.round(userYearStats.workedHours * 10) / 10}/${userYearStats.requiredHours}`;
+            if (userYearStats) {
+              return `${Math.round(userYearStats.workedHours * 10) / 10}/${userYearStats.requiredHours}`;
+            }
+          }
+
+          return '0/0';
         },
         isSortable: false,
         label: 'Worked / Required hours',
         name: 'requiredWorkedHours',
       },
       {
-        format: row =>
-          `${row.yearStats.filter(stats => stats.year === year)[0].vacationDaysUsed}/${row.vacationDays}`,
+        format: (row) => {
+          if (row.yearStats) {
+            const userYearStats = row.yearStats.filter(stats => stats.year === year)[0];
+
+            if (userYearStats) {
+              return `${userYearStats.vacationDaysUsed}/${row.vacationDays}`;
+            }
+          }
+
+          return `0/${row.vacationDays}`;
+        },
         isSortable: false,
         label: 'Vacation days used',
         name: 'vacationDaysUsed',
