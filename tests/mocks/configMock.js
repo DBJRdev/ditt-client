@@ -1,28 +1,13 @@
 import Immutable from 'immutable';
-import { createDate } from '../../src/services/dateTimeService';
+import { toMomentDateTime } from '../../src/services/dateTimeService';
 
 export default Immutable.fromJS({
   supportedHolidays: [
-    createDate(2018, 0, 1),
-    createDate(2018, 11, 24),
-    createDate(2018, 11, 25),
-    createDate(2018, 11, 26),
-    createDate(2018, 11, 31),
-    createDate(2019, 0, 1),
-    createDate(2019, 11, 24),
-    createDate(2019, 11, 25),
-    createDate(2019, 11, 26),
-    createDate(2019, 11, 31),
-    createDate(2020, 0, 1),
-    createDate(2020, 11, 24),
-    createDate(2020, 11, 25),
-    createDate(2020, 11, 26),
-    createDate(2020, 11, 31),
-    createDate(2021, 0, 1),
-    createDate(2021, 11, 24),
-    createDate(2021, 11, 25),
-    createDate(2021, 11, 26),
-    createDate(2021, 11, 31),
+    toMomentDateTime('2018-01-01T00:00:00.000Z'),
+    toMomentDateTime('2018-12-24T00:00:00.000Z'),
+    toMomentDateTime('2018-12-25T00:00:00.000Z'),
+    toMomentDateTime('2018-12-26T00:00:00.000Z'),
+    toMomentDateTime('2018-12-31T00:00:00.000Z'),
   ],
   supportedYear: [
     2018,
