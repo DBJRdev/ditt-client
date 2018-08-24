@@ -727,6 +727,7 @@ class WorkLogCalendar extends React.Component {
 
 WorkLogCalendar.defaultProps = {
   businessTripWorkLog: null,
+  config: {},
   homeOfficeWorkLog: null,
   overtimeWorkLog: null,
   sickDayWorkLog: null,
@@ -756,7 +757,7 @@ WorkLogCalendar.propTypes = {
     transport: PropTypes.string.isRequired,
   }),
   changeSelectedDate: PropTypes.func.isRequired,
-  config: ImmutablePropTypes.mapContains({}).isRequired,
+  config: ImmutablePropTypes.mapContains({}),
   deleteBusinessTripWorkLog: PropTypes.func.isRequired,
   deleteHomeOfficeWorkLog: PropTypes.func.isRequired,
   deleteOvertimeWorkLog: PropTypes.func.isRequired,

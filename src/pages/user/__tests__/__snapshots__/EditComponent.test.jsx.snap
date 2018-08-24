@@ -159,6 +159,7 @@ exports[`rendering renders correctly 1`] = `
       placeholder={null}
       required={false}
       type="text"
+      value=""
     />
     <TextField
       changeHandler={[Function]}
@@ -172,6 +173,7 @@ exports[`rendering renders correctly 1`] = `
       placeholder={null}
       required={false}
       type="text"
+      value=""
     />
     <TextField
       changeHandler={[Function]}
@@ -185,6 +187,7 @@ exports[`rendering renders correctly 1`] = `
       placeholder={null}
       required={false}
       type="text"
+      value=""
     />
     <TextField
       changeHandler={[Function]}
@@ -198,6 +201,7 @@ exports[`rendering renders correctly 1`] = `
       placeholder={null}
       required={false}
       type="text"
+      value=""
     />
     <Button
       block={false}

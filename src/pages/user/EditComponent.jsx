@@ -119,46 +119,18 @@ class EditComponent extends React.Component {
     });
   }
 
-  changeHandler(e) {
-    const eventTarget = e.target;
-
-    this.setState((prevState) => {
-      const formData = Object.assign({}, prevState.formData);
-
-      if (eventTarget.type === 'checkbox') {
-        formData[eventTarget.id] = eventTarget.checked;
-      } else {
-        formData[eventTarget.id] = eventTarget.value;
-      }
-
-      return { formData };
-    });
-  }
-
-  changeWorkHourHandler(e) {
-    const eventTarget = e.target;
-
-    this.setState((prevState) => {
-      const formData = Object.assign({}, prevState.formData);
-      formData.workHours[eventTarget.id] = eventTarget.value.split(',');
-
-      return { formData };
-    });
-  }
-
-  deleteHandler() {
-    const { formValidity } = this.state;
-
-    this.props.deleteUser(this.props.match.params.id)
-      .then((response) => {
-        if (response.type === DELETE_USER_SUCCESS) {
-          this.props.history.push(routes.userList);
-        } else if (response.type === DELETE_USER_FAILURE) {
-          formValidity.elements.form = 'User cannot be deleted.';
-
-          this.setState({ formValidity });
+  getRequiredHours(year) {
+    if (this.state.formData.workHours[year]) {
+      return this.state.formData.workHours[year].reduce((accValue, requiredHours) => {
+        if (!accValue) {
+          return requiredHours.toString();
         }
-      });
+
+        return `${accValue},${requiredHours}`;
+      }, null);
+    }
+
+    return '';
   }
 
   saveHandler() {
@@ -197,6 +169,48 @@ class EditComponent extends React.Component {
           }
         });
     }
+  }
+
+  deleteHandler() {
+    const { formValidity } = this.state;
+
+    this.props.deleteUser(this.props.match.params.id)
+      .then((response) => {
+        if (response.type === DELETE_USER_SUCCESS) {
+          this.props.history.push(routes.userList);
+        } else if (response.type === DELETE_USER_FAILURE) {
+          formValidity.elements.form = 'User cannot be deleted.';
+
+          this.setState({ formValidity });
+        }
+      });
+  }
+
+  changeWorkHourHandler(e) {
+    const eventTarget = e.target;
+
+    this.setState((prevState) => {
+      const formData = Object.assign({}, prevState.formData);
+      formData.workHours[eventTarget.id] = eventTarget.value.split(',');
+
+      return { formData };
+    });
+  }
+
+  changeHandler(e) {
+    const eventTarget = e.target;
+
+    this.setState((prevState) => {
+      const formData = Object.assign({}, prevState.formData);
+
+      if (eventTarget.type === 'checkbox') {
+        formData[eventTarget.id] = eventTarget.checked;
+      } else {
+        formData[eventTarget.id] = eventTarget.value;
+      }
+
+      return { formData };
+    });
   }
 
   openDeleteUserDialog() {
@@ -336,16 +350,7 @@ class EditComponent extends React.Component {
               fieldId={year.toString()}
               key={year}
               label={year.toString()}
-              value={
-                this.state.formData.workHours[year]
-                && this.state.formData.workHours[year].reduce((accValue, requiredHours) => {
-                  if (!accValue) {
-                    return requiredHours.toString();
-                  }
-
-                  return `${accValue},${requiredHours}`;
-                }, null)
-              }
+              value={this.getRequiredHours(year)}
             />
           ))}
           <Button
@@ -362,7 +367,7 @@ class EditComponent extends React.Component {
 }
 
 EditComponent.defaultProps = {
-  config: null,
+  config: {},
   user: null,
 };
 

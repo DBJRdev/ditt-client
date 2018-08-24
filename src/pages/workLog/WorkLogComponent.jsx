@@ -247,6 +247,7 @@ class WorkLogComponent extends React.Component {
 
 WorkLogComponent.defaultProps = {
   businessTripWorkLog: null,
+  config: {},
   homeOfficeWorkLog: null,
   overtimeWorkLog: null,
   sickDayWorkLog: null,
@@ -275,7 +276,7 @@ WorkLogComponent.propTypes = {
     status: PropTypes.string.isRequired,
     transport: PropTypes.string.isRequired,
   }),
-  config: ImmutablePropTypes.mapContains({}).isRequired,
+  config: ImmutablePropTypes.mapContains({}),
   deleteBusinessTripWorkLog: PropTypes.func.isRequired,
   deleteHomeOfficeWorkLog: PropTypes.func.isRequired,
   deleteOvertimeWorkLog: PropTypes.func.isRequired,

@@ -261,7 +261,7 @@ class AddComponent extends React.Component {
 }
 
 AddComponent.defaultProps = {
-  config: null,
+  config: {},
 };
 
 AddComponent.propTypes = {
