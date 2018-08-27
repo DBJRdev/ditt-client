@@ -8,7 +8,10 @@ import {
   STATUS_OPENED,
   STATUS_WAITING_FOR_APPROVAL,
 } from '../../resources/workMonth';
-import { localizedMoment } from '../../services/dateTimeService';
+import {
+  createDate,
+  localizedMoment,
+} from '../../services/dateTimeService';
 import { getWorkMonthByMonth } from '../../services/workLogService';
 
 class WorkLogComponent extends React.Component {
@@ -18,6 +21,16 @@ class WorkLogComponent extends React.Component {
     this.state = {
       selectedDate: localizedMoment(),
     };
+
+    if (this.props.match.params.year && this.props.match.params.month) {
+      this.state = {
+        selectedDate: createDate(
+          this.props.match.params.year,
+          this.props.match.params.month - 1,
+          1
+        ),
+      };
+    }
 
     this.changeSelectedDate = this.changeSelectedDate.bind(this);
   }
@@ -140,6 +153,8 @@ WorkLogComponent.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string.isRequired,
+      month: PropTypes.string,
+      year: PropTypes.string,
     }).isRequired,
   }).isRequired,
   overtimeWorkLog: ImmutablePropTypes.mapContains({

@@ -8,5 +8,6 @@ export default {
   specialApprovalList: '/special-approvals',
   supervisedUserList: '/supervised-users',
   supervisedUserWorkLog: '/supervised-users/:id/work-log',
+  supervisedUserWorkLogWithDate: '/supervised-users/:id/work-log/:year/:month',
   userList: '/users',
 };

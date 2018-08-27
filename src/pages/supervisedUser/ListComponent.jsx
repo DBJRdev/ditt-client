@@ -11,6 +11,11 @@ import {
   STATUS_OPENED,
   STATUS_WAITING_FOR_APPROVAL,
 } from '../../resources/workMonth';
+import {
+  createDate,
+  toMonthYearFormat,
+} from '../../services/dateTimeService';
+import styles from './supervisedUser.scss';
 
 class ListComponent extends React.Component {
   constructor(props) {
@@ -54,11 +59,35 @@ class ListComponent extends React.Component {
               },
               {
                 format: (row) => {
-                  const waitingForApproval = row.workMonths.find(workMonth => (
+                  const waitingForApproval = row.workMonths.filter(workMonth => (
                     workMonth.status === STATUS_WAITING_FOR_APPROVAL
                   ));
 
-                  return waitingForApproval ? 'Yes' : 'No';
+                  if (!waitingForApproval.length) {
+                    return 'No';
+                  }
+
+                  const waitingForApprovalLinks = waitingForApproval.map(workMonth => (
+                    /* eslint-disable-next-line jsx-a11y/anchor-is-valid */
+                    <Link
+                      className={styles.waitingForApprovalLink}
+                      key={workMonth.id}
+                      to={
+                        routes.supervisedUserWorkLogWithDate
+                          .replace(':id', row.id)
+                          .replace(':year', workMonth.year)
+                          .replace(':month', workMonth.month)
+                      }
+                    >
+                      {toMonthYearFormat(createDate(workMonth.year, workMonth.month - 1, 1))}
+                    </Link>
+                  ));
+
+                  return (
+                    <div>
+                      Yes | {waitingForApprovalLinks}
+                    </div>
+                  );
                 },
                 label: 'Need approval',
                 name: 'needApproval',

@@ -58,6 +58,12 @@ ReactDOM.render(
           />
           <AuthorizedRoute
             exact
+            path={routes.supervisedUserWorkLogWithDate}
+            roles={[ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]}
+            component={SupervisedUserWorkLogPage}
+          />
+          <AuthorizedRoute
+            exact
             path={routes.supervisedUserList}
             roles={[ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]}
             component={SupervisedUserListPage}
