@@ -81,6 +81,19 @@ export const getWorkedTime = (workLogList, workHoursList, workedHoursLimits) => 
     workLog => workLog.type === BUSINESS_TRIP_WORK_LOG && workLog.status === STATUS_APPROVED
   ));
 
+  const correctWorkedSeconds = (workedSeconds) => {
+    if (
+      workedSeconds > workedHoursLimits.lowerLimit.limit
+      && workedSeconds <= workedHoursLimits.upperLimit.limit
+    ) {
+      return workedSeconds + workedHoursLimits.lowerLimit.changeBy;
+    } else if (workedSeconds > workedHoursLimits.upperLimit.limit) {
+      return workedSeconds + workedHoursLimits.upperLimit.changeBy;
+    }
+
+    return workedSeconds;
+  };
+
   // Standard work log time
   let workedSeconds = workLogList.reduce((total, workLog) => {
     if (workLog.type === WORK_LOG) {
@@ -98,6 +111,8 @@ export const getWorkedTime = (workLogList, workHoursList, workedHoursLimits) => 
     return total;
   }, 0);
 
+  workedSeconds = correctWorkedSeconds(workedSeconds);
+
   // Business trip work log time
   workedSeconds = businessTripWorkLogs.reduce((total, businessTripWorkLog) => {
     const subWorkedSeconds = workLogList.filter((
@@ -106,6 +121,7 @@ export const getWorkedTime = (workLogList, workHoursList, workedHoursLimits) => 
       (subtotal, workLog) => (workLog.endTime.diff(workLog.startTime) / 1000) + subtotal,
       0
     );
+    const correctedSubWorkedSeconds = correctWorkedSeconds(subWorkedSeconds);
 
     const workHours = workHoursList.find((
       workHour => workHour.get('month') === (businessTripWorkLog.date.month() + 1)
@@ -113,7 +129,7 @@ export const getWorkedTime = (workLogList, workHoursList, workedHoursLimits) => 
     const requiredHours = workHours.get('requiredHours');
     const requiredSeconds = (requiredHours * 3600) + total;
 
-    return Math.max(subWorkedSeconds, requiredSeconds);
+    return Math.max(correctedSubWorkedSeconds, requiredSeconds);
   }, workedSeconds);
 
   const specialWorkedSeconds = workLogList.reduce((total, workLog) => {
@@ -132,25 +148,7 @@ export const getWorkedTime = (workLogList, workHoursList, workedHoursLimits) => 
     return total;
   }, 0);
 
-  let workedTime = null;
-
-  if (
-    workedSeconds > workedHoursLimits.lowerLimit.limit
-    && workedSeconds <= workedHoursLimits.upperLimit.limit
-  ) {
-    workedTime = moment.duration({
-      seconds: workedSeconds + workedHoursLimits.lowerLimit.changeBy,
-    });
-  } else if (workedSeconds > workedHoursLimits.upperLimit.limit) {
-    workedTime = moment.duration({
-      seconds: workedSeconds + workedHoursLimits.upperLimit.changeBy,
-    });
-  } else {
-    workedTime = moment.duration({ seconds: workedSeconds });
-  }
-  workedTime.add({ seconds: specialWorkedSeconds });
-
-  return workedTime;
+  return moment.duration({ seconds: workedSeconds + specialWorkedSeconds });
 };
 
 export const getWorkLogsByDay = (date, workLogList) => workLogList.filter((workLog) => {
