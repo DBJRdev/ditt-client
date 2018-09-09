@@ -237,7 +237,7 @@ class ListComponent extends React.Component {
           <p style={this.formErrorStyle}>
             {this.state.rejectWorkLogFormValidity.elements.form}
           </p>
-          <p>Are you sure your want to reject this work log?</p>
+          <p>Are you sure your want to reject this application?</p>
           <TextField
             changeHandler={this.changeRejectWorkLogFormHandler}
             error={this.state.rejectWorkLogFormValidity.elements.rejectionMessage}
