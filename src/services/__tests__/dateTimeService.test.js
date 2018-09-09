@@ -90,7 +90,7 @@ describe('toTimeFormat()', () => {
 describe('toDayMonthYearFormat()', () => {
   it('should get day with month and year string', () => {
     const momentDateTime = toMomentDateTime('2017-12-24T20:15:30.100Z');
-    expect(toDayMonthYearFormat(momentDateTime)).toEqual('12/24/2017');
+    expect(toDayMonthYearFormat(momentDateTime)).toEqual('24. 12. 2017');
   });
 });
 

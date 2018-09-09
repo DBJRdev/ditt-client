@@ -65,7 +65,7 @@ export const toMomentDateTime = (dateTimeString) => {
 };
 
 export const toMomentDateTimeFromDayMonthYear = (dateTimeString) => {
-  const momentDateTime = moment(dateTimeString, 'L').tz(TIMEZONE);
+  const momentDateTime = moment(dateTimeString, 'D. M. YYYY').tz(TIMEZONE);
 
   if (isMomentValid(momentDateTime)) {
     return momentDateTime;
@@ -100,7 +100,7 @@ export const toMonthYearFormat = (momentDateTime) => {
 
 export const toDayMonthYearFormat = (momentDateTime) => {
   if (isMomentValid(momentDateTime)) {
-    return momentDateTime.format('L');
+    return momentDateTime.format('D. M. YYYY');
   }
 
   throw new Error('Invalid datetime');
