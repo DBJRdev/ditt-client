@@ -282,7 +282,7 @@ class WorkLogCalendar extends React.Component {
           Status: {getStatusLabel(this.props.businessTripWorkLog.get('status'))}<br />
           {STATUS_REJECTED === this.props.businessTripWorkLog.get('status') && (
             <React.Fragment>
-              Rejection message: {this.props.businessTripWorkLog.get('rejectionMessage')}<br />
+              Reason: {this.props.businessTripWorkLog.get('rejectionMessage')}<br />
             </React.Fragment>
           )}
           Purpose: {this.props.businessTripWorkLog.get('purpose')}<br />
@@ -300,7 +300,7 @@ class WorkLogCalendar extends React.Component {
           Status: {getStatusLabel(this.props.homeOfficeWorkLog.get('status'))}<br />
           {STATUS_REJECTED === this.props.homeOfficeWorkLog.get('status') && (
             <React.Fragment>
-              Rejection message: {this.props.homeOfficeWorkLog.get('rejectionMessage')}<br />
+              Reason: {this.props.homeOfficeWorkLog.get('rejectionMessage')}<br />
             </React.Fragment>
           )}
         </p>
@@ -313,7 +313,7 @@ class WorkLogCalendar extends React.Component {
           Status: {getStatusLabel(this.props.overtimeWorkLog.get('status'))}<br />
           {STATUS_REJECTED === this.props.overtimeWorkLog.get('status') && (
             <React.Fragment>
-              Rejection message: {this.props.overtimeWorkLog.get('rejectionMessage')}<br />
+              Reason: {this.props.overtimeWorkLog.get('rejectionMessage')}<br />
             </React.Fragment>
           )}
           Reason: {this.props.overtimeWorkLog.get('reason')}<br />
@@ -341,7 +341,7 @@ class WorkLogCalendar extends React.Component {
           Status: {getStatusLabel(this.props.timeOffWorkLog.get('status'))}<br />
           {STATUS_REJECTED === this.props.timeOffWorkLog.get('status') && (
             <React.Fragment>
-              Rejection message: {this.props.timeOffWorkLog.get('rejectionMessage')}<br />
+              Reason: {this.props.timeOffWorkLog.get('rejectionMessage')}<br />
             </React.Fragment>
           )}
         </p>
@@ -354,7 +354,7 @@ class WorkLogCalendar extends React.Component {
           Status: {getStatusLabel(this.props.vacationWorkLog.get('status'))}<br />
           {STATUS_REJECTED === this.props.vacationWorkLog.get('status') && (
             <React.Fragment>
-              Rejection message: {this.props.vacationWorkLog.get('rejectionMessage')}<br />
+              Reason: {this.props.vacationWorkLog.get('rejectionMessage')}<br />
             </React.Fragment>
           )}
         </p>

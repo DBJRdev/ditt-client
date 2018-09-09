@@ -242,7 +242,7 @@ class ListComponent extends React.Component {
             changeHandler={this.changeRejectWorkLogFormHandler}
             error={this.state.rejectWorkLogFormValidity.elements.rejectionMessage}
             fieldId="rejectionMessage"
-            label="Rejection message"
+            label="Reason"
             value={this.state.rejectWorkLogForm.rejectionMessage || ''}
           />
         </form>
