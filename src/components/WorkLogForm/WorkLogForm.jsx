@@ -316,7 +316,7 @@ class WorkLogForm extends React.Component {
                 fieldId="startHour"
                 isLabelVisible={false}
                 label="Start hour"
-                value={this.state.formData.startHour || ''}
+                value={this.state.formData.startHour || '0'}
               />
             </div>
             :
@@ -327,7 +327,7 @@ class WorkLogForm extends React.Component {
                 fieldId="startMinute"
                 isLabelVisible={false}
                 label="Start minute"
-                value={this.state.formData.startMinute || ''}
+                value={this.state.formData.startMinute || '0'}
               />
             </div>
             &nbsp;h
@@ -343,7 +343,7 @@ class WorkLogForm extends React.Component {
                 fieldId="endHour"
                 isLabelVisible={false}
                 label="End hour"
-                value={this.state.formData.endHour || ''}
+                value={this.state.formData.endHour || '0'}
               />
             </div>
             :
@@ -354,7 +354,7 @@ class WorkLogForm extends React.Component {
                 fieldId="endMinute"
                 isLabelVisible={false}
                 label="End minute"
-                value={this.state.formData.endMinute || ''}
+                value={this.state.formData.endMinute || '0'}
               />
             </div>
             &nbsp;h

@@ -130,7 +130,7 @@ export const validateUser = (user, userList, supportedWorkHours) => {
   return errors;
 };
 
-export const validateWorkLog = (workLog, workLogsOfDay) => {
+export const validateWorkLog = (workLogAttr, workLogsOfDay) => {
   const errors = {
     elements: {
       destination: null,
@@ -148,6 +148,8 @@ export const validateWorkLog = (workLog, workLogsOfDay) => {
     },
     isValid: true,
   };
+
+  const workLog = workLogAttr;
 
   if ([
     BUSINESS_TRIP_WORK_LOG,
@@ -241,6 +243,8 @@ export const validateWorkLog = (workLog, workLogsOfDay) => {
       errors.elements[element] = 'Not a number.';
       errors.isValid = false;
     }
+
+    workLog[element] = parseInt(workLog[element], 10);
   });
 
   if (!errors.isValid) {
