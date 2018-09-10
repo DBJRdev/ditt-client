@@ -12,6 +12,7 @@ import {
   ADD_USER_FAILURE,
 } from '../../resources/user/actionTypes';
 import { validateUser } from '../../services/validatorService';
+import { getWorkHoursValue } from '../../services/workHoursService';
 import Layout from '../../components/Layout';
 import routes from '../../routes';
 
@@ -66,7 +67,7 @@ class AddComponent extends React.Component {
         this.state.formData.workHours[year] = [];
 
         for (let month = 0; month < 12; month += 1) {
-          formData.workHours[year][month] = '0';
+          formData.workHours[year][month] = '0:00';
           formValidity.elements.workHours[year] = null;
         }
       });
@@ -123,7 +124,7 @@ class AddComponent extends React.Component {
         formData.workHours[year].forEach((requiredHours, monthIndex) => {
           workHours.push({
             month: monthIndex + 1,
-            requiredHours: parseInt(requiredHours, 10),
+            requiredHours: getWorkHoursValue(requiredHours),
             year: parseInt(year, 10),
           });
         });

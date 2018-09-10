@@ -16,6 +16,10 @@ import {
   EDIT_USER_FAILURE,
 } from '../../resources/user/actionTypes';
 import { validateUser } from '../../services/validatorService';
+import {
+  getWorkHoursString,
+  getWorkHoursValue,
+} from '../../services/workHoursService';
 import Layout from '../../components/Layout';
 import routes from '../../routes';
 import styles from './user.scss';
@@ -77,7 +81,7 @@ class EditComponent extends React.Component {
         this.state.formData.workHours[year] = [];
 
         for (let month = 0; month < 12; month += 1) {
-          formData.workHours[year][month] = '0';
+          formData.workHours[year][month] = '0:00';
           formValidity.elements.workHours[year] = null;
         }
       });
@@ -96,7 +100,8 @@ class EditComponent extends React.Component {
           const mergedWorkHours = this.state.formData.workHours;
 
           workHours.forEach((workHoursItem) => {
-            mergedWorkHours[workHoursItem.get('year')][workHoursItem.get('month') - 1] = workHoursItem.get('requiredHours');
+            mergedWorkHours[workHoursItem.get('year')][workHoursItem.get('month') - 1] =
+              getWorkHoursString(workHoursItem.get('requiredHours'));
           });
 
           this.setState({
@@ -150,7 +155,7 @@ class EditComponent extends React.Component {
         formData.workHours[year].forEach((requiredHours, monthIndex) => {
           workHours.push({
             month: monthIndex + 1,
-            requiredHours: parseInt(requiredHours, 10),
+            requiredHours: getWorkHoursValue(requiredHours),
             year: parseInt(year, 10),
           });
         });

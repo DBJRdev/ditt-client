@@ -14,6 +14,7 @@ import {
   localizedMoment,
   toMomentDateTimeFromDayMonthYear,
 } from './dateTimeService';
+import { getWorkHoursValue } from './workHoursService';
 
 export const validateUser = (user, userList, supportedWorkHours) => {
   const errors = {
@@ -64,7 +65,7 @@ export const validateUser = (user, userList, supportedWorkHours) => {
     }
 
     for (let month = 0; month < 12; month += 1) {
-      if (Number.isNaN(user.workHours[year][month])) {
+      if (Number.isNaN(getWorkHoursValue(user.workHours[year][month]))) {
         const date = localizedMoment().set({ month });
 
         errors.elements.workHours[year] = `Value for ${date.format('MMMM')} is not a number.`;
