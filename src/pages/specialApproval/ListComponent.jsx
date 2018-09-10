@@ -30,6 +30,10 @@ class ListComponent extends React.Component {
     super(props);
 
     this.state = {
+      lastApprovedWorkLogId: null,
+      lastApprovedWorkLogType: null,
+      lastRejectedWorkLogId: null,
+      lastRejectedWorkLogType: null,
       rejectWorkLogForm: {
         rejectionMessage: null,
       },
@@ -119,6 +123,13 @@ class ListComponent extends React.Component {
             throw new Error(`Unknown type ${type}`);
         }
 
+        this.setState({
+          lastApprovedWorkLogId: id,
+          lastApprovedWorkLogType: type,
+          lastRejectedWorkLogId: null,
+          lastRejectedWorkLogType: null,
+        });
+
         return action(id).then((response) => {
           this.props.fetchSpecialApprovalList(decodedToken.uid);
 
@@ -156,6 +167,13 @@ class ListComponent extends React.Component {
           default:
             throw new Error(`Unknown type ${type}`);
         }
+
+        this.setState({
+          lastApprovedWorkLogId: null,
+          lastApprovedWorkLogType: null,
+          lastRejectedWorkLogId: id,
+          lastRejectedWorkLogType: type,
+        });
 
         return action(id, { rejectionMessage }).then((response) => {
           this.props.fetchSpecialApprovalList(decodedToken.uid);
@@ -336,7 +354,11 @@ class ListComponent extends React.Component {
                       <Button
                         clickHandler={() => this.handleMarkApproved(row.rawId, row.type)}
                         label="Approve"
-                        loading={this.props.isPosting}
+                        loading={
+                          this.props.isPosting
+                          && this.state.lastApprovedWorkLogId === row.rawId
+                          && this.state.lastApprovedWorkLogType === row.type
+                        }
                         priority="default"
                         variant="success"
                       />
@@ -345,7 +367,11 @@ class ListComponent extends React.Component {
                       <Button
                         clickHandler={() => this.openRejectWorkLogForm(row.rawId, row.type)}
                         label="Reject"
-                        loading={this.props.isPosting}
+                        loading={
+                          this.props.isPosting
+                          && this.state.lastRejectedWorkLogId === row.rawId
+                          && this.state.lastRejectedWorkLogType === row.type
+                        }
                         priority="default"
                         variant="danger"
                       />
@@ -355,7 +381,6 @@ class ListComponent extends React.Component {
                         <Button
                           clickHandler={() => this.openWorkLogDetail(row.rawId, row.type)}
                           label="Detail"
-                          loading={this.props.isPosting}
                           priority="default"
                         />
                       </div>
