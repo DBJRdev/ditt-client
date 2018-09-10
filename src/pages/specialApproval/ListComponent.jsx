@@ -19,7 +19,10 @@ import {
 } from '../../resources/workMonth';
 import { toDayMonthYearFormat } from '../../services/dateTimeService';
 import { validateRejectWorkLog } from '../../services/validatorService';
-import { getTypeLabel } from '../../services/workLogService';
+import {
+  getStatusLabel,
+  getTypeLabel,
+} from '../../services/workLogService';
 import styles from './specialApproval.scss';
 
 class ListComponent extends React.Component {
@@ -40,11 +43,14 @@ class ListComponent extends React.Component {
       showRejectWorkLogForm: false,
       showRejectWorkLogFormId: null,
       showRejectWorkLogFormType: null,
+      showWorkLogDetailDialog: false,
+      showWorkLogDetailDialogType: null,
     };
 
     this.changeRejectWorkLogFormHandler = this.changeRejectWorkLogFormHandler.bind(this);
     this.closeDeleteWorkLogForm = this.closeDeleteWorkLogForm.bind(this);
     this.rejectWorkLogHandler = this.rejectWorkLogHandler.bind(this);
+    this.closeWorkLogDetail = this.closeWorkLogDetail.bind(this);
 
     this.formErrorStyle = {
       color: '#a32100',
@@ -192,6 +198,24 @@ class ListComponent extends React.Component {
     });
   }
 
+  openWorkLogDetail(id, type) {
+    if (BUSINESS_TRIP_WORK_LOG === type) {
+      this.props.fetchBusinessTripWorkLog(id);
+    }
+
+    this.setState({
+      showWorkLogDetailDialog: true,
+      showWorkLogDetailDialogType: type,
+    });
+  }
+
+  closeWorkLogDetail() {
+    this.setState({
+      showWorkLogDetailDialog: false,
+      showWorkLogDetailDialogType: null,
+    });
+  }
+
   rejectWorkLogHandler() {
     const {
       rejectWorkLogForm,
@@ -250,6 +274,38 @@ class ListComponent extends React.Component {
     );
   }
 
+  renderWorkLogDetail() {
+    let content = 'Loading…';
+
+    if (
+      BUSINESS_TRIP_WORK_LOG === this.state.showWorkLogDetailDialogType
+      && this.props.businessTripWorkLog
+    ) {
+      content = (
+        <p>
+          Type: {getTypeLabel(this.state.showWorkLogDetailDialogType)}<br />
+          Date: {toDayMonthYearFormat(this.props.businessTripWorkLog.get('date'))}<br />
+          Status: {getStatusLabel(this.props.businessTripWorkLog.get('status'))}<br />
+          Purpose: {this.props.businessTripWorkLog.get('purpose')}<br />
+          Destination: {this.props.businessTripWorkLog.get('destination')}<br />
+          Transport: {this.props.businessTripWorkLog.get('transport')}<br />
+          Expected departure: {this.props.businessTripWorkLog.get('expectedDeparture')}<br />
+          Expected arrival: {this.props.businessTripWorkLog.get('expectedArrival')}
+        </p>
+      );
+    }
+
+    return (
+      <Modal
+        actions={[]}
+        closeHandler={this.closeWorkLogDetail}
+        title="Work log"
+      >
+        {content}
+      </Modal>
+    );
+  }
+
   render() {
     const specialApprovals = this.getFilteredSpecialApprovals();
 
@@ -294,6 +350,16 @@ class ListComponent extends React.Component {
                         variant="danger"
                       />
                     </div>
+                    {BUSINESS_TRIP_WORK_LOG === row.type && (
+                      <div className={styles.workLogButtonWrapper}>
+                        <Button
+                          clickHandler={() => this.openWorkLogDetail(row.rawId, row.type)}
+                          label="Detail"
+                          loading={this.props.isPosting}
+                          priority="default"
+                        />
+                      </div>
+                    )}
                   </div>
                 ),
                 label: 'Actions',
@@ -308,12 +374,28 @@ class ListComponent extends React.Component {
           </div>
         )}
         {this.state.showRejectWorkLogForm ? this.renderWorkLogForm() : null}
+        {this.state.showWorkLogDetailDialog ? this.renderWorkLogDetail() : null}
       </Layout>
     );
   }
 }
 
+ListComponent.defaultProps = {
+  businessTripWorkLog: null,
+};
+
 ListComponent.propTypes = {
+  businessTripWorkLog: ImmutablePropTypes.mapContains({
+    date: PropTypes.object.isRequired,
+    destination: PropTypes.string.isRequired,
+    expectedArrival: PropTypes.string.isRequired,
+    expectedDeparture: PropTypes.string.isRequired,
+    purpose: PropTypes.string.isRequired,
+    rejectionMessage: PropTypes.string,
+    status: PropTypes.string.isRequired,
+    transport: PropTypes.string.isRequired,
+  }),
+  fetchBusinessTripWorkLog: PropTypes.func.isRequired,
   fetchSpecialApprovalList: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
   isPosting: PropTypes.bool.isRequired,

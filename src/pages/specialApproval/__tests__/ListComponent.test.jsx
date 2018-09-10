@@ -6,6 +6,7 @@ import ListComponent from '../ListComponent';
 describe('rendering', () => {
   it('renders correctly', () => {
     const props = {
+      fetchBusinessTripWorkLog: () => {},
       fetchSpecialApprovalList: () => {},
       isFetching: false,
       isPosting: false,

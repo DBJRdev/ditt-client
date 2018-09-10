@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
 import { selectJwtToken } from '../../resources/auth';
 import {
+  fetchBusinessTripWorkLog,
   markBusinessTripWorkLogApproved,
   markBusinessTripWorkLogRejected,
+  selectBusinessTripWorkLog,
   selectBusinessTripWorkLogMeta,
 } from '../../resources/businessTripWorkLog';
 import {
@@ -41,7 +43,9 @@ const mapStateToProps = (state) => {
   const specialApprovalListMeta = selectSpecialApprovalListMeta(state);
 
   return ({
-    isFetching: specialApprovalListMeta.isFetching,
+    businessTripWorkLog: selectBusinessTripWorkLog(state),
+    isFetching: specialApprovalListMeta.isFetching
+      || businessTripWorkLogMeta.isFetching,
     isPosting: businessTripWorkLogMeta.isPosting
       || homeOfficeWorkLogMeta.isPosting
       || overtimeWorkLogMeta.isPosting
@@ -53,6 +57,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => ({
+  fetchBusinessTripWorkLog: id => dispatch(fetchBusinessTripWorkLog(id)),
   fetchSpecialApprovalList: uid => dispatch(fetchSpecialApprovalList(uid)),
   markBusinessTripWorkLogApproved: id => dispatch(markBusinessTripWorkLogApproved(id)),
   markBusinessTripWorkLogRejected: (id, data) =>
