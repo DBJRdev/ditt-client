@@ -8,23 +8,31 @@ import {
   selectBusinessTripWorkLogMeta,
 } from '../../resources/businessTripWorkLog';
 import {
+  fetchHomeOfficeWorkLog,
   markHomeOfficeWorkLogApproved,
   markHomeOfficeWorkLogRejected,
+  selectHomeOfficeWorkLog,
   selectHomeOfficeWorkLogMeta,
 } from '../../resources/homeOfficeWorkLog';
 import {
+  fetchOvertimeWorkLog,
   markOvertimeWorkLogApproved,
   markOvertimeWorkLogRejected,
+  selectOvertimeWorkLog,
   selectOvertimeWorkLogMeta,
 } from '../../resources/overtimeWorkLog';
 import {
+  fetchTimeOffWorkLog,
   markTimeOffWorkLogApproved,
   markTimeOffWorkLogRejected,
+  selectTimeOffWorkLog,
   selectTimeOffWorkLogMeta,
 } from '../../resources/timeOffWorkLog';
 import {
+  fetchVacationWorkLog,
   markVacationWorkLogApproved,
   markVacationWorkLogRejected,
+  selectVacationWorkLog,
   selectVacationWorkLogMeta,
 } from '../../resources/vacationWorkLog';
 import {
@@ -44,21 +52,28 @@ const mapStateToProps = (state) => {
 
   return ({
     businessTripWorkLog: selectBusinessTripWorkLog(state),
-    isFetching: specialApprovalListMeta.isFetching
-      || businessTripWorkLogMeta.isFetching,
+    homeOfficeWorkLog: selectHomeOfficeWorkLog(state),
+    isFetching: specialApprovalListMeta.isFetching,
     isPosting: businessTripWorkLogMeta.isPosting
       || homeOfficeWorkLogMeta.isPosting
       || overtimeWorkLogMeta.isPosting
       || timeOffWorkLogMeta.isPosting
       || vacationWorkLogMeta.isPosting,
+    overtimeWorkLog: selectOvertimeWorkLog(state),
     specialApprovalList: selectSpecialApprovalList(state),
+    timeOffWorkLog: selectTimeOffWorkLog(state),
     token: selectJwtToken(state),
+    vacationWorkLog: selectVacationWorkLog(state),
   });
 };
 
 const mapDispatchToProps = dispatch => ({
   fetchBusinessTripWorkLog: id => dispatch(fetchBusinessTripWorkLog(id)),
+  fetchHomeOfficeWorkLog: id => dispatch(fetchHomeOfficeWorkLog(id)),
+  fetchOvertimeWorkLog: id => dispatch(fetchOvertimeWorkLog(id)),
   fetchSpecialApprovalList: uid => dispatch(fetchSpecialApprovalList(uid)),
+  fetchTimeOffWorkLog: id => dispatch(fetchTimeOffWorkLog(id)),
+  fetchVacationWorkLog: id => dispatch(fetchVacationWorkLog(id)),
   markBusinessTripWorkLogApproved: id => dispatch(markBusinessTripWorkLogApproved(id)),
   markBusinessTripWorkLogRejected: (id, data) =>
     dispatch(markBusinessTripWorkLogRejected(id, data)),

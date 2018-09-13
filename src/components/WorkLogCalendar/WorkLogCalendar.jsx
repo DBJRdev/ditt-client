@@ -316,7 +316,7 @@ class WorkLogCalendar extends React.Component {
               Reason: {this.props.overtimeWorkLog.get('rejectionMessage')}<br />
             </React.Fragment>
           )}
-          Reason: {this.props.overtimeWorkLog.get('reason')}<br />
+          Reason of overtime: {this.props.overtimeWorkLog.get('reason')}<br />
         </p>
       );
     } else if (SICK_DAY_WORK_LOG === type && this.props.sickDayWorkLog) {

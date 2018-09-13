@@ -14,6 +14,8 @@ import {
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,
   OVERTIME_WORK_LOG,
+  STATUS_REJECTED,
+  STATUS_WAITING_FOR_APPROVAL,
   TIME_OFF_WORK_LOG,
   VACATION_WORK_LOG,
 } from '../../resources/workMonth';
@@ -219,6 +221,14 @@ class ListComponent extends React.Component {
   openWorkLogDetail(id, type) {
     if (BUSINESS_TRIP_WORK_LOG === type) {
       this.props.fetchBusinessTripWorkLog(id);
+    } else if (HOME_OFFICE_WORK_LOG === type) {
+      this.props.fetchHomeOfficeWorkLog(id);
+    } else if (OVERTIME_WORK_LOG === type) {
+      this.props.fetchOvertimeWorkLog(id);
+    } else if (TIME_OFF_WORK_LOG === type) {
+      this.props.fetchTimeOffWorkLog(id);
+    } else if (VACATION_WORK_LOG === type) {
+      this.props.fetchVacationWorkLog(id);
     }
 
     this.setState({
@@ -293,21 +303,73 @@ class ListComponent extends React.Component {
   }
 
   renderWorkLogDetail() {
+    const type = this.state.showWorkLogDetailDialogType;
     let content = 'Loading…';
 
-    if (
-      BUSINESS_TRIP_WORK_LOG === this.state.showWorkLogDetailDialogType
-      && this.props.businessTripWorkLog
-    ) {
+    if (BUSINESS_TRIP_WORK_LOG === type && this.props.businessTripWorkLog) {
       content = (
         <p>
           Date: {toDayMonthYearFormat(this.props.businessTripWorkLog.get('date'))}<br />
           Status: {getStatusLabel(this.props.businessTripWorkLog.get('status'))}<br />
+          {STATUS_REJECTED === this.props.businessTripWorkLog.get('status') && (
+            <React.Fragment>
+              Reason: {this.props.businessTripWorkLog.get('rejectionMessage')}<br />
+            </React.Fragment>
+          )}
           Purpose: {this.props.businessTripWorkLog.get('purpose')}<br />
           Destination: {this.props.businessTripWorkLog.get('destination')}<br />
           Transport: {this.props.businessTripWorkLog.get('transport')}<br />
           Expected departure: {this.props.businessTripWorkLog.get('expectedDeparture')}<br />
           Expected arrival: {this.props.businessTripWorkLog.get('expectedArrival')}
+        </p>
+      );
+    } else if (HOME_OFFICE_WORK_LOG === type && this.props.homeOfficeWorkLog) {
+      content = (
+        <p>
+          Date: {toDayMonthYearFormat(this.props.homeOfficeWorkLog.get('date'))}<br />
+          Status: {getStatusLabel(this.props.homeOfficeWorkLog.get('status'))}<br />
+          {STATUS_REJECTED === this.props.homeOfficeWorkLog.get('status') && (
+            <React.Fragment>
+              Reason: {this.props.homeOfficeWorkLog.get('rejectionMessage')}<br />
+            </React.Fragment>
+          )}
+        </p>
+      );
+    } else if (OVERTIME_WORK_LOG === type && this.props.overtimeWorkLog) {
+      content = (
+        <p>
+          Date: {toDayMonthYearFormat(this.props.overtimeWorkLog.get('date'))}<br />
+          Status: {getStatusLabel(this.props.overtimeWorkLog.get('status'))}<br />
+          {STATUS_REJECTED === this.props.overtimeWorkLog.get('status') && (
+            <React.Fragment>
+              Reason: {this.props.overtimeWorkLog.get('rejectionMessage')}<br />
+            </React.Fragment>
+          )}
+          Reason for overtime: {this.props.overtimeWorkLog.get('reason')}<br />
+        </p>
+      );
+    } else if (TIME_OFF_WORK_LOG === type && this.props.timeOffWorkLog) {
+      content = (
+        <p>
+          Date: {toDayMonthYearFormat(this.props.timeOffWorkLog.get('date'))}<br />
+          Status: {getStatusLabel(this.props.timeOffWorkLog.get('status'))}<br />
+          {STATUS_REJECTED === this.props.timeOffWorkLog.get('status') && (
+            <React.Fragment>
+              Reason: {this.props.timeOffWorkLog.get('rejectionMessage')}<br />
+            </React.Fragment>
+          )}
+        </p>
+      );
+    } else if (VACATION_WORK_LOG === type && this.props.vacationWorkLog) {
+      content = (
+        <p>
+          Date: {toDayMonthYearFormat(this.props.vacationWorkLog.get('date'))}<br />
+          Status: {getStatusLabel(this.props.vacationWorkLog.get('status'))}<br />
+          {STATUS_REJECTED === this.props.vacationWorkLog.get('status') && (
+            <React.Fragment>
+              Reason: {this.props.vacationWorkLog.get('rejectionMessage')}<br />
+            </React.Fragment>
+          )}
         </p>
       );
     }
@@ -351,38 +413,40 @@ class ListComponent extends React.Component {
                   <div>
                     <div className={styles.workLogButtonWrapper}>
                       <Button
-                        clickHandler={() => this.handleMarkApproved(row.rawId, row.type)}
-                        label="Approve"
-                        loading={
-                          this.props.isPosting
-                          && this.state.lastApprovedWorkLogId === row.rawId
-                          && this.state.lastApprovedWorkLogType === row.type
-                        }
+                        clickHandler={() => this.openWorkLogDetail(row.rawId, row.type)}
+                        label="Detail"
                         priority="default"
-                        variant="success"
                       />
                     </div>
-                    <div className={styles.workLogButtonWrapper}>
-                      <Button
-                        clickHandler={() => this.openRejectWorkLogForm(row.rawId, row.type)}
-                        label="Reject"
-                        loading={
-                          this.props.isPosting
-                          && this.state.lastRejectedWorkLogId === row.rawId
-                          && this.state.lastRejectedWorkLogType === row.type
-                        }
-                        priority="default"
-                        variant="danger"
-                      />
-                    </div>
-                    {BUSINESS_TRIP_WORK_LOG === row.type && (
-                      <div className={styles.workLogButtonWrapper}>
-                        <Button
-                          clickHandler={() => this.openWorkLogDetail(row.rawId, row.type)}
-                          label="Detail"
-                          priority="default"
-                        />
-                      </div>
+                    {STATUS_WAITING_FOR_APPROVAL === row.status && (
+                      <React.Fragment>
+                        <div className={styles.workLogButtonWrapper}>
+                          <Button
+                            clickHandler={() => this.handleMarkApproved(row.rawId, row.type)}
+                            label="Approve"
+                            loading={
+                              this.props.isPosting
+                              && this.state.lastApprovedWorkLogId === row.rawId
+                              && this.state.lastApprovedWorkLogType === row.type
+                            }
+                            priority="default"
+                            variant="success"
+                          />
+                        </div>
+                        <div className={styles.workLogButtonWrapper}>
+                          <Button
+                            clickHandler={() => this.openRejectWorkLogForm(row.rawId, row.type)}
+                            label="Reject"
+                            loading={
+                              this.props.isPosting
+                              && this.state.lastRejectedWorkLogId === row.rawId
+                              && this.state.lastRejectedWorkLogType === row.type
+                            }
+                            priority="default"
+                            variant="danger"
+                          />
+                        </div>
+                      </React.Fragment>
                     )}
                   </div>
                 ),
@@ -406,6 +470,10 @@ class ListComponent extends React.Component {
 
 ListComponent.defaultProps = {
   businessTripWorkLog: null,
+  homeOfficeWorkLog: null,
+  overtimeWorkLog: null,
+  timeOffWorkLog: null,
+  vacationWorkLog: null,
 };
 
 ListComponent.propTypes = {
@@ -420,7 +488,16 @@ ListComponent.propTypes = {
     transport: PropTypes.string.isRequired,
   }),
   fetchBusinessTripWorkLog: PropTypes.func.isRequired,
+  fetchHomeOfficeWorkLog: PropTypes.func.isRequired,
+  fetchOvertimeWorkLog: PropTypes.func.isRequired,
   fetchSpecialApprovalList: PropTypes.func.isRequired,
+  fetchTimeOffWorkLog: PropTypes.func.isRequired,
+  fetchVacationWorkLog: PropTypes.func.isRequired,
+  homeOfficeWorkLog: ImmutablePropTypes.mapContains({
+    date: PropTypes.object.isRequired,
+    rejectionMessage: PropTypes.string,
+    status: PropTypes.string.isRequired,
+  }),
   isFetching: PropTypes.bool.isRequired,
   isPosting: PropTypes.bool.isRequired,
   markBusinessTripWorkLogApproved: PropTypes.func.isRequired,
@@ -433,6 +510,12 @@ ListComponent.propTypes = {
   markTimeOffWorkLogRejected: PropTypes.func.isRequired,
   markVacationWorkLogApproved: PropTypes.func.isRequired,
   markVacationWorkLogRejected: PropTypes.func.isRequired,
+  overtimeWorkLog: ImmutablePropTypes.mapContains({
+    date: PropTypes.object.isRequired,
+    reason: PropTypes.string,
+    rejectionMessage: PropTypes.string,
+    status: PropTypes.string.isRequired,
+  }),
   specialApprovalList: ImmutablePropTypes.mapContains({
     businessTripWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
       date: PropTypes.shape.isRequired,
@@ -490,7 +573,17 @@ ListComponent.propTypes = {
       }).isRequired,
     })).isRequired,
   }).isRequired,
+  timeOffWorkLog: ImmutablePropTypes.mapContains({
+    date: PropTypes.object.isRequired,
+    rejectionMessage: PropTypes.string,
+    status: PropTypes.string.isRequired,
+  }),
   token: PropTypes.string.isRequired,
+  vacationWorkLog: ImmutablePropTypes.mapContains({
+    date: PropTypes.object.isRequired,
+    rejectionMessage: PropTypes.string,
+    status: PropTypes.string.isRequired,
+  }),
 };
 
 export default ListComponent;

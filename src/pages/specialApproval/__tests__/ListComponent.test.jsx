@@ -7,7 +7,11 @@ describe('rendering', () => {
   it('renders correctly', () => {
     const props = {
       fetchBusinessTripWorkLog: () => {},
+      fetchHomeOfficeWorkLog: () => {},
+      fetchOvertimeWorkLog: () => {},
       fetchSpecialApprovalList: () => {},
+      fetchTimeOffWorkLog: () => {},
+      fetchVacationWorkLog: () => {},
       isFetching: false,
       isPosting: false,
       markBusinessTripWorkLogApproved: () => {},
