@@ -5,6 +5,7 @@ export default {
   index: '/',
   login: '/login',
   newPassword: '/new-password/:resetPasswordToken',
+  recentSpecialApprovalList: '/recent-special-approvals',
   specialApprovalList: '/special-approvals',
   supervisedUserList: '/supervised-users',
   supervisedUserWorkLog: '/supervised-users/:id/work-log',

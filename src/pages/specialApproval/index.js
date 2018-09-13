@@ -1,3 +1,7 @@
 import ListContainer from './ListContainer';
+import RecentListContainer from './RecentListContainer';
 
-export default ListContainer;
+export {
+  ListContainer,
+  RecentListContainer,
+};

@@ -16,7 +16,10 @@ import {
   LoginPage,
   NewPasswordPage,
 } from './pages/login';
-import SpecialApprovalListPage from './pages/specialApproval';
+import {
+  ListContainer as SpecialApprovalListPage,
+  RecentListContainer as RecentSpecialApprovalListPage,
+} from './pages/specialApproval';
 import {
   ListContainer as SupervisedUserListPage,
   WorkLogContainer as SupervisedUserWorkLogPage,
@@ -43,6 +46,12 @@ ReactDOM.render(
             path={routes.index}
             roles={[ROLE_EMPLOYEE]}
             component={IndexPage}
+          />
+          <AuthorizedRoute
+            exact
+            path={routes.recentSpecialApprovalList}
+            roles={[ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]}
+            component={RecentSpecialApprovalListPage}
           />
           <AuthorizedRoute
             exact

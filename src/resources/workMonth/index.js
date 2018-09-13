@@ -1,4 +1,5 @@
 export {
+  fetchRecentSpecialApprovalList,
   fetchSpecialApprovalList,
   fetchWorkMonth,
   fetchWorkMonthList,
@@ -21,6 +22,8 @@ export {
 } from './constants';
 
 export {
+  selectRecentSpecialApprovalList,
+  selectRecentSpecialApprovalListMeta,
   selectSpecialApprovalList,
   selectSpecialApprovalListMeta,
   selectWorkMonth,

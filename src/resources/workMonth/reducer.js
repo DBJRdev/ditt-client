@@ -86,6 +86,119 @@ export default (state, action) => {
     year: parseInt(data.year, 10),
   });
 
+  const filterSpecialApprovals = data => ({
+    businessTripWorkLogs: data.businessTripWorkLogs.map(businessTripWorkLogsData => ({
+      date: toMomentDateTime(businessTripWorkLogsData.date),
+      id: parseInt(businessTripWorkLogsData.id, 10),
+      status: resolveWorkLogStatus(businessTripWorkLogsData),
+      type: BUSINESS_TRIP_WORK_LOG,
+      workMonth: {
+        id: parseInt(businessTripWorkLogsData.workMonth.id, 10),
+        month: parseInt(businessTripWorkLogsData.workMonth.month, 10),
+        status: businessTripWorkLogsData.workMonth.status,
+        user: {
+          email: businessTripWorkLogsData.workMonth.user.email,
+          firstName: businessTripWorkLogsData.workMonth.user.firstName,
+          id: businessTripWorkLogsData.workMonth.user.id,
+          lastName: businessTripWorkLogsData.workMonth.user.lastName,
+        },
+        year: parseInt(businessTripWorkLogsData.workMonth.year, 10),
+      },
+    })),
+    homeOfficeWorkLogs: data.homeOfficeWorkLogs.map(homeOfficeWorkLogsData => ({
+      date: toMomentDateTime(homeOfficeWorkLogsData.date),
+      id: parseInt(homeOfficeWorkLogsData.id, 10),
+      status: resolveWorkLogStatus(homeOfficeWorkLogsData),
+      type: HOME_OFFICE_WORK_LOG,
+      workMonth: {
+        id: parseInt(homeOfficeWorkLogsData.workMonth.id, 10),
+        month: parseInt(homeOfficeWorkLogsData.workMonth.month, 10),
+        status: homeOfficeWorkLogsData.workMonth.status,
+        user: {
+          email: homeOfficeWorkLogsData.workMonth.user.email,
+          firstName: homeOfficeWorkLogsData.workMonth.user.firstName,
+          id: homeOfficeWorkLogsData.workMonth.user.id,
+          lastName: homeOfficeWorkLogsData.workMonth.user.lastName,
+        },
+        year: parseInt(homeOfficeWorkLogsData.workMonth.year, 10),
+      },
+    })),
+    overtimeWorkLogs: data.overtimeWorkLogs.map(overtimeWorkLogsData => ({
+      date: toMomentDateTime(overtimeWorkLogsData.date),
+      id: parseInt(overtimeWorkLogsData.id, 10),
+      status: resolveWorkLogStatus(overtimeWorkLogsData),
+      type: OVERTIME_WORK_LOG,
+      workMonth: {
+        id: parseInt(overtimeWorkLogsData.workMonth.id, 10),
+        month: parseInt(overtimeWorkLogsData.workMonth.month, 10),
+        status: overtimeWorkLogsData.workMonth.status,
+        user: {
+          email: overtimeWorkLogsData.workMonth.user.email,
+          firstName: overtimeWorkLogsData.workMonth.user.firstName,
+          id: overtimeWorkLogsData.workMonth.user.id,
+          lastName: overtimeWorkLogsData.workMonth.user.lastName,
+        },
+        year: parseInt(overtimeWorkLogsData.workMonth.year, 10),
+      },
+    })),
+    timeOffWorkLogs: data.timeOffWorkLogs.map(timeOffWorkLogsData => ({
+      date: toMomentDateTime(timeOffWorkLogsData.date),
+      id: parseInt(timeOffWorkLogsData.id, 10),
+      status: resolveWorkLogStatus(timeOffWorkLogsData),
+      type: TIME_OFF_WORK_LOG,
+      workMonth: {
+        id: parseInt(timeOffWorkLogsData.workMonth.id, 10),
+        month: parseInt(timeOffWorkLogsData.workMonth.month, 10),
+        status: timeOffWorkLogsData.workMonth.status,
+        user: {
+          email: timeOffWorkLogsData.workMonth.user.email,
+          firstName: timeOffWorkLogsData.workMonth.user.firstName,
+          id: timeOffWorkLogsData.workMonth.user.id,
+          lastName: timeOffWorkLogsData.workMonth.user.lastName,
+        },
+        year: parseInt(timeOffWorkLogsData.workMonth.year, 10),
+      },
+    })),
+    vacationWorkLogs: data.vacationWorkLogs.map(vacationWorkLogsData => ({
+      date: toMomentDateTime(vacationWorkLogsData.date),
+      id: parseInt(vacationWorkLogsData.id, 10),
+      status: resolveWorkLogStatus(vacationWorkLogsData),
+      type: VACATION_WORK_LOG,
+      workMonth: {
+        id: parseInt(vacationWorkLogsData.workMonth.id, 10),
+        month: parseInt(vacationWorkLogsData.workMonth.month, 10),
+        status: vacationWorkLogsData.workMonth.status,
+        user: {
+          email: vacationWorkLogsData.workMonth.user.email,
+          firstName: vacationWorkLogsData.workMonth.user.firstName,
+          id: vacationWorkLogsData.workMonth.user.id,
+          lastName: vacationWorkLogsData.workMonth.user.lastName,
+        },
+        year: parseInt(vacationWorkLogsData.workMonth.year, 10),
+      },
+    })),
+  });
+
+  if (type === actionTypes.FETCH_RECENT_SPECIAL_APPROVAL_LIST_REQUEST) {
+    return state
+      .setIn(['recentSpecialApprovalList', 'isFetching'], true)
+      .setIn(['recentSpecialApprovalList', 'isFetchingFailure'], false);
+  }
+
+  if (type === actionTypes.FETCH_RECENT_SPECIAL_APPROVAL_LIST_SUCCESS) {
+    return state
+      .setIn(['recentSpecialApprovalList', 'data'], Immutable.fromJS(filterSpecialApprovals(payload)))
+      .setIn(['recentSpecialApprovalList', 'isFetching'], false)
+      .setIn(['recentSpecialApprovalList', 'isFetchingFailure'], false);
+  }
+
+  if (type === actionTypes.FETCH_RECENT_SPECIAL_APPROVAL_LIST_FAILURE) {
+    return state
+      .setIn(['recentSpecialApprovalList', 'data'], null)
+      .setIn(['recentSpecialApprovalList', 'isFetching'], false)
+      .setIn(['recentSpecialApprovalList', 'isFetchingFailure'], true);
+  }
+
   if (type === actionTypes.FETCH_SPECIAL_APPROVAL_LIST_REQUEST) {
     return state
       .setIn(['specialApprovalList', 'isFetching'], true)
@@ -93,101 +206,8 @@ export default (state, action) => {
   }
 
   if (type === actionTypes.FETCH_SPECIAL_APPROVAL_LIST_SUCCESS) {
-    const specialApprovalListData = {
-      businessTripWorkLogs: payload.businessTripWorkLogs.map(businessTripWorkLogsData => ({
-        date: toMomentDateTime(businessTripWorkLogsData.date),
-        id: parseInt(businessTripWorkLogsData.id, 10),
-        status: resolveWorkLogStatus(businessTripWorkLogsData),
-        type: BUSINESS_TRIP_WORK_LOG,
-        workMonth: {
-          id: parseInt(businessTripWorkLogsData.workMonth.id, 10),
-          month: parseInt(businessTripWorkLogsData.workMonth.month, 10),
-          status: businessTripWorkLogsData.workMonth.status,
-          user: {
-            email: businessTripWorkLogsData.workMonth.user.email,
-            firstName: businessTripWorkLogsData.workMonth.user.firstName,
-            id: businessTripWorkLogsData.workMonth.user.id,
-            lastName: businessTripWorkLogsData.workMonth.user.lastName,
-          },
-          year: parseInt(businessTripWorkLogsData.workMonth.year, 10),
-        },
-      })),
-      homeOfficeWorkLogs: payload.homeOfficeWorkLogs.map(homeOfficeWorkLogsData => ({
-        date: toMomentDateTime(homeOfficeWorkLogsData.date),
-        id: parseInt(homeOfficeWorkLogsData.id, 10),
-        status: resolveWorkLogStatus(homeOfficeWorkLogsData),
-        type: HOME_OFFICE_WORK_LOG,
-        workMonth: {
-          id: parseInt(homeOfficeWorkLogsData.workMonth.id, 10),
-          month: parseInt(homeOfficeWorkLogsData.workMonth.month, 10),
-          status: homeOfficeWorkLogsData.workMonth.status,
-          user: {
-            email: homeOfficeWorkLogsData.workMonth.user.email,
-            firstName: homeOfficeWorkLogsData.workMonth.user.firstName,
-            id: homeOfficeWorkLogsData.workMonth.user.id,
-            lastName: homeOfficeWorkLogsData.workMonth.user.lastName,
-          },
-          year: parseInt(homeOfficeWorkLogsData.workMonth.year, 10),
-        },
-      })),
-      overtimeWorkLogs: payload.overtimeWorkLogs.map(overtimeWorkLogsData => ({
-        date: toMomentDateTime(overtimeWorkLogsData.date),
-        id: parseInt(overtimeWorkLogsData.id, 10),
-        status: resolveWorkLogStatus(overtimeWorkLogsData),
-        type: OVERTIME_WORK_LOG,
-        workMonth: {
-          id: parseInt(overtimeWorkLogsData.workMonth.id, 10),
-          month: parseInt(overtimeWorkLogsData.workMonth.month, 10),
-          status: overtimeWorkLogsData.workMonth.status,
-          user: {
-            email: overtimeWorkLogsData.workMonth.user.email,
-            firstName: overtimeWorkLogsData.workMonth.user.firstName,
-            id: overtimeWorkLogsData.workMonth.user.id,
-            lastName: overtimeWorkLogsData.workMonth.user.lastName,
-          },
-          year: parseInt(overtimeWorkLogsData.workMonth.year, 10),
-        },
-      })),
-      timeOffWorkLogs: payload.timeOffWorkLogs.map(timeOffWorkLogsData => ({
-        date: toMomentDateTime(timeOffWorkLogsData.date),
-        id: parseInt(timeOffWorkLogsData.id, 10),
-        status: resolveWorkLogStatus(timeOffWorkLogsData),
-        type: TIME_OFF_WORK_LOG,
-        workMonth: {
-          id: parseInt(timeOffWorkLogsData.workMonth.id, 10),
-          month: parseInt(timeOffWorkLogsData.workMonth.month, 10),
-          status: timeOffWorkLogsData.workMonth.status,
-          user: {
-            email: timeOffWorkLogsData.workMonth.user.email,
-            firstName: timeOffWorkLogsData.workMonth.user.firstName,
-            id: timeOffWorkLogsData.workMonth.user.id,
-            lastName: timeOffWorkLogsData.workMonth.user.lastName,
-          },
-          year: parseInt(timeOffWorkLogsData.workMonth.year, 10),
-        },
-      })),
-      vacationWorkLogs: payload.vacationWorkLogs.map(vacationWorkLogsData => ({
-        date: toMomentDateTime(vacationWorkLogsData.date),
-        id: parseInt(vacationWorkLogsData.id, 10),
-        status: resolveWorkLogStatus(vacationWorkLogsData),
-        type: VACATION_WORK_LOG,
-        workMonth: {
-          id: parseInt(vacationWorkLogsData.workMonth.id, 10),
-          month: parseInt(vacationWorkLogsData.workMonth.month, 10),
-          status: vacationWorkLogsData.workMonth.status,
-          user: {
-            email: vacationWorkLogsData.workMonth.user.email,
-            firstName: vacationWorkLogsData.workMonth.user.firstName,
-            id: vacationWorkLogsData.workMonth.user.id,
-            lastName: vacationWorkLogsData.workMonth.user.lastName,
-          },
-          year: parseInt(vacationWorkLogsData.workMonth.year, 10),
-        },
-      })),
-    };
-
     return state
-      .setIn(['specialApprovalList', 'data'], Immutable.fromJS(specialApprovalListData))
+      .setIn(['specialApprovalList', 'data'], Immutable.fromJS(filterSpecialApprovals(payload)))
       .setIn(['specialApprovalList', 'isFetching'], false)
       .setIn(['specialApprovalList', 'isFetchingFailure'], false);
   }

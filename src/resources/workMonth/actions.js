@@ -2,6 +2,19 @@ import { RSAA } from 'redux-api-middleware';
 import { API_URL } from '../../../config/envspecific';
 import * as types from './actionTypes';
 
+export const fetchRecentSpecialApprovalList = uid => dispatch => dispatch({
+  [RSAA]: {
+    endpoint: `${API_URL}/recent_special_approvals/${uid}`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'GET',
+    types: [
+      types.FETCH_RECENT_SPECIAL_APPROVAL_LIST_REQUEST,
+      types.FETCH_RECENT_SPECIAL_APPROVAL_LIST_SUCCESS,
+      types.FETCH_RECENT_SPECIAL_APPROVAL_LIST_FAILURE,
+    ],
+  },
+});
+
 export const fetchSpecialApprovalList = uid => dispatch => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/special_approvals/${uid}`,
