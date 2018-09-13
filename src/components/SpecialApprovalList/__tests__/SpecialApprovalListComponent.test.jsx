@@ -1,7 +1,7 @@
 import Immutable from 'immutable';
 import React from 'react';
 import { shallow } from 'enzyme';
-import ListComponent from '../ListComponent';
+import SpecialApprovalListComponent from '../SpecialApprovalListComponent';
 
 describe('rendering', () => {
   it('renders correctly', () => {
@@ -33,7 +33,7 @@ describe('rendering', () => {
       }),
       token: 'token',
     };
-    const tree = shallow(<ListComponent {...props} />);
+    const tree = shallow(<SpecialApprovalListComponent {...props} />);
 
     expect(tree).toMatchSnapshot();
   });
