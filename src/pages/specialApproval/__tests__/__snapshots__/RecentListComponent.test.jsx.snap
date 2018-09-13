@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly 1`] = `
+<Connect(LayoutComponent)
+  title="Recent special approvals"
+>
+  <div
+    className="infoText"
+  >
+    Recent special approvals page shows you a list of all work logs for current and previous month. If you want to see a list of work logs that are requested to be approved or rejected by a supervisor, go to the 
+    <Link
+      replace={false}
+      to="/special-approvals"
+    >
+      special approvals
+    </Link>
+     page.
+  </div>
+  <SpecialApprovalListComponent
+    businessTripWorkLog={null}
+    fetchBusinessTripWorkLog={[Function]}
+    fetchHomeOfficeWorkLog={[Function]}
+    fetchOvertimeWorkLog={[Function]}
+    fetchSpecialApprovalList={[Function]}
+    fetchTimeOffWorkLog={[Function]}
+    fetchVacationWorkLog={[Function]}
+    homeOfficeWorkLog={null}
+    isFetching={false}
+    isPosting={false}
+    markBusinessTripWorkLogApproved={[Function]}
+    markBusinessTripWorkLogRejected={[Function]}
+    markHomeOfficeWorkLogApproved={[Function]}
+    markHomeOfficeWorkLogRejected={[Function]}
+    markOvertimeWorkLogApproved={[Function]}
+    markOvertimeWorkLogRejected={[Function]}
+    markTimeOffWorkLogApproved={[Function]}
+    markTimeOffWorkLogRejected={[Function]}
+    markVacationWorkLogApproved={[Function]}
+    markVacationWorkLogRejected={[Function]}
+    overtimeWorkLog={null}
+    specialApprovalList={
+      Immutable.Map {
+        "businessTripWorkLogs": Immutable.List [],
+        "homeOfficeWorkLogs": Immutable.List [],
+        "overtimeWorkLogs": Immutable.List [],
+        "timeOffWorkLogs": Immutable.List [],
+        "vacationWorkLogs": Immutable.List [],
+      }
+    }
+    timeOffWorkLog={null}
+    token="token"
+    vacationWorkLog={null}
+  />
+</Connect(LayoutComponent)>
+`;
