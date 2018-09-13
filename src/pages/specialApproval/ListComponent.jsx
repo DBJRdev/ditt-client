@@ -301,7 +301,6 @@ class ListComponent extends React.Component {
     ) {
       content = (
         <p>
-          Type: {getTypeLabel(this.state.showWorkLogDetailDialogType)}<br />
           Date: {toDayMonthYearFormat(this.props.businessTripWorkLog.get('date'))}<br />
           Status: {getStatusLabel(this.props.businessTripWorkLog.get('status'))}<br />
           Purpose: {this.props.businessTripWorkLog.get('purpose')}<br />
@@ -317,7 +316,7 @@ class ListComponent extends React.Component {
       <Modal
         actions={[]}
         closeHandler={this.closeWorkLogDetail}
-        title="Work log"
+        title={getTypeLabel(this.state.showWorkLogDetailDialogType)}
       >
         {content}
       </Modal>
