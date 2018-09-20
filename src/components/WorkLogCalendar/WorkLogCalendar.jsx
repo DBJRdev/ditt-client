@@ -266,6 +266,7 @@ class WorkLogCalendar extends React.Component {
             ? getWorkLogsByDay(this.state.showWorkLogFormDate, this.props.workMonth.get('workLogs'))
             : []
         }
+        showInfoText={STATUS_WAITING_FOR_APPROVAL === this.props.workMonth.get('status')}
       />
     );
   }

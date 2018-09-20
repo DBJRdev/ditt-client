@@ -90,6 +90,12 @@ class WorkLogForm extends React.Component {
     this.fieldStyle = {
       display: 'inline-block',
     };
+
+    this.formInfoTextStyle = {
+      color: '#666',
+      fontSize: '0.75rem',
+      textAlign: 'block',
+    };
   }
 
   changeHandler(e) {
@@ -381,6 +387,16 @@ class WorkLogForm extends React.Component {
           {this.state.formValidity.elements.form}
         </p>
         <form>
+          {this.props.showInfoText && (
+            <fieldset style={this.fieldSetStyle}>
+              <div style={this.fieldStyle}>
+                <p style={this.formInfoTextStyle}>
+                  You have already sent this work month for approval. If you create new work log,
+                  you will have to send the work month for approval again.
+                </p>
+              </div>
+            </fieldset>
+          )}
           <fieldset style={this.fieldSetStyle}>
             <legend>Date</legend>
             <div style={this.fieldStyle}>
@@ -454,11 +470,16 @@ class WorkLogForm extends React.Component {
   }
 }
 
+WorkLogForm.defaultProps = {
+  showInfoText: false,
+};
+
 WorkLogForm.propTypes = {
   closeHandler: PropTypes.func.isRequired,
   date: PropTypes.instanceOf(moment).isRequired,
   isPosting: PropTypes.bool.isRequired,
   saveHandler: PropTypes.func.isRequired,
+  showInfoText: PropTypes.bool,
   workLogsOfDay: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
     endTime: PropTypes.shape.isRequired,
     id: PropTypes.number.isRequired,

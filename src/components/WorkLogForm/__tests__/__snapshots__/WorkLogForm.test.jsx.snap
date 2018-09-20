@@ -34,6 +34,291 @@ exports[`rendering renders correctly with all props 1`] = `
         }
       }
     >
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <p
+          style={
+            Object {
+              "color": "#666",
+              "fontSize": "0.75rem",
+              "textAlign": "block",
+            }
+          }
+        >
+          You have already sent this work month for approval. If you create new work log, you will have to send the work month for approval again.
+        </p>
+      </div>
+    </fieldset>
+    <fieldset
+      style={
+        Object {
+          "borderStyle": "none",
+          "marginLeft": "auto",
+          "marginRight": "auto",
+          "maxWidth": "17em",
+          "padding": "0",
+        }
+      }
+    >
+      <legend>
+        Date
+      </legend>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <TextField
+          changeHandler={null}
+          description={null}
+          disabled={true}
+          error={null}
+          fieldId="date"
+          isLabelVisible={false}
+          label="Date"
+          placeholder={null}
+          required={false}
+          type="text"
+          value="1. 1. 2018"
+        />
+      </div>
+    </fieldset>
+    <fieldset
+      style={
+        Object {
+          "borderStyle": "none",
+          "marginLeft": "auto",
+          "marginRight": "auto",
+          "maxWidth": "17em",
+          "padding": "0",
+        }
+      }
+    >
+      <legend>
+        Type
+      </legend>
+      <div
+        style={
+          Object {
+            "display": "inline-block",
+          }
+        }
+      >
+        <SelectField
+          changeHandler={[Function]}
+          description={null}
+          disabled={false}
+          error={null}
+          fieldId="type"
+          isLabelVisible={false}
+          label="Type"
+          options={
+            Array [
+              Object {
+                "label": "Work log",
+                "value": "WORK_LOG",
+              },
+              Object {
+                "label": "Business trip",
+                "value": "BUSINESS_TRIP_WORK_LOG",
+              },
+              Object {
+                "label": "Home office",
+                "value": "HOME_OFFICE_WORK_LOG",
+              },
+              Object {
+                "label": "Overtime",
+                "value": "OVERTIME_WORK_LOG",
+              },
+              Object {
+                "label": "Sick day",
+                "value": "SICK_DAY_WORK_LOG",
+              },
+              Object {
+                "label": "Time off",
+                "value": "TIME_OFF_WORK_LOG",
+              },
+              Object {
+                "label": "Vacation",
+                "value": "VACATION_WORK_LOG",
+              },
+            ]
+          }
+          required={false}
+          value="WORK_LOG"
+        />
+      </div>
+    </fieldset>
+    <React.Fragment>
+      <fieldset
+        style={
+          Object {
+            "borderStyle": "none",
+            "marginLeft": "auto",
+            "marginRight": "auto",
+            "maxWidth": "17em",
+            "padding": "0",
+          }
+        }
+      >
+        <legend>
+          Start time:
+        </legend>
+        <div>
+          <div
+            style={
+              Object {
+                "display": "inline-block",
+              }
+            }
+          >
+            <TextField
+              autoFocus={true}
+              changeHandler={[Function]}
+              description={null}
+              disabled={false}
+              error={null}
+              fieldId="startHour"
+              isLabelVisible={false}
+              label="Start hour"
+              placeholder={null}
+              required={false}
+              type="text"
+              value="00"
+            />
+          </div>
+          :
+          <div
+            style={
+              Object {
+                "display": "inline-block",
+              }
+            }
+          >
+            <TextField
+              changeHandler={[Function]}
+              description={null}
+              disabled={false}
+              error={null}
+              fieldId="startMinute"
+              isLabelVisible={false}
+              label="Start minute"
+              placeholder={null}
+              required={false}
+              type="text"
+              value="57"
+            />
+          </div>
+           h
+        </div>
+      </fieldset>
+      <fieldset
+        style={
+          Object {
+            "borderStyle": "none",
+            "marginLeft": "auto",
+            "marginRight": "auto",
+            "maxWidth": "17em",
+            "padding": "0",
+          }
+        }
+      >
+        <legend>
+          End time:
+        </legend>
+        <div>
+          <div
+            style={
+              Object {
+                "display": "inline-block",
+              }
+            }
+          >
+            <TextField
+              changeHandler={[Function]}
+              description={null}
+              disabled={false}
+              error={null}
+              fieldId="endHour"
+              isLabelVisible={false}
+              label="End hour"
+              placeholder={null}
+              required={false}
+              type="text"
+              value="01"
+            />
+          </div>
+          :
+          <div
+            style={
+              Object {
+                "display": "inline-block",
+              }
+            }
+          >
+            <TextField
+              changeHandler={[Function]}
+              description={null}
+              disabled={false}
+              error={null}
+              fieldId="endMinute"
+              isLabelVisible={false}
+              label="End minute"
+              placeholder={null}
+              required={false}
+              type="text"
+              value="03"
+            />
+          </div>
+           h
+        </div>
+      </fieldset>
+    </React.Fragment>
+  </form>
+</Modal>
+`;
+
+exports[`rendering renders correctly with mandatory props 1`] = `
+<Modal
+  actions={
+    Array [
+      Object {
+        "clickHandler": [Function],
+        "label": "Save",
+        "loading": false,
+      },
+    ]
+  }
+  closeHandler={[Function]}
+  title="Add work log"
+>
+  <p
+    style={
+      Object {
+        "color": "#a32100",
+        "textAlign": "center",
+      }
+    }
+  />
+  <form>
+    <fieldset
+      style={
+        Object {
+          "borderStyle": "none",
+          "marginLeft": "auto",
+          "marginRight": "auto",
+          "maxWidth": "17em",
+          "padding": "0",
+        }
+      }
+    >
       <legend>
         Date
       </legend>

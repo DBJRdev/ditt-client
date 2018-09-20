@@ -21,12 +21,25 @@ afterEach(() => {
 });
 
 describe('rendering', () => {
+  it('renders correctly with mandatory props', () => {
+    const tree = shallow(<WorkLogForm
+      closeHandler={() => {}}
+      date={fakeMomentDateTime}
+      isPosting={false}
+      saveHandler={() => {}}
+      workLogsOfDay={Immutable.List([])}
+    />);
+
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders correctly with all props', () => {
     const tree = shallow(<WorkLogForm
       closeHandler={() => {}}
       date={fakeMomentDateTime}
       isPosting={false}
       saveHandler={() => {}}
+      showInfoText
       workLogsOfDay={Immutable.List([])}
     />);
 
