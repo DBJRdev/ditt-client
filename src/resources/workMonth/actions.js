@@ -30,7 +30,7 @@ export const fetchSpecialApprovalList = uid => dispatch => dispatch({
 
 export const fetchWorkMonth = id => dispatch => dispatch({
   [RSAA]: {
-    endpoint: `${API_URL}/work_months/${id}`,
+    endpoint: `${API_URL}/work_months/${id}/detail`,
     headers: { 'Content-Type': 'application/json' },
     method: 'GET',
     types: [
