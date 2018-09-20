@@ -225,6 +225,30 @@ class WorkLogCalendar extends React.Component {
     this.setState({ showWorkLogForm: false });
   }
 
+  countWaitingForApprovalWorkLogs() {
+    if (this.props.workMonth) {
+      let count = 0;
+
+      [
+        'businessTripWorkLogs',
+        'homeOfficeWorkLogs',
+        'overtimeWorkLogs',
+        'timeOffWorkLogs',
+        'vacationWorkLogs',
+      ].forEach((key) => {
+        this.props.workMonth.get(key).forEach((workLog) => {
+          if (STATUS_WAITING_FOR_APPROVAL === workLog.get('status')) {
+            count += 1;
+          }
+        });
+      });
+
+      return count;
+    }
+
+    return 0;
+  }
+
   renderWorkHoursInfo(daysOfSelectedMonth) {
     const {
       selectedDate,
@@ -710,7 +734,7 @@ class WorkLogCalendar extends React.Component {
                     this.props.markWaitingForApproval(this.props.workMonth.get('id'));
                   }
                 }}
-                disabled={!this.props.workMonth}
+                disabled={!this.props.workMonth || !!this.countWaitingForApprovalWorkLogs()}
                 icon="send"
                 label="Send for approval"
                 loading={this.props.isPosting}
