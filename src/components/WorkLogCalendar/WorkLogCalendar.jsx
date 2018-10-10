@@ -3,6 +3,7 @@ import Immutable from 'immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withNamespaces } from 'react-i18next';
 import {
   Button,
   Modal,
@@ -252,6 +253,7 @@ class WorkLogCalendar extends React.Component {
   renderWorkHoursInfo(daysOfSelectedMonth) {
     const {
       selectedDate,
+      t,
       workHoursList,
     } = this.props;
     let requiredHours = 0;
@@ -275,7 +277,13 @@ class WorkLogCalendar extends React.Component {
       workedTime.add(day.workTime);
     });
 
-    return `${workedTime.hours() + (workedTime.days() * 24)}:${workedTime.minutes() < 10 ? '0' : ''}${workedTime.minutes()} h out of ${requiredHours} h`;
+    return t(
+      'workLog:text.workedAndRequiredHours',
+      {
+        requiredHours,
+        workedHours: `${workedTime.hours() + (workedTime.days() * 24)}:${workedTime.minutes() < 10 ? '0' : ''}${workedTime.minutes()}`,
+      }
+    );
   }
 
   renderWorkLogForm() {
@@ -296,36 +304,38 @@ class WorkLogCalendar extends React.Component {
   }
 
   renderDeleteWorkLogModal() {
+    const { t } = this.props;
+
     const type = this.state.showDeleteWorkLogDialogType;
-    let content = 'Loading…';
+    let content = t('general:text.loading');
 
     if (BUSINESS_TRIP_WORK_LOG === type && this.props.businessTripWorkLog) {
       content = (
         <p>
-          Type: {getTypeLabel(type)}<br />
-          Date: {toDayMonthYearFormat(this.props.businessTripWorkLog.get('date'))}<br />
-          Status: {getStatusLabel(this.props.businessTripWorkLog.get('status'))}<br />
+          {t('workLog:element.type')}: {getTypeLabel(t, type)}<br />
+          {t('workLog:element.date')}: {toDayMonthYearFormat(this.props.businessTripWorkLog.get('date'))}<br />
+          {t('workLog:element.status')}: {getStatusLabel(t, this.props.businessTripWorkLog.get('status'))}<br />
           {STATUS_REJECTED === this.props.businessTripWorkLog.get('status') && (
             <React.Fragment>
-              Reason: {this.props.businessTripWorkLog.get('rejectionMessage')}<br />
+              {t('workLog:element.rejectionMessage')}: {this.props.businessTripWorkLog.get('rejectionMessage')}<br />
             </React.Fragment>
           )}
-          Purpose: {this.props.businessTripWorkLog.get('purpose')}<br />
-          Destination: {this.props.businessTripWorkLog.get('destination')}<br />
-          Transport: {this.props.businessTripWorkLog.get('transport')}<br />
-          Expected departure: {this.props.businessTripWorkLog.get('expectedDeparture')}<br />
-          Expected arrival: {this.props.businessTripWorkLog.get('expectedArrival')}
+          {t('businessTripWorkLog:element.purpose')}: {this.props.businessTripWorkLog.get('purpose')}<br />
+          {t('businessTripWorkLog:element.destination')}: {this.props.businessTripWorkLog.get('destination')}<br />
+          {t('businessTripWorkLog:element.transport')}: {this.props.businessTripWorkLog.get('transport')}<br />
+          {t('businessTripWorkLog:element.expectedDeparture')}: {this.props.businessTripWorkLog.get('expectedDeparture')}<br />
+          {t('businessTripWorkLog:element.expectedArrival')}: {this.props.businessTripWorkLog.get('expectedArrival')}
         </p>
       );
     } else if (HOME_OFFICE_WORK_LOG === type && this.props.homeOfficeWorkLog) {
       content = (
         <p>
-          Type: {getTypeLabel(type)}<br />
-          Date: {toDayMonthYearFormat(this.props.homeOfficeWorkLog.get('date'))}<br />
-          Status: {getStatusLabel(this.props.homeOfficeWorkLog.get('status'))}<br />
+          {t('workLog:element.type')}: {getTypeLabel(t, type)}<br />
+          {t('workLog:element.date')}: {toDayMonthYearFormat(this.props.homeOfficeWorkLog.get('date'))}<br />
+          {t('workLog:element.status')}: {getStatusLabel(t, this.props.homeOfficeWorkLog.get('status'))}<br />
           {STATUS_REJECTED === this.props.homeOfficeWorkLog.get('status') && (
             <React.Fragment>
-              Reason: {this.props.homeOfficeWorkLog.get('rejectionMessage')}<br />
+              {t('workLog:element.rejectionMessage')}: {this.props.homeOfficeWorkLog.get('rejectionMessage')}<br />
             </React.Fragment>
           )}
         </p>
@@ -333,27 +343,27 @@ class WorkLogCalendar extends React.Component {
     } else if (OVERTIME_WORK_LOG === type && this.props.overtimeWorkLog) {
       content = (
         <p>
-          Type: {getTypeLabel(type)}<br />
-          Date: {toDayMonthYearFormat(this.props.overtimeWorkLog.get('date'))}<br />
-          Status: {getStatusLabel(this.props.overtimeWorkLog.get('status'))}<br />
+          {t('workLog:element.type')}: {getTypeLabel(t, type)}<br />
+          {t('workLog:element.date')}: {toDayMonthYearFormat(this.props.overtimeWorkLog.get('date'))}<br />
+          {t('workLog:element.status')}: {getStatusLabel(t, this.props.overtimeWorkLog.get('status'))}<br />
           {STATUS_REJECTED === this.props.overtimeWorkLog.get('status') && (
             <React.Fragment>
-              Reason: {this.props.overtimeWorkLog.get('rejectionMessage')}<br />
+              {t('workLog:element.rejectionMessage')}: {this.props.overtimeWorkLog.get('rejectionMessage')}<br />
             </React.Fragment>
           )}
-          Reason of overtime: {this.props.overtimeWorkLog.get('reason')}<br />
+          {t('overtimeWorkLog:element.reason')}: {this.props.overtimeWorkLog.get('reason')}<br />
         </p>
       );
     } else if (SICK_DAY_WORK_LOG === type && this.props.sickDayWorkLog) {
       content = (
         <p>
-          Type: {getTypeLabel(type)}<br />
-          Date: {toDayMonthYearFormat(this.props.sickDayWorkLog.get('date'))}<br />
-          Variant: {getSickDayVariantLabel(this.props.sickDayWorkLog.get('variant'))}<br />
+          {t('workLog:element.type')}: {getTypeLabel(t, type)}<br />
+          {t('workLog:element.date')}: {toDayMonthYearFormat(this.props.sickDayWorkLog.get('date'))}<br />
+          {t('sickDayWorkLog:element.variant')}: {getSickDayVariantLabel(t, this.props.sickDayWorkLog.get('variant'))}<br />
           {VARIANT_SICK_CHILD === this.props.sickDayWorkLog.get('variant') && (
             <React.Fragment>
-              {`Child's name: ${this.props.sickDayWorkLog.get('childName')}`}<br />
-              {`Child's date of birth: ${toDayMonthYearFormat(this.props.sickDayWorkLog.get('childDateOfBirth'))}`}<br />
+              {`${t('sickDayWorkLog:element.childName')}: ${this.props.sickDayWorkLog.get('childName')}`}<br />
+              {`${t('sickDayWorkLog:element.childDateOfBirth')}: ${toDayMonthYearFormat(this.props.sickDayWorkLog.get('childDateOfBirth'))}`}<br />
             </React.Fragment>
           )}
         </p>
@@ -361,12 +371,12 @@ class WorkLogCalendar extends React.Component {
     } else if (TIME_OFF_WORK_LOG === type && this.props.timeOffWorkLog) {
       content = (
         <p>
-          Type: {getTypeLabel(type)}<br />
-          Date: {toDayMonthYearFormat(this.props.timeOffWorkLog.get('date'))}<br />
-          Status: {getStatusLabel(this.props.timeOffWorkLog.get('status'))}<br />
+          {t('workLog:element.type')}: {getTypeLabel(t, type)}<br />
+          {t('workLog:element.date')}: {toDayMonthYearFormat(this.props.timeOffWorkLog.get('date'))}<br />
+          {t('workLog:element.status')}: {getStatusLabel(t, this.props.timeOffWorkLog.get('status'))}<br />
           {STATUS_REJECTED === this.props.timeOffWorkLog.get('status') && (
             <React.Fragment>
-              Reason: {this.props.timeOffWorkLog.get('rejectionMessage')}<br />
+              {t('workLog:element.rejectionMessage')}: {this.props.timeOffWorkLog.get('rejectionMessage')}<br />
             </React.Fragment>
           )}
         </p>
@@ -374,12 +384,12 @@ class WorkLogCalendar extends React.Component {
     } else if (VACATION_WORK_LOG === type && this.props.vacationWorkLog) {
       content = (
         <p>
-          Type: {getTypeLabel(type)}<br />
-          Date: {toDayMonthYearFormat(this.props.vacationWorkLog.get('date'))}<br />
-          Status: {getStatusLabel(this.props.vacationWorkLog.get('status'))}<br />
+          {t('workLog:element.type')}: {getTypeLabel(t, type)}<br />
+          {t('workLog:element.date')}: {toDayMonthYearFormat(this.props.vacationWorkLog.get('date'))}<br />
+          {t('workLog:element.status')}: {getStatusLabel(t, this.props.vacationWorkLog.get('status'))}<br />
           {STATUS_REJECTED === this.props.vacationWorkLog.get('status') && (
             <React.Fragment>
-              Reason: {this.props.vacationWorkLog.get('rejectionMessage')}<br />
+              {t('workLog:element.rejectionMessage')}: {this.props.vacationWorkLog.get('rejectionMessage')}<br />
             </React.Fragment>
           )}
         </p>
@@ -387,10 +397,10 @@ class WorkLogCalendar extends React.Component {
     } else if (WORK_LOG === type && this.props.workLog) {
       content = (
         <p>
-          Type: {getTypeLabel(type)}<br />
-          Date: {toDayMonthYearFormat(this.props.workLog.get('startTime'))}<br />
-          Start time: {toHourMinuteFormat(this.props.workLog.get('startTime'))}<br />
-          End time: {toHourMinuteFormat(this.props.workLog.get('endTime'))}
+          {t('workLog:element.type')}: {getTypeLabel(t, type)}<br />
+          {t('workLog:element.date')}: {toDayMonthYearFormat(this.props.workLog.get('startTime'))}<br />
+          {t('workLog:element.startTime')}: {toHourMinuteFormat(this.props.workLog.get('startTime'))}<br />
+          {t('workLog:element.endTime')}: {toHourMinuteFormat(this.props.workLog.get('endTime'))}
         </p>
       );
     }
@@ -408,7 +418,7 @@ class WorkLogCalendar extends React.Component {
           this.state.showDeleteWorkLogDialogId,
           this.state.showDeleteWorkLogDialogType
         ),
-        label: 'Delete',
+        label: t('general:action.delete'),
         loading: this.props.isPosting,
         variant: 'danger',
       });
@@ -418,7 +428,7 @@ class WorkLogCalendar extends React.Component {
       <Modal
         actions={actions}
         closeHandler={this.closeDeleteWorkLogDialog}
-        title="Work log"
+        title={t('workLog:modal.detail.title')}
       >
         {content}
       </Modal>
@@ -426,6 +436,7 @@ class WorkLogCalendar extends React.Component {
   }
 
   render() {
+    const { t } = this.props;
     let status = null;
 
     if (this.props.workMonth) {
@@ -447,7 +458,7 @@ class WorkLogCalendar extends React.Component {
                 )
               }
               icon="keyboard_arrow_left"
-              label="Previous"
+              label={t('workLog:action.previousMonth')}
               priority="primary"
             />
           </div>
@@ -470,7 +481,7 @@ class WorkLogCalendar extends React.Component {
                       this.props.markApproved(this.props.workMonth.get('id'));
                     }
                   }}
-                  label="Approve"
+                  label={t('workLog:action.approveMonth')}
                   priority="primary"
                   variant="success"
                 />
@@ -479,11 +490,11 @@ class WorkLogCalendar extends React.Component {
             {
               !this.props.supervisorView
               && status === STATUS_WAITING_FOR_APPROVAL
-              && <p>Waiting for approval</p>
+              && <p>{t('workMonth:constant.status.waitingForApproval')}</p>
             }
             {
               status === STATUS_APPROVED
-              && <p>Approved</p>
+              && <p>{t('workMonth:constant.status.approved')}</p>
             }
           </div>
           <div className={styles.navigationNext}>
@@ -497,7 +508,7 @@ class WorkLogCalendar extends React.Component {
               }
               icon="keyboard_arrow_right"
               iconPosition="after"
-              label="Next"
+              label={t('workLog:action.nextMonth')}
               priority="primary"
             />
           </div>
@@ -523,36 +534,12 @@ class WorkLogCalendar extends React.Component {
                     <td className={styles.tableCell}>
                       {day.workLogList.map((workLog) => {
                         const resolveLabel = (workLogData) => {
-                          let label = '';
-
-                          if (BUSINESS_TRIP_WORK_LOG === workLogData.type) {
-                            label = 'Business trip';
-                          } else if (HOME_OFFICE_WORK_LOG === workLogData.type) {
-                            label = 'Home office';
-                          } else if (OVERTIME_WORK_LOG === workLogData.type) {
-                            label = 'Overtime';
-                          } else if (SICK_DAY_WORK_LOG === workLogData.type) {
-                            label = 'Sick day';
-
-                            if (VARIANT_WITH_NOTE === workLogData.variant) {
-                              label += ' – With note';
-                            } else if (VARIANT_WITHOUT_NOTE === workLogData.variant) {
-                              label += ' – Without note';
-                            } else if (VARIANT_SICK_CHILD === workLogData.variant) {
-                              label += ' – Sick child';
-                            }
-                          } else if (TIME_OFF_WORK_LOG === workLogData.type) {
-                            label = 'Time off';
-                          } else if (VACATION_WORK_LOG === workLogData.type) {
-                            label = 'Vacation';
-                          } else {
-                            throw new Error(`Unknown type ${workLog.type}`);
-                          }
+                          let label = getTypeLabel(t, workLogData.type);
 
                           if (STATUS_WAITING_FOR_APPROVAL === workLogData.status) {
-                            label += ' (Waiting)';
+                            label += ` (${t('workMonth:constant.status.waiting')})`;
                           } else if (STATUS_REJECTED === workLogData.status) {
-                            label += ' (Rejected)';
+                            label += ` (${t('workMonth:constant.status.rejected')})`;
                           }
 
                           return label;
@@ -706,7 +693,7 @@ class WorkLogCalendar extends React.Component {
                             <Button
                               clickHandler={() => this.openWorkLogForm(day.date)}
                               icon="add"
-                              label="Add work log"
+                              label={t('workLog:action.addWorkLog')}
                               isLabelVisible={false}
                               priority="default"
                             />
@@ -736,7 +723,7 @@ class WorkLogCalendar extends React.Component {
                 }}
                 disabled={!this.props.workMonth || !!this.countWaitingForApprovalWorkLogs()}
                 icon="send"
-                label="Send for approval"
+                label={t('workLog:action.sendWorkMonthForApproval')}
                 loading={this.props.isPosting}
                 priority="primary"
               />
@@ -821,6 +808,7 @@ WorkLogCalendar.propTypes = {
     variant: PropTypes.string.isRequired,
   }),
   supervisorView: PropTypes.bool,
+  t: PropTypes.func.isRequired,
   timeOffWorkLog: ImmutablePropTypes.mapContains({
     date: PropTypes.object.isRequired,
     rejectionMessage: PropTypes.string,
@@ -916,4 +904,4 @@ WorkLogCalendar.propTypes = {
   })).isRequired,
 };
 
-export default WorkLogCalendar;
+export default withNamespaces()(WorkLogCalendar);

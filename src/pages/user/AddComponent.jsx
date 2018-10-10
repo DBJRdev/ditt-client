@@ -1,6 +1,7 @@
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withNamespaces } from 'react-i18next';
 import {
   Button,
   CheckboxField,
@@ -109,6 +110,7 @@ class AddComponent extends React.Component {
 
   saveHandler() {
     const formValidity = validateUser(
+      this.props.t,
       this.state.formData,
       this.props.userList.toJS(),
       this.props.config.get('supportedYear')
@@ -134,10 +136,12 @@ class AddComponent extends React.Component {
 
       this.props.addUser(formData, this.props.config)
         .then((response) => {
+          formValidity.elements.form = this.props.t('user:validation.cannotAddUser');
+
           if (response.type === ADD_USER_SUCCESS) {
             this.props.history.push(routes.userList);
           } else if (response.type === ADD_USER_FAILURE) {
-            formValidity.elements.form = 'User cannot be added.';
+            formValidity.elements.form = this.props.t('user:validation.cannotAddUser');
 
             this.setState({ formValidity });
           }
@@ -146,6 +150,8 @@ class AddComponent extends React.Component {
   }
 
   render() {
+    const { t } = this.props;
+
     const userList = this.props.userList.toJS().map(user => ({
       label: `${user.firstName} ${user.lastName}`,
       value: user.id,
@@ -155,9 +161,8 @@ class AddComponent extends React.Component {
       label: '-',
       value: null,
     });
-
     return (
-      <Layout title="Add user" loading={this.props.isFetching}>
+      <Layout title={t('user:title.addUser')} loading={this.props.isFetching}>
         <form>
           <p style={this.formErrorStyle}>
             {this.state.formValidity.elements.form}
@@ -166,7 +171,7 @@ class AddComponent extends React.Component {
             changeHandler={this.changeHandler}
             error={this.state.formValidity.elements.firstName}
             fieldId="firstName"
-            label="First name"
+            label={t('user:element.firstName')}
             required
             value={this.state.formData.firstName || ''}
           />
@@ -174,7 +179,7 @@ class AddComponent extends React.Component {
             changeHandler={this.changeHandler}
             error={this.state.formValidity.elements.lastName}
             fieldId="lastName"
-            label="Last name"
+            label={t('user:element.lastName')}
             required
             value={this.state.formData.lastName || ''}
           />
@@ -182,7 +187,7 @@ class AddComponent extends React.Component {
             changeHandler={this.changeHandler}
             error={this.state.formValidity.elements.supervisor}
             fieldId="supervisor"
-            label="Supervisor"
+            label={t('user:element.supervisor')}
             options={userList}
             value={this.state.formData.supervisor || ''}
           />
@@ -190,7 +195,7 @@ class AddComponent extends React.Component {
             changeHandler={this.changeHandler}
             error={this.state.formValidity.elements.email}
             fieldId="email"
-            label="E-mail"
+            label={t('user:element.email')}
             required
             value={this.state.formData.email || ''}
           />
@@ -198,7 +203,7 @@ class AddComponent extends React.Component {
             changeHandler={this.changeHandler}
             error={this.state.formValidity.elements.employeeId}
             fieldId="employeeId"
-            label="Employee ID"
+            label={t('user:element.employeeId')}
             required
             value={this.state.formData.employeeId || ''}
           />
@@ -206,7 +211,7 @@ class AddComponent extends React.Component {
             changeHandler={this.changeHandler}
             error={this.state.formValidity.elements.plainPassword}
             fieldId="plainPassword"
-            label="Password"
+            label={t('user:element.plainPassword')}
             type="password"
             required
             value={this.state.formData.plainPassword || ''}
@@ -216,20 +221,20 @@ class AddComponent extends React.Component {
             checked={this.state.formData.isActive}
             error={this.state.formValidity.elements.isActive}
             fieldId="isActive"
-            label="Active"
+            label={t('user:element.isActive')}
             required
           />
           <TextField
             changeHandler={this.changeHandler}
             error={this.state.formValidity.elements.vacationDays}
             fieldId="vacationDays"
-            label="Vacation days"
+            label={t('user:element.vacationDays')}
             required
             type="number"
             value={this.state.formData.vacationDays || ''}
           />
-          <h2>Average working hours per day</h2>
-          <p>Insert as amount of average working hours per day divided by {'","'}, starting with January.</p>
+          <h2>{t('user:text.averageWorkingHoursTitle')}</h2>
+          <p>{t('user:text.averageWorkingHoursDescription')}</p>
           {this.props.config && this.props.config.get('supportedYear').map(year => (
             <TextField
               changeHandler={this.changeWorkHourHandler}
@@ -251,7 +256,7 @@ class AddComponent extends React.Component {
           ))}
           <Button
             clickHandler={this.saveHandler}
-            label="Save"
+            label={t('general:action.save')}
             loading={this.props.isPosting}
             priority="primary"
           />
@@ -275,6 +280,7 @@ AddComponent.propTypes = {
   }).isRequired,
   isFetching: PropTypes.bool.isRequired,
   isPosting: PropTypes.bool.isRequired,
+  t: PropTypes.func.isRequired,
   userList: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
     firstName: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
@@ -282,4 +288,4 @@ AddComponent.propTypes = {
   })).isRequired,
 };
 
-export default AddComponent;
+export default withNamespaces()(AddComponent);

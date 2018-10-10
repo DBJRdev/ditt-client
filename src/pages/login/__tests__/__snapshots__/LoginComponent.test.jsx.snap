@@ -5,7 +5,7 @@ exports[`rendering renders correctly 1`] = `
   className="container"
 >
   <img
-    alt="DBJR Internal Time Tracking"
+    alt="layout:title"
     className="logo"
     height={141}
     src={Object {}}
@@ -17,14 +17,14 @@ exports[`rendering renders correctly 1`] = `
         replace={false}
         to="/forgot-password"
       >
-        Forgot your password?
+        login:action.forgotPassword
       </Link>
     }
     hasError={false}
     logoUrl={null}
     onChangeHandler={[Function]}
     submitHandler={[Function]}
-    title="DBJR Internal Time Tracking"
+    title="layout:title"
     usernameType="email"
   />
 </div>

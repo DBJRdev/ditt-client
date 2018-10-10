@@ -2,6 +2,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
 import jwt from 'jsonwebtoken';
+import { withNamespaces } from 'react-i18next';
 import {
   Button,
   CheckboxField,
@@ -140,6 +141,7 @@ class EditComponent extends React.Component {
 
   saveHandler() {
     const formValidity = validateUser(
+      this.props.t,
       this.state.formData,
       this.props.userList.toJS(),
       this.props.config.get('supportedYear')
@@ -168,7 +170,7 @@ class EditComponent extends React.Component {
           if (response.type === EDIT_USER_SUCCESS) {
             this.props.history.push(routes.userList);
           } else if (response.type === EDIT_USER_FAILURE) {
-            formValidity.elements.form = 'User cannot be edited.';
+            formValidity.elements.form = this.props.t('user:validation.cannotEditUser');
 
             this.setState({ formValidity });
           }
@@ -184,7 +186,7 @@ class EditComponent extends React.Component {
         if (response.type === DELETE_USER_SUCCESS) {
           this.props.history.push(routes.userList);
         } else if (response.type === DELETE_USER_FAILURE) {
-          formValidity.elements.form = 'User cannot be deleted.';
+          formValidity.elements.form = this.props.t('user:validation.cannotDeleteUser');
 
           this.setState({ formValidity });
         }
@@ -227,24 +229,27 @@ class EditComponent extends React.Component {
   }
 
   renderDeleteWorkLogModal() {
+    const { t } = this.props;
+
     return (
       <Modal
         actions={[
           {
             clickHandler: this.deleteHandler,
-            label: 'Delete',
+            label: t('general:action.delete'),
             loading: this.props.isPosting,
           },
         ]}
         closeHandler={this.closeDeleteUserDialog}
-        title="Delete user"
+        title={t('user:modal.delete.title')}
       >
-        Are you sure that you want to delete this user?
+        {t('user:modal.delete.description')}
       </Modal>
     );
   }
 
   render() {
+    const { t } = this.props;
     let loggedUserId = null;
 
     if (this.props.token) {
@@ -268,11 +273,11 @@ class EditComponent extends React.Component {
     });
 
     return (
-      <Layout title="Edit user" loading={this.props.isFetching}>
+      <Layout title={t('user:title.editUser')} loading={this.props.isFetching}>
         <div className={styles.actions}>
           <Button
             clickHandler={this.openDeleteUserDialog}
-            label="Delete"
+            label={t('user:action.deleteUser')}
             priority="primary"
             variant="danger"
           />
@@ -285,7 +290,7 @@ class EditComponent extends React.Component {
             changeHandler={this.changeHandler}
             error={this.state.formValidity.elements.firstName}
             fieldId="firstName"
-            label="First name"
+            label={t('user:element.firstName')}
             required
             value={this.state.formData.firstName || ''}
           />
@@ -293,7 +298,7 @@ class EditComponent extends React.Component {
             changeHandler={this.changeHandler}
             error={this.state.formValidity.elements.lastName}
             fieldId="lastName"
-            label="Last name"
+            label={t('user:element.lastName')}
             required
             value={this.state.formData.lastName || ''}
           />
@@ -301,7 +306,7 @@ class EditComponent extends React.Component {
             changeHandler={this.changeHandler}
             error={this.state.formValidity.elements.supervisor}
             fieldId="supervisor"
-            label="Supervisor"
+            label={t('user:element.supervisor')}
             options={userList}
             value={this.state.formData.supervisor || ''}
           />
@@ -310,7 +315,7 @@ class EditComponent extends React.Component {
             disabled={this.state.formData.id === loggedUserId}
             error={this.state.formValidity.elements.email}
             fieldId="email"
-            label="E-mail"
+            label={t('user:element.email')}
             required
             value={this.state.formData.email || ''}
           />
@@ -318,7 +323,7 @@ class EditComponent extends React.Component {
             changeHandler={this.changeHandler}
             error={this.state.formValidity.elements.employeeId}
             fieldId="employeeId"
-            label="Employee ID"
+            label={t('user:element.employeeId')}
             required
             value={this.state.formData.employeeId || ''}
           />
@@ -326,7 +331,7 @@ class EditComponent extends React.Component {
             changeHandler={this.changeHandler}
             error={this.state.formValidity.elements.plainPassword}
             fieldId="plainPassword"
-            label="Password"
+            label={t('user:element.plainPassword')}
             type="password"
             value={this.state.formData.plainPassword || ''}
           />
@@ -335,19 +340,19 @@ class EditComponent extends React.Component {
             checked={this.state.formData.isActive}
             error={this.state.formValidity.elements.isActive}
             fieldId="isActive"
-            label="Active"
+            label={t('user:element.isActive')}
             required
           />
           <TextField
             changeHandler={this.changeHandler}
             error={this.state.formValidity.elements.vacationDays}
             fieldId="vacationDays"
-            label="Vacation days"
+            label={t('user:element.vacationDays')}
             type="text"
             value={this.state.formData.vacationDays || '0'}
           />
-          <h2>Average working hours per day</h2>
-          <p>Insert as amount of average working hours per day divided by {'","'}, starting with January.</p>
+          <h2>{t('user:text.averageWorkingHoursTitle')}</h2>
+          <p>{t('user:text.averageWorkingHoursDescription')}</p>
           {this.props.config && this.props.config.get('supportedYear').map(year => (
             <TextField
               changeHandler={this.changeWorkHourHandler}
@@ -360,7 +365,7 @@ class EditComponent extends React.Component {
           ))}
           <Button
             clickHandler={this.saveHandler}
-            label="Save"
+            label={t('general:action.save')}
             loading={this.props.isPosting}
             priority="primary"
           />
@@ -394,6 +399,7 @@ EditComponent.propTypes = {
       id: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  t: PropTypes.func.isRequired,
   token: PropTypes.string.isRequired,
   user: ImmutablePropTypes.mapContains({
     email: PropTypes.string.isRequired,
@@ -420,4 +426,4 @@ EditComponent.propTypes = {
   })).isRequired,
 };
 
-export default EditComponent;
+export default withNamespaces()(EditComponent);

@@ -2,19 +2,21 @@
 
 exports[`rendering renders correctly 1`] = `
 <Connect(LayoutComponent)
-  title="Recent special approvals"
+  title="specialApproval:title.recentSpecialApprovals"
 >
   <div
     className="infoText"
   >
-    Recent special approvals page shows you a list of all work logs for current and previous month. If you want to see a list of work logs that are requested to be approved or rejected by a supervisor, go to the 
+    specialApproval:text.recentSpecialApprovalsBeginningPart
+     
     <Link
       replace={false}
       to="/special-approvals"
     >
-      special approvals
+      specialApproval:text.recentSpecialApprovals
     </Link>
-     page.
+     
+    specialApproval:text.recentSpecialApprovalsClosingPart
   </div>
   <SpecialApprovalListComponent
     businessTripWorkLog={null}
@@ -47,6 +49,7 @@ exports[`rendering renders correctly 1`] = `
         "vacationWorkLogs": Immutable.List [],
       }
     }
+    t={[Function]}
     timeOffWorkLog={null}
     token="token"
     vacationWorkLog={null}

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { withNamespaces } from 'react-i18next';
 import { NewPassword } from 'react-ui';
 import routes from '../../routes';
 import {
@@ -34,14 +35,16 @@ class NewPasswordComponent extends React.Component {
   newPasswordHandler(e) {
     if (this.state.newPassword !== this.state.newPasswordRepeat) {
       e.preventDefault();
-      this.setState({ error: 'Entered passwords are not same.' });
+      this.setState({ error: this.props.t('login:validation.passwordsNotSame') });
 
       return;
     }
 
     if (this.state.newPassword && this.state.newPassword.length < 8) {
       e.preventDefault();
-      this.setState({ error: 'Entered password has to be at least 8 characters long.' });
+      this.setState({
+        error: this.props.t('login:validation.passwordInvalidMinLength', { min: 8 }),
+      });
 
       return;
     }
@@ -61,6 +64,7 @@ class NewPasswordComponent extends React.Component {
   }
 
   render() {
+    const { t } = this.props;
     const layout = children => (
       <div className={styles.container}>
         <img
@@ -68,21 +72,21 @@ class NewPasswordComponent extends React.Component {
           width={240}
           height={141}
           className={styles.logo}
-          alt="DBJR Internal Time Tracking"
+          alt={t('layout:title')}
         />
         {children}
       </div>
     );
 
     if (this.props.isPosting) {
-      return layout('Loading…');
+      return layout(t('general:text.loading'));
     }
 
     if (this.state.isSubmitted) {
       return layout((
         <p className={styles.message}>
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          New password has been successfully set. <Link to={routes.login}>Go to login.</Link>
+          {t('login:text.passwordSet')} <Link to={routes.login}>{t('login:action.login')}</Link>
         </p>
       ));
     }
@@ -93,12 +97,12 @@ class NewPasswordComponent extends React.Component {
         footer={
           // eslint-disable-next-line jsx-a11y/anchor-is-valid
           <Link to={routes.login}>
-            Go to login
+            {t('login:action.login')}
           </Link>
         }
         submitHandler={this.newPasswordHandler}
         onChangeHandler={this.onChangeHandler}
-        title="DBJR Internal Time Tracking"
+        title={t('layout:title')}
         usernameType="email"
       />
     ));
@@ -113,6 +117,7 @@ NewPasswordComponent.propTypes = {
     }).isRequired,
   }).isRequired,
   setNewPassword: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired,
 };
 
-export default NewPasswordComponent;
+export default withNamespaces()(NewPasswordComponent);

@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { I18nextProvider } from 'react-i18next';
 import { Provider } from 'react-redux';
 import {
   Route,
@@ -35,84 +36,87 @@ import {
   EditContainer as EditUserPage,
   ListContainer as UserListPage,
 } from './pages/user';
+import translator from './translator';
 
 ReactDOM.render(
   (
     <Provider store={store}>
-      <Router history={history} onUpdate={() => window.scrollTo(0, 0)}>
-        <Switch>
-          <AuthorizedRoute
-            exact
-            path={routes.index}
-            roles={[ROLE_EMPLOYEE]}
-            component={IndexPage}
-          />
-          <AuthorizedRoute
-            exact
-            path={routes.recentSpecialApprovalList}
-            roles={[ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]}
-            component={RecentSpecialApprovalListPage}
-          />
-          <AuthorizedRoute
-            exact
-            path={routes.specialApprovalList}
-            roles={[ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]}
-            component={SpecialApprovalListPage}
-          />
-          <AuthorizedRoute
-            exact
-            path={routes.supervisedUserWorkLog}
-            roles={[ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]}
-            component={SupervisedUserWorkLogPage}
-          />
-          <AuthorizedRoute
-            exact
-            path={routes.supervisedUserWorkLogWithDate}
-            roles={[ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]}
-            component={SupervisedUserWorkLogPage}
-          />
-          <AuthorizedRoute
-            exact
-            path={routes.supervisedUserList}
-            roles={[ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]}
-            component={SupervisedUserListPage}
-          />
-          <AuthorizedRoute
-            exact
-            path={routes.addUser}
-            roles={[ROLE_ADMIN, ROLE_SUPER_ADMIN]}
-            component={AddUserPage}
-          />
-          <AuthorizedRoute
-            exact
-            path={routes.editUser}
-            roles={[ROLE_ADMIN, ROLE_SUPER_ADMIN]}
-            component={EditUserPage}
-          />
-          <AuthorizedRoute
-            exact
-            path={routes.userList}
-            roles={[ROLE_ADMIN, ROLE_SUPER_ADMIN]}
-            component={UserListPage}
-          />
-          <Route
-            exact
-            path={routes.login}
-            component={LoginPage}
-          />
-          <Route
-            exact
-            path={routes.forgotPassword}
-            component={ForgotPasswordPage}
-          />
-          <Route
-            exact
-            path={routes.newPassword}
-            component={NewPasswordPage}
-          />
-          <Route component={ErrorPage} />
-        </Switch>
-      </Router>
+      <I18nextProvider i18n={translator}>
+        <Router history={history} onUpdate={() => window.scrollTo(0, 0)}>
+          <Switch>
+            <AuthorizedRoute
+              exact
+              path={routes.index}
+              roles={[ROLE_EMPLOYEE]}
+              component={IndexPage}
+            />
+            <AuthorizedRoute
+              exact
+              path={routes.recentSpecialApprovalList}
+              roles={[ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]}
+              component={RecentSpecialApprovalListPage}
+            />
+            <AuthorizedRoute
+              exact
+              path={routes.specialApprovalList}
+              roles={[ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]}
+              component={SpecialApprovalListPage}
+            />
+            <AuthorizedRoute
+              exact
+              path={routes.supervisedUserWorkLog}
+              roles={[ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]}
+              component={SupervisedUserWorkLogPage}
+            />
+            <AuthorizedRoute
+              exact
+              path={routes.supervisedUserWorkLogWithDate}
+              roles={[ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]}
+              component={SupervisedUserWorkLogPage}
+            />
+            <AuthorizedRoute
+              exact
+              path={routes.supervisedUserList}
+              roles={[ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]}
+              component={SupervisedUserListPage}
+            />
+            <AuthorizedRoute
+              exact
+              path={routes.addUser}
+              roles={[ROLE_ADMIN, ROLE_SUPER_ADMIN]}
+              component={AddUserPage}
+            />
+            <AuthorizedRoute
+              exact
+              path={routes.editUser}
+              roles={[ROLE_ADMIN, ROLE_SUPER_ADMIN]}
+              component={EditUserPage}
+            />
+            <AuthorizedRoute
+              exact
+              path={routes.userList}
+              roles={[ROLE_ADMIN, ROLE_SUPER_ADMIN]}
+              component={UserListPage}
+            />
+            <Route
+              exact
+              path={routes.login}
+              component={LoginPage}
+            />
+            <Route
+              exact
+              path={routes.forgotPassword}
+              component={ForgotPasswordPage}
+            />
+            <Route
+              exact
+              path={routes.newPassword}
+              component={NewPasswordPage}
+            />
+            <Route component={ErrorPage} />
+          </Switch>
+        </Router>
+      </I18nextProvider>
     </Provider>
   ),
   document.getElementById('app')

@@ -3,7 +3,7 @@
 exports[`rendering renders correctly 1`] = `
 <Connect(LayoutComponent)
   loading={false}
-  title="Users"
+  title="user:title.users"
 >
   <div
     className="actions"
@@ -15,7 +15,7 @@ exports[`rendering renders correctly 1`] = `
       icon={null}
       iconPosition="before"
       isLabelVisible={true}
-      label="Add user"
+      label="user:action.addUser"
       loading={false}
       priority="primary"
       size="medium"
@@ -29,25 +29,25 @@ exports[`rendering renders correctly 1`] = `
         Object {
           "format": [Function],
           "isSortable": true,
-          "label": "Name",
+          "label": "user:element.name",
           "name": "lastName",
         },
         Object {
           "format": [Function],
           "isSortable": true,
-          "label": "Supervisor",
+          "label": "user:element.supervisor",
           "name": "supervisor.lastName",
         },
         Object {
           "format": [Function],
           "isSortable": false,
-          "label": "Worked / Required hours",
+          "label": "user:element.workedAndRequiredHours",
           "name": "requiredWorkedHours",
         },
         Object {
           "format": [Function],
           "isSortable": false,
-          "label": "Vacation days used",
+          "label": "user:element.vacationDaysUsed",
           "name": "vacationDaysUsed",
         },
       ]

@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withNamespaces } from 'react-i18next';
 import {
   Button,
   Table,
@@ -33,6 +34,7 @@ class ListComponent extends React.Component {
   }
 
   render() {
+    const { t } = this.props;
     const year = moment().year();
     const columns = [
       {
@@ -43,7 +45,7 @@ class ListComponent extends React.Component {
           </Link>
         ),
         isSortable: true,
-        label: 'Name',
+        label: t('user:element.name'),
         name: 'lastName',
       },
       {
@@ -55,7 +57,7 @@ class ListComponent extends React.Component {
           return '-';
         },
         isSortable: true,
-        label: 'Supervisor',
+        label: t('user:element.supervisor'),
         name: 'supervisor.lastName',
       },
       {
@@ -71,7 +73,7 @@ class ListComponent extends React.Component {
           return '0/0';
         },
         isSortable: false,
-        label: 'Worked / Required hours',
+        label: t('user:element.workedAndRequiredHours'),
         name: 'requiredWorkedHours',
       },
       {
@@ -87,7 +89,7 @@ class ListComponent extends React.Component {
           return `0/${row.vacationDays}`;
         },
         isSortable: false,
-        label: 'Vacation days used',
+        label: t('user:element.vacationDaysUsed'),
         name: 'vacationDaysUsed',
       },
     ];
@@ -103,18 +105,18 @@ class ListComponent extends React.Component {
               Show work log
             </Link>
           ),
-          label: 'Show work log',
+          label: t('user:action.showWorkLog'),
           name: 'showWorkLog',
         });
       }
     }
 
     return (
-      <Layout title="Users" loading={this.props.isFetching}>
+      <Layout title={t('user:title.users')} loading={this.props.isFetching}>
         <div className={styles.actions}>
           <Button
             clickHandler={() => this.props.history.push(routes.addUser)}
-            label="Add user"
+            label={t('user:action.addUser')}
             priority="primary"
           />
         </div>
@@ -152,6 +154,7 @@ ListComponent.propTypes = {
     push: PropTypes.func.isRequired,
   }).isRequired,
   isFetching: PropTypes.bool.isRequired,
+  t: PropTypes.func.isRequired,
   token: PropTypes.string.isRequired,
   userList: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
     firstName: PropTypes.string.isRequired,
@@ -165,4 +168,4 @@ ListComponent.propTypes = {
   })).isRequired,
 };
 
-export default ListComponent;
+export default withNamespaces()(ListComponent);

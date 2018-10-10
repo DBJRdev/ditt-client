@@ -1,6 +1,7 @@
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withNamespaces } from 'react-i18next';
 import WorkLogCalendar from '../../components/WorkLogCalendar';
 import Layout from '../../components/Layout';
 import {
@@ -59,7 +60,7 @@ class WorkLogComponent extends React.Component {
 
   render() {
     return (
-      <Layout title="Work logs" loading={this.props.isFetching}>
+      <Layout title={this.props.t('supervisedUser:title.workLogs')} loading={this.props.isFetching}>
         {this.props.config && (
           <WorkLogCalendar
             addBusinessTripWorkLog={() => {}}
@@ -169,6 +170,7 @@ WorkLogComponent.propTypes = {
     date: PropTypes.object.isRequired,
     variant: PropTypes.string.isRequired,
   }),
+  t: PropTypes.func.isRequired,
   timeOffWorkLog: ImmutablePropTypes.mapContains({
     date: PropTypes.object.isRequired,
     rejectionMessage: PropTypes.string,
@@ -210,4 +212,4 @@ WorkLogComponent.propTypes = {
   })).isRequired,
 };
 
-export default WorkLogComponent;
+export default withNamespaces()(WorkLogComponent);

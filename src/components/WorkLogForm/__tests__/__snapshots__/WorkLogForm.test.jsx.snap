@@ -6,13 +6,13 @@ exports[`rendering renders correctly with all props 1`] = `
     Array [
       Object {
         "clickHandler": [Function],
-        "label": "Save",
+        "label": "general:action.save",
         "loading": false,
       },
     ]
   }
   closeHandler={[Function]}
-  title="Add work log"
+  title="workLog:modal.add.title"
 >
   <p
     style={
@@ -50,7 +50,7 @@ exports[`rendering renders correctly with all props 1`] = `
             }
           }
         >
-          You have already sent this work month for approval. If you create new work log, you will have to send the work month for approval again.
+          workLog:modal.add.alreadySendForApprovalDescription
         </p>
       </div>
     </fieldset>
@@ -66,7 +66,7 @@ exports[`rendering renders correctly with all props 1`] = `
       }
     >
       <legend>
-        Date
+        workLog:element.date
       </legend>
       <div
         style={
@@ -82,7 +82,7 @@ exports[`rendering renders correctly with all props 1`] = `
           error={null}
           fieldId="date"
           isLabelVisible={false}
-          label="Date"
+          label="workLog:element.date"
           placeholder={null}
           required={false}
           type="text"
@@ -102,7 +102,7 @@ exports[`rendering renders correctly with all props 1`] = `
       }
     >
       <legend>
-        Type
+        workLog:element.type
       </legend>
       <div
         style={
@@ -118,35 +118,35 @@ exports[`rendering renders correctly with all props 1`] = `
           error={null}
           fieldId="type"
           isLabelVisible={false}
-          label="Type"
+          label="workLog:element.type"
           options={
             Array [
               Object {
-                "label": "Work log",
+                "label": "workMonth:constant.type.workLog",
                 "value": "WORK_LOG",
               },
               Object {
-                "label": "Business trip",
+                "label": "workMonth:constant.type.businessTripWorkLog",
                 "value": "BUSINESS_TRIP_WORK_LOG",
               },
               Object {
-                "label": "Home office",
+                "label": "workMonth:constant.type.homeOfficeWorkLog",
                 "value": "HOME_OFFICE_WORK_LOG",
               },
               Object {
-                "label": "Overtime",
+                "label": "workMonth:constant.type.overtimeWorkLog",
                 "value": "OVERTIME_WORK_LOG",
               },
               Object {
-                "label": "Sick day",
+                "label": "workMonth:constant.type.sickDayWorkLog",
                 "value": "SICK_DAY_WORK_LOG",
               },
               Object {
-                "label": "Time off",
+                "label": "workMonth:constant.type.timeOffWorkLog",
                 "value": "TIME_OFF_WORK_LOG",
               },
               Object {
-                "label": "Vacation",
+                "label": "workMonth:constant.type.vacationWorkLog",
                 "value": "VACATION_WORK_LOG",
               },
             ]
@@ -169,7 +169,7 @@ exports[`rendering renders correctly with all props 1`] = `
         }
       >
         <legend>
-          Start time:
+          workLog:element.startTime
         </legend>
         <div>
           <div
@@ -187,7 +187,7 @@ exports[`rendering renders correctly with all props 1`] = `
               error={null}
               fieldId="startHour"
               isLabelVisible={false}
-              label="Start hour"
+              label="workLog:element.startHour"
               placeholder={null}
               required={false}
               type="text"
@@ -209,7 +209,7 @@ exports[`rendering renders correctly with all props 1`] = `
               error={null}
               fieldId="startMinute"
               isLabelVisible={false}
-              label="Start minute"
+              label="workLog:element.startMinute"
               placeholder={null}
               required={false}
               type="text"
@@ -231,7 +231,7 @@ exports[`rendering renders correctly with all props 1`] = `
         }
       >
         <legend>
-          End time:
+          workLog:element.endTime
         </legend>
         <div>
           <div
@@ -248,7 +248,7 @@ exports[`rendering renders correctly with all props 1`] = `
               error={null}
               fieldId="endHour"
               isLabelVisible={false}
-              label="End hour"
+              label="workLog:element.endHour"
               placeholder={null}
               required={false}
               type="text"
@@ -270,7 +270,7 @@ exports[`rendering renders correctly with all props 1`] = `
               error={null}
               fieldId="endMinute"
               isLabelVisible={false}
-              label="End minute"
+              label="workLog:element.endMinute"
               placeholder={null}
               required={false}
               type="text"
@@ -291,13 +291,13 @@ exports[`rendering renders correctly with mandatory props 1`] = `
     Array [
       Object {
         "clickHandler": [Function],
-        "label": "Save",
+        "label": "general:action.save",
         "loading": false,
       },
     ]
   }
   closeHandler={[Function]}
-  title="Add work log"
+  title="workLog:modal.add.title"
 >
   <p
     style={
@@ -320,7 +320,7 @@ exports[`rendering renders correctly with mandatory props 1`] = `
       }
     >
       <legend>
-        Date
+        workLog:element.date
       </legend>
       <div
         style={
@@ -336,7 +336,7 @@ exports[`rendering renders correctly with mandatory props 1`] = `
           error={null}
           fieldId="date"
           isLabelVisible={false}
-          label="Date"
+          label="workLog:element.date"
           placeholder={null}
           required={false}
           type="text"
@@ -356,7 +356,7 @@ exports[`rendering renders correctly with mandatory props 1`] = `
       }
     >
       <legend>
-        Type
+        workLog:element.type
       </legend>
       <div
         style={
@@ -372,35 +372,35 @@ exports[`rendering renders correctly with mandatory props 1`] = `
           error={null}
           fieldId="type"
           isLabelVisible={false}
-          label="Type"
+          label="workLog:element.type"
           options={
             Array [
               Object {
-                "label": "Work log",
+                "label": "workMonth:constant.type.workLog",
                 "value": "WORK_LOG",
               },
               Object {
-                "label": "Business trip",
+                "label": "workMonth:constant.type.businessTripWorkLog",
                 "value": "BUSINESS_TRIP_WORK_LOG",
               },
               Object {
-                "label": "Home office",
+                "label": "workMonth:constant.type.homeOfficeWorkLog",
                 "value": "HOME_OFFICE_WORK_LOG",
               },
               Object {
-                "label": "Overtime",
+                "label": "workMonth:constant.type.overtimeWorkLog",
                 "value": "OVERTIME_WORK_LOG",
               },
               Object {
-                "label": "Sick day",
+                "label": "workMonth:constant.type.sickDayWorkLog",
                 "value": "SICK_DAY_WORK_LOG",
               },
               Object {
-                "label": "Time off",
+                "label": "workMonth:constant.type.timeOffWorkLog",
                 "value": "TIME_OFF_WORK_LOG",
               },
               Object {
-                "label": "Vacation",
+                "label": "workMonth:constant.type.vacationWorkLog",
                 "value": "VACATION_WORK_LOG",
               },
             ]
@@ -423,7 +423,7 @@ exports[`rendering renders correctly with mandatory props 1`] = `
         }
       >
         <legend>
-          Start time:
+          workLog:element.startTime
         </legend>
         <div>
           <div
@@ -441,7 +441,7 @@ exports[`rendering renders correctly with mandatory props 1`] = `
               error={null}
               fieldId="startHour"
               isLabelVisible={false}
-              label="Start hour"
+              label="workLog:element.startHour"
               placeholder={null}
               required={false}
               type="text"
@@ -463,7 +463,7 @@ exports[`rendering renders correctly with mandatory props 1`] = `
               error={null}
               fieldId="startMinute"
               isLabelVisible={false}
-              label="Start minute"
+              label="workLog:element.startMinute"
               placeholder={null}
               required={false}
               type="text"
@@ -485,7 +485,7 @@ exports[`rendering renders correctly with mandatory props 1`] = `
         }
       >
         <legend>
-          End time:
+          workLog:element.endTime
         </legend>
         <div>
           <div
@@ -502,7 +502,7 @@ exports[`rendering renders correctly with mandatory props 1`] = `
               error={null}
               fieldId="endHour"
               isLabelVisible={false}
-              label="End hour"
+              label="workLog:element.endHour"
               placeholder={null}
               required={false}
               type="text"
@@ -524,7 +524,7 @@ exports[`rendering renders correctly with mandatory props 1`] = `
               error={null}
               fieldId="endMinute"
               isLabelVisible={false}
-              label="End minute"
+              label="workLog:element.endMinute"
               placeholder={null}
               required={false}
               type="text"

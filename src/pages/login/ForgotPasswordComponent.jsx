@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { withNamespaces } from 'react-i18next';
 import { ForgotPassword } from 'react-ui';
 import {
   RESET_PASSWORD_FAILURE,
@@ -48,6 +49,7 @@ class ForgotPasswordComponent extends React.Component {
   }
 
   render() {
+    const { t } = this.props;
     const layout = children => (
       <div className={styles.container}>
         <img
@@ -55,21 +57,20 @@ class ForgotPasswordComponent extends React.Component {
           width={240}
           height={141}
           className={styles.logo}
-          alt="DBJR Internal Time Tracking"
+          alt={t('layout:title')}
         />
         {children}
       </div>
     );
 
     if (this.props.isPosting) {
-      return layout('Loading…');
+      return layout(t('general:text.loading'));
     }
 
     if (this.state.isSubmitted) {
       return layout((
         <p className={styles.message}>
-          Password has been successfully reset.
-          Click on a link in e-mail to be able to set a new password.
+          {t('login:text.passwordReset')}
         </p>
       ));
     }
@@ -80,12 +81,12 @@ class ForgotPasswordComponent extends React.Component {
         footer={
           // eslint-disable-next-line jsx-a11y/anchor-is-valid
           <Link to={routes.login}>
-            Go to login
+            {t('login:action.login')}
           </Link>
         }
         submitHandler={this.resetPasswordHandler}
         onChangeHandler={this.onChangeHandler}
-        title="DBJR Internal Time Tracking"
+        title={t('layout:title')}
         usernameType="email"
       />
     ));
@@ -95,6 +96,7 @@ class ForgotPasswordComponent extends React.Component {
 ForgotPasswordComponent.propTypes = {
   isPosting: PropTypes.bool.isRequired,
   resetPassword: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired,
 };
 
-export default ForgotPasswordComponent;
+export default withNamespaces()(ForgotPasswordComponent);

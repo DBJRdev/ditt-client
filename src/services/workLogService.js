@@ -18,15 +18,15 @@ import {
   VARIANT_WITHOUT_NOTE,
 } from '../resources/sickDayWorkLog';
 
-export const getSickDayVariantLabel = (sickDayVariant) => {
+export const getSickDayVariantLabel = (t, sickDayVariant) => {
   let sickDayVariantLabel = '';
 
   if (VARIANT_WITH_NOTE === sickDayVariant) {
-    sickDayVariantLabel = 'With note';
+    sickDayVariantLabel = t('sickDayWorkLog:constant.variant.withNote');
   } else if (VARIANT_WITHOUT_NOTE === sickDayVariant) {
-    sickDayVariantLabel = 'Without note';
+    sickDayVariantLabel = t('sickDayWorkLog:constant.variant.withoutNote');
   } else if (VARIANT_SICK_CHILD === sickDayVariant) {
-    sickDayVariantLabel = 'Sick child';
+    sickDayVariantLabel = t('sickDayWorkLog:constant.variant.sickChild');
   } else {
     throw new Error(`Unknown variant ${sickDayVariant}`);
   }
@@ -34,17 +34,17 @@ export const getSickDayVariantLabel = (sickDayVariant) => {
   return sickDayVariantLabel;
 };
 
-export const getStatusLabel = (status) => {
+export const getStatusLabel = (t, status) => {
   let statusLabel = '';
 
   if (STATUS_APPROVED === status) {
-    statusLabel = 'Approved';
+    statusLabel = t('workMonth:constant.status.approved');
   } else if (STATUS_OPENED === status) {
-    statusLabel = 'Opened';
+    statusLabel = t('workMonth:constant.status.opened');
   } else if (STATUS_REJECTED === status) {
-    statusLabel = 'Rejected';
+    statusLabel = t('workMonth:constant.status.rejected');
   } else if (STATUS_WAITING_FOR_APPROVAL === status) {
-    statusLabel = 'Waiting for approval';
+    statusLabel = t('workMonth:constant.status.waitingForApproval');
   } else {
     throw new Error(`Unknown status ${status}`);
   }
@@ -52,23 +52,23 @@ export const getStatusLabel = (status) => {
   return statusLabel;
 };
 
-export const getTypeLabel = (type) => {
+export const getTypeLabel = (t, type) => {
   let typeLabel = '';
 
   if (BUSINESS_TRIP_WORK_LOG === type) {
-    typeLabel = 'Business trip';
+    typeLabel = t('workMonth:constant.type.businessTripWorkLog');
   } else if (HOME_OFFICE_WORK_LOG === type) {
-    typeLabel = 'Home office';
+    typeLabel = t('workMonth:constant.type.homeOfficeWorkLog');
   } else if (OVERTIME_WORK_LOG === type) {
-    typeLabel = 'Overtime';
+    typeLabel = t('workMonth:constant.type.overtimeWorkLog');
   } else if (SICK_DAY_WORK_LOG === type) {
-    typeLabel = 'Sick day';
+    typeLabel = t('workMonth:constant.type.sickDayWorkLog');
   } else if (TIME_OFF_WORK_LOG === type) {
-    typeLabel = 'Time off';
+    typeLabel = t('workMonth:constant.type.timeOffWorkLog');
   } else if (VACATION_WORK_LOG === type) {
-    typeLabel = 'Vacation';
+    typeLabel = t('workMonth:constant.type.vacationWorkLog');
   } else if (WORK_LOG === type) {
-    typeLabel = 'Work log';
+    typeLabel = t('workMonth:constant.type.workLog');
   } else {
     throw new Error(`Unknown type ${type}`);
   }

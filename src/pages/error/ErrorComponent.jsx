@@ -1,10 +1,16 @@
+import PropTypes from 'prop-types';
 import React from 'react';
+import { withNamespaces } from 'react-i18next';
 
-const ErrorComponent = () => (
+const ErrorComponent = props => (
   <div>
-    <h1>Error</h1>
-    <p>Page not found</p>
+    <h1>{props.t('error:title')}</h1>
+    <p>{props.t('error:description')}</p>
   </div>
 );
 
-export default ErrorComponent;
+ErrorComponent.propTypes = {
+  t: PropTypes.func.isRequired,
+};
+
+export default withNamespaces()(ErrorComponent);

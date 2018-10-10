@@ -3,7 +3,7 @@
 exports[`rendering renders correctly 1`] = `
 <Connect(LayoutComponent)
   loading={false}
-  title="Add user"
+  title="user:title.addUser"
 >
   <form>
     <p
@@ -21,7 +21,7 @@ exports[`rendering renders correctly 1`] = `
       error={null}
       fieldId="firstName"
       isLabelVisible={true}
-      label="First name"
+      label="user:element.firstName"
       placeholder={null}
       required={true}
       type="text"
@@ -34,7 +34,7 @@ exports[`rendering renders correctly 1`] = `
       error={null}
       fieldId="lastName"
       isLabelVisible={true}
-      label="Last name"
+      label="user:element.lastName"
       placeholder={null}
       required={true}
       type="text"
@@ -47,7 +47,7 @@ exports[`rendering renders correctly 1`] = `
       error={null}
       fieldId="supervisor"
       isLabelVisible={true}
-      label="Supervisor"
+      label="user:element.supervisor"
       options={
         Array [
           Object {
@@ -66,7 +66,7 @@ exports[`rendering renders correctly 1`] = `
       error={null}
       fieldId="email"
       isLabelVisible={true}
-      label="E-mail"
+      label="user:element.email"
       placeholder={null}
       required={true}
       type="text"
@@ -79,7 +79,7 @@ exports[`rendering renders correctly 1`] = `
       error={null}
       fieldId="employeeId"
       isLabelVisible={true}
-      label="Employee ID"
+      label="user:element.employeeId"
       placeholder={null}
       required={true}
       type="text"
@@ -92,7 +92,7 @@ exports[`rendering renders correctly 1`] = `
       error={null}
       fieldId="plainPassword"
       isLabelVisible={true}
-      label="Password"
+      label="user:element.plainPassword"
       placeholder={null}
       required={true}
       type="password"
@@ -105,7 +105,7 @@ exports[`rendering renders correctly 1`] = `
       disabled={false}
       error={null}
       fieldId="isActive"
-      label="Active"
+      label="user:element.isActive"
       required={true}
     />
     <TextField
@@ -115,19 +115,17 @@ exports[`rendering renders correctly 1`] = `
       error={null}
       fieldId="vacationDays"
       isLabelVisible={true}
-      label="Vacation days"
+      label="user:element.vacationDays"
       placeholder={null}
       required={true}
       type="number"
       value=""
     />
     <h2>
-      Average working hours per day
+      user:text.averageWorkingHoursTitle
     </h2>
     <p>
-      Insert as amount of average working hours per day divided by 
-      ","
-      , starting with January.
+      user:text.averageWorkingHoursDescription
     </p>
     <TextField
       changeHandler={[Function]}
@@ -188,7 +186,7 @@ exports[`rendering renders correctly 1`] = `
       icon={null}
       iconPosition="before"
       isLabelVisible={true}
-      label="Save"
+      label="general:action.save"
       loading={false}
       priority="primary"
       size="medium"

@@ -3,10 +3,10 @@
 exports[`rendering renders correctly 1`] = `
 <div>
   <h1>
-    Error
+    error:title
   </h1>
   <p>
-    Page not found
+    error:description
   </p>
 </div>
 `;

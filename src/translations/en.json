@@ -1,0 +1,232 @@
+{
+  "businessTripWorkLog": {
+    "element": {
+      "purpose": "Purpose",
+      "destination": "Destination",
+      "transport": "Transport",
+      "expectedDeparture": "Expected departure",
+      "expectedArrival": "Expected arrival"
+    }
+  },
+  "error": {
+    "description": "Error",
+    "title": "Page not found"
+  },
+  "homeOfficeWorkLog": {},
+  "general": {
+    "action": {
+      "approve": "Approve",
+      "reject": "Reject",
+      "delete": "Delete",
+      "save": "Save",
+      "yes": "Yes",
+      "no": "No"
+    },
+    "element": {
+      "actions": "Actions"
+    },
+    "text": {
+      "loading": "Loading…"
+    },
+    "validation": {
+      "invalidDate": "This is not a valid date.",
+      "invalidEmail": "This is not a valid e-mail address.",
+      "invalidNumber": "This is not a number.",
+      "invalidLength": "It must be long between {{ min }} and {{ max }} characters.",
+      "invalidMinLength": "It must be at least {{ min }} characters long.",
+      "invalidMinValue": "It must be at least {{ min }}.",
+      "notUniqueEmail": "This e-mail is already in use.",
+      "required": "This field is required."
+    }
+  },
+  "layout": {
+    "menu": {
+      "workLogs": "Work logs",
+      "specialApprovals": "Special approvals",
+      "supervisedUsers": "Supervised users",
+      "users": "Users",
+      "logout": "Logout {{ name }}"
+    },
+    "title": "DBJR Internal Time Tracking"
+  },
+  "login": {
+    "action": {
+      "login": "Go to login",
+      "forgotPassword": "Forgot your password?"
+    },
+    "text": {
+      "passwordReset": "Password has been successfully reset. Click on a link in e-mail to be able to set a new password.",
+      "passwordSet": "New password has been successfully set."
+    },
+    "validation": {
+      "passwordsNotSame": "Entered passwords are not same.",
+      "passwordInvalidMinLength": "Entered password has to be at least {{ min }} characters long."
+    }
+  },
+  "overtimeWorkLog": {
+    "element": {
+      "reason": "Reason of overtime"
+    }
+  },
+  "sickDayWorkLog": {
+    "constant": {
+      "variant": {
+        "withNote": "With note",
+        "withoutNote": "Without note",
+        "sickChild": "Sick child"
+      }
+    },
+    "element": {
+      "variant": "Variant",
+      "childName": "Child's name",
+      "childDateOfBirth": "Child's date of birth"
+    }
+  },
+  "supervisedUser": {
+    "element": {
+      "needApproval": "Need approval",
+      "showWorkLog": "Show work log"
+    },
+    "title": {
+      "supervisedUsers": "Supervised users"
+    },
+    "text": {
+      "emptyList": "You do not seem to be supervising anyone. Please contact HR in case you think this is a mistake."
+    }
+  },
+  "specialApproval": {
+    "action": {
+      "approveWorkLog": "Approve",
+      "rejectWorkLog": "Reject",
+      "workLogDetail": "Detail"
+    },
+    "modal": {
+      "reject": {
+        "title": "Reject",
+        "description": "Are you sure your want to reject this application?"
+      }
+    },
+    "title": {
+      "specialApprovals": "Special approvals",
+      "recentSpecialApprovals": "Recent special approvals"
+    },
+    "text": {
+      "emptyList": "You do not seem to have any pending special approvals.",
+      "specialApprovalsBeginningPart": "Special approvals page shows you a list of work logs that are requested to be approved or rejected by a supervisor. If you want to see a list of all work logs for current and previous month, go to the",
+      "specialApprovalsButtonPart": "recent special approvals",
+      "specialApprovalsClosingPart": "page.",
+      "recentSpecialApprovalsBeginningPart": "Recent special approvals page shows you a list of all work logs for current and previous month. If you want to see a list of work logs that are requested to be approved or rejected by a supervisor, go to the",
+      "recentSpecialApprovals": "special approvals",
+      "recentSpecialApprovalsClosingPart": "page."
+    },
+    "validation": {
+      "cannotRejectWorkLog": "Work log cannot be rejected."
+    }
+  },
+  "timeOffWorkLog": {},
+  "user": {
+    "action": {
+      "addUser": "Add user",
+      "deleteUser": "Delete user",
+      "showWorkLog": "Show work log"
+    },
+    "element": {
+      "email": "E-mail",
+      "employeeId": "Employee ID",
+      "firstName": "First name",
+      "isActive": "Active",
+      "lastName": "Last name",
+      "name": "Name",
+      "plainPassword": "Password",
+      "supervisor": "Supervisor",
+      "vacationDays": "Vacation days",
+      "vacationDaysUsed": "Vacation days used",
+      "workedAndRequiredHours": "Worked / Required hours"
+    },
+    "modal": {
+      "delete": {
+        "description": "Are you sure that you want to delete this user?",
+        "title": "Delete user"
+      }
+    },
+    "text": {
+      "averageWorkingHoursDescription": "Insert as amount of average working hours per day divided by \",\" starting with January.",
+      "averageWorkingHoursTitle": "Average working hours per day"
+    },
+    "title": {
+      "addUser": "Add user",
+      "editUser": "Edit user",
+      "users": "Users"
+    },
+    "validation": {
+      "cannotAddUser": "User cannot be added.",
+      "cannotDeleteUser": "User cannot be deleted.",
+      "cannotEditUser": "User cannot be edited.",
+      "invalidWorkHours": "This field requires 12 values separated by comma.",
+      "invalidWorkHoursMonth": "Value for {{ month }} is not a number."
+    }
+  },
+  "vacationWorkLog": {},
+  "workLog": {
+    "action": {
+      "addWorkLog": "Add work log",
+      "approveMonth": "Approve",
+      "nextMonth": "Next",
+      "previousMonth": "Previous",
+      "sendWorkMonthForApproval": "Send for approval"
+    },
+    "element": {
+      "type": "Type",
+      "date": "Date",
+      "status": "Status",
+      "rejectionMessage": "Reason",
+      "startTime": "Start time",
+      "startHour": "Start hour",
+      "startMinute": "Start minute",
+      "endHour": "End hour",
+      "endMinute": "End minute",
+      "endTime": "End time"
+    },
+    "modal": {
+      "add": {
+        "title": "Add work log",
+        "alreadySendForApprovalDescription": "You have already sent this work month for approval. If you create new work log, you will have to send the work month for approval again."
+      },
+      "detail": {
+        "title": "Work log"
+      }
+    },
+    "text": {
+      "workedAndRequiredHours": "{{ workedHours }} h out of {{ requiredHours }} h"
+    },
+    "title": {
+      "workLogs": "Work logs"
+    },
+    "validation": {
+      "invalidType": "Invalid type.",
+      "invalidHour": "Invalid hour.",
+      "invalidMinute": "Invalid minute.",
+      "workLogOverlaps": "Entered worklog overlaps existing one."
+    }
+  },
+  "workMonth": {
+    "constant": {
+      "status": {
+        "approved": "Approved",
+        "opened": "Opened",
+        "rejected": "Rejected",
+        "waiting": "Waiting",
+        "waitingForApproval": "Waiting for approval"
+      },
+      "type": {
+        "businessTripWorkLog": "Business trip",
+        "homeOfficeWorkLog": "Home office",
+        "overtimeWorkLog": "Overtime",
+        "sickDayWorkLog": "Sick day",
+        "timeOffWorkLog": "Time off",
+        "vacationWorkLog": "Vacation",
+        "workLog": "Work log"
+      }
+    }
+  }
+}

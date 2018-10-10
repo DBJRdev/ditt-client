@@ -3,7 +3,7 @@
 exports[`rendering renders correctly 1`] = `
 <Connect(LayoutComponent)
   loading={false}
-  title="Work logs"
+  title="workLogs:title.workLogs"
 >
   <WorkLogCalendar
     addBusinessTripWorkLog={[Function]}
@@ -64,6 +64,7 @@ exports[`rendering renders correctly 1`] = `
     selectedDate={"2018-01-01T00:00:00.000Z"}
     sickDayWorkLog={null}
     supervisorView={false}
+    t={[Function]}
     timeOffWorkLog={null}
     vacationWorkLog={null}
     workHoursList={Immutable.List []}

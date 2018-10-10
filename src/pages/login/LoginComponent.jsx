@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import jwt from 'jsonwebtoken';
 import { Link } from 'react-router-dom';
+import { withNamespaces } from 'react-i18next';
 import { Login } from 'react-ui';
 import {
   ROLE_ADMIN,
@@ -46,6 +47,8 @@ class LoginComponent extends React.Component {
   }
 
   render() {
+    const { t } = this.props;
+
     return (
       <div className={styles.container}>
         <img
@@ -53,17 +56,17 @@ class LoginComponent extends React.Component {
           width={240}
           height={141}
           className={styles.logo}
-          alt="DBJR Internal Time Tracking"
+          alt={t('layout:title')}
         />
         {
           this.props.isPosting
-            ? 'Loading…'
+            ? t('general:text.loading')
             : (
               <Login
                 footer={
                   // eslint-disable-next-line jsx-a11y/anchor-is-valid
                   <Link to={routes.forgotPassword}>
-                    Forgot your password?
+                    {t('login:action.forgotPassword')}
                   </Link>
                 }
                 hasError={this.props.isPostingFailure}
@@ -76,7 +79,7 @@ class LoginComponent extends React.Component {
                   return false;
                 }}
                 onChangeHandler={this.onChangeHandler}
-                title="DBJR Internal Time Tracking"
+                title={t('layout:title')}
                 usernameType="email"
               />
             )
@@ -97,7 +100,8 @@ LoginComponent.propTypes = {
   isPosting: PropTypes.bool.isRequired,
   isPostingFailure: PropTypes.bool.isRequired,
   login: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired,
   token: PropTypes.string,
 };
 
-export default LoginComponent;
+export default withNamespaces()(LoginComponent);

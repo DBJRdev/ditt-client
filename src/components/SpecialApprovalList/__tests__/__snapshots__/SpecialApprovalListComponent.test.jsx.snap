@@ -3,7 +3,7 @@
 exports[`rendering renders correctly 1`] = `
 <div>
   <div>
-    You do not seem to have any pending special approvals.
+    specialApproval:text.emptyList
   </div>
 </div>
 `;

@@ -3,6 +3,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
 import jwt from 'jsonwebtoken';
+import { withNamespaces } from 'react-i18next';
 import {
   Button,
   Modal,
@@ -249,7 +250,7 @@ class SpecialApprovalListComponent extends React.Component {
       showRejectWorkLogFormId,
       showRejectWorkLogFormType,
     } = this.state;
-    const rejectWorkLogFormValidity = validateRejectWorkLog(rejectWorkLogForm);
+    const rejectWorkLogFormValidity = validateRejectWorkLog(this.props.t, rejectWorkLogForm);
 
     this.setState({ rejectWorkLogFormValidity });
 
@@ -263,7 +264,7 @@ class SpecialApprovalListComponent extends React.Component {
           if (response.type.endsWith('SUCCESS')) {
             this.closeDeleteWorkLogForm();
           } else if (response.type.endsWith('FAILURE')) {
-            rejectWorkLogFormValidity.elements.form = 'Work log cannot be rejected.';
+            rejectWorkLogFormValidity.elements.form = this.props.t('specialApproval:validation.cannotRejectWorkLog');
 
             this.setState({ rejectWorkLogFormValidity });
           }
@@ -272,28 +273,30 @@ class SpecialApprovalListComponent extends React.Component {
   }
 
   renderWorkLogForm() {
+    const { t } = this.props;
+
     return (
       <Modal
         actions={[
           {
             clickHandler: this.rejectWorkLogHandler,
-            label: 'Reject',
+            label: t('general:action.reject'),
             loading: this.props.isPosting,
           },
         ]}
         closeHandler={this.closeDeleteWorkLogForm}
-        title="Reject"
+        title={t('specialApproval:modal.reject.title')}
       >
         <form>
           <p style={this.formErrorStyle}>
             {this.state.rejectWorkLogFormValidity.elements.form}
           </p>
-          <p>Are you sure your want to reject this application?</p>
+          <p>{t('specialApproval:modal.reject.description')}</p>
           <TextField
             changeHandler={this.changeRejectWorkLogFormHandler}
             error={this.state.rejectWorkLogFormValidity.elements.rejectionMessage}
             fieldId="rejectionMessage"
-            label="Reason"
+            label={t('workLog:element.rejectionMessage')}
             value={this.state.rejectWorkLogForm.rejectionMessage || ''}
           />
         </form>
@@ -302,34 +305,36 @@ class SpecialApprovalListComponent extends React.Component {
   }
 
   renderWorkLogDetail() {
+    const { t } = this.props;
+
     const type = this.state.showWorkLogDetailDialogType;
-    let content = 'Loading…';
+    let content = t('general:text.loading');
 
     if (BUSINESS_TRIP_WORK_LOG === type && this.props.businessTripWorkLog) {
       content = (
         <p>
-          Date: {toDayMonthYearFormat(this.props.businessTripWorkLog.get('date'))}<br />
-          Status: {getStatusLabel(this.props.businessTripWorkLog.get('status'))}<br />
+          {t('workLog:element.date')}: {toDayMonthYearFormat(this.props.businessTripWorkLog.get('date'))}<br />
+          {t('workLog:element.status')}: {getStatusLabel(t, this.props.businessTripWorkLog.get('status'))}<br />
           {STATUS_REJECTED === this.props.businessTripWorkLog.get('status') && (
             <React.Fragment>
-              Reason: {this.props.businessTripWorkLog.get('rejectionMessage')}<br />
+              {t('workLog:element.rejectionMessage')}: {this.props.businessTripWorkLog.get('rejectionMessage')}<br />
             </React.Fragment>
           )}
-          Purpose: {this.props.businessTripWorkLog.get('purpose')}<br />
-          Destination: {this.props.businessTripWorkLog.get('destination')}<br />
-          Transport: {this.props.businessTripWorkLog.get('transport')}<br />
-          Expected departure: {this.props.businessTripWorkLog.get('expectedDeparture')}<br />
-          Expected arrival: {this.props.businessTripWorkLog.get('expectedArrival')}
+          {t('businessTripWorkLog:element.purpose')}: {this.props.businessTripWorkLog.get('purpose')}<br />
+          {t('businessTripWorkLog:element.destination')}: {this.props.businessTripWorkLog.get('destination')}<br />
+          {t('businessTripWorkLog:element.transport')}: {this.props.businessTripWorkLog.get('transport')}<br />
+          {t('businessTripWorkLog:element.expectedDeparture')}: {this.props.businessTripWorkLog.get('expectedDeparture')}<br />
+          {t('businessTripWorkLog:element.expectedArrival')}: {this.props.businessTripWorkLog.get('expectedArrival')}
         </p>
       );
     } else if (HOME_OFFICE_WORK_LOG === type && this.props.homeOfficeWorkLog) {
       content = (
         <p>
-          Date: {toDayMonthYearFormat(this.props.homeOfficeWorkLog.get('date'))}<br />
-          Status: {getStatusLabel(this.props.homeOfficeWorkLog.get('status'))}<br />
+          {t('workLog:element.date')}: {toDayMonthYearFormat(this.props.homeOfficeWorkLog.get('date'))}<br />
+          {t('workLog:element.status')}: {getStatusLabel(t, this.props.homeOfficeWorkLog.get('status'))}<br />
           {STATUS_REJECTED === this.props.homeOfficeWorkLog.get('status') && (
             <React.Fragment>
-              Reason: {this.props.homeOfficeWorkLog.get('rejectionMessage')}<br />
+              {t('workLog:element.rejectionMessage')}: {this.props.homeOfficeWorkLog.get('rejectionMessage')}<br />
             </React.Fragment>
           )}
         </p>
@@ -337,24 +342,24 @@ class SpecialApprovalListComponent extends React.Component {
     } else if (OVERTIME_WORK_LOG === type && this.props.overtimeWorkLog) {
       content = (
         <p>
-          Date: {toDayMonthYearFormat(this.props.overtimeWorkLog.get('date'))}<br />
-          Status: {getStatusLabel(this.props.overtimeWorkLog.get('status'))}<br />
+          {t('workLog:element.date')}: {toDayMonthYearFormat(this.props.overtimeWorkLog.get('date'))}<br />
+          {t('workLog:element.status')}: {getStatusLabel(t, this.props.overtimeWorkLog.get('status'))}<br />
           {STATUS_REJECTED === this.props.overtimeWorkLog.get('status') && (
             <React.Fragment>
-              Reason: {this.props.overtimeWorkLog.get('rejectionMessage')}<br />
+              {t('workLog:element.rejectionMessage')}: {this.props.overtimeWorkLog.get('rejectionMessage')}<br />
             </React.Fragment>
           )}
-          Reason for overtime: {this.props.overtimeWorkLog.get('reason')}<br />
+          {t('overtimeWorkLog:element.reason')}: {this.props.overtimeWorkLog.get('reason')}<br />
         </p>
       );
     } else if (TIME_OFF_WORK_LOG === type && this.props.timeOffWorkLog) {
       content = (
         <p>
-          Date: {toDayMonthYearFormat(this.props.timeOffWorkLog.get('date'))}<br />
-          Status: {getStatusLabel(this.props.timeOffWorkLog.get('status'))}<br />
+          {t('workLog:element.date')}: {toDayMonthYearFormat(this.props.timeOffWorkLog.get('date'))}<br />
+          {t('workLog:element.status')}: {getStatusLabel(t, this.props.timeOffWorkLog.get('status'))}<br />
           {STATUS_REJECTED === this.props.timeOffWorkLog.get('status') && (
             <React.Fragment>
-              Reason: {this.props.timeOffWorkLog.get('rejectionMessage')}<br />
+              {t('workLog:element.rejectionMessage')}: {this.props.timeOffWorkLog.get('rejectionMessage')}<br />
             </React.Fragment>
           )}
         </p>
@@ -362,11 +367,11 @@ class SpecialApprovalListComponent extends React.Component {
     } else if (VACATION_WORK_LOG === type && this.props.vacationWorkLog) {
       content = (
         <p>
-          Date: {toDayMonthYearFormat(this.props.vacationWorkLog.get('date'))}<br />
-          Status: {getStatusLabel(this.props.vacationWorkLog.get('status'))}<br />
+          {t('workLog:element.date')}: {toDayMonthYearFormat(this.props.vacationWorkLog.get('date'))}<br />
+          {t('workLog:element.status')}: {getStatusLabel(t, this.props.vacationWorkLog.get('status'))}<br />
           {STATUS_REJECTED === this.props.vacationWorkLog.get('status') && (
             <React.Fragment>
-              Reason: {this.props.vacationWorkLog.get('rejectionMessage')}<br />
+              {t('workLog:element.rejectionMessage')}: {this.props.vacationWorkLog.get('rejectionMessage')}<br />
             </React.Fragment>
           )}
         </p>
@@ -377,7 +382,7 @@ class SpecialApprovalListComponent extends React.Component {
       <Modal
         actions={[]}
         closeHandler={this.closeWorkLogDetail}
-        title={getTypeLabel(this.state.showWorkLogDetailDialogType)}
+        title={getTypeLabel(t, this.state.showWorkLogDetailDialogType)}
       >
         {content}
       </Modal>
@@ -385,6 +390,7 @@ class SpecialApprovalListComponent extends React.Component {
   }
 
   render() {
+    const { t } = this.props;
     const specialApprovals = this.getFilteredSpecialApprovals();
 
     return (
@@ -394,17 +400,17 @@ class SpecialApprovalListComponent extends React.Component {
             columns={[
               {
                 format: row => `${row.workMonth.user.firstName} ${row.workMonth.user.lastName}`,
-                label: 'Name',
+                label: t('user:element.name'),
                 name: 'lastName',
               },
               {
                 format: row => toDayMonthYearFormat(row.date),
-                label: 'Date',
+                label: t('workLog:element.date'),
                 name: 'date',
               },
               {
-                format: row => getTypeLabel(row.type),
-                label: 'Type',
+                format: row => getTypeLabel(t, row.type),
+                label: t('workLog:element.type'),
                 name: 'type',
               },
               {
@@ -413,7 +419,7 @@ class SpecialApprovalListComponent extends React.Component {
                     <div className={styles.workLogButtonWrapper}>
                       <Button
                         clickHandler={() => this.openWorkLogDetail(row.rawId, row.type)}
-                        label="Detail"
+                        label={t('specialApproval:action.workLogDetail')}
                         priority="default"
                       />
                     </div>
@@ -422,7 +428,7 @@ class SpecialApprovalListComponent extends React.Component {
                         <div className={styles.workLogButtonWrapper}>
                           <Button
                             clickHandler={() => this.handleMarkApproved(row.rawId, row.type)}
-                            label="Approve"
+                            label={t('specialApproval:action.approveWorkLog')}
                             loading={
                               this.props.isPosting
                               && this.state.lastApprovedWorkLogId === row.rawId
@@ -435,7 +441,7 @@ class SpecialApprovalListComponent extends React.Component {
                         <div className={styles.workLogButtonWrapper}>
                           <Button
                             clickHandler={() => this.openRejectWorkLogForm(row.rawId, row.type)}
-                            label="Reject"
+                            label={t('specialApproval:action.rejectWorkLog')}
                             loading={
                               this.props.isPosting
                               && this.state.lastRejectedWorkLogId === row.rawId
@@ -449,7 +455,7 @@ class SpecialApprovalListComponent extends React.Component {
                     )}
                   </div>
                 ),
-                label: 'Actions',
+                label: t('general:element.actions'),
                 name: 'actions',
               },
             ]}
@@ -457,7 +463,7 @@ class SpecialApprovalListComponent extends React.Component {
           />
         ) : (
           <div>
-            You do not seem to have any pending special approvals.
+            {t('specialApproval:text.emptyList')}
           </div>
         )}
         {this.state.showRejectWorkLogForm ? this.renderWorkLogForm() : null}
@@ -571,6 +577,7 @@ SpecialApprovalListComponent.propTypes = {
       }).isRequired,
     })).isRequired,
   }).isRequired,
+  t: PropTypes.func.isRequired,
   timeOffWorkLog: ImmutablePropTypes.mapContains({
     date: PropTypes.object.isRequired,
     rejectionMessage: PropTypes.string,
@@ -584,4 +591,4 @@ SpecialApprovalListComponent.propTypes = {
   }),
 };
 
-export default SpecialApprovalListComponent;
+export default withNamespaces()(SpecialApprovalListComponent);

@@ -16,7 +16,7 @@ import {
 } from './dateTimeService';
 import { getWorkHoursValue } from './workHoursService';
 
-export const validateUser = (user, userList, supportedWorkHours) => {
+export const validateUser = (t, user, userList, supportedWorkHours) => {
   const errors = {
     elements: {
       email: null,
@@ -51,14 +51,14 @@ export const validateUser = (user, userList, supportedWorkHours) => {
       user[element] === null
       || validator.isEmpty(user[element].toString())
     ) {
-      errors.elements[element] = 'This field is required.';
+      errors.elements[element] = t('general:validation.required');
       errors.isValid = false;
     }
   });
 
   supportedWorkHours.forEach((year) => {
     if (!user.workHours[year] || user.workHours[year].length !== 12) {
-      errors.elements.workHours[year] = 'This field requires 12 values separated by comma.';
+      errors.elements.workHours[year] = t('user:validation.invalidWorkHours');
       errors.isValid = false;
 
       return;
@@ -68,7 +68,10 @@ export const validateUser = (user, userList, supportedWorkHours) => {
       if (Number.isNaN(getWorkHoursValue(user.workHours[year][month]))) {
         const date = localizedMoment().set({ month });
 
-        errors.elements.workHours[year] = `Value for ${date.format('MMMM')} is not a number.`;
+        errors.elements.workHours[year] = t(
+          'user:validation.invalidWorkHoursMonth',
+          { month: date.format('MMMM') }
+        );
         errors.isValid = false;
 
         break;
@@ -77,29 +80,47 @@ export const validateUser = (user, userList, supportedWorkHours) => {
   });
 
   if (!errors.elements.email && !validator.isEmail(user.email)) {
-    errors.elements.email = 'It is not a valid e-mail address.';
+    errors.elements.email = t('general:validation.invalidEmail');
     errors.isValid = false;
   }
 
   if (!errors.elements.employeeId
     && !(user.employeeId.length >= 1 && user.employeeId.length <= 200)
   ) {
-    errors.elements.employeeId = 'It must be long between 2 and 200 characters.';
+    errors.elements.employeeId = t(
+      'general:validation.invalidLength',
+      {
+        max: 200,
+        min: 2,
+      }
+    );
     errors.isValid = false;
   }
 
   if (!errors.elements.firstName && !(user.firstName.length >= 2 && user.firstName.length <= 200)) {
-    errors.elements.firstName = 'It must be long between 2 and 200 characters.';
+    errors.elements.firstName = t(
+      'general:validation.invalidLength',
+      {
+        max: 200,
+        min: 2,
+      }
+    );
     errors.isValid = false;
   }
 
   if (!errors.elements.lastName && !(user.lastName.length >= 2 && user.lastName.length <= 200)) {
-    errors.elements.lastName = 'It must be long between 2 and 200 characters.';
+    errors.elements.lastName = t(
+      'general:validation.invalidLength',
+      {
+        max: 200,
+        min: 2,
+      }
+    );
     errors.isValid = false;
   }
 
   if (!errors.elements.plainPassword && user.plainPassword && user.plainPassword.length < 8) {
-    errors.elements.plainPassword = 'It must be at least 8 characters long.';
+    errors.elements.plainPassword = t('general:validation.invalidMinLength', { min: 8 });
     errors.isValid = false;
   }
 
@@ -113,25 +134,25 @@ export const validateUser = (user, userList, supportedWorkHours) => {
     });
 
     if (!isUnique) {
-      errors.elements.email = 'This e-mail has been already registered.';
+      errors.elements.email = t('general:validation.notUniqueEmail');
       errors.isValid = false;
     }
   }
 
   if (!errors.elements.vacationDays && !validator.isNumeric(user.vacationDays.toString())) {
-    errors.elements.vacationDays = 'Not a number.';
+    errors.elements.vacationDays = t('general:validation.invalidNumber');
     errors.isValid = false;
   }
 
   if (!errors.elements.vacationDays && user.vacationDays < 0) {
-    errors.elements.vacationDays = 'It must be at least 0.';
+    errors.elements.vacationDays = t('general:validation.invalidMinValue', { min: 8 });
     errors.isValid = false;
   }
 
   return errors;
 };
 
-export const validateWorkLog = (workLogAttr, workLogsOfDay) => {
+export const validateWorkLog = (t, workLogAttr, workLogsOfDay) => {
   const errors = {
     elements: {
       destination: null,
@@ -161,7 +182,7 @@ export const validateWorkLog = (workLogAttr, workLogsOfDay) => {
     VACATION_WORK_LOG,
     WORK_LOG,
   ].indexOf(workLog.type) === -1) {
-    errors.elements.type = 'Invalid type.';
+    errors.elements.type = t('workLog:validation.invalidType');
     errors.isValid = false;
 
     return errors;
@@ -181,7 +202,7 @@ export const validateWorkLog = (workLogAttr, workLogsOfDay) => {
         workLog[element] === null
         || validator.isEmpty(workLog[element])
       ) {
-        errors.elements[element] = 'This field is required.';
+        errors.elements[element] = t('general:validation.required');
         errors.isValid = false;
       }
     });
@@ -191,7 +212,7 @@ export const validateWorkLog = (workLogAttr, workLogsOfDay) => {
 
   if (workLog.type === OVERTIME_WORK_LOG) {
     if (workLog.reason === null || validator.isEmpty(workLog.reason)) {
-      errors.elements.reason = 'This field is required.';
+      errors.elements.reason = t('general:validation.required');
       errors.isValid = false;
     }
 
@@ -200,12 +221,12 @@ export const validateWorkLog = (workLogAttr, workLogsOfDay) => {
 
   if (workLog.type === SICK_DAY_WORK_LOG && workLog.variant === VARIANT_SICK_CHILD) {
     if (workLog.childName === null || validator.isEmpty(workLog.childName)) {
-      errors.elements.childName = 'This field is required.';
+      errors.elements.childName = t('general:validation.required');
       errors.isValid = false;
     }
 
     if (workLog.childDateOfBirth === null || validator.isEmpty(workLog.childDateOfBirth)) {
-      errors.elements.childDateOfBirth = 'This field is required.';
+      errors.elements.childDateOfBirth = t('general:validation.required');
       errors.isValid = false;
     }
 
@@ -213,7 +234,7 @@ export const validateWorkLog = (workLogAttr, workLogsOfDay) => {
       try {
         toMomentDateTimeFromDayMonthYear(workLog.childDateOfBirth);
       } catch (ex) {
-        errors.elements.childDateOfBirth = 'Invalid date.';
+        errors.elements.childDateOfBirth = t('general:validation.invalidDate');
         errors.isValid = false;
       }
     }
@@ -241,7 +262,7 @@ export const validateWorkLog = (workLogAttr, workLogsOfDay) => {
       || validator.isEmpty(workLog[element].toString())
       || !validator.isNumeric(workLog[element].toString())
     ) {
-      errors.elements[element] = 'Not a number.';
+      errors.elements[element] = t('general:validation.invalidNumber');
       errors.isValid = false;
     }
 
@@ -254,14 +275,14 @@ export const validateWorkLog = (workLogAttr, workLogsOfDay) => {
 
   hourCheck.forEach((element) => {
     if (workLog[element] < 0 || workLog[element] > 23) {
-      errors.elements[element] = 'Invalid hour.';
+      errors.elements[element] = t('workLog:validation.invalidHour');
       errors.isValid = false;
     }
   });
 
   minuteCheck.forEach((element) => {
     if (workLog[element] < 0 || workLog[element] > 59) {
-      errors.elements[element] = 'Invalid minute.';
+      errors.elements[element] = t('workLog:validation.invalidMinute');
       errors.isValid = false;
     }
   });
@@ -273,8 +294,8 @@ export const validateWorkLog = (workLogAttr, workLogsOfDay) => {
   if (
     (workLog.startHour * 60) + workLog.startMinute >= (workLog.endHour * 60) + workLog.endMinute
   ) {
-    errors.elements.endHour = 'Invalid hour';
-    errors.elements.endMinute = 'Invalid minute';
+    errors.elements.endHour = t('workLog:validation.invalidHour');
+    errors.elements.endMinute = t('workLog:validation.invalidMinute');
     errors.isValid = false;
   }
 
@@ -295,7 +316,7 @@ export const validateWorkLog = (workLogAttr, workLogsOfDay) => {
     });
 
     if (overlapping) {
-      errors.elements.form = 'Entered worklog overlaps existing one.';
+      errors.elements.form = t('workLog:validation.workLogOverlaps');
       errors.isValid = false;
     }
   }
@@ -303,7 +324,7 @@ export const validateWorkLog = (workLogAttr, workLogsOfDay) => {
   return errors;
 };
 
-export const validateRejectWorkLog = (rejectWorkLog) => {
+export const validateRejectWorkLog = (t, rejectWorkLog) => {
   const errors = {
     elements: {
       form: null,
@@ -316,7 +337,7 @@ export const validateRejectWorkLog = (rejectWorkLog) => {
     rejectWorkLog.rejectionMessage === null
     || validator.isEmpty(rejectWorkLog.rejectionMessage)
   ) {
-    errors.elements.rejectionMessage = 'This field is required.';
+    errors.elements.rejectionMessage = t('general:validation.required');
     errors.isValid = false;
   }
 

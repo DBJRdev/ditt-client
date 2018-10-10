@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import jwt from 'jsonwebtoken';
 import { Link } from 'react-router-dom';
+import { withNamespaces } from 'react-i18next';
 import { Table } from 'react-ui';
 import Layout from '../../components/Layout';
 import routes from '../../routes';
@@ -46,15 +47,17 @@ class ListComponent extends React.Component {
   }
 
   render() {
+    const { t } = this.props;
+
     return (
-      <Layout title="Supervised users" loading={this.props.isFetching}>
+      <Layout title={t('supervisedUser:title.supervisedUsers')} loading={this.props.isFetching}>
         {this.props.supervisedUserList.count() > 0 ? (
           <Table
             columns={[
               {
                 format: row => `${row.firstName} ${row.lastName}`,
                 isSortable: true,
-                label: 'Name',
+                label: t('user:element.name'),
                 name: 'lastName',
               },
               {
@@ -64,7 +67,7 @@ class ListComponent extends React.Component {
                   ));
 
                   if (!waitingForApproval.length) {
-                    return 'No';
+                    return t('general:action.no');
                   }
 
                   const waitingForApprovalLinks = waitingForApproval.map(workMonth => (
@@ -85,21 +88,21 @@ class ListComponent extends React.Component {
 
                   return (
                     <div>
-                      Yes | {waitingForApprovalLinks}
+                      {t('general:action.yes')} | {waitingForApprovalLinks}
                     </div>
                   );
                 },
-                label: 'Need approval',
+                label: t('supervisedUser:element.needApproval'),
                 name: 'needApproval',
               },
               {
                 format: row => (
                   /* eslint-disable-next-line jsx-a11y/anchor-is-valid */
                   <Link to={routes.supervisedUserWorkLog.replace(':id', row.id)}>
-                    Show work log
+                    {t('supervisedUser:element.showWorkLog')}
                   </Link>
                 ),
-                label: 'Show work log',
+                label: t('supervisedUser:element.showWorkLog'),
                 name: 'showWorkLog',
               },
             ]}
@@ -135,8 +138,7 @@ class ListComponent extends React.Component {
           />
         ) : (
           <div>
-            You do not seem to be supervising anyone.
-            Please contact HR in case you think this is a mistake.
+            {t('supervisedUser:text.emptyList')}
           </div>
         )}
       </Layout>
@@ -164,7 +166,8 @@ ListComponent.propTypes = {
       ]).isRequired,
     })).isRequired,
   })).isRequired,
+  t: PropTypes.func.isRequired,
   token: PropTypes.string.isRequired,
 };
 
-export default ListComponent;
+export default withNamespaces()(ListComponent);

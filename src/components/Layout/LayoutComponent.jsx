@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import jwt from 'jsonwebtoken';
+import { withNamespaces } from 'react-i18next';
 import { Button } from 'react-ui';
 import {
   ROLE_ADMIN,
@@ -38,6 +39,8 @@ class LayoutComponent extends React.Component {
   }
 
   render() {
+    const { t } = this.props;
+
     return (
       <div>
         {this.isAuthorized([ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]) && (
@@ -48,16 +51,16 @@ class LayoutComponent extends React.Component {
                 width={180}
                 height={85}
                 className={styles.logo}
-                alt="DBJR Internal Time Tracking"
+                alt={t('layout:title')}
               />
-              <span className={styles.title}>DBJR Internal Time Tracking</span>
+              <span className={styles.title}>{t('layout:title')}</span>
             </div>
             <div className={styles.navigation}>
               {this.isAuthorized([ROLE_EMPLOYEE]) && (
                 <div className={styles.navigationItem}>
                   <Button
                     clickHandler={() => history.push(routes.index)}
-                    label="Work logs"
+                    label={t('layout:menu.workLogs')}
                     priority="default"
                   />
                 </div>
@@ -66,7 +69,7 @@ class LayoutComponent extends React.Component {
                 <div className={styles.navigationItem}>
                   <Button
                     clickHandler={() => history.push(routes.specialApprovalList)}
-                    label="Special approvals"
+                    label={t('layout:menu.specialApprovals')}
                     priority="default"
                   />
                 </div>
@@ -75,7 +78,7 @@ class LayoutComponent extends React.Component {
                 <div className={styles.navigationItem}>
                   <Button
                     clickHandler={() => history.push(routes.supervisedUserList)}
-                    label="Supervised users"
+                    label={t('layout:menu.supervisedUsers')}
                     priority="default"
                   />
                 </div>
@@ -84,7 +87,7 @@ class LayoutComponent extends React.Component {
                 <div className={styles.navigationItem}>
                   <Button
                     clickHandler={() => history.push(routes.userList)}
-                    label="Users"
+                    label={t('layout:menu.users')}
                     priority="default"
                   />
                 </div>
@@ -92,7 +95,7 @@ class LayoutComponent extends React.Component {
               <div className={styles.navigationItem}>
                 <Button
                   clickHandler={this.props.logout}
-                  label={`Logout ${this.getName()}`}
+                  label={t('layout:menu.logout', { name: this.getName() })}
                   priority="flat"
                 />
               </div>
@@ -104,7 +107,7 @@ class LayoutComponent extends React.Component {
             <h1 className={styles.bodyTitle}>{this.props.title}</h1>
             {
               this.props.loading
-                ? 'Loading…'
+                ? t('general:text.loading')
                 : this.props.children
             }
           </div>
@@ -127,8 +130,9 @@ LayoutComponent.propTypes = {
   ]),
   loading: PropTypes.bool,
   logout: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   token: PropTypes.string,
 };
 
-export default LayoutComponent;
+export default withNamespaces()(LayoutComponent);

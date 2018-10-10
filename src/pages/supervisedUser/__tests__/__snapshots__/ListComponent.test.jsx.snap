@@ -3,10 +3,10 @@
 exports[`rendering renders correctly 1`] = `
 <Connect(LayoutComponent)
   loading={false}
-  title="Supervised users"
+  title="supervisedUser:title.supervisedUsers"
 >
   <div>
-    You do not seem to be supervising anyone. Please contact HR in case you think this is a mistake.
+    supervisedUser:text.emptyList
   </div>
 </Connect(LayoutComponent)>
 `;
