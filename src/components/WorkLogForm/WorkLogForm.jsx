@@ -399,6 +399,7 @@ class WorkLogForm extends React.Component {
         ]}
         closeHandler={this.props.closeHandler}
         title={t('workLog:modal.add.title')}
+        translations={{ close: t('general:action.close') }}
       >
         <p style={this.formErrorStyle}>
           {this.state.formValidity.elements.form}

@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
+import { StaticRouter } from 'react-router-dom';
 import NewPasswordComponent from '../NewPasswordComponent';
 
 describe('rendering', () => {
@@ -14,7 +15,11 @@ describe('rendering', () => {
       },
       setNewPassword: () => {},
     };
-    const tree = shallow(<NewPasswordComponent {...props} />);
+    const tree = mount((
+      <StaticRouter context={{}} location="/path">
+        <NewPasswordComponent {...props} />
+      </StaticRouter>
+    ));
 
     expect(tree).toMatchSnapshot();
   });

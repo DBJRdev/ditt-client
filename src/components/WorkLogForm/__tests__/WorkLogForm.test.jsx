@@ -1,10 +1,7 @@
 import Immutable from 'immutable';
 import React from 'react';
 import sinon from 'sinon';
-import {
-  mount,
-  shallow,
-} from 'enzyme';
+import { mount } from 'enzyme';
 import WorkLogForm from '../WorkLogForm';
 import { localizedMoment } from '../../../services/dateTimeService';
 
@@ -22,7 +19,7 @@ afterEach(() => {
 
 describe('rendering', () => {
   it('renders correctly with mandatory props', () => {
-    const tree = shallow(<WorkLogForm
+    const tree = mount(<WorkLogForm
       closeHandler={() => {}}
       date={fakeMomentDateTime}
       isPosting={false}
@@ -34,7 +31,7 @@ describe('rendering', () => {
   });
 
   it('renders correctly with all props', () => {
-    const tree = shallow(<WorkLogForm
+    const tree = mount(<WorkLogForm
       closeHandler={() => {}}
       date={fakeMomentDateTime}
       isPosting={false}
@@ -58,7 +55,7 @@ describe('functionality', () => {
       workLogsOfDay={Immutable.List([])}
     />);
 
-    tree.find('Button').last().simulate('click');
+    tree.find('button').last().simulate('click');
 
     expect(spy.calledOnce).toEqual(true);
   });

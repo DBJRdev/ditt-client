@@ -5,7 +5,7 @@
       "destination": "Destination",
       "transport": "Transport",
       "expectedDeparture": "Expected departure",
-      "expectedArrival": "Expected arrival"
+      "expectedArrival": "Expected return"
     }
   },
   "error": {
@@ -16,6 +16,7 @@
   "general": {
     "action": {
       "approve": "Approve",
+      "close": "Close",
       "reject": "Reject",
       "delete": "Delete",
       "save": "Save",
@@ -50,15 +51,23 @@
     "title": "DBJR Internal Time Tracking"
   },
   "login": {
+    "element": {
+      "newPassword": "New password",
+      "repeatNewPassword": "Repeat new password"
+    },
     "action": {
+      "changePassword": "Change password",
+      "forgotPassword": "Forgot your password?",
       "login": "Go to login",
-      "forgotPassword": "Forgot your password?"
+      "resetPassword": "Reset password",
+      "signIn": "Sign in"
     },
     "text": {
       "passwordReset": "Password has been successfully reset. Click on a link in e-mail to be able to set a new password.",
       "passwordSet": "New password has been successfully set."
     },
     "validation": {
+      "invalidUsernameOrPassword": "Invalid username or password",
       "passwordsNotSame": "Entered passwords are not same.",
       "passwordInvalidMinLength": "Entered password has to be at least {{ min }} characters long."
     }
@@ -190,7 +199,7 @@
     "modal": {
       "add": {
         "title": "Add work log",
-        "alreadySendForApprovalDescription": "You have already sent this work month for approval. If you create new work log, you will have to send the work month for approval again."
+        "alreadySendForApprovalDescription": "You have already sent this work month for approval. If you create a new work log, you will have to send the work month for approval again."
       },
       "detail": {
         "title": "Work log"

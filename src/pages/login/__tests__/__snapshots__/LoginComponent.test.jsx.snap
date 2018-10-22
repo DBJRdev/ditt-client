@@ -11,21 +11,92 @@ exports[`rendering renders correctly 1`] = `
     src={Object {}}
     width={240}
   />
-  <Login
-    footer={
-      <Link
-        replace={false}
-        to="/forgot-password"
+  <div
+    className="Login__root___1xLjB"
+  >
+    <div
+      className="Login__title___15StL"
+    >
+      layout:title
+    </div>
+    <div
+      className="Login__box___30juA"
+    >
+      <form
+        onSubmit={[Function]}
       >
-        login:action.forgotPassword
-      </Link>
-    }
-    hasError={false}
-    logoUrl={null}
-    onChangeHandler={[Function]}
-    submitHandler={[Function]}
-    title="layout:title"
-    usernameType="email"
-  />
+        <div
+          className="TextField__root___3Dilx"
+        >
+          <label
+            htmlFor="email"
+          >
+            <div
+              className="TextField__isLabelRequired___3cGdN TextField__label___3IwCj"
+            >
+              user:element.email
+            </div>
+            <input
+              className="TextField__input___7fOry"
+              disabled={false}
+              id="email"
+              onChange={[Function]}
+              placeholder={null}
+              required={true}
+              type="email"
+            />
+          </label>
+        </div>
+        <div
+          className="TextField__root___3Dilx"
+        >
+          <label
+            htmlFor="password"
+          >
+            <div
+              className="TextField__isLabelRequired___3cGdN TextField__label___3IwCj"
+            >
+              user:element.plainPassword
+            </div>
+            <input
+              className="TextField__input___7fOry"
+              disabled={false}
+              id="password"
+              onChange={[Function]}
+              placeholder={null}
+              required={true}
+              type="password"
+            />
+          </label>
+        </div>
+        <button
+          className="Button__root___1d_g4
+        Button__priorityPrimary___3cllH
+        Button__sizeMedium___3hH6Z
+        
+        
+        Button__block___3gIv0"
+          disabled={false}
+          onClick={null}
+          title={null}
+          type="submit"
+        >
+          <span>
+            login:action.signIn
+          </span>
+        </button>
+      </form>
+      <div
+        className="Login__footer___WvhVH"
+      >
+        <a
+          href="/forgot-password"
+          onClick={[Function]}
+        >
+          login:action.forgotPassword
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
 `;

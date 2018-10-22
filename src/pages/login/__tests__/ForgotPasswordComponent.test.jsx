@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
+import { StaticRouter } from 'react-router-dom';
 import ForgotPasswordComponent from '../ForgotPasswordComponent';
 
 describe('rendering', () => {
@@ -9,7 +10,11 @@ describe('rendering', () => {
       isPostingFailure: false,
       resetPassword: () => {},
     };
-    const tree = shallow(<ForgotPasswordComponent {...props} />);
+    const tree = mount((
+      <StaticRouter context={{}} location="/path">
+        <ForgotPasswordComponent {...props} />
+      </StaticRouter>
+    ));
 
     expect(tree).toMatchSnapshot();
   });

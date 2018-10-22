@@ -87,6 +87,10 @@ class ForgotPasswordComponent extends React.Component {
         submitHandler={this.resetPasswordHandler}
         onChangeHandler={this.onChangeHandler}
         title={t('layout:title')}
+        translations={{
+          email: t('user:element.email'),
+          resetPassword: t('login:action.resetPassword'),
+        }}
         usernameType="email"
       />
     ));

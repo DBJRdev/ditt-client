@@ -1,0 +1,241 @@
+{
+  "businessTripWorkLog": {
+    "element": {
+      "purpose": "Zweck",
+      "destination": "Ziel",
+      "transport": "Verkehrsmittel",
+      "expectedDeparture": "Voraussichtliche Abreise",
+      "expectedArrival": "Voraussichtliche Rückkehr"
+    }
+  },
+  "error": {
+    "description": "Fehler",
+    "title": "'Seite nicht gefunden"
+  },
+  "homeOfficeWorkLog": {},
+  "general": {
+    "action": {
+      "approve": "Gewähren",
+      "close": "Schließen",
+      "reject": "Ablehnen",
+      "delete": "Löschen",
+      "save": "Speichern",
+      "yes": "Ja",
+      "no": "Nein"
+    },
+    "element": {
+      "actions": "Aktionen"
+    },
+    "text": {
+      "loading": "Lade…"
+    },
+    "validation": {
+      "invalidDate": "Das ist kein gültiges Datum.",
+      "invalidEmail": "Das ist keine gültige E-Mail-Adresse.",
+      "invalidNumber": "Das ist keine Zahl.",
+      "invalidLength": "Die Länge muss zwischen {{ min }} und {{ max }} Zeichen liegen.",
+      "invalidMinLength": "Mindestens {{ min }} Zeichen erforderlich.",
+      "invalidMinValue": "Mindestens {{ min }} erforderlich.",
+      "notUniqueEmail": "Diese E-Mail wird bereits verwendet.",
+      "required": "Dieses Feld wird benötigt."
+    }
+  },
+  "layout": {
+    "menu": {
+      "workLogs": "Einträge",
+      "specialApprovals": "Anträge",
+      "supervisedUsers": "Mitarbeiter*innen",
+      "users": "Nutzer*innen",
+      "logout": "Ausloggen {{ name }}"
+    },
+    "title": "DBJR Digitale Zeiterfassung"
+  },
+  "login": {
+    "element": {
+      "newPassword": "Neues Passwort",
+      "repeatNewPassword": "Neues Passwort wiederholen"
+    },
+    "action": {
+      "changePassword": "Passwort ändern",
+      "forgotPassword": "Passwort vergessen?",
+      "login": "Zum Login wechseln",
+      "resetPassword": "Passwort zurücksetzen",
+      "signIn": "Login"
+    },
+    "text": {
+      "passwordReset": "Das Passwort wurde erfolgreich zurückgesetzt. Bitte auf den Link in der E-Mail klicken, um ein neues Passwort zu vergeben.",
+      "passwordSet": "Das neue Passwort wurde erfolgreich gespeichert."
+    },
+    "validation": {
+      "invalidUsernameOrPassword": "Ungültiges User-Name oder Passwort",
+      "passwordsNotSame": "Eingegebene Passwörter sind unterschiedlich.",
+      "passwordInvalidMinLength": "Das eingegebene Passwort muss mindestens {{ min }} Zeichen lang sein."
+    }
+  },
+  "overtimeWorkLog": {
+    "element": {
+      "reason": "Begründung für Mehrarbeit"
+    }
+  },
+  "sickDayWorkLog": {
+    "constant": {
+      "variant": {
+        "withNote": "Mit Krankenschein",
+        "withoutNote": "Ohne Krankenschein",
+        "sickChild": "Kind krank"
+      }
+    },
+    "element": {
+      "variant": "Variante",
+      "childName": "Name des Kindes",
+      "childDateOfBirth": "Geburtstag des Kindes"
+    }
+  },
+  "supervisedUser": {
+    "element": {
+      "needApproval": "Freigabe erforderlich",
+      "showWorkLog": "Einträge anzeigen"
+    },
+    "title": {
+      "supervisedUsers": "Mitarbeiter*innen"
+    },
+    "text": {
+      "emptyList": "Es sieht so aus als hättest du keine Leitungsrolle. Bitte das Personalreferat kontaktieren, wenn das ein Fehler sein sollte."
+    }
+  },
+  "specialApproval": {
+    "action": {
+      "approveWorkLog": "Freigeben",
+      "rejectWorkLog": "Ablehnen",
+      "workLogDetail": "Detail"
+    },
+    "modal": {
+      "reject": {
+        "title": "Ablehnen",
+        "description": "Soll der Antrag wirklich abgelehnt werden?"
+      }
+    },
+    "title": {
+      "specialApprovals": "Anträge",
+      "recentSpecialApprovals": "Vergangene Anträge"
+    },
+    "text": {
+      "emptyList": "Es sieht so aus als gäbe es keine ausstehenden Anträge.",
+      "specialApprovalsBeginningPart": "Die Seite »Anträge« zeigt dir eine Liste von Einträgen, die von Vorgesetzte*n angenommen oder abgelehnt werden müssen. Wenn du eine vollständige Liste aller Einträge des laufenden und des vorausgegangenen Monats sehen möchtest, wechsle zur",
+      "specialApprovalsButtonPart": "Frühere Anträge",
+      "specialApprovalsClosingPart": "-Seite.",
+      "recentSpecialApprovalsBeginningPart": "Die Seite »Frühere Anträge« zeigt dir eine Liste aller Anträge aus dem aktuellen und dem vergangenen Monat. Wenn du eine Liste der aktuellen Anträge zur Annahme oder Ablehnung durch Vorgesetzte sehen willst, gehe zur",
+      "recentSpecialApprovals": "Anträge",
+      "recentSpecialApprovalsClosingPart": "-Seite."
+    },
+    "validation": {
+      "cannotRejectWorkLog": "Eintrag kann nicht abgelehnt werden."
+    }
+  },
+  "timeOffWorkLog": {},
+  "user": {
+    "action": {
+      "addUser": "Nutzer*in hinzufügen",
+      "deleteUser": "Nutzer*in löschen",
+      "showWorkLog": "Zeige Einträge"
+    },
+    "element": {
+      "email": "E-Mail",
+      "employeeId": "Mitarbeiter-ID",
+      "firstName": "Vorname",
+      "isActive": "Aktiv",
+      "lastName": "Familiennname",
+      "name": "Name",
+      "plainPassword": "Passwort",
+      "supervisor": "Vorgesetzte*r",
+      "vacationDays": "Urlaubstage",
+      "vacationDaysUsed": "Genommene Urlaubstage",
+      "workedAndRequiredHours": "Gearbeitete / Benötigte Stunden"
+    },
+    "modal": {
+      "delete": {
+        "description": "Sicher, dass Nutzer*in gelöscht werden soll?",
+        "title": "Nutzer*in löschen"
+      }
+    },
+    "text": {
+      "averageWorkingHoursDescription": "Tägliche Arbeitszeit mit Komma [\",\"] getrennt, mit Start ab Januar eintragen.",
+      "averageWorkingHoursTitle": "Tägliche Arbeitszeit"
+    },
+    "title": {
+      "addUser": "Nutzer*in hinzufügen",
+      "editUser": "Nutzer*in bearbeiten",
+      "users": "Nutzer*innen"
+    },
+    "validation": {
+      "cannotAddUser": "Nutzer*in kann nicht hinzugefügt werden.",
+      "cannotDeleteUser": "Nutzer*in kann nicht gelöscht werden.",
+      "cannotEditUser": "Nutzer*in kann nicht bearbeitet werden.",
+      "invalidWorkHours": "Dieses Feld benötigt 12 kommaseparierte Werte",
+      "invalidWorkHoursMonth": "Wert für {{ month }} ist keine Zahl."
+    }
+  },
+  "vacationWorkLog": {},
+  "workLog": {
+    "action": {
+      "addWorkLog": "Eintrag hinzufügen",
+      "approveMonth": "Monat freigeben",
+      "nextMonth": "Nächster",
+      "previousMonth": "Vorheriger",
+      "sendWorkMonthForApproval": "Zur Freigabe einreichen"
+    },
+    "element": {
+      "type": "Typ",
+      "date": "Datum",
+      "status": "Status",
+      "rejectionMessage": "Grund",
+      "startTime": "Beginn",
+      "startHour": "Beginn (Stunde)",
+      "startMinute": "Beginn (Minute)",
+      "endHour": "Ende (Stunde)",
+      "endMinute": "Ende (Minute)",
+      "endTime": "Ende"
+    },
+    "modal": {
+      "add": {
+        "title": "Eintrag hinzufügen",
+        "alreadySendForApprovalDescription": "Du hast diesen Monat bereits zur Freigabe eingereicht. Wenn du einen neuen Eintrag hinzufügst, muss erneut eingereicht werden."
+      },
+      "detail": {
+        "title": "Eintrag"
+      }
+    },
+    "text": {
+      "workedAndRequiredHours": "{{ workedHours }} h von {{ requiredHours }} h"
+    },
+    "title": {
+      "workLogs": "Einträge"
+    },
+    "validation": {
+      "invalidType": "Ungültiger Typ.",
+      "invalidHour": "Ungültige Stundenangabe.",
+      "invalidMinute": "Ungültige Minutenangabe.",
+      "workLogOverlaps": "Eintrag überschneidet sich mit bereits existierendem."
+    }
+  },
+  "workMonth": {
+    "constant": {
+      "status": {
+        "approved": "Freigegeben",
+        "opened": "Geöffnet",
+        "rejected": "Abgelehnt",
+        "waiting": "Ausstehend",
+        "waitingForApproval": "Warte auf Freigabe"
+      },
+      "type": {
+        "businessTripWorkLog": "Dienstreise",
+        "homeOfficeWorkLog": "Telearbeit",
+        "overtimeWorkLog": "Mehrarbeit",
+        "sickDayWorkLog": "Kranktag",
+        "timeOffWorkLog": "Freizeitausgleich",
+        "vacationWorkLog": "Urlaub",
+        "workLog": "Eintrag"
+      }
+    }
+  }
+}

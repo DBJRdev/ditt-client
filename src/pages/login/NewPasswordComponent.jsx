@@ -103,6 +103,11 @@ class NewPasswordComponent extends React.Component {
         submitHandler={this.newPasswordHandler}
         onChangeHandler={this.onChangeHandler}
         title={t('layout:title')}
+        translations={{
+          changePassword: t('login:action.changePassword'),
+          newPassword: t('login:element.newPassword'),
+          repeatNewPassword: t('login:element.repeatNewPassword'),
+        }}
         usernameType="email"
       />
     ));

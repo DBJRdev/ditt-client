@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
+import { StaticRouter } from 'react-router-dom';
 import LoginComponent from '../LoginComponent';
 
 describe('rendering', () => {
@@ -12,7 +13,11 @@ describe('rendering', () => {
       isPostingFailure: false,
       login: () => {},
     };
-    const tree = shallow(<LoginComponent {...props} />);
+    const tree = mount((
+      <StaticRouter context={{}} location="/path">
+        <LoginComponent {...props} />
+      </StaticRouter>
+    ));
 
     expect(tree).toMatchSnapshot();
   });

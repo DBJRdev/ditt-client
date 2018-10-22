@@ -286,6 +286,7 @@ class SpecialApprovalListComponent extends React.Component {
         ]}
         closeHandler={this.closeDeleteWorkLogForm}
         title={t('specialApproval:modal.reject.title')}
+        translations={{ close: t('general:action.close') }}
       >
         <form>
           <p style={this.formErrorStyle}>
@@ -383,6 +384,7 @@ class SpecialApprovalListComponent extends React.Component {
         actions={[]}
         closeHandler={this.closeWorkLogDetail}
         title={getTypeLabel(t, this.state.showWorkLogDetailDialogType)}
+        translations={{ close: t('general:action.close') }}
       >
         {content}
       </Modal>

@@ -242,6 +242,7 @@ class EditComponent extends React.Component {
         ]}
         closeHandler={this.closeDeleteUserDialog}
         title={t('user:modal.delete.title')}
+        translations={{ close: t('general:action.close') }}
       >
         {t('user:modal.delete.description')}
       </Modal>

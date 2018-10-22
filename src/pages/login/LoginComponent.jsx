@@ -80,6 +80,12 @@ class LoginComponent extends React.Component {
                 }}
                 onChangeHandler={this.onChangeHandler}
                 title={t('layout:title')}
+                translations={{
+                  email: t('user:element.email'),
+                  invalidUsernameOrPassword: t('login:validation.invalidUsernameOrPassword'),
+                  password: t('user:element.plainPassword'),
+                  signIn: t('login:action.signIn'),
+                }}
                 usernameType="email"
               />
             )

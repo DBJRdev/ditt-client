@@ -199,7 +199,7 @@ class WorkLogComponent extends React.Component {
 
   render() {
     return (
-      <Layout title={this.props.t('workLogs:title.workLogs')} loading={this.props.isFetching}>
+      <Layout title={this.props.t('workLog:title.workLogs')} loading={this.props.isFetching}>
         {this.props.config && (
           <WorkLogCalendar
             addBusinessTripWorkLog={this.addBusinessTripWorkLog}

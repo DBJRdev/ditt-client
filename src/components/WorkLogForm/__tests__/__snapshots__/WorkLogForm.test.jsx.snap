@@ -1,431 +1,491 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering renders correctly with all props 1`] = `
-<Modal
-  actions={
-    Array [
-      Object {
-        "clickHandler": [Function],
-        "label": "general:action.save",
-        "loading": false,
-      },
-    ]
-  }
-  closeHandler={[Function]}
-  title="workLog:modal.add.title"
+<div
+  className="Modal__overlay___2LRch"
+  onClick={[Function]}
+  role="presentation"
 >
-  <p
-    style={
-      Object {
-        "color": "#a32100",
-        "textAlign": "center",
-      }
-    }
-  />
-  <form>
-    <fieldset
-      style={
-        Object {
-          "borderStyle": "none",
-          "marginLeft": "auto",
-          "marginRight": "auto",
-          "maxWidth": "17em",
-          "padding": "0",
-        }
-      }
+  <div
+    className="Modal__root___386pN"
+    onClick={[Function]}
+    role="presentation"
+  >
+    <div
+      className="Modal__head___1Z5Bn"
     >
-      <div
+      <h3
+        className="Modal__headTitle___29_OR"
+      >
+        workLog:modal.add.title
+      </h3>
+    </div>
+    <div
+      className="Modal__body___3KyQK"
+    >
+      <p
         style={
           Object {
-            "display": "inline-block",
+            "color": "#a32100",
+            "textAlign": "center",
           }
         }
-      >
-        <p
+      />
+      <form>
+        <fieldset
           style={
             Object {
-              "color": "#666",
-              "fontSize": "0.75rem",
-              "textAlign": "block",
+              "borderStyle": "none",
+              "marginLeft": "auto",
+              "marginRight": "auto",
+              "maxWidth": "17em",
+              "padding": "0",
             }
           }
         >
-          workLog:modal.add.alreadySendForApprovalDescription
-        </p>
-      </div>
-    </fieldset>
-    <fieldset
-      style={
-        Object {
-          "borderStyle": "none",
-          "marginLeft": "auto",
-          "marginRight": "auto",
-          "maxWidth": "17em",
-          "padding": "0",
-        }
-      }
+          <div
+            style={
+              Object {
+                "display": "inline-block",
+              }
+            }
+          >
+            <p
+              style={
+                Object {
+                  "color": "#666",
+                  "fontSize": "0.75rem",
+                  "textAlign": "block",
+                }
+              }
+            >
+              workLog:modal.add.alreadySendForApprovalDescription
+            </p>
+          </div>
+        </fieldset>
+        <fieldset
+          style={
+            Object {
+              "borderStyle": "none",
+              "marginLeft": "auto",
+              "marginRight": "auto",
+              "maxWidth": "17em",
+              "padding": "0",
+            }
+          }
+        >
+          <legend>
+            workLog:element.date
+          </legend>
+          <div
+            style={
+              Object {
+                "display": "inline-block",
+              }
+            }
+          >
+            <div
+              className="TextField__root___3Dilx"
+            >
+              <label
+                htmlFor="date"
+              >
+                <div
+                  className="TextField__isLabelHidden___3U6DG"
+                >
+                  workLog:element.date
+                </div>
+                <input
+                  className="TextField__input___7fOry"
+                  disabled={true}
+                  id="date"
+                  onChange={null}
+                  placeholder={null}
+                  required={false}
+                  type="text"
+                  value="1. 1. 2018"
+                />
+              </label>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset
+          style={
+            Object {
+              "borderStyle": "none",
+              "marginLeft": "auto",
+              "marginRight": "auto",
+              "maxWidth": "17em",
+              "padding": "0",
+            }
+          }
+        >
+          <legend>
+            workLog:element.type
+          </legend>
+          <div
+            style={
+              Object {
+                "display": "inline-block",
+              }
+            }
+          >
+            <div
+              className="SelectField__isRootCondensed___hi5xq SelectField__root___2payh"
+            >
+              <label
+                htmlFor="type"
+              >
+                <div
+                  className="SelectField__isLabelHidden___VCBL3"
+                >
+                  workLog:element.type
+                </div>
+                <select
+                  className="SelectField__select___3Lq-l"
+                  disabled={false}
+                  id="type"
+                  onChange={[Function]}
+                  required={false}
+                  value="WORK_LOG"
+                >
+                  <option
+                    key="WORK_LOG"
+                    value="WORK_LOG"
+                  >
+                    workMonth:constant.type.workLog
+                  </option>
+                  <option
+                    key="BUSINESS_TRIP_WORK_LOG"
+                    value="BUSINESS_TRIP_WORK_LOG"
+                  >
+                    workMonth:constant.type.businessTripWorkLog
+                  </option>
+                  <option
+                    key="HOME_OFFICE_WORK_LOG"
+                    value="HOME_OFFICE_WORK_LOG"
+                  >
+                    workMonth:constant.type.homeOfficeWorkLog
+                  </option>
+                  <option
+                    key="OVERTIME_WORK_LOG"
+                    value="OVERTIME_WORK_LOG"
+                  >
+                    workMonth:constant.type.overtimeWorkLog
+                  </option>
+                  <option
+                    key="SICK_DAY_WORK_LOG"
+                    value="SICK_DAY_WORK_LOG"
+                  >
+                    workMonth:constant.type.sickDayWorkLog
+                  </option>
+                  <option
+                    key="TIME_OFF_WORK_LOG"
+                    value="TIME_OFF_WORK_LOG"
+                  >
+                    workMonth:constant.type.timeOffWorkLog
+                  </option>
+                  <option
+                    key="VACATION_WORK_LOG"
+                    value="VACATION_WORK_LOG"
+                  >
+                    workMonth:constant.type.vacationWorkLog
+                  </option>
+                </select>
+              </label>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset
+          style={
+            Object {
+              "borderStyle": "none",
+              "marginLeft": "auto",
+              "marginRight": "auto",
+              "maxWidth": "17em",
+              "padding": "0",
+            }
+          }
+        >
+          <legend>
+            workLog:element.startTime
+          </legend>
+          <div>
+            <div
+              style={
+                Object {
+                  "display": "inline-block",
+                }
+              }
+            >
+              <div
+                className="TextField__root___3Dilx"
+              >
+                <label
+                  htmlFor="startHour"
+                >
+                  <div
+                    className="TextField__isLabelHidden___3U6DG"
+                  >
+                    workLog:element.startHour
+                  </div>
+                  <input
+                    className="TextField__input___7fOry"
+                    disabled={false}
+                    id="startHour"
+                    onChange={[Function]}
+                    placeholder={null}
+                    required={false}
+                    type="text"
+                    value="00"
+                  />
+                </label>
+              </div>
+            </div>
+            :
+            <div
+              style={
+                Object {
+                  "display": "inline-block",
+                }
+              }
+            >
+              <div
+                className="TextField__root___3Dilx"
+              >
+                <label
+                  htmlFor="startMinute"
+                >
+                  <div
+                    className="TextField__isLabelHidden___3U6DG"
+                  >
+                    workLog:element.startMinute
+                  </div>
+                  <input
+                    className="TextField__input___7fOry"
+                    disabled={false}
+                    id="startMinute"
+                    onChange={[Function]}
+                    placeholder={null}
+                    required={false}
+                    type="text"
+                    value="57"
+                  />
+                </label>
+              </div>
+            </div>
+             h
+          </div>
+        </fieldset>
+        <fieldset
+          style={
+            Object {
+              "borderStyle": "none",
+              "marginLeft": "auto",
+              "marginRight": "auto",
+              "maxWidth": "17em",
+              "padding": "0",
+            }
+          }
+        >
+          <legend>
+            workLog:element.endTime
+          </legend>
+          <div>
+            <div
+              style={
+                Object {
+                  "display": "inline-block",
+                }
+              }
+            >
+              <div
+                className="TextField__root___3Dilx"
+              >
+                <label
+                  htmlFor="endHour"
+                >
+                  <div
+                    className="TextField__isLabelHidden___3U6DG"
+                  >
+                    workLog:element.endHour
+                  </div>
+                  <input
+                    className="TextField__input___7fOry"
+                    disabled={false}
+                    id="endHour"
+                    onChange={[Function]}
+                    placeholder={null}
+                    required={false}
+                    type="text"
+                    value="01"
+                  />
+                </label>
+              </div>
+            </div>
+            :
+            <div
+              style={
+                Object {
+                  "display": "inline-block",
+                }
+              }
+            >
+              <div
+                className="TextField__root___3Dilx"
+              >
+                <label
+                  htmlFor="endMinute"
+                >
+                  <div
+                    className="TextField__isLabelHidden___3U6DG"
+                  >
+                    workLog:element.endMinute
+                  </div>
+                  <input
+                    className="TextField__input___7fOry"
+                    disabled={false}
+                    id="endMinute"
+                    onChange={[Function]}
+                    placeholder={null}
+                    required={false}
+                    type="text"
+                    value="03"
+                  />
+                </label>
+              </div>
+            </div>
+             h
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <div
+      className="Modal__footer___2iTPs"
     >
-      <legend>
-        workLog:element.date
-      </legend>
-      <div
-        style={
-          Object {
-            "display": "inline-block",
-          }
-        }
+      <button
+        className="Button__root___1d_g4
+        Button__priorityPrimary___3cllH
+        Button__sizeMedium___3hH6Z"
+        disabled={false}
+        onClick={[Function]}
+        title={null}
+        type="button"
       >
-        <TextField
-          changeHandler={null}
-          description={null}
-          disabled={true}
-          error={null}
-          fieldId="date"
-          isLabelVisible={false}
-          label="workLog:element.date"
-          placeholder={null}
-          required={false}
-          type="text"
-          value="1. 1. 2018"
-        />
-      </div>
-    </fieldset>
-    <fieldset
-      style={
-        Object {
-          "borderStyle": "none",
-          "marginLeft": "auto",
-          "marginRight": "auto",
-          "maxWidth": "17em",
-          "padding": "0",
-        }
-      }
-    >
-      <legend>
-        workLog:element.type
-      </legend>
-      <div
-        style={
-          Object {
-            "display": "inline-block",
-          }
-        }
+        <span>
+          general:action.save
+        </span>
+      </button>
+      <button
+        className="Button__root___1d_g4
+        Button__priorityDefault___2rB14
+        Button__sizeMedium___3hH6Z"
+        disabled={false}
+        onClick={[Function]}
+        title={null}
+        type="button"
       >
-        <SelectField
-          changeHandler={[Function]}
-          description={null}
-          disabled={false}
-          error={null}
-          fieldId="type"
-          isLabelVisible={false}
-          label="workLog:element.type"
-          options={
-            Array [
-              Object {
-                "label": "workMonth:constant.type.workLog",
-                "value": "WORK_LOG",
-              },
-              Object {
-                "label": "workMonth:constant.type.businessTripWorkLog",
-                "value": "BUSINESS_TRIP_WORK_LOG",
-              },
-              Object {
-                "label": "workMonth:constant.type.homeOfficeWorkLog",
-                "value": "HOME_OFFICE_WORK_LOG",
-              },
-              Object {
-                "label": "workMonth:constant.type.overtimeWorkLog",
-                "value": "OVERTIME_WORK_LOG",
-              },
-              Object {
-                "label": "workMonth:constant.type.sickDayWorkLog",
-                "value": "SICK_DAY_WORK_LOG",
-              },
-              Object {
-                "label": "workMonth:constant.type.timeOffWorkLog",
-                "value": "TIME_OFF_WORK_LOG",
-              },
-              Object {
-                "label": "workMonth:constant.type.vacationWorkLog",
-                "value": "VACATION_WORK_LOG",
-              },
-            ]
-          }
-          required={false}
-          value="WORK_LOG"
-        />
-      </div>
-    </fieldset>
-    <React.Fragment>
-      <fieldset
-        style={
-          Object {
-            "borderStyle": "none",
-            "marginLeft": "auto",
-            "marginRight": "auto",
-            "maxWidth": "17em",
-            "padding": "0",
-          }
-        }
-      >
-        <legend>
-          workLog:element.startTime
-        </legend>
-        <div>
-          <div
-            style={
-              Object {
-                "display": "inline-block",
-              }
-            }
-          >
-            <TextField
-              autoFocus={true}
-              changeHandler={[Function]}
-              description={null}
-              disabled={false}
-              error={null}
-              fieldId="startHour"
-              isLabelVisible={false}
-              label="workLog:element.startHour"
-              placeholder={null}
-              required={false}
-              type="text"
-              value="00"
-            />
-          </div>
-          :
-          <div
-            style={
-              Object {
-                "display": "inline-block",
-              }
-            }
-          >
-            <TextField
-              changeHandler={[Function]}
-              description={null}
-              disabled={false}
-              error={null}
-              fieldId="startMinute"
-              isLabelVisible={false}
-              label="workLog:element.startMinute"
-              placeholder={null}
-              required={false}
-              type="text"
-              value="57"
-            />
-          </div>
-           h
-        </div>
-      </fieldset>
-      <fieldset
-        style={
-          Object {
-            "borderStyle": "none",
-            "marginLeft": "auto",
-            "marginRight": "auto",
-            "maxWidth": "17em",
-            "padding": "0",
-          }
-        }
-      >
-        <legend>
-          workLog:element.endTime
-        </legend>
-        <div>
-          <div
-            style={
-              Object {
-                "display": "inline-block",
-              }
-            }
-          >
-            <TextField
-              changeHandler={[Function]}
-              description={null}
-              disabled={false}
-              error={null}
-              fieldId="endHour"
-              isLabelVisible={false}
-              label="workLog:element.endHour"
-              placeholder={null}
-              required={false}
-              type="text"
-              value="01"
-            />
-          </div>
-          :
-          <div
-            style={
-              Object {
-                "display": "inline-block",
-              }
-            }
-          >
-            <TextField
-              changeHandler={[Function]}
-              description={null}
-              disabled={false}
-              error={null}
-              fieldId="endMinute"
-              isLabelVisible={false}
-              label="workLog:element.endMinute"
-              placeholder={null}
-              required={false}
-              type="text"
-              value="03"
-            />
-          </div>
-           h
-        </div>
-      </fieldset>
-    </React.Fragment>
-  </form>
-</Modal>
+        <span>
+          general:action.close
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`rendering renders correctly with mandatory props 1`] = `
-<Modal
-  actions={
-    Array [
-      Object {
-        "clickHandler": [Function],
-        "label": "general:action.save",
-        "loading": false,
-      },
-    ]
-  }
-  closeHandler={[Function]}
-  title="workLog:modal.add.title"
+<div
+  className="Modal__overlay___2LRch"
+  onClick={[Function]}
+  role="presentation"
 >
-  <p
-    style={
-      Object {
-        "color": "#a32100",
-        "textAlign": "center",
-      }
-    }
-  />
-  <form>
-    <fieldset
-      style={
-        Object {
-          "borderStyle": "none",
-          "marginLeft": "auto",
-          "marginRight": "auto",
-          "maxWidth": "17em",
-          "padding": "0",
-        }
-      }
+  <div
+    className="Modal__root___386pN"
+    onClick={[Function]}
+    role="presentation"
+  >
+    <div
+      className="Modal__head___1Z5Bn"
     >
-      <legend>
-        workLog:element.date
-      </legend>
-      <div
-        style={
-          Object {
-            "display": "inline-block",
-          }
-        }
+      <h3
+        className="Modal__headTitle___29_OR"
       >
-        <TextField
-          changeHandler={null}
-          description={null}
-          disabled={true}
-          error={null}
-          fieldId="date"
-          isLabelVisible={false}
-          label="workLog:element.date"
-          placeholder={null}
-          required={false}
-          type="text"
-          value="1. 1. 2018"
-        />
-      </div>
-    </fieldset>
-    <fieldset
-      style={
-        Object {
-          "borderStyle": "none",
-          "marginLeft": "auto",
-          "marginRight": "auto",
-          "maxWidth": "17em",
-          "padding": "0",
-        }
-      }
+        workLog:modal.add.title
+      </h3>
+    </div>
+    <div
+      className="Modal__body___3KyQK"
     >
-      <legend>
-        workLog:element.type
-      </legend>
-      <div
+      <p
         style={
           Object {
-            "display": "inline-block",
+            "color": "#a32100",
+            "textAlign": "center",
           }
         }
-      >
-        <SelectField
-          changeHandler={[Function]}
-          description={null}
-          disabled={false}
-          error={null}
-          fieldId="type"
-          isLabelVisible={false}
-          label="workLog:element.type"
-          options={
-            Array [
-              Object {
-                "label": "workMonth:constant.type.workLog",
-                "value": "WORK_LOG",
-              },
-              Object {
-                "label": "workMonth:constant.type.businessTripWorkLog",
-                "value": "BUSINESS_TRIP_WORK_LOG",
-              },
-              Object {
-                "label": "workMonth:constant.type.homeOfficeWorkLog",
-                "value": "HOME_OFFICE_WORK_LOG",
-              },
-              Object {
-                "label": "workMonth:constant.type.overtimeWorkLog",
-                "value": "OVERTIME_WORK_LOG",
-              },
-              Object {
-                "label": "workMonth:constant.type.sickDayWorkLog",
-                "value": "SICK_DAY_WORK_LOG",
-              },
-              Object {
-                "label": "workMonth:constant.type.timeOffWorkLog",
-                "value": "TIME_OFF_WORK_LOG",
-              },
-              Object {
-                "label": "workMonth:constant.type.vacationWorkLog",
-                "value": "VACATION_WORK_LOG",
-              },
-            ]
+      />
+      <form>
+        <fieldset
+          style={
+            Object {
+              "borderStyle": "none",
+              "marginLeft": "auto",
+              "marginRight": "auto",
+              "maxWidth": "17em",
+              "padding": "0",
+            }
           }
-          required={false}
-          value="WORK_LOG"
-        />
-      </div>
-    </fieldset>
-    <React.Fragment>
-      <fieldset
-        style={
-          Object {
-            "borderStyle": "none",
-            "marginLeft": "auto",
-            "marginRight": "auto",
-            "maxWidth": "17em",
-            "padding": "0",
+        >
+          <legend>
+            workLog:element.date
+          </legend>
+          <div
+            style={
+              Object {
+                "display": "inline-block",
+              }
+            }
+          >
+            <div
+              className="TextField__root___3Dilx"
+            >
+              <label
+                htmlFor="date"
+              >
+                <div
+                  className="TextField__isLabelHidden___3U6DG"
+                >
+                  workLog:element.date
+                </div>
+                <input
+                  className="TextField__input___7fOry"
+                  disabled={true}
+                  id="date"
+                  onChange={null}
+                  placeholder={null}
+                  required={false}
+                  type="text"
+                  value="1. 1. 2018"
+                />
+              </label>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset
+          style={
+            Object {
+              "borderStyle": "none",
+              "marginLeft": "auto",
+              "marginRight": "auto",
+              "maxWidth": "17em",
+              "padding": "0",
+            }
           }
-        }
-      >
-        <legend>
-          workLog:element.startTime
-        </legend>
-        <div>
+        >
+          <legend>
+            workLog:element.type
+          </legend>
           <div
             style={
               Object {
@@ -433,108 +493,266 @@ exports[`rendering renders correctly with mandatory props 1`] = `
               }
             }
           >
-            <TextField
-              autoFocus={true}
-              changeHandler={[Function]}
-              description={null}
-              disabled={false}
-              error={null}
-              fieldId="startHour"
-              isLabelVisible={false}
-              label="workLog:element.startHour"
-              placeholder={null}
-              required={false}
-              type="text"
-              value="00"
-            />
+            <div
+              className="SelectField__isRootCondensed___hi5xq SelectField__root___2payh"
+            >
+              <label
+                htmlFor="type"
+              >
+                <div
+                  className="SelectField__isLabelHidden___VCBL3"
+                >
+                  workLog:element.type
+                </div>
+                <select
+                  className="SelectField__select___3Lq-l"
+                  disabled={false}
+                  id="type"
+                  onChange={[Function]}
+                  required={false}
+                  value="WORK_LOG"
+                >
+                  <option
+                    key="WORK_LOG"
+                    value="WORK_LOG"
+                  >
+                    workMonth:constant.type.workLog
+                  </option>
+                  <option
+                    key="BUSINESS_TRIP_WORK_LOG"
+                    value="BUSINESS_TRIP_WORK_LOG"
+                  >
+                    workMonth:constant.type.businessTripWorkLog
+                  </option>
+                  <option
+                    key="HOME_OFFICE_WORK_LOG"
+                    value="HOME_OFFICE_WORK_LOG"
+                  >
+                    workMonth:constant.type.homeOfficeWorkLog
+                  </option>
+                  <option
+                    key="OVERTIME_WORK_LOG"
+                    value="OVERTIME_WORK_LOG"
+                  >
+                    workMonth:constant.type.overtimeWorkLog
+                  </option>
+                  <option
+                    key="SICK_DAY_WORK_LOG"
+                    value="SICK_DAY_WORK_LOG"
+                  >
+                    workMonth:constant.type.sickDayWorkLog
+                  </option>
+                  <option
+                    key="TIME_OFF_WORK_LOG"
+                    value="TIME_OFF_WORK_LOG"
+                  >
+                    workMonth:constant.type.timeOffWorkLog
+                  </option>
+                  <option
+                    key="VACATION_WORK_LOG"
+                    value="VACATION_WORK_LOG"
+                  >
+                    workMonth:constant.type.vacationWorkLog
+                  </option>
+                </select>
+              </label>
+            </div>
           </div>
-          :
-          <div
-            style={
-              Object {
-                "display": "inline-block",
-              }
+        </fieldset>
+        <fieldset
+          style={
+            Object {
+              "borderStyle": "none",
+              "marginLeft": "auto",
+              "marginRight": "auto",
+              "maxWidth": "17em",
+              "padding": "0",
             }
-          >
-            <TextField
-              changeHandler={[Function]}
-              description={null}
-              disabled={false}
-              error={null}
-              fieldId="startMinute"
-              isLabelVisible={false}
-              label="workLog:element.startMinute"
-              placeholder={null}
-              required={false}
-              type="text"
-              value="57"
-            />
-          </div>
-           h
-        </div>
-      </fieldset>
-      <fieldset
-        style={
-          Object {
-            "borderStyle": "none",
-            "marginLeft": "auto",
-            "marginRight": "auto",
-            "maxWidth": "17em",
-            "padding": "0",
           }
-        }
+        >
+          <legend>
+            workLog:element.startTime
+          </legend>
+          <div>
+            <div
+              style={
+                Object {
+                  "display": "inline-block",
+                }
+              }
+            >
+              <div
+                className="TextField__root___3Dilx"
+              >
+                <label
+                  htmlFor="startHour"
+                >
+                  <div
+                    className="TextField__isLabelHidden___3U6DG"
+                  >
+                    workLog:element.startHour
+                  </div>
+                  <input
+                    className="TextField__input___7fOry"
+                    disabled={false}
+                    id="startHour"
+                    onChange={[Function]}
+                    placeholder={null}
+                    required={false}
+                    type="text"
+                    value="00"
+                  />
+                </label>
+              </div>
+            </div>
+            :
+            <div
+              style={
+                Object {
+                  "display": "inline-block",
+                }
+              }
+            >
+              <div
+                className="TextField__root___3Dilx"
+              >
+                <label
+                  htmlFor="startMinute"
+                >
+                  <div
+                    className="TextField__isLabelHidden___3U6DG"
+                  >
+                    workLog:element.startMinute
+                  </div>
+                  <input
+                    className="TextField__input___7fOry"
+                    disabled={false}
+                    id="startMinute"
+                    onChange={[Function]}
+                    placeholder={null}
+                    required={false}
+                    type="text"
+                    value="57"
+                  />
+                </label>
+              </div>
+            </div>
+             h
+          </div>
+        </fieldset>
+        <fieldset
+          style={
+            Object {
+              "borderStyle": "none",
+              "marginLeft": "auto",
+              "marginRight": "auto",
+              "maxWidth": "17em",
+              "padding": "0",
+            }
+          }
+        >
+          <legend>
+            workLog:element.endTime
+          </legend>
+          <div>
+            <div
+              style={
+                Object {
+                  "display": "inline-block",
+                }
+              }
+            >
+              <div
+                className="TextField__root___3Dilx"
+              >
+                <label
+                  htmlFor="endHour"
+                >
+                  <div
+                    className="TextField__isLabelHidden___3U6DG"
+                  >
+                    workLog:element.endHour
+                  </div>
+                  <input
+                    className="TextField__input___7fOry"
+                    disabled={false}
+                    id="endHour"
+                    onChange={[Function]}
+                    placeholder={null}
+                    required={false}
+                    type="text"
+                    value="01"
+                  />
+                </label>
+              </div>
+            </div>
+            :
+            <div
+              style={
+                Object {
+                  "display": "inline-block",
+                }
+              }
+            >
+              <div
+                className="TextField__root___3Dilx"
+              >
+                <label
+                  htmlFor="endMinute"
+                >
+                  <div
+                    className="TextField__isLabelHidden___3U6DG"
+                  >
+                    workLog:element.endMinute
+                  </div>
+                  <input
+                    className="TextField__input___7fOry"
+                    disabled={false}
+                    id="endMinute"
+                    onChange={[Function]}
+                    placeholder={null}
+                    required={false}
+                    type="text"
+                    value="03"
+                  />
+                </label>
+              </div>
+            </div>
+             h
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <div
+      className="Modal__footer___2iTPs"
+    >
+      <button
+        className="Button__root___1d_g4
+        Button__priorityPrimary___3cllH
+        Button__sizeMedium___3hH6Z"
+        disabled={false}
+        onClick={[Function]}
+        title={null}
+        type="button"
       >
-        <legend>
-          workLog:element.endTime
-        </legend>
-        <div>
-          <div
-            style={
-              Object {
-                "display": "inline-block",
-              }
-            }
-          >
-            <TextField
-              changeHandler={[Function]}
-              description={null}
-              disabled={false}
-              error={null}
-              fieldId="endHour"
-              isLabelVisible={false}
-              label="workLog:element.endHour"
-              placeholder={null}
-              required={false}
-              type="text"
-              value="01"
-            />
-          </div>
-          :
-          <div
-            style={
-              Object {
-                "display": "inline-block",
-              }
-            }
-          >
-            <TextField
-              changeHandler={[Function]}
-              description={null}
-              disabled={false}
-              error={null}
-              fieldId="endMinute"
-              isLabelVisible={false}
-              label="workLog:element.endMinute"
-              placeholder={null}
-              required={false}
-              type="text"
-              value="03"
-            />
-          </div>
-           h
-        </div>
-      </fieldset>
-    </React.Fragment>
-  </form>
-</Modal>
+        <span>
+          general:action.save
+        </span>
+      </button>
+      <button
+        className="Button__root___1d_g4
+        Button__priorityDefault___2rB14
+        Button__sizeMedium___3hH6Z"
+        disabled={false}
+        onClick={[Function]}
+        title={null}
+        type="button"
+      >
+        <span>
+          general:action.close
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
 `;

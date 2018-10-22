@@ -429,6 +429,7 @@ class WorkLogCalendar extends React.Component {
         actions={actions}
         closeHandler={this.closeDeleteWorkLogDialog}
         title={t('workLog:modal.detail.title')}
+        translations={{ close: t('general:action.close') }}
       >
         {content}
       </Modal>
