@@ -3,7 +3,7 @@
 exports[`rendering renders correctly 1`] = `
 <Connect(LayoutComponent)
   loading={false}
-  title="supervisedUser:title.workLogs"
+  title="workLog:title.workLogs"
 >
   <WorkLogCalendar
     addBusinessTripWorkLog={[Function]}
