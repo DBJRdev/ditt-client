@@ -84,12 +84,13 @@ class WorkLogForm extends React.Component {
       borderStyle: 'none',
       marginLeft: 'auto',
       marginRight: 'auto',
-      maxWidth: '17em',
+      maxWidth: '19em',
       padding: '0',
     };
 
     this.fieldStyle = {
       display: 'inline-block',
+      width: '150px',
     };
 
     this.formInfoTextStyle = {
@@ -337,7 +338,7 @@ class WorkLogForm extends React.Component {
                 fieldId="startHour"
                 isLabelVisible={false}
                 label={t('workLog:element.startHour')}
-                value={this.state.formData.startHour || '0'}
+                value={this.state.formData.startHour || ''}
               />
             </div>
             :
@@ -348,7 +349,7 @@ class WorkLogForm extends React.Component {
                 fieldId="startMinute"
                 isLabelVisible={false}
                 label={t('workLog:element.startMinute')}
-                value={this.state.formData.startMinute || '0'}
+                value={this.state.formData.startMinute || ''}
               />
             </div>
             &nbsp;h
@@ -364,7 +365,7 @@ class WorkLogForm extends React.Component {
                 fieldId="endHour"
                 isLabelVisible={false}
                 label={t('workLog:element.endHour')}
-                value={this.state.formData.endHour || '0'}
+                value={this.state.formData.endHour || ''}
               />
             </div>
             :
@@ -375,7 +376,7 @@ class WorkLogForm extends React.Component {
                 fieldId="endMinute"
                 isLabelVisible={false}
                 label={t('workLog:element.endMinute')}
-                value={this.state.formData.endMinute || '0'}
+                value={this.state.formData.endMinute || ''}
               />
             </div>
             &nbsp;h
