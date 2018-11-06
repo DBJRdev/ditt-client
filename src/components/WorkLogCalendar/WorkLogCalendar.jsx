@@ -439,12 +439,241 @@ class WorkLogCalendar extends React.Component {
   render() {
     const { t } = this.props;
     let status = null;
+    let workLogContent = null;
 
     if (this.props.workMonth) {
       status = this.props.workMonth.get('status');
     }
 
     const daysOfSelectedMonth = this.getDaysOfSelectedMonth();
+
+    if (this.props.supervisorView && status === STATUS_OPENED) {
+      workLogContent = t('workLog:text.openedWorkMonth');
+    } else {
+      workLogContent = (
+        <React.Fragment>
+          <div className={styles.tableWrapper}>
+            <table className={styles.table}>
+              <tbody>
+                {daysOfSelectedMonth.map((day) => {
+                  const rowClassName = (isWeekend(day.date) || includesSameDate(day.date, this.props.config.get('supportedHolidays')))
+                    ? styles.tableRowWeekend
+                    : styles.tableRow;
+
+                  return (
+                    <tr key={day.date.date()} className={rowClassName}>
+                      <td className={styles.tableCell}>
+                        <div className={styles.date}>
+                          {toDayMonthYearFormat(day.date)}
+                        </div>
+                        <div className={styles.dayInWeek}>
+                          {toDayFormat(day.date)}
+                        </div>
+                      </td>
+                      <td className={styles.tableCell}>
+                        {day.workLogList.map((workLog) => {
+                          const resolveLabel = (workLogData) => {
+                            let label = getTypeLabel(t, workLogData.type);
+
+                            if (STATUS_WAITING_FOR_APPROVAL === workLogData.status) {
+                              label += ` (${t('workMonth:constant.status.waiting')})`;
+                            } else if (STATUS_REJECTED === workLogData.status) {
+                              label += ` (${t('workMonth:constant.status.rejected')})`;
+                            }
+
+                            return label;
+                          };
+
+                          if (workLog.type === BUSINESS_TRIP_WORK_LOG) {
+                            return (
+                              <div
+                                key={`BT-${workLog.id}`}
+                                className={styles.workLogButtonWrapper}
+                              >
+                                <Button
+                                  clickHandler={
+                                    () => this.openDeleteWorkLogDialog(
+                                      workLog.id,
+                                      BUSINESS_TRIP_WORK_LOG
+                                    )
+                                  }
+                                  icon="directions_car"
+                                  label={resolveLabel(workLog)}
+                                />
+                              </div>
+                            );
+                          }
+
+                          if (workLog.type === HOME_OFFICE_WORK_LOG) {
+                            return (
+                              <div
+                                key={`HO-${workLog.id}`}
+                                className={styles.workLogButtonWrapper}
+                              >
+                                <Button
+                                  clickHandler={
+                                    () => this.openDeleteWorkLogDialog(
+                                      workLog.id,
+                                      HOME_OFFICE_WORK_LOG
+                                    )
+                                  }
+                                  icon="home"
+                                  label={resolveLabel(workLog)}
+                                />
+                              </div>
+                            );
+                          }
+
+                          if (workLog.type === OVERTIME_WORK_LOG) {
+                            return (
+                              <div
+                                key={`OT-${workLog.id}`}
+                                className={styles.workLogButtonWrapper}
+                              >
+                                <Button
+                                  clickHandler={
+                                    () => this.openDeleteWorkLogDialog(
+                                      workLog.id,
+                                      OVERTIME_WORK_LOG
+                                    )
+                                  }
+                                  icon="access_time"
+                                  label={resolveLabel(workLog)}
+                                />
+                              </div>
+                            );
+                          }
+
+                          if (workLog.type === SICK_DAY_WORK_LOG) {
+                            return (
+                              <div
+                                key={`SD-${workLog.id}`}
+                                className={styles.workLogButtonWrapper}
+                              >
+                                <Button
+                                  clickHandler={
+                                    () => this.openDeleteWorkLogDialog(
+                                      workLog.id,
+                                      SICK_DAY_WORK_LOG
+                                    )
+                                  }
+                                  icon="pregnant_woman"
+                                  label={resolveLabel(workLog)}
+                                />
+                              </div>
+                            );
+                          }
+
+                          if (workLog.type === TIME_OFF_WORK_LOG) {
+                            return (
+                              <div
+                                key={`TO-${workLog.id}`}
+                                className={styles.workLogButtonWrapper}
+                              >
+                                <Button
+                                  clickHandler={
+                                    () => this.openDeleteWorkLogDialog(
+                                      workLog.id,
+                                      TIME_OFF_WORK_LOG
+                                    )
+                                  }
+                                  icon="flag"
+                                  label={resolveLabel(workLog)}
+                                />
+                              </div>
+                            );
+                          }
+
+                          if (workLog.type === VACATION_WORK_LOG) {
+                            return (
+                              <div
+                                key={`V-${workLog.id}`}
+                                className={styles.workLogButtonWrapper}
+                              >
+                                <Button
+                                  clickHandler={
+                                    () => this.openDeleteWorkLogDialog(
+                                      workLog.id,
+                                      VACATION_WORK_LOG
+                                    )
+                                  }
+                                  icon="flag"
+                                  label={resolveLabel(workLog)}
+                                />
+                              </div>
+                            );
+                          }
+
+                          return (
+                            <div
+                              key={`WL-${workLog.id}`}
+                              className={styles.workLogButtonWrapper}
+                            >
+                              <Button
+                                clickHandler={
+                                  () => this.openDeleteWorkLogDialog(
+                                    workLog.id,
+                                    WORK_LOG
+                                  )
+                                }
+                                icon="work"
+                                label={`${toHourMinuteFormat(workLog.startTime)} - ${toHourMinuteFormat(workLog.endTime)}`}
+                              />
+                            </div>
+                          );
+                        })}
+                      </td>
+                      {
+                        !this.props.supervisorView
+                        && (status === STATUS_OPENED || status === STATUS_WAITING_FOR_APPROVAL)
+                        && (
+                          <td className={styles.tableCellRight}>
+                            <div className={styles.addWorkLogButtonWrapper}>
+                              <Button
+                                clickHandler={() => this.openWorkLogForm(day.date)}
+                                icon="add"
+                                label={t('workLog:action.addWorkLog')}
+                                isLabelVisible={false}
+                                priority="default"
+                              />
+                            </div>
+                          </td>
+                        )
+                      }
+                      <td className={styles.tableCellRight}>
+                        {day.workTime.hours()}:{day.workTime.minutes() < 10 && '0'}{day.workTime.minutes()}&nbsp;h
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+          {
+            !this.props.supervisorView
+            && status === STATUS_OPENED
+            && (
+              <div className={styles.sendForApprovalButtonWrapper}>
+                <Button
+                  clickHandler={() => {
+                    if (this.props.workMonth) {
+                      this.props.markWaitingForApproval(this.props.workMonth.get('id'));
+                    }
+                  }}
+                  disabled={!this.props.workMonth || !!this.countWaitingForApprovalWorkLogs()}
+                  icon="send"
+                  label={t('workLog:action.sendWorkMonthForApproval')}
+                  loading={this.props.isPosting}
+                  priority="primary"
+                />
+              </div>
+            )
+          }
+          {this.state.showDeleteWorkLogDialog ? this.renderDeleteWorkLogModal() : null}
+          {this.state.showWorkLogForm ? this.renderWorkLogForm() : null}
+        </React.Fragment>
+      );
+    }
 
     return (
       <div>
@@ -514,225 +743,7 @@ class WorkLogCalendar extends React.Component {
             />
           </div>
         </nav>
-        <div className={styles.tableWrapper}>
-          <table className={styles.table}>
-            <tbody>
-              {daysOfSelectedMonth.map((day) => {
-                const rowClassName = (isWeekend(day.date) || includesSameDate(day.date, this.props.config.get('supportedHolidays')))
-                  ? styles.tableRowWeekend
-                  : styles.tableRow;
-
-                return (
-                  <tr key={day.date.date()} className={rowClassName}>
-                    <td className={styles.tableCell}>
-                      <div className={styles.date}>
-                        {toDayMonthYearFormat(day.date)}
-                      </div>
-                      <div className={styles.dayInWeek}>
-                        {toDayFormat(day.date)}
-                      </div>
-                    </td>
-                    <td className={styles.tableCell}>
-                      {day.workLogList.map((workLog) => {
-                        const resolveLabel = (workLogData) => {
-                          let label = getTypeLabel(t, workLogData.type);
-
-                          if (STATUS_WAITING_FOR_APPROVAL === workLogData.status) {
-                            label += ` (${t('workMonth:constant.status.waiting')})`;
-                          } else if (STATUS_REJECTED === workLogData.status) {
-                            label += ` (${t('workMonth:constant.status.rejected')})`;
-                          }
-
-                          return label;
-                        };
-
-                        if (workLog.type === BUSINESS_TRIP_WORK_LOG) {
-                          return (
-                            <div
-                              key={`BT-${workLog.id}`}
-                              className={styles.workLogButtonWrapper}
-                            >
-                              <Button
-                                clickHandler={
-                                  () => this.openDeleteWorkLogDialog(
-                                    workLog.id,
-                                    BUSINESS_TRIP_WORK_LOG
-                                  )
-                                }
-                                icon="directions_car"
-                                label={resolveLabel(workLog)}
-                              />
-                            </div>
-                          );
-                        }
-
-                        if (workLog.type === HOME_OFFICE_WORK_LOG) {
-                          return (
-                            <div
-                              key={`HO-${workLog.id}`}
-                              className={styles.workLogButtonWrapper}
-                            >
-                              <Button
-                                clickHandler={
-                                  () => this.openDeleteWorkLogDialog(
-                                    workLog.id,
-                                    HOME_OFFICE_WORK_LOG
-                                  )
-                                }
-                                icon="home"
-                                label={resolveLabel(workLog)}
-                              />
-                            </div>
-                          );
-                        }
-
-                        if (workLog.type === OVERTIME_WORK_LOG) {
-                          return (
-                            <div
-                              key={`OT-${workLog.id}`}
-                              className={styles.workLogButtonWrapper}
-                            >
-                              <Button
-                                clickHandler={
-                                  () => this.openDeleteWorkLogDialog(
-                                    workLog.id,
-                                    OVERTIME_WORK_LOG
-                                  )
-                                }
-                                icon="access_time"
-                                label={resolveLabel(workLog)}
-                              />
-                            </div>
-                          );
-                        }
-
-                        if (workLog.type === SICK_DAY_WORK_LOG) {
-                          return (
-                            <div
-                              key={`SD-${workLog.id}`}
-                              className={styles.workLogButtonWrapper}
-                            >
-                              <Button
-                                clickHandler={
-                                  () => this.openDeleteWorkLogDialog(
-                                    workLog.id,
-                                    SICK_DAY_WORK_LOG
-                                  )
-                                }
-                                icon="pregnant_woman"
-                                label={resolveLabel(workLog)}
-                              />
-                            </div>
-                          );
-                        }
-
-                        if (workLog.type === TIME_OFF_WORK_LOG) {
-                          return (
-                            <div
-                              key={`TO-${workLog.id}`}
-                              className={styles.workLogButtonWrapper}
-                            >
-                              <Button
-                                clickHandler={
-                                  () => this.openDeleteWorkLogDialog(
-                                    workLog.id,
-                                    TIME_OFF_WORK_LOG
-                                  )
-                                }
-                                icon="flag"
-                                label={resolveLabel(workLog)}
-                              />
-                            </div>
-                          );
-                        }
-
-                        if (workLog.type === VACATION_WORK_LOG) {
-                          return (
-                            <div
-                              key={`V-${workLog.id}`}
-                              className={styles.workLogButtonWrapper}
-                            >
-                              <Button
-                                clickHandler={
-                                  () => this.openDeleteWorkLogDialog(
-                                    workLog.id,
-                                    VACATION_WORK_LOG
-                                  )
-                                }
-                                icon="flag"
-                                label={resolveLabel(workLog)}
-                              />
-                            </div>
-                          );
-                        }
-
-                        return (
-                          <div
-                            key={`WL-${workLog.id}`}
-                            className={styles.workLogButtonWrapper}
-                          >
-                            <Button
-                              clickHandler={
-                                () => this.openDeleteWorkLogDialog(
-                                  workLog.id,
-                                  WORK_LOG
-                                )
-                              }
-                              icon="work"
-                              label={`${toHourMinuteFormat(workLog.startTime)} - ${toHourMinuteFormat(workLog.endTime)}`}
-                            />
-                          </div>
-                        );
-                      })}
-                    </td>
-                    {
-                      !this.props.supervisorView
-                      && (status === STATUS_OPENED || status === STATUS_WAITING_FOR_APPROVAL)
-                      && (
-                        <td className={styles.tableCellRight}>
-                          <div className={styles.addWorkLogButtonWrapper}>
-                            <Button
-                              clickHandler={() => this.openWorkLogForm(day.date)}
-                              icon="add"
-                              label={t('workLog:action.addWorkLog')}
-                              isLabelVisible={false}
-                              priority="default"
-                            />
-                          </div>
-                        </td>
-                      )
-                    }
-                    <td className={styles.tableCellRight}>
-                      {day.workTime.hours()}:{day.workTime.minutes() < 10 && '0'}{day.workTime.minutes()}&nbsp;h
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-        {
-          !this.props.supervisorView
-          && status === STATUS_OPENED
-          && (
-            <div className={styles.sendForApprovalButtonWrapper}>
-              <Button
-                clickHandler={() => {
-                  if (this.props.workMonth) {
-                    this.props.markWaitingForApproval(this.props.workMonth.get('id'));
-                  }
-                }}
-                disabled={!this.props.workMonth || !!this.countWaitingForApprovalWorkLogs()}
-                icon="send"
-                label={t('workLog:action.sendWorkMonthForApproval')}
-                loading={this.props.isPosting}
-                priority="primary"
-              />
-            </div>
-          )
-        }
-        {this.state.showDeleteWorkLogDialog ? this.renderDeleteWorkLogModal() : null}
-        {this.state.showWorkLogForm ? this.renderWorkLogForm() : null}
+        {workLogContent}
       </div>
     );
   }

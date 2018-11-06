@@ -206,6 +206,7 @@
       }
     },
     "text": {
+      "openedWorkMonth": "This month appears empty, because the employee has not submitted it yet.",
       "workedAndRequiredHours": "{{ workedHours }} h out of {{ requiredHours }} h"
     },
     "title": {

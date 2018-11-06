@@ -206,6 +206,7 @@
       }
     },
     "text": {
+      "openedWorkMonth": "Dieser Monat erscheint leer, weil der/die Arbeitnehmer*in ihn noch nicht übermittelt hat.",
       "workedAndRequiredHours": "{{ workedHours }} h von {{ requiredHours }} h"
     },
     "title": {
