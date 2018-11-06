@@ -35,6 +35,7 @@ import {
   AddContainer as AddUserPage,
   EditContainer as EditUserPage,
   ListContainer as UserListPage,
+  ProfileContainer as UserProfilePage,
 } from './pages/user';
 import translator from './translator';
 
@@ -79,6 +80,12 @@ ReactDOM.render(
               path={routes.supervisedUserList}
               roles={[ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]}
               component={SupervisedUserListPage}
+            />
+            <AuthorizedRoute
+              exact
+              path={routes.profile}
+              roles={[ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]}
+              component={UserProfilePage}
             />
             <AuthorizedRoute
               exact

@@ -94,8 +94,15 @@ class LayoutComponent extends React.Component {
               )}
               <div className={styles.navigationItem}>
                 <Button
+                  clickHandler={() => history.push(routes.profile)}
+                  label={this.getName()}
+                  priority="flat"
+                />
+              </div>
+              <div className={styles.navigationItem}>
+                <Button
                   clickHandler={this.props.logout}
-                  label={t('layout:menu.logout', { name: this.getName() })}
+                  label={t('layout:menu.logout')}
                   priority="flat"
                 />
               </div>

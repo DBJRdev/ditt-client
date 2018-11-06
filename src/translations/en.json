@@ -50,7 +50,7 @@
       "specialApprovals": "Special approvals",
       "supervisedUsers": "Supervised users",
       "users": "Users",
-      "logout": "Logout {{ name }}"
+      "logout": "Logout"
     },
     "title": "DBJR Internal Time Tracking"
   },
@@ -173,6 +173,7 @@
     "title": {
       "addUser": "Add user",
       "editUser": "Edit user",
+      "profile": "Profile",
       "users": "Users"
     },
     "validation": {

@@ -1,0 +1,300 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering renders correctly 1`] = `
+<Connect(LayoutComponent)
+  loading={false}
+  title="user:title.profile"
+>
+  <div>
+    <table
+      style={
+        Object {
+          "borderCollapse": "collapse",
+          "marginLeft": "auto",
+          "marginRight": "auto",
+          "maxWidth": "568px",
+          "width": "100%",
+        }
+      }
+    >
+      <tbody>
+        <tr>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid #ccc",
+                "borderTop": "1px solid #ccc",
+                "fontWeight": "bold",
+                "padding": "5px 10px",
+                "width": "50%",
+              }
+            }
+          >
+            user:element.firstName
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid #ccc",
+                "borderTop": "1px solid #ccc",
+              }
+            }
+          >
+            First
+          </td>
+        </tr>
+        <tr>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid #ccc",
+                "borderTop": "1px solid #ccc",
+                "fontWeight": "bold",
+                "padding": "5px 10px",
+                "width": "50%",
+              }
+            }
+          >
+            user:element.lastName
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid #ccc",
+                "borderTop": "1px solid #ccc",
+              }
+            }
+          >
+            Last
+          </td>
+        </tr>
+        <tr>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid #ccc",
+                "borderTop": "1px solid #ccc",
+                "fontWeight": "bold",
+                "padding": "5px 10px",
+                "width": "50%",
+              }
+            }
+          >
+            user:element.supervisor
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid #ccc",
+                "borderTop": "1px solid #ccc",
+              }
+            }
+          >
+            -
+          </td>
+        </tr>
+        <tr>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid #ccc",
+                "borderTop": "1px solid #ccc",
+                "fontWeight": "bold",
+                "padding": "5px 10px",
+                "width": "50%",
+              }
+            }
+          >
+            user:element.email
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid #ccc",
+                "borderTop": "1px solid #ccc",
+              }
+            }
+          >
+            employee@example.com
+          </td>
+        </tr>
+        <tr>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid #ccc",
+                "borderTop": "1px solid #ccc",
+                "fontWeight": "bold",
+                "padding": "5px 10px",
+                "width": "50%",
+              }
+            }
+          >
+            user:element.employeeId
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid #ccc",
+                "borderTop": "1px solid #ccc",
+              }
+            }
+          />
+        </tr>
+        <tr>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid #ccc",
+                "borderTop": "1px solid #ccc",
+                "fontWeight": "bold",
+                "padding": "5px 10px",
+                "width": "50%",
+              }
+            }
+          >
+            user:element.vacationDays
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid #ccc",
+                "borderTop": "1px solid #ccc",
+              }
+            }
+          >
+            10
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h3
+      style={
+        Object {
+          "fontSize": "1rem",
+          "fontWeight": "500",
+          "marginBottom": "1rem",
+          "marginTop": "3rem",
+          "textAlign": "center",
+        }
+      }
+    >
+      user:text.averageWorkingHoursTitle
+    </h3>
+    <div
+      style={
+        Object {
+          "overflowX": "scroll",
+        }
+      }
+    >
+      <table
+        style={
+          Object {
+            "marginLeft": "auto",
+            "marginRight": "auto",
+            "maxWidth": "568px",
+            "width": "100%",
+          }
+        }
+      >
+        <thead>
+          <tr>
+            <th />
+            <th
+              key="1"
+            >
+              1
+            </th>
+            <th
+              key="2"
+            >
+              2
+            </th>
+            <th
+              key="3"
+            >
+              3
+            </th>
+            <th
+              key="4"
+            >
+              4
+            </th>
+            <th
+              key="5"
+            >
+              5
+            </th>
+            <th
+              key="6"
+            >
+              6
+            </th>
+            <th
+              key="7"
+            >
+              7
+            </th>
+            <th
+              key="8"
+            >
+              8
+            </th>
+            <th
+              key="9"
+            >
+              9
+            </th>
+            <th
+              key="10"
+            >
+              10
+            </th>
+            <th
+              key="11"
+            >
+              11
+            </th>
+            <th
+              key="12"
+            >
+              12
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            key="2018"
+          >
+            <td>
+              2018
+            </td>
+          </tr>
+          <tr
+            key="2019"
+          >
+            <td>
+              2019
+            </td>
+          </tr>
+          <tr
+            key="2020"
+          >
+            <td>
+              2020
+            </td>
+          </tr>
+          <tr
+            key="2021"
+          >
+            <td>
+              2021
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</Connect(LayoutComponent)>
+`;

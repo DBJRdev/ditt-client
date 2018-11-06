@@ -50,7 +50,7 @@
       "specialApprovals": "Anträge",
       "supervisedUsers": "Mitarbeiter*innen",
       "users": "Nutzer*innen",
-      "logout": "Ausloggen {{ name }}"
+      "logout": "Ausloggen"
     },
     "title": "DBJR Digitale Zeiterfassung"
   },
@@ -173,6 +173,7 @@
     "title": {
       "addUser": "Nutzer*in hinzufügen",
       "editUser": "Nutzer*in bearbeiten",
+      "profile": "Profil",
       "users": "Nutzer*innen"
     },
     "validation": {
