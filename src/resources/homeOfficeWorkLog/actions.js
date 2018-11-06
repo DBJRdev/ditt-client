@@ -6,6 +6,7 @@ import * as types from './actionTypes';
 export const addHomeOfficeWorkLog = data => dispatch => dispatch({
   [RSAA]: {
     body: JSON.stringify({
+      comment: data.comment,
       date: toJson(data.date),
     }),
     endpoint: `${API_URL}/home_office_work_logs`,

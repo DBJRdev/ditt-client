@@ -38,6 +38,7 @@ class WorkLogForm extends React.Component {
       formData: {
         childDateOfBirth: null,
         childName: null,
+        comment: null,
         destination: null,
         endHour: endTime.format('HH'),
         endMinute: endTime.format('mm'),
@@ -55,6 +56,7 @@ class WorkLogForm extends React.Component {
         elements: {
           childDateOfBirth: null,
           childName: null,
+          comment: null,
           destination: null,
           endHour: null,
           endMinute: null,
@@ -130,6 +132,9 @@ class WorkLogForm extends React.Component {
             : null,
         childName: (formData.type === SICK_DAY_WORK_LOG && formData.variant === VARIANT_SICK_CHILD)
           ? formData.childName
+          : null,
+        comment: (formData.type === HOME_OFFICE_WORK_LOG || formData.type === TIME_OFF_WORK_LOG)
+          ? formData.comment
           : null,
         date: formData.type !== WORK_LOG
           ? this.props.date
@@ -237,6 +242,26 @@ class WorkLogForm extends React.Component {
     );
   }
 
+  renderHomeOfficeWorkLogFields() {
+    const { t } = this.props;
+
+    return (
+      <fieldset style={this.fieldSetStyle}>
+        <legend>{t('homeOfficeWorkLog:element.comment')}</legend>
+        <div style={this.fieldStyle}>
+          <TextField
+            changeHandler={this.changeHandler}
+            error={this.state.formValidity.elements.comment}
+            fieldId="comment"
+            isLabelVisible={false}
+            label={t('homeOfficeWorkLog:element.comment')}
+            value={this.state.formData.comment || ''}
+          />
+        </div>
+      </fieldset>
+    );
+  }
+
   renderOvertimeWorkLogFields() {
     const { t } = this.props;
 
@@ -316,6 +341,26 @@ class WorkLogForm extends React.Component {
             isLabelVisible={false}
             label={t('sickDayWorkLog:element.childDateOfBirth')}
             value={this.state.formData.childDateOfBirth || ''}
+          />
+        </div>
+      </fieldset>
+    );
+  }
+
+  renderTimeOffWorkLogFields() {
+    const { t } = this.props;
+
+    return (
+      <fieldset style={this.fieldSetStyle}>
+        <legend>{t('timeOffWorkLog:element.comment')}</legend>
+        <div style={this.fieldStyle}>
+          <TextField
+            changeHandler={this.changeHandler}
+            error={this.state.formValidity.elements.comment}
+            fieldId="comment"
+            isLabelVisible={false}
+            label={t('timeOffWorkLog:element.comment')}
+            value={this.state.formData.comment || ''}
           />
         </div>
       </fieldset>
@@ -474,12 +519,20 @@ class WorkLogForm extends React.Component {
             this.state.formData.type === BUSINESS_TRIP_WORK_LOG
             && this.renderBusinessTripWorkLogFields()
           }
+          {
+            this.state.formData.type === HOME_OFFICE_WORK_LOG
+            && this.renderHomeOfficeWorkLogFields()
+          }
           {this.state.formData.type === OVERTIME_WORK_LOG && this.renderOvertimeWorkLogFields()}
           {this.state.formData.type === SICK_DAY_WORK_LOG && this.renderSickDayWorkLogFields()}
           {
             this.state.formData.type === SICK_DAY_WORK_LOG
               && this.state.formData.variant === VARIANT_SICK_CHILD
               && this.renderSickDayWorkLogSickChildFields()
+          }
+          {
+            this.state.formData.type === TIME_OFF_WORK_LOG
+            && this.renderTimeOffWorkLogFields()
           }
           {this.state.formData.type === WORK_LOG && this.renderWorkLogFields()}
         </form>

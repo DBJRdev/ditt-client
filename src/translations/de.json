@@ -12,7 +12,11 @@
     "description": "Fehler",
     "title": "'Seite nicht gefunden"
   },
-  "homeOfficeWorkLog": {},
+  "homeOfficeWorkLog": {
+    "element": {
+      "comment": "Kommentar"
+    }
+  },
   "general": {
     "action": {
       "approve": "Gewähren",
@@ -132,7 +136,11 @@
       "cannotRejectWorkLog": "Eintrag kann nicht abgelehnt werden."
     }
   },
-  "timeOffWorkLog": {},
+  "timeOffWorkLog": {
+    "element": {
+      "comment": "Kommentar"
+    }
+  },
   "user": {
     "action": {
       "addUser": "Nutzer*in hinzufügen",

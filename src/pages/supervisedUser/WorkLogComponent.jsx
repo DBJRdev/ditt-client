@@ -152,6 +152,7 @@ WorkLogComponent.propTypes = {
   fetchWorkMonth: PropTypes.func.isRequired,
   fetchWorkMonthList: PropTypes.func.isRequired,
   homeOfficeWorkLog: ImmutablePropTypes.mapContains({
+    comment: PropTypes.string.isRequired,
     date: PropTypes.object.isRequired,
     rejectionMessage: PropTypes.string,
     status: PropTypes.string.isRequired,
@@ -180,6 +181,7 @@ WorkLogComponent.propTypes = {
   }),
   t: PropTypes.func.isRequired,
   timeOffWorkLog: ImmutablePropTypes.mapContains({
+    comment: PropTypes.string.isRequired,
     date: PropTypes.object.isRequired,
     rejectionMessage: PropTypes.string,
     status: PropTypes.string.isRequired,

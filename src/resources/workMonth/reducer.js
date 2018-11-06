@@ -107,6 +107,7 @@ export default (state, action) => {
       },
     })),
     homeOfficeWorkLogs: data.homeOfficeWorkLogs.map(homeOfficeWorkLogsData => ({
+      comment: homeOfficeWorkLogsData.comment,
       date: toMomentDateTime(homeOfficeWorkLogsData.date),
       id: parseInt(homeOfficeWorkLogsData.id, 10),
       status: resolveWorkLogStatus(homeOfficeWorkLogsData),
@@ -143,6 +144,7 @@ export default (state, action) => {
       },
     })),
     timeOffWorkLogs: data.timeOffWorkLogs.map(timeOffWorkLogsData => ({
+      comment: timeOffWorkLogsData.comment,
       date: toMomentDateTime(timeOffWorkLogsData.date),
       id: parseInt(timeOffWorkLogsData.id, 10),
       status: resolveWorkLogStatus(timeOffWorkLogsData),

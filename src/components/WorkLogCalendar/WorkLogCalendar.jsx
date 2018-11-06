@@ -195,7 +195,10 @@ class WorkLogCalendar extends React.Component {
         transport: data.transport,
       });
     } else if (HOME_OFFICE_WORK_LOG === data.type) {
-      return this.props.addHomeOfficeWorkLog({ date: data.date });
+      return this.props.addHomeOfficeWorkLog({
+        comment: data.comment,
+        date: data.date,
+      });
     } else if (OVERTIME_WORK_LOG === data.type) {
       return this.props.addOvertimeWorkLog({
         date: data.date,
@@ -209,7 +212,10 @@ class WorkLogCalendar extends React.Component {
         variant: data.variant,
       });
     } else if (TIME_OFF_WORK_LOG === data.type) {
-      return this.props.addTimeOffWorkLog({ date: data.date });
+      return this.props.addTimeOffWorkLog({
+        comment: data.comment,
+        date: data.date,
+      });
     } else if (VACATION_WORK_LOG === data.type) {
       return this.props.addVacationWorkLog({ date: data.date });
     } else if (WORK_LOG === data.type) {
@@ -332,6 +338,7 @@ class WorkLogCalendar extends React.Component {
         <p>
           {t('workLog:element.type')}: {getTypeLabel(t, type)}<br />
           {t('workLog:element.date')}: {toDayMonthYearFormat(this.props.homeOfficeWorkLog.get('date'))}<br />
+          {t('homeOfficeWorkLog:element.comment')}: {this.props.homeOfficeWorkLog.get('comment')}<br />
           {t('workLog:element.status')}: {getStatusLabel(t, this.props.homeOfficeWorkLog.get('status'))}<br />
           {STATUS_REJECTED === this.props.homeOfficeWorkLog.get('status') && (
             <React.Fragment>
@@ -373,6 +380,7 @@ class WorkLogCalendar extends React.Component {
         <p>
           {t('workLog:element.type')}: {getTypeLabel(t, type)}<br />
           {t('workLog:element.date')}: {toDayMonthYearFormat(this.props.timeOffWorkLog.get('date'))}<br />
+          {t('timeOffWorkLog:element.comment')}: {this.props.timeOffWorkLog.get('comment')}<br />
           {t('workLog:element.status')}: {getStatusLabel(t, this.props.timeOffWorkLog.get('status'))}<br />
           {STATUS_REJECTED === this.props.timeOffWorkLog.get('status') && (
             <React.Fragment>

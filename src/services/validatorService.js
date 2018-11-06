@@ -155,6 +155,7 @@ export const validateUser = (t, user, userList, supportedWorkHours) => {
 export const validateWorkLog = (t, workLogAttr, workLogsOfDay) => {
   const errors = {
     elements: {
+      comment: null,
       destination: null,
       endHour: null,
       endMinute: null,
@@ -206,6 +207,15 @@ export const validateWorkLog = (t, workLogAttr, workLogsOfDay) => {
         errors.isValid = false;
       }
     });
+
+    return errors;
+  }
+
+  if (workLog.type === HOME_OFFICE_WORK_LOG || workLog.type === TIME_OFF_WORK_LOG) {
+    if (workLog.comment === null || validator.isEmpty(workLog.comment)) {
+      errors.elements.comment = t('general:validation.required');
+      errors.isValid = false;
+    }
 
     return errors;
   }

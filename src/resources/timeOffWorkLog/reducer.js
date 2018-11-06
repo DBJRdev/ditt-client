@@ -31,6 +31,7 @@ export default (state, action) => {
   };
 
   const filterWorkLog = data => ({
+    comment: data.comment,
     date: toMomentDateTime(data.date),
     id: parseInt(data.id, 10),
     rejectionMessage: data.rejectionMessage,

@@ -12,7 +12,11 @@
     "description": "Error",
     "title": "Page not found"
   },
-  "homeOfficeWorkLog": {},
+  "homeOfficeWorkLog": {
+    "element": {
+      "comment": "Comment"
+    }
+  },
   "general": {
     "action": {
       "approve": "Approve",
@@ -132,7 +136,11 @@
       "cannotRejectWorkLog": "Work log cannot be rejected."
     }
   },
-  "timeOffWorkLog": {},
+  "timeOffWorkLog": {
+    "element": {
+      "comment": "Comment"
+    }
+  },
   "user": {
     "action": {
       "addUser": "Add user",

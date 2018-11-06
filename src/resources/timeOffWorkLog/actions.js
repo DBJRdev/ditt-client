@@ -6,6 +6,7 @@ import * as types from './actionTypes';
 export const addTimeOffWorkLog = data => dispatch => dispatch({
   [RSAA]: {
     body: JSON.stringify({
+      comment: data.comment,
       date: toJson(data.date),
     }),
     endpoint: `${API_URL}/time_off_work_logs`,

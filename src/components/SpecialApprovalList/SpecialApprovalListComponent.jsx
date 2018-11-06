@@ -332,6 +332,7 @@ class SpecialApprovalListComponent extends React.Component {
       content = (
         <p>
           {t('workLog:element.date')}: {toDayMonthYearFormat(this.props.homeOfficeWorkLog.get('date'))}<br />
+          {t('homeOfficeWorkLog:element.comment')}: {this.props.homeOfficeWorkLog.get('comment')}<br />
           {t('workLog:element.status')}: {getStatusLabel(t, this.props.homeOfficeWorkLog.get('status'))}<br />
           {STATUS_REJECTED === this.props.homeOfficeWorkLog.get('status') && (
             <React.Fragment>
@@ -357,6 +358,7 @@ class SpecialApprovalListComponent extends React.Component {
       content = (
         <p>
           {t('workLog:element.date')}: {toDayMonthYearFormat(this.props.timeOffWorkLog.get('date'))}<br />
+          {t('timeOffWorkLog:element.comment')}: {this.props.timeOffWorkLog.get('comment')}<br />
           {t('workLog:element.status')}: {getStatusLabel(t, this.props.timeOffWorkLog.get('status'))}<br />
           {STATUS_REJECTED === this.props.timeOffWorkLog.get('status') && (
             <React.Fragment>
@@ -535,6 +537,7 @@ SpecialApprovalListComponent.propTypes = {
       }).isRequired,
     })).isRequired,
     homeOfficeWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+      comment: PropTypes.string.isRequired,
       date: PropTypes.shape.isRequired,
       id: PropTypes.number.isRequired,
       type: PropTypes.oneOf([HOME_OFFICE_WORK_LOG]).isRequired,
@@ -557,6 +560,7 @@ SpecialApprovalListComponent.propTypes = {
       }).isRequired,
     })).isRequired,
     timeOffWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+      comment: PropTypes.string.isRequired,
       date: PropTypes.shape.isRequired,
       id: PropTypes.number.isRequired,
       type: PropTypes.oneOf([TIME_OFF_WORK_LOG]).isRequired,
