@@ -71,6 +71,7 @@ export default (state, action) => {
       status: resolveWorkLogStatus(timeOffWorkLogsData),
       type: TIME_OFF_WORK_LOG,
     })),
+    user: data.user,
     vacationWorkLogs: data.vacationWorkLogs.map(vacationWorkLogsData => ({
       date: toMomentDateTime(vacationWorkLogsData.date),
       id: parseInt(vacationWorkLogsData.id, 10),

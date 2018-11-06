@@ -209,6 +209,7 @@
       "workedAndRequiredHours": "{{ workedHours }} h out of {{ requiredHours }} h"
     },
     "title": {
+      "supervisedUserWorkLogs": "Work logs for {{ name }}",
       "workLogs": "Work logs"
     },
     "validation": {

@@ -59,8 +59,16 @@ class WorkLogComponent extends React.Component {
   }
 
   render() {
+    let title = this.props.t('workLog:title.workLogs');
+
+    if (this.props.workMonth) {
+      const user = this.props.workMonth.get('user');
+      const name = `${user.get('firstName')} ${user.get('lastName')}`;
+      title = this.props.t('workLog:title.supervisedUserWorkLogs', { name });
+    }
+
     return (
-      <Layout title={this.props.t('workLog:title.workLogs')} loading={this.props.isFetching}>
+      <Layout title={title} loading={this.props.isFetching}>
         {this.props.config && (
           <WorkLogCalendar
             addBusinessTripWorkLog={() => {}}
@@ -198,6 +206,10 @@ WorkLogComponent.propTypes = {
       STATUS_OPENED,
       STATUS_WAITING_FOR_APPROVAL,
     ]).isRequired,
+    user: ImmutablePropTypes.mapContains({
+      firstName: PropTypes.string.isRequired,
+      lastName: PropTypes.string.isRequired,
+    }),
     workLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
       endTime: PropTypes.shape.isRequired,
       id: PropTypes.number.isRequired,
