@@ -76,7 +76,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              1. 1. 2018
+              01. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -107,7 +107,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              2. 1. 2018
+              02. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -138,7 +138,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              3. 1. 2018
+              03. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -169,7 +169,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              4. 1. 2018
+              04. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -200,7 +200,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              5. 1. 2018
+              05. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -231,7 +231,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              6. 1. 2018
+              06. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -262,7 +262,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              7. 1. 2018
+              07. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -293,7 +293,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              8. 1. 2018
+              08. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -324,7 +324,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              9. 1. 2018
+              09. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -355,7 +355,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              10. 1. 2018
+              10. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -386,7 +386,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              11. 1. 2018
+              11. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -417,7 +417,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              12. 1. 2018
+              12. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -448,7 +448,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              13. 1. 2018
+              13. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -479,7 +479,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              14. 1. 2018
+              14. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -510,7 +510,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              15. 1. 2018
+              15. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -541,7 +541,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              16. 1. 2018
+              16. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -572,7 +572,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              17. 1. 2018
+              17. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -603,7 +603,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              18. 1. 2018
+              18. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -634,7 +634,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              19. 1. 2018
+              19. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -665,7 +665,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              20. 1. 2018
+              20. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -696,7 +696,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              21. 1. 2018
+              21. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -727,7 +727,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              22. 1. 2018
+              22. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -758,7 +758,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              23. 1. 2018
+              23. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -789,7 +789,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              24. 1. 2018
+              24. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -820,7 +820,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              25. 1. 2018
+              25. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -851,7 +851,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              26. 1. 2018
+              26. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -882,7 +882,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              27. 1. 2018
+              27. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -913,7 +913,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              28. 1. 2018
+              28. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -944,7 +944,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              29. 1. 2018
+              29. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -975,7 +975,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              30. 1. 2018
+              30. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -1006,7 +1006,7 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             <div
               className="date"
             >
-              31. 1. 2018
+              31. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -1180,7 +1180,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              1. 1. 2018
+              01. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -1211,7 +1211,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              2. 1. 2018
+              02. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -1242,7 +1242,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              3. 1. 2018
+              03. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -1273,7 +1273,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              4. 1. 2018
+              04. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -1304,7 +1304,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              5. 1. 2018
+              05. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -1335,7 +1335,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              6. 1. 2018
+              06. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -1366,7 +1366,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              7. 1. 2018
+              07. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -1397,7 +1397,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              8. 1. 2018
+              08. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -1428,7 +1428,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              9. 1. 2018
+              09. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -1459,7 +1459,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              10. 1. 2018
+              10. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -1490,7 +1490,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              11. 1. 2018
+              11. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -1521,7 +1521,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              12. 1. 2018
+              12. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -1552,7 +1552,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              13. 1. 2018
+              13. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -1583,7 +1583,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              14. 1. 2018
+              14. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -1614,7 +1614,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              15. 1. 2018
+              15. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -1645,7 +1645,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              16. 1. 2018
+              16. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -1676,7 +1676,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              17. 1. 2018
+              17. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -1707,7 +1707,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              18. 1. 2018
+              18. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -1738,7 +1738,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              19. 1. 2018
+              19. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -1769,7 +1769,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              20. 1. 2018
+              20. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -1800,7 +1800,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              21. 1. 2018
+              21. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -1831,7 +1831,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              22. 1. 2018
+              22. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -1862,7 +1862,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              23. 1. 2018
+              23. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -1893,7 +1893,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              24. 1. 2018
+              24. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -1924,7 +1924,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              25. 1. 2018
+              25. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -1955,7 +1955,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              26. 1. 2018
+              26. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -1986,7 +1986,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              27. 1. 2018
+              27. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2017,7 +2017,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              28. 1. 2018
+              28. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2048,7 +2048,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              29. 1. 2018
+              29. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2079,7 +2079,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              30. 1. 2018
+              30. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2110,7 +2110,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             <div
               className="date"
             >
-              31. 1. 2018
+              31. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2213,7 +2213,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              1. 1. 2018
+              01. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2244,7 +2244,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              2. 1. 2018
+              02. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2275,7 +2275,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              3. 1. 2018
+              03. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2306,7 +2306,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              4. 1. 2018
+              04. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2337,7 +2337,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              5. 1. 2018
+              05. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2368,7 +2368,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              6. 1. 2018
+              06. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2399,7 +2399,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              7. 1. 2018
+              07. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2430,7 +2430,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              8. 1. 2018
+              08. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2461,7 +2461,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              9. 1. 2018
+              09. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2492,7 +2492,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              10. 1. 2018
+              10. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2523,7 +2523,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              11. 1. 2018
+              11. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2554,7 +2554,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              12. 1. 2018
+              12. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2585,7 +2585,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              13. 1. 2018
+              13. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2616,7 +2616,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              14. 1. 2018
+              14. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2647,7 +2647,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              15. 1. 2018
+              15. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2678,7 +2678,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              16. 1. 2018
+              16. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2709,7 +2709,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              17. 1. 2018
+              17. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2740,7 +2740,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              18. 1. 2018
+              18. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2771,7 +2771,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              19. 1. 2018
+              19. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2802,7 +2802,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              20. 1. 2018
+              20. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2833,7 +2833,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              21. 1. 2018
+              21. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2864,7 +2864,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              22. 1. 2018
+              22. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2895,7 +2895,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              23. 1. 2018
+              23. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2926,7 +2926,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              24. 1. 2018
+              24. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2957,7 +2957,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              25. 1. 2018
+              25. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -2988,7 +2988,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              26. 1. 2018
+              26. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -3019,7 +3019,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              27. 1. 2018
+              27. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -3050,7 +3050,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              28. 1. 2018
+              28. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -3081,7 +3081,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              29. 1. 2018
+              29. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -3112,7 +3112,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              30. 1. 2018
+              30. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -3143,7 +3143,7 @@ exports[`rendering renders correctly with closed work month 1`] = `
             <div
               className="date"
             >
-              31. 1. 2018
+              31. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -3243,7 +3243,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              1. 1. 2018
+              01. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -3296,7 +3296,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              2. 1. 2018
+              02. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -3349,7 +3349,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              3. 1. 2018
+              03. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -3402,7 +3402,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              4. 1. 2018
+              04. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -3455,7 +3455,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              5. 1. 2018
+              05. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -3508,7 +3508,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              6. 1. 2018
+              06. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -3561,7 +3561,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              7. 1. 2018
+              07. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -3614,7 +3614,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              8. 1. 2018
+              08. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -3667,7 +3667,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              9. 1. 2018
+              09. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -3720,7 +3720,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              10. 1. 2018
+              10. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -3773,7 +3773,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              11. 1. 2018
+              11. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -3826,7 +3826,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              12. 1. 2018
+              12. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -3879,7 +3879,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              13. 1. 2018
+              13. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -3932,7 +3932,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              14. 1. 2018
+              14. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -3985,7 +3985,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              15. 1. 2018
+              15. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -4038,7 +4038,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              16. 1. 2018
+              16. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -4091,7 +4091,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              17. 1. 2018
+              17. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -4144,7 +4144,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              18. 1. 2018
+              18. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -4197,7 +4197,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              19. 1. 2018
+              19. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -4250,7 +4250,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              20. 1. 2018
+              20. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -4303,7 +4303,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              21. 1. 2018
+              21. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -4356,7 +4356,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              22. 1. 2018
+              22. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -4409,7 +4409,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              23. 1. 2018
+              23. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -4462,7 +4462,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              24. 1. 2018
+              24. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -4515,7 +4515,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              25. 1. 2018
+              25. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -4568,7 +4568,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              26. 1. 2018
+              26. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -4621,7 +4621,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              27. 1. 2018
+              27. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -4674,7 +4674,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              28. 1. 2018
+              28. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -4727,7 +4727,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              29. 1. 2018
+              29. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -4780,7 +4780,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              30. 1. 2018
+              30. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -4833,7 +4833,7 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="date"
             >
-              31. 1. 2018
+              31. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -4976,7 +4976,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              1. 1. 2018
+              01. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -5029,7 +5029,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              2. 1. 2018
+              02. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -5082,7 +5082,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              3. 1. 2018
+              03. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -5135,7 +5135,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              4. 1. 2018
+              04. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -5188,7 +5188,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              5. 1. 2018
+              05. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -5241,7 +5241,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              6. 1. 2018
+              06. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -5294,7 +5294,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              7. 1. 2018
+              07. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -5347,7 +5347,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              8. 1. 2018
+              08. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -5400,7 +5400,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              9. 1. 2018
+              09. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -5453,7 +5453,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              10. 1. 2018
+              10. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -5506,7 +5506,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              11. 1. 2018
+              11. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -5559,7 +5559,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              12. 1. 2018
+              12. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -5612,7 +5612,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              13. 1. 2018
+              13. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -5665,7 +5665,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              14. 1. 2018
+              14. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -5718,7 +5718,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              15. 1. 2018
+              15. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -5771,7 +5771,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              16. 1. 2018
+              16. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -5824,7 +5824,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              17. 1. 2018
+              17. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -5877,7 +5877,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              18. 1. 2018
+              18. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -5930,7 +5930,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              19. 1. 2018
+              19. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -5983,7 +5983,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              20. 1. 2018
+              20. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -6036,7 +6036,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              21. 1. 2018
+              21. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -6089,7 +6089,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              22. 1. 2018
+              22. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -6142,7 +6142,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              23. 1. 2018
+              23. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -6195,7 +6195,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              24. 1. 2018
+              24. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -6248,7 +6248,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              25. 1. 2018
+              25. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -6301,7 +6301,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              26. 1. 2018
+              26. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -6354,7 +6354,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              27. 1. 2018
+              27. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -6407,7 +6407,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              28. 1. 2018
+              28. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -6460,7 +6460,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              29. 1. 2018
+              29. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -6513,7 +6513,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              30. 1. 2018
+              30. 01. 2018
             </div>
             <div
               className="dayInWeek"
@@ -6566,7 +6566,7 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="date"
             >
-              31. 1. 2018
+              31. 01. 2018
             </div>
             <div
               className="dayInWeek"

@@ -100,7 +100,15 @@ export const toMonthYearFormat = (momentDateTime) => {
 
 export const toDayMonthYearFormat = (momentDateTime) => {
   if (isMomentValid(momentDateTime)) {
-    return momentDateTime.format('D. M. YYYY');
+    return momentDateTime.format('DD. MM. YYYY');
+  }
+
+  throw new Error('Invalid datetime');
+};
+
+export const toDayDayMonthYearFormat = (momentDateTime) => {
+  if (isMomentValid(momentDateTime)) {
+    return momentDateTime.format('ddd DD. MM. YYYY');
   }
 
   throw new Error('Invalid datetime');

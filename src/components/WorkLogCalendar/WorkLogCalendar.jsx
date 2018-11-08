@@ -33,6 +33,7 @@ import {
   isWeekend,
   localizedMoment,
   toDayFormat,
+  toDayDayMonthYearFormat,
   toDayMonthYearFormat,
   toHourMinuteFormat,
   toMonthYearFormat,
@@ -319,7 +320,7 @@ class WorkLogCalendar extends React.Component {
       content = (
         <p>
           {t('workLog:element.type')}: {getTypeLabel(t, type)}<br />
-          {t('workLog:element.date')}: {toDayMonthYearFormat(this.props.businessTripWorkLog.get('date'))}<br />
+          {t('workLog:element.date')}: {toDayDayMonthYearFormat(this.props.businessTripWorkLog.get('date'))}<br />
           {t('workLog:element.status')}: {getStatusLabel(t, this.props.businessTripWorkLog.get('status'))}<br />
           {STATUS_REJECTED === this.props.businessTripWorkLog.get('status') && (
             <React.Fragment>
@@ -337,7 +338,7 @@ class WorkLogCalendar extends React.Component {
       content = (
         <p>
           {t('workLog:element.type')}: {getTypeLabel(t, type)}<br />
-          {t('workLog:element.date')}: {toDayMonthYearFormat(this.props.homeOfficeWorkLog.get('date'))}<br />
+          {t('workLog:element.date')}: {toDayDayMonthYearFormat(this.props.homeOfficeWorkLog.get('date'))}<br />
           {t('homeOfficeWorkLog:element.comment')}: {this.props.homeOfficeWorkLog.get('comment')}<br />
           {t('workLog:element.status')}: {getStatusLabel(t, this.props.homeOfficeWorkLog.get('status'))}<br />
           {STATUS_REJECTED === this.props.homeOfficeWorkLog.get('status') && (
@@ -351,7 +352,7 @@ class WorkLogCalendar extends React.Component {
       content = (
         <p>
           {t('workLog:element.type')}: {getTypeLabel(t, type)}<br />
-          {t('workLog:element.date')}: {toDayMonthYearFormat(this.props.overtimeWorkLog.get('date'))}<br />
+          {t('workLog:element.date')}: {toDayDayMonthYearFormat(this.props.overtimeWorkLog.get('date'))}<br />
           {t('workLog:element.status')}: {getStatusLabel(t, this.props.overtimeWorkLog.get('status'))}<br />
           {STATUS_REJECTED === this.props.overtimeWorkLog.get('status') && (
             <React.Fragment>
@@ -365,7 +366,7 @@ class WorkLogCalendar extends React.Component {
       content = (
         <p>
           {t('workLog:element.type')}: {getTypeLabel(t, type)}<br />
-          {t('workLog:element.date')}: {toDayMonthYearFormat(this.props.sickDayWorkLog.get('date'))}<br />
+          {t('workLog:element.date')}: {toDayDayMonthYearFormat(this.props.sickDayWorkLog.get('date'))}<br />
           {t('sickDayWorkLog:element.variant')}: {getSickDayVariantLabel(t, this.props.sickDayWorkLog.get('variant'))}<br />
           {VARIANT_SICK_CHILD === this.props.sickDayWorkLog.get('variant') && (
             <React.Fragment>
@@ -379,7 +380,7 @@ class WorkLogCalendar extends React.Component {
       content = (
         <p>
           {t('workLog:element.type')}: {getTypeLabel(t, type)}<br />
-          {t('workLog:element.date')}: {toDayMonthYearFormat(this.props.timeOffWorkLog.get('date'))}<br />
+          {t('workLog:element.date')}: {toDayDayMonthYearFormat(this.props.timeOffWorkLog.get('date'))}<br />
           {t('timeOffWorkLog:element.comment')}: {this.props.timeOffWorkLog.get('comment')}<br />
           {t('workLog:element.status')}: {getStatusLabel(t, this.props.timeOffWorkLog.get('status'))}<br />
           {STATUS_REJECTED === this.props.timeOffWorkLog.get('status') && (
@@ -393,7 +394,7 @@ class WorkLogCalendar extends React.Component {
       content = (
         <p>
           {t('workLog:element.type')}: {getTypeLabel(t, type)}<br />
-          {t('workLog:element.date')}: {toDayMonthYearFormat(this.props.vacationWorkLog.get('date'))}<br />
+          {t('workLog:element.date')}: {toDayDayMonthYearFormat(this.props.vacationWorkLog.get('date'))}<br />
           {t('workLog:element.status')}: {getStatusLabel(t, this.props.vacationWorkLog.get('status'))}<br />
           {STATUS_REJECTED === this.props.vacationWorkLog.get('status') && (
             <React.Fragment>
@@ -406,7 +407,7 @@ class WorkLogCalendar extends React.Component {
       content = (
         <p>
           {t('workLog:element.type')}: {getTypeLabel(t, type)}<br />
-          {t('workLog:element.date')}: {toDayMonthYearFormat(this.props.workLog.get('startTime'))}<br />
+          {t('workLog:element.date')}: {toDayDayMonthYearFormat(this.props.workLog.get('startTime'))}<br />
           {t('workLog:element.startTime')}: {toHourMinuteFormat(this.props.workLog.get('startTime'))}<br />
           {t('workLog:element.endTime')}: {toHourMinuteFormat(this.props.workLog.get('endTime'))}
         </p>
