@@ -9,7 +9,10 @@ import {
   STATUS_OPENED,
   STATUS_WAITING_FOR_APPROVAL,
 } from '../../resources/workMonth';
-import { localizedMoment } from '../../services/dateTimeService';
+import {
+  getWorkingDays,
+  localizedMoment,
+} from '../../services/dateTimeService';
 import { getWorkMonthByMonth } from '../../services/workLogService';
 
 class WorkLogComponent extends React.Component {
@@ -25,7 +28,7 @@ class WorkLogComponent extends React.Component {
     this.addOvertimeWorkLog = this.addOvertimeWorkLog.bind(this);
     this.addSickDayWorkLog = this.addSickDayWorkLog.bind(this);
     this.addTimeOffWorkLog = this.addTimeOffWorkLog.bind(this);
-    this.addVacationWorkLog = this.addVacationWorkLog.bind(this);
+    this.addMultipleVacationWorkLog = this.addMultipleVacationWorkLog.bind(this);
     this.addWorkLog = this.addWorkLog.bind(this);
     this.deleteBusinessTripWorkLog = this.deleteBusinessTripWorkLog.bind(this);
     this.deleteHomeOfficeWorkLog = this.deleteHomeOfficeWorkLog.bind(this);
@@ -94,8 +97,15 @@ class WorkLogComponent extends React.Component {
     });
   }
 
-  addVacationWorkLog(data) {
-    return this.props.addVacationWorkLog(data).then((response) => {
+  addMultipleVacationWorkLog(data) {
+    const workingDays = getWorkingDays(data.date, data.dateTo, this.props.config.get('supportedHolidays'));
+    const workLogs = [];
+
+    workingDays.forEach((workingDay) => {
+      workLogs.push({ date: workingDay });
+    });
+
+    return this.props.addMultipleVacationWorkLog(workLogs).then((response) => {
       if (!response.error) {
         this.fetchWorkMonth(this.state.selectedDate);
       }
@@ -207,7 +217,7 @@ class WorkLogComponent extends React.Component {
             addOvertimeWorkLog={this.addOvertimeWorkLog}
             addSickDayWorkLog={this.addSickDayWorkLog}
             addTimeOffWorkLog={this.addTimeOffWorkLog}
-            addVacationWorkLog={this.addVacationWorkLog}
+            addMultipleVacationWorkLog={this.addMultipleVacationWorkLog}
             addWorkLog={this.addWorkLog}
             businessTripWorkLog={this.props.businessTripWorkLog}
             changeSelectedDate={this.changeSelectedDate}
@@ -262,10 +272,10 @@ WorkLogComponent.defaultProps = {
 WorkLogComponent.propTypes = {
   addBusinessTripWorkLog: PropTypes.func.isRequired,
   addHomeOfficeWorkLog: PropTypes.func.isRequired,
+  addMultipleVacationWorkLog: PropTypes.func.isRequired,
   addOvertimeWorkLog: PropTypes.func.isRequired,
   addSickDayWorkLog: PropTypes.func.isRequired,
   addTimeOffWorkLog: PropTypes.func.isRequired,
-  addVacationWorkLog: PropTypes.func.isRequired,
   addWorkLog: PropTypes.func.isRequired,
   businessTripWorkLog: ImmutablePropTypes.mapContains({
     date: PropTypes.object.isRequired,

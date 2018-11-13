@@ -114,11 +114,26 @@ export const toDayDayMonthYearFormat = (momentDateTime) => {
   throw new Error('Invalid datetime');
 };
 
+export const getWorkingDays = (firstDay, lastDay, holidays) => {
+  const currentDay = firstDay;
+  const workingDays = [];
+
+  while (currentDay.isSameOrBefore(lastDay, 'day')) {
+    if (!isWeekend(currentDay) && !includesSameDate(currentDay, holidays)) {
+      workingDays.push(currentDay.clone());
+    }
+
+    currentDay.add(1, 'day');
+  }
+
+  return workingDays;
+};
+
 export const getNumberOfWorkingDays = (firstDay, lastDay, holidays) => {
   const currentDay = firstDay;
   let workingDays = 0;
 
-  while (currentDay <= lastDay) {
+  while (currentDay.isSameOrBefore(lastDay, 'day')) {
     if (!isWeekend(currentDay) && !includesSameDate(currentDay, holidays)) {
       workingDays += 1;
     }

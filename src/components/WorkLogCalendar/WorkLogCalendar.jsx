@@ -218,7 +218,10 @@ class WorkLogCalendar extends React.Component {
         date: data.date,
       });
     } else if (VACATION_WORK_LOG === data.type) {
-      return this.props.addVacationWorkLog({ date: data.date });
+      return this.props.addMultipleVacationWorkLog({
+        date: data.date,
+        dateTo: data.dateTo,
+      });
     } else if (WORK_LOG === data.type) {
       return this.props.addWorkLog({
         endTime: data.endTime,
@@ -774,10 +777,10 @@ WorkLogCalendar.defaultProps = {
 WorkLogCalendar.propTypes = {
   addBusinessTripWorkLog: PropTypes.func.isRequired,
   addHomeOfficeWorkLog: PropTypes.func.isRequired,
+  addMultipleVacationWorkLog: PropTypes.func.isRequired,
   addOvertimeWorkLog: PropTypes.func.isRequired,
   addSickDayWorkLog: PropTypes.func.isRequired,
   addTimeOffWorkLog: PropTypes.func.isRequired,
-  addVacationWorkLog: PropTypes.func.isRequired,
   addWorkLog: PropTypes.func.isRequired,
   businessTripWorkLog: ImmutablePropTypes.mapContains({
     date: PropTypes.object.isRequired,

@@ -8,10 +8,10 @@ exports[`rendering renders correctly 1`] = `
   <WorkLogCalendar
     addBusinessTripWorkLog={[Function]}
     addHomeOfficeWorkLog={[Function]}
+    addMultipleVacationWorkLog={[Function]}
     addOvertimeWorkLog={[Function]}
     addSickDayWorkLog={[Function]}
     addTimeOffWorkLog={[Function]}
-    addVacationWorkLog={[Function]}
     addWorkLog={[Function]}
     businessTripWorkLog={null}
     changeSelectedDate={[Function]}

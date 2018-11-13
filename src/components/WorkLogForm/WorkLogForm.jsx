@@ -40,6 +40,8 @@ class WorkLogForm extends React.Component {
         childDateOfBirth: null,
         childName: null,
         comment: null,
+        date: toDayMonthYearFormat(props.date),
+        dateTo: toDayMonthYearFormat(props.date),
         destination: null,
         endHour: endTime.format('HH'),
         endMinute: endTime.format('mm'),
@@ -58,6 +60,7 @@ class WorkLogForm extends React.Component {
           childDateOfBirth: null,
           childName: null,
           comment: null,
+          dateTo: null,
           destination: null,
           endHour: null,
           endMinute: null,
@@ -115,6 +118,9 @@ class WorkLogForm extends React.Component {
           : null,
         date: formData.type !== WORK_LOG
           ? this.props.date
+          : null,
+        dateTo: formData.type === VACATION_WORK_LOG
+          ? toMomentDateTimeFromDayMonthYear(formData.dateTo)
           : null,
         destination: formData.type === BUSINESS_TRIP_WORK_LOG
           ? formData.destination
@@ -344,8 +350,32 @@ class WorkLogForm extends React.Component {
     );
   }
 
+  renderVacationWorkLogFields() {
+    const { t } = this.props;
+
+    return (
+      <fieldset style={this.fieldSetStyle}>
+        <legend>{t('vacationWorkLog:element.dateTo')}</legend>
+        <div style={this.fieldStyle}>
+          <TextField
+            error={this.state.formValidity.elements.dateTo}
+            changeHandler={this.changeHandler}
+            fieldId="dateTo"
+            isLabelVisible={false}
+            label={t('vacationWorkLog:element.dateTo')}
+            value={this.state.formData.dateTo || ''}
+          />
+        </div>
+      </fieldset>
+    );
+  }
+
   renderWorkLogFields() {
     const { t } = this.props;
+    const {
+      formData,
+      formValidity,
+    } = this.state;
 
     return (
       <React.Fragment>
@@ -356,22 +386,22 @@ class WorkLogForm extends React.Component {
               <TextField
                 autoFocus
                 changeHandler={this.changeHandler}
-                error={this.state.formValidity.elements.startHour}
+                error={formValidity.elements.startHour}
                 fieldId="startHour"
                 isLabelVisible={false}
                 label={t('workLog:element.startHour')}
-                value={this.state.formData.startHour || ''}
+                value={formData.startHour || ''}
               />
             </div>
             :
             <div className={[styles.field, styles.fieldDate].join(' ')}>
               <TextField
                 changeHandler={this.changeHandler}
-                error={this.state.formValidity.elements.startMinute}
+                error={formValidity.elements.startMinute}
                 fieldId="startMinute"
                 isLabelVisible={false}
                 label={t('workLog:element.startMinute')}
-                value={this.state.formData.startMinute || ''}
+                value={formData.startMinute || ''}
               />
             </div>
             &nbsp;h
@@ -383,22 +413,22 @@ class WorkLogForm extends React.Component {
             <div className={[styles.field, styles.fieldDate].join(' ')}>
               <TextField
                 changeHandler={this.changeHandler}
-                error={this.state.formValidity.elements.endHour}
+                error={formValidity.elements.endHour}
                 fieldId="endHour"
                 isLabelVisible={false}
                 label={t('workLog:element.endHour')}
-                value={this.state.formData.endHour || ''}
+                value={formData.endHour || ''}
               />
             </div>
             :
             <div className={[styles.field, styles.fieldDate].join(' ')}>
               <TextField
                 changeHandler={this.changeHandler}
-                error={this.state.formValidity.elements.endMinute}
+                error={formValidity.elements.endMinute}
                 fieldId="endMinute"
                 isLabelVisible={false}
                 label={t('workLog:element.endMinute')}
-                value={this.state.formData.endMinute || ''}
+                value={formData.endMinute || ''}
               />
             </div>
             &nbsp;h
@@ -410,6 +440,10 @@ class WorkLogForm extends React.Component {
 
   render() {
     const { t } = this.props;
+    const {
+      formData,
+      formValidity,
+    } = this.state;
 
     return (
       <Modal
@@ -425,7 +459,7 @@ class WorkLogForm extends React.Component {
         translations={{ close: t('general:action.close') }}
       >
         <p className={styles.formErrorText}>
-          {this.state.formValidity.elements.form}
+          {formValidity.elements.form}
         </p>
         <form>
           {this.props.showInfoText && (
@@ -438,13 +472,25 @@ class WorkLogForm extends React.Component {
             </fieldset>
           )}
           <fieldset className={styles.fieldset}>
-            <legend>{t('workLog:element.date')}</legend>
+            <legend>
+              {t((
+                formData.type === VACATION_WORK_LOG
+                  ? 'vacationWorkLog:element.dateFrom'
+                  : 'workLog:element.date'
+              ))}
+            </legend>
             <div className={styles.field}>
               <TextField
                 disabled
                 fieldId="date"
                 isLabelVisible={false}
-                label={t('workLog:element.date')}
+                label={
+                  t((
+                    formData.type === VACATION_WORK_LOG
+                      ? 'vacationWorkLog:element.dateFrom'
+                      : 'workLog:element.date'
+                  ))
+                }
                 value={toDayMonthYearFormat(this.props.date) || ''}
               />
             </div>
@@ -454,7 +500,7 @@ class WorkLogForm extends React.Component {
             <div className={styles.field}>
               <SelectField
                 changeHandler={this.changeHandler}
-                error={this.state.formValidity.elements.type}
+                error={formValidity.elements.type}
                 fieldId="type"
                 isLabelVisible={false}
                 label={t('workLog:element.type')}
@@ -488,30 +534,34 @@ class WorkLogForm extends React.Component {
                     value: VACATION_WORK_LOG,
                   },
                 ]}
-                value={this.state.formData.type || ''}
+                value={formData.type || ''}
               />
             </div>
           </fieldset>
           {
-            this.state.formData.type === BUSINESS_TRIP_WORK_LOG
+            formData.type === BUSINESS_TRIP_WORK_LOG
             && this.renderBusinessTripWorkLogFields()
           }
           {
-            this.state.formData.type === HOME_OFFICE_WORK_LOG
+            formData.type === HOME_OFFICE_WORK_LOG
             && this.renderHomeOfficeWorkLogFields()
           }
-          {this.state.formData.type === OVERTIME_WORK_LOG && this.renderOvertimeWorkLogFields()}
-          {this.state.formData.type === SICK_DAY_WORK_LOG && this.renderSickDayWorkLogFields()}
+          {formData.type === OVERTIME_WORK_LOG && this.renderOvertimeWorkLogFields()}
+          {formData.type === SICK_DAY_WORK_LOG && this.renderSickDayWorkLogFields()}
           {
-            this.state.formData.type === SICK_DAY_WORK_LOG
-              && this.state.formData.variant === VARIANT_SICK_CHILD
+            formData.type === SICK_DAY_WORK_LOG
+              && formData.variant === VARIANT_SICK_CHILD
               && this.renderSickDayWorkLogSickChildFields()
           }
           {
-            this.state.formData.type === TIME_OFF_WORK_LOG
+            formData.type === TIME_OFF_WORK_LOG
             && this.renderTimeOffWorkLogFields()
           }
-          {this.state.formData.type === WORK_LOG && this.renderWorkLogFields()}
+          {
+            formData.type === VACATION_WORK_LOG
+            && this.renderVacationWorkLogFields()
+          }
+          {formData.type === WORK_LOG && this.renderWorkLogFields()}
         </form>
       </Modal>
     );

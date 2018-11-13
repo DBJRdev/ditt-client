@@ -184,7 +184,12 @@
       "invalidWorkHoursMonth": "Value for {{ month }} is not a number."
     }
   },
-  "vacationWorkLog": {},
+  "vacationWorkLog": {
+    "element": {
+      "dateFrom": "Date from",
+      "dateTo": "Date to"
+    }
+  },
   "workLog": {
     "action": {
       "addWorkLog": "Add work log",

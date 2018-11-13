@@ -252,6 +252,34 @@ export const validateWorkLog = (t, workLogAttr, workLogsOfDay) => {
     return errors;
   }
 
+  if (workLog.type === VACATION_WORK_LOG) {
+    if (workLog.dateTo === null || validator.isEmpty(workLog.dateTo)) {
+      errors.elements.dateTo = t('general:validation.required');
+      errors.isValid = false;
+
+      return errors;
+    }
+
+    const dateFrom = toMomentDateTimeFromDayMonthYear(workLog.date);
+    let dateTo = null;
+
+    try {
+      dateTo = toMomentDateTimeFromDayMonthYear(workLog.dateTo);
+    } catch (ex) {
+      errors.elements.dateTo = t('general:validation.invalidDate');
+      errors.isValid = false;
+
+      return errors;
+    }
+
+    if (dateTo.isBefore(dateFrom, 'day')) {
+      errors.elements.dateTo = t('general:validation.invalidDate');
+      errors.isValid = false;
+    }
+
+    return errors;
+  }
+
   if (workLog.type !== WORK_LOG) {
     return errors;
   }

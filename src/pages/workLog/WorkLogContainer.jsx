@@ -42,7 +42,7 @@ import {
   selectTimeOffWorkLogMeta,
 } from '../../resources/timeOffWorkLog';
 import {
-  addVacationWorkLog,
+  addMultipleVacationWorkLog,
   deleteVacationWorkLog,
   fetchVacationWorkLog,
   selectVacationWorkLog,
@@ -124,10 +124,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => ({
   addBusinessTripWorkLog: data => dispatch(addBusinessTripWorkLog(data)),
   addHomeOfficeWorkLog: data => dispatch(addHomeOfficeWorkLog(data)),
+  addMultipleVacationWorkLog: data => dispatch(addMultipleVacationWorkLog(data)),
   addOvertimeWorkLog: data => dispatch(addOvertimeWorkLog(data)),
   addSickDayWorkLog: data => dispatch(addSickDayWorkLog(data)),
   addTimeOffWorkLog: data => dispatch(addTimeOffWorkLog(data)),
-  addVacationWorkLog: data => dispatch(addVacationWorkLog(data)),
   addWorkLog: data => dispatch(addWorkLog(data)),
   deleteBusinessTripWorkLog: id => dispatch(deleteBusinessTripWorkLog(id)),
   deleteHomeOfficeWorkLog: id => dispatch(deleteHomeOfficeWorkLog(id)),

@@ -17,22 +17,6 @@ export const addMultipleVacationWorkLog = data => dispatch => dispatch({
   },
 });
 
-export const addVacationWorkLog = data => dispatch => dispatch({
-  [RSAA]: {
-    body: JSON.stringify({
-      date: toJson(data.date),
-    }),
-    endpoint: `${API_URL}/vacation_work_logs`,
-    headers: { 'Content-Type': 'application/json' },
-    method: 'POST',
-    types: [
-      types.ADD_VACATION_WORK_LOG_REQUEST,
-      types.ADD_VACATION_WORK_LOG_SUCCESS,
-      types.ADD_VACATION_WORK_LOG_FAILURE,
-    ],
-  },
-});
-
 export const deleteVacationWorkLog = id => dispatch => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/vacation_work_logs/${id}`,

@@ -20,10 +20,10 @@ describe('rendering', () => {
     const props = {
       addBusinessTripWorkLog: () => {},
       addHomeOfficeWorkLog: () => {},
+      addMultipleVacationWorkLog: () => {},
       addOvertimeWorkLog: () => {},
       addSickDayWorkLog: () => {},
       addTimeOffWorkLog: () => {},
-      addVacationWorkLog: () => {},
       addWorkLog: () => {},
       config: configMock,
       deleteBusinessTripWorkLog: () => {},

@@ -26,10 +26,10 @@ describe('rendering', () => {
     const tree = shallow(<WorkLogCalendar
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
+      addMultipleVacationWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addOvertimeWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
-      addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
       deleteBusinessTripWorkLog={() => {}}
@@ -99,7 +99,7 @@ describe('rendering', () => {
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
-      addVacationWorkLog={() => {}}
+      addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
       deleteBusinessTripWorkLog={() => {}}
@@ -169,7 +169,7 @@ describe('rendering', () => {
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
-      addVacationWorkLog={() => {}}
+      addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
       deleteBusinessTripWorkLog={() => {}}
@@ -239,7 +239,7 @@ describe('rendering', () => {
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
-      addVacationWorkLog={() => {}}
+      addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
       deleteBusinessTripWorkLog={() => {}}
@@ -310,7 +310,7 @@ describe('rendering', () => {
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
-      addVacationWorkLog={() => {}}
+      addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
       deleteBusinessTripWorkLog={() => {}}
@@ -381,7 +381,7 @@ describe('rendering', () => {
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
-      addVacationWorkLog={() => {}}
+      addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
       deleteBusinessTripWorkLog={() => {}}
@@ -455,7 +455,7 @@ describe('functionality', () => {
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
-      addVacationWorkLog={() => {}}
+      addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
       deleteBusinessTripWorkLog={() => {}}
@@ -530,7 +530,7 @@ describe('functionality', () => {
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
-      addVacationWorkLog={() => {}}
+      addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
       deleteBusinessTripWorkLog={() => {}}
@@ -605,7 +605,7 @@ describe('functionality', () => {
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
-      addVacationWorkLog={() => {}}
+      addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
       deleteBusinessTripWorkLog={() => {}}
@@ -678,7 +678,7 @@ describe('functionality', () => {
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
-      addVacationWorkLog={() => {}}
+      addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
       deleteBusinessTripWorkLog={() => {}}

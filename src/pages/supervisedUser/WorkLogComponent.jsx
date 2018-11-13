@@ -76,7 +76,7 @@ class WorkLogComponent extends React.Component {
             addOvertimeWorkLog={() => {}}
             addSickDayWorkLog={() => {}}
             addTimeOffWorkLog={() => {}}
-            addVacationWorkLog={() => {}}
+            addMultipleVacationWorkLog={() => {}}
             addWorkLog={() => {}}
             businessTripWorkLog={this.props.businessTripWorkLog}
             changeSelectedDate={this.changeSelectedDate}
