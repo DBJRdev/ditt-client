@@ -1,7 +1,10 @@
 export {
+  addMultipleVacationWorkLog,
   addVacationWorkLog,
   deleteVacationWorkLog,
   fetchVacationWorkLog,
+  markMultipleVacationWorkLogApproved,
+  markMultipleVacationWorkLogRejected,
   markVacationWorkLogApproved,
   markVacationWorkLogRejected,
 } from './actions';
