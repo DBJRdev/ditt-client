@@ -75,6 +75,7 @@ export default (state, action) => {
     vacationWorkLogs: data.vacationWorkLogs.map(vacationWorkLogsData => ({
       date: toMomentDateTime(vacationWorkLogsData.date),
       id: parseInt(vacationWorkLogsData.id, 10),
+      rejectionMessage: vacationWorkLogsData.rejectionMessage,
       status: resolveWorkLogStatus(vacationWorkLogsData),
       type: VACATION_WORK_LOG,
     })),
@@ -165,6 +166,7 @@ export default (state, action) => {
     vacationWorkLogs: data.vacationWorkLogs.map(vacationWorkLogsData => ({
       date: toMomentDateTime(vacationWorkLogsData.date),
       id: parseInt(vacationWorkLogsData.id, 10),
+      rejectionMessage: vacationWorkLogsData.rejectionMessage,
       status: resolveWorkLogStatus(vacationWorkLogsData),
       type: VACATION_WORK_LOG,
       workMonth: {

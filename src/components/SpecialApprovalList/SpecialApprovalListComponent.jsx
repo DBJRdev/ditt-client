@@ -115,11 +115,16 @@ class SpecialApprovalListComponent extends React.Component {
       ))
       .sortBy(workLog => workLog.get('date'))
       .forEach((workLog) => {
-        if (!vacationWorkLogsByStatus[workLog.get('status')]) {
-          vacationWorkLogsByStatus[workLog.get('status')] = [];
+        let status = workLog.get('status');
+        if (status === STATUS_REJECTED) {
+          status += `-${workLog.get('rejectionMessage')}`;
         }
 
-        vacationWorkLogsByStatus[workLog.get('status')].push(workLog);
+        if (!vacationWorkLogsByStatus[status]) {
+          vacationWorkLogsByStatus[status] = [];
+        }
+
+        vacationWorkLogsByStatus[status].push(workLog);
       });
 
     Object.keys(vacationWorkLogsByStatus).forEach((status) => {
