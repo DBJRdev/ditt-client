@@ -35,6 +35,8 @@ import {
 } from '../../resources/timeOffWorkLog';
 import {
   fetchVacationWorkLog,
+  markMultipleVacationWorkLogApproved,
+  markMultipleVacationWorkLogRejected,
   markVacationWorkLogApproved,
   markVacationWorkLogRejected,
   selectVacationWorkLog,
@@ -88,6 +90,9 @@ const mapDispatchToProps = dispatch => ({
     dispatch(markBusinessTripWorkLogRejected(id, data)),
   markHomeOfficeWorkLogApproved: id => dispatch(markHomeOfficeWorkLogApproved(id)),
   markHomeOfficeWorkLogRejected: (id, data) => dispatch(markHomeOfficeWorkLogRejected(id, data)),
+  markMultipleVacationWorkLogApproved: ids => dispatch(markMultipleVacationWorkLogApproved(ids)),
+  markMultipleVacationWorkLogRejected: (ids, data) =>
+    dispatch(markMultipleVacationWorkLogRejected(ids, data)),
   markOvertimeWorkLogApproved: id => dispatch(markOvertimeWorkLogApproved(id)),
   markOvertimeWorkLogRejected: (id, data) => dispatch(markOvertimeWorkLogRejected(id, data)),
   markTimeOffWorkLogApproved: id => dispatch(markTimeOffWorkLogApproved(id)),

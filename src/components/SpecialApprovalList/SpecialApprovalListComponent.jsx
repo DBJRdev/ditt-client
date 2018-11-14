@@ -52,6 +52,7 @@ class SpecialApprovalListComponent extends React.Component {
       },
       showRejectWorkLogForm: false,
       showRejectWorkLogFormId: null,
+      showRejectWorkLogFormIsBulk: false,
       showRejectWorkLogFormType: null,
       showWorkLogDetailDialog: false,
       showWorkLogDetailDialogType: null,
@@ -98,6 +99,7 @@ class SpecialApprovalListComponent extends React.Component {
           workLog => workLog
             .set('rawId', workLog.get('id'))
             .set('id', `${workLog.get('type')}-${workLog.get('id')}`)
+            .set('isBulk', false)
         ))
       ));
     });
@@ -148,12 +150,12 @@ class SpecialApprovalListComponent extends React.Component {
 
     vacationWorkLogs = vacationWorkLogs.map((vacationWorkLogGroup) => {
       if (vacationWorkLogGroup.length === 1) {
-        return vacationWorkLogGroup[0];
+        return vacationWorkLogGroup[0].set('isBulk', false);
       }
 
       let bulkWorkLog = vacationWorkLogGroup[0];
       bulkWorkLog = bulkWorkLog.set('dateTo', vacationWorkLogGroup[vacationWorkLogGroup.length - 1].get('date'));
-      bulkWorkLog = bulkWorkLog.set('bulkIds', vacationWorkLogGroup.map(workLog => workLog.get('rawId')));
+      bulkWorkLog = bulkWorkLog.set('rawBulkIds', vacationWorkLogGroup.map(workLog => workLog.get('rawId')));
       bulkWorkLog = bulkWorkLog.set('isBulk', true);
 
       return bulkWorkLog;
@@ -165,31 +167,41 @@ class SpecialApprovalListComponent extends React.Component {
     return specialApprovalList;
   }
 
-  handleMarkApproved(id, type) {
+  handleMarkApproved(id, type, isBulk) {
     if (this.props.token) {
       const decodedToken = jwt.decode(this.props.token);
 
       if (decodedToken) {
         let action = null;
 
-        switch (type) {
-          case BUSINESS_TRIP_WORK_LOG:
-            action = this.props.markBusinessTripWorkLogApproved;
-            break;
-          case HOME_OFFICE_WORK_LOG:
-            action = this.props.markHomeOfficeWorkLogApproved;
-            break;
-          case OVERTIME_WORK_LOG:
-            action = this.props.markOvertimeWorkLogApproved;
-            break;
-          case TIME_OFF_WORK_LOG:
-            action = this.props.markTimeOffWorkLogApproved;
-            break;
-          case VACATION_WORK_LOG:
-            action = this.props.markVacationWorkLogApproved;
-            break;
-          default:
-            throw new Error(`Unknown type ${type}`);
+        if (isBulk) {
+          switch (type) {
+            case VACATION_WORK_LOG:
+              action = this.props.markMultipleVacationWorkLogApproved;
+              break;
+            default:
+              throw new Error(`Unknown bulk type ${type}`);
+          }
+        } else {
+          switch (type) {
+            case BUSINESS_TRIP_WORK_LOG:
+              action = this.props.markBusinessTripWorkLogApproved;
+              break;
+            case HOME_OFFICE_WORK_LOG:
+              action = this.props.markHomeOfficeWorkLogApproved;
+              break;
+            case OVERTIME_WORK_LOG:
+              action = this.props.markOvertimeWorkLogApproved;
+              break;
+            case TIME_OFF_WORK_LOG:
+              action = this.props.markTimeOffWorkLogApproved;
+              break;
+            case VACATION_WORK_LOG:
+              action = this.props.markVacationWorkLogApproved;
+              break;
+            default:
+              throw new Error(`Unknown type ${type}`);
+          }
         }
 
         this.setState({
@@ -210,31 +222,41 @@ class SpecialApprovalListComponent extends React.Component {
     return null;
   }
 
-  handleMarkRejected(id, type, rejectionMessage) {
+  handleMarkRejected(id, type, isBulk, rejectionMessage) {
     if (this.props.token) {
       const decodedToken = jwt.decode(this.props.token);
 
       if (decodedToken) {
         let action = null;
 
-        switch (type) {
-          case BUSINESS_TRIP_WORK_LOG:
-            action = this.props.markBusinessTripWorkLogRejected;
-            break;
-          case HOME_OFFICE_WORK_LOG:
-            action = this.props.markHomeOfficeWorkLogRejected;
-            break;
-          case OVERTIME_WORK_LOG:
-            action = this.props.markOvertimeWorkLogRejected;
-            break;
-          case TIME_OFF_WORK_LOG:
-            action = this.props.markTimeOffWorkLogRejected;
-            break;
-          case VACATION_WORK_LOG:
-            action = this.props.markVacationWorkLogRejected;
-            break;
-          default:
-            throw new Error(`Unknown type ${type}`);
+        if (isBulk) {
+          switch (type) {
+            case VACATION_WORK_LOG:
+              action = this.props.markMultipleVacationWorkLogRejected;
+              break;
+            default:
+              throw new Error(`Unknown bulk type ${type}`);
+          }
+        } else {
+          switch (type) {
+            case BUSINESS_TRIP_WORK_LOG:
+              action = this.props.markBusinessTripWorkLogRejected;
+              break;
+            case HOME_OFFICE_WORK_LOG:
+              action = this.props.markHomeOfficeWorkLogRejected;
+              break;
+            case OVERTIME_WORK_LOG:
+              action = this.props.markOvertimeWorkLogRejected;
+              break;
+            case TIME_OFF_WORK_LOG:
+              action = this.props.markTimeOffWorkLogRejected;
+              break;
+            case VACATION_WORK_LOG:
+              action = this.props.markVacationWorkLogRejected;
+              break;
+            default:
+              throw new Error(`Unknown type ${type}`);
+          }
         }
 
         this.setState({
@@ -255,10 +277,11 @@ class SpecialApprovalListComponent extends React.Component {
     return null;
   }
 
-  openRejectWorkLogForm(id, type) {
+  openRejectWorkLogForm(id, type, isBulk) {
     this.setState({
       showRejectWorkLogForm: true,
       showRejectWorkLogFormId: id,
+      showRejectWorkLogFormIsBulk: isBulk,
       showRejectWorkLogFormType: type,
     });
   }
@@ -270,6 +293,7 @@ class SpecialApprovalListComponent extends React.Component {
       },
       showRejectWorkLogForm: false,
       showRejectWorkLogFormId: null,
+      showRejectWorkLogFormIsBulk: null,
       showRejectWorkLogFormType: null,
     });
   }
@@ -315,6 +339,7 @@ class SpecialApprovalListComponent extends React.Component {
     const {
       rejectWorkLogForm,
       showRejectWorkLogFormId,
+      showRejectWorkLogFormIsBulk,
       showRejectWorkLogFormType,
     } = this.state;
     const rejectWorkLogFormValidity = validateRejectWorkLog(this.props.t, rejectWorkLogForm);
@@ -325,6 +350,7 @@ class SpecialApprovalListComponent extends React.Component {
       this.handleMarkRejected(
         showRejectWorkLogFormId,
         showRejectWorkLogFormType,
+        showRejectWorkLogFormIsBulk,
         rejectWorkLogForm.rejectionMessage
       )
         .then((response) => {
@@ -504,7 +530,17 @@ class SpecialApprovalListComponent extends React.Component {
                       <React.Fragment>
                         <div className={styles.workLogButtonWrapper}>
                           <Button
-                            clickHandler={() => this.handleMarkApproved(row.rawId, row.type)}
+                            clickHandler={() => {
+                              if (row.isBulk) {
+                                return this.handleMarkApproved(
+                                  row.rawBulkIds,
+                                  row.type,
+                                  row.isBulk
+                                );
+                              }
+
+                              return this.handleMarkApproved(row.rawId, row.type, row.isBulk);
+                            }}
                             label={t('specialApproval:action.approveWorkLog')}
                             loading={
                               this.props.isPosting
@@ -517,7 +553,17 @@ class SpecialApprovalListComponent extends React.Component {
                         </div>
                         <div className={styles.workLogButtonWrapper}>
                           <Button
-                            clickHandler={() => this.openRejectWorkLogForm(row.rawId, row.type)}
+                            clickHandler={() => {
+                              if (row.isBulk) {
+                                return this.openRejectWorkLogForm(
+                                  row.rawBulkIds,
+                                  row.type,
+                                  row.isBulk
+                                );
+                              }
+
+                              return this.openRejectWorkLogForm(row.rawId, row.type, row.isBulk);
+                            }}
                             label={t('specialApproval:action.rejectWorkLog')}
                             loading={
                               this.props.isPosting
@@ -588,6 +634,8 @@ SpecialApprovalListComponent.propTypes = {
   markBusinessTripWorkLogRejected: PropTypes.func.isRequired,
   markHomeOfficeWorkLogApproved: PropTypes.func.isRequired,
   markHomeOfficeWorkLogRejected: PropTypes.func.isRequired,
+  markMultipleVacationWorkLogApproved: PropTypes.func.isRequired,
+  markMultipleVacationWorkLogRejected: PropTypes.func.isRequired,
   markOvertimeWorkLogApproved: PropTypes.func.isRequired,
   markOvertimeWorkLogRejected: PropTypes.func.isRequired,
   markTimeOffWorkLogApproved: PropTypes.func.isRequired,
