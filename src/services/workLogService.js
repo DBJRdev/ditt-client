@@ -1,3 +1,4 @@
+import Immutable from 'immutable';
 import moment from 'moment';
 import {
   BUSINESS_TRIP_WORK_LOG,
@@ -17,6 +18,10 @@ import {
   VARIANT_WITH_NOTE,
   VARIANT_WITHOUT_NOTE,
 } from '../resources/sickDayWorkLog';
+import {
+  includesSameDate,
+  isWeekend,
+} from './dateTimeService';
 
 export const getSickDayVariantLabel = (t, sickDayVariant) => {
   let sickDayVariantLabel = '';
@@ -171,3 +176,85 @@ export const getWorkMonthByMonth = (date, workMonthList) => workMonthList.find(w
   date.month() + 1 === workMonth.month
   && date.year() === workMonth.year
 ));
+
+export const collapseWorkLogs = (originalWorkLogs, supportedHolidays) => {
+  let workLogs = [];
+  const workLogsByStatus = {};
+
+  // Group work logs by status and sort them by date
+
+  originalWorkLogs
+    .sortBy(workLog => workLog.get('date'))
+    .forEach((workLog) => {
+      let status = workLog.get('status');
+
+      if (status === STATUS_REJECTED) {
+        status += `-${workLog.get('rejectionMessage')}`;
+      }
+
+      if (!workLogsByStatus[status]) {
+        workLogsByStatus[status] = [];
+      }
+
+      workLogsByStatus[status].push(workLog);
+    });
+
+  Object.keys(workLogsByStatus).forEach((status) => {
+    let collapsedWorkLog = [];
+    let firstWorkLog = null;
+    let nextWorkingDay = null;
+
+    workLogsByStatus[status].forEach((workLog) => {
+      if (!firstWorkLog) {
+        // Add current work log into array of collapsed work log
+        // if it is first work log (initialization)
+
+        firstWorkLog = workLog;
+        collapsedWorkLog.push(workLog);
+      } else if (workLog.get('date').isSame(nextWorkingDay, 'day')) {
+        // Add work log into array of collapsed work log
+        // if current work log follows up on previous work log
+
+        collapsedWorkLog.push(workLog);
+      } else {
+        // Add collapsed work log into array of work logs
+        // if current work log does not follow up on previous work log,
+        // initialize new collapsed work log and add current work log into it
+
+        workLogs.push(collapsedWorkLog);
+        collapsedWorkLog = [workLog];
+        firstWorkLog = workLog;
+      }
+
+      // Find next working day (to check whether next work log follows up on current work log)
+
+      nextWorkingDay = workLog.get('date').clone().add(1, 'day');
+
+      while (isWeekend(nextWorkingDay) || includesSameDate(nextWorkingDay, supportedHolidays)) {
+        nextWorkingDay = nextWorkingDay.add(1, 'day');
+      }
+    });
+
+    // Add remaining work log into array of collapsed work log
+
+    workLogs.push(collapsedWorkLog);
+  });
+
+  // Set isBulk flag, buldIds and dateTo if work log actually consist of more
+  // than one work logs (= is collapsed work log)
+
+  workLogs = workLogs.map((collapsedWorkLog) => {
+    if (collapsedWorkLog.length === 1) {
+      return collapsedWorkLog[0].set('isBulk', false);
+    }
+
+    let bulkWorkLog = collapsedWorkLog[0];
+    bulkWorkLog = bulkWorkLog.set('dateTo', collapsedWorkLog[collapsedWorkLog.length - 1].get('date'));
+    bulkWorkLog = bulkWorkLog.set('bulkIds', Immutable.List(collapsedWorkLog.map(workLog => workLog.get('id'))));
+    bulkWorkLog = bulkWorkLog.set('isBulk', true);
+
+    return bulkWorkLog;
+  });
+
+  return workLogs;
+};

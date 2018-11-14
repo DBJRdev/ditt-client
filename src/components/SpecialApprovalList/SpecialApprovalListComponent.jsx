@@ -19,15 +19,12 @@ import {
   TIME_OFF_WORK_LOG,
   VACATION_WORK_LOG,
 } from '../../resources/workMonth';
-import {
-  includesSameDate,
-  isWeekend,
-  toDayDayMonthYearFormat,
-} from '../../services/dateTimeService';
+import { toDayDayMonthYearFormat } from '../../services/dateTimeService';
 import { validateRejectWorkLog } from '../../services/validatorService';
 import {
   getStatusLabel,
   getTypeLabel,
+  collapseWorkLogs,
 } from '../../services/workLogService';
 import styles from './SpecialApprovalListComponent.scss';
 
@@ -104,72 +101,20 @@ class SpecialApprovalListComponent extends React.Component {
       ));
     });
 
-    let vacationWorkLogs = [];
-    const vacationWorkLogsByStatus = {};
+    const vacationWorkLogs = collapseWorkLogs(
+      this.props.specialApprovalList.get('vacationWorkLogs'),
+      this.props.config.get('supportedHolidays')
+    );
 
-    this.props.specialApprovalList.get('vacationWorkLogs')
-      .map((
+    specialApprovalList = specialApprovalList.concat((
+      vacationWorkLogs.map((
         workLog => workLog
           .set('rawId', workLog.get('id'))
           .set('id', `${workLog.get('type')}-${workLog.get('id')}`)
       ))
-      .sortBy(workLog => workLog.get('date'))
-      .forEach((workLog) => {
-        let status = workLog.get('status');
-        if (status === STATUS_REJECTED) {
-          status += `-${workLog.get('rejectionMessage')}`;
-        }
+    ));
 
-        if (!vacationWorkLogsByStatus[status]) {
-          vacationWorkLogsByStatus[status] = [];
-        }
-
-        vacationWorkLogsByStatus[status].push(workLog);
-      });
-
-    Object.keys(vacationWorkLogsByStatus).forEach((status) => {
-      let tempVacationWorkLogs = [];
-      let firstWorkLog = null;
-      let nextWorkingDay = null;
-
-      vacationWorkLogsByStatus[status].forEach((workLog) => {
-        if (!firstWorkLog) {
-          firstWorkLog = workLog;
-          tempVacationWorkLogs.push(workLog);
-        } else if (workLog.get('date').isSame(nextWorkingDay, 'day')) {
-          tempVacationWorkLogs.push(workLog);
-        } else {
-          vacationWorkLogs.push(tempVacationWorkLogs);
-          tempVacationWorkLogs = [workLog];
-          firstWorkLog = workLog;
-        }
-
-        nextWorkingDay = workLog.get('date').clone().add(1, 'day');
-        while (isWeekend(nextWorkingDay) || includesSameDate(nextWorkingDay, this.props.config.get('supportedHolidays'))) {
-          nextWorkingDay = nextWorkingDay.add(1, 'day');
-        }
-      });
-
-      vacationWorkLogs.push(tempVacationWorkLogs);
-    });
-
-    vacationWorkLogs = vacationWorkLogs.map((vacationWorkLogGroup) => {
-      if (vacationWorkLogGroup.length === 1) {
-        return vacationWorkLogGroup[0].set('isBulk', false);
-      }
-
-      let bulkWorkLog = vacationWorkLogGroup[0];
-      bulkWorkLog = bulkWorkLog.set('dateTo', vacationWorkLogGroup[vacationWorkLogGroup.length - 1].get('date'));
-      bulkWorkLog = bulkWorkLog.set('rawBulkIds', vacationWorkLogGroup.map(workLog => workLog.get('rawId')));
-      bulkWorkLog = bulkWorkLog.set('isBulk', true);
-
-      return bulkWorkLog;
-    });
-
-    specialApprovalList = specialApprovalList.concat(vacationWorkLogs);
-    specialApprovalList = specialApprovalList.sortBy(workLog => -workLog.get('date'));
-
-    return specialApprovalList;
+    return specialApprovalList.sortBy(workLog => -workLog.get('date'));
   }
 
   handleMarkApproved(id, type, isBulk) {
@@ -538,7 +483,7 @@ class SpecialApprovalListComponent extends React.Component {
                             clickHandler={() => {
                               if (row.isBulk) {
                                 return this.handleMarkApproved(
-                                  row.rawBulkIds,
+                                  row.bulkIds,
                                   row.type,
                                   row.isBulk
                                 );
@@ -561,7 +506,7 @@ class SpecialApprovalListComponent extends React.Component {
                             clickHandler={() => {
                               if (row.isBulk) {
                                 return this.openRejectWorkLogForm(
-                                  row.rawBulkIds,
+                                  row.bulkIds,
                                   row.type,
                                   row.isBulk
                                 );
