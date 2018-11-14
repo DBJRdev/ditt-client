@@ -2,11 +2,14 @@ import Immutable from 'immutable';
 import React from 'react';
 import { shallow } from 'enzyme';
 import RecentListComponent from '../RecentListComponent';
+import configMock from '../../../../tests/mocks/configMock';
 
 describe('rendering', () => {
   it('renders correctly', () => {
     const props = {
+      config: configMock,
       fetchBusinessTripWorkLog: () => {},
+      fetchConfig: () => {},
       fetchHomeOfficeWorkLog: () => {},
       fetchOvertimeWorkLog: () => {},
       fetchSpecialApprovalList: () => {},

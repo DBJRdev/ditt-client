@@ -8,6 +8,11 @@ import {
   selectBusinessTripWorkLogMeta,
 } from '../../resources/businessTripWorkLog';
 import {
+  fetchConfig,
+  selectConfig,
+  selectConfigMeta,
+} from '../../resources/config';
+import {
   fetchHomeOfficeWorkLog,
   markHomeOfficeWorkLogApproved,
   markHomeOfficeWorkLogRejected,
@@ -44,6 +49,7 @@ import RecentListComponent from './RecentListComponent';
 
 const mapStateToProps = (state) => {
   const businessTripWorkLogMeta = selectBusinessTripWorkLogMeta(state);
+  const configMeta = selectConfigMeta(state);
   const homeOfficeWorkLogMeta = selectHomeOfficeWorkLogMeta(state);
   const overtimeWorkLogMeta = selectOvertimeWorkLogMeta(state);
   const timeOffWorkLogMeta = selectTimeOffWorkLogMeta(state);
@@ -52,8 +58,10 @@ const mapStateToProps = (state) => {
 
   return ({
     businessTripWorkLog: selectBusinessTripWorkLog(state),
+    config: selectConfig(state),
     homeOfficeWorkLog: selectHomeOfficeWorkLog(state),
-    isFetching: specialApprovalListMeta.isFetching,
+    isFetching: configMeta.isFetching
+      || specialApprovalListMeta.isFetching,
     isPosting: businessTripWorkLogMeta.isPosting
       || homeOfficeWorkLogMeta.isPosting
       || overtimeWorkLogMeta.isPosting
@@ -69,6 +77,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => ({
   fetchBusinessTripWorkLog: id => dispatch(fetchBusinessTripWorkLog(id)),
+  fetchConfig: () => dispatch(fetchConfig()),
   fetchHomeOfficeWorkLog: id => dispatch(fetchHomeOfficeWorkLog(id)),
   fetchOvertimeWorkLog: id => dispatch(fetchOvertimeWorkLog(id)),
   fetchSpecialApprovalList: uid => dispatch(fetchRecentSpecialApprovalList(uid)),

@@ -20,7 +20,35 @@ exports[`rendering renders correctly 1`] = `
   </p>
   <SpecialApprovalListComponent
     businessTripWorkLog={null}
+    config={
+      Immutable.Map {
+        "supportedHolidays": Immutable.List [
+          "2018-01-01T00:00:00.000Z",
+          "2018-12-24T00:00:00.000Z",
+          "2018-12-25T00:00:00.000Z",
+          "2018-12-26T00:00:00.000Z",
+          "2018-12-31T00:00:00.000Z",
+        ],
+        "supportedYear": Immutable.List [
+          2018,
+          2019,
+          2020,
+          2021,
+        ],
+        "workedHoursLimits": Immutable.Map {
+          "lowerLimit": Immutable.Map {
+            "changeBy": -1800,
+            "limit": 21600,
+          },
+          "upperLimit": Immutable.Map {
+            "changeBy": -2700,
+            "limit": 32400,
+          },
+        },
+      }
+    }
     fetchBusinessTripWorkLog={[Function]}
+    fetchConfig={[Function]}
     fetchHomeOfficeWorkLog={[Function]}
     fetchOvertimeWorkLog={[Function]}
     fetchSpecialApprovalList={[Function]}

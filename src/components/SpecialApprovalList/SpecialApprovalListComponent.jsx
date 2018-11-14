@@ -19,7 +19,11 @@ import {
   TIME_OFF_WORK_LOG,
   VACATION_WORK_LOG,
 } from '../../resources/workMonth';
-import { toDayDayMonthYearFormat } from '../../services/dateTimeService';
+import {
+  includesSameDate,
+  isWeekend,
+  toDayDayMonthYearFormat,
+} from '../../services/dateTimeService';
 import { validateRejectWorkLog } from '../../services/validatorService';
 import {
   getStatusLabel,
@@ -65,6 +69,8 @@ class SpecialApprovalListComponent extends React.Component {
   }
 
   componentDidMount() {
+    this.props.fetchConfig();
+
     if (this.props.token) {
       const decodedToken = jwt.decode(this.props.token);
 
@@ -77,12 +83,15 @@ class SpecialApprovalListComponent extends React.Component {
   getFilteredSpecialApprovals() {
     let specialApprovalList = Immutable.List();
 
+    if (!this.props.config) {
+      return specialApprovalList;
+    }
+
     [
       'businessTripWorkLogs',
       'homeOfficeWorkLogs',
       'overtimeWorkLogs',
       'timeOffWorkLogs',
-      'vacationWorkLogs',
     ].forEach((key) => {
       specialApprovalList = specialApprovalList.concat((
         this.props.specialApprovalList.get(key).map((
@@ -93,6 +102,64 @@ class SpecialApprovalListComponent extends React.Component {
       ));
     });
 
+    let vacationWorkLogs = [];
+    const vacationWorkLogsByStatus = {};
+
+    this.props.specialApprovalList.get('vacationWorkLogs')
+      .map((
+        workLog => workLog
+          .set('rawId', workLog.get('id'))
+          .set('id', `${workLog.get('type')}-${workLog.get('id')}`)
+      ))
+      .sortBy(workLog => workLog.get('date'))
+      .forEach((workLog) => {
+        if (!vacationWorkLogsByStatus[workLog.get('status')]) {
+          vacationWorkLogsByStatus[workLog.get('status')] = [];
+        }
+
+        vacationWorkLogsByStatus[workLog.get('status')].push(workLog);
+      });
+
+    Object.keys(vacationWorkLogsByStatus).forEach((status) => {
+      let tempVacationWorkLogs = [];
+      let firstWorkLog = null;
+      let nextWorkingDay = null;
+
+      vacationWorkLogsByStatus[status].forEach((workLog) => {
+        if (!firstWorkLog) {
+          firstWorkLog = workLog;
+          tempVacationWorkLogs.push(workLog);
+        } else if (workLog.get('date').isSame(nextWorkingDay, 'day')) {
+          tempVacationWorkLogs.push(workLog);
+        } else {
+          vacationWorkLogs.push(tempVacationWorkLogs);
+          tempVacationWorkLogs = [workLog];
+          firstWorkLog = workLog;
+        }
+
+        nextWorkingDay = workLog.get('date').clone().add(1, 'day');
+        while (isWeekend(nextWorkingDay) || includesSameDate(nextWorkingDay, this.props.config.get('supportedHolidays'))) {
+          nextWorkingDay = nextWorkingDay.add(1, 'day');
+        }
+      });
+
+      vacationWorkLogs.push(tempVacationWorkLogs);
+    });
+
+    vacationWorkLogs = vacationWorkLogs.map((vacationWorkLogGroup) => {
+      if (vacationWorkLogGroup.length === 1) {
+        return vacationWorkLogGroup[0];
+      }
+
+      let bulkWorkLog = vacationWorkLogGroup[0];
+      bulkWorkLog = bulkWorkLog.set('dateTo', vacationWorkLogGroup[vacationWorkLogGroup.length - 1].get('date'));
+      bulkWorkLog = bulkWorkLog.set('bulkIds', vacationWorkLogGroup.map(workLog => workLog.get('rawId')));
+      bulkWorkLog = bulkWorkLog.set('isBulk', true);
+
+      return bulkWorkLog;
+    });
+
+    specialApprovalList = specialApprovalList.concat(vacationWorkLogs);
     specialApprovalList = specialApprovalList.sortBy(workLog => -workLog.get('date'));
 
     return specialApprovalList;
@@ -408,7 +475,13 @@ class SpecialApprovalListComponent extends React.Component {
                 name: 'lastName',
               },
               {
-                format: row => toDayDayMonthYearFormat(row.date),
+                format: (row) => {
+                  if (!row.isBulk) {
+                    return toDayDayMonthYearFormat(row.date);
+                  }
+
+                  return `${toDayDayMonthYearFormat(row.date)} – ${toDayDayMonthYearFormat(row.dateTo)}`;
+                },
                 label: t('workLog:element.date'),
                 name: 'date',
               },
@@ -479,6 +552,7 @@ class SpecialApprovalListComponent extends React.Component {
 
 SpecialApprovalListComponent.defaultProps = {
   businessTripWorkLog: null,
+  config: null,
   homeOfficeWorkLog: null,
   overtimeWorkLog: null,
   timeOffWorkLog: null,
@@ -496,7 +570,9 @@ SpecialApprovalListComponent.propTypes = {
     status: PropTypes.string.isRequired,
     transport: PropTypes.string.isRequired,
   }),
+  config: ImmutablePropTypes.mapContains({}),
   fetchBusinessTripWorkLog: PropTypes.func.isRequired,
+  fetchConfig: PropTypes.func.isRequired,
   fetchHomeOfficeWorkLog: PropTypes.func.isRequired,
   fetchOvertimeWorkLog: PropTypes.func.isRequired,
   fetchSpecialApprovalList: PropTypes.func.isRequired,
