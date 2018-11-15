@@ -52,6 +52,8 @@ class SpecialApprovalListComponent extends React.Component {
       showRejectWorkLogFormIsBulk: false,
       showRejectWorkLogFormType: null,
       showWorkLogDetailDialog: false,
+      showWorkLogDetailDialogDateTo: null,
+      showWorkLogDetailDialogIsBulk: false,
       showWorkLogDetailDialogType: null,
     };
 
@@ -259,7 +261,7 @@ class SpecialApprovalListComponent extends React.Component {
     });
   }
 
-  openWorkLogDetail(id, type) {
+  openWorkLogDetail(id, type, isBulk, dateTo) {
     if (BUSINESS_TRIP_WORK_LOG === type) {
       this.props.fetchBusinessTripWorkLog(id);
     } else if (HOME_OFFICE_WORK_LOG === type) {
@@ -274,6 +276,8 @@ class SpecialApprovalListComponent extends React.Component {
 
     this.setState({
       showWorkLogDetailDialog: true,
+      showWorkLogDetailDialogDateTo: dateTo || null,
+      showWorkLogDetailDialogIsBulk: isBulk,
       showWorkLogDetailDialogType: type,
     });
   }
@@ -281,6 +285,8 @@ class SpecialApprovalListComponent extends React.Component {
   closeWorkLogDetail() {
     this.setState({
       showWorkLogDetailDialog: false,
+      showWorkLogDetailDialogDateTo: null,
+      showWorkLogDetailDialogIsBulk: false,
       showWorkLogDetailDialogType: null,
     });
   }
@@ -351,6 +357,8 @@ class SpecialApprovalListComponent extends React.Component {
   renderWorkLogDetail() {
     const { t } = this.props;
 
+    const dateTo = this.state.showWorkLogDetailDialogDateTo;
+    const isBulk = this.state.showWorkLogDetailDialogIsBulk;
     const type = this.state.showWorkLogDetailDialogType;
     let content = t('general:text.loading');
 
@@ -411,17 +419,32 @@ class SpecialApprovalListComponent extends React.Component {
         </p>
       );
     } else if (VACATION_WORK_LOG === type && this.props.vacationWorkLog) {
-      content = (
-        <p>
-          {t('workLog:element.date')}: {toDayDayMonthYearFormat(this.props.vacationWorkLog.get('date'))}<br />
-          {t('workLog:element.status')}: {getStatusLabel(t, this.props.vacationWorkLog.get('status'))}<br />
-          {STATUS_REJECTED === this.props.vacationWorkLog.get('status') && (
-            <React.Fragment>
-              {t('workLog:element.rejectionMessage')}: {this.props.vacationWorkLog.get('rejectionMessage')}<br />
-            </React.Fragment>
-          )}
-        </p>
-      );
+      if (isBulk) {
+        content = (
+          <p>
+            {t('vacationWorkLog:element.dateFrom')}: {toDayDayMonthYearFormat(this.props.vacationWorkLog.get('date'))}<br />
+            {t('vacationWorkLog:element.dateTo')}: {toDayDayMonthYearFormat(dateTo)}<br />
+            {t('workLog:element.status')}: {getStatusLabel(t, this.props.vacationWorkLog.get('status'))}<br />
+            {STATUS_REJECTED === this.props.vacationWorkLog.get('status') && (
+              <React.Fragment>
+                {t('workLog:element.rejectionMessage')}: {this.props.vacationWorkLog.get('rejectionMessage')}<br />
+              </React.Fragment>
+            )}
+          </p>
+        );
+      } else {
+        content = (
+          <p>
+            {t('workLog:element.date')}: {toDayDayMonthYearFormat(this.props.vacationWorkLog.get('date'))}<br />
+            {t('workLog:element.status')}: {getStatusLabel(t, this.props.vacationWorkLog.get('status'))}<br />
+            {STATUS_REJECTED === this.props.vacationWorkLog.get('status') && (
+              <React.Fragment>
+                {t('workLog:element.rejectionMessage')}: {this.props.vacationWorkLog.get('rejectionMessage')}<br />
+              </React.Fragment>
+            )}
+          </p>
+        );
+      }
     }
 
     return (
@@ -471,7 +494,12 @@ class SpecialApprovalListComponent extends React.Component {
                   <div>
                     <div className={styles.workLogButtonWrapper}>
                       <Button
-                        clickHandler={() => this.openWorkLogDetail(row.rawId, row.type)}
+                        clickHandler={() => this.openWorkLogDetail(
+                          row.rawId,
+                          row.type,
+                          row.isBulk,
+                          row.dateTo
+                        )}
                         label={t('specialApproval:action.workLogDetail')}
                         priority="default"
                       />
