@@ -625,7 +625,7 @@ class WorkLogCalendar extends React.Component {
                                     WORK_LOG
                                   )
                                 }
-                                icon="work"
+                                icon="access_time"
                                 label={`${toHourMinuteFormat(workLog.startTime)} - ${toHourMinuteFormat(workLog.endTime)}`}
                               />
                             </div>
