@@ -24,67 +24,30 @@ exports[`rendering renders correctly with all props 1`] = `
       className="Modal__body___3KyQK"
     >
       <p
-        style={
-          Object {
-            "color": "#a32100",
-            "textAlign": "center",
-          }
-        }
+        className="formErrorText"
       />
       <form>
         <fieldset
-          style={
-            Object {
-              "borderStyle": "none",
-              "marginLeft": "auto",
-              "marginRight": "auto",
-              "maxWidth": "19em",
-              "padding": "0",
-            }
-          }
+          className="fieldset"
         >
           <div
-            style={
-              Object {
-                "display": "inline-block",
-                "width": "150px",
-              }
-            }
+            className="field"
           >
             <p
-              style={
-                Object {
-                  "color": "#666",
-                  "fontSize": "0.75rem",
-                  "textAlign": "block",
-                }
-              }
+              className="formInfoText"
             >
               workLog:modal.add.alreadySendForApprovalDescription
             </p>
           </div>
         </fieldset>
         <fieldset
-          style={
-            Object {
-              "borderStyle": "none",
-              "marginLeft": "auto",
-              "marginRight": "auto",
-              "maxWidth": "19em",
-              "padding": "0",
-            }
-          }
+          className="fieldset"
         >
           <legend>
             workLog:element.date
           </legend>
           <div
-            style={
-              Object {
-                "display": "inline-block",
-                "width": "150px",
-              }
-            }
+            className="field"
           >
             <div
               className="TextField__root___3Dilx"
@@ -112,26 +75,13 @@ exports[`rendering renders correctly with all props 1`] = `
           </div>
         </fieldset>
         <fieldset
-          style={
-            Object {
-              "borderStyle": "none",
-              "marginLeft": "auto",
-              "marginRight": "auto",
-              "maxWidth": "19em",
-              "padding": "0",
-            }
-          }
+          className="fieldset"
         >
           <legend>
             workLog:element.type
           </legend>
           <div
-            style={
-              Object {
-                "display": "inline-block",
-                "width": "150px",
-              }
-            }
+            className="field"
           >
             <div
               className="SelectField__isRootCondensed___hi5xq SelectField__root___2payh"
@@ -200,27 +150,14 @@ exports[`rendering renders correctly with all props 1`] = `
           </div>
         </fieldset>
         <fieldset
-          style={
-            Object {
-              "borderStyle": "none",
-              "marginLeft": "auto",
-              "marginRight": "auto",
-              "maxWidth": "19em",
-              "padding": "0",
-            }
-          }
+          className="fieldset"
         >
           <legend>
             workLog:element.startTime
           </legend>
           <div>
             <div
-              style={
-                Object {
-                  "display": "inline-block",
-                  "width": "150px",
-                }
-              }
+              className="field fieldDate"
             >
               <div
                 className="TextField__root___3Dilx"
@@ -248,12 +185,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
             :
             <div
-              style={
-                Object {
-                  "display": "inline-block",
-                  "width": "150px",
-                }
-              }
+              className="field fieldDate"
             >
               <div
                 className="TextField__root___3Dilx"
@@ -283,27 +215,14 @@ exports[`rendering renders correctly with all props 1`] = `
           </div>
         </fieldset>
         <fieldset
-          style={
-            Object {
-              "borderStyle": "none",
-              "marginLeft": "auto",
-              "marginRight": "auto",
-              "maxWidth": "19em",
-              "padding": "0",
-            }
-          }
+          className="fieldset"
         >
           <legend>
             workLog:element.endTime
           </legend>
           <div>
             <div
-              style={
-                Object {
-                  "display": "inline-block",
-                  "width": "150px",
-                }
-              }
+              className="field fieldDate"
             >
               <div
                 className="TextField__root___3Dilx"
@@ -331,12 +250,7 @@ exports[`rendering renders correctly with all props 1`] = `
             </div>
             :
             <div
-              style={
-                Object {
-                  "display": "inline-block",
-                  "width": "150px",
-                }
-              }
+              className="field fieldDate"
             >
               <div
                 className="TextField__root___3Dilx"
@@ -425,35 +339,17 @@ exports[`rendering renders correctly with mandatory props 1`] = `
       className="Modal__body___3KyQK"
     >
       <p
-        style={
-          Object {
-            "color": "#a32100",
-            "textAlign": "center",
-          }
-        }
+        className="formErrorText"
       />
       <form>
         <fieldset
-          style={
-            Object {
-              "borderStyle": "none",
-              "marginLeft": "auto",
-              "marginRight": "auto",
-              "maxWidth": "19em",
-              "padding": "0",
-            }
-          }
+          className="fieldset"
         >
           <legend>
             workLog:element.date
           </legend>
           <div
-            style={
-              Object {
-                "display": "inline-block",
-                "width": "150px",
-              }
-            }
+            className="field"
           >
             <div
               className="TextField__root___3Dilx"
@@ -481,26 +377,13 @@ exports[`rendering renders correctly with mandatory props 1`] = `
           </div>
         </fieldset>
         <fieldset
-          style={
-            Object {
-              "borderStyle": "none",
-              "marginLeft": "auto",
-              "marginRight": "auto",
-              "maxWidth": "19em",
-              "padding": "0",
-            }
-          }
+          className="fieldset"
         >
           <legend>
             workLog:element.type
           </legend>
           <div
-            style={
-              Object {
-                "display": "inline-block",
-                "width": "150px",
-              }
-            }
+            className="field"
           >
             <div
               className="SelectField__isRootCondensed___hi5xq SelectField__root___2payh"
@@ -569,27 +452,14 @@ exports[`rendering renders correctly with mandatory props 1`] = `
           </div>
         </fieldset>
         <fieldset
-          style={
-            Object {
-              "borderStyle": "none",
-              "marginLeft": "auto",
-              "marginRight": "auto",
-              "maxWidth": "19em",
-              "padding": "0",
-            }
-          }
+          className="fieldset"
         >
           <legend>
             workLog:element.startTime
           </legend>
           <div>
             <div
-              style={
-                Object {
-                  "display": "inline-block",
-                  "width": "150px",
-                }
-              }
+              className="field fieldDate"
             >
               <div
                 className="TextField__root___3Dilx"
@@ -617,12 +487,7 @@ exports[`rendering renders correctly with mandatory props 1`] = `
             </div>
             :
             <div
-              style={
-                Object {
-                  "display": "inline-block",
-                  "width": "150px",
-                }
-              }
+              className="field fieldDate"
             >
               <div
                 className="TextField__root___3Dilx"
@@ -652,27 +517,14 @@ exports[`rendering renders correctly with mandatory props 1`] = `
           </div>
         </fieldset>
         <fieldset
-          style={
-            Object {
-              "borderStyle": "none",
-              "marginLeft": "auto",
-              "marginRight": "auto",
-              "maxWidth": "19em",
-              "padding": "0",
-            }
-          }
+          className="fieldset"
         >
           <legend>
             workLog:element.endTime
           </legend>
           <div>
             <div
-              style={
-                Object {
-                  "display": "inline-block",
-                  "width": "150px",
-                }
-              }
+              className="field fieldDate"
             >
               <div
                 className="TextField__root___3Dilx"
@@ -700,12 +552,7 @@ exports[`rendering renders correctly with mandatory props 1`] = `
             </div>
             :
             <div
-              style={
-                Object {
-                  "display": "inline-block",
-                  "width": "150px",
-                }
-              }
+              className="field fieldDate"
             >
               <div
                 className="TextField__root___3Dilx"

@@ -27,6 +27,7 @@ import {
   toMomentDateTimeFromDayMonthYear,
 } from '../../services/dateTimeService';
 import { validateWorkLog } from '../../services/validatorService';
+import styles from './WorkLogForm.scss';
 
 class WorkLogForm extends React.Component {
   constructor(props) {
@@ -76,30 +77,6 @@ class WorkLogForm extends React.Component {
 
     this.changeHandler = this.changeHandler.bind(this);
     this.saveHandler = this.saveHandler.bind(this);
-
-    this.formErrorStyle = {
-      color: '#a32100',
-      textAlign: 'center',
-    };
-
-    this.fieldSetStyle = {
-      borderStyle: 'none',
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      maxWidth: '19em',
-      padding: '0',
-    };
-
-    this.fieldStyle = {
-      display: 'inline-block',
-      width: '150px',
-    };
-
-    this.formInfoTextStyle = {
-      color: '#666',
-      fontSize: '0.75rem',
-      textAlign: 'block',
-    };
   }
 
   changeHandler(e) {
@@ -182,9 +159,9 @@ class WorkLogForm extends React.Component {
     const { t } = this.props;
 
     return (
-      <fieldset style={this.fieldSetStyle}>
+      <fieldset className={styles.fieldset}>
         <legend>{t('businessTripWorkLog:element.purpose')}</legend>
-        <div style={this.fieldStyle}>
+        <div className={styles.field}>
           <TextField
             changeHandler={this.changeHandler}
             error={this.state.formValidity.elements.purpose}
@@ -195,7 +172,7 @@ class WorkLogForm extends React.Component {
           />
         </div>
         <legend>{t('businessTripWorkLog:element.destination')}</legend>
-        <div style={this.fieldStyle}>
+        <div className={styles.field}>
           <TextField
             changeHandler={this.changeHandler}
             error={this.state.formValidity.elements.destination}
@@ -206,7 +183,7 @@ class WorkLogForm extends React.Component {
           />
         </div>
         <legend>{t('businessTripWorkLog:element.transport')}</legend>
-        <div style={this.fieldStyle}>
+        <div className={styles.field}>
           <TextField
             changeHandler={this.changeHandler}
             error={this.state.formValidity.elements.transport}
@@ -217,7 +194,7 @@ class WorkLogForm extends React.Component {
           />
         </div>
         <legend>{t('businessTripWorkLog:element.expectedDeparture')}</legend>
-        <div style={this.fieldStyle}>
+        <div className={styles.field}>
           <TextField
             changeHandler={this.changeHandler}
             error={this.state.formValidity.elements.expectedDeparture}
@@ -228,7 +205,7 @@ class WorkLogForm extends React.Component {
           />
         </div>
         <legend>{t('businessTripWorkLog:element.expectedArrival')}</legend>
-        <div style={this.fieldStyle}>
+        <div className={styles.field}>
           <TextField
             changeHandler={this.changeHandler}
             error={this.state.formValidity.elements.expectedArrival}
@@ -266,9 +243,9 @@ class WorkLogForm extends React.Component {
     const { t } = this.props;
 
     return (
-      <fieldset style={this.fieldSetStyle}>
+      <fieldset className={styles.fieldset}>
         <legend>{t('overtimeWorkLog:element.reason')}</legend>
-        <div style={this.fieldStyle}>
+        <div className={styles.field}>
           <TextField
             changeHandler={this.changeHandler}
             error={this.state.formValidity.elements.reason}
@@ -286,9 +263,9 @@ class WorkLogForm extends React.Component {
     const { t } = this.props;
 
     return (
-      <fieldset style={this.fieldSetStyle}>
+      <fieldset className={styles.fieldset}>
         <legend>{t('sickDayWorkLog:element.variant')}</legend>
-        <div style={this.fieldStyle}>
+        <div className={styles.field}>
           <SelectField
             changeHandler={this.changeHandler}
             error={this.state.formValidity.elements.variant}
@@ -320,9 +297,9 @@ class WorkLogForm extends React.Component {
     const { t } = this.props;
 
     return (
-      <fieldset style={this.fieldSetStyle}>
+      <fieldset className={styles.fieldset}>
         <legend>{t('sickDayWorkLog:element.childName')}</legend>
-        <div style={this.fieldStyle}>
+        <div className={styles.field}>
           <TextField
             changeHandler={this.changeHandler}
             error={this.state.formValidity.elements.childName}
@@ -333,7 +310,7 @@ class WorkLogForm extends React.Component {
           />
         </div>
         <legend>{t('sickDayWorkLog:element.childDateOfBirth')}</legend>
-        <div style={this.fieldStyle}>
+        <div className={styles.field}>
           <TextField
             changeHandler={this.changeHandler}
             error={this.state.formValidity.elements.childDateOfBirth}
@@ -372,10 +349,10 @@ class WorkLogForm extends React.Component {
 
     return (
       <React.Fragment>
-        <fieldset style={this.fieldSetStyle}>
+        <fieldset className={styles.fieldset}>
           <legend>{t('workLog:element.startTime')}</legend>
           <div>
-            <div style={this.fieldStyle}>
+            <div className={[styles.field, styles.fieldDate].join(' ')}>
               <TextField
                 autoFocus
                 changeHandler={this.changeHandler}
@@ -387,7 +364,7 @@ class WorkLogForm extends React.Component {
               />
             </div>
             :
-            <div style={this.fieldStyle}>
+            <div className={[styles.field, styles.fieldDate].join(' ')}>
               <TextField
                 changeHandler={this.changeHandler}
                 error={this.state.formValidity.elements.startMinute}
@@ -400,10 +377,10 @@ class WorkLogForm extends React.Component {
             &nbsp;h
           </div>
         </fieldset>
-        <fieldset style={this.fieldSetStyle}>
+        <fieldset className={styles.fieldset}>
           <legend>{t('workLog:element.endTime')}</legend>
           <div>
-            <div style={this.fieldStyle}>
+            <div className={[styles.field, styles.fieldDate].join(' ')}>
               <TextField
                 changeHandler={this.changeHandler}
                 error={this.state.formValidity.elements.endHour}
@@ -414,7 +391,7 @@ class WorkLogForm extends React.Component {
               />
             </div>
             :
-            <div style={this.fieldStyle}>
+            <div className={[styles.field, styles.fieldDate].join(' ')}>
               <TextField
                 changeHandler={this.changeHandler}
                 error={this.state.formValidity.elements.endMinute}
@@ -447,22 +424,22 @@ class WorkLogForm extends React.Component {
         title={t('workLog:modal.add.title')}
         translations={{ close: t('general:action.close') }}
       >
-        <p style={this.formErrorStyle}>
+        <p className={styles.formErrorText}>
           {this.state.formValidity.elements.form}
         </p>
         <form>
           {this.props.showInfoText && (
-            <fieldset style={this.fieldSetStyle}>
-              <div style={this.fieldStyle}>
-                <p style={this.formInfoTextStyle}>
+            <fieldset className={styles.fieldset}>
+              <div className={styles.field}>
+                <p className={styles.formInfoText}>
                   {t('workLog:modal.add.alreadySendForApprovalDescription')}
                 </p>
               </div>
             </fieldset>
           )}
-          <fieldset style={this.fieldSetStyle}>
+          <fieldset className={styles.fieldset}>
             <legend>{t('workLog:element.date')}</legend>
-            <div style={this.fieldStyle}>
+            <div className={styles.field}>
               <TextField
                 disabled
                 fieldId="date"
@@ -472,9 +449,9 @@ class WorkLogForm extends React.Component {
               />
             </div>
           </fieldset>
-          <fieldset style={this.fieldSetStyle}>
+          <fieldset className={styles.fieldset}>
             <legend>{t('workLog:element.type')}</legend>
-            <div style={this.fieldStyle}>
+            <div className={styles.field}>
               <SelectField
                 changeHandler={this.changeHandler}
                 error={this.state.formValidity.elements.type}

@@ -1,0 +1,32 @@
+.formErrorText {
+  text-align: center;
+  color: #a32100;
+}
+
+.fieldset {
+  max-width: 19em;
+  padding: 0;
+  margin-right: auto;
+  margin-left: auto;
+  border: 0;
+}
+
+.field {
+  display: inline-block;
+  min-width: 8.5rem;
+}
+
+.fieldDate {
+  min-width: 3em;
+}
+
+.fieldDate input {
+  width: 3em;
+  text-align: center;
+}
+
+.formInfoText {
+  font-size: 0.75rem;
+  text-align: justify;
+  color: #666;
+}
