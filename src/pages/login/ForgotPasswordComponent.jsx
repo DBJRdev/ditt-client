@@ -54,7 +54,7 @@ class ForgotPasswordComponent extends React.Component {
       <div className={styles.container}>
         <img
           src={logoImage}
-          width={240}
+          width={302}
           height={141}
           className={styles.logo}
           alt={t('layout:title')}

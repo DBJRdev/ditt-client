@@ -48,7 +48,7 @@ class LayoutComponent extends React.Component {
             <div className={styles.brand}>
               <img
                 src={logoImage}
-                width={180}
+                width={183}
                 height={85}
                 className={styles.logo}
                 alt={t('layout:title')}
