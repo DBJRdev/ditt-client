@@ -546,7 +546,7 @@ class WorkLogCalendar extends React.Component {
                                       OVERTIME_WORK_LOG
                                     )
                                   }
-                                  icon="access_time"
+                                  icon="hourglass_empty"
                                   label={resolveLabel(workLog)}
                                 />
                               </div>
