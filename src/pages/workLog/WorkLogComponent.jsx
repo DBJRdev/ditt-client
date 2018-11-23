@@ -99,11 +99,7 @@ class WorkLogComponent extends React.Component {
 
   addMultipleVacationWorkLog(data) {
     const workingDays = getWorkingDays(data.date, data.dateTo, this.props.config.get('supportedHolidays'));
-    const workLogs = [];
-
-    workingDays.forEach((workingDay) => {
-      workLogs.push({ date: workingDay });
-    });
+    const workLogs = workingDays.map(workingDay => ({ date: workingDay }));
 
     return this.props.addMultipleVacationWorkLog(workLogs).then((response) => {
       if (!response.error) {

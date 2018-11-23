@@ -207,7 +207,7 @@ class SpecialApprovalListComponent extends React.Component {
               action = this.props.markVacationWorkLogRejected;
               break;
             default:
-              throw new Error(`Unknown type ${type}`);
+              throw new Error(`Unknown simple type ${type}`);
           }
         }
 
