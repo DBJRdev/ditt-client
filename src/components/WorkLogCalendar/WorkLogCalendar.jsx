@@ -509,7 +509,7 @@ class WorkLogCalendar extends React.Component {
                                       BUSINESS_TRIP_WORK_LOG
                                     )
                                   }
-                                  icon="directions_car"
+                                  icon="train"
                                   label={resolveLabel(workLog)}
                                 />
                               </div>
