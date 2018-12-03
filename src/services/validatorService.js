@@ -10,6 +10,7 @@ import {
 } from '../resources/workMonth';
 import { VARIANT_SICK_CHILD } from '../resources/sickDayWorkLog';
 import {
+  getWorkingDays,
   isOverlapping,
   localizedMoment,
   toMomentDateTimeFromDayMonthYear,
@@ -152,7 +153,7 @@ export const validateUser = (t, user, userList, supportedWorkHours) => {
   return errors;
 };
 
-export const validateWorkLog = (t, workLogAttr, workLogsOfDay) => {
+export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay) => {
   const errors = {
     elements: {
       comment: null,
@@ -276,6 +277,27 @@ export const validateWorkLog = (t, workLogAttr, workLogsOfDay) => {
       errors.elements.dateTo = t('general:validation.invalidDate');
       errors.isValid = false;
     }
+
+    const vacationDaysByYear = {};
+    const workingDays = getWorkingDays(
+      toMomentDateTimeFromDayMonthYear(workLog.date),
+      toMomentDateTimeFromDayMonthYear(workLog.dateTo),
+      config.get('supportedHolidays')
+    );
+
+    config.get('supportedYear').forEach((supportedYear) => {
+      vacationDaysByYear[supportedYear] = 0;
+    });
+    workingDays.forEach((workingDay) => {
+      vacationDaysByYear[workingDay.year()] += 1;
+    });
+
+    config.get('supportedYear').forEach((supportedYear) => {
+      if (vacationDaysByYear[supportedYear] > user.get('remainingVacationDaysByYear').toJS()[supportedYear]) {
+        errors.elements.form = t('workLog:validation.vacationDaysExceeded');
+        errors.isValid = false;
+      }
+    });
 
     return errors;
   }

@@ -231,6 +231,7 @@
       "invalidType": "Invalid type.",
       "invalidHour": "Invalid hour.",
       "invalidMinute": "Invalid minute.",
+      "vacationDaysExceeded": "Set duration exceeds number of vacation days allocated for this year.",
       "workLogOverlaps": "Entered worklog overlaps existing one."
     }
   },

@@ -20,10 +20,12 @@ afterEach(() => {
 describe('rendering', () => {
   it('renders correctly with mandatory props', () => {
     const tree = mount(<WorkLogForm
+      config={Immutable.Map()}
       closeHandler={() => {}}
       date={fakeMomentDateTime}
       isPosting={false}
       saveHandler={() => {}}
+      user={Immutable.fromJS({ remainingVacationDaysByYear: {} })}
       workLogsOfDay={Immutable.List([])}
     />);
 
@@ -32,11 +34,13 @@ describe('rendering', () => {
 
   it('renders correctly with all props', () => {
     const tree = mount(<WorkLogForm
+      config={Immutable.Map()}
       closeHandler={() => {}}
       date={fakeMomentDateTime}
       isPosting={false}
       saveHandler={() => {}}
       showInfoText
+      user={Immutable.fromJS({ remainingVacationDaysByYear: {} })}
       workLogsOfDay={Immutable.List([])}
     />);
 
@@ -48,10 +52,12 @@ describe('functionality', () => {
   it('calls closeHandler() date when previous month button is clicked', () => {
     const spy = sinon.spy();
     const tree = mount(<WorkLogForm
+      config={Immutable.Map()}
       closeHandler={spy}
       date={fakeMomentDateTime}
       isPosting={false}
       saveHandler={() => {}}
+      user={Immutable.fromJS({ remainingVacationDaysByYear: {} })}
       workLogsOfDay={Immutable.List([])}
     />);
 

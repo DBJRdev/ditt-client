@@ -63,6 +63,9 @@ describe('rendering', () => {
           sickDayWorkLogs: [],
           status: 'OPENED',
           timeOffWorkLogs: [],
+          user: {
+            remainingVacationDaysByYear: {},
+          },
           vacationWorkLogs: [],
           workLogs: [],
           year: 2018,
@@ -133,6 +136,9 @@ describe('rendering', () => {
           sickDayWorkLogs: [],
           status: 'WAITING_FOR_APPROVAL',
           timeOffWorkLogs: [],
+          user: {
+            remainingVacationDaysByYear: {},
+          },
           vacationWorkLogs: [],
           workLogs: [],
           year: 2018,
@@ -203,6 +209,9 @@ describe('rendering', () => {
           sickDayWorkLogs: [],
           status: 'APPROVED',
           timeOffWorkLogs: [],
+          user: {
+            remainingVacationDaysByYear: {},
+          },
           vacationWorkLogs: [],
           workLogs: [],
           year: 2018,
@@ -274,6 +283,9 @@ describe('rendering', () => {
           sickDayWorkLogs: [],
           status: 'OPENED',
           timeOffWorkLogs: [],
+          user: {
+            remainingVacationDaysByYear: {},
+          },
           vacationWorkLogs: [],
           workLogs: [],
           year: 2018,
@@ -345,6 +357,9 @@ describe('rendering', () => {
           sickDayWorkLogs: [],
           status: 'WAITING_FOR_APPROVAL',
           timeOffWorkLogs: [],
+          user: {
+            remainingVacationDaysByYear: {},
+          },
           vacationWorkLogs: [],
           workLogs: [],
           year: 2018,
@@ -416,6 +431,9 @@ describe('rendering', () => {
           sickDayWorkLogs: [],
           status: 'APPROVED',
           timeOffWorkLogs: [],
+          user: {
+            remainingVacationDaysByYear: {},
+          },
           vacationWorkLogs: [],
           workLogs: [],
           year: 2018,
@@ -489,6 +507,9 @@ describe('functionality', () => {
           sickDayWorkLogs: [],
           status: 'OPENED',
           timeOffWorkLogs: [],
+          user: {
+            remainingVacationDaysByYear: {},
+          },
           vacationWorkLogs: [],
           workLogs: [],
           year: 2018,
@@ -564,6 +585,9 @@ describe('functionality', () => {
           sickDayWorkLogs: [],
           status: 'OPENED',
           timeOffWorkLogs: [],
+          user: {
+            remainingVacationDaysByYear: {},
+          },
           vacationWorkLogs: [],
           workLogs: [],
           year: 2018,
@@ -639,6 +663,9 @@ describe('functionality', () => {
           sickDayWorkLogs: [],
           status: 'OPENED',
           timeOffWorkLogs: [],
+          user: {
+            remainingVacationDaysByYear: {},
+          },
           vacationWorkLogs: [],
           workLogs: [],
           year: 2018,
@@ -713,6 +740,9 @@ describe('functionality', () => {
           sickDayWorkLogs: [],
           status: 'WAITING_FOR_APPROVAL',
           timeOffWorkLogs: [],
+          user: {
+            remainingVacationDaysByYear: {},
+          },
           vacationWorkLogs: [],
           workLogs: [],
           year: 2018,

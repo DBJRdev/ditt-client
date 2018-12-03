@@ -231,6 +231,7 @@
       "invalidType": "Ungültiger Typ.",
       "invalidHour": "Ungültige Stundenangabe.",
       "invalidMinute": "Ungültige Minutenangabe.",
+      "vacationDaysExceeded": "Eingestellte Dauer überschreitet die Anzahl der Urlaubstage im laufenden Jahr.",
       "workLogOverlaps": "Eintrag überschneidet sich mit bereits existierendem."
     }
   },

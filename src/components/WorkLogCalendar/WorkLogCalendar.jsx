@@ -300,9 +300,11 @@ class WorkLogCalendar extends React.Component {
     return (
       <WorkLogForm
         closeHandler={this.closeWorkLogForm}
+        config={this.props.config}
         date={this.state.showWorkLogFormDate}
         isPosting={this.props.isPosting}
         saveHandler={this.saveWorkLogForm}
+        user={this.props.workMonth.get('user')}
         workLogsOfDay={
           this.props.workMonth
             ? getWorkLogsByDay(this.state.showWorkLogFormDate, this.props.workMonth.get('workLogs'))
@@ -905,6 +907,9 @@ WorkLogCalendar.propTypes = {
         STATUS_WAITING_FOR_APPROVAL,
       ]).isRequired,
     })).isRequired,
+    user: ImmutablePropTypes.mapContains({
+      remainingVacationDaysByYear: ImmutablePropTypes.mapContains({}).isRequired,
+    }).isRequired,
     vacationWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
       date: PropTypes.shape.isRequired,
       id: PropTypes.number.isRequired,

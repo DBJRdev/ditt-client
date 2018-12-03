@@ -94,12 +94,19 @@ class WorkLogForm extends React.Component {
   }
 
   saveHandler() {
-    const { date } = this.props;
+    const {
+      config,
+      date,
+      user,
+      workLogsOfDay,
+    } = this.props;
     const { formData } = this.state;
     const formValidity = validateWorkLog(
       this.props.t,
       formData,
-      this.props.workLogsOfDay.toJS()
+      config,
+      user,
+      workLogsOfDay.toJS()
     );
 
     this.setState({ formValidity });
@@ -574,11 +581,15 @@ WorkLogForm.defaultProps = {
 
 WorkLogForm.propTypes = {
   closeHandler: PropTypes.func.isRequired,
+  config: ImmutablePropTypes.mapContains({}).isRequired,
   date: PropTypes.instanceOf(moment).isRequired,
   isPosting: PropTypes.bool.isRequired,
   saveHandler: PropTypes.func.isRequired,
   showInfoText: PropTypes.bool,
   t: PropTypes.func.isRequired,
+  user: ImmutablePropTypes.mapContains({
+    remainingVacationDaysByYear: ImmutablePropTypes.mapContains({}).isRequired,
+  }).isRequired,
   workLogsOfDay: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
     endTime: PropTypes.shape.isRequired,
     id: PropTypes.number.isRequired,
