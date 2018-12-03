@@ -117,7 +117,7 @@ class WorkLogForm extends React.Component {
           ? formData.comment
           : null,
         date: formData.type !== WORK_LOG
-          ? this.props.date
+          ? date.clone()
           : null,
         dateTo: formData.type === VACATION_WORK_LOG
           ? toMomentDateTimeFromDayMonthYear(formData.dateTo)
