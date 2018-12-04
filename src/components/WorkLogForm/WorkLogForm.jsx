@@ -101,9 +101,14 @@ class WorkLogForm extends React.Component {
       workLogsOfDay,
     } = this.props;
     const { formData } = this.state;
+
+    const modifiedFormData = Object.assign({}, formData);
+    modifiedFormData.expectedArrival = formData.expectedArrival || '23:59';
+    modifiedFormData.expectedDeparture = formData.expectedDeparture || '00:00';
+
     const formValidity = validateWorkLog(
       this.props.t,
-      formData,
+      modifiedFormData,
       config,
       user,
       workLogsOfDay.toJS()
@@ -136,10 +141,10 @@ class WorkLogForm extends React.Component {
           ? date.clone().hour(formData.endHour).minute(formData.endMinute).second(0)
           : null,
         expectedArrival: formData.type === BUSINESS_TRIP_WORK_LOG
-          ? formData.expectedArrival
+          ? formData.expectedArrival || '23:59'
           : null,
         expectedDeparture: formData.type === BUSINESS_TRIP_WORK_LOG
-          ? formData.expectedDeparture
+          ? formData.expectedDeparture || '00:00'
           : null,
         purpose: formData.type === BUSINESS_TRIP_WORK_LOG
           ? formData.purpose
