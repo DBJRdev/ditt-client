@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 import routes from '../../routes';
 import Layout from '../../components/Layout';
 import { ROLE_SUPER_ADMIN } from '../../resources/user';
+import { toHourMinuteFormatFromInt } from '../../services/dateTimeService';
 import styles from './user.scss';
 
 class ListComponent extends React.Component {
@@ -66,11 +67,11 @@ class ListComponent extends React.Component {
             const userYearStats = row.yearStats.filter(stats => stats.year === year)[0];
 
             if (userYearStats) {
-              return `${Math.round(userYearStats.workedHours * 10) / 10}/${userYearStats.requiredHours}`;
+              return `${toHourMinuteFormatFromInt(userYearStats.workedHours)}/${toHourMinuteFormatFromInt(userYearStats.requiredHours)}`;
             }
           }
 
-          return '0/0';
+          return '0:00/0:00';
         },
         isSortable: false,
         label: t('user:element.workedAndRequiredHours'),

@@ -90,6 +90,23 @@ export const toHourMinuteFormat = (momentDateTime) => {
   throw new Error('Invalid datetime');
 };
 
+export const toHourMinuteFormatFromInt = (rawHours) => {
+  if (rawHours <= 0) {
+    return '0:00';
+  }
+
+  const hours = Math.floor(rawHours);
+  let minutes = 0;
+
+  if (hours < 1) {
+    minutes = Math.floor(rawHours * 60);
+  } else {
+    minutes = Math.floor((rawHours % hours) * 60);
+  }
+
+  return `${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
+};
+
 export const toMonthYearFormat = (momentDateTime) => {
   if (isMomentValid(momentDateTime)) {
     return momentDateTime.format('MMMM YYYY');

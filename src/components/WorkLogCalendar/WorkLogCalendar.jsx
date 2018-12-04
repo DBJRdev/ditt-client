@@ -36,6 +36,7 @@ import {
   toDayDayMonthYearFormat,
   toDayMonthYearFormat,
   toHourMinuteFormat,
+  toHourMinuteFormatFromInt,
   toMonthYearFormat,
 } from '../../services/dateTimeService';
 import {
@@ -290,8 +291,8 @@ class WorkLogCalendar extends React.Component {
     return t(
       'workLog:text.workedAndRequiredHours',
       {
-        requiredHours,
-        workedHours: `${workedTime.hours() + (workedTime.days() * 24)}:${workedTime.minutes() < 10 ? '0' : ''}${workedTime.minutes()}`,
+        requiredHours: toHourMinuteFormatFromInt(requiredHours),
+        workedHours: `${workedTime.hours() + (workedTime.days() * 24)}:${(workedTime.minutes()) < 10 ? '0' : ''}${workedTime.minutes()}`,
       }
     );
   }
