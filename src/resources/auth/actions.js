@@ -33,10 +33,10 @@ export const login = data => dispatch => dispatch({
       if (decodedToken) {
         const { roles } = decodedToken;
 
-        if (roles.includes(ROLE_ADMIN) || roles.includes(ROLE_SUPER_ADMIN)) {
-          history.push(routes.userList);
-        } else if (roles.includes(ROLE_EMPLOYEE)) {
+        if (roles.includes(ROLE_EMPLOYEE)) {
           history.push(routes.index);
+        } else if (roles.includes(ROLE_ADMIN) || roles.includes(ROLE_SUPER_ADMIN)) {
+          history.push(routes.userList);
         } else {
           history.push(routes.login);
         }
