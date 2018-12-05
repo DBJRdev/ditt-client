@@ -7,6 +7,8 @@ import {
 } from '../../resources/config';
 import {
   fetchUser,
+  renewUserApiToken,
+  resetUserApiToken,
   selectUser,
   selectUserMeta,
 } from '../../resources/user';
@@ -27,6 +29,7 @@ const mapStateToProps = (state) => {
     isFetching: configMeta.isFetching
       || userMeta.isFetching
       || workHoursListMeta.isFetching,
+    isPosting: userMeta.isPosting,
     token: selectJwtToken(state),
     user: selectUser(state),
     workHours: selectWorkHoursList(state),
@@ -37,6 +40,8 @@ const mapDispatchToProps = dispatch => ({
   fetchConfig: () => dispatch(fetchConfig()),
   fetchUser: id => dispatch(fetchUser(id)),
   fetchWorkHoursList: id => dispatch(fetchWorkHoursList(id)),
+  renewUserApiToken: id => dispatch(renewUserApiToken(id)),
+  resetUserApiToken: id => dispatch(resetUserApiToken(id)),
 });
 
 export default connect(

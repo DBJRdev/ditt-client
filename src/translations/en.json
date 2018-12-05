@@ -145,9 +145,13 @@
     "action": {
       "addUser": "Add user",
       "deleteUser": "Delete user",
+      "resetApiToken": "Reset API token",
+      "renewApiToken": "Renew API token",
+      "showApiToken": "Show API token",
       "showWorkLog": "Show work log"
     },
     "element": {
+      "apiToken": "API token",
       "email": "E-mail",
       "employeeId": "Employee ID",
       "firstName": "First name",
@@ -167,8 +171,10 @@
       }
     },
     "text": {
+      "addWorkLog": "Add work log",
       "averageWorkingHoursDescription": "Insert as amount of average working hours per day divided by \",\" starting with January.",
       "averageWorkingHoursTitle": "Average working hours per day",
+      "fastAccess": "Fast access",
       "vacationDaysLeft": "{{ remainingDays }} days left from {{ vacationDays }}"
     },
     "title": {

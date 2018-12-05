@@ -1,3 +1,7 @@
+import FastAccessAddWorkLogContainer from './FastAccessAddWorkLogContainer';
 import WorkLogContainer from './WorkLogContainer';
 
-export default WorkLogContainer;
+export {
+  FastAccessAddWorkLogContainer as FastAccessAddWorkLogPage,
+  WorkLogContainer as WorkLogPage,
+};

@@ -34,6 +34,8 @@ export const selectUser = createSelector([getUser], data => data.get('data'));
 export const selectUserMeta = createSelector([getUser], data => ({
   isFetching: data.get('isFetching'),
   isFetchingFailure: data.get('isFetchingFailure'),
+  isPosting: data.get('isPosting'),
+  isPostingFailure: data.get('isPostingFailure'),
 }));
 
 export const selectUserList = createSelector([geUserList], data => data.get('data'));

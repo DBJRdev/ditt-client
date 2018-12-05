@@ -4,13 +4,23 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import jwt from 'jsonwebtoken';
 import shortid from 'shortid';
+import {
+  Button,
+  Modal,
+} from 'react-ui';
 import { withNamespaces } from 'react-i18next';
+import { ROLE_EMPLOYEE } from '../../resources/user';
 import { getWorkHoursString } from '../../services/workHoursService';
 import Layout from '../../components/Layout';
+import routes from '../../routes';
 
 class ProfileComponent extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      apiTokenDialogOpened: false,
+    };
 
     this.profileTable = {
       borderCollapse: 'collapse',
@@ -51,6 +61,15 @@ class ProfileComponent extends React.Component {
     this.responsiveTable = {
       overflowX: 'scroll',
     };
+
+    this.apiTokenButtonsWrapper = {
+      float: 'right',
+    };
+
+    this.apiTokenButton = {
+      display: 'inline-block',
+      marginLeft: '0.5rem',
+    };
   }
 
   componentDidMount() {
@@ -84,10 +103,14 @@ class ProfileComponent extends React.Component {
   render() {
     const {
       config,
+      isPosting,
+      renewUserApiToken,
+      resetUserApiToken,
       t,
       user,
       workHours,
     } = this.props;
+    const { apiTokenDialogOpened } = this.state;
     const currentYear = moment().year();
 
     return (
@@ -156,6 +179,69 @@ class ProfileComponent extends React.Component {
                       )}
                     </td>
                   </tr>
+                  <tr>
+                    <td colSpan={2} />
+                  </tr>
+                  <tr>
+                    <td style={this.profileTableTitle}>
+                      {t('user:element.apiToken')}
+                    </td>
+                    <td style={this.profileTableValue}>
+                      {!user.get('apiToken') && '-'}
+                      {!!user.get('apiToken') && (
+                        <Button
+                          clickHandler={() => this.setState({ apiTokenDialogOpened: true })}
+                          icon="open_in_new"
+                          isLabelVisible={false}
+                          label={t('user:action.showApiToken')}
+                          priority="primary"
+                          size="small"
+                        />
+                      )}
+                      <div style={this.apiTokenButtonsWrapper}>
+                        <div style={this.apiTokenButton}>
+                          <Button
+                            clickHandler={() => renewUserApiToken(user.get('id'))}
+                            icon="autorenew"
+                            isLabelVisible={false}
+                            label={t('user:action.renewApiToken')}
+                            loading={isPosting}
+                            priority="primary"
+                            size="small"
+                          />
+                        </div>
+                        {!!user.get('apiToken') && (
+                          <div style={this.apiTokenButton}>
+                            <Button
+                              clickHandler={() => resetUserApiToken(user.get('id'))}
+                              icon="clear"
+                              isLabelVisible={false}
+                              label={t('user:action.resetApiToken')}
+                              loading={isPosting}
+                              priority="primary"
+                              size="small"
+                              variant="danger"
+                            />
+                          </div>
+                        )}
+                      </div>
+                    </td>
+                  </tr>
+                  {(user.get('roles') && user.get('roles').includes(ROLE_EMPLOYEE)) && (
+                    <tr>
+                      <td style={this.profileTableTitle}>
+                        {t('user:text.fastAccess')}
+                      </td>
+                      <td style={this.profileTableValue}>
+                        {!user.get('apiToken') && '-'}
+                        {!!user.get('apiToken') && (
+                          <a href={routes.fastAccessAddWorkLog.replace(':apiToken', user.get('apiToken'))}>
+                            {t('user:text.addWorkLog')}
+                          </a>
+                        )}
+                      </td>
+                    </tr>
+                  )}
                 </tbody>
               </table>
 
@@ -186,6 +272,17 @@ class ProfileComponent extends React.Component {
                   </tbody>
                 </table>
               </div>
+              {apiTokenDialogOpened && user.get('apiToken') && (
+                <Modal
+                  closeHandler={() => this.setState({ apiTokenDialogOpened: false })}
+                  title={t('user:element.apiToken')}
+                  translations={{
+                    close: t('general:action.close'),
+                  }}
+                >
+                  {user.get('apiToken')}
+                </Modal>
+              )}
             </div>
           )
         }
@@ -205,9 +302,13 @@ ProfileComponent.propTypes = {
   fetchUser: PropTypes.func.isRequired,
   fetchWorkHoursList: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
+  isPosting: PropTypes.bool.isRequired,
+  renewUserApiToken: PropTypes.func.isRequired,
+  resetUserApiToken: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
   token: PropTypes.string.isRequired,
   user: ImmutablePropTypes.mapContains({
+    apiToken: PropTypes.string,
     email: PropTypes.string.isRequired,
     firstName: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,

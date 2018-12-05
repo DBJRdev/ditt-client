@@ -102,6 +102,19 @@ export const fetchUser = id => dispatch => dispatch({
   },
 });
 
+export const fetchUserByApiToken = apiToken => dispatch => dispatch({
+  [RSAA]: {
+    endpoint: `${API_URL}/users/api_token/${apiToken}`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'GET',
+    types: [
+      types.FETCH_USER_REQUEST,
+      types.FETCH_USER_SUCCESS,
+      types.FETCH_USER_FAILURE,
+    ],
+  },
+});
+
 export const fetchUserList = options => dispatch => dispatch({
   [RSAA]: {
     endpoint: (options && options.order)
@@ -113,6 +126,32 @@ export const fetchUserList = options => dispatch => dispatch({
       types.FETCH_USER_LIST_REQUEST,
       types.FETCH_USER_LIST_SUCCESS,
       types.FETCH_USER_LIST_FAILURE,
+    ],
+  },
+});
+
+export const renewUserApiToken = id => dispatch => dispatch({
+  [RSAA]: {
+    endpoint: `${API_URL}/users/${id}/api_token/renew`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.RENEW_USER_API_TOKEN_REQUEST,
+      types.RENEW_USER_API_TOKEN_SUCCESS,
+      types.RENEW_USER_API_TOKEN_FAILURE,
+    ],
+  },
+});
+
+export const resetUserApiToken = id => dispatch => dispatch({
+  [RSAA]: {
+    endpoint: `${API_URL}/users/${id}/api_token/reset`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.RESET_USER_API_TOKEN_REQUEST,
+      types.RESET_USER_API_TOKEN_SUCCESS,
+      types.RESET_USER_API_TOKEN_FAILURE,
     ],
   },
 });

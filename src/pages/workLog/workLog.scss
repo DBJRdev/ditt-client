@@ -1,0 +1,24 @@
+// stylelint-disable at-rule-no-unknown
+
+%centeredWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.centeredText {
+  @extend %centeredWrapper;
+}
+
+.savedIcon {
+  @extend %centeredWrapper;
+
+  color: green;
+}
+
+.closeIcon {
+  @extend %centeredWrapper;
+
+  color: red;
+}

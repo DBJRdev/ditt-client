@@ -11,7 +11,6 @@ import history from './history';
 import routes from './routes';
 import store from './store';
 import ErrorPage from './pages/error';
-import IndexPage from './pages/workLog';
 import {
   ForgotPasswordPage,
   LoginPage,
@@ -37,6 +36,10 @@ import {
   ListContainer as UserListPage,
   ProfileContainer as UserProfilePage,
 } from './pages/user';
+import {
+  FastAccessAddWorkLogPage,
+  WorkLogPage,
+} from './pages/workLog';
 import translator from './translator';
 
 ReactDOM.render(
@@ -49,7 +52,7 @@ ReactDOM.render(
               exact
               path={routes.index}
               roles={[ROLE_EMPLOYEE]}
-              component={IndexPage}
+              component={WorkLogPage}
             />
             <AuthorizedRoute
               exact
@@ -104,6 +107,11 @@ ReactDOM.render(
               path={routes.userList}
               roles={[ROLE_ADMIN, ROLE_SUPER_ADMIN]}
               component={UserListPage}
+            />
+            <Route
+              exact
+              path={routes.fastAccessAddWorkLog}
+              component={FastAccessAddWorkLogPage}
             />
             <Route
               exact

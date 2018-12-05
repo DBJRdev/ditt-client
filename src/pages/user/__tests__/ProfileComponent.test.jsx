@@ -12,8 +12,12 @@ describe('rendering', () => {
       fetchUser: () => new Promise(() => {}),
       fetchWorkHoursList: () => {},
       isFetching: false,
+      isPosting: false,
+      renewUserApiToken: () => new Promise(() => {}),
+      resetUserApiToken: () => new Promise(() => {}),
       token: 'token',
       user: Immutable.fromJS({
+        apiToken: 'apiToken',
         email: 'employee@example.com',
         firstName: 'First',
         id: 1,

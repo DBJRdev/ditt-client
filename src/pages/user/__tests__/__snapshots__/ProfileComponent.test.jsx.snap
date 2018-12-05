@@ -166,6 +166,103 @@ exports[`rendering renders correctly 1`] = `
             user:text.vacationDaysLeft
           </td>
         </tr>
+        <tr>
+          <td
+            colSpan={2}
+          />
+        </tr>
+        <tr>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid #ccc",
+                "borderTop": "1px solid #ccc",
+                "fontWeight": "bold",
+                "padding": "5px 10px",
+                "width": "50%",
+              }
+            }
+          >
+            user:element.apiToken
+          </td>
+          <td
+            style={
+              Object {
+                "borderBottom": "1px solid #ccc",
+                "borderTop": "1px solid #ccc",
+              }
+            }
+          >
+            <Button
+              block={false}
+              clickHandler={[Function]}
+              disabled={false}
+              icon="open_in_new"
+              iconPosition="before"
+              isLabelVisible={false}
+              label="user:action.showApiToken"
+              loading={false}
+              priority="primary"
+              size="small"
+              type="button"
+              variant="default"
+            />
+            <div
+              style={
+                Object {
+                  "float": "right",
+                }
+              }
+            >
+              <div
+                style={
+                  Object {
+                    "display": "inline-block",
+                    "marginLeft": "0.5rem",
+                  }
+                }
+              >
+                <Button
+                  block={false}
+                  clickHandler={[Function]}
+                  disabled={false}
+                  icon="autorenew"
+                  iconPosition="before"
+                  isLabelVisible={false}
+                  label="user:action.renewApiToken"
+                  loading={false}
+                  priority="primary"
+                  size="small"
+                  type="button"
+                  variant="default"
+                />
+              </div>
+              <div
+                style={
+                  Object {
+                    "display": "inline-block",
+                    "marginLeft": "0.5rem",
+                  }
+                }
+              >
+                <Button
+                  block={false}
+                  clickHandler={[Function]}
+                  disabled={false}
+                  icon="clear"
+                  iconPosition="before"
+                  isLabelVisible={false}
+                  label="user:action.resetApiToken"
+                  loading={false}
+                  priority="primary"
+                  size="small"
+                  type="button"
+                  variant="danger"
+                />
+              </div>
+            </div>
+          </td>
+        </tr>
       </tbody>
     </table>
     <h3
