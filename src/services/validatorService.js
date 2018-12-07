@@ -212,7 +212,7 @@ export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay) => 
     return errors;
   }
 
-  if (workLog.type === HOME_OFFICE_WORK_LOG || workLog.type === TIME_OFF_WORK_LOG) {
+  if (workLog.type === HOME_OFFICE_WORK_LOG) {
     if (workLog.comment === null || validator.isEmpty(workLog.comment)) {
       errors.elements.comment = t('general:validation.required');
       errors.isValid = false;

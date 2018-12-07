@@ -325,7 +325,7 @@ WorkLogComponent.propTypes = {
   }),
   t: PropTypes.func.isRequired,
   timeOffWorkLog: ImmutablePropTypes.mapContains({
-    comment: PropTypes.string.isRequired,
+    comment: PropTypes.string,
     date: PropTypes.object.isRequired,
     rejectionMessage: PropTypes.string,
     status: PropTypes.string.isRequired,

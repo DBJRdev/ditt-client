@@ -387,7 +387,7 @@ class WorkLogCalendar extends React.Component {
         <p>
           {t('workLog:element.type')}: {getTypeLabel(t, type)}<br />
           {t('workLog:element.date')}: {toDayDayMonthYearFormat(this.props.timeOffWorkLog.get('date'))}<br />
-          {t('timeOffWorkLog:element.comment')}: {this.props.timeOffWorkLog.get('comment')}<br />
+          {t('timeOffWorkLog:element.comment')}: {this.props.timeOffWorkLog.get('comment') || '-'}<br />
           {t('workLog:element.status')}: {getStatusLabel(t, this.props.timeOffWorkLog.get('status'))}<br />
           {STATUS_REJECTED === this.props.timeOffWorkLog.get('status') && (
             <React.Fragment>
