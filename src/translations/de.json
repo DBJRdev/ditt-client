@@ -157,7 +157,7 @@
       "plainPassword": "Passwort",
       "supervisor": "Vorgesetzte*r",
       "vacationDays": "Urlaubstage",
-      "vacationDaysUsed": "Genommene Urlaubstage",
+      "vacationDaysUsed": "Verplante Urlaubstage",
       "workedAndRequiredHours": "Gearbeitete / Benötigte Stunden"
     },
     "modal": {
