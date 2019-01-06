@@ -1,4 +1,5 @@
 import ImmutablePropTypes from 'react-immutable-proptypes';
+import moment from 'moment-timezone';
 import PropTypes from 'prop-types';
 import React from 'react';
 import jwt from 'jsonwebtoken';
@@ -87,6 +88,7 @@ class ProfileComponent extends React.Component {
       user,
       workHours,
     } = this.props;
+    const currentYear = moment().year();
 
     return (
       <Layout title={t('user:title.profile')} loading={this.props.isFetching}>
@@ -145,7 +147,13 @@ class ProfileComponent extends React.Component {
                       {t('user:element.vacationDays')}
                     </td>
                     <td style={this.profileTableValue}>
-                      {user.get('vacationDays')}
+                      {t(
+                        'user:text.vacationDaysLeft',
+                        {
+                          remainingDays: user.get('remainingVacationDaysByYear').get(currentYear.toString()) || 0,
+                          vacationDays: user.get('vacationDays'),
+                        }
+                      )}
                     </td>
                   </tr>
                 </tbody>
@@ -205,6 +213,7 @@ ProfileComponent.propTypes = {
     id: PropTypes.number.isRequired,
     isActive: PropTypes.bool.isRequired,
     lastName: PropTypes.string.isRequired,
+    remainingVacationDaysByYear: ImmutablePropTypes.mapContains({}).isRequired,
     supervisor: ImmutablePropTypes.mapContains({
       firstName: PropTypes.string.isRequired,
       id: PropTypes.number.isRequired,

@@ -13,12 +13,18 @@ describe('rendering', () => {
       fetchWorkHoursList: () => {},
       isFetching: false,
       token: 'token',
-      user: Immutable.Map({
+      user: Immutable.fromJS({
         email: 'employee@example.com',
         firstName: 'First',
         id: 1,
         isActive: true,
         lastName: 'Last',
+        remainingVacationDaysByYear: {
+          2018: 25,
+          2019: 25,
+          2020: 25,
+          2021: 25,
+        },
         supervisor: null,
         vacationDays: 10,
       }),

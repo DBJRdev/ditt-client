@@ -163,7 +163,7 @@ exports[`rendering renders correctly 1`] = `
               }
             }
           >
-            10
+            user:text.vacationDaysLeft
           </td>
         </tr>
       </tbody>
