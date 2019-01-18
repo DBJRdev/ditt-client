@@ -46,7 +46,7 @@
   },
   "layout": {
     "menu": {
-      "workLogs": "Work logs",
+      "workLogs": "Monthly logs",
       "specialApprovals": "Special approvals",
       "supervisedUsers": "Supervised users",
       "users": "Users",
@@ -98,7 +98,7 @@
   "supervisedUser": {
     "element": {
       "needApproval": "Need approval",
-      "showWorkLog": "Show work log"
+      "showWorkLog": "Show monthly logs"
     },
     "title": {
       "supervisedUsers": "Supervised users"
@@ -231,8 +231,8 @@
       "workedAndRequiredHours": "{{ workedHours }} h out of {{ requiredHours }} h"
     },
     "title": {
-      "supervisedUserWorkLogs": "Work logs for {{ name }}",
-      "workLogs": "Work logs"
+      "supervisedUserWorkLogs": "Monthly logs for {{ name }}",
+      "workLogs": "Monthly logs"
     },
     "validation": {
       "invalidType": "Invalid type.",
@@ -258,7 +258,7 @@
         "sickDayWorkLog": "Sick day",
         "timeOffWorkLog": "Time off",
         "vacationWorkLog": "Vacation",
-        "workLog": "Work log"
+        "workLog": "Work"
       }
     }
   }

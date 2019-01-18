@@ -46,7 +46,7 @@
   },
   "layout": {
     "menu": {
-      "workLogs": "Einträge",
+      "workLogs": "Monatsübersicht",
       "specialApprovals": "Anträge",
       "supervisedUsers": "Mitarbeiter*innen",
       "users": "Nutzer*innen",
@@ -98,7 +98,7 @@
   "supervisedUser": {
     "element": {
       "needApproval": "Freigabe erforderlich",
-      "showWorkLog": "Einträge anzeigen"
+      "showWorkLog": "Monatsübersicht anzeigen"
     },
     "title": {
       "supervisedUsers": "Mitarbeiter*innen"
@@ -231,8 +231,8 @@
       "workedAndRequiredHours": "{{ workedHours }} h von {{ requiredHours }} h"
     },
     "title": {
-      "supervisedUserWorkLogs": "Einträge für {{ name }}",
-      "workLogs": "Einträge"
+      "supervisedUserWorkLogs": "Monatsübersicht für {{ name }}",
+      "workLogs": "Monatsübersicht"
     },
     "validation": {
       "invalidType": "Ungültiger Typ.",
@@ -258,7 +258,7 @@
         "sickDayWorkLog": "Kranktag",
         "timeOffWorkLog": "Freizeitausgleich",
         "vacationWorkLog": "Urlaub",
-        "workLog": "Eintrag"
+        "workLog": "Arbeitzeit"
       }
     }
   }
