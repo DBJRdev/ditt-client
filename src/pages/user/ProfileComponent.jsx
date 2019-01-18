@@ -26,7 +26,7 @@ class ProfileComponent extends React.Component {
       borderCollapse: 'collapse',
       marginLeft: 'auto',
       marginRight: 'auto',
-      maxWidth: '568px',
+      maxWidth: '600px',
       width: '100%',
     };
 
@@ -54,7 +54,7 @@ class ProfileComponent extends React.Component {
     this.workHoursTable = {
       marginLeft: 'auto',
       marginRight: 'auto',
-      maxWidth: '568px',
+      maxWidth: '600px',
       width: '100%',
     };
 
@@ -167,7 +167,7 @@ class ProfileComponent extends React.Component {
                   </tr>
                   <tr>
                     <td style={this.profileTableTitle}>
-                      {t('user:element.vacationDays')}
+                      {t('user:element.vacationDays')} {currentYear}
                     </td>
                     <td style={this.profileTableValue}>
                       {t(

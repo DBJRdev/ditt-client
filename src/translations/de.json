@@ -175,7 +175,7 @@
       "averageWorkingHoursDescription": "Tägliche Arbeitszeit mit Komma [\",\"] getrennt, mit Start ab Januar eintragen.",
       "averageWorkingHoursTitle": "Tägliche Arbeitszeit",
       "fastAccess": "Schneller zugang",
-      "vacationDaysLeft": "Noch {{ remainingDays }} tage bis {{ vacationDays }}"
+      "vacationDaysLeft": "{{ remainingDays }} von {{ vacationDays }} Tagen nicht verplant"
     },
     "title": {
       "addUser": "Nutzer*in hinzufügen",

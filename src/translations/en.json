@@ -175,7 +175,7 @@
       "averageWorkingHoursDescription": "Insert as amount of average working hours per day divided by \",\" starting with January.",
       "averageWorkingHoursTitle": "Average working hours per day",
       "fastAccess": "Fast access",
-      "vacationDaysLeft": "{{ remainingDays }} days left from {{ vacationDays }}"
+      "vacationDaysLeft": "{{ remainingDays }} of {{ vacationDays }} days not scheduled yet"
     },
     "title": {
       "addUser": "Add user",

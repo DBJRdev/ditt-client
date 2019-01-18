@@ -12,7 +12,7 @@ exports[`rendering renders correctly 1`] = `
           "borderCollapse": "collapse",
           "marginLeft": "auto",
           "marginRight": "auto",
-          "maxWidth": "568px",
+          "maxWidth": "600px",
           "width": "100%",
         }
       }
@@ -154,6 +154,8 @@ exports[`rendering renders correctly 1`] = `
             }
           >
             user:element.vacationDays
+             
+            2019
           </td>
           <td
             style={
@@ -290,7 +292,7 @@ exports[`rendering renders correctly 1`] = `
           Object {
             "marginLeft": "auto",
             "marginRight": "auto",
-            "maxWidth": "568px",
+            "maxWidth": "600px",
             "width": "100%",
           }
         }
