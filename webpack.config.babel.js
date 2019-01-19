@@ -5,10 +5,11 @@ module.exports = [{
     contentBase: './public',
     disableHostCheck: true,
     historyApiFallback: true,
+    host: '0.0.0.0',
     inline: true,
   },
   entry: {
-    bundle: ['babel-polyfill', path.join(__dirname, 'src/main.jsx')],
+    bundle: ['@babel/polyfill', 'whatwg-fetch', path.join(__dirname, 'src/main.jsx')],
   },
   module: {
     rules: [
@@ -21,7 +22,14 @@ module.exports = [{
         test: /\.scss$/,
         use: [
           { loader: 'style-loader' },
-          { loader: 'css-loader?importLoaders=2&modules&localIdentName=[name]__[local]___[hash:base64:5]' },
+          {
+            loader: 'css-loader',
+            query: {
+              modules: true,
+              importLoaders: 2,
+              localIdentName: '[local]__[hash:base64:5]'
+            }
+          },
           { loader: 'sass-loader' },
         ],
       },

@@ -1,5 +1,5 @@
 {
-  "extends" : ["visionapps"],
+  "extends" : ["@visionappscz/eslint-config-visionapps"],
   "env": {
     "browser": true,
     "jest": true

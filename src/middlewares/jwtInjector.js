@@ -1,8 +1,8 @@
-import { CALL_API } from 'redux-api-middleware';
+import { RSAA } from 'redux-api-middleware';
 import { selectJwtToken } from '../resources/auth/index';
 
 const jwtInjectorMiddleware = store => next => (action) => {
-  const callApi = action[CALL_API];
+  const callApi = action[RSAA];
 
   if (callApi) {
     const jwt = selectJwtToken(store.getState());
@@ -11,7 +11,7 @@ const jwtInjectorMiddleware = store => next => (action) => {
         Authorization: `Bearer ${jwt}`,
       });
 
-      return next(Object.assign({}, action, { [CALL_API]: callApi }));
+      return next(Object.assign({}, action, { [RSAA]: callApi }));
     }
   }
 
