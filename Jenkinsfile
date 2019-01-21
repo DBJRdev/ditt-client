@@ -18,6 +18,7 @@ def defaultBuildConfig = [
     config: [
         environment: 'dev',
         apiUrl: 'http://localhost:8080',
+        language: 'en',
     ],
 ]
 
@@ -37,6 +38,7 @@ def deployBranches = [
         config: [
             environment: 'dev',
             apiUrl: 'http://ditt-api.dev.visionapps.cz',
+            language: 'en', 
         ],
     ],
     master: [
@@ -47,6 +49,7 @@ def deployBranches = [
         config: [
             environment: 'production',
             apiUrl: 'http://ditt-api.staging.visionapps.cz',
+            language: 'de',
         ],
     ],
 ]
@@ -75,6 +78,7 @@ node {
                     deployBranches[env.BRANCH_NAME].config.environment,
                     commit,
                     deployBranches[env.BRANCH_NAME].config.apiUrl,
+                    deployBranches[env.BRANCH_NAME].config.language,
                 )
             }
 
@@ -91,6 +95,7 @@ node {
                     defaultBuildConfig.config.environment,
                     commit,
                     defaultBuildConfig.config.apiUrl,
+                    defaultBuildConfig.config.language,
                 )
             }
         }
@@ -114,7 +119,7 @@ node {
     }
 }
 
-def build(envName, commit, apiUrl) {
+def build(envName, commit, apiUrl, language) {
     sh 'rm -rf node_modules'
     sh 'rm -rf public/generated/bundle.js'
     sh 'rm -f config/envspecific.js'
@@ -124,6 +129,7 @@ def build(envName, commit, apiUrl) {
         [orig: "export const ENVIRONMENT = 'dev';", new: "export const ENVIRONMENT = '${envName}';"],
         [orig: "export const COMMIT = 'commithash';", new: "export const COMMIT = '${commit}';"],
         [orig: "export const API_URL = 'http://localhost';", new: "export const API_URL = '${apiUrl}';"],
+        [orig: "export const LANGUAGE = 'en';", new: "export const LANGUAGE = '${language}';"],
     ]) {
         sh "sed -i \"s@${confOption.orig}@${confOption.new}@g\" config/envspecific.js"
     }
@@ -196,3 +202,4 @@ def notifyOfDeploy(deployBranches, currentBranch) {
         message: "DITT client: Větev `${currentBranch}` byla nasazena na: ${deployBranches[currentBranch].siteUrl} :sunny:"
     )
 }
+
