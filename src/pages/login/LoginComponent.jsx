@@ -63,12 +63,12 @@ class LoginComponent extends React.Component {
             ? t('general:text.loading')
             : (
               <Login
-                footer={
+                footer={(
                   // eslint-disable-next-line jsx-a11y/anchor-is-valid
                   <Link to={routes.forgotPassword}>
                     {t('login:action.forgotPassword')}
                   </Link>
-                }
+                )}
                 hasError={this.props.isPostingFailure}
                 submitHandler={() => {
                   this.props.login({

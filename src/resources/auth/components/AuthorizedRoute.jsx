@@ -6,7 +6,7 @@ import {
   Redirect,
 } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { selectJwtToken } from '../';
+import { selectJwtToken } from '..';
 import routes from '../../../routes';
 
 class AuthorizedRoute extends Route {

@@ -4,8 +4,9 @@ const TIMEZONE = 'Europe/Prague';
 
 export const localizedMoment = () => moment().tz(TIMEZONE);
 
-const isMomentValid = momentDateTime =>
-  momentDateTime && moment.isMoment(momentDateTime) && momentDateTime.isValid();
+const isMomentValid = momentDateTime => momentDateTime
+  && moment.isMoment(momentDateTime)
+  && momentDateTime.isValid();
 
 export const createDate = (year, month, date) => moment({
   date,

@@ -92,8 +92,7 @@ class ProfileComponent extends React.Component {
 
     workHours.forEach((workHoursItem) => {
       if (workHoursItem.get('year') === year) {
-        selectedWorkHours[workHoursItem.get('month') - 1] =
-          getWorkHoursString(workHoursItem.get('requiredHours'));
+        selectedWorkHours[workHoursItem.get('month') - 1] = getWorkHoursString(workHoursItem.get('requiredHours'));
       }
     });
 
@@ -167,7 +166,9 @@ class ProfileComponent extends React.Component {
                   </tr>
                   <tr>
                     <td style={this.profileTableTitle}>
-                      {t('user:element.vacationDays')} {currentYear}
+                      {t('user:element.vacationDays')}
+                      {' '}
+                      {currentYear}
                     </td>
                     <td style={this.profileTableValue}>
                       {t(
@@ -266,9 +267,9 @@ class ProfileComponent extends React.Component {
                           <td key={shortid.generate()}>
                             {month}
                           </td>
-                      ))}
+                        ))}
                       </tr>
-                  ))}
+                    ))}
                   </tbody>
                 </table>
               </div>

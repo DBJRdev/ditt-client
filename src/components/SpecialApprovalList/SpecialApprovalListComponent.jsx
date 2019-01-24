@@ -365,29 +365,74 @@ class SpecialApprovalListComponent extends React.Component {
     if (BUSINESS_TRIP_WORK_LOG === type && this.props.businessTripWorkLog) {
       content = (
         <p>
-          {t('workLog:element.date')}: {toDayDayMonthYearFormat(this.props.businessTripWorkLog.get('date'))}<br />
-          {t('workLog:element.status')}: {getStatusLabel(t, this.props.businessTripWorkLog.get('status'))}<br />
+          {t('workLog:element.date')}
+          {': '}
+          {toDayDayMonthYearFormat(this.props.businessTripWorkLog.get('date'))}
+          <br />
+
+          {t('workLog:element.status')}
+          {': '}
+          {getStatusLabel(t, this.props.businessTripWorkLog.get('status'))}
+          <br />
+
           {STATUS_REJECTED === this.props.businessTripWorkLog.get('status') && (
             <React.Fragment>
-              {t('workLog:element.rejectionMessage')}: {this.props.businessTripWorkLog.get('rejectionMessage')}<br />
+              {t('workLog:element.rejectionMessage')}
+              {': '}
+              {this.props.businessTripWorkLog.get('rejectionMessage')}
+              <br />
             </React.Fragment>
           )}
-          {t('businessTripWorkLog:element.purpose')}: {this.props.businessTripWorkLog.get('purpose')}<br />
-          {t('businessTripWorkLog:element.destination')}: {this.props.businessTripWorkLog.get('destination')}<br />
-          {t('businessTripWorkLog:element.transport')}: {this.props.businessTripWorkLog.get('transport')}<br />
-          {t('businessTripWorkLog:element.expectedDeparture')}: {this.props.businessTripWorkLog.get('expectedDeparture')}<br />
-          {t('businessTripWorkLog:element.expectedArrival')}: {this.props.businessTripWorkLog.get('expectedArrival')}
+
+          {t('businessTripWorkLog:element.purpose')}
+          {': '}
+          {this.props.businessTripWorkLog.get('purpose')}
+          <br />
+
+          {t('businessTripWorkLog:element.destination')}
+          {': '}
+          {this.props.businessTripWorkLog.get('destination')}
+          <br />
+
+          {t('businessTripWorkLog:element.transport')}
+          {': '}
+          {this.props.businessTripWorkLog.get('transport')}
+          <br />
+
+          {t('businessTripWorkLog:element.expectedDeparture')}
+          {': '}
+          {this.props.businessTripWorkLog.get('expectedDeparture')}
+          <br />
+
+          {t('businessTripWorkLog:element.expectedArrival')}
+          {': '}
+          {this.props.businessTripWorkLog.get('expectedArrival')}
         </p>
       );
     } else if (HOME_OFFICE_WORK_LOG === type && this.props.homeOfficeWorkLog) {
       content = (
         <p>
-          {t('workLog:element.date')}: {toDayDayMonthYearFormat(this.props.homeOfficeWorkLog.get('date'))}<br />
-          {t('homeOfficeWorkLog:element.comment')}: {this.props.homeOfficeWorkLog.get('comment')}<br />
-          {t('workLog:element.status')}: {getStatusLabel(t, this.props.homeOfficeWorkLog.get('status'))}<br />
+          {t('workLog:element.date')}
+          {': '}
+          {toDayDayMonthYearFormat(this.props.homeOfficeWorkLog.get('date'))}
+          <br />
+
+          {t('homeOfficeWorkLog:element.comment')}
+          {': '}
+          {this.props.homeOfficeWorkLog.get('comment')}
+          <br />
+
+          {t('workLog:element.status')}
+          {': '}
+          {getStatusLabel(t, this.props.homeOfficeWorkLog.get('status'))}
+          <br />
+
           {STATUS_REJECTED === this.props.homeOfficeWorkLog.get('status') && (
             <React.Fragment>
-              {t('workLog:element.rejectionMessage')}: {this.props.homeOfficeWorkLog.get('rejectionMessage')}<br />
+              {t('workLog:element.rejectionMessage')}
+              {': '}
+              {this.props.homeOfficeWorkLog.get('rejectionMessage')}
+              <br />
             </React.Fragment>
           )}
         </p>
@@ -395,25 +440,54 @@ class SpecialApprovalListComponent extends React.Component {
     } else if (OVERTIME_WORK_LOG === type && this.props.overtimeWorkLog) {
       content = (
         <p>
-          {t('workLog:element.date')}: {toDayDayMonthYearFormat(this.props.overtimeWorkLog.get('date'))}<br />
-          {t('workLog:element.status')}: {getStatusLabel(t, this.props.overtimeWorkLog.get('status'))}<br />
+          {t('workLog:element.date')}
+          {': '}
+          {toDayDayMonthYearFormat(this.props.overtimeWorkLog.get('date'))}
+          <br />
+
+          {t('workLog:element.status')}
+          {': '}
+          {getStatusLabel(t, this.props.overtimeWorkLog.get('status'))}
+          <br />
+
           {STATUS_REJECTED === this.props.overtimeWorkLog.get('status') && (
             <React.Fragment>
-              {t('workLog:element.rejectionMessage')}: {this.props.overtimeWorkLog.get('rejectionMessage')}<br />
+              {t('workLog:element.rejectionMessage')}
+              {': '}
+              {this.props.overtimeWorkLog.get('rejectionMessage')}
+              <br />
             </React.Fragment>
           )}
-          {t('overtimeWorkLog:element.reason')}: {this.props.overtimeWorkLog.get('reason')}<br />
+
+          {t('overtimeWorkLog:element.reason')}
+          {': '}
+          {this.props.overtimeWorkLog.get('reason')}
         </p>
       );
     } else if (TIME_OFF_WORK_LOG === type && this.props.timeOffWorkLog) {
       content = (
         <p>
-          {t('workLog:element.date')}: {toDayDayMonthYearFormat(this.props.timeOffWorkLog.get('date'))}<br />
-          {t('timeOffWorkLog:element.comment')}: {this.props.timeOffWorkLog.get('comment') || '-'}<br />
-          {t('workLog:element.status')}: {getStatusLabel(t, this.props.timeOffWorkLog.get('status'))}<br />
+          {t('workLog:element.date')}
+          {': '}
+          {toDayDayMonthYearFormat(this.props.timeOffWorkLog.get('date'))}
+          <br />
+
+          {t('timeOffWorkLog:element.comment')}
+          {': '}
+          {this.props.timeOffWorkLog.get('comment') || '-'}
+          <br />
+
+          {t('workLog:element.status')}
+          {': '}
+          {getStatusLabel(t, this.props.timeOffWorkLog.get('status'))}
+          <br />
+
           {STATUS_REJECTED === this.props.timeOffWorkLog.get('status') && (
             <React.Fragment>
-              {t('workLog:element.rejectionMessage')}: {this.props.timeOffWorkLog.get('rejectionMessage')}<br />
+              {t('workLog:element.rejectionMessage')}
+              {': '}
+              {this.props.timeOffWorkLog.get('rejectionMessage')}
+              <br />
             </React.Fragment>
           )}
         </p>
@@ -422,12 +496,27 @@ class SpecialApprovalListComponent extends React.Component {
       if (isBulk) {
         content = (
           <p>
-            {t('vacationWorkLog:element.dateFrom')}: {toDayDayMonthYearFormat(this.props.vacationWorkLog.get('date'))}<br />
-            {t('vacationWorkLog:element.dateTo')}: {toDayDayMonthYearFormat(dateTo)}<br />
-            {t('workLog:element.status')}: {getStatusLabel(t, this.props.vacationWorkLog.get('status'))}<br />
+            {t('vacationWorkLog:element.dateFrom')}
+            {': '}
+            {toDayDayMonthYearFormat(this.props.vacationWorkLog.get('date'))}
+            <br />
+
+            {t('vacationWorkLog:element.dateTo')}
+            {': '}
+            {toDayDayMonthYearFormat(dateTo)}
+            <br />
+
+            {t('workLog:element.status')}
+            {': '}
+            {getStatusLabel(t, this.props.vacationWorkLog.get('status'))}
+            <br />
+
             {STATUS_REJECTED === this.props.vacationWorkLog.get('status') && (
               <React.Fragment>
-                {t('workLog:element.rejectionMessage')}: {this.props.vacationWorkLog.get('rejectionMessage')}<br />
+                {t('workLog:element.rejectionMessage')}
+                {': '}
+                {this.props.vacationWorkLog.get('rejectionMessage')}
+                <br />
               </React.Fragment>
             )}
           </p>
@@ -435,11 +524,22 @@ class SpecialApprovalListComponent extends React.Component {
       } else {
         content = (
           <p>
-            {t('workLog:element.date')}: {toDayDayMonthYearFormat(this.props.vacationWorkLog.get('date'))}<br />
-            {t('workLog:element.status')}: {getStatusLabel(t, this.props.vacationWorkLog.get('status'))}<br />
+            {t('workLog:element.date')}
+            {': '}
+            {toDayDayMonthYearFormat(this.props.vacationWorkLog.get('date'))}
+            <br />
+
+            {t('workLog:element.status')}
+            {': '}
+            {getStatusLabel(t, this.props.vacationWorkLog.get('status'))}
+            <br />
+
             {STATUS_REJECTED === this.props.vacationWorkLog.get('status') && (
               <React.Fragment>
-                {t('workLog:element.rejectionMessage')}: {this.props.vacationWorkLog.get('rejectionMessage')}<br />
+                {t('workLog:element.rejectionMessage')}
+                {': '}
+                {this.props.vacationWorkLog.get('rejectionMessage')}
+                <br />
               </React.Fragment>
             )}
           </p>

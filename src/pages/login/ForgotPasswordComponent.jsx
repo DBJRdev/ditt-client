@@ -78,12 +78,12 @@ class ForgotPasswordComponent extends React.Component {
     return layout((
       <ForgotPassword
         error={this.state.error}
-        footer={
+        footer={(
           // eslint-disable-next-line jsx-a11y/anchor-is-valid
           <Link to={routes.login}>
             {t('login:action.login')}
           </Link>
-        }
+        )}
         submitHandler={this.resetPasswordHandler}
         onChangeHandler={this.onChangeHandler}
         title={t('layout:title')}

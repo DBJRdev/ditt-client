@@ -151,17 +151,17 @@ class WorkLogCalendar extends React.Component {
   deleteWorkLog(id, type) {
     if (BUSINESS_TRIP_WORK_LOG === type) {
       return this.props.deleteBusinessTripWorkLog(id).then(this.closeDeleteWorkLogDialog);
-    } else if (HOME_OFFICE_WORK_LOG === type) {
+    } if (HOME_OFFICE_WORK_LOG === type) {
       return this.props.deleteHomeOfficeWorkLog(id).then(this.closeDeleteWorkLogDialog);
-    } else if (OVERTIME_WORK_LOG === type) {
+    } if (OVERTIME_WORK_LOG === type) {
       return this.props.deleteOvertimeWorkLog(id).then(this.closeDeleteWorkLogDialog);
-    } else if (SICK_DAY_WORK_LOG === type) {
+    } if (SICK_DAY_WORK_LOG === type) {
       return this.props.deleteSickDayWorkLog(id).then(this.closeDeleteWorkLogDialog);
-    } else if (TIME_OFF_WORK_LOG === type) {
+    } if (TIME_OFF_WORK_LOG === type) {
       return this.props.deleteTimeOffWorkLog(id).then(this.closeDeleteWorkLogDialog);
-    } else if (VACATION_WORK_LOG === type) {
+    } if (VACATION_WORK_LOG === type) {
       return this.props.deleteVacationWorkLog(id).then(this.closeDeleteWorkLogDialog);
-    } else if (WORK_LOG === type) {
+    } if (WORK_LOG === type) {
       return this.props.deleteWorkLog(id).then(this.closeDeleteWorkLogDialog);
     }
 
@@ -196,34 +196,46 @@ class WorkLogCalendar extends React.Component {
         purpose: data.purpose,
         transport: data.transport,
       });
-    } else if (HOME_OFFICE_WORK_LOG === data.type) {
+    }
+
+    if (HOME_OFFICE_WORK_LOG === data.type) {
       return this.props.addHomeOfficeWorkLog({
         comment: data.comment,
         date: data.date,
       });
-    } else if (OVERTIME_WORK_LOG === data.type) {
+    }
+
+    if (OVERTIME_WORK_LOG === data.type) {
       return this.props.addOvertimeWorkLog({
         date: data.date,
         reason: data.reason,
       });
-    } else if (SICK_DAY_WORK_LOG === data.type) {
+    }
+
+    if (SICK_DAY_WORK_LOG === data.type) {
       return this.props.addSickDayWorkLog({
         childDateOfBirth: data.childDateOfBirth,
         childName: data.childName,
         date: data.date,
         variant: data.variant,
       });
-    } else if (TIME_OFF_WORK_LOG === data.type) {
+    }
+
+    if (TIME_OFF_WORK_LOG === data.type) {
       return this.props.addTimeOffWorkLog({
         comment: data.comment,
         date: data.date,
       });
-    } else if (VACATION_WORK_LOG === data.type) {
+    }
+
+    if (VACATION_WORK_LOG === data.type) {
       return this.props.addMultipleVacationWorkLog({
         date: data.date,
         dateTo: data.dateTo,
       });
-    } else if (WORK_LOG === data.type) {
+    }
+
+    if (WORK_LOG === data.type) {
       return this.props.addWorkLog({
         endTime: data.endTime,
         startTime: data.startTime,
@@ -325,31 +337,84 @@ class WorkLogCalendar extends React.Component {
     if (BUSINESS_TRIP_WORK_LOG === type && this.props.businessTripWorkLog) {
       content = (
         <p>
-          {t('workLog:element.type')}: {getTypeLabel(t, type)}<br />
-          {t('workLog:element.date')}: {toDayDayMonthYearFormat(this.props.businessTripWorkLog.get('date'))}<br />
-          {t('workLog:element.status')}: {getStatusLabel(t, this.props.businessTripWorkLog.get('status'))}<br />
+          {t('workLog:element.type')}
+          {': '}
+          {getTypeLabel(t, type)}
+          <br />
+
+          {t('workLog:element.date')}
+          {': '}
+          {toDayDayMonthYearFormat(this.props.businessTripWorkLog.get('date'))}
+          <br />
+
+          {t('workLog:element.status')}
+          {': '}
+          {getStatusLabel(t, this.props.businessTripWorkLog.get('status'))}
+          <br />
+
           {STATUS_REJECTED === this.props.businessTripWorkLog.get('status') && (
             <React.Fragment>
-              {t('workLog:element.rejectionMessage')}: {this.props.businessTripWorkLog.get('rejectionMessage')}<br />
+              {t('workLog:element.rejectionMessage')}
+              :
+              {this.props.businessTripWorkLog.get('rejectionMessage')}
+              <br />
             </React.Fragment>
           )}
-          {t('businessTripWorkLog:element.purpose')}: {this.props.businessTripWorkLog.get('purpose')}<br />
-          {t('businessTripWorkLog:element.destination')}: {this.props.businessTripWorkLog.get('destination')}<br />
-          {t('businessTripWorkLog:element.transport')}: {this.props.businessTripWorkLog.get('transport')}<br />
-          {t('businessTripWorkLog:element.expectedDeparture')}: {this.props.businessTripWorkLog.get('expectedDeparture')}<br />
-          {t('businessTripWorkLog:element.expectedArrival')}: {this.props.businessTripWorkLog.get('expectedArrival')}
+
+          {t('businessTripWorkLog:element.purpose')}
+          {': '}
+          {this.props.businessTripWorkLog.get('purpose')}
+          <br />
+
+          {t('businessTripWorkLog:element.destination')}
+          {': '}
+          {this.props.businessTripWorkLog.get('destination')}
+          <br />
+
+          {t('businessTripWorkLog:element.transport')}
+          {': '}
+          {this.props.businessTripWorkLog.get('transport')}
+          <br />
+
+          {t('businessTripWorkLog:element.expectedDeparture')}
+          {': '}
+          {this.props.businessTripWorkLog.get('expectedDeparture')}
+          <br />
+
+          {t('businessTripWorkLog:element.expectedArrival')}
+          {': '}
+          {this.props.businessTripWorkLog.get('expectedArrival')}
         </p>
       );
     } else if (HOME_OFFICE_WORK_LOG === type && this.props.homeOfficeWorkLog) {
       content = (
         <p>
-          {t('workLog:element.type')}: {getTypeLabel(t, type)}<br />
-          {t('workLog:element.date')}: {toDayDayMonthYearFormat(this.props.homeOfficeWorkLog.get('date'))}<br />
-          {t('homeOfficeWorkLog:element.comment')}: {this.props.homeOfficeWorkLog.get('comment')}<br />
-          {t('workLog:element.status')}: {getStatusLabel(t, this.props.homeOfficeWorkLog.get('status'))}<br />
+          {t('workLog:element.type')}
+          {': '}
+          {getTypeLabel(t, type)}
+          <br />
+
+          {t('workLog:element.date')}
+          {': '}
+          {toDayDayMonthYearFormat(this.props.homeOfficeWorkLog.get('date'))}
+          <br />
+
+          {t('homeOfficeWorkLog:element.comment')}
+          {': '}
+          {this.props.homeOfficeWorkLog.get('comment')}
+          <br />
+
+          {t('workLog:element.status')}
+          {': '}
+          {getStatusLabel(t, this.props.homeOfficeWorkLog.get('status'))}
+          <br />
+
           {STATUS_REJECTED === this.props.homeOfficeWorkLog.get('status') && (
             <React.Fragment>
-              {t('workLog:element.rejectionMessage')}: {this.props.homeOfficeWorkLog.get('rejectionMessage')}<br />
+              {t('workLog:element.rejectionMessage')}
+              {': '}
+              {this.props.homeOfficeWorkLog.get('rejectionMessage')}
+              <br />
             </React.Fragment>
           )}
         </p>
@@ -357,27 +422,59 @@ class WorkLogCalendar extends React.Component {
     } else if (OVERTIME_WORK_LOG === type && this.props.overtimeWorkLog) {
       content = (
         <p>
-          {t('workLog:element.type')}: {getTypeLabel(t, type)}<br />
-          {t('workLog:element.date')}: {toDayDayMonthYearFormat(this.props.overtimeWorkLog.get('date'))}<br />
-          {t('workLog:element.status')}: {getStatusLabel(t, this.props.overtimeWorkLog.get('status'))}<br />
+          {t('workLog:element.type')}
+          {': '}
+          {getTypeLabel(t, type)}
+          <br />
+
+          {t('workLog:element.date')}
+          {': '}
+          {toDayDayMonthYearFormat(this.props.overtimeWorkLog.get('date'))}
+          <br />
+
+          {t('workLog:element.status')}
+          {': '}
+          {getStatusLabel(t, this.props.overtimeWorkLog.get('status'))}
+          <br />
+
           {STATUS_REJECTED === this.props.overtimeWorkLog.get('status') && (
             <React.Fragment>
-              {t('workLog:element.rejectionMessage')}: {this.props.overtimeWorkLog.get('rejectionMessage')}<br />
+              {t('workLog:element.rejectionMessage')}
+              {': '}
+              {this.props.overtimeWorkLog.get('rejectionMessage')}
+              <br />
             </React.Fragment>
           )}
-          {t('overtimeWorkLog:element.reason')}: {this.props.overtimeWorkLog.get('reason')}<br />
+
+          {t('overtimeWorkLog:element.reason')}
+          {': '}
+          {this.props.overtimeWorkLog.get('reason')}
         </p>
       );
     } else if (SICK_DAY_WORK_LOG === type && this.props.sickDayWorkLog) {
       content = (
         <p>
-          {t('workLog:element.type')}: {getTypeLabel(t, type)}<br />
-          {t('workLog:element.date')}: {toDayDayMonthYearFormat(this.props.sickDayWorkLog.get('date'))}<br />
-          {t('sickDayWorkLog:element.variant')}: {getSickDayVariantLabel(t, this.props.sickDayWorkLog.get('variant'))}<br />
+          {t('workLog:element.type')}
+          {': '}
+          {getTypeLabel(t, type)}
+          <br />
+
+          {t('workLog:element.date')}
+          {': '}
+          {toDayDayMonthYearFormat(this.props.sickDayWorkLog.get('date'))}
+          <br />
+
+          {t('sickDayWorkLog:element.variant')}
+          {': '}
+          {getSickDayVariantLabel(t, this.props.sickDayWorkLog.get('variant'))}
+          <br />
+
           {VARIANT_SICK_CHILD === this.props.sickDayWorkLog.get('variant') && (
             <React.Fragment>
-              {`${t('sickDayWorkLog:element.childName')}: ${this.props.sickDayWorkLog.get('childName')}`}<br />
-              {`${t('sickDayWorkLog:element.childDateOfBirth')}: ${toDayMonthYearFormat(this.props.sickDayWorkLog.get('childDateOfBirth'))}`}<br />
+              {`${t('sickDayWorkLog:element.childName')}: ${this.props.sickDayWorkLog.get('childName')}`}
+              <br />
+              {`${t('sickDayWorkLog:element.childDateOfBirth')}: ${toDayMonthYearFormat(this.props.sickDayWorkLog.get('childDateOfBirth'))}`}
+              <br />
             </React.Fragment>
           )}
         </p>
@@ -385,13 +482,32 @@ class WorkLogCalendar extends React.Component {
     } else if (TIME_OFF_WORK_LOG === type && this.props.timeOffWorkLog) {
       content = (
         <p>
-          {t('workLog:element.type')}: {getTypeLabel(t, type)}<br />
-          {t('workLog:element.date')}: {toDayDayMonthYearFormat(this.props.timeOffWorkLog.get('date'))}<br />
-          {t('timeOffWorkLog:element.comment')}: {this.props.timeOffWorkLog.get('comment') || '-'}<br />
-          {t('workLog:element.status')}: {getStatusLabel(t, this.props.timeOffWorkLog.get('status'))}<br />
+          {t('workLog:element.type')}
+          {': '}
+          {getTypeLabel(t, type)}
+          <br />
+
+          {t('workLog:element.date')}
+          {': '}
+          {toDayDayMonthYearFormat(this.props.timeOffWorkLog.get('date'))}
+          <br />
+
+          {t('timeOffWorkLog:element.comment')}
+          {': '}
+          {this.props.timeOffWorkLog.get('comment') || '-'}
+          <br />
+
+          {t('workLog:element.status')}
+          {': '}
+          {getStatusLabel(t, this.props.timeOffWorkLog.get('status'))}
+          <br />
+
           {STATUS_REJECTED === this.props.timeOffWorkLog.get('status') && (
             <React.Fragment>
-              {t('workLog:element.rejectionMessage')}: {this.props.timeOffWorkLog.get('rejectionMessage')}<br />
+              {t('workLog:element.rejectionMessage')}
+              {': '}
+              {this.props.timeOffWorkLog.get('rejectionMessage')}
+              <br />
             </React.Fragment>
           )}
         </p>
@@ -399,12 +515,27 @@ class WorkLogCalendar extends React.Component {
     } else if (VACATION_WORK_LOG === type && this.props.vacationWorkLog) {
       content = (
         <p>
-          {t('workLog:element.type')}: {getTypeLabel(t, type)}<br />
-          {t('workLog:element.date')}: {toDayDayMonthYearFormat(this.props.vacationWorkLog.get('date'))}<br />
-          {t('workLog:element.status')}: {getStatusLabel(t, this.props.vacationWorkLog.get('status'))}<br />
+          {t('workLog:element.type')}
+          {': '}
+          {getTypeLabel(t, type)}
+          <br />
+
+          {t('workLog:element.date')}
+          {': '}
+          {toDayDayMonthYearFormat(this.props.vacationWorkLog.get('date'))}
+          <br />
+
+          {t('workLog:element.status')}
+          {': '}
+          {getStatusLabel(t, this.props.vacationWorkLog.get('status'))}
+          <br />
+
           {STATUS_REJECTED === this.props.vacationWorkLog.get('status') && (
             <React.Fragment>
-              {t('workLog:element.rejectionMessage')}: {this.props.vacationWorkLog.get('rejectionMessage')}<br />
+              {t('workLog:element.rejectionMessage')}
+              {': '}
+              {this.props.vacationWorkLog.get('rejectionMessage')}
+              <br />
             </React.Fragment>
           )}
         </p>
@@ -412,10 +543,24 @@ class WorkLogCalendar extends React.Component {
     } else if (WORK_LOG === type && this.props.workLog) {
       content = (
         <p>
-          {t('workLog:element.type')}: {getTypeLabel(t, type)}<br />
-          {t('workLog:element.date')}: {toDayDayMonthYearFormat(this.props.workLog.get('startTime'))}<br />
-          {t('workLog:element.startTime')}: {toHourMinuteFormat(this.props.workLog.get('startTime'))}<br />
-          {t('workLog:element.endTime')}: {toHourMinuteFormat(this.props.workLog.get('endTime'))}
+          {t('workLog:element.type')}
+          {': '}
+          {getTypeLabel(t, type)}
+          <br />
+
+          {t('workLog:element.date')}
+          {': '}
+          {toDayDayMonthYearFormat(this.props.workLog.get('startTime'))}
+          <br />
+
+          {t('workLog:element.startTime')}
+          {': '}
+          {toHourMinuteFormat(this.props.workLog.get('startTime'))}
+          <br />
+
+          {t('workLog:element.endTime')}
+          {': '}
+          {toHourMinuteFormat(this.props.workLog.get('endTime'))}
         </p>
       );
     }
@@ -656,7 +801,11 @@ class WorkLogCalendar extends React.Component {
                         )
                       }
                       <td className={styles.tableCellRight}>
-                        {day.workTime.hours()}:{day.workTime.minutes() < 10 && '0'}{day.workTime.minutes()}&nbsp;h
+                        {day.workTime.hours()}
+                        :
+                        {day.workTime.minutes() < 10 && '0'}
+                        {day.workTime.minutes()}
+                        &nbsp;h
                       </td>
                     </tr>
                   );

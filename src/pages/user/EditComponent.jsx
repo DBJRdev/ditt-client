@@ -101,8 +101,7 @@ class EditComponent extends React.Component {
           const mergedWorkHours = this.state.formData.workHours;
 
           workHours.forEach((workHoursItem) => {
-            mergedWorkHours[workHoursItem.get('year')][workHoursItem.get('month') - 1] =
-              getWorkHoursString(workHoursItem.get('requiredHours'));
+            mergedWorkHours[workHoursItem.get('year')][workHoursItem.get('month') - 1] = getWorkHoursString(workHoursItem.get('requiredHours'));
           });
 
           this.setState({

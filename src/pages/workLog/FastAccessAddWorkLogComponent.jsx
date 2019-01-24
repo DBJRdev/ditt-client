@@ -81,34 +81,46 @@ class FastAccessAddWorkLogComponent extends React.Component {
         purpose: data.purpose,
         transport: data.transport,
       }).then(this.handleSaveWorkLog);
-    } else if (HOME_OFFICE_WORK_LOG === data.type) {
+    }
+
+    if (HOME_OFFICE_WORK_LOG === data.type) {
       return this.props.addHomeOfficeWorkLog({
         comment: data.comment,
         date: data.date,
       }).then(this.handleSaveWorkLog);
-    } else if (OVERTIME_WORK_LOG === data.type) {
+    }
+
+    if (OVERTIME_WORK_LOG === data.type) {
       return this.props.addOvertimeWorkLog({
         date: data.date,
         reason: data.reason,
       }).then(this.handleSaveWorkLog);
-    } else if (SICK_DAY_WORK_LOG === data.type) {
+    }
+
+    if (SICK_DAY_WORK_LOG === data.type) {
       return this.props.addSickDayWorkLog({
         childDateOfBirth: data.childDateOfBirth,
         childName: data.childName,
         date: data.date,
         variant: data.variant,
       }).then(this.handleSaveWorkLog);
-    } else if (TIME_OFF_WORK_LOG === data.type) {
+    }
+
+    if (TIME_OFF_WORK_LOG === data.type) {
       return this.props.addTimeOffWorkLog({
         comment: data.comment,
         date: data.date,
       }).then(this.handleSaveWorkLog);
-    } else if (VACATION_WORK_LOG === data.type) {
+    }
+
+    if (VACATION_WORK_LOG === data.type) {
       const workingDays = getWorkingDays(data.date, data.dateTo, this.props.config.get('supportedHolidays'));
       const workLogs = workingDays.map(workingDay => ({ date: workingDay }));
 
       return this.props.addMultipleVacationWorkLog(workLogs).then(this.handleSaveWorkLog);
-    } else if (WORK_LOG === data.type) {
+    }
+
+    if (WORK_LOG === data.type) {
       return this.props.addWorkLog({
         endTime: data.endTime,
         startTime: data.startTime,

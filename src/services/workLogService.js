@@ -92,7 +92,9 @@ export const getWorkedTime = (workLogList, workHoursList, workedHoursLimits) => 
       && workedSeconds <= workedHoursLimits.upperLimit.limit
     ) {
       return workedSeconds + workedHoursLimits.lowerLimit.changeBy;
-    } else if (workedSeconds > workedHoursLimits.upperLimit.limit) {
+    }
+
+    if (workedSeconds > workedHoursLimits.upperLimit.limit) {
       return workedSeconds + workedHoursLimits.upperLimit.changeBy;
     }
 

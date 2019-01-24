@@ -12,6 +12,10 @@
       "imports": "always-multiline",
       "exports": "always-multiline",
       "functions": "never"
-    }]
+    }],
+    // Bedrich Schindler <bedrich@visionapps.cz>, 14. 01. 2019 16:10
+    // Rule turned off because more than 500 occurances
+    "react/destructuring-assignment": "off",
+    "react/no-access-state-in-setstate": "off"
   }
 }

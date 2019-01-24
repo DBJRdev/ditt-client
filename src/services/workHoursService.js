@@ -10,7 +10,9 @@ export const getWorkHoursString = (workHoursValue) => {
 
   if (minute === 0) {
     return `${hour}:00`;
-  } else if (minute < 10) {
+  }
+
+  if (minute < 10) {
     return `${hour}:0${minute}`;
   }
 

@@ -88,7 +88,9 @@ class ListComponent extends React.Component {
 
                   return (
                     <div>
-                      {t('general:action.yes')} | {waitingForApprovalLinks}
+                      {t('general:action.yes')}
+                      {' | '}
+                      {waitingForApprovalLinks}
                     </div>
                   );
                 },

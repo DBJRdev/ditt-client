@@ -86,7 +86,9 @@ class NewPasswordComponent extends React.Component {
       return layout((
         <p className={styles.message}>
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          {t('login:text.passwordSet')} <Link to={routes.login}>{t('login:action.login')}</Link>
+          {t('login:text.passwordSet')}
+          {' '}
+          <Link to={routes.login}>{t('login:action.login')}</Link>
         </p>
       ));
     }
@@ -94,12 +96,12 @@ class NewPasswordComponent extends React.Component {
     return layout((
       <NewPassword
         error={this.state.error}
-        footer={
+        footer={(
           // eslint-disable-next-line jsx-a11y/anchor-is-valid
           <Link to={routes.login}>
             {t('login:action.login')}
           </Link>
-        }
+        )}
         submitHandler={this.newPasswordHandler}
         onChangeHandler={this.onChangeHandler}
         title={t('layout:title')}

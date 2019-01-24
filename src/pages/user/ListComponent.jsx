@@ -42,7 +42,9 @@ class ListComponent extends React.Component {
         format: row => (
           /* eslint-disable-next-line jsx-a11y/anchor-is-valid */
           <Link to={routes.editUser.replace(':id', row.id)}>
-            {row.firstName} {row.lastName}
+            {row.firstName}
+            {' '}
+            {row.lastName}
           </Link>
         ),
         isSortable: true,
