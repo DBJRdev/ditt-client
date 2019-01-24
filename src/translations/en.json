@@ -200,10 +200,12 @@
   "workLog": {
     "action": {
       "addWorkLog": "Add work log",
+      "endWork": "End work",
       "approveMonth": "Approve",
       "nextMonth": "Next",
       "previousMonth": "Previous",
-      "sendWorkMonthForApproval": "Send for approval"
+      "sendWorkMonthForApproval": "Send for approval",
+      "startWork": "Start work"
     },
     "element": {
       "type": "Type",

@@ -38,7 +38,14 @@ import {
   toHourMinuteFormat,
   toHourMinuteFormatFromInt,
   toMonthYearFormat,
+  toJson,
+  toMomentDateTime,
 } from '../../services/dateTimeService';
+import {
+  getWorkLogTimer,
+  removeWorkLogTimer,
+  setWorkLogTimer,
+} from '../../services/storageService';
 import {
   getSickDayVariantLabel,
   getStatusLabel,
@@ -59,6 +66,8 @@ class WorkLogCalendar extends React.Component {
       showDeleteWorkLogDialogType: null,
       showWorkLogForm: false,
       showWorkLogFormDate: localizedMoment(),
+      workLogTimer: getWorkLogTimer() ? toMomentDateTime(getWorkLogTimer()) : null,
+      workLogTimerInterval: '00:00:00',
     };
 
     this.selectPreviousMonth = this.selectPreviousMonth.bind(this);
@@ -66,6 +75,14 @@ class WorkLogCalendar extends React.Component {
     this.saveWorkLogForm = this.saveWorkLogForm.bind(this);
     this.closeWorkLogForm = this.closeWorkLogForm.bind(this);
     this.closeDeleteWorkLogDialog = this.closeDeleteWorkLogDialog.bind(this);
+    this.initAndStartWorkLogTimer = this.initAndStartWorkLogTimer.bind(this);
+    this.stopWorkLogTimer = this.stopWorkLogTimer.bind(this);
+
+    this.workLogTimer = null;
+
+    if (this.state.workLogTimer) {
+      this.startWorkLogTimer();
+    }
   }
 
   getDaysOfSelectedMonth() {
@@ -271,6 +288,45 @@ class WorkLogCalendar extends React.Component {
     }
 
     return 0;
+  }
+
+  initAndStartWorkLogTimer() {
+    const startTime = localizedMoment();
+
+    this.setState({ workLogTimer: startTime });
+    setWorkLogTimer(toJson(startTime));
+
+    this.startWorkLogTimer();
+  }
+
+  startWorkLogTimer() {
+    this.workLogTimer = setInterval(() => {
+      const intervalMiliseconds = localizedMoment().diff(this.state.workLogTimer);
+      const interval = moment.utc(intervalMiliseconds);
+
+      this.setState({ workLogTimerInterval: interval.format('HH:mm:ss') });
+    }, 1000);
+  }
+
+  stopWorkLogTimer() {
+    const startTime = toMomentDateTime(getWorkLogTimer());
+    const endTime = localizedMoment();
+    const intervalMiliseconds = localizedMoment().diff(this.state.workLogTimer);
+
+    clearInterval(this.workLogTimer);
+
+    this.setState({
+      workLogTimer: null,
+      workLogTimerInterval: '00:00:00',
+    });
+    removeWorkLogTimer();
+
+    if (intervalMiliseconds >= 30000) {
+      this.props.addWorkLog({
+        endTime,
+        startTime,
+      });
+    }
   }
 
   renderWorkHoursInfo(daysOfSelectedMonth) {
@@ -598,6 +654,7 @@ class WorkLogCalendar extends React.Component {
 
   render() {
     const { t } = this.props;
+    const date = localizedMoment();
     let status = null;
     let workLogContent = null;
 
@@ -782,6 +839,29 @@ class WorkLogCalendar extends React.Component {
                             </div>
                           );
                         })}
+
+                        {day.date.isSame(date, 'day') && (
+                          <div>
+                            {
+                              this.state.workLogTimer
+                                ? (
+                                  <Button
+                                    clickHandler={this.stopWorkLogTimer}
+                                    icon="stop"
+                                    label={`${t('workLog:action.endWork')} | ${this.state.workLogTimerInterval}`}
+                                    priority="primary"
+                                  />
+                                ) : (
+                                  <Button
+                                    clickHandler={this.initAndStartWorkLogTimer}
+                                    icon="play_arrow"
+                                    label={t('workLog:action.startWork')}
+                                    priority="primary"
+                                  />
+                                )
+                            }
+                          </div>
+                        )}
                       </td>
                       {
                         !this.props.supervisorView

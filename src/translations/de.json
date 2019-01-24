@@ -201,9 +201,11 @@
     "action": {
       "addWorkLog": "Eintrag hinzufügen",
       "approveMonth": "Monat freigeben",
+      "endWork": "Arbeit beenden",
       "nextMonth": "Nächster",
       "previousMonth": "Vorheriger",
-      "sendWorkMonthForApproval": "Zur Freigabe einreichen"
+      "sendWorkMonthForApproval": "Zur Freigabe einreichen",
+      "startWork": "Arbeit beginnen"
     },
     "element": {
       "type": "Typ",

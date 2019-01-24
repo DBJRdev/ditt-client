@@ -86,7 +86,24 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <div>
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="play_arrow"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="workLog:action.startWork"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1190,7 +1207,24 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <div>
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="play_arrow"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="workLog:action.startWork"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2223,7 +2257,24 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <div>
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="play_arrow"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="workLog:action.startWork"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3253,7 +3304,24 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <div>
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="play_arrow"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="workLog:action.startWork"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
           <td
             className="tableCellRight"
           >
@@ -4986,7 +5054,24 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <div>
+              <Button
+                block={false}
+                clickHandler={[Function]}
+                disabled={false}
+                icon="play_arrow"
+                iconPosition="before"
+                isLabelVisible={true}
+                label="workLog:action.startWork"
+                loading={false}
+                priority="primary"
+                size="medium"
+                type="button"
+                variant="default"
+              />
+            </div>
+          </td>
           <td
             className="tableCellRight"
           >
