@@ -145,9 +145,9 @@
     "action": {
       "addUser": "Nutzer*in hinzufügen",
       "deleteUser": "Nutzer*in löschen",
-      "resetApiToken": "Löschen API token",
-      "renewApiToken": "Erneuere API token",
-      "showApiToken": "Zeige API token",
+      "resetApiToken": "Lösche API-Token",
+      "renewApiToken": "Erneuere API-Token",
+      "showApiToken": "Zeige API-Token",
       "showWorkLog": "Zeige Einträge"
     },
     "element": {
@@ -174,7 +174,7 @@
       "addWorkLog": "Eintrag hinzufügen",
       "averageWorkingHoursDescription": "Tägliche Arbeitszeit mit Komma [\",\"] getrennt, mit Start ab Januar eintragen.",
       "averageWorkingHoursTitle": "Tägliche Arbeitszeit",
-      "fastAccess": "Schneller zugang",
+      "fastAccess": "Schneller Zugang",
       "vacationDaysLeft": "{{ remainingDays }} von {{ vacationDays }} Tagen nicht verplant"
     },
     "title": {
