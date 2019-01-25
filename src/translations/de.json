@@ -151,7 +151,7 @@
       "showWorkLog": "Zeige Einträge"
     },
     "element": {
-      "apiToken": "API token",
+      "apiToken": "API-Token",
       "email": "E-Mail",
       "employeeId": "Mitarbeiter-ID",
       "firstName": "Vorname",
@@ -171,7 +171,7 @@
       }
     },
     "text": {
-      "addWorkLog": "Eintrag hinzufügen",
+      "addWorkLog": "Link aufrufen",
       "averageWorkingHoursDescription": "Tägliche Arbeitszeit mit Komma [\",\"] getrennt, mit Start ab Januar eintragen.",
       "averageWorkingHoursTitle": "Tägliche Arbeitszeit",
       "fastAccess": "Schneller Zugang",
