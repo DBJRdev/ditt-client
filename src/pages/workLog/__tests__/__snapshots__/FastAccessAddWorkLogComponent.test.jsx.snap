@@ -34,6 +34,7 @@ exports[`rendering renders correctly 1`] = `
   isPosting={false}
   saveHandler={[Function]}
   showInfoText={false}
+  showWorkLogTimer={true}
   t={[Function]}
   user={
     Immutable.Map {

@@ -178,6 +178,7 @@ class FastAccessAddWorkLogComponent extends React.Component {
         date={selectedDate}
         isPosting={isPosting}
         saveHandler={this.saveWorkLogForm}
+        showWorkLogTimer
         user={workMonth.get('user')}
         workLogsOfDay={workMonth ? getWorkLogsByDay(selectedDate, workMonth.get('workLogs')) : []}
         showInfoText={false}

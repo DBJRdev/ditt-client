@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withNamespaces } from 'react-i18next';
 import {
+  Button,
   Modal,
   SelectField,
   TextField,
@@ -23,25 +24,40 @@ import {
   WORK_LOG,
 } from '../../resources/workMonth';
 import {
+  localizedMoment,
   toDayMonthYearFormat,
+  toJson,
+  toMomentDateTime,
   toMomentDateTimeFromDayMonthYear,
 } from '../../services/dateTimeService';
+import {
+  getWorkLogTimer,
+  removeWorkLogTimer,
+  setWorkLogTimer,
+} from '../../services/storageService';
 import { validateWorkLog } from '../../services/validatorService';
 import styles from './WorkLogForm.scss';
 
 class WorkLogForm extends React.Component {
   constructor(props) {
     super(props);
-    const startTime = props.date.clone().subtract(3, 'minutes');
-    const endTime = props.date.clone().add(3, 'minutes');
+    let date = props.date.clone();
+    let startTime = date.clone().subtract(3, 'minutes');
+    let endTime = date.clone().add(3, 'minutes');
+
+    if (props.showWorkLogTimer && getWorkLogTimer()) {
+      date = toMomentDateTime(getWorkLogTimer());
+      startTime = toMomentDateTime(getWorkLogTimer());
+      endTime = localizedMoment();
+    }
 
     this.state = {
       formData: {
         childDateOfBirth: null,
         childName: null,
         comment: null,
-        date: toDayMonthYearFormat(props.date),
-        dateTo: toDayMonthYearFormat(props.date),
+        date: toDayMonthYearFormat(date),
+        dateTo: toDayMonthYearFormat(date),
         destination: null,
         endHour: endTime.format('HH'),
         endMinute: endTime.format('mm'),
@@ -76,10 +92,20 @@ class WorkLogForm extends React.Component {
         },
         isValid: false,
       },
+      workLogTimer: getWorkLogTimer() ? toMomentDateTime(getWorkLogTimer()) : null,
+      workLogTimerInterval: '00:00:00',
     };
 
     this.changeHandler = this.changeHandler.bind(this);
     this.saveHandler = this.saveHandler.bind(this);
+    this.initAndStartWorkLogTimer = this.initAndStartWorkLogTimer.bind(this);
+    this.stopWorkLogTimer = this.stopWorkLogTimer.bind(this);
+
+    this.workLogTimer = null;
+
+    if (this.state.workLogTimer) {
+      this.startWorkLogTimer();
+    }
   }
 
   changeHandler(e) {
@@ -117,6 +143,16 @@ class WorkLogForm extends React.Component {
     this.setState({ formValidity });
 
     if (formValidity.isValid) {
+      if (formData.type === WORK_LOG) {
+        clearInterval(this.workLogTimer);
+
+        this.setState({
+          workLogTimer: null,
+          workLogTimerInterval: '00:00:00',
+        });
+        removeWorkLogTimer();
+      }
+
       this.props.saveHandler({
         childDateOfBirth:
           (formData.type === SICK_DAY_WORK_LOG && formData.variant === VARIANT_SICK_CHILD)
@@ -170,6 +206,70 @@ class WorkLogForm extends React.Component {
             this.setState({ formValidity });
           }
         });
+    }
+  }
+
+  initAndStartWorkLogTimer() {
+    const { formData } = this.state;
+    const startTime = localizedMoment();
+
+    this.setState({
+      formData: {
+        ...formData,
+        date: startTime,
+        endHour: startTime.format('HH'),
+        endMinute: startTime.format('mm'),
+        startHour: startTime.format('HH'),
+        startMinute: startTime.format('mm'),
+      },
+      workLogTimer: startTime,
+    });
+    setWorkLogTimer(toJson(startTime));
+
+    this.startWorkLogTimer();
+  }
+
+  startWorkLogTimer() {
+    const {
+      formData,
+      workLogTimer,
+    } = this.state;
+
+    this.workLogTimer = setInterval(() => {
+      const endTime = localizedMoment();
+      const intervalMiliseconds = endTime.diff(workLogTimer);
+      const interval = moment.utc(intervalMiliseconds);
+
+      this.setState({
+        formData: {
+          ...formData,
+          endHour: endTime.format('HH'),
+          endMinute: endTime.format('mm'),
+        },
+        workLogTimerInterval: interval.format('HH:mm:ss'),
+      });
+    }, 1000);
+  }
+
+  stopWorkLogTimer() {
+    const startTime = toMomentDateTime(getWorkLogTimer());
+    const endTime = localizedMoment();
+    const intervalMiliseconds = endTime.diff(this.state.workLogTimer);
+
+    clearInterval(this.workLogTimer);
+
+    this.setState({
+      workLogTimer: null,
+      workLogTimerInterval: '00:00:00',
+    });
+    removeWorkLogTimer();
+
+    if (intervalMiliseconds >= 30000) {
+      this.props.saveHandler({
+        endTime,
+        startTime,
+        type: WORK_LOG,
+      });
     }
   }
 
@@ -451,10 +551,14 @@ class WorkLogForm extends React.Component {
   }
 
   render() {
-    const { t } = this.props;
+    const {
+      showWorkLogTimer,
+      t,
+    } = this.props;
     const {
       formData,
       formValidity,
+      workLogTimerInterval,
     } = this.state;
 
     return (
@@ -480,6 +584,30 @@ class WorkLogForm extends React.Component {
                 <p className={styles.formInfoText}>
                   {t('workLog:modal.add.alreadySendForApprovalDescription')}
                 </p>
+              </div>
+            </fieldset>
+          )}
+          {showWorkLogTimer && (
+            <fieldset className={styles.fieldset}>
+              <div className={styles.workLogTimerButton}>
+                {
+                  this.state.workLogTimer
+                    ? (
+                      <Button
+                        clickHandler={this.stopWorkLogTimer}
+                        icon="stop"
+                        label={`${t('workLog:action.endWork')} | ${workLogTimerInterval}`}
+                        priority="primary"
+                      />
+                    ) : (
+                      <Button
+                        clickHandler={this.initAndStartWorkLogTimer}
+                        icon="play_arrow"
+                        label={t('workLog:action.startWork')}
+                        priority="primary"
+                      />
+                    )
+                }
               </div>
             </fieldset>
           )}
@@ -582,6 +710,7 @@ class WorkLogForm extends React.Component {
 
 WorkLogForm.defaultProps = {
   showInfoText: false,
+  showWorkLogTimer: false,
 };
 
 WorkLogForm.propTypes = {
@@ -591,6 +720,7 @@ WorkLogForm.propTypes = {
   isPosting: PropTypes.bool.isRequired,
   saveHandler: PropTypes.func.isRequired,
   showInfoText: PropTypes.bool,
+  showWorkLogTimer: PropTypes.bool,
   t: PropTypes.func.isRequired,
   user: ImmutablePropTypes.mapContains({
     remainingVacationDaysByYear: ImmutablePropTypes.mapContains({}).isRequired,
