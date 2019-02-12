@@ -24,7 +24,9 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
       />
     </div>
     <div>
-      <div>
+      <div
+        className="navigationWrap"
+      >
         <h2
           className="navigationTitle"
         >
@@ -1074,7 +1076,9 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
       />
     </div>
     <div>
-      <div>
+      <div
+        className="navigationWrap"
+      >
         <h2
           className="navigationTitle"
         >
@@ -1134,7 +1138,9 @@ exports[`rendering renders correctly supervisor view with work month waiting for
       />
     </div>
     <div>
-      <div>
+      <div
+        className="navigationWrap"
+      >
         <h2
           className="navigationTitle"
         >
@@ -2195,7 +2201,9 @@ exports[`rendering renders correctly with closed work month 1`] = `
       />
     </div>
     <div>
-      <div>
+      <div
+        className="navigationWrap"
+      >
         <h2
           className="navigationTitle"
         >
@@ -3245,7 +3253,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
       />
     </div>
     <div>
-      <div>
+      <div
+        className="navigationWrap"
+      >
         <h2
           className="navigationTitle"
         >
@@ -5023,7 +5033,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
       />
     </div>
     <div>
-      <div>
+      <div
+        className="navigationWrap"
+      >
         <h2
           className="navigationTitle"
         >

@@ -937,7 +937,7 @@ class WorkLogCalendar extends React.Component {
             />
           </div>
           <div>
-            <div>
+            <div className={styles.navigationWrap}>
               <h2 className={styles.navigationTitle}>
                 {toMonthYearFormat(this.props.selectedDate)}
               </h2>
