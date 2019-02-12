@@ -1,19 +1,31 @@
+$_breakpoint: 55em;
+
 $_layout-spacer-x: 2rem;
 $_layout-spacer-y: 2rem;
 $_layout-padding-x: 4vw;
 
 .header {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: ($_layout-spacer-y / 2) $_layout-padding-x;
   background-color: #fff;
+
+  @media screen and (min-width: $_breakpoint) {
+    flex-direction: row;
+  }
 }
 
 .brand {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  padding-right: $_layout-spacer-x / 2;
+
+  @media screen and (min-width: $_breakpoint) {
+    flex-direction: row;
+    padding-right: $_layout-spacer-x / 2;
+  }
 }
 
 .logo {
@@ -24,16 +36,26 @@ $_layout-padding-x: 4vw;
 
 .title {
   display: block;
-  padding-left: $_layout-spacer-x;
-  margin-left: $_layout-spacer-x;
   font-weight: 500;
   line-height: 3rem;
-  border-left: 1px solid #ccc;
+
+  @media screen and (min-width: $_breakpoint) {
+    padding-left: $_layout-spacer-x;
+    margin-left: $_layout-spacer-x;
+    border-left: 1px solid #ccc;
+  }
 }
 
 .navigation {
   display: flex;
-  margin-right: -0.5rem;
+  width: 100%;
+  padding: ($_layout-spacer-y / 2) 0;
+  overflow-x: scroll;
+
+  @media screen and (min-width: $_breakpoint) {
+    padding-right: $_layout-spacer-x / 2;
+    margin-bottom: 0;
+  }
 }
 
 .navigationItem {
@@ -54,6 +76,7 @@ $_layout-padding-x: 4vw;
 .bodyTitle {
   margin-top: $_layout-spacer-y / 4;
   margin-bottom: $_layout-spacer-y;
+  overflow-x: scroll;
   font-weight: 500;
   font-size: 1.75rem;
 }
