@@ -341,7 +341,7 @@ class WorkLogForm extends React.Component {
     const { t } = this.props;
 
     return (
-      <fieldset style={this.fieldSetStyle}>
+      <fieldset className={styles.fieldset}>
         <legend>{t('homeOfficeWorkLog:element.comment')}</legend>
         <div style={this.fieldStyle}>
           <TextField
@@ -446,7 +446,7 @@ class WorkLogForm extends React.Component {
     const { t } = this.props;
 
     return (
-      <fieldset style={this.fieldSetStyle}>
+      <fieldset className={styles.fieldset}>
         <legend>{t('timeOffWorkLog:element.comment')}</legend>
         <div style={this.fieldStyle}>
           <TextField
@@ -466,7 +466,7 @@ class WorkLogForm extends React.Component {
     const { t } = this.props;
 
     return (
-      <fieldset style={this.fieldSetStyle}>
+      <fieldset className={styles.fieldset}>
         <legend>{t('vacationWorkLog:element.dateTo')}</legend>
         <div style={this.fieldStyle}>
           <TextField
