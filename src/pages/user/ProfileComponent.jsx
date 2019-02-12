@@ -13,6 +13,7 @@ import { ROLE_EMPLOYEE } from '../../resources/user';
 import { getWorkHoursString } from '../../services/workHoursService';
 import Layout from '../../components/Layout';
 import routes from '../../routes';
+import styles from './user.scss';
 
 class ProfileComponent extends React.Component {
   constructor(props) {
@@ -20,55 +21,6 @@ class ProfileComponent extends React.Component {
 
     this.state = {
       apiTokenDialogOpened: false,
-    };
-
-    this.profileTable = {
-      borderCollapse: 'collapse',
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      maxWidth: '600px',
-      width: '100%',
-    };
-
-    this.profileTableTitle = {
-      borderBottom: '1px solid #ccc',
-      borderTop: '1px solid #ccc',
-      fontWeight: 'bold',
-      padding: '5px 10px',
-      width: '50%',
-    };
-
-    this.workHoursTitle = {
-      fontSize: '1rem',
-      fontWeight: '500',
-      marginBottom: '1rem',
-      marginTop: '3rem',
-      textAlign: 'center',
-    };
-
-    this.profileTableValue = {
-      borderBottom: '1px solid #ccc',
-      borderTop: '1px solid #ccc',
-    };
-
-    this.workHoursTable = {
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      maxWidth: '600px',
-      width: '100%',
-    };
-
-    this.responsiveTable = {
-      overflowX: 'scroll',
-    };
-
-    this.apiTokenButtonsWrapper = {
-      float: 'right',
-    };
-
-    this.apiTokenButton = {
-      display: 'inline-block',
-      marginLeft: '0.5rem',
     };
   }
 
@@ -117,30 +69,30 @@ class ProfileComponent extends React.Component {
         {
           config && user && workHours
           && (
-            <div>
-              <table style={this.profileTable}>
+            <div className={styles.profileTableWrap}>
+              <table className={styles.profileTable}>
                 <tbody>
                   <tr>
-                    <td style={this.profileTableTitle}>
+                    <td className={styles.profileTableTitle}>
                       {t('user:element.firstName')}
                     </td>
-                    <td style={this.profileTableValue}>
+                    <td className={styles.profileTableValue}>
                       {user.get('firstName')}
                     </td>
                   </tr>
                   <tr>
-                    <td style={this.profileTableTitle}>
+                    <td className={styles.profileTableTitle}>
                       {t('user:element.lastName')}
                     </td>
-                    <td style={this.profileTableValue}>
+                    <td className={styles.profileTableValue}>
                       {user.get('lastName')}
                     </td>
                   </tr>
                   <tr>
-                    <td style={this.profileTableTitle}>
+                    <td className={styles.profileTableTitle}>
                       {t('user:element.supervisor')}
                     </td>
-                    <td style={this.profileTableValue}>
+                    <td className={styles.profileTableValue}>
                       {
                       user.get('supervisor')
                         ? `${user.getIn(['supervisor', 'firstName'])} ${user.getIn(['supervisor', 'lastName'])}`
@@ -149,28 +101,28 @@ class ProfileComponent extends React.Component {
                     </td>
                   </tr>
                   <tr>
-                    <td style={this.profileTableTitle}>
+                    <td className={styles.profileTableTitle}>
                       {t('user:element.email')}
                     </td>
-                    <td style={this.profileTableValue}>
+                    <td className={styles.profileTableValue}>
                       {user.get('email')}
                     </td>
                   </tr>
                   <tr>
-                    <td style={this.profileTableTitle}>
+                    <td className={styles.profileTableTitle}>
                       {t('user:element.employeeId')}
                     </td>
-                    <td style={this.profileTableValue}>
+                    <td className={styles.profileTableValue}>
                       {user.get('employeeId')}
                     </td>
                   </tr>
                   <tr>
-                    <td style={this.profileTableTitle}>
+                    <td className={styles.profileTableTitle}>
                       {t('user:element.vacationDays')}
                       {' '}
                       {currentYear}
                     </td>
-                    <td style={this.profileTableValue}>
+                    <td className={styles.profileTableValue}>
                       {t(
                         'user:text.vacationDaysLeft',
                         {
@@ -184,10 +136,10 @@ class ProfileComponent extends React.Component {
                     <td colSpan={2} />
                   </tr>
                   <tr>
-                    <td style={this.profileTableTitle}>
+                    <td className={styles.profileTableTitle}>
                       {t('user:element.apiToken')}
                     </td>
-                    <td style={this.profileTableValue}>
+                    <td className={styles.profileTableValue}>
                       {!user.get('apiToken') && '-'}
                       {!!user.get('apiToken') && (
                         <Button
@@ -199,8 +151,8 @@ class ProfileComponent extends React.Component {
                           size="small"
                         />
                       )}
-                      <div style={this.apiTokenButtonsWrapper}>
-                        <div style={this.apiTokenButton}>
+                      <div className={styles.apiTokenButtonsWrapper}>
+                        <div className={styles.apiTokenButton}>
                           <Button
                             clickHandler={() => renewUserApiToken(user.get('id'))}
                             icon="autorenew"
@@ -212,7 +164,7 @@ class ProfileComponent extends React.Component {
                           />
                         </div>
                         {!!user.get('apiToken') && (
-                          <div style={this.apiTokenButton}>
+                          <div className={styles.apiTokenButton}>
                             <Button
                               clickHandler={() => resetUserApiToken(user.get('id'))}
                               icon="clear"
@@ -230,10 +182,10 @@ class ProfileComponent extends React.Component {
                   </tr>
                   {(user.get('roles') && user.get('roles').includes(ROLE_EMPLOYEE)) && (
                     <tr>
-                      <td style={this.profileTableTitle}>
+                      <td className={styles.profileTableTitle}>
                         {t('user:text.fastAccess')}
                       </td>
-                      <td style={this.profileTableValue}>
+                      <td className={styles.profileTableValue}>
                         {!user.get('apiToken') && '-'}
                         {!!user.get('apiToken') && (
                           <a href={routes.fastAccessAddWorkLog.replace(':apiToken', user.get('apiToken'))}>
@@ -246,9 +198,9 @@ class ProfileComponent extends React.Component {
                 </tbody>
               </table>
 
-              <h3 style={this.workHoursTitle}>{t('user:text.averageWorkingHoursTitle')}</h3>
-              <div style={this.responsiveTable}>
-                <table style={this.workHoursTable}>
+              <h3 className={styles.workHoursTitle}>{t('user:text.averageWorkingHoursTitle')}</h3>
+              <div className={styles.responsiveTable}>
+                <table className={styles.workHoursTable}>
                   <thead>
                     <tr>
                       <th />

@@ -1,5 +1,73 @@
+$_breakpoint: 55em;
+
 .actions {
-  float: right;
-  margin-top: -4.45rem;
-  margin-left: 2rem;
+  margin-bottom: 2rem;
+
+  @media screen and (min-width: $_breakpoint) {
+    float: right;
+    margin-top: -4.45rem;
+    margin-bottom: 0;
+    margin-left: 2rem;
+  }
+}
+
+.profileTableWrap {
+  overflow-x: scroll;
+}
+
+.profileTable {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 600px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.profileTableTitle {
+  width: 50%;
+  padding: 5px 10px;
+  font-weight: bold;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.workHoursTitle {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.profileTableValue {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.workHoursTable {
+  width: 100%;
+  max-width: 600px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.responsiveTable {
+  overflow-x: scroll;
+}
+
+.apiTokenButtonsWrapper {
+  margin-top: 0.5rem;
+
+  @media screen and (min-width: $_breakpoint) {
+    float: right;
+    margin-top: 0;
+  }
+}
+
+.apiTokenButton {
+  display: inline-block;
+
+  &:not(:first-of-type) {
+    margin-left: 0.5rem;
+  }
 }

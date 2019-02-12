@@ -5,165 +5,81 @@ exports[`rendering renders correctly 1`] = `
   loading={false}
   title="user:title.profile"
 >
-  <div>
+  <div
+    className="profileTableWrap"
+  >
     <table
-      style={
-        Object {
-          "borderCollapse": "collapse",
-          "marginLeft": "auto",
-          "marginRight": "auto",
-          "maxWidth": "600px",
-          "width": "100%",
-        }
-      }
+      className="profileTable"
     >
       <tbody>
         <tr>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid #ccc",
-                "borderTop": "1px solid #ccc",
-                "fontWeight": "bold",
-                "padding": "5px 10px",
-                "width": "50%",
-              }
-            }
+            className="profileTableTitle"
           >
             user:element.firstName
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid #ccc",
-                "borderTop": "1px solid #ccc",
-              }
-            }
+            className="profileTableValue"
           >
             First
           </td>
         </tr>
         <tr>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid #ccc",
-                "borderTop": "1px solid #ccc",
-                "fontWeight": "bold",
-                "padding": "5px 10px",
-                "width": "50%",
-              }
-            }
+            className="profileTableTitle"
           >
             user:element.lastName
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid #ccc",
-                "borderTop": "1px solid #ccc",
-              }
-            }
+            className="profileTableValue"
           >
             Last
           </td>
         </tr>
         <tr>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid #ccc",
-                "borderTop": "1px solid #ccc",
-                "fontWeight": "bold",
-                "padding": "5px 10px",
-                "width": "50%",
-              }
-            }
+            className="profileTableTitle"
           >
             user:element.supervisor
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid #ccc",
-                "borderTop": "1px solid #ccc",
-              }
-            }
+            className="profileTableValue"
           >
             -
           </td>
         </tr>
         <tr>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid #ccc",
-                "borderTop": "1px solid #ccc",
-                "fontWeight": "bold",
-                "padding": "5px 10px",
-                "width": "50%",
-              }
-            }
+            className="profileTableTitle"
           >
             user:element.email
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid #ccc",
-                "borderTop": "1px solid #ccc",
-              }
-            }
+            className="profileTableValue"
           >
             employee@example.com
           </td>
         </tr>
         <tr>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid #ccc",
-                "borderTop": "1px solid #ccc",
-                "fontWeight": "bold",
-                "padding": "5px 10px",
-                "width": "50%",
-              }
-            }
+            className="profileTableTitle"
           >
             user:element.employeeId
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid #ccc",
-                "borderTop": "1px solid #ccc",
-              }
-            }
+            className="profileTableValue"
           />
         </tr>
         <tr>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid #ccc",
-                "borderTop": "1px solid #ccc",
-                "fontWeight": "bold",
-                "padding": "5px 10px",
-                "width": "50%",
-              }
-            }
+            className="profileTableTitle"
           >
             user:element.vacationDays
              
             2019
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid #ccc",
-                "borderTop": "1px solid #ccc",
-              }
-            }
+            className="profileTableValue"
           >
             user:text.vacationDaysLeft
           </td>
@@ -175,25 +91,12 @@ exports[`rendering renders correctly 1`] = `
         </tr>
         <tr>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid #ccc",
-                "borderTop": "1px solid #ccc",
-                "fontWeight": "bold",
-                "padding": "5px 10px",
-                "width": "50%",
-              }
-            }
+            className="profileTableTitle"
           >
             user:element.apiToken
           </td>
           <td
-            style={
-              Object {
-                "borderBottom": "1px solid #ccc",
-                "borderTop": "1px solid #ccc",
-              }
-            }
+            className="profileTableValue"
           >
             <Button
               block={false}
@@ -210,19 +113,10 @@ exports[`rendering renders correctly 1`] = `
               variant="default"
             />
             <div
-              style={
-                Object {
-                  "float": "right",
-                }
-              }
+              className="apiTokenButtonsWrapper"
             >
               <div
-                style={
-                  Object {
-                    "display": "inline-block",
-                    "marginLeft": "0.5rem",
-                  }
-                }
+                className="apiTokenButton"
               >
                 <Button
                   block={false}
@@ -240,12 +134,7 @@ exports[`rendering renders correctly 1`] = `
                 />
               </div>
               <div
-                style={
-                  Object {
-                    "display": "inline-block",
-                    "marginLeft": "0.5rem",
-                  }
-                }
+                className="apiTokenButton"
               >
                 <Button
                   block={false}
@@ -268,34 +157,15 @@ exports[`rendering renders correctly 1`] = `
       </tbody>
     </table>
     <h3
-      style={
-        Object {
-          "fontSize": "1rem",
-          "fontWeight": "500",
-          "marginBottom": "1rem",
-          "marginTop": "3rem",
-          "textAlign": "center",
-        }
-      }
+      className="workHoursTitle"
     >
       user:text.averageWorkingHoursTitle
     </h3>
     <div
-      style={
-        Object {
-          "overflowX": "scroll",
-        }
-      }
+      className="responsiveTable"
     >
       <table
-        style={
-          Object {
-            "marginLeft": "auto",
-            "marginRight": "auto",
-            "maxWidth": "600px",
-            "width": "100%",
-          }
-        }
+        className="workHoursTable"
       >
         <thead>
           <tr>
