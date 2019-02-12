@@ -4,10 +4,10 @@
 }
 
 .fieldset {
-  max-width: 19em;
+  display: flex;
+  max-width: 10em;
   padding: 0;
-  margin-right: auto;
-  margin-left: auto;
+  margin: 0 auto;
   border: 0;
 }
 
