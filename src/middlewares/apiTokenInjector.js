@@ -1,8 +1,8 @@
-import { CALL_API } from 'redux-api-middleware';
+import { RSAA } from 'redux-api-middleware';
 import { matchPath } from 'react-router-dom';
 
 const apiTokenInjectorMiddleware = () => next => (action) => {
-  const callApi = action[CALL_API];
+  const callApi = action[RSAA];
 
   if (callApi) {
     const match = matchPath(
@@ -15,7 +15,7 @@ const apiTokenInjectorMiddleware = () => next => (action) => {
         apiToken: match.params.apiToken,
       });
 
-      return next(Object.assign({}, action, { [CALL_API]: callApi }));
+      return next(Object.assign({}, action, { [RSAA]: callApi }));
     }
   }
 
