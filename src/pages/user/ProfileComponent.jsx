@@ -193,7 +193,7 @@ class ProfileComponent extends React.Component {
                         <Button
                           clickHandler={() => this.setState({ apiTokenDialogOpened: true })}
                           icon="open_in_new"
-                          isLabelVisible="none"
+                          labelVisibility="none"
                           label={t('user:action.showApiToken')}
                           priority="primary"
                           size="small"
@@ -204,7 +204,7 @@ class ProfileComponent extends React.Component {
                           <Button
                             clickHandler={() => renewUserApiToken(user.get('id'))}
                             icon="autorenew"
-                            isLabelVisible="none"
+                            labelVisibility="none"
                             label={t('user:action.renewApiToken')}
                             loading={isPosting}
                             priority="primary"
@@ -216,7 +216,7 @@ class ProfileComponent extends React.Component {
                             <Button
                               clickHandler={() => resetUserApiToken(user.get('id'))}
                               icon="clear"
-                              isLabelVisible="none"
+                              labelVisibility="none"
                               label={t('user:action.resetApiToken')}
                               loading={isPosting}
                               priority="primary"
