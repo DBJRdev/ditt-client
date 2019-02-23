@@ -2,26 +2,61 @@
 
 exports[`rendering renders correctly with all props 1`] = `
 <div
-  className="Modal__overlay___2LRch"
+  className="Modal__overlay___1esDn"
   onClick={[Function]}
+  onScroll={[Function]}
   role="presentation"
 >
   <div
-    className="Modal__root___386pN"
+    className="Modal__root___2RrQs"
     onClick={[Function]}
     role="presentation"
   >
     <div
-      className="Modal__head___1Z5Bn"
+      className="Modal__head___21nX6"
     >
       <h3
-        className="Modal__headTitle___29_OR"
+        className="Modal__headTitle___24upJ"
       >
         workLog:modal.add.title
       </h3>
+      <button
+        className="Button__root___1siS8
+        Button__priorityFlat___21jzk
+        Button__sizeLarge___2ZbaS
+        
+        Button__iconPositionBefore___1ljSO"
+        disabled={false}
+        onClick={[Function]}
+        title={null}
+        type="button"
+      >
+        <span
+          className="Button__icon___2PzW6
+            Button__resetMargin___3FmbU"
+        >
+          <svg
+            className="Icon__isRootLarge___1tPUq Icon__root___3fU2F"
+            style={
+              Object {
+                "fill": "currentColor",
+              }
+            }
+          >
+            <use
+              xlinkHref="#ic_close_48px"
+            />
+          </svg>
+        </span>
+        <span
+          className="Button__hiddenLabel___22zCB"
+        >
+          general:action.close
+        </span>
+      </button>
     </div>
     <div
-      className="Modal__body___3KyQK"
+      className="Modal__body___2m3j7"
     >
       <p
         className="formErrorText"
@@ -50,18 +85,18 @@ exports[`rendering renders correctly with all props 1`] = `
             className="field"
           >
             <div
-              className="TextField__root___3Dilx"
+              className="TextField__root___klT1b"
             >
               <label
                 htmlFor="date"
               >
                 <div
-                  className="TextField__isLabelHidden___3U6DG"
+                  className="TextField__isLabelHidden___V036S"
                 >
                   workLog:element.date
                 </div>
                 <input
-                  className="TextField__input___7fOry"
+                  className="TextField__input___1q3SS"
                   disabled={true}
                   id="date"
                   onChange={null}
@@ -84,18 +119,18 @@ exports[`rendering renders correctly with all props 1`] = `
             className="field"
           >
             <div
-              className="SelectField__isRootCondensed___hi5xq SelectField__root___2payh"
+              className="SelectField__isRootCondensed___12nWu SelectField__root___kRfuX"
             >
               <label
                 htmlFor="type"
               >
                 <div
-                  className="SelectField__isLabelHidden___VCBL3"
+                  className="SelectField__isLabelHidden___1bsHa"
                 >
                   workLog:element.type
                 </div>
                 <select
-                  className="SelectField__select___3Lq-l"
+                  className="SelectField__select___1XVeg"
                   disabled={false}
                   id="type"
                   onChange={[Function]}
@@ -160,18 +195,18 @@ exports[`rendering renders correctly with all props 1`] = `
               className="field fieldDate"
             >
               <div
-                className="TextField__root___3Dilx"
+                className="TextField__root___klT1b"
               >
                 <label
                   htmlFor="startHour"
                 >
                   <div
-                    className="TextField__isLabelHidden___3U6DG"
+                    className="TextField__isLabelHidden___V036S"
                   >
                     workLog:element.startHour
                   </div>
                   <input
-                    className="TextField__input___7fOry"
+                    className="TextField__input___1q3SS"
                     disabled={false}
                     id="startHour"
                     onChange={[Function]}
@@ -188,18 +223,18 @@ exports[`rendering renders correctly with all props 1`] = `
               className="field fieldDate"
             >
               <div
-                className="TextField__root___3Dilx"
+                className="TextField__root___klT1b"
               >
                 <label
                   htmlFor="startMinute"
                 >
                   <div
-                    className="TextField__isLabelHidden___3U6DG"
+                    className="TextField__isLabelHidden___V036S"
                   >
                     workLog:element.startMinute
                   </div>
                   <input
-                    className="TextField__input___7fOry"
+                    className="TextField__input___1q3SS"
                     disabled={false}
                     id="startMinute"
                     onChange={[Function]}
@@ -225,18 +260,18 @@ exports[`rendering renders correctly with all props 1`] = `
               className="field fieldDate"
             >
               <div
-                className="TextField__root___3Dilx"
+                className="TextField__root___klT1b"
               >
                 <label
                   htmlFor="endHour"
                 >
                   <div
-                    className="TextField__isLabelHidden___3U6DG"
+                    className="TextField__isLabelHidden___V036S"
                   >
                     workLog:element.endHour
                   </div>
                   <input
-                    className="TextField__input___7fOry"
+                    className="TextField__input___1q3SS"
                     disabled={false}
                     id="endHour"
                     onChange={[Function]}
@@ -253,18 +288,18 @@ exports[`rendering renders correctly with all props 1`] = `
               className="field fieldDate"
             >
               <div
-                className="TextField__root___3Dilx"
+                className="TextField__root___klT1b"
               >
                 <label
                   htmlFor="endMinute"
                 >
                   <div
-                    className="TextField__isLabelHidden___3U6DG"
+                    className="TextField__isLabelHidden___V036S"
                   >
                     workLog:element.endMinute
                   </div>
                   <input
-                    className="TextField__input___7fOry"
+                    className="TextField__input___1q3SS"
                     disabled={false}
                     id="endMinute"
                     onChange={[Function]}
@@ -282,34 +317,42 @@ exports[`rendering renders correctly with all props 1`] = `
       </form>
     </div>
     <div
-      className="Modal__footer___2iTPs"
+      className="Modal__footer___8hj48"
     >
-      <button
-        className="Button__root___1d_g4
-        Button__priorityPrimary___3cllH
-        Button__sizeMedium___3hH6Z"
-        disabled={false}
-        onClick={[Function]}
-        title={null}
-        type="button"
+      <span
+        className="Modal__button___3F_6S"
       >
-        <span>
-          general:action.save
-        </span>
-      </button>
-      <button
-        className="Button__root___1d_g4
-        Button__priorityDefault___2rB14
-        Button__sizeMedium___3hH6Z"
-        disabled={false}
-        onClick={[Function]}
-        title={null}
-        type="button"
+        <button
+          className="Button__root___1siS8
+        Button__priorityPrimary___2lQD8
+        Button__sizeMedium___Ljlz9"
+          disabled={false}
+          onClick={[Function]}
+          title="general:action.save"
+          type="button"
+        >
+          <span>
+            general:action.save
+          </span>
+        </button>
+      </span>
+      <span
+        className="Modal__button___3F_6S"
       >
-        <span>
-          general:action.close
-        </span>
-      </button>
+        <button
+          className="Button__root___1siS8
+        Button__priorityDefault___mVWp6
+        Button__sizeMedium___Ljlz9"
+          disabled={false}
+          onClick={[Function]}
+          title="general:action.close"
+          type="button"
+        >
+          <span>
+            general:action.close
+          </span>
+        </button>
+      </span>
     </div>
   </div>
 </div>
@@ -317,26 +360,61 @@ exports[`rendering renders correctly with all props 1`] = `
 
 exports[`rendering renders correctly with mandatory props 1`] = `
 <div
-  className="Modal__overlay___2LRch"
+  className="Modal__overlay___1esDn"
   onClick={[Function]}
+  onScroll={[Function]}
   role="presentation"
 >
   <div
-    className="Modal__root___386pN"
+    className="Modal__root___2RrQs"
     onClick={[Function]}
     role="presentation"
   >
     <div
-      className="Modal__head___1Z5Bn"
+      className="Modal__head___21nX6"
     >
       <h3
-        className="Modal__headTitle___29_OR"
+        className="Modal__headTitle___24upJ"
       >
         workLog:modal.add.title
       </h3>
+      <button
+        className="Button__root___1siS8
+        Button__priorityFlat___21jzk
+        Button__sizeLarge___2ZbaS
+        
+        Button__iconPositionBefore___1ljSO"
+        disabled={false}
+        onClick={[Function]}
+        title={null}
+        type="button"
+      >
+        <span
+          className="Button__icon___2PzW6
+            Button__resetMargin___3FmbU"
+        >
+          <svg
+            className="Icon__isRootLarge___1tPUq Icon__root___3fU2F"
+            style={
+              Object {
+                "fill": "currentColor",
+              }
+            }
+          >
+            <use
+              xlinkHref="#ic_close_48px"
+            />
+          </svg>
+        </span>
+        <span
+          className="Button__hiddenLabel___22zCB"
+        >
+          general:action.close
+        </span>
+      </button>
     </div>
     <div
-      className="Modal__body___3KyQK"
+      className="Modal__body___2m3j7"
     >
       <p
         className="formErrorText"
@@ -352,18 +430,18 @@ exports[`rendering renders correctly with mandatory props 1`] = `
             className="field"
           >
             <div
-              className="TextField__root___3Dilx"
+              className="TextField__root___klT1b"
             >
               <label
                 htmlFor="date"
               >
                 <div
-                  className="TextField__isLabelHidden___3U6DG"
+                  className="TextField__isLabelHidden___V036S"
                 >
                   workLog:element.date
                 </div>
                 <input
-                  className="TextField__input___7fOry"
+                  className="TextField__input___1q3SS"
                   disabled={true}
                   id="date"
                   onChange={null}
@@ -386,18 +464,18 @@ exports[`rendering renders correctly with mandatory props 1`] = `
             className="field"
           >
             <div
-              className="SelectField__isRootCondensed___hi5xq SelectField__root___2payh"
+              className="SelectField__isRootCondensed___12nWu SelectField__root___kRfuX"
             >
               <label
                 htmlFor="type"
               >
                 <div
-                  className="SelectField__isLabelHidden___VCBL3"
+                  className="SelectField__isLabelHidden___1bsHa"
                 >
                   workLog:element.type
                 </div>
                 <select
-                  className="SelectField__select___3Lq-l"
+                  className="SelectField__select___1XVeg"
                   disabled={false}
                   id="type"
                   onChange={[Function]}
@@ -462,18 +540,18 @@ exports[`rendering renders correctly with mandatory props 1`] = `
               className="field fieldDate"
             >
               <div
-                className="TextField__root___3Dilx"
+                className="TextField__root___klT1b"
               >
                 <label
                   htmlFor="startHour"
                 >
                   <div
-                    className="TextField__isLabelHidden___3U6DG"
+                    className="TextField__isLabelHidden___V036S"
                   >
                     workLog:element.startHour
                   </div>
                   <input
-                    className="TextField__input___7fOry"
+                    className="TextField__input___1q3SS"
                     disabled={false}
                     id="startHour"
                     onChange={[Function]}
@@ -490,18 +568,18 @@ exports[`rendering renders correctly with mandatory props 1`] = `
               className="field fieldDate"
             >
               <div
-                className="TextField__root___3Dilx"
+                className="TextField__root___klT1b"
               >
                 <label
                   htmlFor="startMinute"
                 >
                   <div
-                    className="TextField__isLabelHidden___3U6DG"
+                    className="TextField__isLabelHidden___V036S"
                   >
                     workLog:element.startMinute
                   </div>
                   <input
-                    className="TextField__input___7fOry"
+                    className="TextField__input___1q3SS"
                     disabled={false}
                     id="startMinute"
                     onChange={[Function]}
@@ -527,18 +605,18 @@ exports[`rendering renders correctly with mandatory props 1`] = `
               className="field fieldDate"
             >
               <div
-                className="TextField__root___3Dilx"
+                className="TextField__root___klT1b"
               >
                 <label
                   htmlFor="endHour"
                 >
                   <div
-                    className="TextField__isLabelHidden___3U6DG"
+                    className="TextField__isLabelHidden___V036S"
                   >
                     workLog:element.endHour
                   </div>
                   <input
-                    className="TextField__input___7fOry"
+                    className="TextField__input___1q3SS"
                     disabled={false}
                     id="endHour"
                     onChange={[Function]}
@@ -555,18 +633,18 @@ exports[`rendering renders correctly with mandatory props 1`] = `
               className="field fieldDate"
             >
               <div
-                className="TextField__root___3Dilx"
+                className="TextField__root___klT1b"
               >
                 <label
                   htmlFor="endMinute"
                 >
                   <div
-                    className="TextField__isLabelHidden___3U6DG"
+                    className="TextField__isLabelHidden___V036S"
                   >
                     workLog:element.endMinute
                   </div>
                   <input
-                    className="TextField__input___7fOry"
+                    className="TextField__input___1q3SS"
                     disabled={false}
                     id="endMinute"
                     onChange={[Function]}
@@ -584,34 +662,42 @@ exports[`rendering renders correctly with mandatory props 1`] = `
       </form>
     </div>
     <div
-      className="Modal__footer___2iTPs"
+      className="Modal__footer___8hj48"
     >
-      <button
-        className="Button__root___1d_g4
-        Button__priorityPrimary___3cllH
-        Button__sizeMedium___3hH6Z"
-        disabled={false}
-        onClick={[Function]}
-        title={null}
-        type="button"
+      <span
+        className="Modal__button___3F_6S"
       >
-        <span>
-          general:action.save
-        </span>
-      </button>
-      <button
-        className="Button__root___1d_g4
-        Button__priorityDefault___2rB14
-        Button__sizeMedium___3hH6Z"
-        disabled={false}
-        onClick={[Function]}
-        title={null}
-        type="button"
+        <button
+          className="Button__root___1siS8
+        Button__priorityPrimary___2lQD8
+        Button__sizeMedium___Ljlz9"
+          disabled={false}
+          onClick={[Function]}
+          title="general:action.save"
+          type="button"
+        >
+          <span>
+            general:action.save
+          </span>
+        </button>
+      </span>
+      <span
+        className="Modal__button___3F_6S"
       >
-        <span>
-          general:action.close
-        </span>
-      </button>
+        <button
+          className="Button__root___1siS8
+        Button__priorityDefault___mVWp6
+        Button__sizeMedium___Ljlz9"
+          disabled={false}
+          onClick={[Function]}
+          title="general:action.close"
+          type="button"
+        >
+          <span>
+            general:action.close
+          </span>
+        </button>
+      </span>
     </div>
   </div>
 </div>
