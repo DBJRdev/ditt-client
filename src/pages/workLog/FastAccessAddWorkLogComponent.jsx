@@ -58,7 +58,17 @@ class FastAccessAddWorkLogComponent extends React.Component {
 
       fetchConfig();
       fetchWorkMonthList(userResponse.payload.id).then((workMonthListResponse) => {
-        const workMonth = getWorkMonthByMonth(selectedDate, workMonthListResponse.payload);
+        const filterWorkMonth = data => ({
+          id: data.id,
+          month: parseInt(data.month, 10),
+          status: data.status,
+          user: data.user,
+          year: parseInt(data.year.year, 10),
+        });
+        const workMonth = getWorkMonthByMonth(
+          selectedDate,
+          workMonthListResponse.payload.map(filterWorkMonth)
+        );
 
         if (workMonth) {
           fetchWorkMonth(workMonth.id);

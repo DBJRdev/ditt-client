@@ -92,6 +92,15 @@ class LayoutComponent extends React.Component {
                   />
                 </div>
               )}
+              {this.isAuthorized([ROLE_SUPER_ADMIN]) && (
+                <div className={styles.navigationItem}>
+                  <Button
+                    clickHandler={() => history.push(routes.settings)}
+                    label={t('layout:menu.settings')}
+                    priority="default"
+                  />
+                </div>
+              )}
               <div className={styles.navigationItem}>
                 <Button
                   clickHandler={() => history.push(routes.profile)}

@@ -4,6 +4,14 @@
     "browser": true,
     "jest": true
   },
+  "overrides": [
+    {
+      "files": ["**/index.js", "src/service/*.js"],
+      "rules": {
+        "import/prefer-default-export": "off"
+      }
+    }
+  ],
   "rules": {
     "func-names": "off",
     "comma-dangle": ["error", {

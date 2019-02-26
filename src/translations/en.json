@@ -47,6 +47,7 @@
   "layout": {
     "menu": {
       "workLogs": "Monthly logs",
+      "settings": "Settings",
       "specialApprovals": "Special approvals",
       "supervisedUsers": "Supervised users",
       "users": "Users",
@@ -79,6 +80,11 @@
   "overtimeWorkLog": {
     "element": {
       "reason": "Reason of overtime"
+    }
+  },
+  "settings": {
+    "title": {
+      "settings": "Settings"
     }
   },
   "sickDayWorkLog": {

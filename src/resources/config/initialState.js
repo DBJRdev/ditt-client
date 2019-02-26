@@ -5,5 +5,7 @@ export default Immutable.fromJS({
     data: null,
     isFetching: false,
     isFetchingFailure: false,
+    isPosting: false,
+    isPostingFailure: false,
   },
 });

@@ -29,6 +29,7 @@ class AddComponent extends React.Component {
         isActive: false,
         lastName: null,
         plainPassword: null,
+        supervisor: null,
         vacationDays: null,
         workHours: {},
       },
@@ -64,7 +65,7 @@ class AddComponent extends React.Component {
       const formData = Object.assign({}, this.state.formData);
       const formValidity = Object.assign({}, this.state.formValidity);
 
-      this.props.config.get('supportedYear').forEach((year) => {
+      this.props.config.get('supportedYears').forEach((year) => {
         this.state.formData.workHours[year] = [];
 
         for (let month = 0; month < 12; month += 1) {
@@ -113,7 +114,7 @@ class AddComponent extends React.Component {
       this.props.t,
       this.state.formData,
       this.props.userList.toJS(),
-      this.props.config.get('supportedYear')
+      this.props.config.get('supportedYears')
     );
 
     this.setState({ formValidity });
@@ -134,7 +135,11 @@ class AddComponent extends React.Component {
 
       formData.workHours = workHours;
 
-      this.props.addUser(formData, this.props.config)
+      if (formData.supervisor === '') {
+        formData.supervisor = null;
+      }
+
+      this.props.addUser(formData)
         .then((response) => {
           formValidity.elements.form = this.props.t('user:validation.cannotAddUser');
 
@@ -158,9 +163,10 @@ class AddComponent extends React.Component {
     }));
 
     userList.unshift({
-      label: '-',
+      label: '',
       value: null,
     });
+
     return (
       <Layout title={t('user:title.addUser')} loading={this.props.isFetching}>
         <form>
@@ -235,7 +241,7 @@ class AddComponent extends React.Component {
           />
           <h2>{t('user:text.averageWorkingHoursTitle')}</h2>
           <p>{t('user:text.averageWorkingHoursDescription')}</p>
-          {this.props.config && this.props.config.get('supportedYear').map(year => (
+          {this.props.config && this.props.config.get('supportedYears').map(year => (
             <TextField
               changeHandler={this.changeWorkHourHandler}
               error={this.state.formValidity.elements.workHours[year]}

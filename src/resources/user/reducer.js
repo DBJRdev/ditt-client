@@ -13,6 +13,29 @@ export default (state, action) => {
     type,
   } = action;
 
+  const filterWorkHour = data => ({
+    month: parseInt(data.month, 10),
+    requiredHours: data.requiredHours,
+    year: parseInt(data.year.year, 10),
+  });
+
+  const filterWorkMonth = data => ({
+    id: data.id,
+    month: parseInt(data.month, 10),
+    status: data.status,
+    year: parseInt(data.year.year, 10),
+  });
+
+  const filterUser = data => ({
+    ...data,
+    workHours: data.workHours
+      ? data.workHours.map(filterWorkHour)
+      : [],
+    workMonths: data.workMonths
+      ? data.workMonths.map(filterWorkMonth)
+      : [],
+  });
+
   if (type === actionTypes.ADD_USER_REQUEST) {
     return state
       .setIn(['addUser', 'isPosting'], true)
@@ -21,11 +44,11 @@ export default (state, action) => {
 
   if (type === actionTypes.ADD_USER_SUCCESS) {
     let userList = state.getIn(['userList', 'data']);
-    userList = userList.set(userList.size, Immutable.fromJS(payload));
+    userList = userList.set(userList.size, Immutable.fromJS(filterUser(payload)));
 
     return state
       .setIn(['userList', 'data'], userList)
-      .setIn(['addUser', 'data'], Immutable.fromJS(payload))
+      .setIn(['addUser', 'data'], Immutable.fromJS(filterUser(payload)))
       .setIn(['addUser', 'isPosting'], false)
       .setIn(['addUser', 'isPostingFailure'], false);
   }
@@ -74,12 +97,12 @@ export default (state, action) => {
         return user;
       }
 
-      return Immutable.fromJS(payload);
+      return Immutable.fromJS(filterUser(payload));
     });
 
     return state
       .setIn(['userList', 'data'], userList)
-      .setIn(['editUser', 'data'], Immutable.fromJS(payload))
+      .setIn(['editUser', 'data'], Immutable.fromJS(filterUser(payload)))
       .setIn(['editUser', 'isPosting'], false)
       .setIn(['editUser', 'isPostingFailure'], false);
   }
@@ -99,7 +122,7 @@ export default (state, action) => {
 
   if (type === actionTypes.FETCH_SUPERVISED_USER_LIST_SUCCESS) {
     return state
-      .setIn(['supervisedUserList', 'data'], Immutable.fromJS(payload))
+      .setIn(['supervisedUserList', 'data'], Immutable.fromJS(payload.map(filterUser)))
       .setIn(['supervisedUserList', 'isFetching'], false)
       .setIn(['supervisedUserList', 'isFetchingFailure'], false);
   }
@@ -119,7 +142,7 @@ export default (state, action) => {
 
   if (type === actionTypes.FETCH_USER_SUCCESS) {
     return state
-      .setIn(['user', 'data'], Immutable.fromJS(payload))
+      .setIn(['user', 'data'], Immutable.fromJS(filterUser(payload)))
       .setIn(['user', 'isFetching'], false)
       .setIn(['user', 'isFetchingFailure'], false);
   }
@@ -139,7 +162,7 @@ export default (state, action) => {
 
   if (type === actionTypes.FETCH_USER_LIST_SUCCESS) {
     return state
-      .setIn(['userList', 'data'], Immutable.fromJS(payload))
+      .setIn(['userList', 'data'], Immutable.fromJS(payload.map(filterUser)))
       .setIn(['userList', 'isFetching'], false)
       .setIn(['userList', 'isFetchingFailure'], false);
   }

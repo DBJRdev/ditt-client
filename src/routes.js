@@ -8,6 +8,7 @@ export default {
   newPassword: '/new-password/:resetPasswordToken',
   profile: '/users/profile',
   recentSpecialApprovalList: '/recent-special-approvals',
+  settings: '/settings',
   specialApprovalList: '/special-approvals',
   supervisedUserList: '/supervised-users',
   supervisedUserWorkLog: '/supervised-users/:id/work-log',

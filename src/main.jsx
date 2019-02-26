@@ -16,6 +16,7 @@ import {
   LoginPage,
   NewPasswordPage,
 } from './pages/login';
+import { SettingsPage } from './pages/settings';
 import {
   ListContainer as SpecialApprovalListPage,
   RecentListContainer as RecentSpecialApprovalListPage,
@@ -107,6 +108,12 @@ ReactDOM.render(
               path={routes.userList}
               roles={[ROLE_ADMIN, ROLE_SUPER_ADMIN]}
               component={UserListPage}
+            />
+            <AuthorizedRoute
+              exact
+              path={routes.settings}
+              roles={[ROLE_SUPER_ADMIN]}
+              component={SettingsPage}
             />
             <Route
               exact

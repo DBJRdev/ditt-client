@@ -78,7 +78,7 @@ class EditComponent extends React.Component {
       const formData = Object.assign({}, this.state.formData);
       const formValidity = Object.assign({}, this.state.formValidity);
 
-      this.props.config.get('supportedYear').forEach((year) => {
+      this.props.config.get('supportedYears').forEach((year) => {
         this.state.formData.workHours[year] = [];
 
         for (let month = 0; month < 12; month += 1) {
@@ -143,7 +143,7 @@ class EditComponent extends React.Component {
       this.props.t,
       this.state.formData,
       this.props.userList.toJS(),
-      this.props.config.get('supportedYear')
+      this.props.config.get('supportedYears')
     );
 
     this.setState({ formValidity });
@@ -164,7 +164,11 @@ class EditComponent extends React.Component {
 
       formData.workHours = workHours;
 
-      this.props.editUser(formData, this.props.config)
+      if (formData.supervisor === '') {
+        formData.supervisor = null;
+      }
+
+      this.props.editUser(formData)
         .then((response) => {
           if (response.type === EDIT_USER_SUCCESS) {
             this.props.history.push(routes.userList);
@@ -353,7 +357,7 @@ class EditComponent extends React.Component {
           />
           <h2>{t('user:text.averageWorkingHoursTitle')}</h2>
           <p>{t('user:text.averageWorkingHoursDescription')}</p>
-          {this.props.config && this.props.config.get('supportedYear').map(year => (
+          {this.props.config && this.props.config.get('supportedYears').map(year => (
             <TextField
               changeHandler={this.changeWorkHourHandler}
               error={this.state.formValidity.elements.workHours[year]}

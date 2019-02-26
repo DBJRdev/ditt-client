@@ -47,6 +47,7 @@
   "layout": {
     "menu": {
       "workLogs": "Monatsübersicht",
+      "settings": "Einstellungen",
       "specialApprovals": "Anträge",
       "supervisedUsers": "Mitarbeiter*innen",
       "users": "Nutzer*innen",
@@ -79,6 +80,11 @@
   "overtimeWorkLog": {
     "element": {
       "reason": "Begründung für Mehrarbeit"
+    }
+  },
+  "settings": {
+    "title": {
+      "settings": "Einstellungen"
     }
   },
   "sickDayWorkLog": {

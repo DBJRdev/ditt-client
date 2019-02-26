@@ -38,6 +38,14 @@ export default (state, action) => {
   };
 
   const filterWorkMonth = data => ({
+    id: data.id,
+    month: parseInt(data.month, 10),
+    status: data.status,
+    user: data.user,
+    year: parseInt(data.year.year, 10),
+  });
+
+  const filterWorkMonthDetail = data => ({
     businessTripWorkLogs: data.businessTripWorkLogs.map(businessTripWorkLogsData => ({
       date: toMomentDateTime(businessTripWorkLogsData.date),
       id: parseInt(businessTripWorkLogsData.id, 10),
@@ -85,7 +93,7 @@ export default (state, action) => {
       startTime: toMomentDateTime(workLogData.startTime),
       type: WORK_LOG,
     })),
-    year: parseInt(data.year, 10),
+    year: parseInt(data.year.year, 10),
   });
 
   const filterSpecialApprovals = data => ({
@@ -104,7 +112,7 @@ export default (state, action) => {
           id: businessTripWorkLogsData.workMonth.user.id,
           lastName: businessTripWorkLogsData.workMonth.user.lastName,
         },
-        year: parseInt(businessTripWorkLogsData.workMonth.year, 10),
+        year: parseInt(businessTripWorkLogsData.workMonth.year.year, 10),
       },
     })),
     homeOfficeWorkLogs: data.homeOfficeWorkLogs.map(homeOfficeWorkLogsData => ({
@@ -123,7 +131,7 @@ export default (state, action) => {
           id: homeOfficeWorkLogsData.workMonth.user.id,
           lastName: homeOfficeWorkLogsData.workMonth.user.lastName,
         },
-        year: parseInt(homeOfficeWorkLogsData.workMonth.year, 10),
+        year: parseInt(homeOfficeWorkLogsData.workMonth.year.year, 10),
       },
     })),
     overtimeWorkLogs: data.overtimeWorkLogs.map(overtimeWorkLogsData => ({
@@ -141,7 +149,7 @@ export default (state, action) => {
           id: overtimeWorkLogsData.workMonth.user.id,
           lastName: overtimeWorkLogsData.workMonth.user.lastName,
         },
-        year: parseInt(overtimeWorkLogsData.workMonth.year, 10),
+        year: parseInt(overtimeWorkLogsData.workMonth.year.year, 10),
       },
     })),
     timeOffWorkLogs: data.timeOffWorkLogs.map(timeOffWorkLogsData => ({
@@ -160,7 +168,7 @@ export default (state, action) => {
           id: timeOffWorkLogsData.workMonth.user.id,
           lastName: timeOffWorkLogsData.workMonth.user.lastName,
         },
-        year: parseInt(timeOffWorkLogsData.workMonth.year, 10),
+        year: parseInt(timeOffWorkLogsData.workMonth.year.year, 10),
       },
     })),
     vacationWorkLogs: data.vacationWorkLogs.map(vacationWorkLogsData => ({
@@ -179,7 +187,7 @@ export default (state, action) => {
           id: vacationWorkLogsData.workMonth.user.id,
           lastName: vacationWorkLogsData.workMonth.user.lastName,
         },
-        year: parseInt(vacationWorkLogsData.workMonth.year, 10),
+        year: parseInt(vacationWorkLogsData.workMonth.year.year, 10),
       },
     })),
   });
@@ -232,7 +240,7 @@ export default (state, action) => {
 
   if (type === actionTypes.FETCH_WORK_MONTH_SUCCESS) {
     return state
-      .setIn(['workMonth', 'data'], Immutable.fromJS(filterWorkMonth(payload)))
+      .setIn(['workMonth', 'data'], Immutable.fromJS(filterWorkMonthDetail(payload)))
       .setIn(['workMonth', 'isFetching'], false)
       .setIn(['workMonth', 'isFetchingFailure'], false);
   }
@@ -252,7 +260,7 @@ export default (state, action) => {
 
   if (type === actionTypes.FETCH_WORK_MONTH_LIST_SUCCESS) {
     return state
-      .setIn(['workMonthList', 'data'], Immutable.fromJS(payload))
+      .setIn(['workMonthList', 'data'], Immutable.fromJS(payload.map(filterWorkMonth)))
       .setIn(['workMonthList', 'isFetching'], false)
       .setIn(['workMonthList', 'isFetchingFailure'], false);
   }
@@ -272,7 +280,7 @@ export default (state, action) => {
 
   if (type === actionTypes.MARK_WORK_MONTH_APPROVED_SUCCESS) {
     return state
-      .setIn(['workMonth', 'data'], Immutable.fromJS(filterWorkMonth(payload)))
+      .setIn(['workMonth', 'data'], Immutable.fromJS(filterWorkMonthDetail(payload)))
       .setIn(['workMonth', 'isPosting'], false)
       .setIn(['workMonth', 'isPostingFailure'], false);
   }
@@ -291,7 +299,7 @@ export default (state, action) => {
 
   if (type === actionTypes.MARK_WORK_MONTH_WAITING_FOR_APPROVAL_SUCCESS) {
     return state
-      .setIn(['workMonth', 'data'], Immutable.fromJS(filterWorkMonth(payload)))
+      .setIn(['workMonth', 'data'], Immutable.fromJS(filterWorkMonthDetail(payload)))
       .setIn(['workMonth', 'isPosting'], false)
       .setIn(['workMonth', 'isPostingFailure'], false);
   }

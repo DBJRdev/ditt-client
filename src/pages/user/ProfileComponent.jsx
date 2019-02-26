@@ -212,7 +212,7 @@ class ProfileComponent extends React.Component {
                     </tr>
                   </thead>
                   <tbody>
-                    {config && config.get('supportedYear').map(year => (
+                    {config && config.get('supportedYears').map(year => (
                       <tr key={year}>
                         <td>{year}</td>
                         {this.getRequiredHours(year).map(month => (

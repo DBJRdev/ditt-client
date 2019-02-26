@@ -1,5 +1,5 @@
 import Immutable from 'immutable';
-import { toMomentDateTime } from '../../services/dateTimeService';
+import { createDate } from '../../services/dateTimeService';
 import initialState from './initialState';
 import * as actionTypes from './actionTypes';
 
@@ -22,8 +22,12 @@ export default (state, action) => {
   if (type === actionTypes.FETCH_CONFIG_SUCCESS) {
     return state
       .setIn(['config', 'data'], Immutable.fromJS({
-        supportedHolidays: payload.supportedHolidays.map(date => toMomentDateTime(date)),
-        supportedYear: payload.supportedYear,
+        supportedHolidays: payload.supportedHolidays.map(date => createDate(
+          date.year.year,
+          date.month - 1,
+          date.day
+        )),
+        supportedYears: payload.supportedYears.map(supportedYear => supportedYear.year),
         workedHoursLimits: payload.workedHoursLimits,
       }))
       .setIn(['config', 'isFetching'], false)

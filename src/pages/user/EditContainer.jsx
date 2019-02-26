@@ -48,7 +48,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => ({
   deleteUser: id => dispatch(deleteUser(id)),
-  editUser: (data, config) => dispatch(editUser(data, config)),
+  editUser: data => dispatch(editUser(data)),
   fetchConfig: () => dispatch(fetchConfig()),
   fetchUser: id => dispatch(fetchUser(id)),
   fetchUserList: () => dispatch(fetchUserList()),

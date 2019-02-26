@@ -66,7 +66,9 @@ export const validateUser = (t, user, userList, supportedWorkHours) => {
     }
 
     for (let month = 0; month < 12; month += 1) {
-      if (Number.isNaN(getWorkHoursValue(user.workHours[year][month]))) {
+      const workHoursValue = getWorkHoursValue(user.workHours[year][month]);
+
+      if (Number.isNaN(workHoursValue) || workHoursValue >= 24) {
         const date = localizedMoment().set({ month });
 
         errors.elements.workHours[year] = t(
@@ -285,14 +287,14 @@ export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay) => 
       config.get('supportedHolidays')
     );
 
-    config.get('supportedYear').forEach((supportedYear) => {
+    config.get('supportedYears').forEach((supportedYear) => {
       vacationDaysByYear[supportedYear] = 0;
     });
     workingDays.forEach((workingDay) => {
       vacationDaysByYear[workingDay.year()] += 1;
     });
 
-    config.get('supportedYear').forEach((supportedYear) => {
+    config.get('supportedYears').forEach((supportedYear) => {
       if (vacationDaysByYear[supportedYear] > user.get('remainingVacationDaysByYear').toJS()[supportedYear]) {
         errors.elements.form = t('workLog:validation.vacationDaysExceeded');
         errors.isValid = false;

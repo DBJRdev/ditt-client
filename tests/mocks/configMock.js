@@ -9,7 +9,7 @@ export default Immutable.fromJS({
     toMomentDateTime('2018-12-26T00:00:00.000Z'),
     toMomentDateTime('2018-12-31T00:00:00.000Z'),
   ],
-  supportedYear: [
+  supportedYears: [
     2018,
     2019,
     2020,

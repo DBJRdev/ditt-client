@@ -27,7 +27,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  addUser: (data, config) => dispatch(addUser(data, config)),
+  addUser: data => dispatch(addUser(data)),
   fetchConfig: () => dispatch(fetchConfig()),
   fetchUserList: () => dispatch(fetchUserList()),
 });
