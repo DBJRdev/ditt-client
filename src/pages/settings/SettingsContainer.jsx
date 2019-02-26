@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import {
   fetchConfig,
+  saveConfig,
   selectConfig,
   selectConfigMeta,
 } from '../../resources/config';
@@ -18,6 +19,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => ({
   fetchConfig: () => dispatch(fetchConfig()),
+  saveConfig: data => dispatch(saveConfig(data)),
 });
 
 export default connect(

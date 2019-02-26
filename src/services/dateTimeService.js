@@ -65,6 +65,16 @@ export const toMomentDateTime = (dateTimeString) => {
   throw new Error('Invalid datetime');
 };
 
+export const toMomentDateTimeFromDayMonth = (dateTimeString) => {
+  const momentDateTime = moment(dateTimeString, 'D. M.').tz(TIMEZONE);
+
+  if (isMomentValid(momentDateTime)) {
+    return momentDateTime;
+  }
+
+  throw new Error('Invalid datetime');
+};
+
 export const toMomentDateTimeFromDayMonthYear = (dateTimeString) => {
   const momentDateTime = moment(dateTimeString, 'D. M. YYYY').tz(TIMEZONE);
 

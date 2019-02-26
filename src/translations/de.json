@@ -8,6 +8,15 @@
       "expectedArrival": "Voraussichtliche Rückkehr"
     }
   },
+  "config": {
+    "element": {
+      "holidays": "Feiertage",
+      "year": "Jahre"
+    },
+    "validation": {
+      "notUniqueYear": "This year already exists."
+    }
+  },
   "error": {
     "description": "Fehler",
     "title": "'Seite nicht gefunden"
@@ -83,8 +92,18 @@
     }
   },
   "settings": {
+    "action": {
+      "addYear": "Jahr hinzufügen",
+      "editYear": "Jahr bearbeiten"
+    },
+    "text": {
+      "holidayInfoText": "Write one date in format DD.MM. per line"
+    },
     "title": {
-      "settings": "Einstellungen"
+      "addYear": "Jahr hinzufügen",
+      "editYear": "Jahr bearbeiten",
+      "settings": "Einstellungen",
+      "yearsAndHolidays": "Jahre und Feiertage"
     }
   },
   "sickDayWorkLog": {

@@ -1,0 +1,48 @@
+$_layout-spacer-y: 2rem;
+
+.yearsAndHolidaysTitle {
+  display: inline-block;
+  margin-top: $_layout-spacer-y / 4;
+  margin-bottom: $_layout-spacer-y;
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.yearsAndHolidaysHeader {
+  width: 100%;
+}
+
+.yearsAndHolidaysHeaderBox {
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+}
+
+.yearTitle {
+  display: inline-block;
+  margin-top: $_layout-spacer-y / 2;
+  margin-bottom: $_layout-spacer-y / 2;
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
+.yearExpandButtonWrapper {
+  display: inline-block;
+  float: right;
+  line-height: 3.5rem;
+}
+
+.yearsAndHolidaysContentBox {
+  width: 100%;
+  margin-top: $_layout-spacer-y / 2;
+  margin-bottom: $_layout-spacer-y;
+}
+
+.holidaysTitle {
+  font-weight: 500;
+}
+
+.holidaysInfoText {
+  font-size: 0.75rem;
+  text-align: justify;
+  color: #666;
+}

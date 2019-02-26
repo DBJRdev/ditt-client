@@ -13,9 +13,63 @@ import {
   getWorkingDays,
   isOverlapping,
   localizedMoment,
+  toMomentDateTimeFromDayMonth,
   toMomentDateTimeFromDayMonthYear,
 } from './dateTimeService';
 import { getWorkHoursValue } from './workHoursService';
+
+export const validateSupportedYear = (t, supportedYear, supportedYears, isNew) => {
+  const errors = {
+    elements: {
+      holidays: null,
+      year: null,
+    },
+    isValid: true,
+  };
+
+  if (
+    supportedYear.year === null
+    || validator.isEmpty(supportedYear.year.toString())
+  ) {
+    errors.elements.year = t('general:validation.required');
+    errors.isValid = false;
+  }
+
+  if (supportedYear.holidays !== null) {
+    supportedYear.holidays.split('\n').forEach((line) => {
+      if (line.trim() === '') {
+        return;
+      }
+
+      try {
+        toMomentDateTimeFromDayMonth(line);
+      } catch (ex) {
+        errors.elements.holidays = t('general:validation.invalidDate');
+        errors.isValid = false;
+      }
+    });
+  }
+
+  if (!errors.isValid) {
+    return errors;
+  }
+
+  if (!validator.isNumeric(supportedYear.year.toString())) {
+    errors.elements.year = t('general:validation.invalidNumber');
+    errors.isValid = false;
+  }
+
+  if (!errors.isValid) {
+    return errors;
+  }
+
+  if (isNew && supportedYears.includes(parseInt(supportedYear.year, 10))) {
+    errors.elements.year = t('config:validation.notUniqueYear');
+    errors.isValid = false;
+  }
+
+  return errors;
+};
 
 export const validateUser = (t, user, userList, supportedWorkHours) => {
   const errors = {

@@ -8,6 +8,15 @@
       "expectedArrival": "Expected return"
     }
   },
+  "config": {
+    "element": {
+      "holidays": "Holidays",
+      "year": "Year"
+    },
+    "validation": {
+      "notUniqueYear": "This year already exists."
+    }
+  },
   "error": {
     "description": "Error",
     "title": "Page not found"
@@ -83,8 +92,18 @@
     }
   },
   "settings": {
+    "action": {
+      "addYear": "Add year",
+      "editYear": "Edit year"
+    },
+    "text": {
+      "holidayInfoText": "Write one date in format DD.MM. per line"
+    },
     "title": {
-      "settings": "Settings"
+      "addYear": "Add year",
+      "editYear": "Edit year",
+      "settings": "Settings",
+      "yearsAndHolidays": "Years and holidays"
     }
   },
   "sickDayWorkLog": {

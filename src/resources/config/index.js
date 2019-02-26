@@ -1,4 +1,7 @@
-export { fetchConfig } from './actions';
+export {
+  fetchConfig,
+  saveConfig,
+} from './actions';
 
 export {
   selectConfig,
