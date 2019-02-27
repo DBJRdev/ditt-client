@@ -1,4 +1,4 @@
-$_breakpoint: 55em;
+$_breakpoint: 70em;
 
 $_layout-spacer-x: 2rem;
 $_layout-spacer-y: 2rem;
@@ -32,12 +32,17 @@ $_layout-padding-x: 4vw;
   display: block;
   width: 10rem;
   height: auto;
+  margin-bottom: $_layout-spacer-x / 2;
+
+  @media screen and (min-width: $_breakpoint) {
+    margin-bottom: 0;
+  }
 }
 
 .title {
   display: block;
   font-weight: 500;
-  line-height: 3rem;
+  line-height: 2rem;
 
   @media screen and (min-width: $_breakpoint) {
     padding-left: $_layout-spacer-x;
@@ -48,9 +53,9 @@ $_layout-padding-x: 4vw;
 
 .navigation {
   display: flex;
-  width: 100%;
+  max-width: 100%;
   padding: ($_layout-spacer-y / 2) 0;
-  overflow-x: scroll;
+  overflow-x: auto;
 
   @media screen and (min-width: $_breakpoint) {
     padding-right: $_layout-spacer-x / 2;
@@ -76,7 +81,7 @@ $_layout-padding-x: 4vw;
 .bodyTitle {
   margin-top: $_layout-spacer-y / 4;
   margin-bottom: $_layout-spacer-y;
-  overflow-x: scroll;
+  overflow-x: auto;
   font-weight: 500;
   font-size: 1.75rem;
 }

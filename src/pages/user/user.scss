@@ -12,7 +12,7 @@ $_breakpoint: 55em;
 }
 
 .profileTableWrap {
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 
 .profileTable {
@@ -59,7 +59,6 @@ $_breakpoint: 55em;
   margin-top: 0.5rem;
 
   @media screen and (min-width: $_breakpoint) {
-    float: right;
     margin-top: 0;
   }
 }
@@ -67,7 +66,9 @@ $_breakpoint: 55em;
 .apiTokenButton {
   display: inline-block;
 
-  &:not(:first-of-type) {
-    margin-left: 0.5rem;
+  @media screen and (min-width: $_breakpoint) {
+    &:not(:first-of-type) {
+      margin-left: 0.5rem;
+    }
   }
 }
