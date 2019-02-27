@@ -12,32 +12,32 @@ exports[`rendering renders correctly 1`] = `
     width={302}
   />
   <div
-    className="Login__root___D3EYc"
+    className="Login__root___1xLjB"
   >
     <div
-      className="Login__title___1hehp"
+      className="Login__title___15StL"
     >
       layout:title
     </div>
     <div
-      className="Login__box___3f0It"
+      className="Login__box___30juA"
     >
       <form
         onSubmit={[Function]}
       >
         <div
-          className="TextField__root___klT1b"
+          className="TextField__root___3Dilx"
         >
           <label
             htmlFor="email"
           >
             <div
-              className="TextField__isLabelRequired___2Su3s TextField__label___3ot1c"
+              className="TextField__isLabelRequired___3cGdN TextField__label___3IwCj"
             >
               user:element.email
             </div>
             <input
-              className="TextField__input___1q3SS"
+              className="TextField__input___7fOry"
               disabled={false}
               id="email"
               onChange={[Function]}
@@ -48,18 +48,18 @@ exports[`rendering renders correctly 1`] = `
           </label>
         </div>
         <div
-          className="TextField__root___klT1b"
+          className="TextField__root___3Dilx"
         >
           <label
             htmlFor="password"
           >
             <div
-              className="TextField__isLabelRequired___2Su3s TextField__label___3ot1c"
+              className="TextField__isLabelRequired___3cGdN TextField__label___3IwCj"
             >
               user:element.plainPassword
             </div>
             <input
-              className="TextField__input___1q3SS"
+              className="TextField__input___7fOry"
               disabled={false}
               id="password"
               onChange={[Function]}
@@ -70,15 +70,15 @@ exports[`rendering renders correctly 1`] = `
           </label>
         </div>
         <button
-          className="Button__root___1siS8
-        Button__priorityPrimary___2lQD8
-        Button__sizeMedium___Ljlz9
+          className="Button__root___1d_g4
+        Button__priorityPrimary___3cllH
+        Button__sizeMedium___3hH6Z
         
         
-        Button__block___3XuHQ"
+        Button__block___3gIv0"
           disabled={false}
           onClick={null}
-          title="login:action.signIn"
+          title={null}
           type="submit"
         >
           <span>
@@ -87,7 +87,7 @@ exports[`rendering renders correctly 1`] = `
         </button>
       </form>
       <div
-        className="Login__footer___2ubFw"
+        className="Login__footer___WvhVH"
       >
         <a
           href="/forgot-password"
