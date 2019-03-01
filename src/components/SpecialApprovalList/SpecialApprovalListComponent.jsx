@@ -419,7 +419,7 @@ class SpecialApprovalListComponent extends React.Component {
 
           {t('homeOfficeWorkLog:element.comment')}
           {': '}
-          {this.props.homeOfficeWorkLog.get('comment')}
+          {this.props.homeOfficeWorkLog.get('comment') || '-'}
           <br />
 
           {t('workLog:element.status')}
@@ -739,7 +739,7 @@ SpecialApprovalListComponent.propTypes = {
       }).isRequired,
     })).isRequired,
     homeOfficeWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
-      comment: PropTypes.string.isRequired,
+      comment: PropTypes.string,
       date: PropTypes.shape.isRequired,
       id: PropTypes.number.isRequired,
       type: PropTypes.oneOf([HOME_OFFICE_WORK_LOG]).isRequired,

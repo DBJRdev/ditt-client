@@ -280,7 +280,7 @@
       },
       "type": {
         "businessTripWorkLog": "Dienstreise",
-        "homeOfficeWorkLog": "Telearbeit",
+        "homeOfficeWorkLog": "Mobile Arbeit",
         "overtimeWorkLog": "Mehrarbeit",
         "sickDayWorkLog": "Kranktag",
         "timeOffWorkLog": "Freizeitausgleich",

@@ -457,7 +457,7 @@ class WorkLogCalendar extends React.Component {
 
           {t('homeOfficeWorkLog:element.comment')}
           {': '}
-          {this.props.homeOfficeWorkLog.get('comment')}
+          {this.props.homeOfficeWorkLog.get('comment') || '-'}
           <br />
 
           {t('workLog:element.status')}
