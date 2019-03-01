@@ -842,6 +842,7 @@ class WorkLogCalendar extends React.Component {
 
                         {
                           day.date.isSame(date, 'day')
+                          && !this.props.supervisorView
                           && (status === STATUS_OPENED || status === STATUS_WAITING_FOR_APPROVAL)
                           && (
                             <div>

@@ -1196,24 +1196,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          >
-            <div>
-              <Button
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                icon="play_arrow"
-                iconPosition="before"
-                isLabelVisible={true}
-                label="workLog:action.startWork"
-                loading={false}
-                priority="primary"
-                size="medium"
-                type="button"
-                variant="default"
-              />
-            </div>
-          </td>
+          />
           <td
             className="tableCellRight"
           >
