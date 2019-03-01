@@ -840,28 +840,32 @@ class WorkLogCalendar extends React.Component {
                           );
                         })}
 
-                        {day.date.isSame(date, 'day') && (
-                          <div>
-                            {
-                              this.state.workLogTimer
-                                ? (
-                                  <Button
-                                    clickHandler={this.stopWorkLogTimer}
-                                    icon="stop"
-                                    label={`${t('workLog:action.endWork')} | ${this.state.workLogTimerInterval}`}
-                                    priority="primary"
-                                  />
-                                ) : (
-                                  <Button
-                                    clickHandler={this.initAndStartWorkLogTimer}
-                                    icon="play_arrow"
-                                    label={t('workLog:action.startWork')}
-                                    priority="primary"
-                                  />
-                                )
-                            }
-                          </div>
-                        )}
+                        {
+                          day.date.isSame(date, 'day')
+                          && (status === STATUS_OPENED || status === STATUS_WAITING_FOR_APPROVAL)
+                          && (
+                            <div>
+                              {
+                                this.state.workLogTimer
+                                  ? (
+                                    <Button
+                                      clickHandler={this.stopWorkLogTimer}
+                                      icon="stop"
+                                      label={`${t('workLog:action.endWork')} | ${this.state.workLogTimerInterval}`}
+                                      priority="primary"
+                                    />
+                                  ) : (
+                                    <Button
+                                      clickHandler={this.initAndStartWorkLogTimer}
+                                      icon="play_arrow"
+                                      label={t('workLog:action.startWork')}
+                                      priority="primary"
+                                    />
+                                  )
+                              }
+                            </div>
+                          )
+                        }
                       </td>
                       {
                         !this.props.supervisorView
