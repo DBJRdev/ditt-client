@@ -775,7 +775,11 @@ class WorkLogCalendar extends React.Component {
                                     )
                                   }
                                   icon="pregnant_woman"
-                                  label={resolveLabel(workLog)}
+                                  label={
+                                    VARIANT_SICK_CHILD === workLog.variant
+                                      ? `${resolveLabel(workLog)} (${getSickDayVariantLabel(t, workLog.variant)})`
+                                      : resolveLabel(workLog)
+                                  }
                                 />
                               </div>
                             );
