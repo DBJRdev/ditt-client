@@ -3,6 +3,7 @@ import React from 'react';
 import jwt from 'jsonwebtoken';
 import { withNamespaces } from 'react-i18next';
 import { Button } from 'react-ui';
+import { Link } from 'react-router-dom';
 import {
   ROLE_ADMIN,
   ROLE_EMPLOYEE,
@@ -14,6 +15,28 @@ import styles from './Layout.scss';
 import logoImage from './images/logo.svg';
 
 class LayoutComponent extends React.Component {
+  getIndexUrl() {
+    if (this.props.token) {
+      const decodedToken = jwt.decode(this.props.token);
+
+      if (decodedToken) {
+        const { roles } = decodedToken;
+
+        if (roles.includes(ROLE_EMPLOYEE)) {
+          return routes.index;
+        }
+
+        if (roles.includes(ROLE_ADMIN) || roles.includes(ROLE_SUPER_ADMIN)) {
+          return routes.userList;
+        }
+
+        return routes.login;
+      }
+    }
+
+    return null;
+  }
+
   getName() {
     if (this.props.token) {
       const decodedToken = jwt.decode(this.props.token);
@@ -41,18 +64,30 @@ class LayoutComponent extends React.Component {
   render() {
     const { t } = this.props;
 
+    let logo = (
+      <img
+        src={logoImage}
+        width={183}
+        height={85}
+        className={styles.logo}
+        alt={t('layout:title')}
+      />
+    );
+
+    if (this.getIndexUrl()) {
+      logo = (
+        <Link to={this.getIndexUrl()}>
+          {logo}
+        </Link>
+      );
+    }
+
     return (
       <div>
         {this.isAuthorized([ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]) && (
           <header className={styles.header}>
             <div className={styles.brand}>
-              <img
-                src={logoImage}
-                width={183}
-                height={85}
-                className={styles.logo}
-                alt={t('layout:title')}
-              />
+              {logo}
               <span className={styles.title}>{t('layout:title')}</span>
             </div>
             <div className={styles.navigation}>
