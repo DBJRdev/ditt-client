@@ -11,7 +11,7 @@
   "config": {
     "element": {
       "holidays": "Feiertage",
-      "year": "Jahre"
+      "year": "Jahr"
     },
     "validation": {
       "notUniqueYear": "This year already exists."
@@ -97,7 +97,7 @@
       "editYear": "Jahr bearbeiten"
     },
     "text": {
-      "holidayInfoText": "Write one date in format DD.MM. per line"
+      "holidayInfoText": "Ein Datum pro Zeile im Format TT.MM."
     },
     "title": {
       "addYear": "Jahr hinzufügen",
