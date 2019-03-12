@@ -141,7 +141,9 @@ class WorkLogCalendar extends React.Component {
     this.props.changeSelectedDate(this.props.selectedDate.clone().subtract(1, 'month'));
   }
 
-  openDeleteWorkLogDialog(id, type) {
+  openDeleteWorkLogDialog(e, id, type) {
+    e.stopPropagation();
+
     if (BUSINESS_TRIP_WORK_LOG === type) {
       this.props.fetchBusinessTripWorkLog(id);
     } else if (HOME_OFFICE_WORK_LOG === type) {
@@ -673,12 +675,25 @@ class WorkLogCalendar extends React.Component {
             <table className={styles.table}>
               <tbody>
                 {daysOfSelectedMonth.map((day) => {
-                  const rowClassName = (isWeekend(day.date) || includesSameDate(day.date, this.props.config.get('supportedHolidays')))
-                    ? styles.tableRowWeekend
+                  let rowClassName = (
+                    isWeekend(day.date)
+                    || includesSameDate(day.date, this.props.config.get('supportedHolidays'))
+                  ) ? styles.tableRowWeekend
                     : styles.tableRow;
 
+                  const canAddWorkLog = !this.props.supervisorView
+                    && (status === STATUS_OPENED || status === STATUS_WAITING_FOR_APPROVAL);
+
+                  if (canAddWorkLog) {
+                    rowClassName = `${rowClassName} ${styles.tableRowAddWorkLog}`;
+                  }
+
                   return (
-                    <tr key={day.date.date()} className={rowClassName}>
+                    <tr
+                      className={rowClassName}
+                      key={day.date.date()}
+                      onClick={canAddWorkLog ? () => this.openWorkLogForm(day.date) : undefined}
+                    >
                       <td className={styles.tableCell}>
                         <div className={styles.date}>
                           {toDayMonthYearFormat(day.date)}
@@ -709,7 +724,8 @@ class WorkLogCalendar extends React.Component {
                               >
                                 <Button
                                   clickHandler={
-                                    () => this.openDeleteWorkLogDialog(
+                                    e => this.openDeleteWorkLogDialog(
+                                      e,
                                       workLog.id,
                                       BUSINESS_TRIP_WORK_LOG
                                     )
@@ -729,7 +745,8 @@ class WorkLogCalendar extends React.Component {
                               >
                                 <Button
                                   clickHandler={
-                                    () => this.openDeleteWorkLogDialog(
+                                    e => this.openDeleteWorkLogDialog(
+                                      e,
                                       workLog.id,
                                       HOME_OFFICE_WORK_LOG
                                     )
@@ -749,7 +766,8 @@ class WorkLogCalendar extends React.Component {
                               >
                                 <Button
                                   clickHandler={
-                                    () => this.openDeleteWorkLogDialog(
+                                    e => this.openDeleteWorkLogDialog(
+                                      e,
                                       workLog.id,
                                       OVERTIME_WORK_LOG
                                     )
@@ -769,7 +787,8 @@ class WorkLogCalendar extends React.Component {
                               >
                                 <Button
                                   clickHandler={
-                                    () => this.openDeleteWorkLogDialog(
+                                    e => this.openDeleteWorkLogDialog(
+                                      e,
                                       workLog.id,
                                       SICK_DAY_WORK_LOG
                                     )
@@ -793,7 +812,8 @@ class WorkLogCalendar extends React.Component {
                               >
                                 <Button
                                   clickHandler={
-                                    () => this.openDeleteWorkLogDialog(
+                                    e => this.openDeleteWorkLogDialog(
+                                      e,
                                       workLog.id,
                                       TIME_OFF_WORK_LOG
                                     )
@@ -813,7 +833,8 @@ class WorkLogCalendar extends React.Component {
                               >
                                 <Button
                                   clickHandler={
-                                    () => this.openDeleteWorkLogDialog(
+                                    e => this.openDeleteWorkLogDialog(
+                                      e,
                                       workLog.id,
                                       VACATION_WORK_LOG
                                     )
@@ -832,7 +853,8 @@ class WorkLogCalendar extends React.Component {
                             >
                               <Button
                                 clickHandler={
-                                  () => this.openDeleteWorkLogDialog(
+                                  e => this.openDeleteWorkLogDialog(
+                                    e,
                                     workLog.id,
                                     WORK_LOG
                                   )

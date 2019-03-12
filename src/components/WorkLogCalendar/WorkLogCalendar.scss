@@ -86,6 +86,10 @@ $_table-cell-padding-y: 0.25rem;
   }
 }
 
+.tableRowAddWorkLog {
+  cursor: pointer;
+}
+
 .tableCell {
   padding: $_table-cell-padding-y $_table-cell-padding-x;
   border-bottom: 1px solid #ccc;

@@ -3244,8 +3244,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
     >
       <tbody>
         <tr
-          className="tableRowWeekend"
+          className="tableRowWeekend tableRowAddWorkLog"
           key="1"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -3314,8 +3315,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="2"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -3367,8 +3369,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="3"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -3420,8 +3423,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="4"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -3473,8 +3477,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="5"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -3526,8 +3531,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRowWeekend"
+          className="tableRowWeekend tableRowAddWorkLog"
           key="6"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -3579,8 +3585,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRowWeekend"
+          className="tableRowWeekend tableRowAddWorkLog"
           key="7"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -3632,8 +3639,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="8"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -3685,8 +3693,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="9"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -3738,8 +3747,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="10"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -3791,8 +3801,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="11"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -3844,8 +3855,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="12"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -3897,8 +3909,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRowWeekend"
+          className="tableRowWeekend tableRowAddWorkLog"
           key="13"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -3950,8 +3963,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRowWeekend"
+          className="tableRowWeekend tableRowAddWorkLog"
           key="14"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -4003,8 +4017,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="15"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -4056,8 +4071,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="16"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -4109,8 +4125,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="17"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -4162,8 +4179,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="18"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -4215,8 +4233,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="19"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -4268,8 +4287,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRowWeekend"
+          className="tableRowWeekend tableRowAddWorkLog"
           key="20"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -4321,8 +4341,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRowWeekend"
+          className="tableRowWeekend tableRowAddWorkLog"
           key="21"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -4374,8 +4395,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="22"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -4427,8 +4449,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="23"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -4480,8 +4503,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="24"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -4533,8 +4557,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="25"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -4586,8 +4611,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="26"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -4639,8 +4665,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRowWeekend"
+          className="tableRowWeekend tableRowAddWorkLog"
           key="27"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -4692,8 +4719,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRowWeekend"
+          className="tableRowWeekend tableRowAddWorkLog"
           key="28"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -4745,8 +4773,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="29"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -4798,8 +4827,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="30"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -4851,8 +4881,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="31"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -4996,8 +5027,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
     >
       <tbody>
         <tr
-          className="tableRowWeekend"
+          className="tableRowWeekend tableRowAddWorkLog"
           key="1"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -5066,8 +5098,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="2"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -5119,8 +5152,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="3"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -5172,8 +5206,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="4"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -5225,8 +5260,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="5"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -5278,8 +5314,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRowWeekend"
+          className="tableRowWeekend tableRowAddWorkLog"
           key="6"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -5331,8 +5368,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRowWeekend"
+          className="tableRowWeekend tableRowAddWorkLog"
           key="7"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -5384,8 +5422,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="8"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -5437,8 +5476,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="9"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -5490,8 +5530,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="10"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -5543,8 +5584,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="11"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -5596,8 +5638,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="12"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -5649,8 +5692,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRowWeekend"
+          className="tableRowWeekend tableRowAddWorkLog"
           key="13"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -5702,8 +5746,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRowWeekend"
+          className="tableRowWeekend tableRowAddWorkLog"
           key="14"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -5755,8 +5800,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="15"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -5808,8 +5854,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="16"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -5861,8 +5908,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="17"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -5914,8 +5962,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="18"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -5967,8 +6016,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="19"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -6020,8 +6070,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRowWeekend"
+          className="tableRowWeekend tableRowAddWorkLog"
           key="20"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -6073,8 +6124,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRowWeekend"
+          className="tableRowWeekend tableRowAddWorkLog"
           key="21"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -6126,8 +6178,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="22"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -6179,8 +6232,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="23"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -6232,8 +6286,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="24"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -6285,8 +6340,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="25"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -6338,8 +6394,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="26"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -6391,8 +6448,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRowWeekend"
+          className="tableRowWeekend tableRowAddWorkLog"
           key="27"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -6444,8 +6502,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRowWeekend"
+          className="tableRowWeekend tableRowAddWorkLog"
           key="28"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -6497,8 +6556,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="29"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -6550,8 +6610,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="30"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
@@ -6603,8 +6664,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
           </td>
         </tr>
         <tr
-          className="tableRow"
+          className="tableRow tableRowAddWorkLog"
           key="31"
+          onClick={[Function]}
         >
           <td
             className="tableCell"
