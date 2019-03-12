@@ -14,7 +14,7 @@ exports[`rendering renders correctly 1`] = `
       settings:title.yearsAndHolidays
     </h2>
     <div
-      className="yearExpandButtonWrapper"
+      className="yearButtonsWrapper"
     >
       <Button
         block={false}
@@ -45,22 +45,26 @@ exports[`rendering renders correctly 1`] = `
         2018
       </h3>
       <div
-        className="yearExpandButtonWrapper"
+        className="yearButtonsWrapper"
       >
-        <Button
-          block={false}
-          clickHandler={[Function]}
-          disabled={false}
-          icon="edit"
-          iconPosition="before"
-          isLabelVisible={false}
-          label="settings:action.editYear"
-          loading={false}
-          priority="default"
-          size="medium"
-          type="button"
-          variant="default"
-        />
+        <div
+          className="yearEditButtonWrapper"
+        >
+          <Button
+            block={false}
+            clickHandler={[Function]}
+            disabled={false}
+            icon="edit"
+            iconPosition="before"
+            isLabelVisible={false}
+            label="settings:action.editYear"
+            loading={false}
+            priority="default"
+            size="medium"
+            type="button"
+            variant="default"
+          />
+        </div>
         <Button
           block={false}
           clickHandler={[Function]}
@@ -91,22 +95,26 @@ exports[`rendering renders correctly 1`] = `
         2019
       </h3>
       <div
-        className="yearExpandButtonWrapper"
+        className="yearButtonsWrapper"
       >
-        <Button
-          block={false}
-          clickHandler={[Function]}
-          disabled={false}
-          icon="edit"
-          iconPosition="before"
-          isLabelVisible={false}
-          label="settings:action.editYear"
-          loading={false}
-          priority="default"
-          size="medium"
-          type="button"
-          variant="default"
-        />
+        <div
+          className="yearEditButtonWrapper"
+        >
+          <Button
+            block={false}
+            clickHandler={[Function]}
+            disabled={false}
+            icon="edit"
+            iconPosition="before"
+            isLabelVisible={false}
+            label="settings:action.editYear"
+            loading={false}
+            priority="default"
+            size="medium"
+            type="button"
+            variant="default"
+          />
+        </div>
         <Button
           block={false}
           clickHandler={[Function]}
@@ -137,22 +145,26 @@ exports[`rendering renders correctly 1`] = `
         2020
       </h3>
       <div
-        className="yearExpandButtonWrapper"
+        className="yearButtonsWrapper"
       >
-        <Button
-          block={false}
-          clickHandler={[Function]}
-          disabled={false}
-          icon="edit"
-          iconPosition="before"
-          isLabelVisible={false}
-          label="settings:action.editYear"
-          loading={false}
-          priority="default"
-          size="medium"
-          type="button"
-          variant="default"
-        />
+        <div
+          className="yearEditButtonWrapper"
+        >
+          <Button
+            block={false}
+            clickHandler={[Function]}
+            disabled={false}
+            icon="edit"
+            iconPosition="before"
+            isLabelVisible={false}
+            label="settings:action.editYear"
+            loading={false}
+            priority="default"
+            size="medium"
+            type="button"
+            variant="default"
+          />
+        </div>
         <Button
           block={false}
           clickHandler={[Function]}
@@ -183,22 +195,26 @@ exports[`rendering renders correctly 1`] = `
         2021
       </h3>
       <div
-        className="yearExpandButtonWrapper"
+        className="yearButtonsWrapper"
       >
-        <Button
-          block={false}
-          clickHandler={[Function]}
-          disabled={false}
-          icon="edit"
-          iconPosition="before"
-          isLabelVisible={false}
-          label="settings:action.editYear"
-          loading={false}
-          priority="default"
-          size="medium"
-          type="button"
-          variant="default"
-        />
+        <div
+          className="yearEditButtonWrapper"
+        >
+          <Button
+            block={false}
+            clickHandler={[Function]}
+            disabled={false}
+            icon="edit"
+            iconPosition="before"
+            isLabelVisible={false}
+            label="settings:action.editYear"
+            loading={false}
+            priority="default"
+            size="medium"
+            type="button"
+            variant="default"
+          />
+        </div>
         <Button
           block={false}
           clickHandler={[Function]}

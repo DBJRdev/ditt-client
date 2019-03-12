@@ -219,14 +219,16 @@ class SettingsComponent extends React.Component {
           <h3 className={styles.yearTitle}>
             {supportedYear}
           </h3>
-          <div className={styles.yearExpandButtonWrapper}>
-            <Button
-              clickHandler={() => this.openEditYearDialog(supportedYear)}
-              icon="edit"
-              label={t('settings:action.editYear')}
-              isLabelVisible={false}
-              priority="default"
-            />
+          <div className={styles.yearButtonsWrapper}>
+            <div className={styles.yearEditButtonWrapper}>
+              <Button
+                clickHandler={() => this.openEditYearDialog(supportedYear)}
+                icon="edit"
+                label={t('settings:action.editYear')}
+                isLabelVisible={false}
+                priority="default"
+              />
+            </div>
             <Button
               clickHandler={() => this.changeOpenedYearHandler(supportedYear)}
               icon={isOpened ? 'expand_less' : 'expand_more'}
@@ -370,7 +372,7 @@ class SettingsComponent extends React.Component {
           <h2 className={styles.yearsAndHolidaysTitle}>
             {t('settings:title.yearsAndHolidays')}
           </h2>
-          <div className={styles.yearExpandButtonWrapper}>
+          <div className={styles.yearButtonsWrapper}>
             <Button
               clickHandler={this.openAddYearDialog}
               icon="add"

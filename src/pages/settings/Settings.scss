@@ -25,10 +25,15 @@ $_layout-spacer-y: 2rem;
   font-size: 1.25rem;
 }
 
-.yearExpandButtonWrapper {
+.yearButtonsWrapper {
   display: inline-block;
   float: right;
   line-height: 3.5rem;
+}
+
+.yearEditButtonWrapper {
+  display: inline-block;
+  margin-right: 1rem;
 }
 
 .yearsAndHolidaysContentBox {
