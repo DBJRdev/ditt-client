@@ -163,6 +163,17 @@ class LayoutComponent extends React.Component {
             }
           </div>
         </main>
+        <footer className={styles.footer}>
+          <p>
+            {t('layout:title')}
+            {window.dittLastUpdate && (
+              <>
+                {' | '}
+                {t('layout:text.lastUpdate', { date: window.dittLastUpdate || '' })}
+              </>
+            )}
+          </p>
+        </footer>
       </div>
     );
   }

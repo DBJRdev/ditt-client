@@ -68,7 +68,7 @@ $_layout-padding-x: 4vw;
 }
 
 .main {
-  padding: $_layout-spacer-y $_layout-padding-x (2 * $_layout-spacer-y) $_layout-padding-x;
+  padding: $_layout-spacer-y $_layout-padding-x $_layout-spacer-y $_layout-padding-x;
   background-color: #f6f5f4;
 }
 
@@ -84,4 +84,12 @@ $_layout-padding-x: 4vw;
   overflow-x: auto;
   font-weight: 500;
   font-size: 1.75rem;
+}
+
+.footer {
+  margin-bottom: $_layout-spacer-y;
+  font-weight: lighter;
+  font-size: 0.75rem;
+  text-align: center;
+  color: #717171;
 }

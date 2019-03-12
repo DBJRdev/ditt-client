@@ -70,10 +70,15 @@ node {
            returnStdout: true,
            script: 'git rev-parse HEAD 2> /dev/null || exit 0'
         ).trim()
+        def lastUpdate = sh(
+           returnStdout: true,
+           script: 'date "+%d. %m. %Y %H:%M"'
+        ).trim()
 
         if (deployBranches.containsKey(env.BRANCH_NAME)) {
             stage("Build ${env.BRANCH_NAME}") {
                 sh "sed -i \"s@__ASSET_VERSION__@${commit}@g\" public/index.html"
+                sh "sed -i \"s@__LAST_UPDATE__@${lastUpdate}@g\" public/index.html"
                 build(
                     deployBranches[env.BRANCH_NAME].config.environment,
                     commit,

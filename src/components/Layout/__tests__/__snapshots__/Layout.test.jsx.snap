@@ -16,6 +16,13 @@ exports[`rendering renders correctly with all props 1`] = `
       Content
     </div>
   </main>
+  <footer
+    className="footer"
+  >
+    <p>
+      layout:title
+    </p>
+  </footer>
 </div>
 `;
 
@@ -35,5 +42,12 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
       Content
     </div>
   </main>
+  <footer
+    className="footer"
+  >
+    <p>
+      layout:title
+    </p>
+  </footer>
 </div>
 `;

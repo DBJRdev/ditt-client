@@ -62,6 +62,9 @@
       "users": "Nutzer*innen",
       "logout": "Ausloggen"
     },
+    "text": {
+      "lastUpdate": "Letztes update: {{ date }}"
+    },
     "title": "DBJR Digitale Zeiterfassung"
   },
   "login": {
