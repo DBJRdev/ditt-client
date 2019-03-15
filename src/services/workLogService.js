@@ -132,6 +132,7 @@ export const getWorkedTime = (workLogList, workHoursList, workedHoursLimits) => 
 
     const workHours = workHoursList.find((
       workHour => workHour.get('month') === (businessTripWorkLog.date.month() + 1)
+        && workHour.get('year') === businessTripWorkLog.date.year()
     ));
     const requiredHours = workHours.get('requiredHours');
     const requiredSeconds = (requiredHours * 3600) + total;
@@ -146,6 +147,7 @@ export const getWorkedTime = (workLogList, workHoursList, workedHoursLimits) => 
     ) {
       const workHours = workHoursList.find((
         workHour => workHour.get('month') === (workLog.date.month() + 1)
+          && workHour.get('year') === workLog.date.year()
       ));
       const requiredHours = workHours.get('requiredHours');
 
