@@ -183,7 +183,11 @@ exports[`rendering renders correctly with all props 1`] = `
                 </label>
               </div>
             </div>
-            :
+            <span
+              className="colon"
+            >
+              :
+            </span>
             <div
               className="field fieldDate"
             >
@@ -248,7 +252,11 @@ exports[`rendering renders correctly with all props 1`] = `
                 </label>
               </div>
             </div>
-            :
+            <span
+              className="colon"
+            >
+              :
+            </span>
             <div
               className="field fieldDate"
             >
@@ -493,7 +501,11 @@ exports[`rendering renders correctly with mandatory props 1`] = `
                 </label>
               </div>
             </div>
-            :
+            <span
+              className="colon"
+            >
+              :
+            </span>
             <div
               className="field fieldDate"
             >
@@ -558,7 +570,11 @@ exports[`rendering renders correctly with mandatory props 1`] = `
                 </label>
               </div>
             </div>
-            :
+            <span
+              className="colon"
+            >
+              :
+            </span>
             <div
               className="field fieldDate"
             >

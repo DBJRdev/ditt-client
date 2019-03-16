@@ -505,7 +505,7 @@ class WorkLogForm extends React.Component {
                 value={formData.startHour || ''}
               />
             </div>
-            :
+            <span className={styles.colon}>:</span>
             <div className={[styles.field, styles.fieldDate].join(' ')}>
               <TextField
                 changeHandler={this.changeHandler}
@@ -532,7 +532,7 @@ class WorkLogForm extends React.Component {
                 value={formData.endHour || ''}
               />
             </div>
-            :
+            <span className={styles.colon}>:</span>
             <div className={[styles.field, styles.fieldDate].join(' ')}>
               <TextField
                 changeHandler={this.changeHandler}
