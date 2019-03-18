@@ -39,7 +39,7 @@ class EditComponent extends React.Component {
         lastName: null,
         plainPassword: null,
         supervisor: null,
-        vacationDays: null,
+        vacations: {},
         workHours: {},
       },
       formValidity: {
@@ -51,7 +51,7 @@ class EditComponent extends React.Component {
           isActive: null,
           lastName: null,
           supervisor: null,
-          vacationDays: null,
+          vacations: {},
           workHours: {},
         },
         isValid: false,
@@ -60,6 +60,7 @@ class EditComponent extends React.Component {
     };
 
     this.changeHandler = this.changeHandler.bind(this);
+    this.changeVacationHandler = this.changeVacationHandler.bind(this);
     this.changeWorkHourHandler = this.changeWorkHourHandler.bind(this);
     this.deleteHandler = this.deleteHandler.bind(this);
     this.saveHandler = this.saveHandler.bind(this);
@@ -85,6 +86,9 @@ class EditComponent extends React.Component {
           formData.workHours[year][month] = '0:00';
           formValidity.elements.workHours[year] = null;
         }
+
+        formData.vacations[year] = '0';
+        formValidity.elements.vacations[year] = null;
       });
 
       this.setState({
@@ -93,29 +97,37 @@ class EditComponent extends React.Component {
       });
 
       this.props.fetchUser(this.props.match.params.id).then(() => {
-        this.props.fetchWorkHoursList(this.props.match.params.id).then(() => {
-          const {
-            user,
-            workHours,
-          } = this.props;
-          const mergedWorkHours = this.state.formData.workHours;
+        this.props.fetchVacationList(this.props.match.params.id).then(() => {
+          this.props.fetchWorkHoursList(this.props.match.params.id).then(() => {
+            const {
+              user,
+              vacations,
+              workHours,
+            } = this.props;
+            const mergedVacations = this.state.formData.vacations;
+            const mergedWorkHours = this.state.formData.workHours;
 
-          workHours.forEach((workHoursItem) => {
-            mergedWorkHours[workHoursItem.get('year')][workHoursItem.get('month') - 1] = getWorkHoursString(workHoursItem.get('requiredHours'));
-          });
+            vacations.forEach((vacationItem) => {
+              mergedVacations[vacationItem.get('year')] = vacationItem.get('vacationDays').toString();
+            });
 
-          this.setState({
-            formData: {
-              email: user.get('email'),
-              employeeId: user.get('employeeId'),
-              firstName: user.get('firstName'),
-              id: user.get('id'),
-              isActive: user.get('isActive'),
-              lastName: user.get('lastName'),
-              supervisor: user.getIn(['supervisor', 'id']) ? user.getIn(['supervisor', 'id']) : null,
-              vacationDays: user.get('vacationDays'),
-              workHours: mergedWorkHours,
-            },
+            workHours.forEach((workHoursItem) => {
+              mergedWorkHours[workHoursItem.get('year')][workHoursItem.get('month') - 1] = getWorkHoursString(workHoursItem.get('requiredHours'));
+            });
+
+            this.setState({
+              formData: {
+                email: user.get('email'),
+                employeeId: user.get('employeeId'),
+                firstName: user.get('firstName'),
+                id: user.get('id'),
+                isActive: user.get('isActive'),
+                lastName: user.get('lastName'),
+                supervisor: user.getIn(['supervisor', 'id']) ? user.getIn(['supervisor', 'id']) : null,
+                vacations: mergedVacations,
+                workHours: mergedWorkHours,
+              },
+            });
           });
         });
 
@@ -150,7 +162,17 @@ class EditComponent extends React.Component {
 
     if (formValidity.isValid) {
       const formData = Object.assign({}, this.state.formData);
+      const vacations = [];
       const workHours = [];
+
+      Object.keys(formData.vacations).forEach((year) => {
+        vacations.push({
+          vacationDays: parseInt(formData.vacations[year], 10),
+          year: parseInt(year, 10),
+        });
+      });
+
+      formData.vacations = vacations;
 
       Object.keys(formData.workHours).forEach((year) => {
         formData.workHours[year].forEach((requiredHours, monthIndex) => {
@@ -194,6 +216,17 @@ class EditComponent extends React.Component {
           this.setState({ formValidity });
         }
       });
+  }
+
+  changeVacationHandler(e) {
+    const eventTarget = e.target;
+
+    this.setState((prevState) => {
+      const formData = Object.assign({}, prevState.formData);
+      formData.vacations[eventTarget.id] = eventTarget.value;
+
+      return { formData };
+    });
   }
 
   changeWorkHourHandler(e) {
@@ -347,14 +380,17 @@ class EditComponent extends React.Component {
             label={t('user:element.isActive')}
             required
           />
-          <TextField
-            changeHandler={this.changeHandler}
-            error={this.state.formValidity.elements.vacationDays}
-            fieldId="vacationDays"
-            label={t('user:element.vacationDays')}
-            type="text"
-            value={this.state.formData.vacationDays || '0'}
-          />
+          <h2>{t('user:text.vacationDays')}</h2>
+          {this.props.config && this.props.config.get('supportedYears').map(year => (
+            <TextField
+              changeHandler={this.changeVacationHandler}
+              error={this.state.formValidity.elements.vacations[year]}
+              fieldId={year.toString()}
+              key={year}
+              label={year.toString()}
+              value={this.state.formData.vacations[year] || ''}
+            />
+          ))}
           <h2>{t('user:text.averageWorkingHoursTitle')}</h2>
           <p>{t('user:text.averageWorkingHoursDescription')}</p>
           {this.props.config && this.props.config.get('supportedYears').map(year => (
@@ -392,6 +428,7 @@ EditComponent.propTypes = {
   fetchConfig: PropTypes.func.isRequired,
   fetchUser: PropTypes.func.isRequired,
   fetchUserList: PropTypes.func.isRequired,
+  fetchVacationList: PropTypes.func.isRequired,
   fetchWorkHoursList: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
@@ -416,12 +453,15 @@ EditComponent.propTypes = {
       id: PropTypes.number.isRequired,
       lastName: PropTypes.string.isRequired,
     }),
-    vacationDays: PropTypes.number.isRequired,
   }),
   userList: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
     firstName: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     lastName: PropTypes.string.isRequired,
+  })).isRequired,
+  vacations: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+    vacationDays: PropTypes.number.isRequired,
+    year: PropTypes.number.isRequired,
   })).isRequired,
   workHours: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
     month: PropTypes.number.isRequired,

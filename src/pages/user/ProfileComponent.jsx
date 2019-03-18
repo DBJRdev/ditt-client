@@ -1,5 +1,4 @@
 import ImmutablePropTypes from 'react-immutable-proptypes';
-import moment from 'moment-timezone';
 import PropTypes from 'prop-types';
 import React from 'react';
 import jwt from 'jsonwebtoken';
@@ -62,7 +61,6 @@ class ProfileComponent extends React.Component {
       workHours,
     } = this.props;
     const { apiTokenDialogOpened } = this.state;
-    const currentYear = moment().year();
 
     return (
       <Layout title={t('user:title.profile')} loading={this.props.isFetching}>
@@ -114,22 +112,6 @@ class ProfileComponent extends React.Component {
                     </td>
                     <td className={styles.profileTableValue}>
                       {user.get('employeeId')}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className={styles.profileTableTitle}>
-                      {t('user:element.vacationDays')}
-                      {' '}
-                      {currentYear}
-                    </td>
-                    <td className={styles.profileTableValue}>
-                      {t(
-                        'user:text.vacationDaysLeft',
-                        {
-                          remainingDays: user.get('remainingVacationDaysByYear').get(currentYear.toString()) || 0,
-                          vacationDays: user.get('vacationDays'),
-                        }
-                      )}
                     </td>
                   </tr>
                   <tr>
@@ -197,6 +179,38 @@ class ProfileComponent extends React.Component {
                   )}
                 </tbody>
               </table>
+
+              <h3 className={styles.vacationDaysTitle}>{t('user:text.vacationDays')}</h3>
+              <div className={styles.responsiveTable}>
+                <table className={styles.vacationTable}>
+                  <thead>
+                    <tr>
+                      <th>{t('vacation:text.year')}</th>
+                      <th>{t('vacation:text.total')}</th>
+                      <th>{t('vacation:text.used')}</th>
+                      <th>{t('vacation:text.remaining')}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {user.get('vacations') && user.get('vacations').map(vacation => (
+                      <tr key={vacation.get('year')}>
+                        <td className={styles.vacationTableFirstCell}>
+                          {vacation.get('year')}
+                        </td>
+                        <td className={styles.vacationTableCell}>
+                          {vacation.get('vacationDays')}
+                        </td>
+                        <td className={styles.vacationTableCell}>
+                          {vacation.get('vacationDays') - vacation.get('remainingVacationDays')}
+                        </td>
+                        <td className={styles.vacationTableCell}>
+                          {vacation.get('remainingVacationDays')}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
 
               <h3 className={styles.workHoursTitle}>{t('user:text.averageWorkingHoursTitle')}</h3>
               <div className={styles.responsiveTable}>
@@ -267,13 +281,15 @@ ProfileComponent.propTypes = {
     id: PropTypes.number.isRequired,
     isActive: PropTypes.bool.isRequired,
     lastName: PropTypes.string.isRequired,
-    remainingVacationDaysByYear: ImmutablePropTypes.mapContains({}).isRequired,
     supervisor: ImmutablePropTypes.mapContains({
       firstName: PropTypes.string.isRequired,
       id: PropTypes.number.isRequired,
       lastName: PropTypes.string.isRequired,
     }),
-    vacationDays: PropTypes.number.isRequired,
+    vacations: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+      vacationDays: PropTypes.number.isRequired,
+      year: PropTypes.number.isRequired,
+    })).isRequired,
   }),
   workHours: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
     month: PropTypes.number.isRequired,

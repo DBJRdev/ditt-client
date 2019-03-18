@@ -13,6 +13,17 @@ export default (state, action) => {
     type,
   } = action;
 
+  const filterUserYearStats = data => ({
+    ...data,
+    year: parseInt(data.year.year, 10),
+  });
+
+  const filterVacation = data => ({
+    remainingVacationDays: data.remainingVacationDays,
+    vacationDays: data.vacationDays,
+    year: parseInt(data.year.year, 10),
+  });
+
   const filterWorkHour = data => ({
     month: parseInt(data.month, 10),
     requiredHours: data.requiredHours,
@@ -28,6 +39,12 @@ export default (state, action) => {
 
   const filterUser = data => ({
     ...data,
+    yearStats: data.yearStats
+      ? data.yearStats.map(filterUserYearStats)
+      : [],
+    vacations: data.vacations
+      ? data.vacations.map(filterVacation)
+      : [],
     workHours: data.workHours
       ? data.workHours.map(filterWorkHour)
       : [],

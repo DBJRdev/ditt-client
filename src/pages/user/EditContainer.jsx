@@ -18,6 +18,11 @@ import {
   selectUserListMeta,
 } from '../../resources/user';
 import {
+  fetchVacationList,
+  selectVacationList,
+  selectVacationListMeta,
+} from '../../resources/vacation';
+import {
   fetchWorkHoursList,
   selectWorkHoursList,
   selectWorkHoursListMeta,
@@ -30,6 +35,7 @@ const mapStateToProps = (state) => {
   const deleteUserMeta = selectDeleteUserMeta(state);
   const userMeta = selectUserMeta(state);
   const userListMeta = selectUserListMeta(state);
+  const vacationListMeta = selectVacationListMeta(state);
   const workHoursListMeta = selectWorkHoursListMeta(state);
 
   return ({
@@ -37,11 +43,13 @@ const mapStateToProps = (state) => {
     isFetching: configMeta.isFetching
       || userMeta.isFetching
       || userListMeta.isFetching
+      || vacationListMeta.isFetching
       || workHoursListMeta.isFetching,
     isPosting: editUserMeta.isPosting || deleteUserMeta.isPosting,
     token: selectJwtToken(state),
     user: selectUser(state),
     userList: selectUserList(state),
+    vacations: selectVacationList(state),
     workHours: selectWorkHoursList(state),
   });
 };
@@ -52,6 +60,7 @@ const mapDispatchToProps = dispatch => ({
   fetchConfig: () => dispatch(fetchConfig()),
   fetchUser: id => dispatch(fetchUser(id)),
   fetchUserList: () => dispatch(fetchUserList()),
+  fetchVacationList: id => dispatch(fetchVacationList(id)),
   fetchWorkHoursList: id => dispatch(fetchWorkHoursList(id)),
 });
 

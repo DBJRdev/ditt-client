@@ -23,14 +23,29 @@ describe('rendering', () => {
         id: 1,
         isActive: true,
         lastName: 'Last',
-        remainingVacationDaysByYear: {
-          2018: 25,
-          2019: 25,
-          2020: 25,
-          2021: 25,
-        },
         supervisor: null,
-        vacationDays: 10,
+        vacations: [
+          {
+            remainingVacationDays: 10,
+            vacationDays: 20,
+            year: 2018,
+          },
+          {
+            remainingVacationDays: 10,
+            vacationDays: 20,
+            year: 2019,
+          },
+          {
+            remainingVacationDays: 10,
+            vacationDays: 20,
+            year: 2020,
+          },
+          {
+            remainingVacationDays: 10,
+            vacationDays: 20,
+            year: 2021,
+          },
+        ],
       }),
       workHours: Immutable.List(),
     };

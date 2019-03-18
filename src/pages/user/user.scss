@@ -31,15 +31,55 @@ $_breakpoint: 55em;
   border-bottom: 1px solid #ccc;
 }
 
-.workHoursTitle {
-  margin-top: 3rem;
-  margin-bottom: 1rem;
+.vacationDaysTitle {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 600px;
+  padding: 0 10px;
+  margin: 3rem auto 1.5rem;
   font-weight: 500;
-  font-size: 1rem;
-  text-align: center;
+  font-size: 1.25rem;
+}
+
+.workHoursTitle {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 600px;
+  padding: 0 10px;
+  margin: 3rem auto 1.5rem;
+  font-weight: 500;
+  font-size: 1.25rem;
 }
 
 .profileTableValue {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.vacationTable {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 600px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.vacationTable th {
+  padding: 5px 10px;
+}
+
+.vacationTableFirstCell {
+  padding: 5px 10px;
+  font-weight: bold;
+  text-align: center;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.vacationTableCell {
+  width: 25%;
+  padding: 5px 10px;
+  text-align: center;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
 }

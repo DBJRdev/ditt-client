@@ -13,6 +13,7 @@ describe('rendering', () => {
       fetchConfig: () => new Promise(() => {}),
       fetchUser: () => new Promise(() => {}),
       fetchUserList: () => {},
+      fetchVacationList: () => {},
       fetchWorkHoursList: () => {},
       history: {
         push: () => {},
@@ -35,6 +36,24 @@ describe('rendering', () => {
         vacationDays: 10,
       }),
       userList: Immutable.List([]),
+      vacations: Immutable.fromJS([
+        {
+          vacationDays: 20,
+          year: 2017,
+        },
+        {
+          vacationDays: 20,
+          year: 2018,
+        },
+        {
+          vacationDays: 20,
+          year: 2019,
+        },
+        {
+          vacationDays: 20,
+          year: 2020,
+        },
+      ]),
       workHours: Immutable.List([]),
     };
     const tree = shallow(<EditComponent {...props} />);

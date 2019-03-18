@@ -1169,7 +1169,10 @@ WorkLogCalendar.propTypes = {
       ]).isRequired,
     })).isRequired,
     user: ImmutablePropTypes.mapContains({
-      remainingVacationDaysByYear: ImmutablePropTypes.mapContains({}).isRequired,
+      vacations: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+        remainingVacationDays: PropTypes.number.isRequired,
+        year: PropTypes.number.isRequired,
+      })).isRequired,
     }).isRequired,
     vacationWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
       date: PropTypes.shape.isRequired,

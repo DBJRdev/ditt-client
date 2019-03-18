@@ -108,17 +108,63 @@ exports[`rendering renders correctly 1`] = `
       label="user:element.isActive"
       required={true}
     />
+    <h2>
+      user:text.vacationDays
+    </h2>
     <TextField
       changeHandler={[Function]}
       description={null}
       disabled={false}
       error={null}
-      fieldId="vacationDays"
+      fieldId="2018"
       isLabelVisible={true}
-      label="user:element.vacationDays"
+      key="2018"
+      label="2018"
       placeholder={null}
-      required={true}
-      type="number"
+      required={false}
+      type="text"
+      value=""
+    />
+    <TextField
+      changeHandler={[Function]}
+      description={null}
+      disabled={false}
+      error={null}
+      fieldId="2019"
+      isLabelVisible={true}
+      key="2019"
+      label="2019"
+      placeholder={null}
+      required={false}
+      type="text"
+      value=""
+    />
+    <TextField
+      changeHandler={[Function]}
+      description={null}
+      disabled={false}
+      error={null}
+      fieldId="2020"
+      isLabelVisible={true}
+      key="2020"
+      label="2020"
+      placeholder={null}
+      required={false}
+      type="text"
+      value=""
+    />
+    <TextField
+      changeHandler={[Function]}
+      description={null}
+      disabled={false}
+      error={null}
+      fieldId="2021"
+      isLabelVisible={true}
+      key="2021"
+      label="2021"
+      placeholder={null}
+      required={false}
+      type="text"
       value=""
     />
     <h2>

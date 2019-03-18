@@ -81,15 +81,17 @@ class ListComponent extends React.Component {
       },
       {
         format: (row) => {
+          const vacation = row.vacations.filter(vacationItem => vacationItem.year === year)[0];
+
           if (row.yearStats) {
             const userYearStats = row.yearStats.filter(stats => stats.year === year)[0];
 
-            if (userYearStats) {
-              return `${userYearStats.vacationDaysUsed}/${row.vacationDays}`;
+            if (userYearStats && vacation) {
+              return `${userYearStats.vacationDaysUsed}/${vacation.vacationDays}`;
             }
           }
 
-          return `0/${row.vacationDays}`;
+          return `0/${vacation.vacationDays}`;
         },
         isSortable: false,
         label: t('user:element.vacationDaysUsed'),

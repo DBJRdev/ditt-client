@@ -37,11 +37,41 @@ export default (state, action) => {
     return STATUS_WAITING_FOR_APPROVAL;
   };
 
+  const filterUserYearStats = data => ({
+    ...data,
+    year: parseInt(data.year.year, 10),
+  });
+
+  const filterVacation = data => ({
+    remainingVacationDays: data.remainingVacationDays,
+    vacationDays: data.vacationDays,
+    year: parseInt(data.year.year, 10),
+  });
+
+  const filterWorkHour = data => ({
+    month: parseInt(data.month, 10),
+    requiredHours: data.requiredHours,
+    year: parseInt(data.year.year, 10),
+  });
+
+  const filterUser = data => ({
+    ...data,
+    yearStats: data.yearStats
+      ? data.yearStats.map(filterUserYearStats)
+      : [],
+    vacations: data.vacations
+      ? data.vacations.map(filterVacation)
+      : [],
+    workHours: data.workHours
+      ? data.workHours.map(filterWorkHour)
+      : [],
+  });
+
   const filterWorkMonth = data => ({
     id: data.id,
     month: parseInt(data.month, 10),
     status: data.status,
-    user: data.user,
+    user: filterUser(data.user),
     year: parseInt(data.year.year, 10),
   });
 
@@ -79,7 +109,7 @@ export default (state, action) => {
       status: resolveWorkLogStatus(timeOffWorkLogsData),
       type: TIME_OFF_WORK_LOG,
     })),
-    user: data.user,
+    user: filterUser(data.user),
     vacationWorkLogs: data.vacationWorkLogs.map(vacationWorkLogsData => ({
       date: toMomentDateTime(vacationWorkLogsData.date),
       id: parseInt(vacationWorkLogsData.id, 10),

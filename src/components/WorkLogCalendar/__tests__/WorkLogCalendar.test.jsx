@@ -64,7 +64,16 @@ describe('rendering', () => {
           status: 'OPENED',
           timeOffWorkLogs: [],
           user: {
-            remainingVacationDaysByYear: {},
+            vacations: [
+              {
+                remainingVacationDays: 20,
+                year: 2017,
+              },
+              {
+                remainingVacationDays: 20,
+                year: 2018,
+              },
+            ],
           },
           vacationWorkLogs: [],
           workLogs: [],
@@ -137,7 +146,16 @@ describe('rendering', () => {
           status: 'WAITING_FOR_APPROVAL',
           timeOffWorkLogs: [],
           user: {
-            remainingVacationDaysByYear: {},
+            vacations: [
+              {
+                remainingVacationDays: 20,
+                year: 2017,
+              },
+              {
+                remainingVacationDays: 20,
+                year: 2018,
+              },
+            ],
           },
           vacationWorkLogs: [],
           workLogs: [],
@@ -210,7 +228,16 @@ describe('rendering', () => {
           status: 'APPROVED',
           timeOffWorkLogs: [],
           user: {
-            remainingVacationDaysByYear: {},
+            vacations: [
+              {
+                remainingVacationDays: 20,
+                year: 2017,
+              },
+              {
+                remainingVacationDays: 20,
+                year: 2018,
+              },
+            ],
           },
           vacationWorkLogs: [],
           workLogs: [],
@@ -284,7 +311,16 @@ describe('rendering', () => {
           status: 'OPENED',
           timeOffWorkLogs: [],
           user: {
-            remainingVacationDaysByYear: {},
+            vacations: [
+              {
+                remainingVacationDays: 20,
+                year: 2017,
+              },
+              {
+                remainingVacationDays: 20,
+                year: 2018,
+              },
+            ],
           },
           vacationWorkLogs: [],
           workLogs: [],
@@ -358,7 +394,16 @@ describe('rendering', () => {
           status: 'WAITING_FOR_APPROVAL',
           timeOffWorkLogs: [],
           user: {
-            remainingVacationDaysByYear: {},
+            vacations: [
+              {
+                remainingVacationDays: 20,
+                year: 2017,
+              },
+              {
+                remainingVacationDays: 20,
+                year: 2018,
+              },
+            ],
           },
           vacationWorkLogs: [],
           workLogs: [],
@@ -432,7 +477,16 @@ describe('rendering', () => {
           status: 'APPROVED',
           timeOffWorkLogs: [],
           user: {
-            remainingVacationDaysByYear: {},
+            vacations: [
+              {
+                remainingVacationDays: 20,
+                year: 2017,
+              },
+              {
+                remainingVacationDays: 20,
+                year: 2018,
+              },
+            ],
           },
           vacationWorkLogs: [],
           workLogs: [],
@@ -508,7 +562,16 @@ describe('functionality', () => {
           status: 'OPENED',
           timeOffWorkLogs: [],
           user: {
-            remainingVacationDaysByYear: {},
+            vacations: [
+              {
+                remainingVacationDays: 20,
+                year: 2017,
+              },
+              {
+                remainingVacationDays: 20,
+                year: 2018,
+              },
+            ],
           },
           vacationWorkLogs: [],
           workLogs: [],
@@ -586,7 +649,16 @@ describe('functionality', () => {
           status: 'OPENED',
           timeOffWorkLogs: [],
           user: {
-            remainingVacationDaysByYear: {},
+            vacations: [
+              {
+                remainingVacationDays: 20,
+                year: 2017,
+              },
+              {
+                remainingVacationDays: 20,
+                year: 2018,
+              },
+            ],
           },
           vacationWorkLogs: [],
           workLogs: [],
@@ -664,7 +736,16 @@ describe('functionality', () => {
           status: 'OPENED',
           timeOffWorkLogs: [],
           user: {
-            remainingVacationDaysByYear: {},
+            vacations: [
+              {
+                remainingVacationDays: 20,
+                year: 2017,
+              },
+              {
+                remainingVacationDays: 20,
+                year: 2018,
+              },
+            ],
           },
           vacationWorkLogs: [],
           workLogs: [],
@@ -741,7 +822,16 @@ describe('functionality', () => {
           status: 'WAITING_FOR_APPROVAL',
           timeOffWorkLogs: [],
           user: {
-            remainingVacationDaysByYear: {},
+            vacations: [
+              {
+                remainingVacationDays: 20,
+                year: 2017,
+              },
+              {
+                remainingVacationDays: 20,
+                year: 2018,
+              },
+            ],
           },
           vacationWorkLogs: [],
           workLogs: [],

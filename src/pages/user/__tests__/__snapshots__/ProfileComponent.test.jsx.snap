@@ -72,20 +72,6 @@ exports[`rendering renders correctly 1`] = `
         </tr>
         <tr>
           <td
-            className="profileTableTitle"
-          >
-            user:element.vacationDays
-             
-            2019
-          </td>
-          <td
-            className="profileTableValue"
-          >
-            user:text.vacationDaysLeft
-          </td>
-        </tr>
-        <tr>
-          <td
             colSpan={2}
           />
         </tr>
@@ -159,6 +145,133 @@ exports[`rendering renders correctly 1`] = `
         </tr>
       </tbody>
     </table>
+    <h3
+      className="vacationDaysTitle"
+    >
+      user:text.vacationDays
+    </h3>
+    <div
+      className="responsiveTable"
+    >
+      <table
+        className="vacationTable"
+      >
+        <thead>
+          <tr>
+            <th>
+              vacation:text.year
+            </th>
+            <th>
+              vacation:text.total
+            </th>
+            <th>
+              vacation:text.used
+            </th>
+            <th>
+              vacation:text.remaining
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            key="2018"
+          >
+            <td
+              className="vacationTableFirstCell"
+            >
+              2018
+            </td>
+            <td
+              className="vacationTableCell"
+            >
+              20
+            </td>
+            <td
+              className="vacationTableCell"
+            >
+              10
+            </td>
+            <td
+              className="vacationTableCell"
+            >
+              10
+            </td>
+          </tr>
+          <tr
+            key="2019"
+          >
+            <td
+              className="vacationTableFirstCell"
+            >
+              2019
+            </td>
+            <td
+              className="vacationTableCell"
+            >
+              20
+            </td>
+            <td
+              className="vacationTableCell"
+            >
+              10
+            </td>
+            <td
+              className="vacationTableCell"
+            >
+              10
+            </td>
+          </tr>
+          <tr
+            key="2020"
+          >
+            <td
+              className="vacationTableFirstCell"
+            >
+              2020
+            </td>
+            <td
+              className="vacationTableCell"
+            >
+              20
+            </td>
+            <td
+              className="vacationTableCell"
+            >
+              10
+            </td>
+            <td
+              className="vacationTableCell"
+            >
+              10
+            </td>
+          </tr>
+          <tr
+            key="2021"
+          >
+            <td
+              className="vacationTableFirstCell"
+            >
+              2021
+            </td>
+            <td
+              className="vacationTableCell"
+            >
+              20
+            </td>
+            <td
+              className="vacationTableCell"
+            >
+              10
+            </td>
+            <td
+              className="vacationTableCell"
+            >
+              10
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <h3
       className="workHoursTitle"
     >

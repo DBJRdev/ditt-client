@@ -30,7 +30,7 @@ class AddComponent extends React.Component {
         lastName: null,
         plainPassword: null,
         supervisor: null,
-        vacationDays: null,
+        vacations: {},
         workHours: {},
       },
       formValidity: {
@@ -43,7 +43,7 @@ class AddComponent extends React.Component {
           lastName: null,
           plainPassword: null,
           supervisor: null,
-          vacationDays: null,
+          vacations: {},
           workHours: {},
         },
         isValid: false,
@@ -51,6 +51,7 @@ class AddComponent extends React.Component {
     };
 
     this.changeHandler = this.changeHandler.bind(this);
+    this.changeVacationHandler = this.changeVacationHandler.bind(this);
     this.changeWorkHourHandler = this.changeWorkHourHandler.bind(this);
     this.saveHandler = this.saveHandler.bind(this);
 
@@ -72,6 +73,9 @@ class AddComponent extends React.Component {
           formData.workHours[year][month] = '0:00';
           formValidity.elements.workHours[year] = null;
         }
+
+        formData.vacations[year] = '0';
+        formValidity.elements.vacations[year] = null;
       });
 
       this.setState({
@@ -93,6 +97,17 @@ class AddComponent extends React.Component {
       } else {
         formData[eventTarget.id] = eventTarget.value;
       }
+
+      return { formData };
+    });
+  }
+
+  changeVacationHandler(e) {
+    const eventTarget = e.target;
+
+    this.setState((prevState) => {
+      const formData = Object.assign({}, prevState.formData);
+      formData.vacations[eventTarget.id] = eventTarget.value;
 
       return { formData };
     });
@@ -121,7 +136,17 @@ class AddComponent extends React.Component {
 
     if (formValidity.isValid) {
       const formData = Object.assign({}, this.state.formData);
+      const vacations = [];
       const workHours = [];
+
+      Object.keys(formData.vacations).forEach((year) => {
+        vacations.push({
+          vacationDays: parseInt(formData.vacations[year], 10),
+          year: parseInt(year, 10),
+        });
+      });
+
+      formData.vacations = vacations;
 
       Object.keys(formData.workHours).forEach((year) => {
         formData.workHours[year].forEach((requiredHours, monthIndex) => {
@@ -230,15 +255,17 @@ class AddComponent extends React.Component {
             label={t('user:element.isActive')}
             required
           />
-          <TextField
-            changeHandler={this.changeHandler}
-            error={this.state.formValidity.elements.vacationDays}
-            fieldId="vacationDays"
-            label={t('user:element.vacationDays')}
-            required
-            type="number"
-            value={this.state.formData.vacationDays || ''}
-          />
+          <h2>{t('user:text.vacationDays')}</h2>
+          {this.props.config && this.props.config.get('supportedYears').map(year => (
+            <TextField
+              changeHandler={this.changeVacationHandler}
+              error={this.state.formValidity.elements.vacations[year]}
+              fieldId={year.toString()}
+              key={year}
+              label={year.toString()}
+              value={this.state.formData.vacations[year] || ''}
+            />
+          ))}
           <h2>{t('user:text.averageWorkingHoursTitle')}</h2>
           <p>{t('user:text.averageWorkingHoursDescription')}</p>
           {this.props.config && this.props.config.get('supportedYears').map(year => (

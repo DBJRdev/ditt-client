@@ -723,7 +723,10 @@ WorkLogForm.propTypes = {
   showWorkLogTimer: PropTypes.bool,
   t: PropTypes.func.isRequired,
   user: ImmutablePropTypes.mapContains({
-    remainingVacationDaysByYear: ImmutablePropTypes.mapContains({}).isRequired,
+    vacations: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+      remainingVacationDays: PropTypes.number.isRequired,
+      year: PropTypes.number.isRequired,
+    })).isRequired,
   }).isRequired,
   workLogsOfDay: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
     endTime: PropTypes.shape.isRequired,

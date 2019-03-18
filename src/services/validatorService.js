@@ -12,11 +12,9 @@ import { VARIANT_SICK_CHILD } from '../resources/sickDayWorkLog';
 import {
   getWorkingDays,
   isOverlapping,
-  localizedMoment,
   toMomentDateTimeFromDayMonth,
   toMomentDateTimeFromDayMonthYear,
 } from './dateTimeService';
-import { getWorkHoursValue } from './workHoursService';
 
 export const validateSupportedYear = (t, supportedYear, supportedYears, isNew) => {
   const errors = {
@@ -82,7 +80,7 @@ export const validateUser = (t, user, userList, supportedWorkHours) => {
       lastName: null,
       plainPassword: null,
       supervisor: null,
-      vacationDays: null,
+      vacations: {},
       workHours: {},
     },
     isValid: true,
@@ -94,7 +92,6 @@ export const validateUser = (t, user, userList, supportedWorkHours) => {
     'email',
     'employeeId',
     'isActive',
-    'vacationDays',
   ];
 
   if (!user.id) {
@@ -112,27 +109,18 @@ export const validateUser = (t, user, userList, supportedWorkHours) => {
   });
 
   supportedWorkHours.forEach((year) => {
+    if (
+      !user.vacations[year]
+        || !validator.isNumeric(user.vacations[year].toString())
+        || user.vacations[year] < 0
+    ) {
+      errors.elements.vacations[year] = t('user:validation.invalidNumber');
+      errors.isValid = false;
+    }
+
     if (!user.workHours[year] || user.workHours[year].length !== 12) {
       errors.elements.workHours[year] = t('user:validation.invalidWorkHours');
       errors.isValid = false;
-
-      return;
-    }
-
-    for (let month = 0; month < 12; month += 1) {
-      const workHoursValue = getWorkHoursValue(user.workHours[year][month]);
-
-      if (Number.isNaN(workHoursValue) || workHoursValue >= 24) {
-        const date = localizedMoment().set({ month });
-
-        errors.elements.workHours[year] = t(
-          'user:validation.invalidWorkHoursMonth',
-          { month: date.format('MMMM') }
-        );
-        errors.isValid = false;
-
-        break;
-      }
     }
   });
 
@@ -194,16 +182,6 @@ export const validateUser = (t, user, userList, supportedWorkHours) => {
       errors.elements.email = t('general:validation.notUniqueEmail');
       errors.isValid = false;
     }
-  }
-
-  if (!errors.elements.vacationDays && !validator.isNumeric(user.vacationDays.toString())) {
-    errors.elements.vacationDays = t('general:validation.invalidNumber');
-    errors.isValid = false;
-  }
-
-  if (!errors.elements.vacationDays && user.vacationDays < 0) {
-    errors.elements.vacationDays = t('general:validation.invalidMinValue', { min: 8 });
-    errors.isValid = false;
   }
 
   return errors;
@@ -344,7 +322,9 @@ export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay) => 
     });
 
     config.get('supportedYears').forEach((supportedYear) => {
-      if (vacationDaysByYear[supportedYear] > user.get('remainingVacationDaysByYear').toJS()[supportedYear]) {
+      const vacation = user.get('vacations').find(vacationItem => vacationItem.get('year') === supportedYear);
+
+      if (vacationDaysByYear[supportedYear] > vacation.get('remainingVacationDays')) {
         errors.elements.form = t('workLog:validation.vacationDaysExceeded');
         errors.isValid = false;
       }

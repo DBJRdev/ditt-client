@@ -25,7 +25,18 @@ describe('rendering', () => {
       date={fakeMomentDateTime}
       isPosting={false}
       saveHandler={() => {}}
-      user={Immutable.fromJS({ remainingVacationDaysByYear: {} })}
+      user={Immutable.fromJS({
+        vacations: [
+          {
+            remainingVacationDays: 20,
+            year: 2017,
+          },
+          {
+            remainingVacationDays: 20,
+            year: 2018,
+          },
+        ],
+      })}
       workLogsOfDay={Immutable.List([])}
     />);
 
@@ -40,7 +51,18 @@ describe('rendering', () => {
       isPosting={false}
       saveHandler={() => {}}
       showInfoText
-      user={Immutable.fromJS({ remainingVacationDaysByYear: {} })}
+      user={Immutable.fromJS({
+        vacations: [
+          {
+            remainingVacationDays: 20,
+            year: 2017,
+          },
+          {
+            remainingVacationDays: 20,
+            year: 2018,
+          },
+        ],
+      })}
       workLogsOfDay={Immutable.List([])}
     />);
 
@@ -57,7 +79,18 @@ describe('functionality', () => {
       date={fakeMomentDateTime}
       isPosting={false}
       saveHandler={() => {}}
-      user={Immutable.fromJS({ remainingVacationDaysByYear: {} })}
+      user={Immutable.fromJS({
+        vacations: [
+          {
+            remainingVacationDays: 20,
+            year: 2017,
+          },
+          {
+            remainingVacationDays: 20,
+            year: 2018,
+          },
+        ],
+      })}
       workLogsOfDay={Immutable.List([])}
     />);
 

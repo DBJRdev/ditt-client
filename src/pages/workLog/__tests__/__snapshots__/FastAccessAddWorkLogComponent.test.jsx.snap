@@ -38,7 +38,16 @@ exports[`rendering renders correctly 1`] = `
   t={[Function]}
   user={
     Immutable.Map {
-      "remainingVacationDaysByYear": Immutable.Map {},
+      "vacations": Immutable.List [
+        Immutable.Map {
+          "remainingVacationDays": 20,
+          "year": 2017,
+        },
+        Immutable.Map {
+          "remainingVacationDays": 20,
+          "year": 2018,
+        },
+      ],
     }
   }
   workLogsOfDay={Immutable.List []}

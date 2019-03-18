@@ -203,6 +203,7 @@
       "averageWorkingHoursDescription": "Insert as amount of average working hours per day divided by \",\" starting with January.",
       "averageWorkingHoursTitle": "Average working hours per day",
       "fastAccess": "Fast access",
+      "vacationDays": "Vacation days",
       "vacationDaysLeft": "{{ remainingDays }} of {{ vacationDays }} days not scheduled yet"
     },
     "title": {
@@ -217,6 +218,14 @@
       "cannotEditUser": "User cannot be edited.",
       "invalidWorkHours": "This field requires 12 values separated by comma.",
       "invalidWorkHoursMonth": "Value for {{ month }} is not a number."
+    }
+  },
+  "vacation": {
+    "text": {
+      "remaining": "Remaining",
+      "total": "Total",
+      "used": "Used",
+      "year": "Year"
     }
   },
   "vacationWorkLog": {
