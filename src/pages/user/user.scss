@@ -112,3 +112,45 @@ $_breakpoint: 55em;
     }
   }
 }
+
+.detailPageWrapper {
+  width: 100%;
+  max-width: 600px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.detailSubheader {
+  margin: 3rem auto 1.5rem;
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
+.vacationsRow {
+  display: flex;
+}
+
+.vacationsRow > p {
+  flex: 5%;
+  font-weight: bold;
+  transform: translateY(50%);
+}
+
+.vacationsRow > div {
+  flex: 23.75%;
+  margin-left: 1rem;
+}
+
+@media screen and (max-width: 879px) {
+  .vacationsRow {
+    display: block;
+  }
+
+  .vacationsRow > p {
+    transform: translateY(0%);
+  }
+
+  .vacationsRow > div {
+    margin-left: 0;
+  }
+}

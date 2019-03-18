@@ -28,21 +28,25 @@ describe('rendering', () => {
           {
             remainingVacationDays: 10,
             vacationDays: 20,
+            vacationDaysCorrection: -5,
             year: 2018,
           },
           {
             remainingVacationDays: 10,
             vacationDays: 20,
+            vacationDaysCorrection: -5,
             year: 2019,
           },
           {
             remainingVacationDays: 10,
             vacationDays: 20,
+            vacationDaysCorrection: -5,
             year: 2020,
           },
           {
             remainingVacationDays: 10,
             vacationDays: 20,
+            vacationDaysCorrection: -5,
             year: 2021,
           },
         ],

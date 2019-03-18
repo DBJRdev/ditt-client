@@ -223,6 +223,7 @@
   },
   "vacation": {
     "text": {
+      "correction": "Korrektur",
       "remaining": "Restliche",
       "total": "Gesamt",
       "used": "Vergangene",

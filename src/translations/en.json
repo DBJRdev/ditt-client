@@ -222,6 +222,7 @@
   },
   "vacation": {
     "text": {
+      "correction": "Correction",
       "remaining": "Remaining",
       "total": "Total",
       "used": "Used",

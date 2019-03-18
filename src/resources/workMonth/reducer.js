@@ -45,6 +45,7 @@ export default (state, action) => {
   const filterVacation = data => ({
     remainingVacationDays: data.remainingVacationDays,
     vacationDays: data.vacationDays,
+    vacationDaysCorrection: data.vacationDaysCorrection,
     year: parseInt(data.year.year, 10),
   });
 
@@ -60,7 +61,7 @@ export default (state, action) => {
       ? data.yearStats.map(filterUserYearStats)
       : [],
     vacations: data.vacations
-      ? data.vacations.map(filterVacation)
+      ? data.vacations.map(filterVacation).sort((a, b) => a.year - b.year)
       : [],
     workHours: data.workHours
       ? data.workHours.map(filterWorkHour)

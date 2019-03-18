@@ -109,12 +109,25 @@ export const validateUser = (t, user, userList, supportedWorkHours) => {
   });
 
   supportedWorkHours.forEach((year) => {
+    errors.elements.vacations[year] = {
+      vacationDays: null,
+      vacationDaysCorrection: null,
+    };
+
     if (
       !user.vacations[year]
-        || !validator.isNumeric(user.vacations[year].toString())
-        || user.vacations[year] < 0
+        || !validator.isNumeric(user.vacations[year].vacationDays.toString())
+        || user.vacations[year].vacationDays < 0
     ) {
-      errors.elements.vacations[year] = t('user:validation.invalidNumber');
+      errors.elements.vacations[year].vacationDays = t('user:validation.invalidNumber');
+      errors.isValid = false;
+    }
+
+    if (
+      !user.vacations[year]
+      || !validator.isNumeric(user.vacations[year].vacationDaysCorrection.toString())
+    ) {
+      errors.elements.vacations[year].vacationDaysCorrection = t('user:validation.invalidNumber');
       errors.isValid = false;
     }
 

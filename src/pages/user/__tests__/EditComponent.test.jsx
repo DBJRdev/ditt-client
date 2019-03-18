@@ -39,18 +39,22 @@ describe('rendering', () => {
       vacations: Immutable.fromJS([
         {
           vacationDays: 20,
+          vacationDaysCorrection: -5,
           year: 2017,
         },
         {
           vacationDays: 20,
+          vacationDaysCorrection: -5,
           year: 2018,
         },
         {
           vacationDays: 20,
+          vacationDaysCorrection: -5,
           year: 2019,
         },
         {
           vacationDays: 20,
+          vacationDaysCorrection: -5,
           year: 2020,
         },
       ]),

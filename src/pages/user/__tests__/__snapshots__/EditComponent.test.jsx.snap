@@ -23,15 +23,9 @@ exports[`rendering renders correctly 1`] = `
       variant="danger"
     />
   </div>
-  <form>
-    <p
-      style={
-        Object {
-          "color": "#a32100",
-          "textAlign": "center",
-        }
-      }
-    />
+  <form
+    className="detailPageWrapper"
+  >
     <TextField
       changeHandler={[Function]}
       description={null}
@@ -126,127 +120,19 @@ exports[`rendering renders correctly 1`] = `
       label="user:element.isActive"
       required={true}
     />
-    <h2>
+    <h2
+      className="detailSubheader"
+    >
       user:text.vacationDays
     </h2>
-    <TextField
-      changeHandler={[Function]}
-      description={null}
-      disabled={false}
-      error={null}
-      fieldId="2018"
-      isLabelVisible={true}
-      key="2018"
-      label="2018"
-      placeholder={null}
-      required={false}
-      type="text"
-      value=""
-    />
-    <TextField
-      changeHandler={[Function]}
-      description={null}
-      disabled={false}
-      error={null}
-      fieldId="2019"
-      isLabelVisible={true}
-      key="2019"
-      label="2019"
-      placeholder={null}
-      required={false}
-      type="text"
-      value=""
-    />
-    <TextField
-      changeHandler={[Function]}
-      description={null}
-      disabled={false}
-      error={null}
-      fieldId="2020"
-      isLabelVisible={true}
-      key="2020"
-      label="2020"
-      placeholder={null}
-      required={false}
-      type="text"
-      value=""
-    />
-    <TextField
-      changeHandler={[Function]}
-      description={null}
-      disabled={false}
-      error={null}
-      fieldId="2021"
-      isLabelVisible={true}
-      key="2021"
-      label="2021"
-      placeholder={null}
-      required={false}
-      type="text"
-      value=""
-    />
-    <h2>
+    <h2
+      className="detailSubheader"
+    >
       user:text.averageWorkingHoursTitle
     </h2>
     <p>
       user:text.averageWorkingHoursDescription
     </p>
-    <TextField
-      changeHandler={[Function]}
-      description={null}
-      disabled={false}
-      error={null}
-      fieldId="2018"
-      isLabelVisible={true}
-      key="2018"
-      label="2018"
-      placeholder={null}
-      required={false}
-      type="text"
-      value=""
-    />
-    <TextField
-      changeHandler={[Function]}
-      description={null}
-      disabled={false}
-      error={null}
-      fieldId="2019"
-      isLabelVisible={true}
-      key="2019"
-      label="2019"
-      placeholder={null}
-      required={false}
-      type="text"
-      value=""
-    />
-    <TextField
-      changeHandler={[Function]}
-      description={null}
-      disabled={false}
-      error={null}
-      fieldId="2020"
-      isLabelVisible={true}
-      key="2020"
-      label="2020"
-      placeholder={null}
-      required={false}
-      type="text"
-      value=""
-    />
-    <TextField
-      changeHandler={[Function]}
-      description={null}
-      disabled={false}
-      error={null}
-      fieldId="2021"
-      isLabelVisible={true}
-      key="2021"
-      label="2021"
-      placeholder={null}
-      required={false}
-      type="text"
-      value=""
-    />
     <Button
       block={false}
       clickHandler={[Function]}

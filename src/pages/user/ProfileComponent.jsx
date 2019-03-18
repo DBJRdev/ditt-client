@@ -187,6 +187,7 @@ class ProfileComponent extends React.Component {
                     <tr>
                       <th>{t('vacation:text.year')}</th>
                       <th>{t('vacation:text.total')}</th>
+                      <th>{t('vacation:text.correction')}</th>
                       <th>{t('vacation:text.used')}</th>
                       <th>{t('vacation:text.remaining')}</th>
                     </tr>
@@ -201,7 +202,10 @@ class ProfileComponent extends React.Component {
                           {vacation.get('vacationDays')}
                         </td>
                         <td className={styles.vacationTableCell}>
-                          {vacation.get('vacationDays') - vacation.get('remainingVacationDays')}
+                          {vacation.get('vacationDaysCorrection')}
+                        </td>
+                        <td className={styles.vacationTableCell}>
+                          {vacation.get('vacationDays') + vacation.get('vacationDaysCorrection') - vacation.get('remainingVacationDays')}
                         </td>
                         <td className={styles.vacationTableCell}>
                           {vacation.get('remainingVacationDays')}
@@ -288,6 +292,7 @@ ProfileComponent.propTypes = {
     }),
     vacations: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
       vacationDays: PropTypes.number.isRequired,
+      vacationDaysCorrection: PropTypes.number.isRequired,
       year: PropTypes.number.isRequired,
     })).isRequired,
   }),

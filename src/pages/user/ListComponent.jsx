@@ -87,7 +87,7 @@ class ListComponent extends React.Component {
             const userYearStats = row.yearStats.filter(stats => stats.year === year)[0];
 
             if (userYearStats && vacation) {
-              return `${userYearStats.vacationDaysUsed}/${vacation.vacationDays}`;
+              return `${userYearStats.vacationDaysUsed}/${vacation.vacationDays + vacation.vacationDaysCorrection}`;
             }
           }
 

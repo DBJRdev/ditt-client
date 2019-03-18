@@ -14,6 +14,7 @@ export default (state, action) => {
 
   const filterWorkHour = data => ({
     vacationDays: data.vacationDays,
+    vacationDaysCorrection: data.vacationDaysCorrection,
     year: parseInt(data.year.year, 10),
   });
 

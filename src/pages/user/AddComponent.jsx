@@ -16,6 +16,7 @@ import { validateUser } from '../../services/validatorService';
 import { getWorkHoursValue } from '../../services/workHoursService';
 import Layout from '../../components/Layout';
 import routes from '../../routes';
+import styles from './user.scss';
 
 class AddComponent extends React.Component {
   constructor(props) {
@@ -51,7 +52,8 @@ class AddComponent extends React.Component {
     };
 
     this.changeHandler = this.changeHandler.bind(this);
-    this.changeVacationHandler = this.changeVacationHandler.bind(this);
+    this.changeVacationDaysHandler = this.changeVacationDaysHandler.bind(this);
+    this.changeVacationDaysCorrectionHandler = this.changeVacationDaysCorrectionHandler.bind(this);
     this.changeWorkHourHandler = this.changeWorkHourHandler.bind(this);
     this.saveHandler = this.saveHandler.bind(this);
 
@@ -74,8 +76,16 @@ class AddComponent extends React.Component {
           formValidity.elements.workHours[year] = null;
         }
 
-        formData.vacations[year] = '0';
-        formValidity.elements.vacations[year] = null;
+        formData.vacations[year] = {
+          remainingVacationDays: '0',
+          vacationDays: '0',
+          vacationDaysCorrection: '0',
+          vacationDaysUsed: '0',
+        };
+        formValidity.elements.vacations[year] = {
+          vacationDays: null,
+          vacationDaysCorrection: null,
+        };
       });
 
       this.setState({
@@ -102,13 +112,39 @@ class AddComponent extends React.Component {
     });
   }
 
-  changeVacationHandler(e) {
+  changeVacationDaysHandler(e) {
     const eventTarget = e.target;
 
     this.setState((prevState) => {
       const formData = Object.assign({}, prevState.formData);
-      formData.vacations[eventTarget.id] = eventTarget.value;
+      const remainingVacationDays = parseInt(eventTarget.value, 10)
+        + parseInt(formData.vacations[eventTarget.id].vacationDaysCorrection, 10)
+        - parseInt(formData.vacations[eventTarget.id].vacationDaysUsed, 10);
 
+      formData.vacations[eventTarget.id] = {
+        ...formData.vacations[eventTarget.id],
+        remainingVacationDays,
+        vacationDays: eventTarget.value,
+      };
+
+      return { formData };
+    });
+  }
+
+  changeVacationDaysCorrectionHandler(e) {
+    const eventTarget = e.target;
+
+    this.setState((prevState) => {
+      const formData = Object.assign({}, prevState.formData);
+      const remainingVacationDays = parseInt(formData.vacations[eventTarget.id].vacationDays, 10)
+        + parseInt(eventTarget.value, 10)
+        - parseInt(formData.vacations[eventTarget.id].vacationDaysUsed, 10);
+
+      formData.vacations[eventTarget.id] = {
+        ...formData.vacations[eventTarget.id],
+        remainingVacationDays,
+        vacationDaysCorrection: eventTarget.value,
+      };
       return { formData };
     });
   }
@@ -141,7 +177,8 @@ class AddComponent extends React.Component {
 
       Object.keys(formData.vacations).forEach((year) => {
         vacations.push({
-          vacationDays: parseInt(formData.vacations[year], 10),
+          vacationDays: parseInt(formData.vacations[year].vacationDays, 10),
+          vacationDaysCorrection: parseInt(formData.vacations[year].vacationDaysCorrection, 10),
           year: parseInt(year, 10),
         });
       });
@@ -194,10 +231,12 @@ class AddComponent extends React.Component {
 
     return (
       <Layout title={t('user:title.addUser')} loading={this.props.isFetching}>
-        <form>
-          <p style={this.formErrorStyle}>
-            {this.state.formValidity.elements.form}
-          </p>
+        <form className={styles.detailPageWrapper}>
+          {this.state.formValidity.elements.form && (
+            <p style={this.formErrorStyle}>
+              {this.state.formValidity.elements.form}
+            </p>
+          )}
           <TextField
             changeHandler={this.changeHandler}
             error={this.state.formValidity.elements.firstName}
@@ -255,38 +294,81 @@ class AddComponent extends React.Component {
             label={t('user:element.isActive')}
             required
           />
-          <h2>{t('user:text.vacationDays')}</h2>
-          {this.props.config && this.props.config.get('supportedYears').map(year => (
-            <TextField
-              changeHandler={this.changeVacationHandler}
-              error={this.state.formValidity.elements.vacations[year]}
-              fieldId={year.toString()}
-              key={year}
-              label={year.toString()}
-              value={this.state.formData.vacations[year] || ''}
-            />
-          ))}
-          <h2>{t('user:text.averageWorkingHoursTitle')}</h2>
-          <p>{t('user:text.averageWorkingHoursDescription')}</p>
-          {this.props.config && this.props.config.get('supportedYears').map(year => (
-            <TextField
-              changeHandler={this.changeWorkHourHandler}
-              error={this.state.formValidity.elements.workHours[year]}
-              fieldId={year.toString()}
-              key={year}
-              label={year.toString()}
-              value={
-                this.state.formData.workHours[year]
-                && this.state.formData.workHours[year].reduce((accValue, requiredHours) => {
-                  if (!accValue) {
-                    return requiredHours.toString();
-                  }
+          <h2 className={styles.detailSubheader}>
+            {t('user:text.vacationDays')}
+          </h2>
+          {this.props.config && this.props.config.get('supportedYears').map((year) => {
+            if (!this.state.formData.vacations[year]) {
+              return null;
+            }
 
-                  return `${accValue},${requiredHours}`;
-                }, null)
-              }
-            />
-          ))}
+            return (
+              <div
+                className={styles.vacationsRow}
+                key={year}
+              >
+                <p>{year}</p>
+                <TextField
+                  changeHandler={this.changeVacationDaysHandler}
+                  error={this.state.formValidity.elements.vacations[year].vacationDays}
+                  fieldId={year.toString()}
+                  label={t('vacation:text.total')}
+                  value={this.state.formData.vacations[year].vacationDays || ''}
+                />
+                <TextField
+                  changeHandler={this.changeVacationDaysCorrectionHandler}
+                  error={this.state.formValidity.elements.vacations[year].vacationDaysCorrection}
+                  fieldId={year.toString()}
+                  label={t('vacation:text.correction')}
+                  value={this.state.formData.vacations[year].vacationDaysCorrection || ''}
+                />
+                <TextField
+                  changeHandler={() => {}}
+                  disabled
+                  fieldId={year.toString()}
+                  label={t('vacation:text.used')}
+                  value={this.state.formData.vacations[year].vacationDaysUsed || ''}
+                />
+                <TextField
+                  changeHandler={() => {}}
+                  disabled
+                  fieldId={year.toString()}
+                  label={t('vacation:text.remaining')}
+                  value={this.state.formData.vacations[year].remainingVacationDays || ''}
+                />
+              </div>
+            );
+          })}
+          <h2 className={styles.detailSubheader}>
+            {t('user:text.averageWorkingHoursTitle')}
+          </h2>
+          <p>{t('user:text.averageWorkingHoursDescription')}</p>
+          {this.props.config && this.props.config.get('supportedYears').map((year) => {
+            if (!this.state.formData.workHours[year]) {
+              return null;
+            }
+
+            return (
+              <TextField
+                changeHandler={this.changeWorkHourHandler}
+                error={this.state.formValidity.elements.workHours[year]}
+                fieldId={year.toString()}
+                key={year}
+                label={year.toString()}
+                value={
+                  this.state.formData.workHours[year]
+                  && this.state.formData.workHours[year].reduce((accValue, requiredHours) => {
+                    if (!accValue) {
+                      return requiredHours.toString();
+                    }
+
+                    return `${accValue},${requiredHours}`;
+                  }, null)
+                }
+              />
+            );
+          })}
+
           <Button
             clickHandler={this.saveHandler}
             label={t('general:action.save')}
