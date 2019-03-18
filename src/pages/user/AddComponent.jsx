@@ -114,15 +114,16 @@ class AddComponent extends React.Component {
 
   changeVacationDaysHandler(e) {
     const eventTarget = e.target;
+    const eventTargetId = eventTarget.id.replace('vacationDays_', '');
 
     this.setState((prevState) => {
       const formData = Object.assign({}, prevState.formData);
       const remainingVacationDays = parseInt(eventTarget.value, 10)
-        + parseInt(formData.vacations[eventTarget.id].vacationDaysCorrection, 10)
-        - parseInt(formData.vacations[eventTarget.id].vacationDaysUsed, 10);
+        + parseInt(formData.vacations[eventTargetId].vacationDaysCorrection, 10)
+        - parseInt(formData.vacations[eventTargetId].vacationDaysUsed, 10);
 
-      formData.vacations[eventTarget.id] = {
-        ...formData.vacations[eventTarget.id],
+      formData.vacations[eventTargetId] = {
+        ...formData.vacations[eventTargetId],
         remainingVacationDays,
         vacationDays: eventTarget.value,
       };
@@ -133,15 +134,16 @@ class AddComponent extends React.Component {
 
   changeVacationDaysCorrectionHandler(e) {
     const eventTarget = e.target;
+    const eventTargetId = eventTarget.id.replace('vacationDaysCorrection_', '');
 
     this.setState((prevState) => {
       const formData = Object.assign({}, prevState.formData);
-      const remainingVacationDays = parseInt(formData.vacations[eventTarget.id].vacationDays, 10)
+      const remainingVacationDays = parseInt(formData.vacations[eventTargetId].vacationDays, 10)
         + parseInt(eventTarget.value, 10)
-        - parseInt(formData.vacations[eventTarget.id].vacationDaysUsed, 10);
+        - parseInt(formData.vacations[eventTargetId].vacationDaysUsed, 10);
 
-      formData.vacations[eventTarget.id] = {
-        ...formData.vacations[eventTarget.id],
+      formData.vacations[eventTargetId] = {
+        ...formData.vacations[eventTargetId],
         remainingVacationDays,
         vacationDaysCorrection: eventTarget.value,
       };
@@ -151,10 +153,11 @@ class AddComponent extends React.Component {
 
   changeWorkHourHandler(e) {
     const eventTarget = e.target;
+    const eventTargetId = eventTarget.id.replace('workHours_', '');
 
     this.setState((prevState) => {
       const formData = Object.assign({}, prevState.formData);
-      formData.workHours[eventTarget.id] = eventTarget.value.split(',');
+      formData.workHours[eventTargetId] = eventTarget.value.split(',');
 
       return { formData };
     });
@@ -311,28 +314,28 @@ class AddComponent extends React.Component {
                 <TextField
                   changeHandler={this.changeVacationDaysHandler}
                   error={this.state.formValidity.elements.vacations[year].vacationDays}
-                  fieldId={year.toString()}
+                  fieldId={`vacationDays_${year.toString()}`}
                   label={t('vacation:text.total')}
                   value={this.state.formData.vacations[year].vacationDays || ''}
                 />
                 <TextField
                   changeHandler={this.changeVacationDaysCorrectionHandler}
                   error={this.state.formValidity.elements.vacations[year].vacationDaysCorrection}
-                  fieldId={year.toString()}
+                  fieldId={`vacationDaysCorrection_${year.toString()}`}
                   label={t('vacation:text.correction')}
                   value={this.state.formData.vacations[year].vacationDaysCorrection || ''}
                 />
                 <TextField
                   changeHandler={() => {}}
                   disabled
-                  fieldId={year.toString()}
+                  fieldId={`vacationDaysUsed_${year.toString()}`}
                   label={t('vacation:text.used')}
                   value={this.state.formData.vacations[year].vacationDaysUsed || ''}
                 />
                 <TextField
                   changeHandler={() => {}}
                   disabled
-                  fieldId={year.toString()}
+                  fieldId={`remainingVacationDays_${year.toString()}`}
                   label={t('vacation:text.remaining')}
                   value={this.state.formData.vacations[year].remainingVacationDays || ''}
                 />

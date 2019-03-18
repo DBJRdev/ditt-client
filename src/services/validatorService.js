@@ -119,7 +119,7 @@ export const validateUser = (t, user, userList, supportedWorkHours) => {
         || !validator.isNumeric(user.vacations[year].vacationDays.toString())
         || user.vacations[year].vacationDays < 0
     ) {
-      errors.elements.vacations[year].vacationDays = t('user:validation.invalidNumber');
+      errors.elements.vacations[year].vacationDays = t('general:validation.invalidNumber');
       errors.isValid = false;
     }
 
@@ -127,7 +127,7 @@ export const validateUser = (t, user, userList, supportedWorkHours) => {
       !user.vacations[year]
       || !validator.isNumeric(user.vacations[year].vacationDaysCorrection.toString())
     ) {
-      errors.elements.vacations[year].vacationDaysCorrection = t('user:validation.invalidNumber');
+      errors.elements.vacations[year].vacationDaysCorrection = t('general:validation.invalidNumber');
       errors.isValid = false;
     }
 
