@@ -189,6 +189,8 @@ export const collapseWorkLogs = (originalWorkLogs, supportedHolidays) => {
 
   originalWorkLogs
     .sortBy(workLog => workLog.get('date'))
+    .sortBy(workLog => workLog.getIn(['workMonth', 'user', 'firstName']))
+    .sortBy(workLog => workLog.getIn(['workMonth', 'user', 'lastName']))
     .forEach((workLog) => {
       let status = workLog.get('status');
 
