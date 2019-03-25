@@ -57,6 +57,9 @@ export default (state, action) => {
 
   const filterUser = data => ({
     ...data,
+    supervisor: data.supervisor
+      ? filterUser(data.supervisor)
+      : null,
     yearStats: data.yearStats
       ? data.yearStats.map(filterUserYearStats)
       : [],
@@ -137,12 +140,7 @@ export default (state, action) => {
         id: parseInt(businessTripWorkLogsData.workMonth.id, 10),
         month: parseInt(businessTripWorkLogsData.workMonth.month, 10),
         status: businessTripWorkLogsData.workMonth.status,
-        user: {
-          email: businessTripWorkLogsData.workMonth.user.email,
-          firstName: businessTripWorkLogsData.workMonth.user.firstName,
-          id: businessTripWorkLogsData.workMonth.user.id,
-          lastName: businessTripWorkLogsData.workMonth.user.lastName,
-        },
+        user: filterUser(businessTripWorkLogsData.workMonth.user),
         year: parseInt(businessTripWorkLogsData.workMonth.year.year, 10),
       },
     })),
@@ -156,12 +154,7 @@ export default (state, action) => {
         id: parseInt(homeOfficeWorkLogsData.workMonth.id, 10),
         month: parseInt(homeOfficeWorkLogsData.workMonth.month, 10),
         status: homeOfficeWorkLogsData.workMonth.status,
-        user: {
-          email: homeOfficeWorkLogsData.workMonth.user.email,
-          firstName: homeOfficeWorkLogsData.workMonth.user.firstName,
-          id: homeOfficeWorkLogsData.workMonth.user.id,
-          lastName: homeOfficeWorkLogsData.workMonth.user.lastName,
-        },
+        user: filterUser(homeOfficeWorkLogsData.workMonth.user),
         year: parseInt(homeOfficeWorkLogsData.workMonth.year.year, 10),
       },
     })),
@@ -174,12 +167,7 @@ export default (state, action) => {
         id: parseInt(overtimeWorkLogsData.workMonth.id, 10),
         month: parseInt(overtimeWorkLogsData.workMonth.month, 10),
         status: overtimeWorkLogsData.workMonth.status,
-        user: {
-          email: overtimeWorkLogsData.workMonth.user.email,
-          firstName: overtimeWorkLogsData.workMonth.user.firstName,
-          id: overtimeWorkLogsData.workMonth.user.id,
-          lastName: overtimeWorkLogsData.workMonth.user.lastName,
-        },
+        user: filterUser(overtimeWorkLogsData.workMonth.user),
         year: parseInt(overtimeWorkLogsData.workMonth.year.year, 10),
       },
     })),
@@ -193,12 +181,7 @@ export default (state, action) => {
         id: parseInt(timeOffWorkLogsData.workMonth.id, 10),
         month: parseInt(timeOffWorkLogsData.workMonth.month, 10),
         status: timeOffWorkLogsData.workMonth.status,
-        user: {
-          email: timeOffWorkLogsData.workMonth.user.email,
-          firstName: timeOffWorkLogsData.workMonth.user.firstName,
-          id: timeOffWorkLogsData.workMonth.user.id,
-          lastName: timeOffWorkLogsData.workMonth.user.lastName,
-        },
+        user: filterUser(timeOffWorkLogsData.workMonth.user),
         year: parseInt(timeOffWorkLogsData.workMonth.year.year, 10),
       },
     })),
@@ -212,12 +195,7 @@ export default (state, action) => {
         id: parseInt(vacationWorkLogsData.workMonth.id, 10),
         month: parseInt(vacationWorkLogsData.workMonth.month, 10),
         status: vacationWorkLogsData.workMonth.status,
-        user: {
-          email: vacationWorkLogsData.workMonth.user.email,
-          firstName: vacationWorkLogsData.workMonth.user.firstName,
-          id: vacationWorkLogsData.workMonth.user.id,
-          lastName: vacationWorkLogsData.workMonth.user.lastName,
-        },
+        user: filterUser(vacationWorkLogsData.workMonth.user),
         year: parseInt(vacationWorkLogsData.workMonth.year.year, 10),
       },
     })),

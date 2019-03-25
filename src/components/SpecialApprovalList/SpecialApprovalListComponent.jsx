@@ -563,6 +563,17 @@ class SpecialApprovalListComponent extends React.Component {
     const { t } = this.props;
     const specialApprovals = this.getFilteredSpecialApprovals();
 
+    let uid = null;
+
+    if (this.props.token) {
+      const decodedToken = jwt.decode(this.props.token);
+
+      if (decodedToken) {
+        // eslint-disable-next-line prefer-destructuring
+        uid = decodedToken;
+      }
+    }
+
     return (
       <div>
         {specialApprovals.count() > 0 ? (
@@ -604,56 +615,61 @@ class SpecialApprovalListComponent extends React.Component {
                         priority="default"
                       />
                     </div>
-                    {STATUS_WAITING_FOR_APPROVAL === row.status && (
-                      <React.Fragment>
-                        <div className={styles.workLogButtonWrapper}>
-                          <Button
-                            clickHandler={() => {
-                              if (row.isBulk) {
-                                return this.handleMarkApproved(
-                                  row.bulkIds,
-                                  row.type,
-                                  row.isBulk
-                                );
-                              }
+                    {
+                      STATUS_WAITING_FOR_APPROVAL === row.status
+                      && row.workMonth.user.supervisor
+                      && row.workMonth.user.supervisor.id === uid
+                      && (
+                        <React.Fragment>
+                          <div className={styles.workLogButtonWrapper}>
+                            <Button
+                              clickHandler={() => {
+                                if (row.isBulk) {
+                                  return this.handleMarkApproved(
+                                    row.bulkIds,
+                                    row.type,
+                                    row.isBulk
+                                  );
+                                }
 
-                              return this.handleMarkApproved(row.rawId, row.type, row.isBulk);
-                            }}
-                            label={t('specialApproval:action.approveWorkLog')}
-                            loading={
-                              this.props.isPosting
-                              && this.state.lastApprovedWorkLogId === row.rawId
-                              && this.state.lastApprovedWorkLogType === row.type
-                            }
-                            priority="default"
-                            variant="success"
-                          />
-                        </div>
-                        <div className={styles.workLogButtonWrapper}>
-                          <Button
-                            clickHandler={() => {
-                              if (row.isBulk) {
-                                return this.openRejectWorkLogForm(
-                                  row.bulkIds,
-                                  row.type,
-                                  row.isBulk
-                                );
+                                return this.handleMarkApproved(row.rawId, row.type, row.isBulk);
+                              }}
+                              label={t('specialApproval:action.approveWorkLog')}
+                              loading={
+                                this.props.isPosting
+                                && this.state.lastApprovedWorkLogId === row.rawId
+                                && this.state.lastApprovedWorkLogType === row.type
                               }
+                              priority="default"
+                              variant="success"
+                            />
+                          </div>
+                          <div className={styles.workLogButtonWrapper}>
+                            <Button
+                              clickHandler={() => {
+                                if (row.isBulk) {
+                                  return this.openRejectWorkLogForm(
+                                    row.bulkIds,
+                                    row.type,
+                                    row.isBulk
+                                  );
+                                }
 
-                              return this.openRejectWorkLogForm(row.rawId, row.type, row.isBulk);
-                            }}
-                            label={t('specialApproval:action.rejectWorkLog')}
-                            loading={
-                              this.props.isPosting
-                              && this.state.lastRejectedWorkLogId === row.rawId
-                              && this.state.lastRejectedWorkLogType === row.type
-                            }
-                            priority="default"
-                            variant="danger"
-                          />
-                        </div>
-                      </React.Fragment>
-                    )}
+                                return this.openRejectWorkLogForm(row.rawId, row.type, row.isBulk);
+                              }}
+                              label={t('specialApproval:action.rejectWorkLog')}
+                              loading={
+                                this.props.isPosting
+                                && this.state.lastRejectedWorkLogId === row.rawId
+                                && this.state.lastRejectedWorkLogType === row.type
+                              }
+                              priority="default"
+                              variant="danger"
+                            />
+                          </div>
+                        </React.Fragment>
+                      )
+                    }
                   </div>
                 ),
                 label: t('general:element.actions'),
