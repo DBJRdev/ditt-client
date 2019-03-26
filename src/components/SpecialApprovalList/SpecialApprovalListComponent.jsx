@@ -570,7 +570,7 @@ class SpecialApprovalListComponent extends React.Component {
 
       if (decodedToken) {
         // eslint-disable-next-line prefer-destructuring
-        uid = decodedToken;
+        uid = decodedToken.uid;
       }
     }
 
