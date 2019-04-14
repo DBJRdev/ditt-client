@@ -57,6 +57,9 @@ export default (state, action) => {
 
   const filterUser = data => ({
     ...data,
+    allSupervisors: data.allSupervisors
+      ? data.allSupervisors.map(filterUser)
+      : [],
     supervisor: data.supervisor
       ? filterUser(data.supervisor)
       : null,

@@ -40,6 +40,9 @@ export default (state, action) => {
 
   const filterUser = data => ({
     ...data,
+    allSupervisors: data.allSupervisors
+      ? data.allSupervisors.map(filterUser)
+      : [],
     yearStats: data.yearStats
       ? data.yearStats.map(filterUserYearStats)
       : [],

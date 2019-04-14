@@ -49,13 +49,36 @@ class ListComponent extends React.Component {
   render() {
     const { t } = this.props;
 
+    let uid = null;
+
+    if (this.props.token) {
+      const decodedToken = jwt.decode(this.props.token);
+
+      if (decodedToken) {
+        // eslint-disable-next-line prefer-destructuring
+        uid = decodedToken.uid;
+      }
+    }
+
+    const lighterRow = (row) => {
+      if (!row.supervisor) {
+        return '';
+      }
+
+      return row.supervisor.id !== uid ? styles.lighterRow : '';
+    };
+
     return (
       <Layout title={t('supervisedUser:title.supervisedUsers')} loading={this.props.isFetching}>
         {this.props.supervisedUserList.count() > 0 ? (
           <Table
             columns={[
               {
-                format: row => `${row.firstName} ${row.lastName}`,
+                format: row => (
+                  <span className={lighterRow(row)}>
+                    {`${row.firstName} ${row.lastName}`}
+                  </span>
+                ),
                 isSortable: true,
                 label: t('user:element.name'),
                 name: 'lastName',
@@ -67,7 +90,11 @@ class ListComponent extends React.Component {
                   ));
 
                   if (!waitingForApproval.length) {
-                    return t('general:action.no');
+                    return (
+                      <span className={lighterRow(row)}>
+                        {t('general:action.no')}
+                      </span>
+                    );
                   }
 
                   const waitingForApprovalLinks = waitingForApproval.map(workMonth => (
@@ -87,7 +114,7 @@ class ListComponent extends React.Component {
                   ));
 
                   return (
-                    <div>
+                    <div className={lighterRow(row)}>
                       {t('general:action.yes')}
                       {' | '}
                       {waitingForApprovalLinks}
@@ -99,10 +126,12 @@ class ListComponent extends React.Component {
               },
               {
                 format: row => (
-                  /* eslint-disable-next-line jsx-a11y/anchor-is-valid */
-                  <Link to={routes.supervisedUserWorkLog.replace(':id', row.id)}>
-                    {t('supervisedUser:element.showWorkLog')}
-                  </Link>
+                  <span className={lighterRow(row)}>
+                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                    <Link to={routes.supervisedUserWorkLog.replace(':id', row.id)}>
+                      {t('supervisedUser:element.showWorkLog')}
+                    </Link>
+                  </span>
                 ),
                 label: t('supervisedUser:element.showWorkLog'),
                 name: 'showWorkLog',

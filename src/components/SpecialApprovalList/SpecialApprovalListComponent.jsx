@@ -574,29 +574,47 @@ class SpecialApprovalListComponent extends React.Component {
       }
     }
 
+    const lighterRow = row => (row.workMonth.user.supervisor.id !== uid ? styles.lighterRow : '');
+
     return (
       <div>
         {specialApprovals.count() > 0 ? (
           <Table
             columns={[
               {
-                format: row => `${row.workMonth.user.firstName} ${row.workMonth.user.lastName}`,
+                format: row => (
+                  <span className={lighterRow(row)}>
+                    {`${row.workMonth.user.firstName} ${row.workMonth.user.lastName}`}
+                  </span>
+                ),
                 label: t('user:element.name'),
                 name: 'lastName',
               },
               {
                 format: (row) => {
                   if (!row.isBulk) {
-                    return toDayDayMonthYearFormat(row.date);
+                    return (
+                      <span className={lighterRow(row)}>
+                        {toDayDayMonthYearFormat(row.date)}
+                      </span>
+                    );
                   }
 
-                  return `${toDayDayMonthYearFormat(row.date)} – ${toDayDayMonthYearFormat(row.dateTo)}`;
+                  return (
+                    <span className={lighterRow(row)}>
+                      {toDayDayMonthYearFormat(row.date)}
+                    </span>
+                  );
                 },
                 label: t('workLog:element.date'),
                 name: 'date',
               },
               {
-                format: row => getTypeLabel(t, row.type),
+                format: row => (
+                  <span className={lighterRow(row)}>
+                    {getTypeLabel(t, row.type)}
+                  </span>
+                ),
                 label: t('workLog:element.type'),
                 name: 'type',
               },
@@ -617,8 +635,8 @@ class SpecialApprovalListComponent extends React.Component {
                     </div>
                     {
                       STATUS_WAITING_FOR_APPROVAL === row.status
-                      && row.workMonth.user.supervisor
-                      && row.workMonth.user.supervisor.id === uid
+                      && row.workMonth.user.allSupervisors
+                      && row.workMonth.user.allSupervisors.find(supervisor => supervisor.id === uid)
                       && (
                         <React.Fragment>
                           <div className={styles.workLogButtonWrapper}>
