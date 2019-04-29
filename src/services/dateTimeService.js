@@ -102,17 +102,19 @@ export const toHourMinuteFormat = (momentDateTime) => {
 };
 
 export const toHourMinuteFormatFromInt = (rawHours) => {
-  if (rawHours <= 0) {
-    return '0:00';
+  let rawHoursCorrected = rawHours;
+
+  if (rawHoursCorrected < 0) {
+    rawHoursCorrected *= -1;
   }
 
-  const hours = Math.floor(rawHours);
+  const hours = Math.floor(rawHoursCorrected);
   let minutes = 0;
 
   if (hours < 1) {
-    minutes = Math.floor(rawHours * 60);
+    minutes = Math.floor(rawHoursCorrected * 60);
   } else {
-    minutes = Math.floor((rawHours % hours) * 60);
+    minutes = Math.floor((rawHoursCorrected % hours) * 60);
   }
 
   return `${hours}:${minutes < 10 ? '0' : ''}${minutes}`;

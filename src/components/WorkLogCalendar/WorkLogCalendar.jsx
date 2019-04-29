@@ -338,6 +338,7 @@ class WorkLogCalendar extends React.Component {
       workHoursList,
     } = this.props;
     let requiredHours = 0;
+    let requiredHoursLeft = 0;
     const workedTime = moment.duration();
 
     const workHours = workHoursList.find(item => (
@@ -357,6 +358,48 @@ class WorkLogCalendar extends React.Component {
     daysOfSelectedMonth.forEach((day) => {
       workedTime.add(day.workTime);
     });
+
+    if (this.props.workMonth && this.props.workMonth.get('status') !== STATUS_APPROVED) {
+      const userYearStats = this.props.workMonth.getIn(['user', 'yearStats']).toJS();
+      const requiredHoursTotal = userYearStats.reduce(
+        (total, userYearStat) => total + userYearStat.requiredHours,
+        0
+      );
+      const workedHoursTotal = userYearStats.reduce(
+        (total, userYearStat) => total + userYearStat.workedHours,
+        0
+      );
+
+      requiredHoursLeft = requiredHoursTotal - workedHoursTotal;
+
+      if (requiredHours + requiredHoursLeft > 0) {
+        return t(
+          'workLog:text.workedAndRequiredHoursPlusLeft',
+          {
+            requiredHours: toHourMinuteFormatFromInt(
+              Math.max(0, requiredHours + requiredHoursLeft)
+            ),
+            requiredHoursLeft: toHourMinuteFormatFromInt(requiredHoursLeft),
+            requiredHoursWithoutLeft: toHourMinuteFormatFromInt(requiredHours),
+            workedHours: `${workedTime.hours() + (workedTime.days() * 24)}:${(workedTime.minutes()) < 10 ? '0' : ''}${workedTime.minutes()}`,
+          }
+        );
+      }
+
+      if (requiredHours + requiredHoursLeft < 0) {
+        return t(
+          'workLog:text.workedAndRequiredHoursMinusLeft',
+          {
+            requiredHours: toHourMinuteFormatFromInt(
+              Math.max(0, requiredHours + requiredHoursLeft)
+            ),
+            requiredHoursLeft: toHourMinuteFormatFromInt(requiredHoursLeft),
+            requiredHoursWithoutLeft: toHourMinuteFormatFromInt(requiredHours),
+            workedHours: `${workedTime.hours() + (workedTime.days() * 24)}:${(workedTime.minutes()) < 10 ? '0' : ''}${workedTime.minutes()}`,
+          }
+        );
+      }
+    }
 
     return t(
       'workLog:text.workedAndRequiredHours',

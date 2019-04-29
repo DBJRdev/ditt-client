@@ -269,7 +269,9 @@
     },
     "text": {
       "openedWorkMonth": "Dieser Monat erscheint leer, weil der/die Arbeitnehmer*in ihn noch nicht übermittelt hat.",
-      "workedAndRequiredHours": "{{ workedHours }} h von {{ requiredHours }} h"
+      "workedAndRequiredHours": "{{ workedHours }} h von {{ requiredHours }} h",
+      "workedAndRequiredHoursPlusLeft": "{{ workedHours }} h von {{ requiredHours }} h ({{ requiredHoursWithoutLeft }} h + {{ requiredHoursLeft }} h aus den letzten Monaten)",
+      "workedAndRequiredHoursMinusLeft": "{{ workedHours }} h von {{ requiredHours }} h ({{ requiredHoursWithoutLeft }} h - {{ requiredHoursLeft }} h aus den letzten Monaten)"
     },
     "title": {
       "supervisedUserWorkLogs": "Monatsübersicht für {{ name }}",
