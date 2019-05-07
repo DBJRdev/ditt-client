@@ -9,7 +9,7 @@ import {
   ROLE_EMPLOYEE,
   ROLE_SUPER_ADMIN,
 } from '../../resources/user';
-import history from '../../history';
+import history from '../../routerHistory';
 import routes from '../../routes';
 import styles from './Layout.scss';
 import logoImage from './images/logo.svg';

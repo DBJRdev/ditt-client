@@ -7,7 +7,7 @@ import {
   Router,
   Switch,
 } from 'react-router-dom';
-import history from './history';
+import history from './routerHistory';
 import routes from './routes';
 import store from './store';
 import ErrorPage from './pages/error';

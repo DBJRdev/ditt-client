@@ -1,4 +1,4 @@
-import history from 'history';
+import history from '../routerHistory';
 import routes from '../routes';
 import { reset } from '../resources/auth';
 

@@ -1,6 +1,6 @@
-import history from 'history';
 import jwt from 'jsonwebtoken';
 import { RSAA } from 'redux-api-middleware';
+import history from '../../routerHistory';
 import { API_URL } from '../../../config/envspecific';
 import {
   ROLE_ADMIN,
