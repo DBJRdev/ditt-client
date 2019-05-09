@@ -372,7 +372,7 @@ class WorkLogCalendar extends React.Component {
 
       requiredHoursLeft = requiredHoursTotal - workedHoursTotal;
 
-      if (requiredHours + requiredHoursLeft > 0) {
+      if (requiredHoursLeft > 0) {
         return t(
           'workLog:text.workedAndRequiredHoursPlusLeft',
           {
@@ -386,7 +386,7 @@ class WorkLogCalendar extends React.Component {
         );
       }
 
-      if (requiredHours + requiredHoursLeft < 0) {
+      if (requiredHoursLeft < 0) {
         return t(
           'workLog:text.workedAndRequiredHoursMinusLeft',
           {
