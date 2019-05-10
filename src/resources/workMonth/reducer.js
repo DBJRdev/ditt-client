@@ -63,14 +63,14 @@ export default (state, action) => {
     supervisor: data.supervisor
       ? filterUser(data.supervisor)
       : null,
-    yearStats: data.yearStats
-      ? data.yearStats.map(filterUserYearStats)
-      : [],
     vacations: data.vacations
       ? data.vacations.map(filterVacation).sort((a, b) => a.year - b.year)
       : [],
     workHours: data.workHours
       ? data.workHours.map(filterWorkHour)
+      : [],
+    yearStats: data.yearStats
+      ? data.yearStats.map(filterUserYearStats)
       : [],
   });
 
