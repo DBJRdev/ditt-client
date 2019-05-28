@@ -602,7 +602,7 @@ class SpecialApprovalListComponent extends React.Component {
 
                   return (
                     <span className={lighterRow(row)}>
-                      {toDayDayMonthYearFormat(row.date)}
+                      {`${toDayDayMonthYearFormat(row.date)} – ${toDayDayMonthYearFormat(row.dateTo)}`}
                     </span>
                   );
                 },
