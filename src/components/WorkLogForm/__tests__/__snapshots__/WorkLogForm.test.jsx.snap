@@ -68,7 +68,7 @@ exports[`rendering renders correctly with all props 1`] = `
                   placeholder={null}
                   required={false}
                   type="text"
-                  value="01. 01. 2018"
+                  value="01.01.2018"
                 />
               </label>
             </div>
@@ -386,7 +386,7 @@ exports[`rendering renders correctly with mandatory props 1`] = `
                   placeholder={null}
                   required={false}
                   type="text"
-                  value="01. 01. 2018"
+                  value="01.01.2018"
                 />
               </label>
             </div>

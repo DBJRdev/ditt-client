@@ -165,7 +165,7 @@ class SettingsComponent extends React.Component {
     const { config } = this.props;
     const holidays = config.get('supportedHolidays')
       .filter(holiday => holiday.year() === year)
-      .map(holiday => holiday.format('DD.MM.'))
+      .map(holiday => holiday.format('MM.DD.'))
       .reduce((acc, holiday) => `${acc}\n${holiday}`);
 
     this.setState({

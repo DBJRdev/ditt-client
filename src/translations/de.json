@@ -100,7 +100,7 @@
       "editYear": "Jahr bearbeiten"
     },
     "text": {
-      "holidayInfoText": "Ein Datum pro Zeile im Format TT.MM."
+      "holidayInfoText": "Ein Datum pro Zeile im Format MM.TT."
     },
     "title": {
       "addYear": "Jahr hinzufügen",
