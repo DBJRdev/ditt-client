@@ -100,7 +100,7 @@
       "editYear": "Edit year"
     },
     "text": {
-      "holidayInfoText": "Write one date in format MM.DD. per line"
+      "holidayInfoText": "Write one date in format DD.MM. per line"
     },
     "title": {
       "addYear": "Add year",
