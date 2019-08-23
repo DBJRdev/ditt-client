@@ -219,6 +219,136 @@ describe('getWorkedTime', () => {
     ).asSeconds()).toEqual(9.25 * 3600);
   });
 
+  it('test calculate approved home office work logs without work logs', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'HOME_OFFICE_WORK_LOG',
+      },
+    ];
+
+    expect(getWorkedTime(
+      workLogs,
+      Immutable.fromJS([{
+        month: 1,
+        requiredHours: 6,
+        year: 2018,
+      }]),
+      workedHoursLimits
+    ).asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate unapproved home office work logs without work logs', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        status: 'WAITING_FOR_APPROVAL',
+        type: 'HOME_OFFICE_WORK_LOG',
+      },
+    ];
+
+    expect(getWorkedTime(
+      workLogs,
+      Immutable.fromJS([{
+        month: 1,
+        requiredHours: 6,
+        year: 2018,
+      }]),
+      workedHoursLimits
+    ).asSeconds()).toEqual(0);
+  });
+
+  it('test calculate approved home office work logs', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'HOME_OFFICE_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T10:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T16:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T14:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    expect(getWorkedTime(
+      workLogs,
+      Immutable.fromJS([{
+        month: 1,
+        requiredHours: 6,
+        year: 2018,
+      }]),
+      workedHoursLimits
+    ).asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate approved home office work logs above lower limit', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'HOME_OFFICE_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T17:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T14:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    expect(getWorkedTime(
+      workLogs,
+      Immutable.fromJS([{
+        month: 1,
+        requiredHours: 6,
+        year: 2018,
+      }]),
+      workedHoursLimits
+    ).asSeconds()).toEqual(6.5 * 3600);
+  });
+
+  it('test calculate approved home office work logs above upper limit', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'HOME_OFFICE_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T20:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T14:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    expect(getWorkedTime(
+      workLogs,
+      Immutable.fromJS([{
+        month: 1,
+        requiredHours: 6,
+        year: 2018,
+      }]),
+      workedHoursLimits
+    ).asSeconds()).toEqual(9.25 * 3600);
+  });
+
   it('test calculate sick day work logs', () => {
     const workLogs = [
       {
@@ -284,6 +414,11 @@ describe('getWorkedTime', () => {
         date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
         status: 'APPROVED',
         type: 'BUSINESS_TRIP_WORK_LOG',
+      },
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'HOME_OFFICE_WORK_LOG',
       },
       {
         date: toMomentDateTime('2018-01-01T12:00:00.000Z'),

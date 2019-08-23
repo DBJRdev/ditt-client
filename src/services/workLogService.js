@@ -85,6 +85,14 @@ export const getWorkedTime = (workLogList, workHoursList, workedHoursLimits) => 
   const businessTripWorkLogs = workLogList.filter((
     workLog => workLog.type === BUSINESS_TRIP_WORK_LOG && workLog.status === STATUS_APPROVED
   ));
+  const homeOfficeWorkLogs = workLogList.filter((
+    workLog => workLog.type === HOME_OFFICE_WORK_LOG && workLog.status === STATUS_APPROVED
+  ));
+  const specialDayWorkLogs = [
+    ...businessTripWorkLogs,
+    ...homeOfficeWorkLogs,
+  ].filter((workLog, pos, arr) => arr.map(mapObj => mapObj.date.format('DD.MM.YYYY'))
+    .indexOf(workLog.date.format('DD.MM.YYYY')) === pos);
 
   const correctWorkedSeconds = (workedSeconds) => {
     if (
@@ -107,8 +115,11 @@ export const getWorkedTime = (workLogList, workHoursList, workedHoursLimits) => 
       const foundBusinessTripWorkLog = businessTripWorkLogs.find((
         businessTripWorkLog => businessTripWorkLog.date.isSame(workLog.startTime, 'day')
       ));
+      const foundHomeOfficeWorkLog = homeOfficeWorkLogs.find((
+        homeOfficeWorkLog => homeOfficeWorkLog.date.isSame(workLog.startTime, 'day')
+      ));
 
-      if (foundBusinessTripWorkLog) {
+      if (foundBusinessTripWorkLog || foundHomeOfficeWorkLog) {
         return total;
       }
 
@@ -120,10 +131,10 @@ export const getWorkedTime = (workLogList, workHoursList, workedHoursLimits) => 
 
   workedSeconds = correctWorkedSeconds(workedSeconds);
 
-  // Business trip work log time
-  workedSeconds = businessTripWorkLogs.reduce((total, businessTripWorkLog) => {
+  // Business trip and home office work log time
+  workedSeconds = specialDayWorkLogs.reduce((total, specialDayWorkLog) => {
     const subWorkedSeconds = workLogList.filter((
-      workLog => workLog.type === WORK_LOG && workLog.startTime.isSame(businessTripWorkLog.date, 'day')
+      workLog => workLog.type === WORK_LOG && workLog.startTime.isSame(specialDayWorkLog.date, 'day')
     )).reduce(
       (subtotal, workLog) => (workLog.endTime.diff(workLog.startTime) / 1000) + subtotal,
       0
@@ -131,8 +142,8 @@ export const getWorkedTime = (workLogList, workHoursList, workedHoursLimits) => 
     const correctedSubWorkedSeconds = correctWorkedSeconds(subWorkedSeconds);
 
     const workHours = workHoursList.find((
-      workHour => workHour.get('month') === (businessTripWorkLog.date.month() + 1)
-        && workHour.get('year') === businessTripWorkLog.date.year()
+      workHour => workHour.get('month') === (specialDayWorkLog.date.month() + 1)
+        && workHour.get('year') === specialDayWorkLog.date.year()
     ));
     const requiredHours = workHours.get('requiredHours');
     const requiredSeconds = (requiredHours * 3600) + total;
