@@ -574,7 +574,13 @@ class SpecialApprovalListComponent extends React.Component {
       }
     }
 
-    const lighterRow = row => (row.workMonth.user.supervisor.id !== uid ? styles.lighterRow : '');
+    const lighterRow = (row) => {
+      if (!row.workMonth.user.supervisor) {
+        return styles.lighterRow;
+      }
+
+      return row.workMonth.user.supervisor.id !== uid ? styles.lighterRow : '';
+    };
 
     return (
       <div>

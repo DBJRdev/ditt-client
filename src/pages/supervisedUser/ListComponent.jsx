@@ -62,7 +62,7 @@ class ListComponent extends React.Component {
 
     const lighterRow = (row) => {
       if (!row.supervisor) {
-        return '';
+        return styles.lighterRow;
       }
 
       return row.supervisor.id !== uid ? styles.lighterRow : '';
