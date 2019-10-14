@@ -7,6 +7,11 @@ import {
 import configMock from '../../../tests/mocks/configMock';
 
 describe('getWorkedTime', () => {
+  const workHours = Immutable.fromJS({
+    month: 1,
+    requiredHours: 6,
+    year: 2018,
+  });
   const workedHoursLimits = {
     lowerLimit: {
       changeBy: -1800,
@@ -20,8 +25,9 @@ describe('getWorkedTime', () => {
 
   it('test calculate no work logs', () => {
     expect(getWorkedTime(
+      toMomentDateTime('2018-01-01T00:00:00.000Z'),
       [],
-      Immutable.fromJS([]),
+      workHours,
       workedHoursLimits
     ).asSeconds()).toEqual(0);
   });
@@ -41,8 +47,9 @@ describe('getWorkedTime', () => {
     ];
 
     expect(getWorkedTime(
+      toMomentDateTime('2018-01-01T00:00:00.000Z'),
       workLogs,
-      Immutable.fromJS([]),
+      workHours,
       workedHoursLimits
     ).asSeconds()).toEqual(4 * 3600);
   });
@@ -62,8 +69,9 @@ describe('getWorkedTime', () => {
     ];
 
     expect(getWorkedTime(
+      toMomentDateTime('2018-01-01T00:00:00.000Z'),
       workLogs,
-      Immutable.fromJS([]),
+      workHours,
       workedHoursLimits
     ).asSeconds()).toEqual(6.5 * 3600);
   });
@@ -83,8 +91,9 @@ describe('getWorkedTime', () => {
     ];
 
     expect(getWorkedTime(
+      toMomentDateTime('2018-01-01T00:00:00.000Z'),
       workLogs,
-      Immutable.fromJS([]),
+      workHours,
       workedHoursLimits
     ).asSeconds()).toEqual(9.25 * 3600);
   });
@@ -99,12 +108,9 @@ describe('getWorkedTime', () => {
     ];
 
     expect(getWorkedTime(
+      toMomentDateTime('2018-01-01T00:00:00.000Z'),
       workLogs,
-      Immutable.fromJS([{
-        month: 1,
-        requiredHours: 6,
-        year: 2018,
-      }]),
+      workHours,
       workedHoursLimits
     ).asSeconds()).toEqual(6 * 3600);
   });
@@ -119,12 +125,9 @@ describe('getWorkedTime', () => {
     ];
 
     expect(getWorkedTime(
+      toMomentDateTime('2018-01-01T00:00:00.000Z'),
       workLogs,
-      Immutable.fromJS([{
-        month: 1,
-        requiredHours: 6,
-        year: 2018,
-      }]),
+      workHours,
       workedHoursLimits
     ).asSeconds()).toEqual(0);
   });
@@ -149,14 +152,11 @@ describe('getWorkedTime', () => {
     ];
 
     expect(getWorkedTime(
+      toMomentDateTime('2018-01-01T12:00:00.000Z'),
       workLogs,
-      Immutable.fromJS([{
-        month: 1,
-        requiredHours: 6,
-        year: 2018,
-      }]),
+      workHours,
       workedHoursLimits
-    ).asSeconds()).toEqual(6 * 3600);
+    ).asSeconds()).toEqual(4 * 3600);
   });
 
   it('test calculate approved business trip work logs above lower limit', () => {
@@ -179,12 +179,9 @@ describe('getWorkedTime', () => {
     ];
 
     expect(getWorkedTime(
+      toMomentDateTime('2018-01-01T12:00:00.000Z'),
       workLogs,
-      Immutable.fromJS([{
-        month: 1,
-        requiredHours: 6,
-        year: 2018,
-      }]),
+      workHours,
       workedHoursLimits
     ).asSeconds()).toEqual(6.5 * 3600);
   });
@@ -209,12 +206,9 @@ describe('getWorkedTime', () => {
     ];
 
     expect(getWorkedTime(
+      toMomentDateTime('2018-01-01T12:00:00.000Z'),
       workLogs,
-      Immutable.fromJS([{
-        month: 1,
-        requiredHours: 6,
-        year: 2018,
-      }]),
+      workHours,
       workedHoursLimits
     ).asSeconds()).toEqual(9.25 * 3600);
   });
@@ -229,12 +223,9 @@ describe('getWorkedTime', () => {
     ];
 
     expect(getWorkedTime(
+      toMomentDateTime('2018-01-01T12:00:00.000Z'),
       workLogs,
-      Immutable.fromJS([{
-        month: 1,
-        requiredHours: 6,
-        year: 2018,
-      }]),
+      workHours,
       workedHoursLimits
     ).asSeconds()).toEqual(6 * 3600);
   });
@@ -249,12 +240,9 @@ describe('getWorkedTime', () => {
     ];
 
     expect(getWorkedTime(
+      toMomentDateTime('2018-01-01T12:00:00.000Z'),
       workLogs,
-      Immutable.fromJS([{
-        month: 1,
-        requiredHours: 6,
-        year: 2018,
-      }]),
+      workHours,
       workedHoursLimits
     ).asSeconds()).toEqual(0);
   });
@@ -279,14 +267,11 @@ describe('getWorkedTime', () => {
     ];
 
     expect(getWorkedTime(
+      toMomentDateTime('2018-01-01T12:00:00.000Z'),
       workLogs,
-      Immutable.fromJS([{
-        month: 1,
-        requiredHours: 6,
-        year: 2018,
-      }]),
+      workHours,
       workedHoursLimits
-    ).asSeconds()).toEqual(6 * 3600);
+    ).asSeconds()).toEqual(4 * 3600);
   });
 
   it('test calculate approved home office work logs above lower limit', () => {
@@ -309,12 +294,9 @@ describe('getWorkedTime', () => {
     ];
 
     expect(getWorkedTime(
+      toMomentDateTime('2018-01-01T12:00:00.000Z'),
       workLogs,
-      Immutable.fromJS([{
-        month: 1,
-        requiredHours: 6,
-        year: 2018,
-      }]),
+      workHours,
       workedHoursLimits
     ).asSeconds()).toEqual(6.5 * 3600);
   });
@@ -339,12 +321,9 @@ describe('getWorkedTime', () => {
     ];
 
     expect(getWorkedTime(
+      toMomentDateTime('2018-01-01T12:00:00.000Z'),
       workLogs,
-      Immutable.fromJS([{
-        month: 1,
-        requiredHours: 6,
-        year: 2018,
-      }]),
+      workHours,
       workedHoursLimits
     ).asSeconds()).toEqual(9.25 * 3600);
   });
@@ -358,12 +337,9 @@ describe('getWorkedTime', () => {
     ];
 
     expect(getWorkedTime(
+      toMomentDateTime('2018-01-01T12:00:00.000Z'),
       workLogs,
-      Immutable.fromJS([{
-        month: 1,
-        requiredHours: 6,
-        year: 2018,
-      }]),
+      workHours,
       workedHoursLimits
     ).asSeconds()).toEqual(6 * 3600);
   });
@@ -378,12 +354,9 @@ describe('getWorkedTime', () => {
     ];
 
     expect(getWorkedTime(
+      toMomentDateTime('2018-01-01T12:00:00.000Z'),
       workLogs,
-      Immutable.fromJS([{
-        month: 1,
-        requiredHours: 6,
-        year: 2018,
-      }]),
+      workHours,
       workedHoursLimits
     ).asSeconds()).toEqual(6 * 3600);
   });
@@ -398,12 +371,9 @@ describe('getWorkedTime', () => {
     ];
 
     expect(getWorkedTime(
+      toMomentDateTime('2018-01-01T12:00:00.000Z'),
       workLogs,
-      Immutable.fromJS([{
-        month: 1,
-        requiredHours: 6,
-        year: 2018,
-      }]),
+      workHours,
       workedHoursLimits
     ).asSeconds()).toEqual(0);
   });
@@ -442,14 +412,11 @@ describe('getWorkedTime', () => {
     ];
 
     expect(getWorkedTime(
+      toMomentDateTime('2018-01-01T12:00:00.000Z'),
       workLogs,
-      Immutable.fromJS([{
-        month: 1,
-        requiredHours: 6,
-        year: 2018,
-      }]),
+      workHours,
       workedHoursLimits
-    ).asSeconds()).toEqual(18 * 3600);
+    ).asSeconds()).toEqual(5.75 * 3600);
   });
 });
 
