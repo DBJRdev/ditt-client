@@ -1,26 +1,37 @@
 $_breakpoint: 55em;
 
-.actions {
-  margin-bottom: 2rem;
-
-  @media screen and (min-width: $_breakpoint) {
-    float: right;
-    margin-top: -4.45rem;
-    margin-bottom: 0;
-    margin-left: 2rem;
-  }
-}
-
-.profileTableWrap {
-  overflow-x: auto;
-}
-
-.profileTable {
-  border-collapse: collapse;
+.centeredLayout {
   width: 100%;
   max-width: 600px;
   margin-right: auto;
   margin-left: auto;
+}
+
+.h2 {
+  padding: 0 10px;
+  margin: 3rem auto 1.5rem;
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
+.h3 {
+  padding: 0 10px;
+  margin: 1.5rem auto 1.5rem;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table th {
+  padding: 5px 10px;
+}
+
+.responsiveTable {
+  overflow-x: scroll;
 }
 
 .profileTableTitle {
@@ -31,41 +42,9 @@ $_breakpoint: 55em;
   border-bottom: 1px solid #ccc;
 }
 
-.vacationDaysTitle {
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 600px;
-  padding: 0 10px;
-  margin: 3rem auto 1.5rem;
-  font-weight: 500;
-  font-size: 1.25rem;
-}
-
-.workHoursTitle {
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 600px;
-  padding: 0 10px;
-  margin: 3rem auto 1.5rem;
-  font-weight: 500;
-  font-size: 1.25rem;
-}
-
 .profileTableValue {
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
-}
-
-.vacationTable {
-  border-collapse: collapse;
-  width: 100%;
-  max-width: 600px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.vacationTable th {
-  padding: 5px 10px;
 }
 
 .vacationTableFirstCell {
@@ -82,35 +61,6 @@ $_breakpoint: 55em;
   text-align: center;
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
-}
-
-.workHoursTable {
-  width: 100%;
-  max-width: 600px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.responsiveTable {
-  overflow-x: scroll;
-}
-
-.apiTokenButtonsWrapper {
-  margin-top: 0.5rem;
-
-  @media screen and (min-width: $_breakpoint) {
-    margin-top: 0;
-  }
-}
-
-.apiTokenButton {
-  display: inline-block;
-
-  @media screen and (min-width: $_breakpoint) {
-    &:not(:first-of-type) {
-      margin-left: 0.5rem;
-    }
-  }
 }
 
 .detailPageWrapper {
@@ -153,4 +103,66 @@ $_breakpoint: 55em;
   .vacationsRow > div {
     margin-left: 0;
   }
+}
+
+.notificationSettingsDay {
+  width: 50%;
+  padding: 5px 10px;
+  font-weight: bold;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.notificationSettingsCheckbox {
+  width: 2.5rem;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+// stylelint-disable-next-line selector-max-universal
+.notificationSettingsCheckbox > * {
+  transform: translateY(0.65rem);
+}
+
+.notificationSettingsInput {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+// stylelint-disable-next-line selector-max-universal
+.notificationSettingsInput > * {
+  transform: translateY(0.65rem);
+}
+
+.actions {
+  margin-bottom: 2rem;
+
+  @media screen and (min-width: $_breakpoint) {
+    float: right;
+    margin-top: -4.45rem;
+    margin-bottom: 0;
+    margin-left: 2rem;
+  }
+}
+
+.apiTokenButtonsWrapper {
+  margin-top: 0.5rem;
+
+  @media screen and (min-width: $_breakpoint) {
+    margin-top: 0;
+  }
+}
+
+.apiTokenButton {
+  display: inline-block;
+
+  @media screen and (min-width: $_breakpoint) {
+    &:not(:first-of-type) {
+      margin-left: 0.5rem;
+    }
+  }
+}
+
+.saveButton {
+  margin-top: 1.5rem;
 }

@@ -6,8 +6,12 @@ import configMock from '../../../../tests/mocks/configMock';
 
 describe('rendering', () => {
   it('renders correctly', () => {
+    // Ignore warning because of old ReactUI
+    console.error = () => {};
+
     const props = {
       config: configMock,
+      editUser: () => new Promise(() => {}),
       fetchConfig: () => new Promise(() => {}),
       fetchUser: () => new Promise(() => {}),
       fetchWorkHoursList: () => {},
@@ -23,6 +27,16 @@ describe('rendering', () => {
         id: 1,
         isActive: true,
         lastName: 'Last',
+        notifications: {
+          supervisorInfoFridayTime: '8:00',
+          supervisorInfoMondayTime: '8:00',
+          supervisorInfoSaturdayTime: null,
+          supervisorInfoSendOnHolidays: false,
+          supervisorInfoSundayTime: null,
+          supervisorInfoThursdayTime: '8:00',
+          supervisorInfoTuesdayTime: '8:00',
+          supervisorInfoWednesdayTime: '8:00',
+        },
         supervisor: null,
         vacations: [
           {

@@ -40,6 +40,13 @@
       "actions": "Actions"
     },
     "text": {
+      "Monday": "Monday",
+      "Tuesday": "Tuesday",
+      "Wednesday": "Wednesday",
+      "Thursday": "Thursday",
+      "Friday": "Friday",
+      "Saturday": "Saturday",
+      "Sunday": "Sunday",
       "loading": "Loading…"
     },
     "validation": {
@@ -187,7 +194,9 @@
       "lastName": "Last name",
       "name": "Name",
       "plainPassword": "Password",
+      "remainingVacationDays": "Remaining vacation days",
       "supervisor": "Supervisor",
+      "supervisorInfoSendOnHolidays": "Notify on public holidays",
       "vacationDays": "Vacation days",
       "vacationDaysUsed": "Planned vacation days",
       "workedAndRequiredHours": "Worked / Required hours"
@@ -203,6 +212,8 @@
       "averageWorkingHoursDescription": "Insert as amount of average working hours per day divided by \",\" starting with January.",
       "averageWorkingHoursTitle": "Average working hours per day",
       "fastAccess": "Fast access",
+      "notificationSettings": "Notifications settings",
+      "supervisorInfo": "Daily overview of the supervisor",
       "vacationDays": "Vacation days",
       "vacationDaysLeft": "{{ remainingDays }} of {{ vacationDays }} days not scheduled yet"
     },

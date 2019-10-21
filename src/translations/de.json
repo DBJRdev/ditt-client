@@ -40,6 +40,13 @@
       "actions": "Aktionen"
     },
     "text": {
+      "Monday": "Montag",
+      "Tuesday": "Dienstag",
+      "Wednesday": "Mittwoch",
+      "Thursday": "Donnerstag",
+      "Friday": "Freitag",
+      "Saturday": "Samstag",
+      "Sunday": "Sonntag",
       "loading": "Lade…"
     },
     "validation": {
@@ -189,6 +196,7 @@
       "plainPassword": "Passwort",
       "remainingVacationDays": "Restliche Urlaubstage",
       "supervisor": "Vorgesetzte*r",
+      "supervisorInfoSendOnHolidays": "Benachrichtigen Sie an Feiertagen",
       "vacationDays": "Urlaubstage",
       "vacationDaysUsed": "Verplante Urlaubstage",
       "workedAndRequiredHours": "Gearbeitete / Benötigte Stunden"
@@ -204,6 +212,8 @@
       "averageWorkingHoursDescription": "Tägliche Arbeitszeit mit Komma [\",\"] getrennt, mit Start ab Januar eintragen.",
       "averageWorkingHoursTitle": "Tägliche Arbeitszeit",
       "fastAccess": "Schneller Zugang",
+      "notificationSettings": "Benachrichtigungseinstellungen",
+      "supervisorInfo": "Tägliche Übersicht des Betreuers",
       "vacationDays": "Urlaubstage",
       "vacationDaysLeft": "{{ remainingDays }} von {{ vacationDays }} Tagen nicht verplant"
     },
