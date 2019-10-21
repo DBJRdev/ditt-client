@@ -57,6 +57,7 @@ export const editUser = data => dispatch => dispatch({
       firstName: data.firstName,
       isActive: data.isActive,
       lastName: data.lastName,
+      notifications: data.notifications,
       plainPassword: data.plainPassword ? data.plainPassword : null,
       supervisor: data.supervisor ? `/users/${data.supervisor}` : null,
       vacations: data.vacations

@@ -5,7 +5,9 @@ import jwt from 'jsonwebtoken';
 import shortid from 'shortid';
 import {
   Button,
+  CheckboxField,
   Modal,
+  TextField,
 } from 'react-ui';
 import { withNamespaces } from 'react-i18next';
 import { ROLE_EMPLOYEE } from '../../resources/user';
@@ -20,7 +22,23 @@ class ProfileComponent extends React.Component {
 
     this.state = {
       apiTokenDialogOpened: false,
+      notifications: {
+        isInit: false,
+        supervisorInfoFridayTime: null,
+        supervisorInfoMondayTime: null,
+        supervisorInfoSaturdayTime: null,
+        supervisorInfoSendOnHolidays: false,
+        supervisorInfoSundayTime: null,
+        supervisorInfoThursdayTime: null,
+        supervisorInfoTuesdayTime: null,
+        supervisorInfoWednesdayTime: null,
+      },
     };
+
+    this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
+    this.handleCheckboxWithInputChange = this.handleCheckboxWithInputChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSave = this.handleSave.bind(this);
   }
 
   componentDidMount() {
@@ -37,6 +55,30 @@ class ProfileComponent extends React.Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { user: oldUser } = this.props;
+    const { user } = nextProps;
+    const { notifications } = this.state;
+
+    if (
+      (!notifications.isInit && user !== null)
+      || (
+        notifications.isInit
+        && oldUser !== null
+        && user !== null
+        && !oldUser.get('notifications').equals(user.get('notifications'))
+      )
+    ) {
+      this.setState(prevState => ({
+        ...prevState,
+        notifications: {
+          isInit: true,
+          ...user.get('notifications').toJS(),
+        },
+      }));
+    }
+  }
+
   getRequiredHours(year) {
     const { workHours } = this.props;
     const selectedWorkHours = [];
@@ -50,6 +92,64 @@ class ProfileComponent extends React.Component {
     return selectedWorkHours;
   }
 
+  handleCheckboxChange(e) {
+    const {
+      id,
+      checked,
+    } = e.target;
+
+    this.setState(prevState => ({
+      ...prevState,
+      notifications: {
+        ...prevState.notifications,
+        [id]: checked,
+      },
+    }));
+  }
+
+  handleCheckboxWithInputChange(e) {
+    const {
+      id,
+      checked,
+    } = e.target;
+
+    this.setState(prevState => ({
+      ...prevState,
+      notifications: {
+        ...prevState.notifications,
+        [id]: checked ? '00:00' : null,
+      },
+    }));
+  }
+
+  handleInputChange(e) {
+    const {
+      id,
+      value,
+    } = e.target;
+
+    this.setState(prevState => ({
+      ...prevState,
+      notifications: {
+        ...prevState.notifications,
+        [id]: value !== '' ? value : null,
+      },
+    }));
+  }
+
+  handleSave() {
+    const {
+      editUser,
+      user,
+    } = this.props;
+    const { notifications } = this.state;
+
+    editUser({
+      ...user.toJS(),
+      notifications,
+    });
+  }
+
   render() {
     const {
       config,
@@ -60,189 +160,271 @@ class ProfileComponent extends React.Component {
       user,
       workHours,
     } = this.props;
-    const { apiTokenDialogOpened } = this.state;
+    const {
+      apiTokenDialogOpened,
+      notifications,
+    } = this.state;
+
+    let loggedUserId = null;
+
+    if (this.props.token) {
+      const decodedToken = jwt.decode(this.props.token);
+
+      if (decodedToken) {
+        loggedUserId = decodedToken.uid;
+      }
+    }
 
     return (
       <Layout title={t('user:title.profile')} loading={this.props.isFetching}>
         {
           config && user && workHours
           && (
-            <div className={styles.profileTableWrap}>
-              <table className={styles.profileTable}>
-                <tbody>
-                  <tr>
-                    <td className={styles.profileTableTitle}>
-                      {t('user:element.firstName')}
-                    </td>
-                    <td className={styles.profileTableValue}>
-                      {user.get('firstName')}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className={styles.profileTableTitle}>
-                      {t('user:element.lastName')}
-                    </td>
-                    <td className={styles.profileTableValue}>
-                      {user.get('lastName')}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className={styles.profileTableTitle}>
-                      {t('user:element.supervisor')}
-                    </td>
-                    <td className={styles.profileTableValue}>
-                      {
-                      user.get('supervisor')
-                        ? `${user.getIn(['supervisor', 'firstName'])} ${user.getIn(['supervisor', 'lastName'])}`
-                        : '-'
-                    }
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className={styles.profileTableTitle}>
-                      {t('user:element.email')}
-                    </td>
-                    <td className={styles.profileTableValue}>
-                      {user.get('email')}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className={styles.profileTableTitle}>
-                      {t('user:element.employeeId')}
-                    </td>
-                    <td className={styles.profileTableValue}>
-                      {user.get('employeeId')}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colSpan={2} />
-                  </tr>
-                  <tr>
-                    <td className={styles.profileTableTitle}>
-                      {t('user:element.apiToken')}
-                    </td>
-                    <td className={styles.profileTableValue}>
-                      {!user.get('apiToken') && '-'}
-                      {!!user.get('apiToken') && (
-                        <Button
-                          clickHandler={() => this.setState({ apiTokenDialogOpened: true })}
-                          icon="open_in_new"
-                          labelVisibility="none"
-                          label={t('user:action.showApiToken')}
-                          priority="primary"
-                          size="small"
-                        />
-                      )}
-                      <div className={styles.apiTokenButtonsWrapper}>
-                        <div className={styles.apiTokenButton}>
-                          <Button
-                            clickHandler={() => renewUserApiToken(user.get('id'))}
-                            icon="autorenew"
-                            labelVisibility="none"
-                            label={t('user:action.renewApiToken')}
-                            loading={isPosting}
-                            priority="primary"
-                            size="small"
-                          />
-                        </div>
-                        {!!user.get('apiToken') && (
-                          <div className={styles.apiTokenButton}>
+            <div>
+              <div className={styles.centeredLayout}>
+                <div className={styles.responsiveTable}>
+                  <table className={styles.table}>
+                    <tbody>
+                      <tr>
+                        <td className={styles.profileTableTitle}>
+                          {t('user:element.firstName')}
+                        </td>
+                        <td className={styles.profileTableValue}>
+                          {user.get('firstName')}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className={styles.profileTableTitle}>
+                          {t('user:element.lastName')}
+                        </td>
+                        <td className={styles.profileTableValue}>
+                          {user.get('lastName')}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className={styles.profileTableTitle}>
+                          {t('user:element.supervisor')}
+                        </td>
+                        <td className={styles.profileTableValue}>
+                          {
+                            user.get('supervisor')
+                              ? `${user.getIn(['supervisor', 'firstName'])} ${user.getIn(['supervisor', 'lastName'])}`
+                              : '-'
+                          }
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className={styles.profileTableTitle}>
+                          {t('user:element.email')}
+                        </td>
+                        <td className={styles.profileTableValue}>
+                          {user.get('email')}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className={styles.profileTableTitle}>
+                          {t('user:element.employeeId')}
+                        </td>
+                        <td className={styles.profileTableValue}>
+                          {user.get('employeeId')}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colSpan={2} />
+                      </tr>
+                      <tr>
+                        <td className={styles.profileTableTitle}>
+                          {t('user:element.apiToken')}
+                        </td>
+                        <td className={styles.profileTableValue}>
+                          {!user.get('apiToken') && '-'}
+                          {!!user.get('apiToken') && (
                             <Button
-                              clickHandler={() => resetUserApiToken(user.get('id'))}
-                              icon="clear"
+                              clickHandler={() => this.setState({ apiTokenDialogOpened: true })}
+                              icon="open_in_new"
                               labelVisibility="none"
-                              label={t('user:action.resetApiToken')}
-                              loading={isPosting}
+                              label={t('user:action.showApiToken')}
                               priority="primary"
                               size="small"
-                              variant="danger"
                             />
+                          )}
+                          <div className={styles.apiTokenButtonsWrapper}>
+                            <div className={styles.apiTokenButton}>
+                              <Button
+                                clickHandler={() => renewUserApiToken(user.get('id'))}
+                                icon="autorenew"
+                                labelVisibility="none"
+                                label={t('user:action.renewApiToken')}
+                                loading={isPosting}
+                                priority="primary"
+                                size="small"
+                              />
+                            </div>
+                            {!!user.get('apiToken') && (
+                              <div className={styles.apiTokenButton}>
+                                <Button
+                                  clickHandler={() => resetUserApiToken(user.get('id'))}
+                                  icon="clear"
+                                  labelVisibility="none"
+                                  label={t('user:action.resetApiToken')}
+                                  loading={isPosting}
+                                  priority="primary"
+                                  size="small"
+                                  variant="danger"
+                                />
+                              </div>
+                            )}
                           </div>
-                        )}
-                      </div>
-                    </td>
-                  </tr>
-                  {(user.get('roles') && user.get('roles').includes(ROLE_EMPLOYEE)) && (
-                    <tr>
-                      <td className={styles.profileTableTitle}>
-                        {t('user:text.fastAccess')}
-                      </td>
-                      <td className={styles.profileTableValue}>
-                        {!user.get('apiToken') && '-'}
-                        {!!user.get('apiToken') && (
-                          <a href={routes.fastAccessAddWorkLog.replace(':apiToken', user.get('apiToken'))}>
-                            {t('user:text.addWorkLog')}
-                          </a>
-                        )}
-                      </td>
-                    </tr>
-                  )}
-                </tbody>
-              </table>
-
-              <h3 className={styles.vacationDaysTitle}>{t('user:text.vacationDays')}</h3>
-              <div className={styles.responsiveTable}>
-                <table className={styles.vacationTable}>
-                  <thead>
-                    <tr>
-                      <th>{t('vacation:text.year')}</th>
-                      <th>{t('vacation:text.total')}</th>
-                      <th>{t('vacation:text.correction')}</th>
-                      <th>{t('vacation:text.used')}</th>
-                      <th>{t('vacation:text.remaining')}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {user.get('vacations') && user.get('vacations').map(vacation => (
-                      <tr key={vacation.get('year')}>
-                        <td className={styles.vacationTableFirstCell}>
-                          {vacation.get('year')}
-                        </td>
-                        <td className={styles.vacationTableCell}>
-                          {vacation.get('vacationDays')}
-                        </td>
-                        <td className={styles.vacationTableCell}>
-                          {vacation.get('vacationDaysCorrection')}
-                        </td>
-                        <td className={styles.vacationTableCell}>
-                          {vacation.get('vacationDays') + vacation.get('vacationDaysCorrection') - vacation.get('remainingVacationDays')}
-                        </td>
-                        <td className={styles.vacationTableCell}>
-                          {vacation.get('remainingVacationDays')}
                         </td>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-
-              <h3 className={styles.workHoursTitle}>{t('user:text.averageWorkingHoursTitle')}</h3>
-              <div className={styles.responsiveTable}>
-                <table className={styles.workHoursTable}>
-                  <thead>
-                    <tr>
-                      <th />
-                      {Array.from({ length: 12 }, (v, k) => k + 1).map((month => (
-                        <th key={month}>
-                          {month}
-                        </th>
-                      )))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {config && config.get('supportedYears').map(year => (
-                      <tr key={year}>
-                        <td>{year}</td>
-                        {this.getRequiredHours(year).map(month => (
-                          <td key={shortid.generate()}>
-                            {month}
+                      {(user.get('roles') && user.get('roles').includes(ROLE_EMPLOYEE)) && (
+                        <tr>
+                          <td className={styles.profileTableTitle}>
+                            {t('user:text.fastAccess')}
                           </td>
-                        ))}
+                          <td className={styles.profileTableValue}>
+                            {!user.get('apiToken') && '-'}
+                            {!!user.get('apiToken') && (
+                              <a href={routes.fastAccessAddWorkLog.replace(':apiToken', user.get('apiToken'))}>
+                                {t('user:text.addWorkLog')}
+                              </a>
+                            )}
+                          </td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+
+                <h3 className={styles.h2}>{t('user:text.vacationDays')}</h3>
+                <div className={styles.responsiveTable}>
+                  <table className={styles.table}>
+                    <thead>
+                      <tr>
+                        <th>{t('vacation:text.year')}</th>
+                        <th>{t('vacation:text.total')}</th>
+                        <th>{t('vacation:text.correction')}</th>
+                        <th>{t('vacation:text.used')}</th>
+                        <th>{t('vacation:text.remaining')}</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {user.get('vacations') && user.get('vacations').map(vacation => (
+                        <tr key={vacation.get('year')}>
+                          <td className={styles.vacationTableFirstCell}>
+                            {vacation.get('year')}
+                          </td>
+                          <td className={styles.vacationTableCell}>
+                            {vacation.get('vacationDays')}
+                          </td>
+                          <td className={styles.vacationTableCell}>
+                            {vacation.get('vacationDaysCorrection')}
+                          </td>
+                          <td className={styles.vacationTableCell}>
+                            {vacation.get('vacationDays') + vacation.get('vacationDaysCorrection') - vacation.get('remainingVacationDays')}
+                          </td>
+                          <td className={styles.vacationTableCell}>
+                            {vacation.get('remainingVacationDays')}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                <h3 className={styles.h2}>{t('user:text.averageWorkingHoursTitle')}</h3>
+                <div className={styles.responsiveTable}>
+                  <table className={styles.workHoursTable}>
+                    <thead>
+                      <tr>
+                        <th />
+                        {Array.from({ length: 12 }, (v, k) => k + 1).map((month => (
+                          <th key={month}>
+                            {month}
+                          </th>
+                        )))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {config && config.get('supportedYears').map(year => (
+                        <tr key={year}>
+                          <td>{year}</td>
+                          {this.getRequiredHours(year).map(month => (
+                            <td key={shortid.generate()}>
+                              {month}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                <h3 className={styles.h2}>{t('user:text.notificationSettings')}</h3>
+                <h3 className={styles.h3}>{t('user:text.supervisorInfo')}</h3>
+                <div className={styles.responsiveTable}>
+                  <table className={styles.table}>
+                    <tbody>
+                      {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map(day => (
+                        <tr key={day}>
+                          <td className={styles.notificationSettingsDay}>
+                            {t(`general:text.${day}`)}
+                          </td>
+                          <td className={styles.notificationSettingsCheckbox}>
+                            <CheckboxField
+                              changeHandler={this.handleCheckboxWithInputChange}
+                              isLabelVisible={false}
+                              label=""
+                              fieldId={`supervisorInfo${day}Time`}
+                              checked={notifications[`supervisorInfo${day}Time`] !== null}
+                            />
+                          </td>
+                          <td className={styles.notificationSettingsInput}>
+                            <TextField
+                              changeHandler={this.handleInputChange}
+                              disabled={notifications[`supervisorInfo${day}Time`] === null}
+                              fieldId={`supervisorInfo${day}Time`}
+                              isLabelVisible={false}
+                              label=""
+                              type="time"
+                              value={notifications[`supervisorInfo${day}Time`] || ''}
+                            />
+                          </td>
+                        </tr>
+                      ))}
+                      <tr>
+                        <td colSpan={3} />
+                      </tr>
+                      <tr>
+                        <td className={styles.notificationSettingsDay}>
+                          {t('user:element.supervisorInfoSendOnHolidays')}
+                        </td>
+                        <td className={styles.notificationSettingsCheckbox}>
+                          <CheckboxField
+                            changeHandler={this.handleCheckboxChange}
+                            isLabelVisible={false}
+                            label=""
+                            fieldId="supervisorInfoSendOnHolidays"
+                            checked={notifications.supervisorInfoSendOnHolidays}
+                          />
+                        </td>
+                        <td className={styles.notificationSettingsInput} />
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div className={styles.saveButton}>
+                  <Button
+                    clickHandler={this.handleSave}
+                    disabled={loggedUserId === null}
+                    label={t('general:action.save')}
+                    loading={isPosting}
+                    priority="primary"
+                  />
+                </div>
               </div>
+
               {apiTokenDialogOpened && user.get('apiToken') && (
                 <Modal
                   closeHandler={() => this.setState({ apiTokenDialogOpened: false })}
@@ -269,6 +451,7 @@ ProfileComponent.defaultProps = {
 
 ProfileComponent.propTypes = {
   config: ImmutablePropTypes.mapContains({}),
+  editUser: PropTypes.func.isRequired,
   fetchConfig: PropTypes.func.isRequired,
   fetchUser: PropTypes.func.isRequired,
   fetchWorkHoursList: PropTypes.func.isRequired,

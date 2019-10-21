@@ -9,8 +9,10 @@ import {
   fetchUser,
   renewUserApiToken,
   resetUserApiToken,
+  editUser,
   selectUser,
   selectUserMeta,
+  selectEditUserMeta,
 } from '../../resources/user';
 import {
   fetchWorkHoursList,
@@ -21,6 +23,7 @@ import ProfileComponent from './ProfileComponent';
 
 const mapStateToProps = (state) => {
   const configMeta = selectConfigMeta(state);
+  const editUserMeta = selectEditUserMeta(state);
   const userMeta = selectUserMeta(state);
   const workHoursListMeta = selectWorkHoursListMeta(state);
 
@@ -29,7 +32,7 @@ const mapStateToProps = (state) => {
     isFetching: configMeta.isFetching
       || userMeta.isFetching
       || workHoursListMeta.isFetching,
-    isPosting: userMeta.isPosting,
+    isPosting: userMeta.isPosting || editUserMeta.isPosting,
     token: selectJwtToken(state),
     user: selectUser(state),
     workHours: selectWorkHoursList(state),
@@ -37,6 +40,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = dispatch => ({
+  editUser: data => dispatch(editUser(data)),
   fetchConfig: () => dispatch(fetchConfig()),
   fetchUser: id => dispatch(fetchUser(id)),
   fetchWorkHoursList: id => dispatch(fetchWorkHoursList(id)),

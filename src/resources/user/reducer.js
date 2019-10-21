@@ -1,4 +1,8 @@
 import Immutable from 'immutable';
+import {
+  toHourMinuteFormat,
+  toMomentDateTime,
+} from '../../services/dateTimeService';
 import initialState from './initialState';
 import * as actionTypes from './actionTypes';
 
@@ -17,6 +21,27 @@ export default (state, action) => {
     ...data,
     year: parseInt(data.year.year, 10),
   });
+
+  const filterNotifications = (data) => {
+    const convert = (value) => {
+      if (value) {
+        return toHourMinuteFormat(toMomentDateTime(value));
+      }
+
+      return null;
+    };
+
+    return ({
+      ...data,
+      supervisorInfoFridayTime: convert(data.supervisorInfoFridayTime),
+      supervisorInfoMondayTime: convert(data.supervisorInfoMondayTime),
+      supervisorInfoSaturdayTime: convert(data.supervisorInfoSaturdayTime),
+      supervisorInfoSundayTime: convert(data.supervisorInfoSundayTime),
+      supervisorInfoThursdayTime: convert(data.supervisorInfoThursdayTime),
+      supervisorInfoTuesdayTime: convert(data.supervisorInfoTuesdayTime),
+      supervisorInfoWednesdayTime: convert(data.supervisorInfoWednesdayTime),
+    });
+  };
 
   const filterVacation = data => ({
     remainingVacationDays: data.remainingVacationDays,
@@ -43,6 +68,9 @@ export default (state, action) => {
     allSupervisors: data.allSupervisors
       ? data.allSupervisors.map(filterUser)
       : [],
+    notifications: data.notifications
+      ? filterNotifications(data.notifications)
+      : null,
     vacations: data.vacations
       ? data.vacations.map(filterVacation).sort((a, b) => a.year - b.year)
       : [],
@@ -122,6 +150,7 @@ export default (state, action) => {
     });
 
     return state
+      .setIn(['user', 'data'], Immutable.fromJS(filterUser(payload)))
       .setIn(['userList', 'data'], userList)
       .setIn(['editUser', 'data'], Immutable.fromJS(filterUser(payload)))
       .setIn(['editUser', 'isPosting'], false)
