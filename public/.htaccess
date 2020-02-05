@@ -1,0 +1,18 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l
+RewriteRule ^.*$ - [NC,L]
+
+RewriteCond %{HTTP_HOST} ^.*$
+RewriteRule ^(.*)?$ index.html [L]
+
+<IfModule mod_headers.c>
+  Header set Content-Security-Policy: "default-src https: 'unsafe-inline' 'unsafe-eval'"
+  Header set Strict-Transport-Security "max-age=15552000; includeSubdomains"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Download-Options: "noopen"
+  Header set X-Frame-Options "deny"
+  Header set X-XSS-Protection "1; mode=block"
+</IfModule>
