@@ -89,12 +89,21 @@ exports[`rendering renders correctly 1`] = `
       <div
         className="Login__footer___WvhVH"
       >
-        <a
-          href="/forgot-password"
-          onClick={[Function]}
+        <Link
+          to="/forgot-password"
         >
-          login:action.forgotPassword
-        </a>
+          <LinkAnchor
+            href="/forgot-password"
+            navigate={[Function]}
+          >
+            <a
+              href="/forgot-password"
+              onClick={[Function]}
+            >
+              login:action.forgotPassword
+            </a>
+          </LinkAnchor>
+        </Link>
       </div>
     </div>
   </div>

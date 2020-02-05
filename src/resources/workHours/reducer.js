@@ -12,7 +12,7 @@ export default (state, action) => {
     type,
   } = action;
 
-  const filterWorkHour = data => ({
+  const filterWorkHour = (data) => ({
     month: parseInt(data.month, 10),
     requiredHours: data.requiredHours,
     year: parseInt(data.year.year, 10),

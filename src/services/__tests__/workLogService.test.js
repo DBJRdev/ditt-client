@@ -28,7 +28,7 @@ describe('getWorkedTime', () => {
       toMomentDateTime('2018-01-01T00:00:00.000Z'),
       [],
       workHours,
-      workedHoursLimits
+      workedHoursLimits,
     ).asSeconds()).toEqual(0);
   });
 
@@ -50,7 +50,7 @@ describe('getWorkedTime', () => {
       toMomentDateTime('2018-01-01T00:00:00.000Z'),
       workLogs,
       workHours,
-      workedHoursLimits
+      workedHoursLimits,
     ).asSeconds()).toEqual(4 * 3600);
   });
 
@@ -72,7 +72,7 @@ describe('getWorkedTime', () => {
       toMomentDateTime('2018-01-01T00:00:00.000Z'),
       workLogs,
       workHours,
-      workedHoursLimits
+      workedHoursLimits,
     ).asSeconds()).toEqual(6.5 * 3600);
   });
 
@@ -94,7 +94,7 @@ describe('getWorkedTime', () => {
       toMomentDateTime('2018-01-01T00:00:00.000Z'),
       workLogs,
       workHours,
-      workedHoursLimits
+      workedHoursLimits,
     ).asSeconds()).toEqual(9.25 * 3600);
   });
 
@@ -111,7 +111,7 @@ describe('getWorkedTime', () => {
       toMomentDateTime('2018-01-01T00:00:00.000Z'),
       workLogs,
       workHours,
-      workedHoursLimits
+      workedHoursLimits,
     ).asSeconds()).toEqual(6 * 3600);
   });
 
@@ -128,7 +128,7 @@ describe('getWorkedTime', () => {
       toMomentDateTime('2018-01-01T00:00:00.000Z'),
       workLogs,
       workHours,
-      workedHoursLimits
+      workedHoursLimits,
     ).asSeconds()).toEqual(0);
   });
 
@@ -155,7 +155,7 @@ describe('getWorkedTime', () => {
       toMomentDateTime('2018-01-01T12:00:00.000Z'),
       workLogs,
       workHours,
-      workedHoursLimits
+      workedHoursLimits,
     ).asSeconds()).toEqual(4 * 3600);
   });
 
@@ -182,7 +182,7 @@ describe('getWorkedTime', () => {
       toMomentDateTime('2018-01-01T12:00:00.000Z'),
       workLogs,
       workHours,
-      workedHoursLimits
+      workedHoursLimits,
     ).asSeconds()).toEqual(6.5 * 3600);
   });
 
@@ -209,7 +209,7 @@ describe('getWorkedTime', () => {
       toMomentDateTime('2018-01-01T12:00:00.000Z'),
       workLogs,
       workHours,
-      workedHoursLimits
+      workedHoursLimits,
     ).asSeconds()).toEqual(9.25 * 3600);
   });
 
@@ -226,7 +226,7 @@ describe('getWorkedTime', () => {
       toMomentDateTime('2018-01-01T12:00:00.000Z'),
       workLogs,
       workHours,
-      workedHoursLimits
+      workedHoursLimits,
     ).asSeconds()).toEqual(6 * 3600);
   });
 
@@ -243,7 +243,7 @@ describe('getWorkedTime', () => {
       toMomentDateTime('2018-01-01T12:00:00.000Z'),
       workLogs,
       workHours,
-      workedHoursLimits
+      workedHoursLimits,
     ).asSeconds()).toEqual(0);
   });
 
@@ -270,7 +270,7 @@ describe('getWorkedTime', () => {
       toMomentDateTime('2018-01-01T12:00:00.000Z'),
       workLogs,
       workHours,
-      workedHoursLimits
+      workedHoursLimits,
     ).asSeconds()).toEqual(4 * 3600);
   });
 
@@ -297,7 +297,7 @@ describe('getWorkedTime', () => {
       toMomentDateTime('2018-01-01T12:00:00.000Z'),
       workLogs,
       workHours,
-      workedHoursLimits
+      workedHoursLimits,
     ).asSeconds()).toEqual(6.5 * 3600);
   });
 
@@ -324,7 +324,7 @@ describe('getWorkedTime', () => {
       toMomentDateTime('2018-01-01T12:00:00.000Z'),
       workLogs,
       workHours,
-      workedHoursLimits
+      workedHoursLimits,
     ).asSeconds()).toEqual(9.25 * 3600);
   });
 
@@ -340,7 +340,7 @@ describe('getWorkedTime', () => {
       toMomentDateTime('2018-01-01T12:00:00.000Z'),
       workLogs,
       workHours,
-      workedHoursLimits
+      workedHoursLimits,
     ).asSeconds()).toEqual(6 * 3600);
   });
 
@@ -357,7 +357,7 @@ describe('getWorkedTime', () => {
       toMomentDateTime('2018-01-01T12:00:00.000Z'),
       workLogs,
       workHours,
-      workedHoursLimits
+      workedHoursLimits,
     ).asSeconds()).toEqual(6 * 3600);
   });
 
@@ -374,7 +374,7 @@ describe('getWorkedTime', () => {
       toMomentDateTime('2018-01-01T12:00:00.000Z'),
       workLogs,
       workHours,
-      workedHoursLimits
+      workedHoursLimits,
     ).asSeconds()).toEqual(0);
   });
 
@@ -415,7 +415,7 @@ describe('getWorkedTime', () => {
       toMomentDateTime('2018-01-01T12:00:00.000Z'),
       workLogs,
       workHours,
-      workedHoursLimits
+      workedHoursLimits,
     ).asSeconds()).toEqual(5.75 * 3600);
   });
 });
@@ -424,7 +424,7 @@ describe('collapseWorkLogs', () => {
   it('test collapse no work logs', () => {
     expect(collapseWorkLogs(
       Immutable.List([]),
-      configMock.get('supportedHolidays')
+      configMock.get('supportedHolidays'),
     ).length).toEqual(0);
   });
 
@@ -485,7 +485,7 @@ describe('collapseWorkLogs', () => {
 
     const collapsedWorkLogs = collapseWorkLogs(
       Immutable.fromJS(workLogs),
-      configMock.get('supportedHolidays')
+      configMock.get('supportedHolidays'),
     );
 
     expect(collapsedWorkLogs.length).toEqual(4);

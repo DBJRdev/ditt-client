@@ -1,7 +1,7 @@
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withNamespaces } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 import WorkLogCalendar from '../../components/WorkLogCalendar';
 import Layout from '../../components/Layout';
 import {
@@ -99,7 +99,7 @@ class WorkLogComponent extends React.Component {
 
   addMultipleVacationWorkLog(data) {
     const workingDays = getWorkingDays(data.date, data.dateTo, this.props.config.get('supportedHolidays'));
-    const workLogs = workingDays.map(workingDay => ({ date: workingDay }));
+    const workLogs = workingDays.map((workingDay) => ({ date: workingDay }));
 
     return this.props.addMultipleVacationWorkLog(workLogs).then((response) => {
       if (!response.error) {
@@ -367,4 +367,4 @@ WorkLogComponent.propTypes = {
   })).isRequired,
 };
 
-export default withNamespaces()(WorkLogComponent);
+export default withTranslation()(WorkLogComponent);

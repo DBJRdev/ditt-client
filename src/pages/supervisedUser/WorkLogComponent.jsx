@@ -1,7 +1,7 @@
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withNamespaces } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 import WorkLogCalendar from '../../components/WorkLogCalendar';
 import Layout from '../../components/Layout';
 import {
@@ -28,7 +28,7 @@ class WorkLogComponent extends React.Component {
         selectedDate: createDate(
           this.props.match.params.year,
           this.props.match.params.month - 1,
-          1
+          1,
         ),
       };
     }
@@ -226,4 +226,4 @@ WorkLogComponent.propTypes = {
   })).isRequired,
 };
 
-export default withNamespaces()(WorkLogComponent);
+export default withTranslation()(WorkLogComponent);

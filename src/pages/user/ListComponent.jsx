@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withNamespaces } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 import {
   Button,
   Table,
@@ -39,7 +39,7 @@ class ListComponent extends React.Component {
     const year = moment().year();
     const columns = [
       {
-        format: row => (
+        format: (row) => (
           /* eslint-disable-next-line jsx-a11y/anchor-is-valid */
           <Link to={routes.editUser.replace(':id', row.id)}>
             {row.firstName}
@@ -66,7 +66,7 @@ class ListComponent extends React.Component {
       {
         format: (row) => {
           if (row.yearStats) {
-            const userYearStats = row.yearStats.filter(stats => stats.year === year)[0];
+            const userYearStats = row.yearStats.filter((stats) => stats.year === year)[0];
 
             if (userYearStats) {
               return `${toHourMinuteFormatFromInt(userYearStats.workedHours)}/${toHourMinuteFormatFromInt(userYearStats.requiredHours)}`;
@@ -81,10 +81,10 @@ class ListComponent extends React.Component {
       },
       {
         format: (row) => {
-          const vacation = row.vacations.filter(vacationItem => vacationItem.year === year)[0];
+          const vacation = row.vacations.filter((vacationItem) => vacationItem.year === year)[0];
 
           if (row.yearStats) {
-            const userYearStats = row.yearStats.filter(stats => stats.year === year)[0];
+            const userYearStats = row.yearStats.filter((stats) => stats.year === year)[0];
 
             if (userYearStats && vacation) {
               return `${userYearStats.vacationDaysUsed}/${vacation.vacationDays + vacation.vacationDaysCorrection}`;
@@ -102,9 +102,9 @@ class ListComponent extends React.Component {
     if (this.props.token) {
       const decodedToken = jwt.decode(this.props.token);
 
-      if (decodedToken && decodedToken.roles.some(role => ROLE_SUPER_ADMIN === role)) {
+      if (decodedToken && decodedToken.roles.some((role) => ROLE_SUPER_ADMIN === role)) {
         columns.push({
-          format: row => (
+          format: (row) => (
             /* eslint-disable-next-line jsx-a11y/anchor-is-valid */
             <Link to={routes.supervisedUserWorkLog.replace(':id', row.id)}>
               {t('user:action.showWorkLog')}
@@ -173,4 +173,4 @@ ListComponent.propTypes = {
   })).isRequired,
 };
 
-export default withNamespaces()(ListComponent);
+export default withTranslation()(ListComponent);

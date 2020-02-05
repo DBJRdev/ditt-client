@@ -6,8 +6,8 @@ import {
   Redirect,
 } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { selectJwtToken } from '..';
 import routes from '../../../routes';
+import { selectJwtToken } from '..';
 
 class AuthorizedRoute extends Route {
   static isAuthorized(token, roles) {
@@ -15,7 +15,7 @@ class AuthorizedRoute extends Route {
       const decodedToken = jwt.decode(token);
 
       if (decodedToken) {
-        return decodedToken.roles.some(role => roles.includes(role));
+        return decodedToken.roles.some((role) => roles.includes(role));
       }
     }
 
@@ -43,14 +43,14 @@ AuthorizedRoute.defaultProps = {
 };
 
 AuthorizedRoute.propTypes = {
-  component: PropTypes.func.isRequired,
+  component: PropTypes.shape({}).isRequired,
   exact: PropTypes.bool,
   path: PropTypes.string.isRequired,
   roles: PropTypes.arrayOf(PropTypes.string).isRequired,
   token: PropTypes.string,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   token: selectJwtToken(state),
 });
 

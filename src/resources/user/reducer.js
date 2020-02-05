@@ -17,7 +17,7 @@ export default (state, action) => {
     type,
   } = action;
 
-  const filterUserYearStats = data => ({
+  const filterUserYearStats = (data) => ({
     ...data,
     year: parseInt(data.year.year, 10),
   });
@@ -43,27 +43,27 @@ export default (state, action) => {
     });
   };
 
-  const filterVacation = data => ({
+  const filterVacation = (data) => ({
     remainingVacationDays: data.remainingVacationDays,
     vacationDays: data.vacationDays,
     vacationDaysCorrection: data.vacationDaysCorrection,
     year: parseInt(data.year.year, 10),
   });
 
-  const filterWorkHour = data => ({
+  const filterWorkHour = (data) => ({
     month: parseInt(data.month, 10),
     requiredHours: data.requiredHours,
     year: parseInt(data.year.year, 10),
   });
 
-  const filterWorkMonth = data => ({
+  const filterWorkMonth = (data) => ({
     id: data.id,
     month: parseInt(data.month, 10),
     status: data.status,
     year: parseInt(data.year.year, 10),
   });
 
-  const filterUser = data => ({
+  const filterUser = (data) => ({
     ...data,
     allSupervisors: data.allSupervisors
       ? data.allSupervisors.map(filterUser)
@@ -117,7 +117,7 @@ export default (state, action) => {
 
   if (type === actionTypes.DELETE_USER_SUCCESS) {
     let userList = state.getIn(['userList', 'data']);
-    userList = userList.filter(user => (
+    userList = userList.filter((user) => (
       user.get('id') !== meta.id
     ));
 

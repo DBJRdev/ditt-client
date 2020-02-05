@@ -16,11 +16,11 @@ const mapStateToProps = (state) => {
   });
 };
 
-const mapDispatchToProps = dispatch => ({
-  login: data => dispatch(login(data)),
+const mapDispatchToProps = (dispatch) => ({
+  login: (data) => dispatch(login(data)),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(LoginComponent);

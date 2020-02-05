@@ -17,11 +17,11 @@ const mapStateToProps = (state) => {
   });
 };
 
-const mapDispatchToProps = dispatch => ({
-  fetchUserList: options => dispatch(fetchUserList(options)),
+const mapDispatchToProps = (dispatch) => ({
+  fetchUserList: (options) => dispatch(fetchUserList(options)),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(ListComponent);

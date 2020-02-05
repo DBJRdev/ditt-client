@@ -74,22 +74,22 @@ const mapStateToProps = (state) => {
   });
 };
 
-const mapDispatchToProps = dispatch => ({
-  fetchBusinessTripWorkLog: id => dispatch(fetchBusinessTripWorkLog(id)),
+const mapDispatchToProps = (dispatch) => ({
+  fetchBusinessTripWorkLog: (id) => dispatch(fetchBusinessTripWorkLog(id)),
   fetchConfig: () => dispatch(fetchConfig()),
-  fetchHomeOfficeWorkLog: id => dispatch(fetchHomeOfficeWorkLog(id)),
-  fetchOvertimeWorkLog: id => dispatch(fetchOvertimeWorkLog(id)),
-  fetchSickDayWorkLog: id => dispatch(fetchSickDayWorkLog(id)),
-  fetchTimeOffWorkLog: id => dispatch(fetchTimeOffWorkLog(id)),
-  fetchVacationWorkLog: id => dispatch(fetchVacationWorkLog(id)),
-  fetchWorkHoursList: uid => dispatch(fetchWorkHoursList(uid)),
-  fetchWorkLog: id => dispatch(fetchWorkLog(id)),
-  fetchWorkMonth: id => dispatch(fetchWorkMonth(id)),
-  fetchWorkMonthList: uid => dispatch(fetchWorkMonthList(uid)),
-  markApproved: id => dispatch(markApproved(id)),
+  fetchHomeOfficeWorkLog: (id) => dispatch(fetchHomeOfficeWorkLog(id)),
+  fetchOvertimeWorkLog: (id) => dispatch(fetchOvertimeWorkLog(id)),
+  fetchSickDayWorkLog: (id) => dispatch(fetchSickDayWorkLog(id)),
+  fetchTimeOffWorkLog: (id) => dispatch(fetchTimeOffWorkLog(id)),
+  fetchVacationWorkLog: (id) => dispatch(fetchVacationWorkLog(id)),
+  fetchWorkHoursList: (uid) => dispatch(fetchWorkHoursList(uid)),
+  fetchWorkLog: (id) => dispatch(fetchWorkLog(id)),
+  fetchWorkMonth: (id) => dispatch(fetchWorkMonth(id)),
+  fetchWorkMonthList: (uid) => dispatch(fetchWorkMonthList(uid)),
+  markApproved: (id) => dispatch(markApproved(id)),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(WorkLogComponent);

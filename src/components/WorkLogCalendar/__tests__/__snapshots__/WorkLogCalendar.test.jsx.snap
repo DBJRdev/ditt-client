@@ -70,7 +70,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
       <tbody>
         <tr
           className="tableRowWeekend"
-          key="1"
         >
           <td
             className="tableCell"
@@ -101,7 +100,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRow"
-          key="2"
         >
           <td
             className="tableCell"
@@ -132,7 +130,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRow"
-          key="3"
         >
           <td
             className="tableCell"
@@ -163,7 +160,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRow"
-          key="4"
         >
           <td
             className="tableCell"
@@ -194,7 +190,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRow"
-          key="5"
         >
           <td
             className="tableCell"
@@ -225,7 +220,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRowWeekend"
-          key="6"
         >
           <td
             className="tableCell"
@@ -256,7 +250,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRowWeekend"
-          key="7"
         >
           <td
             className="tableCell"
@@ -287,7 +280,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRow"
-          key="8"
         >
           <td
             className="tableCell"
@@ -318,7 +310,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRow"
-          key="9"
         >
           <td
             className="tableCell"
@@ -349,7 +340,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRow"
-          key="10"
         >
           <td
             className="tableCell"
@@ -380,7 +370,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRow"
-          key="11"
         >
           <td
             className="tableCell"
@@ -411,7 +400,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRow"
-          key="12"
         >
           <td
             className="tableCell"
@@ -442,7 +430,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRowWeekend"
-          key="13"
         >
           <td
             className="tableCell"
@@ -473,7 +460,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRowWeekend"
-          key="14"
         >
           <td
             className="tableCell"
@@ -504,7 +490,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRow"
-          key="15"
         >
           <td
             className="tableCell"
@@ -535,7 +520,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRow"
-          key="16"
         >
           <td
             className="tableCell"
@@ -566,7 +550,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRow"
-          key="17"
         >
           <td
             className="tableCell"
@@ -597,7 +580,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRow"
-          key="18"
         >
           <td
             className="tableCell"
@@ -628,7 +610,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRow"
-          key="19"
         >
           <td
             className="tableCell"
@@ -659,7 +640,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRowWeekend"
-          key="20"
         >
           <td
             className="tableCell"
@@ -690,7 +670,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRowWeekend"
-          key="21"
         >
           <td
             className="tableCell"
@@ -721,7 +700,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRow"
-          key="22"
         >
           <td
             className="tableCell"
@@ -752,7 +730,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRow"
-          key="23"
         >
           <td
             className="tableCell"
@@ -783,7 +760,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRow"
-          key="24"
         >
           <td
             className="tableCell"
@@ -814,7 +790,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRow"
-          key="25"
         >
           <td
             className="tableCell"
@@ -845,7 +820,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRow"
-          key="26"
         >
           <td
             className="tableCell"
@@ -876,7 +850,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRowWeekend"
-          key="27"
         >
           <td
             className="tableCell"
@@ -907,7 +880,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRowWeekend"
-          key="28"
         >
           <td
             className="tableCell"
@@ -938,7 +910,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRow"
-          key="29"
         >
           <td
             className="tableCell"
@@ -969,7 +940,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRow"
-          key="30"
         >
           <td
             className="tableCell"
@@ -1000,7 +970,6 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
         </tr>
         <tr
           className="tableRow"
-          key="31"
         >
           <td
             className="tableCell"
@@ -1178,7 +1147,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
       <tbody>
         <tr
           className="tableRowWeekend"
-          key="1"
         >
           <td
             className="tableCell"
@@ -1209,7 +1177,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRow"
-          key="2"
         >
           <td
             className="tableCell"
@@ -1240,7 +1207,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRow"
-          key="3"
         >
           <td
             className="tableCell"
@@ -1271,7 +1237,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRow"
-          key="4"
         >
           <td
             className="tableCell"
@@ -1302,7 +1267,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRow"
-          key="5"
         >
           <td
             className="tableCell"
@@ -1333,7 +1297,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRowWeekend"
-          key="6"
         >
           <td
             className="tableCell"
@@ -1364,7 +1327,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRowWeekend"
-          key="7"
         >
           <td
             className="tableCell"
@@ -1395,7 +1357,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRow"
-          key="8"
         >
           <td
             className="tableCell"
@@ -1426,7 +1387,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRow"
-          key="9"
         >
           <td
             className="tableCell"
@@ -1457,7 +1417,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRow"
-          key="10"
         >
           <td
             className="tableCell"
@@ -1488,7 +1447,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRow"
-          key="11"
         >
           <td
             className="tableCell"
@@ -1519,7 +1477,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRow"
-          key="12"
         >
           <td
             className="tableCell"
@@ -1550,7 +1507,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRowWeekend"
-          key="13"
         >
           <td
             className="tableCell"
@@ -1581,7 +1537,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRowWeekend"
-          key="14"
         >
           <td
             className="tableCell"
@@ -1612,7 +1567,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRow"
-          key="15"
         >
           <td
             className="tableCell"
@@ -1643,7 +1597,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRow"
-          key="16"
         >
           <td
             className="tableCell"
@@ -1674,7 +1627,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRow"
-          key="17"
         >
           <td
             className="tableCell"
@@ -1705,7 +1657,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRow"
-          key="18"
         >
           <td
             className="tableCell"
@@ -1736,7 +1687,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRow"
-          key="19"
         >
           <td
             className="tableCell"
@@ -1767,7 +1717,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRowWeekend"
-          key="20"
         >
           <td
             className="tableCell"
@@ -1798,7 +1747,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRowWeekend"
-          key="21"
         >
           <td
             className="tableCell"
@@ -1829,7 +1777,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRow"
-          key="22"
         >
           <td
             className="tableCell"
@@ -1860,7 +1807,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRow"
-          key="23"
         >
           <td
             className="tableCell"
@@ -1891,7 +1837,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRow"
-          key="24"
         >
           <td
             className="tableCell"
@@ -1922,7 +1867,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRow"
-          key="25"
         >
           <td
             className="tableCell"
@@ -1953,7 +1897,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRow"
-          key="26"
         >
           <td
             className="tableCell"
@@ -1984,7 +1927,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRowWeekend"
-          key="27"
         >
           <td
             className="tableCell"
@@ -2015,7 +1957,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRowWeekend"
-          key="28"
         >
           <td
             className="tableCell"
@@ -2046,7 +1987,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRow"
-          key="29"
         >
           <td
             className="tableCell"
@@ -2077,7 +2017,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRow"
-          key="30"
         >
           <td
             className="tableCell"
@@ -2108,7 +2047,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         </tr>
         <tr
           className="tableRow"
-          key="31"
         >
           <td
             className="tableCell"
@@ -2213,7 +2151,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
       <tbody>
         <tr
           className="tableRowWeekend"
-          key="1"
         >
           <td
             className="tableCell"
@@ -2244,7 +2181,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRow"
-          key="2"
         >
           <td
             className="tableCell"
@@ -2275,7 +2211,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRow"
-          key="3"
         >
           <td
             className="tableCell"
@@ -2306,7 +2241,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRow"
-          key="4"
         >
           <td
             className="tableCell"
@@ -2337,7 +2271,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRow"
-          key="5"
         >
           <td
             className="tableCell"
@@ -2368,7 +2301,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRowWeekend"
-          key="6"
         >
           <td
             className="tableCell"
@@ -2399,7 +2331,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRowWeekend"
-          key="7"
         >
           <td
             className="tableCell"
@@ -2430,7 +2361,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRow"
-          key="8"
         >
           <td
             className="tableCell"
@@ -2461,7 +2391,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRow"
-          key="9"
         >
           <td
             className="tableCell"
@@ -2492,7 +2421,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRow"
-          key="10"
         >
           <td
             className="tableCell"
@@ -2523,7 +2451,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRow"
-          key="11"
         >
           <td
             className="tableCell"
@@ -2554,7 +2481,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRow"
-          key="12"
         >
           <td
             className="tableCell"
@@ -2585,7 +2511,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRowWeekend"
-          key="13"
         >
           <td
             className="tableCell"
@@ -2616,7 +2541,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRowWeekend"
-          key="14"
         >
           <td
             className="tableCell"
@@ -2647,7 +2571,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRow"
-          key="15"
         >
           <td
             className="tableCell"
@@ -2678,7 +2601,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRow"
-          key="16"
         >
           <td
             className="tableCell"
@@ -2709,7 +2631,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRow"
-          key="17"
         >
           <td
             className="tableCell"
@@ -2740,7 +2661,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRow"
-          key="18"
         >
           <td
             className="tableCell"
@@ -2771,7 +2691,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRow"
-          key="19"
         >
           <td
             className="tableCell"
@@ -2802,7 +2721,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRowWeekend"
-          key="20"
         >
           <td
             className="tableCell"
@@ -2833,7 +2751,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRowWeekend"
-          key="21"
         >
           <td
             className="tableCell"
@@ -2864,7 +2781,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRow"
-          key="22"
         >
           <td
             className="tableCell"
@@ -2895,7 +2811,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRow"
-          key="23"
         >
           <td
             className="tableCell"
@@ -2926,7 +2841,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRow"
-          key="24"
         >
           <td
             className="tableCell"
@@ -2957,7 +2871,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRow"
-          key="25"
         >
           <td
             className="tableCell"
@@ -2988,7 +2901,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRow"
-          key="26"
         >
           <td
             className="tableCell"
@@ -3019,7 +2931,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRowWeekend"
-          key="27"
         >
           <td
             className="tableCell"
@@ -3050,7 +2961,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRowWeekend"
-          key="28"
         >
           <td
             className="tableCell"
@@ -3081,7 +2991,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRow"
-          key="29"
         >
           <td
             className="tableCell"
@@ -3112,7 +3021,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRow"
-          key="30"
         >
           <td
             className="tableCell"
@@ -3143,7 +3051,6 @@ exports[`rendering renders correctly with closed work month 1`] = `
         </tr>
         <tr
           className="tableRow"
-          key="31"
         >
           <td
             className="tableCell"
@@ -3245,7 +3152,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
       <tbody>
         <tr
           className="tableRowWeekend tableRowAddWorkLog"
-          key="1"
           onClick={[Function]}
         >
           <td
@@ -3316,7 +3222,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="2"
           onClick={[Function]}
         >
           <td
@@ -3370,7 +3275,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="3"
           onClick={[Function]}
         >
           <td
@@ -3424,7 +3328,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="4"
           onClick={[Function]}
         >
           <td
@@ -3478,7 +3381,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="5"
           onClick={[Function]}
         >
           <td
@@ -3532,7 +3434,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRowWeekend tableRowAddWorkLog"
-          key="6"
           onClick={[Function]}
         >
           <td
@@ -3586,7 +3487,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRowWeekend tableRowAddWorkLog"
-          key="7"
           onClick={[Function]}
         >
           <td
@@ -3640,7 +3540,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="8"
           onClick={[Function]}
         >
           <td
@@ -3694,7 +3593,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="9"
           onClick={[Function]}
         >
           <td
@@ -3748,7 +3646,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="10"
           onClick={[Function]}
         >
           <td
@@ -3802,7 +3699,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="11"
           onClick={[Function]}
         >
           <td
@@ -3856,7 +3752,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="12"
           onClick={[Function]}
         >
           <td
@@ -3910,7 +3805,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRowWeekend tableRowAddWorkLog"
-          key="13"
           onClick={[Function]}
         >
           <td
@@ -3964,7 +3858,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRowWeekend tableRowAddWorkLog"
-          key="14"
           onClick={[Function]}
         >
           <td
@@ -4018,7 +3911,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="15"
           onClick={[Function]}
         >
           <td
@@ -4072,7 +3964,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="16"
           onClick={[Function]}
         >
           <td
@@ -4126,7 +4017,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="17"
           onClick={[Function]}
         >
           <td
@@ -4180,7 +4070,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="18"
           onClick={[Function]}
         >
           <td
@@ -4234,7 +4123,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="19"
           onClick={[Function]}
         >
           <td
@@ -4288,7 +4176,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRowWeekend tableRowAddWorkLog"
-          key="20"
           onClick={[Function]}
         >
           <td
@@ -4342,7 +4229,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRowWeekend tableRowAddWorkLog"
-          key="21"
           onClick={[Function]}
         >
           <td
@@ -4396,7 +4282,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="22"
           onClick={[Function]}
         >
           <td
@@ -4450,7 +4335,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="23"
           onClick={[Function]}
         >
           <td
@@ -4504,7 +4388,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="24"
           onClick={[Function]}
         >
           <td
@@ -4558,7 +4441,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="25"
           onClick={[Function]}
         >
           <td
@@ -4612,7 +4494,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="26"
           onClick={[Function]}
         >
           <td
@@ -4666,7 +4547,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRowWeekend tableRowAddWorkLog"
-          key="27"
           onClick={[Function]}
         >
           <td
@@ -4720,7 +4600,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRowWeekend tableRowAddWorkLog"
-          key="28"
           onClick={[Function]}
         >
           <td
@@ -4774,7 +4653,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="29"
           onClick={[Function]}
         >
           <td
@@ -4828,7 +4706,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="30"
           onClick={[Function]}
         >
           <td
@@ -4882,7 +4759,6 @@ exports[`rendering renders correctly with opened work month 1`] = `
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="31"
           onClick={[Function]}
         >
           <td
@@ -5028,7 +4904,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
       <tbody>
         <tr
           className="tableRowWeekend tableRowAddWorkLog"
-          key="1"
           onClick={[Function]}
         >
           <td
@@ -5099,7 +4974,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="2"
           onClick={[Function]}
         >
           <td
@@ -5153,7 +5027,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="3"
           onClick={[Function]}
         >
           <td
@@ -5207,7 +5080,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="4"
           onClick={[Function]}
         >
           <td
@@ -5261,7 +5133,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="5"
           onClick={[Function]}
         >
           <td
@@ -5315,7 +5186,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRowWeekend tableRowAddWorkLog"
-          key="6"
           onClick={[Function]}
         >
           <td
@@ -5369,7 +5239,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRowWeekend tableRowAddWorkLog"
-          key="7"
           onClick={[Function]}
         >
           <td
@@ -5423,7 +5292,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="8"
           onClick={[Function]}
         >
           <td
@@ -5477,7 +5345,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="9"
           onClick={[Function]}
         >
           <td
@@ -5531,7 +5398,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="10"
           onClick={[Function]}
         >
           <td
@@ -5585,7 +5451,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="11"
           onClick={[Function]}
         >
           <td
@@ -5639,7 +5504,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="12"
           onClick={[Function]}
         >
           <td
@@ -5693,7 +5557,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRowWeekend tableRowAddWorkLog"
-          key="13"
           onClick={[Function]}
         >
           <td
@@ -5747,7 +5610,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRowWeekend tableRowAddWorkLog"
-          key="14"
           onClick={[Function]}
         >
           <td
@@ -5801,7 +5663,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="15"
           onClick={[Function]}
         >
           <td
@@ -5855,7 +5716,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="16"
           onClick={[Function]}
         >
           <td
@@ -5909,7 +5769,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="17"
           onClick={[Function]}
         >
           <td
@@ -5963,7 +5822,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="18"
           onClick={[Function]}
         >
           <td
@@ -6017,7 +5875,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="19"
           onClick={[Function]}
         >
           <td
@@ -6071,7 +5928,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRowWeekend tableRowAddWorkLog"
-          key="20"
           onClick={[Function]}
         >
           <td
@@ -6125,7 +5981,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRowWeekend tableRowAddWorkLog"
-          key="21"
           onClick={[Function]}
         >
           <td
@@ -6179,7 +6034,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="22"
           onClick={[Function]}
         >
           <td
@@ -6233,7 +6087,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="23"
           onClick={[Function]}
         >
           <td
@@ -6287,7 +6140,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="24"
           onClick={[Function]}
         >
           <td
@@ -6341,7 +6193,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="25"
           onClick={[Function]}
         >
           <td
@@ -6395,7 +6246,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="26"
           onClick={[Function]}
         >
           <td
@@ -6449,7 +6299,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRowWeekend tableRowAddWorkLog"
-          key="27"
           onClick={[Function]}
         >
           <td
@@ -6503,7 +6352,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRowWeekend tableRowAddWorkLog"
-          key="28"
           onClick={[Function]}
         >
           <td
@@ -6557,7 +6405,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="29"
           onClick={[Function]}
         >
           <td
@@ -6611,7 +6458,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="30"
           onClick={[Function]}
         >
           <td
@@ -6665,7 +6511,6 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
         </tr>
         <tr
           className="tableRow tableRowAddWorkLog"
-          key="31"
           onClick={[Function]}
         >
           <td

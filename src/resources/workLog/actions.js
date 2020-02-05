@@ -3,7 +3,7 @@ import { API_URL } from '../../../config/envspecific';
 import { toJson } from '../../services/dateTimeService';
 import * as types from './actionTypes';
 
-export const addWorkLog = data => dispatch => dispatch({
+export const addWorkLog = (data) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify({
       endTime: toJson(data.endTime),
@@ -20,7 +20,7 @@ export const addWorkLog = data => dispatch => dispatch({
   },
 });
 
-export const deleteWorkLog = id => dispatch => dispatch({
+export const deleteWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/work_logs/${id}`,
     method: 'DELETE',
@@ -32,7 +32,7 @@ export const deleteWorkLog = id => dispatch => dispatch({
   },
 });
 
-export const fetchWorkLog = id => dispatch => dispatch({
+export const fetchWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/work_logs/${id}`,
     headers: { 'Content-Type': 'application/json' },

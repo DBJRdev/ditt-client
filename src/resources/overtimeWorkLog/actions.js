@@ -3,7 +3,7 @@ import { API_URL } from '../../../config/envspecific';
 import { toJson } from '../../services/dateTimeService';
 import * as types from './actionTypes';
 
-export const addOvertimeWorkLog = data => dispatch => dispatch({
+export const addOvertimeWorkLog = (data) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify({
       date: toJson(data.date),
@@ -20,7 +20,7 @@ export const addOvertimeWorkLog = data => dispatch => dispatch({
   },
 });
 
-export const deleteOvertimeWorkLog = id => dispatch => dispatch({
+export const deleteOvertimeWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/overtime_work_logs/${id}`,
     method: 'DELETE',
@@ -32,7 +32,7 @@ export const deleteOvertimeWorkLog = id => dispatch => dispatch({
   },
 });
 
-export const fetchOvertimeWorkLog = id => dispatch => dispatch({
+export const fetchOvertimeWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/overtime_work_logs/${id}`,
     headers: { 'Content-Type': 'application/json' },
@@ -45,7 +45,7 @@ export const fetchOvertimeWorkLog = id => dispatch => dispatch({
   },
 });
 
-export const markOvertimeWorkLogApproved = id => dispatch => dispatch({
+export const markOvertimeWorkLogApproved = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/overtime_work_logs/${id}/mark_approved`,
     headers: { 'Content-Type': 'application/json' },
@@ -58,7 +58,7 @@ export const markOvertimeWorkLogApproved = id => dispatch => dispatch({
   },
 });
 
-export const markOvertimeWorkLogRejected = (id, data) => dispatch => dispatch({
+export const markOvertimeWorkLogRejected = (id, data) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify({
       rejectionMessage: data.rejectionMessage,

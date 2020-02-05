@@ -13,11 +13,11 @@ const mapStateToProps = (state) => {
   });
 };
 
-const mapDispatchToProps = dispatch => ({
-  resetPassword: data => dispatch(resetPassword(data)),
+const mapDispatchToProps = (dispatch) => ({
+  resetPassword: (data) => dispatch(resetPassword(data)),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(ForgotPasswordComponent);

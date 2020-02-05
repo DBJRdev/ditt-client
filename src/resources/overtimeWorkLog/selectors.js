@@ -1,17 +1,17 @@
 import { createSelector } from 'reselect';
 
-const getOvertimeWorkLog = state => state.getIn(['overtimeWorkLog', 'overtimeWorkLog']);
+const getOvertimeWorkLog = (state) => state.getIn(['overtimeWorkLog', 'overtimeWorkLog']);
 
 export const selectOvertimeWorkLog = createSelector(
   [getOvertimeWorkLog],
-  data => data.get('data')
+  (data) => data.get('data'),
 );
 export const selectOvertimeWorkLogMeta = createSelector(
   [getOvertimeWorkLog],
-  data => ({
+  (data) => ({
     isFetching: data.get('isFetching'),
     isFetchingFailure: data.get('isFetchingFailure'),
     isPosting: data.get('isPosting'),
     isPostingFailure: data.get('isPostingFailure'),
-  })
+  }),
 );

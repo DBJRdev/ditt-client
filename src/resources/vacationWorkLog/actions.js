@@ -3,9 +3,9 @@ import { API_URL } from '../../../config/envspecific';
 import { toJson } from '../../services/dateTimeService';
 import * as types from './actionTypes';
 
-export const addMultipleVacationWorkLog = data => dispatch => dispatch({
+export const addMultipleVacationWorkLog = (data) => (dispatch) => dispatch({
   [RSAA]: {
-    body: JSON.stringify(data.map(workLog => ({ date: toJson(workLog.date) }))),
+    body: JSON.stringify(data.map((workLog) => ({ date: toJson(workLog.date) }))),
     endpoint: `${API_URL}/vacation_work_logs/bulk`,
     headers: { 'Content-Type': 'application/json' },
     method: 'POST',
@@ -17,7 +17,7 @@ export const addMultipleVacationWorkLog = data => dispatch => dispatch({
   },
 });
 
-export const deleteVacationWorkLog = id => dispatch => dispatch({
+export const deleteVacationWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/vacation_work_logs/${id}`,
     method: 'DELETE',
@@ -29,7 +29,7 @@ export const deleteVacationWorkLog = id => dispatch => dispatch({
   },
 });
 
-export const fetchVacationWorkLog = id => dispatch => dispatch({
+export const fetchVacationWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/vacation_work_logs/${id}`,
     headers: { 'Content-Type': 'application/json' },
@@ -42,7 +42,7 @@ export const fetchVacationWorkLog = id => dispatch => dispatch({
   },
 });
 
-export const markMultipleVacationWorkLogApproved = workLogIds => dispatch => dispatch({
+export const markMultipleVacationWorkLogApproved = (workLogIds) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify({ workLogIds }),
     endpoint: `${API_URL}/vacation_work_logs/bulk/mark_approved`,
@@ -56,7 +56,7 @@ export const markMultipleVacationWorkLogApproved = workLogIds => dispatch => dis
   },
 });
 
-export const markMultipleVacationWorkLogRejected = (workLogIds, data) => dispatch => dispatch({
+export const markMultipleVacationWorkLogRejected = (workLogIds, data) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify({
       rejectionMessage: data.rejectionMessage,
@@ -73,7 +73,7 @@ export const markMultipleVacationWorkLogRejected = (workLogIds, data) => dispatc
   },
 });
 
-export const markVacationWorkLogApproved = id => dispatch => dispatch({
+export const markVacationWorkLogApproved = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/vacation_work_logs/${id}/mark_approved`,
     headers: { 'Content-Type': 'application/json' },
@@ -86,7 +86,7 @@ export const markVacationWorkLogApproved = id => dispatch => dispatch({
   },
 });
 
-export const markVacationWorkLogRejected = (id, data) => dispatch => dispatch({
+export const markVacationWorkLogRejected = (id, data) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify({
       rejectionMessage: data.rejectionMessage,

@@ -12,7 +12,7 @@ export default (state, action) => {
     type,
   } = action;
 
-  const filterWorkHour = data => ({
+  const filterWorkHour = (data) => ({
     vacationDays: data.vacationDays,
     vacationDaysCorrection: data.vacationDaysCorrection,
     year: parseInt(data.year.year, 10),

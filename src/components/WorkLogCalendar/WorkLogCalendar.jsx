@@ -3,7 +3,7 @@ import Immutable from 'immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withNamespaces } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 import {
   Button,
   Modal,
@@ -124,10 +124,10 @@ class WorkLogCalendar extends React.Component {
           renderingDay.clone(),
           workLogListForRenderingDay,
           workHoursList.find((
-            workHour => workHour.get('month') === (renderingDay.clone().month() + 1)
+            (workHour) => workHour.get('month') === (renderingDay.clone().month() + 1)
               && workHour.get('year') === renderingDay.clone().year()
           )),
-          this.props.config.get('workedHoursLimits').toJS()
+          this.props.config.get('workedHoursLimits').toJS(),
         ),
       });
 
@@ -345,7 +345,7 @@ class WorkLogCalendar extends React.Component {
     let requiredHoursLeft = 0;
     const workedTime = moment.duration();
 
-    const workHours = workHoursList.find(item => (
+    const workHours = workHoursList.find((item) => (
       item.get('year') === selectedDate.year()
       && item.get('month') === selectedDate.month() + 1
     ));
@@ -354,7 +354,7 @@ class WorkLogCalendar extends React.Component {
       const workingDays = getNumberOfWorkingDays(
         selectedDate.clone().startOf('month'),
         selectedDate.clone().endOf('month'),
-        this.props.config.get('supportedHolidays')
+        this.props.config.get('supportedHolidays'),
       );
       requiredHours = workHours.get('requiredHours') * workingDays;
     }
@@ -367,11 +367,11 @@ class WorkLogCalendar extends React.Component {
       const userYearStats = this.props.workMonth.getIn(['user', 'yearStats']).toJS();
       const requiredHoursTotal = userYearStats.reduce(
         (total, userYearStat) => total + userYearStat.requiredHours,
-        0
+        0,
       );
       const workedHoursTotal = userYearStats.reduce(
         (total, userYearStat) => total + userYearStat.workedHours,
-        0
+        0,
       );
 
       requiredHoursLeft = requiredHoursTotal - workedHoursTotal;
@@ -381,12 +381,12 @@ class WorkLogCalendar extends React.Component {
           'workLog:text.workedAndRequiredHoursPlusLeft',
           {
             requiredHours: toHourMinuteFormatFromInt(
-              Math.max(0, requiredHours + requiredHoursLeft)
+              Math.max(0, requiredHours + requiredHoursLeft),
             ),
             requiredHoursLeft: toHourMinuteFormatFromInt(requiredHoursLeft),
             requiredHoursWithoutLeft: toHourMinuteFormatFromInt(requiredHours),
             workedHours: `${workedTime.hours() + (workedTime.days() * 24)}:${(workedTime.minutes()) < 10 ? '0' : ''}${workedTime.minutes()}`,
-          }
+          },
         );
       }
 
@@ -395,12 +395,12 @@ class WorkLogCalendar extends React.Component {
           'workLog:text.workedAndRequiredHoursMinusLeft',
           {
             requiredHours: toHourMinuteFormatFromInt(
-              Math.max(0, requiredHours + requiredHoursLeft)
+              Math.max(0, requiredHours + requiredHoursLeft),
             ),
             requiredHoursLeft: toHourMinuteFormatFromInt(requiredHoursLeft),
             requiredHoursWithoutLeft: toHourMinuteFormatFromInt(requiredHours),
             workedHours: `${workedTime.hours() + (workedTime.days() * 24)}:${(workedTime.minutes()) < 10 ? '0' : ''}${workedTime.minutes()}`,
-          }
+          },
         );
       }
     }
@@ -410,7 +410,7 @@ class WorkLogCalendar extends React.Component {
       {
         requiredHours: toHourMinuteFormatFromInt(requiredHours),
         workedHours: `${workedTime.hours() + (workedTime.days() * 24)}:${(workedTime.minutes()) < 10 ? '0' : ''}${workedTime.minutes()}`,
-      }
+      },
     );
   }
 
@@ -458,12 +458,12 @@ class WorkLogCalendar extends React.Component {
           <br />
 
           {STATUS_REJECTED === this.props.businessTripWorkLog.get('status') && (
-            <React.Fragment>
+            <>
               {t('workLog:element.rejectionMessage')}
               :
               {this.props.businessTripWorkLog.get('rejectionMessage')}
               <br />
-            </React.Fragment>
+            </>
           )}
 
           {t('businessTripWorkLog:element.purpose')}
@@ -515,12 +515,12 @@ class WorkLogCalendar extends React.Component {
           <br />
 
           {STATUS_REJECTED === this.props.homeOfficeWorkLog.get('status') && (
-            <React.Fragment>
+            <>
               {t('workLog:element.rejectionMessage')}
               {': '}
               {this.props.homeOfficeWorkLog.get('rejectionMessage')}
               <br />
-            </React.Fragment>
+            </>
           )}
         </p>
       );
@@ -543,12 +543,12 @@ class WorkLogCalendar extends React.Component {
           <br />
 
           {STATUS_REJECTED === this.props.overtimeWorkLog.get('status') && (
-            <React.Fragment>
+            <>
               {t('workLog:element.rejectionMessage')}
               {': '}
               {this.props.overtimeWorkLog.get('rejectionMessage')}
               <br />
-            </React.Fragment>
+            </>
           )}
 
           {t('overtimeWorkLog:element.reason')}
@@ -575,12 +575,12 @@ class WorkLogCalendar extends React.Component {
           <br />
 
           {VARIANT_SICK_CHILD === this.props.sickDayWorkLog.get('variant') && (
-            <React.Fragment>
+            <>
               {`${t('sickDayWorkLog:element.childName')}: ${this.props.sickDayWorkLog.get('childName')}`}
               <br />
               {`${t('sickDayWorkLog:element.childDateOfBirth')}: ${toDayMonthYearFormat(this.props.sickDayWorkLog.get('childDateOfBirth'))}`}
               <br />
-            </React.Fragment>
+            </>
           )}
         </p>
       );
@@ -608,12 +608,12 @@ class WorkLogCalendar extends React.Component {
           <br />
 
           {STATUS_REJECTED === this.props.timeOffWorkLog.get('status') && (
-            <React.Fragment>
+            <>
               {t('workLog:element.rejectionMessage')}
               {': '}
               {this.props.timeOffWorkLog.get('rejectionMessage')}
               <br />
-            </React.Fragment>
+            </>
           )}
         </p>
       );
@@ -636,12 +636,12 @@ class WorkLogCalendar extends React.Component {
           <br />
 
           {STATUS_REJECTED === this.props.vacationWorkLog.get('status') && (
-            <React.Fragment>
+            <>
               {t('workLog:element.rejectionMessage')}
               {': '}
               {this.props.vacationWorkLog.get('rejectionMessage')}
               <br />
-            </React.Fragment>
+            </>
           )}
         </p>
       );
@@ -681,7 +681,7 @@ class WorkLogCalendar extends React.Component {
       actions.push({
         clickHandler: () => this.deleteWorkLog(
           this.state.showDeleteWorkLogDialogId,
-          this.state.showDeleteWorkLogDialogType
+          this.state.showDeleteWorkLogDialogType,
         ),
         label: t('general:action.delete'),
         loading: this.props.isPosting,
@@ -717,7 +717,7 @@ class WorkLogCalendar extends React.Component {
       workLogContent = t('workLog:text.openedWorkMonth');
     } else {
       workLogContent = (
-        <React.Fragment>
+        <>
           <div className={styles.tableWrapper}>
             <table className={styles.table}>
               <tbody>
@@ -771,10 +771,10 @@ class WorkLogCalendar extends React.Component {
                               >
                                 <Button
                                   clickHandler={
-                                    e => this.openDeleteWorkLogDialog(
+                                    (e) => this.openDeleteWorkLogDialog(
                                       e,
                                       workLog.id,
-                                      BUSINESS_TRIP_WORK_LOG
+                                      BUSINESS_TRIP_WORK_LOG,
                                     )
                                   }
                                   icon="train"
@@ -792,10 +792,10 @@ class WorkLogCalendar extends React.Component {
                               >
                                 <Button
                                   clickHandler={
-                                    e => this.openDeleteWorkLogDialog(
+                                    (e) => this.openDeleteWorkLogDialog(
                                       e,
                                       workLog.id,
-                                      HOME_OFFICE_WORK_LOG
+                                      HOME_OFFICE_WORK_LOG,
                                     )
                                   }
                                   icon="home"
@@ -813,10 +813,10 @@ class WorkLogCalendar extends React.Component {
                               >
                                 <Button
                                   clickHandler={
-                                    e => this.openDeleteWorkLogDialog(
+                                    (e) => this.openDeleteWorkLogDialog(
                                       e,
                                       workLog.id,
-                                      OVERTIME_WORK_LOG
+                                      OVERTIME_WORK_LOG,
                                     )
                                   }
                                   icon="hourglass_empty"
@@ -834,10 +834,10 @@ class WorkLogCalendar extends React.Component {
                               >
                                 <Button
                                   clickHandler={
-                                    e => this.openDeleteWorkLogDialog(
+                                    (e) => this.openDeleteWorkLogDialog(
                                       e,
                                       workLog.id,
-                                      SICK_DAY_WORK_LOG
+                                      SICK_DAY_WORK_LOG,
                                     )
                                   }
                                   icon="pregnant_woman"
@@ -859,10 +859,10 @@ class WorkLogCalendar extends React.Component {
                               >
                                 <Button
                                   clickHandler={
-                                    e => this.openDeleteWorkLogDialog(
+                                    (e) => this.openDeleteWorkLogDialog(
                                       e,
                                       workLog.id,
-                                      TIME_OFF_WORK_LOG
+                                      TIME_OFF_WORK_LOG,
                                     )
                                   }
                                   icon="flag"
@@ -880,10 +880,10 @@ class WorkLogCalendar extends React.Component {
                               >
                                 <Button
                                   clickHandler={
-                                    e => this.openDeleteWorkLogDialog(
+                                    (e) => this.openDeleteWorkLogDialog(
                                       e,
                                       workLog.id,
-                                      VACATION_WORK_LOG
+                                      VACATION_WORK_LOG,
                                     )
                                   }
                                   icon="flag"
@@ -900,10 +900,10 @@ class WorkLogCalendar extends React.Component {
                             >
                               <Button
                                 clickHandler={
-                                  e => this.openDeleteWorkLogDialog(
+                                  (e) => this.openDeleteWorkLogDialog(
                                     e,
                                     workLog.id,
-                                    WORK_LOG
+                                    WORK_LOG,
                                   )
                                 }
                                 icon="access_time"
@@ -993,7 +993,7 @@ class WorkLogCalendar extends React.Component {
           }
           {this.state.showDeleteWorkLogDialog ? this.renderDeleteWorkLogModal() : null}
           {this.state.showWorkLogForm ? this.renderWorkLogForm() : null}
-        </React.Fragment>
+        </>
       );
     }
 
@@ -1006,7 +1006,7 @@ class WorkLogCalendar extends React.Component {
               disabled={
                 !getWorkMonthByMonth(
                   this.props.selectedDate.clone().subtract(1, 'month'),
-                  this.props.workMonthList.toJS()
+                  this.props.workMonthList.toJS(),
                 )
               }
               icon="keyboard_arrow_left"
@@ -1055,7 +1055,7 @@ class WorkLogCalendar extends React.Component {
               disabled={
                 !getWorkMonthByMonth(
                   this.props.selectedDate.clone().add(1, 'month'),
-                  this.props.workMonthList.toJS()
+                  this.props.workMonthList.toJS(),
                 )
               }
               icon="keyboard_arrow_right"
@@ -1134,6 +1134,8 @@ WorkLogCalendar.propTypes = {
   }),
   selectedDate: PropTypes.shape({
     clone: PropTypes.func.isRequired,
+    month: PropTypes.func,
+    year: PropTypes.func,
   }).isRequired,
   sickDayWorkLog: ImmutablePropTypes.mapContains({
     childDateOfBirth: PropTypes.object,
@@ -1244,4 +1246,4 @@ WorkLogCalendar.propTypes = {
   })).isRequired,
 };
 
-export default withNamespaces()(WorkLogCalendar);
+export default withTranslation()(WorkLogCalendar);
