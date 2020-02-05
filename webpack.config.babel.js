@@ -8,8 +8,13 @@ module.exports = [{
     host: '0.0.0.0',
     inline: true,
   },
+  devtool: 'eval-cheap-module-source-map',
   entry: {
-    bundle: ['@babel/polyfill', 'whatwg-fetch', path.join(__dirname, 'src/main.jsx')],
+    bundle: [
+      'core-js',
+      'whatwg-fetch',
+      path.join(__dirname, 'src/main.jsx'),
+    ],
   },
   module: {
     rules: [
@@ -24,12 +29,13 @@ module.exports = [{
           { loader: 'style-loader' },
           {
             loader: 'css-loader',
-            query: {
-              modules: true,
-              importLoaders: 2,
-              localIdentName: '[local]__[hash:base64:5]'
-            }
+            options: {
+              modules: {
+                localIdentName: '[name]__[local]__[hash:base64:5]',
+              },
+            },
           },
+          { loader: 'postcss-loader' },
           { loader: 'sass-loader' },
         ],
       },

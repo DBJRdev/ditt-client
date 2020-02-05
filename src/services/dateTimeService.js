@@ -4,7 +4,7 @@ const TIMEZONE = 'Europe/Prague';
 
 export const localizedMoment = () => moment().tz(TIMEZONE);
 
-const isMomentValid = momentDateTime => momentDateTime
+const isMomentValid = (momentDateTime) => momentDateTime
   && moment.isMoment(momentDateTime)
   && momentDateTime.isValid();
 
@@ -53,7 +53,7 @@ export const isWeekend = (momentDateTime) => {
   throw new Error('Invalid datetime');
 };
 
-export const toJson = momentDateTime => momentDateTime.local().format();
+export const toJson = (momentDateTime) => momentDateTime.local().format();
 
 export const toMomentDateTime = (dateTimeString) => {
   const momentDateTime = moment(dateTimeString, moment.ISO_8601).tz(TIMEZONE);

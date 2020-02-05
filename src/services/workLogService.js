@@ -98,16 +98,16 @@ export const getWorkedTime = (date, workLogList, workHours, workedHoursLimits) =
   };
 
   const businessTripWorkLogs = workLogList.filter((
-    workLog => workLog.type === BUSINESS_TRIP_WORK_LOG && workLog.status === STATUS_APPROVED
+    (workLog) => workLog.type === BUSINESS_TRIP_WORK_LOG && workLog.status === STATUS_APPROVED
   ));
   const homeOfficeWorkLogs = workLogList.filter((
-    workLog => workLog.type === HOME_OFFICE_WORK_LOG && workLog.status === STATUS_APPROVED
+    (workLog) => workLog.type === HOME_OFFICE_WORK_LOG && workLog.status === STATUS_APPROVED
   ));
   const sickDayWorkLogs = workLogList.filter((
-    workLog => workLog.type === SICK_DAY_WORK_LOG
+    (workLog) => workLog.type === SICK_DAY_WORK_LOG
   ));
   const vacationWorkLogs = workLogList.filter((
-    workLog => workLog.type === VACATION_WORK_LOG && workLog.status === STATUS_APPROVED
+    (workLog) => workLog.type === VACATION_WORK_LOG && workLog.status === STATUS_APPROVED
   ));
 
   // Standard work log time
@@ -153,7 +153,7 @@ export const getWorkLogsByMonth = (date, workLogList) => workLogList.filter((wor
   return date.isSame(workLog.date, 'month');
 });
 
-export const getWorkMonthByMonth = (date, workMonthList) => workMonthList.find(workMonth => (
+export const getWorkMonthByMonth = (date, workMonthList) => workMonthList.find((workMonth) => (
   date.month() + 1 === workMonth.month
   && date.year() === workMonth.year
 ));
@@ -165,9 +165,9 @@ export const collapseWorkLogs = (originalWorkLogs, supportedHolidays) => {
   // Group work logs by status and sort them by date
 
   originalWorkLogs
-    .sortBy(workLog => workLog.get('date'))
-    .sortBy(workLog => workLog.getIn(['workMonth', 'user', 'firstName']))
-    .sortBy(workLog => workLog.getIn(['workMonth', 'user', 'lastName']))
+    .sortBy((workLog) => workLog.get('date'))
+    .sortBy((workLog) => workLog.getIn(['workMonth', 'user', 'firstName']))
+    .sortBy((workLog) => workLog.getIn(['workMonth', 'user', 'lastName']))
     .forEach((workLog) => {
       let status = workLog.get('status');
 
@@ -233,7 +233,7 @@ export const collapseWorkLogs = (originalWorkLogs, supportedHolidays) => {
 
     let bulkWorkLog = collapsedWorkLog[0];
     bulkWorkLog = bulkWorkLog.set('dateTo', collapsedWorkLog[collapsedWorkLog.length - 1].get('date'));
-    bulkWorkLog = bulkWorkLog.set('bulkIds', Immutable.List(collapsedWorkLog.map(workLog => workLog.get('id'))));
+    bulkWorkLog = bulkWorkLog.set('bulkIds', Immutable.List(collapsedWorkLog.map((workLog) => workLog.get('id'))));
     bulkWorkLog = bulkWorkLog.set('isBulk', true);
 
     return bulkWorkLog;

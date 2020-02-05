@@ -150,7 +150,7 @@ export const validateUser = (t, user, userList, supportedWorkHours) => {
       {
         max: 200,
         min: 2,
-      }
+      },
     );
     errors.isValid = false;
   }
@@ -161,7 +161,7 @@ export const validateUser = (t, user, userList, supportedWorkHours) => {
       {
         max: 200,
         min: 2,
-      }
+      },
     );
     errors.isValid = false;
   }
@@ -172,7 +172,7 @@ export const validateUser = (t, user, userList, supportedWorkHours) => {
       {
         max: 200,
         min: 2,
-      }
+      },
     );
     errors.isValid = false;
   }
@@ -324,7 +324,7 @@ export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay) => 
     const workingDays = getWorkingDays(
       toMomentDateTimeFromDayMonthYear(workLog.date),
       toMomentDateTimeFromDayMonthYear(workLog.dateTo),
-      config.get('supportedHolidays')
+      config.get('supportedHolidays'),
     );
 
     config.get('supportedYears').forEach((supportedYear) => {
@@ -335,7 +335,7 @@ export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay) => 
     });
 
     config.get('supportedYears').forEach((supportedYear) => {
-      const vacation = user.get('vacations').find(vacationItem => vacationItem.get('year') === supportedYear);
+      const vacation = user.get('vacations').find((vacationItem) => vacationItem.get('year') === supportedYear);
 
       if (vacationDaysByYear[supportedYear] > vacation.get('remainingVacationDays')) {
         errors.elements.form = t('workLog:validation.vacationDaysExceeded');

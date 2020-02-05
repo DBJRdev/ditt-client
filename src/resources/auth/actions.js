@@ -10,7 +10,7 @@ import {
 import routes from '../../routes';
 import * as types from './actionTypes';
 
-export const login = data => dispatch => dispatch({
+export const login = (data) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify({
       email: data.username,
@@ -47,7 +47,7 @@ export const login = data => dispatch => dispatch({
   return response;
 });
 
-export const logout = () => dispatch => dispatch({
+export const logout = () => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/logout`,
     headers: { 'Content-Type': 'application/json' },
@@ -66,9 +66,9 @@ export const logout = () => dispatch => dispatch({
   return response;
 });
 
-export const reset = () => dispatch => dispatch({ type: types.RESET });
+export const reset = () => (dispatch) => dispatch({ type: types.RESET });
 
-export const resetPassword = data => dispatch => dispatch({
+export const resetPassword = (data) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify(data),
     endpoint: `${API_URL}/reset-password`,
@@ -82,7 +82,7 @@ export const resetPassword = data => dispatch => dispatch({
   },
 });
 
-export const setNewPassword = data => dispatch => dispatch({
+export const setNewPassword = (data) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify(data),
     endpoint: `${API_URL}/new-password`,

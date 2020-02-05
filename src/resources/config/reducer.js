@@ -22,12 +22,12 @@ export default (state, action) => {
   if (type === actionTypes.FETCH_CONFIG_SUCCESS) {
     return state
       .setIn(['config', 'data'], Immutable.fromJS({
-        supportedHolidays: payload.supportedHolidays.map(date => createDate(
+        supportedHolidays: payload.supportedHolidays.map((date) => createDate(
           date.year.year,
           date.month - 1,
-          date.day
+          date.day,
         )),
-        supportedYears: payload.supportedYears.map(supportedYear => supportedYear.year),
+        supportedYears: payload.supportedYears.map((supportedYear) => supportedYear.year),
         workedHoursLimits: payload.workedHoursLimits,
       }))
       .setIn(['config', 'isFetching'], false)
@@ -50,12 +50,12 @@ export default (state, action) => {
   if (type === actionTypes.SAVE_CONFIG_SUCCESS) {
     return state
       .setIn(['config', 'data'], Immutable.fromJS({
-        supportedHolidays: payload.supportedHolidays.map(date => createDate(
+        supportedHolidays: payload.supportedHolidays.map((date) => createDate(
           date.year.year,
           date.month - 1,
-          date.day
+          date.day,
         )),
-        supportedYears: payload.supportedYears.map(supportedYear => supportedYear.year),
+        supportedYears: payload.supportedYears.map((supportedYear) => supportedYear.year),
         workedHoursLimits: payload.workedHoursLimits,
       }))
       .setIn(['config', 'isPosting'], false)

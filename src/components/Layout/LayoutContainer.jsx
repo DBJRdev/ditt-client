@@ -5,15 +5,15 @@ import {
 } from '../../resources/auth';
 import LayoutComponent from './LayoutComponent';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   token: selectJwtToken(state),
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(logout()),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(LayoutComponent);

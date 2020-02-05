@@ -9,7 +9,7 @@ import {
   Modal,
   TextField,
 } from 'react-ui';
-import { withNamespaces } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 import { ROLE_EMPLOYEE } from '../../resources/user';
 import { getWorkHoursString } from '../../services/workHoursService';
 import Layout from '../../components/Layout';
@@ -55,7 +55,9 @@ class ProfileComponent extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  // TODO: Replace this unsafe method
+  // eslint-disable-next-line
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { user: oldUser } = this.props;
     const { user } = nextProps;
     const { notifications } = this.state;
@@ -69,7 +71,7 @@ class ProfileComponent extends React.Component {
         && !oldUser.get('notifications').equals(user.get('notifications'))
       )
     ) {
-      this.setState(prevState => ({
+      this.setState((prevState) => ({
         ...prevState,
         notifications: {
           isInit: true,
@@ -98,7 +100,7 @@ class ProfileComponent extends React.Component {
       checked,
     } = e.target;
 
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       ...prevState,
       notifications: {
         ...prevState.notifications,
@@ -113,7 +115,7 @@ class ProfileComponent extends React.Component {
       checked,
     } = e.target;
 
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       ...prevState,
       notifications: {
         ...prevState.notifications,
@@ -128,7 +130,7 @@ class ProfileComponent extends React.Component {
       value,
     } = e.target;
 
-    this.setState(prevState => ({
+    this.setState((prevState) => ({
       ...prevState,
       notifications: {
         ...prevState.notifications,
@@ -309,7 +311,7 @@ class ProfileComponent extends React.Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {user.get('vacations') && user.get('vacations').map(vacation => (
+                      {user.get('vacations') && user.get('vacations').map((vacation) => (
                         <tr key={vacation.get('year')}>
                           <td className={styles.vacationTableFirstCell}>
                             {vacation.get('year')}
@@ -337,8 +339,9 @@ class ProfileComponent extends React.Component {
                   <table className={styles.workHoursTable}>
                     <thead>
                       <tr>
+                        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label  */}
                         <th />
-                        {Array.from({ length: 12 }, (v, k) => k + 1).map((month => (
+                        {Array.from({ length: 12 }, (v, k) => k + 1).map(((month) => (
                           <th key={month}>
                             {month}
                           </th>
@@ -346,10 +349,10 @@ class ProfileComponent extends React.Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {config && config.get('supportedYears').map(year => (
+                      {config && config.get('supportedYears').map((year) => (
                         <tr key={year}>
                           <td>{year}</td>
-                          {this.getRequiredHours(year).map(month => (
+                          {this.getRequiredHours(year).map((month) => (
                             <td key={shortid.generate()}>
                               {month}
                             </td>
@@ -365,7 +368,7 @@ class ProfileComponent extends React.Component {
                 <div className={styles.responsiveTable}>
                   <table className={styles.table}>
                     <tbody>
-                      {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map(day => (
+                      {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map((day) => (
                         <tr key={day}>
                           <td className={styles.notificationSettingsDay}>
                             {t(`general:text.${day}`)}
@@ -486,4 +489,4 @@ ProfileComponent.propTypes = {
   })).isRequired,
 };
 
-export default withNamespaces()(ProfileComponent);
+export default withTranslation()(ProfileComponent);

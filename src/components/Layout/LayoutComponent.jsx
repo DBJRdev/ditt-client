@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import jwt from 'jsonwebtoken';
-import { withNamespaces } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 import { Button } from 'react-ui';
 import { Link } from 'react-router-dom';
 import {
@@ -54,7 +54,7 @@ class LayoutComponent extends React.Component {
       const decodedToken = jwt.decode(this.props.token);
 
       if (decodedToken) {
-        return decodedToken.roles.some(role => roles.includes(role));
+        return decodedToken.roles.some((role) => roles.includes(role));
       }
     }
 
@@ -197,4 +197,4 @@ LayoutComponent.propTypes = {
   token: PropTypes.string,
 };
 
-export default withNamespaces()(LayoutComponent);
+export default withTranslation()(LayoutComponent);

@@ -47,21 +47,21 @@ const mapStateToProps = (state) => {
   });
 };
 
-const mapDispatchToProps = dispatch => ({
-  addBusinessTripWorkLog: data => dispatch(addBusinessTripWorkLog(data)),
-  addHomeOfficeWorkLog: data => dispatch(addHomeOfficeWorkLog(data)),
-  addMultipleVacationWorkLog: data => dispatch(addMultipleVacationWorkLog(data)),
-  addOvertimeWorkLog: data => dispatch(addOvertimeWorkLog(data)),
-  addSickDayWorkLog: data => dispatch(addSickDayWorkLog(data)),
-  addTimeOffWorkLog: data => dispatch(addTimeOffWorkLog(data)),
-  addWorkLog: data => dispatch(addWorkLog(data)),
+const mapDispatchToProps = (dispatch) => ({
+  addBusinessTripWorkLog: (data) => dispatch(addBusinessTripWorkLog(data)),
+  addHomeOfficeWorkLog: (data) => dispatch(addHomeOfficeWorkLog(data)),
+  addMultipleVacationWorkLog: (data) => dispatch(addMultipleVacationWorkLog(data)),
+  addOvertimeWorkLog: (data) => dispatch(addOvertimeWorkLog(data)),
+  addSickDayWorkLog: (data) => dispatch(addSickDayWorkLog(data)),
+  addTimeOffWorkLog: (data) => dispatch(addTimeOffWorkLog(data)),
+  addWorkLog: (data) => dispatch(addWorkLog(data)),
   fetchConfig: () => dispatch(fetchConfig()),
-  fetchUserByApiToken: apiToken => dispatch(fetchUserByApiToken(apiToken)),
-  fetchWorkMonth: id => dispatch(fetchWorkMonth(id)),
-  fetchWorkMonthList: uid => dispatch(fetchWorkMonthList(uid)),
+  fetchUserByApiToken: (apiToken) => dispatch(fetchUserByApiToken(apiToken)),
+  fetchWorkMonth: (id) => dispatch(fetchWorkMonth(id)),
+  fetchWorkMonthList: (uid) => dispatch(fetchWorkMonthList(uid)),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(FastAccessAddWorkLogComponent);

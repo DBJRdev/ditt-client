@@ -3,7 +3,7 @@ import { API_URL } from '../../../config/envspecific';
 import { toJson } from '../../services/dateTimeService';
 import * as types from './actionTypes';
 
-export const addSickDayWorkLog = data => dispatch => dispatch({
+export const addSickDayWorkLog = (data) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify({
       childDateOfBirth: data.childDateOfBirth ? toJson(data.childDateOfBirth) : null,
@@ -22,7 +22,7 @@ export const addSickDayWorkLog = data => dispatch => dispatch({
   },
 });
 
-export const deleteSickDayWorkLog = id => dispatch => dispatch({
+export const deleteSickDayWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/sick_day_work_logs/${id}`,
     method: 'DELETE',
@@ -34,7 +34,7 @@ export const deleteSickDayWorkLog = id => dispatch => dispatch({
   },
 });
 
-export const fetchSickDayWorkLog = id => dispatch => dispatch({
+export const fetchSickDayWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/sick_day_work_logs/${id}`,
     headers: { 'Content-Type': 'application/json' },

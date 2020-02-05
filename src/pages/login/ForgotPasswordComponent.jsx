@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { withNamespaces } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 import { ForgotPassword } from 'react-ui';
 import {
   RESET_PASSWORD_FAILURE,
@@ -50,7 +50,7 @@ class ForgotPasswordComponent extends React.Component {
 
   render() {
     const { t } = this.props;
-    const layout = children => (
+    const layout = (children) => (
       <div className={styles.container}>
         <img
           src={logoImage}
@@ -103,4 +103,4 @@ ForgotPasswordComponent.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withNamespaces()(ForgotPasswordComponent);
+export default withTranslation()(ForgotPasswordComponent);

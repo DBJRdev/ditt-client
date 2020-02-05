@@ -3,7 +3,7 @@ import { API_URL } from '../../../config/envspecific';
 import { toJson } from '../../services/dateTimeService';
 import * as types from './actionTypes';
 
-export const addTimeOffWorkLog = data => dispatch => dispatch({
+export const addTimeOffWorkLog = (data) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify({
       comment: data.comment,
@@ -20,7 +20,7 @@ export const addTimeOffWorkLog = data => dispatch => dispatch({
   },
 });
 
-export const deleteTimeOffWorkLog = id => dispatch => dispatch({
+export const deleteTimeOffWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/time_off_work_logs/${id}`,
     method: 'DELETE',
@@ -32,7 +32,7 @@ export const deleteTimeOffWorkLog = id => dispatch => dispatch({
   },
 });
 
-export const fetchTimeOffWorkLog = id => dispatch => dispatch({
+export const fetchTimeOffWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/time_off_work_logs/${id}`,
     headers: { 'Content-Type': 'application/json' },
@@ -45,7 +45,7 @@ export const fetchTimeOffWorkLog = id => dispatch => dispatch({
   },
 });
 
-export const markTimeOffWorkLogApproved = id => dispatch => dispatch({
+export const markTimeOffWorkLogApproved = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/time_off_work_logs/${id}/mark_approved`,
     headers: { 'Content-Type': 'application/json' },
@@ -58,7 +58,7 @@ export const markTimeOffWorkLogApproved = id => dispatch => dispatch({
   },
 });
 
-export const markTimeOffWorkLogRejected = (id, data) => dispatch => dispatch({
+export const markTimeOffWorkLogRejected = (id, data) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify({
       rejectionMessage: data.rejectionMessage,

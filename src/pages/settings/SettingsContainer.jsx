@@ -17,12 +17,12 @@ const mapStateToProps = (state) => {
   });
 };
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   fetchConfig: () => dispatch(fetchConfig()),
-  saveConfig: data => dispatch(saveConfig(data)),
+  saveConfig: (data) => dispatch(saveConfig(data)),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Component);

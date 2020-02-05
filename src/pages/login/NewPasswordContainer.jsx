@@ -13,11 +13,11 @@ const mapStateToProps = (state) => {
   });
 };
 
-const mapDispatchToProps = dispatch => ({
-  setNewPassword: data => dispatch(setNewPassword(data)),
+const mapDispatchToProps = (dispatch) => ({
+  setNewPassword: (data) => dispatch(setNewPassword(data)),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(NewPasswordComponent);

@@ -1,7 +1,7 @@
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withNamespaces } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 import {
   Button,
   CheckboxField,
@@ -65,8 +65,8 @@ class AddComponent extends React.Component {
 
   componentDidMount() {
     this.props.fetchConfig().then(() => {
-      const formData = Object.assign({}, this.state.formData);
-      const formValidity = Object.assign({}, this.state.formValidity);
+      const formData = { ...this.state.formData };
+      const formValidity = { ...this.state.formValidity };
 
       this.props.config.get('supportedYears').forEach((year) => {
         this.state.formData.workHours[year] = [];
@@ -100,7 +100,7 @@ class AddComponent extends React.Component {
     const eventTarget = e.target;
 
     this.setState((prevState) => {
-      const formData = Object.assign({}, prevState.formData);
+      const formData = { ...prevState.formData };
 
       if (eventTarget.type === 'checkbox') {
         formData[eventTarget.id] = eventTarget.checked;
@@ -117,7 +117,7 @@ class AddComponent extends React.Component {
     const eventTargetId = eventTarget.id.replace('vacationDays_', '');
 
     this.setState((prevState) => {
-      const formData = Object.assign({}, prevState.formData);
+      const formData = { ...prevState.formData };
       const remainingVacationDays = parseInt(eventTarget.value, 10)
         + parseInt(formData.vacations[eventTargetId].vacationDaysCorrection, 10)
         - parseInt(formData.vacations[eventTargetId].vacationDaysUsed, 10);
@@ -137,7 +137,7 @@ class AddComponent extends React.Component {
     const eventTargetId = eventTarget.id.replace('vacationDaysCorrection_', '');
 
     this.setState((prevState) => {
-      const formData = Object.assign({}, prevState.formData);
+      const formData = { ...prevState.formData };
       const remainingVacationDays = parseInt(formData.vacations[eventTargetId].vacationDays, 10)
         + parseInt(eventTarget.value, 10)
         - parseInt(formData.vacations[eventTargetId].vacationDaysUsed, 10);
@@ -156,7 +156,7 @@ class AddComponent extends React.Component {
     const eventTargetId = eventTarget.id.replace('workHours_', '');
 
     this.setState((prevState) => {
-      const formData = Object.assign({}, prevState.formData);
+      const formData = { ...prevState.formData };
       formData.workHours[eventTargetId] = eventTarget.value.split(',');
 
       return { formData };
@@ -168,13 +168,13 @@ class AddComponent extends React.Component {
       this.props.t,
       this.state.formData,
       this.props.userList.toJS(),
-      this.props.config.get('supportedYears')
+      this.props.config.get('supportedYears'),
     );
 
     this.setState({ formValidity });
 
     if (formValidity.isValid) {
-      const formData = Object.assign({}, this.state.formData);
+      const formData = { ...this.state.formData };
       const vacations = [];
       const workHours = [];
 
@@ -222,7 +222,7 @@ class AddComponent extends React.Component {
   render() {
     const { t } = this.props;
 
-    const userList = this.props.userList.toJS().map(user => ({
+    const userList = this.props.userList.toJS().map((user) => ({
       label: `${user.firstName} ${user.lastName}`,
       value: user.id,
     }));
@@ -406,4 +406,4 @@ AddComponent.propTypes = {
   })).isRequired,
 };
 
-export default withNamespaces()(AddComponent);
+export default withTranslation()(AddComponent);

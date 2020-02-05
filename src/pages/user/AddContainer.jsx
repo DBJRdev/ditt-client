@@ -26,13 +26,13 @@ const mapStateToProps = (state) => {
   });
 };
 
-const mapDispatchToProps = dispatch => ({
-  addUser: data => dispatch(addUser(data)),
+const mapDispatchToProps = (dispatch) => ({
+  addUser: (data) => dispatch(addUser(data)),
   fetchConfig: () => dispatch(fetchConfig()),
   fetchUserList: () => dispatch(fetchUserList()),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(AddComponent);

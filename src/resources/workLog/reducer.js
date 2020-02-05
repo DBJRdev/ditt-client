@@ -13,7 +13,7 @@ export default (state, action) => {
     type,
   } = action;
 
-  const filterWorkLog = data => ({
+  const filterWorkLog = (data) => ({
     endTime: toMomentDateTime(data.endTime),
     id: parseInt(data.id, 10),
     startTime: toMomentDateTime(data.startTime),

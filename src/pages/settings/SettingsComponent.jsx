@@ -7,7 +7,7 @@ import {
   TextArea,
   TextField,
 } from 'react-ui';
-import { withNamespaces } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 import Layout from '../../components/Layout';
 import {
   createDate,
@@ -55,7 +55,7 @@ class SettingsComponent extends React.Component {
     const eventTarget = e.target;
 
     this.setState((prevState) => {
-      const formData = Object.assign({}, prevState.formData);
+      const formData = { ...prevState.formData };
       formData[eventTarget.id] = eventTarget.value;
 
       return { formData };
@@ -102,7 +102,7 @@ class SettingsComponent extends React.Component {
 
           const holiday = toMomentDateTimeFromDayMonth(line);
           supportedHolidays.push(
-            createDate(formData.year, holiday.get('month'), holiday.get('date'))
+            createDate(formData.year, holiday.get('month'), holiday.get('date')),
           );
         });
       }
@@ -123,7 +123,7 @@ class SettingsComponent extends React.Component {
     const { formData } = this.state;
     const supportedYears = config.get('supportedYears').toJS();
     const supportedHolidays = config.get('supportedHolidays').toJS()
-      .filter(holiday => holiday.year() !== formData.year);
+      .filter((holiday) => holiday.year() !== formData.year);
 
     const formValidity = validateSupportedYear(t, formData, supportedYears, false);
 
@@ -138,7 +138,7 @@ class SettingsComponent extends React.Component {
 
           const holiday = toMomentDateTimeFromDayMonth(line);
           supportedHolidays.push(
-            createDate(formData.year, holiday.get('month'), holiday.get('date'))
+            createDate(formData.year, holiday.get('month'), holiday.get('date')),
           );
         });
       }
@@ -164,8 +164,8 @@ class SettingsComponent extends React.Component {
   openEditYearDialog(year) {
     const { config } = this.props;
     const holidays = config.get('supportedHolidays')
-      .filter(holiday => holiday.year() === year)
-      .map(holiday => holiday.format('DD.MM.'))
+      .filter((holiday) => holiday.year() === year)
+      .map((holiday) => holiday.format('DD.MM.'))
       .reduce((acc, holiday) => `${acc}\n${holiday}`);
 
     this.setState({
@@ -207,8 +207,8 @@ class SettingsComponent extends React.Component {
     const isOpened = openedYears.includes(supportedYear);
 
     const holidays = config.get('supportedHolidays').toJS()
-      .filter(holiday => holiday.year() === supportedYear)
-      .map(holiday => toDayMonthYearFormat(holiday));
+      .filter((holiday) => holiday.year() === supportedYear)
+      .map((holiday) => toDayMonthYearFormat(holiday));
 
     return (
       <div
@@ -245,7 +245,7 @@ class SettingsComponent extends React.Component {
               :
             </p>
             <p>
-              {holidays.map(holiday => (
+              {holidays.map((holiday) => (
                 <span key={holiday}>
                   {holiday}
                   <br />
@@ -402,4 +402,4 @@ SettingsComponent.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withNamespaces()(SettingsComponent);
+export default withTranslation()(SettingsComponent);

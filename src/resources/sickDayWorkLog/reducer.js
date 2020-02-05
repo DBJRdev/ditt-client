@@ -13,7 +13,7 @@ export default (state, action) => {
     type,
   } = action;
 
-  const filterWorkLog = data => ({
+  const filterWorkLog = (data) => ({
     childDateOfBirth: data.childDateOfBirth ? toMomentDateTime(data.childDateOfBirth) : null,
     childName: data.childName,
     date: toMomentDateTime(data.date),

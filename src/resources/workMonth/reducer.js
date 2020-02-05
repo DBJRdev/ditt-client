@@ -37,25 +37,25 @@ export default (state, action) => {
     return STATUS_WAITING_FOR_APPROVAL;
   };
 
-  const filterUserYearStats = data => ({
+  const filterUserYearStats = (data) => ({
     ...data,
     year: parseInt(data.year.year, 10),
   });
 
-  const filterVacation = data => ({
+  const filterVacation = (data) => ({
     remainingVacationDays: data.remainingVacationDays,
     vacationDays: data.vacationDays,
     vacationDaysCorrection: data.vacationDaysCorrection,
     year: parseInt(data.year.year, 10),
   });
 
-  const filterWorkHour = data => ({
+  const filterWorkHour = (data) => ({
     month: parseInt(data.month, 10),
     requiredHours: data.requiredHours,
     year: parseInt(data.year.year, 10),
   });
 
-  const filterUser = data => ({
+  const filterUser = (data) => ({
     ...data,
     allSupervisors: data.allSupervisors
       ? data.allSupervisors.map(filterUser)
@@ -74,7 +74,7 @@ export default (state, action) => {
       : [],
   });
 
-  const filterWorkMonth = data => ({
+  const filterWorkMonth = (data) => ({
     id: data.id,
     month: parseInt(data.month, 10),
     status: data.status,
@@ -82,14 +82,14 @@ export default (state, action) => {
     year: parseInt(data.year.year, 10),
   });
 
-  const filterWorkMonthDetail = data => ({
-    businessTripWorkLogs: data.businessTripWorkLogs.map(businessTripWorkLogsData => ({
+  const filterWorkMonthDetail = (data) => ({
+    businessTripWorkLogs: data.businessTripWorkLogs.map((businessTripWorkLogsData) => ({
       date: toMomentDateTime(businessTripWorkLogsData.date),
       id: parseInt(businessTripWorkLogsData.id, 10),
       status: resolveWorkLogStatus(businessTripWorkLogsData),
       type: BUSINESS_TRIP_WORK_LOG,
     })),
-    homeOfficeWorkLogs: data.homeOfficeWorkLogs.map(homeOfficeWorkLogsData => ({
+    homeOfficeWorkLogs: data.homeOfficeWorkLogs.map((homeOfficeWorkLogsData) => ({
       date: toMomentDateTime(homeOfficeWorkLogsData.date),
       id: parseInt(homeOfficeWorkLogsData.id, 10),
       status: resolveWorkLogStatus(homeOfficeWorkLogsData),
@@ -97,34 +97,34 @@ export default (state, action) => {
     })),
     id: data.id,
     month: parseInt(data.month, 10),
-    overtimeWorkLogs: data.overtimeWorkLogs.map(overtimeWorkLogsData => ({
+    overtimeWorkLogs: data.overtimeWorkLogs.map((overtimeWorkLogsData) => ({
       date: toMomentDateTime(overtimeWorkLogsData.date),
       id: parseInt(overtimeWorkLogsData.id, 10),
       status: resolveWorkLogStatus(overtimeWorkLogsData),
       type: OVERTIME_WORK_LOG,
     })),
-    sickDayWorkLogs: data.sickDayWorkLogs.map(sickDayWorkLogsData => ({
+    sickDayWorkLogs: data.sickDayWorkLogs.map((sickDayWorkLogsData) => ({
       date: toMomentDateTime(sickDayWorkLogsData.date),
       id: parseInt(sickDayWorkLogsData.id, 10),
       type: SICK_DAY_WORK_LOG,
       variant: sickDayWorkLogsData.variant,
     })),
     status: data.status,
-    timeOffWorkLogs: data.timeOffWorkLogs.map(timeOffWorkLogsData => ({
+    timeOffWorkLogs: data.timeOffWorkLogs.map((timeOffWorkLogsData) => ({
       date: toMomentDateTime(timeOffWorkLogsData.date),
       id: parseInt(timeOffWorkLogsData.id, 10),
       status: resolveWorkLogStatus(timeOffWorkLogsData),
       type: TIME_OFF_WORK_LOG,
     })),
     user: filterUser(data.user),
-    vacationWorkLogs: data.vacationWorkLogs.map(vacationWorkLogsData => ({
+    vacationWorkLogs: data.vacationWorkLogs.map((vacationWorkLogsData) => ({
       date: toMomentDateTime(vacationWorkLogsData.date),
       id: parseInt(vacationWorkLogsData.id, 10),
       rejectionMessage: vacationWorkLogsData.rejectionMessage,
       status: resolveWorkLogStatus(vacationWorkLogsData),
       type: VACATION_WORK_LOG,
     })),
-    workLogs: data.workLogs.map(workLogData => ({
+    workLogs: data.workLogs.map((workLogData) => ({
       endTime: toMomentDateTime(workLogData.endTime),
       id: parseInt(workLogData.id, 10),
       startTime: toMomentDateTime(workLogData.startTime),
@@ -133,8 +133,8 @@ export default (state, action) => {
     year: parseInt(data.year.year, 10),
   });
 
-  const filterSpecialApprovals = data => ({
-    businessTripWorkLogs: data.businessTripWorkLogs.map(businessTripWorkLogsData => ({
+  const filterSpecialApprovals = (data) => ({
+    businessTripWorkLogs: data.businessTripWorkLogs.map((businessTripWorkLogsData) => ({
       date: toMomentDateTime(businessTripWorkLogsData.date),
       id: parseInt(businessTripWorkLogsData.id, 10),
       status: resolveWorkLogStatus(businessTripWorkLogsData),
@@ -147,7 +147,7 @@ export default (state, action) => {
         year: parseInt(businessTripWorkLogsData.workMonth.year.year, 10),
       },
     })),
-    homeOfficeWorkLogs: data.homeOfficeWorkLogs.map(homeOfficeWorkLogsData => ({
+    homeOfficeWorkLogs: data.homeOfficeWorkLogs.map((homeOfficeWorkLogsData) => ({
       comment: homeOfficeWorkLogsData.comment,
       date: toMomentDateTime(homeOfficeWorkLogsData.date),
       id: parseInt(homeOfficeWorkLogsData.id, 10),
@@ -161,7 +161,7 @@ export default (state, action) => {
         year: parseInt(homeOfficeWorkLogsData.workMonth.year.year, 10),
       },
     })),
-    overtimeWorkLogs: data.overtimeWorkLogs.map(overtimeWorkLogsData => ({
+    overtimeWorkLogs: data.overtimeWorkLogs.map((overtimeWorkLogsData) => ({
       date: toMomentDateTime(overtimeWorkLogsData.date),
       id: parseInt(overtimeWorkLogsData.id, 10),
       status: resolveWorkLogStatus(overtimeWorkLogsData),
@@ -174,7 +174,7 @@ export default (state, action) => {
         year: parseInt(overtimeWorkLogsData.workMonth.year.year, 10),
       },
     })),
-    timeOffWorkLogs: data.timeOffWorkLogs.map(timeOffWorkLogsData => ({
+    timeOffWorkLogs: data.timeOffWorkLogs.map((timeOffWorkLogsData) => ({
       comment: timeOffWorkLogsData.comment,
       date: toMomentDateTime(timeOffWorkLogsData.date),
       id: parseInt(timeOffWorkLogsData.id, 10),
@@ -188,7 +188,7 @@ export default (state, action) => {
         year: parseInt(timeOffWorkLogsData.workMonth.year.year, 10),
       },
     })),
-    vacationWorkLogs: data.vacationWorkLogs.map(vacationWorkLogsData => ({
+    vacationWorkLogs: data.vacationWorkLogs.map((vacationWorkLogsData) => ({
       date: toMomentDateTime(vacationWorkLogsData.date),
       id: parseInt(vacationWorkLogsData.id, 10),
       rejectionMessage: vacationWorkLogsData.rejectionMessage,

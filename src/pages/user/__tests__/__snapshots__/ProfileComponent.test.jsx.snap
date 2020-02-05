@@ -181,9 +181,7 @@ exports[`rendering renders correctly 1`] = `
             </tr>
           </thead>
           <tbody>
-            <tr
-              key="2018"
-            >
+            <tr>
               <td
                 className="vacationTableFirstCell"
               >
@@ -210,9 +208,7 @@ exports[`rendering renders correctly 1`] = `
                 10
               </td>
             </tr>
-            <tr
-              key="2019"
-            >
+            <tr>
               <td
                 className="vacationTableFirstCell"
               >
@@ -239,9 +235,7 @@ exports[`rendering renders correctly 1`] = `
                 10
               </td>
             </tr>
-            <tr
-              key="2020"
-            >
+            <tr>
               <td
                 className="vacationTableFirstCell"
               >
@@ -268,9 +262,7 @@ exports[`rendering renders correctly 1`] = `
                 10
               </td>
             </tr>
-            <tr
-              key="2021"
-            >
+            <tr>
               <td
                 className="vacationTableFirstCell"
               >
@@ -314,93 +306,61 @@ exports[`rendering renders correctly 1`] = `
           <thead>
             <tr>
               <th />
-              <th
-                key="1"
-              >
+              <th>
                 1
               </th>
-              <th
-                key="2"
-              >
+              <th>
                 2
               </th>
-              <th
-                key="3"
-              >
+              <th>
                 3
               </th>
-              <th
-                key="4"
-              >
+              <th>
                 4
               </th>
-              <th
-                key="5"
-              >
+              <th>
                 5
               </th>
-              <th
-                key="6"
-              >
+              <th>
                 6
               </th>
-              <th
-                key="7"
-              >
+              <th>
                 7
               </th>
-              <th
-                key="8"
-              >
+              <th>
                 8
               </th>
-              <th
-                key="9"
-              >
+              <th>
                 9
               </th>
-              <th
-                key="10"
-              >
+              <th>
                 10
               </th>
-              <th
-                key="11"
-              >
+              <th>
                 11
               </th>
-              <th
-                key="12"
-              >
+              <th>
                 12
               </th>
             </tr>
           </thead>
           <tbody>
-            <tr
-              key="2018"
-            >
+            <tr>
               <td>
                 2018
               </td>
             </tr>
-            <tr
-              key="2019"
-            >
+            <tr>
               <td>
                 2019
               </td>
             </tr>
-            <tr
-              key="2020"
-            >
+            <tr>
               <td>
                 2020
               </td>
             </tr>
-            <tr
-              key="2021"
-            >
+            <tr>
               <td>
                 2021
               </td>
@@ -425,9 +385,7 @@ exports[`rendering renders correctly 1`] = `
           className="table"
         >
           <tbody>
-            <tr
-              key="Monday"
-            >
+            <tr>
               <td
                 className="notificationSettingsDay"
               >
@@ -466,9 +424,7 @@ exports[`rendering renders correctly 1`] = `
                 />
               </td>
             </tr>
-            <tr
-              key="Tuesday"
-            >
+            <tr>
               <td
                 className="notificationSettingsDay"
               >
@@ -507,9 +463,7 @@ exports[`rendering renders correctly 1`] = `
                 />
               </td>
             </tr>
-            <tr
-              key="Wednesday"
-            >
+            <tr>
               <td
                 className="notificationSettingsDay"
               >
@@ -548,9 +502,7 @@ exports[`rendering renders correctly 1`] = `
                 />
               </td>
             </tr>
-            <tr
-              key="Thursday"
-            >
+            <tr>
               <td
                 className="notificationSettingsDay"
               >
@@ -589,9 +541,7 @@ exports[`rendering renders correctly 1`] = `
                 />
               </td>
             </tr>
-            <tr
-              key="Friday"
-            >
+            <tr>
               <td
                 className="notificationSettingsDay"
               >
@@ -630,9 +580,7 @@ exports[`rendering renders correctly 1`] = `
                 />
               </td>
             </tr>
-            <tr
-              key="Saturday"
-            >
+            <tr>
               <td
                 className="notificationSettingsDay"
               >
@@ -671,9 +619,7 @@ exports[`rendering renders correctly 1`] = `
                 />
               </td>
             </tr>
-            <tr
-              key="Sunday"
-            >
+            <tr>
               <td
                 className="notificationSettingsDay"
               >

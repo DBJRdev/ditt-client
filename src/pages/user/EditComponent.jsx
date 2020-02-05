@@ -2,7 +2,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
 import jwt from 'jsonwebtoken';
-import { withNamespaces } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 import {
   Button,
   CheckboxField,
@@ -77,8 +77,8 @@ class EditComponent extends React.Component {
 
   componentDidMount() {
     this.props.fetchConfig().then(() => {
-      const formData = Object.assign({}, this.state.formData);
-      const formValidity = Object.assign({}, this.state.formValidity);
+      const formData = { ...this.state.formData };
+      const formValidity = { ...this.state.formValidity };
 
       this.props.config.get('supportedYears').forEach((year) => {
         this.state.formData.workHours[year] = [];
@@ -118,7 +118,7 @@ class EditComponent extends React.Component {
 
             vacations.forEach((vacationItem) => {
               const vacationDaysUsed = user.get('yearStats')
-                .find(yearStats => yearStats.get('year') === vacationItem.get('year'))
+                .find((yearStats) => yearStats.get('year') === vacationItem.get('year'))
                 .get('vacationDaysUsed');
               const remainingVacationDays = vacationItem.get('vacationDays')
                 + vacationItem.get('vacationDaysCorrection')
@@ -176,13 +176,13 @@ class EditComponent extends React.Component {
       this.props.t,
       this.state.formData,
       this.props.userList.toJS(),
-      this.props.config.get('supportedYears')
+      this.props.config.get('supportedYears'),
     );
 
     this.setState({ formValidity });
 
     if (formValidity.isValid) {
-      const formData = Object.assign({}, this.state.formData);
+      const formData = { ...this.state.formData };
       const vacations = [];
       const workHours = [];
 
@@ -245,7 +245,7 @@ class EditComponent extends React.Component {
     const eventTargetId = eventTarget.id.replace('vacationDays_', '');
 
     this.setState((prevState) => {
-      const formData = Object.assign({}, prevState.formData);
+      const formData = { ...prevState.formData };
       const remainingVacationDays = parseInt(eventTarget.value, 10)
         + parseInt(formData.vacations[eventTargetId].vacationDaysCorrection, 10)
         - parseInt(formData.vacations[eventTargetId].vacationDaysUsed, 10);
@@ -265,7 +265,7 @@ class EditComponent extends React.Component {
     const eventTargetId = eventTarget.id.replace('vacationDaysCorrection_', '');
 
     this.setState((prevState) => {
-      const formData = Object.assign({}, prevState.formData);
+      const formData = { ...prevState.formData };
       const remainingVacationDays = parseInt(formData.vacations[eventTargetId].vacationDays, 10)
         + parseInt(eventTarget.value, 10)
         - parseInt(formData.vacations[eventTargetId].vacationDaysUsed, 10);
@@ -284,7 +284,7 @@ class EditComponent extends React.Component {
     const eventTargetId = eventTarget.id.replace('workHours_', '');
 
     this.setState((prevState) => {
-      const formData = Object.assign({}, prevState.formData);
+      const formData = { ...prevState.formData };
       formData.workHours[eventTargetId] = eventTarget.value.split(',');
 
       return { formData };
@@ -295,7 +295,7 @@ class EditComponent extends React.Component {
     const eventTarget = e.target;
 
     this.setState((prevState) => {
-      const formData = Object.assign({}, prevState.formData);
+      const formData = { ...prevState.formData };
 
       if (eventTarget.type === 'checkbox') {
         formData[eventTarget.id] = eventTarget.checked;
@@ -350,8 +350,8 @@ class EditComponent extends React.Component {
 
     let userList = this.props.userList.toJS();
     userList = userList
-      .filter(user => user.id !== loggedUserId)
-      .map(user => ({
+      .filter((user) => user.id !== loggedUserId)
+      .map((user) => ({
         label: `${user.firstName} ${user.lastName}`,
         value: user.id,
       }));
@@ -567,4 +567,4 @@ EditComponent.propTypes = {
   })).isRequired,
 };
 
-export default withNamespaces()(EditComponent);
+export default withTranslation()(EditComponent);

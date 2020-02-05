@@ -16,15 +16,15 @@ export const fetchConfig = () => dispatch => dispatch({
   },
 });
 
-export const saveConfig = data => dispatch => dispatch({
+export const saveConfig = (data) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify({
-      supportedHolidays: data.supportedHolidays.map(holiday => ({
+      supportedHolidays: data.supportedHolidays.map((holiday) => ({
         day: holiday.get('date'),
         month: holiday.get('month') + 1,
         year: `/supported_years/${holiday.get('year')}`,
       })),
-      supportedYears: data.supportedYears.map(year => ({ year: parseInt(year, 10) })),
+      supportedYears: data.supportedYears.map((year) => ({ year: parseInt(year, 10) })),
     }),
     endpoint: `${API_URL}/configs`,
     headers: { 'Content-Type': 'application/json' },

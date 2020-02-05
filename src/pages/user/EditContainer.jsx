@@ -54,17 +54,17 @@ const mapStateToProps = (state) => {
   });
 };
 
-const mapDispatchToProps = dispatch => ({
-  deleteUser: id => dispatch(deleteUser(id)),
-  editUser: data => dispatch(editUser(data)),
+const mapDispatchToProps = (dispatch) => ({
+  deleteUser: (id) => dispatch(deleteUser(id)),
+  editUser: (data) => dispatch(editUser(data)),
   fetchConfig: () => dispatch(fetchConfig()),
-  fetchUser: id => dispatch(fetchUser(id)),
+  fetchUser: (id) => dispatch(fetchUser(id)),
   fetchUserList: () => dispatch(fetchUserList()),
-  fetchVacationList: id => dispatch(fetchVacationList(id)),
-  fetchWorkHoursList: id => dispatch(fetchWorkHoursList(id)),
+  fetchVacationList: (id) => dispatch(fetchVacationList(id)),
+  fetchWorkHoursList: (id) => dispatch(fetchWorkHoursList(id)),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(EditComponent);

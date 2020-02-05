@@ -2,7 +2,7 @@ import { RSAA } from 'redux-api-middleware';
 import { API_URL } from '../../../config/envspecific';
 import * as types from './actionTypes';
 
-export const addUser = data => dispatch => dispatch({
+export const addUser = (data) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify({
       email: data.email,
@@ -13,12 +13,12 @@ export const addUser = data => dispatch => dispatch({
       plainPassword: data.plainPassword,
       supervisor: data.supervisor ? `/users/${data.supervisor}` : null,
       vacations: data.vacations
-        .map(vacation => ({
+        .map((vacation) => ({
           ...vacation,
           year: `/supported_years/${vacation.year}`,
         })),
       workHours: data.workHours
-        .map(workHours => ({
+        .map((workHours) => ({
           ...workHours,
           year: `/supported_years/${workHours.year}`,
         })),
@@ -34,7 +34,7 @@ export const addUser = data => dispatch => dispatch({
   },
 });
 
-export const deleteUser = id => dispatch => dispatch({
+export const deleteUser = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/users/${id}`,
     method: 'DELETE',
@@ -49,7 +49,7 @@ export const deleteUser = id => dispatch => dispatch({
   },
 });
 
-export const editUser = data => dispatch => dispatch({
+export const editUser = (data) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify({
       email: data.email,
@@ -61,12 +61,12 @@ export const editUser = data => dispatch => dispatch({
       plainPassword: data.plainPassword ? data.plainPassword : null,
       supervisor: data.supervisor ? `/users/${data.supervisor}` : null,
       vacations: data.vacations
-        .map(vacation => ({
+        .map((vacation) => ({
           ...vacation,
           year: `/supported_years/${vacation.year}`,
         })),
       workHours: data.workHours
-        .map(workHours => ({
+        .map((workHours) => ({
           ...workHours,
           year: `/supported_years/${workHours.year}`,
         })),
@@ -85,7 +85,7 @@ export const editUser = data => dispatch => dispatch({
   },
 });
 
-export const fetchSupervisedUserList = (uid, options) => dispatch => dispatch({
+export const fetchSupervisedUserList = (uid, options) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: (options && options.order)
       ? `${API_URL}/users/${uid}/supervised_users?isActive=true&order[${options.order.column}]=${options.order.direction}`
@@ -100,7 +100,7 @@ export const fetchSupervisedUserList = (uid, options) => dispatch => dispatch({
   },
 });
 
-export const fetchUser = id => dispatch => dispatch({
+export const fetchUser = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/users/${id}`,
     headers: { 'Content-Type': 'application/json' },
@@ -113,7 +113,7 @@ export const fetchUser = id => dispatch => dispatch({
   },
 });
 
-export const fetchUserByApiToken = apiToken => dispatch => dispatch({
+export const fetchUserByApiToken = (apiToken) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/users/api_token/${apiToken}`,
     headers: { 'Content-Type': 'application/json' },
@@ -126,7 +126,7 @@ export const fetchUserByApiToken = apiToken => dispatch => dispatch({
   },
 });
 
-export const fetchUserList = options => dispatch => dispatch({
+export const fetchUserList = (options) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: (options && options.order)
       ? `${API_URL}/users?order[${options.order.column}]=${options.order.direction}`
@@ -141,7 +141,7 @@ export const fetchUserList = options => dispatch => dispatch({
   },
 });
 
-export const renewUserApiToken = id => dispatch => dispatch({
+export const renewUserApiToken = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/users/${id}/api_token/renew`,
     headers: { 'Content-Type': 'application/json' },
@@ -154,7 +154,7 @@ export const renewUserApiToken = id => dispatch => dispatch({
   },
 });
 
-export const resetUserApiToken = id => dispatch => dispatch({
+export const resetUserApiToken = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/users/${id}/api_token/reset`,
     headers: { 'Content-Type': 'application/json' },
