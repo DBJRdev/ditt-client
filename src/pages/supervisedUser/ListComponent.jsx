@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import jwt from 'jsonwebtoken';
 import { Link } from 'react-router-dom';
-import { withNamespaces } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 import { Table } from 'react-ui';
 import Layout from '../../components/Layout';
 import routes from '../../routes';
@@ -40,7 +40,7 @@ class ListComponent extends React.Component {
               column: this.state.tableSortColumn,
               direction: this.state.tableSortDirection,
             },
-          }
+          },
         );
       }
     }
@@ -74,7 +74,7 @@ class ListComponent extends React.Component {
           <Table
             columns={[
               {
-                format: row => (
+                format: (row) => (
                   <span className={lighterRow(row)}>
                     {`${row.firstName} ${row.lastName}`}
                   </span>
@@ -85,7 +85,7 @@ class ListComponent extends React.Component {
               },
               {
                 format: (row) => {
-                  const waitingForApproval = row.workMonths.filter(workMonth => (
+                  const waitingForApproval = row.workMonths.filter((workMonth) => (
                     workMonth.status === STATUS_WAITING_FOR_APPROVAL
                   ));
 
@@ -97,7 +97,7 @@ class ListComponent extends React.Component {
                     );
                   }
 
-                  const waitingForApprovalLinks = waitingForApproval.map(workMonth => (
+                  const waitingForApprovalLinks = waitingForApproval.map((workMonth) => (
                     /* eslint-disable-next-line jsx-a11y/anchor-is-valid */
                     <Link
                       className={styles.waitingForApprovalLink}
@@ -125,7 +125,7 @@ class ListComponent extends React.Component {
                 name: 'needApproval',
               },
               {
-                format: row => (
+                format: (row) => (
                   <span className={lighterRow(row)}>
                     {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                     <Link to={routes.supervisedUserWorkLog.replace(':id', row.id)}>
@@ -153,7 +153,7 @@ class ListComponent extends React.Component {
                           column,
                           direction: orderDirection,
                         },
-                      }
+                      },
                     ).then(() => {
                       this.setState({
                         tableSortColumn: column,
@@ -201,4 +201,4 @@ ListComponent.propTypes = {
   token: PropTypes.string.isRequired,
 };
 
-export default withNamespaces()(ListComponent);
+export default withTranslation()(ListComponent);

@@ -14,16 +14,11 @@
   ],
   "rules": {
     "func-names": "off",
-    "comma-dangle": ["error", {
-      "arrays": "always-multiline",
-      "objects": "always-multiline",
-      "imports": "always-multiline",
-      "exports": "always-multiline",
-      "functions": "never"
-    }],
-    // Bedrich Schindler <bedrich@visionapps.cz>, 14. 01. 2019 16:10
-    // Rule turned off because more than 500 occurances
+    "promise/always-return": "off",
+    "promise/catch-or-return": "off",
+    "promise/no-nesting": "off",
     "react/destructuring-assignment": "off",
+    "react/jsx-props-no-spreading": "off",
     "react/no-access-state-in-setstate": "off"
   }
 }

@@ -3,7 +3,7 @@ import { API_URL } from '../../../config/envspecific';
 import { toJson } from '../../services/dateTimeService';
 import * as types from './actionTypes';
 
-export const addHomeOfficeWorkLog = data => dispatch => dispatch({
+export const addHomeOfficeWorkLog = (data) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify({
       comment: data.comment,
@@ -20,7 +20,7 @@ export const addHomeOfficeWorkLog = data => dispatch => dispatch({
   },
 });
 
-export const deleteHomeOfficeWorkLog = id => dispatch => dispatch({
+export const deleteHomeOfficeWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/home_office_work_logs/${id}`,
     method: 'DELETE',
@@ -32,7 +32,7 @@ export const deleteHomeOfficeWorkLog = id => dispatch => dispatch({
   },
 });
 
-export const fetchHomeOfficeWorkLog = id => dispatch => dispatch({
+export const fetchHomeOfficeWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/home_office_work_logs/${id}`,
     headers: { 'Content-Type': 'application/json' },
@@ -45,7 +45,7 @@ export const fetchHomeOfficeWorkLog = id => dispatch => dispatch({
   },
 });
 
-export const markHomeOfficeWorkLogApproved = id => dispatch => dispatch({
+export const markHomeOfficeWorkLogApproved = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/home_office_work_logs/${id}/mark_approved`,
     headers: { 'Content-Type': 'application/json' },
@@ -58,7 +58,7 @@ export const markHomeOfficeWorkLogApproved = id => dispatch => dispatch({
   },
 });
 
-export const markHomeOfficeWorkLogRejected = (id, data) => dispatch => dispatch({
+export const markHomeOfficeWorkLogRejected = (id, data) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify({
       rejectionMessage: data.rejectionMessage,

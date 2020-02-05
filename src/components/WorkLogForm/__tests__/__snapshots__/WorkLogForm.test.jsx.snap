@@ -103,43 +103,36 @@ exports[`rendering renders correctly with all props 1`] = `
                   value="WORK_LOG"
                 >
                   <option
-                    key="WORK_LOG"
                     value="WORK_LOG"
                   >
                     workMonth:constant.type.workLog
                   </option>
                   <option
-                    key="BUSINESS_TRIP_WORK_LOG"
                     value="BUSINESS_TRIP_WORK_LOG"
                   >
                     workMonth:constant.type.businessTripWorkLog
                   </option>
                   <option
-                    key="HOME_OFFICE_WORK_LOG"
                     value="HOME_OFFICE_WORK_LOG"
                   >
                     workMonth:constant.type.homeOfficeWorkLog
                   </option>
                   <option
-                    key="OVERTIME_WORK_LOG"
                     value="OVERTIME_WORK_LOG"
                   >
                     workMonth:constant.type.overtimeWorkLog
                   </option>
                   <option
-                    key="SICK_DAY_WORK_LOG"
                     value="SICK_DAY_WORK_LOG"
                   >
                     workMonth:constant.type.sickDayWorkLog
                   </option>
                   <option
-                    key="TIME_OFF_WORK_LOG"
                     value="TIME_OFF_WORK_LOG"
                   >
                     workMonth:constant.type.timeOffWorkLog
                   </option>
                   <option
-                    key="VACATION_WORK_LOG"
                     value="VACATION_WORK_LOG"
                   >
                     workMonth:constant.type.vacationWorkLog

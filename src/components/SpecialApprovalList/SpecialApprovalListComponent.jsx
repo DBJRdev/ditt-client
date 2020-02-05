@@ -3,7 +3,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
 import jwt from 'jsonwebtoken';
-import { withNamespaces } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 import {
   Button,
   Modal,
@@ -95,7 +95,7 @@ class SpecialApprovalListComponent extends React.Component {
     ].forEach((key) => {
       specialApprovalList = specialApprovalList.concat((
         this.props.specialApprovalList.get(key).map((
-          workLog => workLog
+          (workLog) => workLog
             .set('rawId', workLog.get('id'))
             .set('id', `${workLog.get('type')}-${workLog.get('id')}`)
             .set('isBulk', false)
@@ -105,18 +105,18 @@ class SpecialApprovalListComponent extends React.Component {
 
     const vacationWorkLogs = collapseWorkLogs(
       this.props.specialApprovalList.get('vacationWorkLogs'),
-      this.props.config.get('supportedHolidays')
+      this.props.config.get('supportedHolidays'),
     );
 
     specialApprovalList = specialApprovalList.concat((
       vacationWorkLogs.map((
-        workLog => workLog
+        (workLog) => workLog
           .set('rawId', workLog.get('id'))
           .set('id', `${workLog.get('type')}-${workLog.get('id')}`)
       ))
     ));
 
-    return specialApprovalList.sortBy(workLog => -workLog.get('date'));
+    return specialApprovalList.sortBy((workLog) => -workLog.get('date'));
   }
 
   handleMarkApproved(id, type, isBulk) {
@@ -254,7 +254,7 @@ class SpecialApprovalListComponent extends React.Component {
     const eventTarget = e.target;
 
     this.setState((prevState) => {
-      const rejectWorkLogForm = Object.assign({}, prevState.rejectWorkLogForm);
+      const rejectWorkLogForm = { ...prevState.rejectWorkLogForm };
       rejectWorkLogForm[eventTarget.id] = eventTarget.value;
 
       return { rejectWorkLogForm };
@@ -307,7 +307,7 @@ class SpecialApprovalListComponent extends React.Component {
         showRejectWorkLogFormId,
         showRejectWorkLogFormType,
         showRejectWorkLogFormIsBulk,
-        rejectWorkLogForm.rejectionMessage
+        rejectWorkLogForm.rejectionMessage,
       )
         .then((response) => {
           if (response.type.endsWith('SUCCESS')) {
@@ -376,12 +376,12 @@ class SpecialApprovalListComponent extends React.Component {
           <br />
 
           {STATUS_REJECTED === this.props.businessTripWorkLog.get('status') && (
-            <React.Fragment>
+            <>
               {t('workLog:element.rejectionMessage')}
               {': '}
               {this.props.businessTripWorkLog.get('rejectionMessage')}
               <br />
-            </React.Fragment>
+            </>
           )}
 
           {t('businessTripWorkLog:element.purpose')}
@@ -428,12 +428,12 @@ class SpecialApprovalListComponent extends React.Component {
           <br />
 
           {STATUS_REJECTED === this.props.homeOfficeWorkLog.get('status') && (
-            <React.Fragment>
+            <>
               {t('workLog:element.rejectionMessage')}
               {': '}
               {this.props.homeOfficeWorkLog.get('rejectionMessage')}
               <br />
-            </React.Fragment>
+            </>
           )}
         </p>
       );
@@ -451,12 +451,12 @@ class SpecialApprovalListComponent extends React.Component {
           <br />
 
           {STATUS_REJECTED === this.props.overtimeWorkLog.get('status') && (
-            <React.Fragment>
+            <>
               {t('workLog:element.rejectionMessage')}
               {': '}
               {this.props.overtimeWorkLog.get('rejectionMessage')}
               <br />
-            </React.Fragment>
+            </>
           )}
 
           {t('overtimeWorkLog:element.reason')}
@@ -483,12 +483,12 @@ class SpecialApprovalListComponent extends React.Component {
           <br />
 
           {STATUS_REJECTED === this.props.timeOffWorkLog.get('status') && (
-            <React.Fragment>
+            <>
               {t('workLog:element.rejectionMessage')}
               {': '}
               {this.props.timeOffWorkLog.get('rejectionMessage')}
               <br />
-            </React.Fragment>
+            </>
           )}
         </p>
       );
@@ -512,12 +512,12 @@ class SpecialApprovalListComponent extends React.Component {
             <br />
 
             {STATUS_REJECTED === this.props.vacationWorkLog.get('status') && (
-              <React.Fragment>
+              <>
                 {t('workLog:element.rejectionMessage')}
                 {': '}
                 {this.props.vacationWorkLog.get('rejectionMessage')}
                 <br />
-              </React.Fragment>
+              </>
             )}
           </p>
         );
@@ -535,12 +535,12 @@ class SpecialApprovalListComponent extends React.Component {
             <br />
 
             {STATUS_REJECTED === this.props.vacationWorkLog.get('status') && (
-              <React.Fragment>
+              <>
                 {t('workLog:element.rejectionMessage')}
                 {': '}
                 {this.props.vacationWorkLog.get('rejectionMessage')}
                 <br />
-              </React.Fragment>
+              </>
             )}
           </p>
         );
@@ -588,7 +588,7 @@ class SpecialApprovalListComponent extends React.Component {
           <Table
             columns={[
               {
-                format: row => (
+                format: (row) => (
                   <span className={lighterRow(row)}>
                     {`${row.workMonth.user.firstName} ${row.workMonth.user.lastName}`}
                   </span>
@@ -616,7 +616,7 @@ class SpecialApprovalListComponent extends React.Component {
                 name: 'date',
               },
               {
-                format: row => (
+                format: (row) => (
                   <span className={lighterRow(row)}>
                     {getTypeLabel(t, row.type)}
                   </span>
@@ -625,7 +625,7 @@ class SpecialApprovalListComponent extends React.Component {
                 name: 'type',
               },
               {
-                format: row => (
+                format: (row) => (
                   <div>
                     <div className={styles.workLogButtonWrapper}>
                       <Button
@@ -633,7 +633,7 @@ class SpecialApprovalListComponent extends React.Component {
                           row.rawId,
                           row.type,
                           row.isBulk,
-                          row.dateTo
+                          row.dateTo,
                         )}
                         label={t('specialApproval:action.workLogDetail')}
                         priority="default"
@@ -642,9 +642,11 @@ class SpecialApprovalListComponent extends React.Component {
                     {
                       STATUS_WAITING_FOR_APPROVAL === row.status
                       && row.workMonth.user.allSupervisors
-                      && row.workMonth.user.allSupervisors.find(supervisor => supervisor.id === uid)
+                      && row.workMonth.user.allSupervisors.find(
+                        (supervisor) => supervisor.id === uid,
+                      )
                       && (
-                        <React.Fragment>
+                        <>
                           <div className={styles.workLogButtonWrapper}>
                             <Button
                               clickHandler={() => {
@@ -652,7 +654,7 @@ class SpecialApprovalListComponent extends React.Component {
                                   return this.handleMarkApproved(
                                     row.bulkIds,
                                     row.type,
-                                    row.isBulk
+                                    row.isBulk,
                                   );
                                 }
 
@@ -675,7 +677,7 @@ class SpecialApprovalListComponent extends React.Component {
                                   return this.openRejectWorkLogForm(
                                     row.bulkIds,
                                     row.type,
-                                    row.isBulk
+                                    row.isBulk,
                                   );
                                 }
 
@@ -691,7 +693,7 @@ class SpecialApprovalListComponent extends React.Component {
                               variant="danger"
                             />
                           </div>
-                        </React.Fragment>
+                        </>
                       )
                     }
                   </div>
@@ -839,4 +841,4 @@ SpecialApprovalListComponent.propTypes = {
   }),
 };
 
-export default withNamespaces()(SpecialApprovalListComponent);
+export default withTranslation()(SpecialApprovalListComponent);

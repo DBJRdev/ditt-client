@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { withNamespaces } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 import { NewPassword } from 'react-ui';
 import routes from '../../routes';
 import {
@@ -65,7 +65,7 @@ class NewPasswordComponent extends React.Component {
 
   render() {
     const { t } = this.props;
-    const layout = children => (
+    const layout = (children) => (
       <div className={styles.container}>
         <img
           src={logoImage}
@@ -127,4 +127,4 @@ NewPasswordComponent.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withNamespaces()(NewPasswordComponent);
+export default withTranslation()(NewPasswordComponent);

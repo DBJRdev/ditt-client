@@ -3,7 +3,7 @@ import { API_URL } from '../../../config/envspecific';
 import { toJson } from '../../services/dateTimeService';
 import * as types from './actionTypes';
 
-export const addBusinessTripWorkLog = data => dispatch => dispatch({
+export const addBusinessTripWorkLog = (data) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify({
       date: toJson(data.date),
@@ -24,7 +24,7 @@ export const addBusinessTripWorkLog = data => dispatch => dispatch({
   },
 });
 
-export const deleteBusinessTripWorkLog = id => dispatch => dispatch({
+export const deleteBusinessTripWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/business_trip_work_logs/${id}`,
     method: 'DELETE',
@@ -36,7 +36,7 @@ export const deleteBusinessTripWorkLog = id => dispatch => dispatch({
   },
 });
 
-export const fetchBusinessTripWorkLog = id => dispatch => dispatch({
+export const fetchBusinessTripWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/business_trip_work_logs/${id}`,
     headers: { 'Content-Type': 'application/json' },
@@ -49,7 +49,7 @@ export const fetchBusinessTripWorkLog = id => dispatch => dispatch({
   },
 });
 
-export const markBusinessTripWorkLogApproved = id => dispatch => dispatch({
+export const markBusinessTripWorkLogApproved = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/business_trip_work_logs/${id}/mark_approved`,
     headers: { 'Content-Type': 'application/json' },
@@ -62,7 +62,7 @@ export const markBusinessTripWorkLogApproved = id => dispatch => dispatch({
   },
 });
 
-export const markBusinessTripWorkLogRejected = (id, data) => dispatch => dispatch({
+export const markBusinessTripWorkLogRejected = (id, data) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify({
       rejectionMessage: data.rejectionMessage,

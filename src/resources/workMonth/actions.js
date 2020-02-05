@@ -2,7 +2,7 @@ import { RSAA } from 'redux-api-middleware';
 import { API_URL } from '../../../config/envspecific';
 import * as types from './actionTypes';
 
-export const fetchRecentSpecialApprovalList = uid => dispatch => dispatch({
+export const fetchRecentSpecialApprovalList = (uid) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/recent_special_approvals/${uid}`,
     headers: { 'Content-Type': 'application/json' },
@@ -15,7 +15,7 @@ export const fetchRecentSpecialApprovalList = uid => dispatch => dispatch({
   },
 });
 
-export const fetchSpecialApprovalList = uid => dispatch => dispatch({
+export const fetchSpecialApprovalList = (uid) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/special_approvals/${uid}`,
     headers: { 'Content-Type': 'application/json' },
@@ -28,7 +28,7 @@ export const fetchSpecialApprovalList = uid => dispatch => dispatch({
   },
 });
 
-export const fetchWorkMonth = id => dispatch => dispatch({
+export const fetchWorkMonth = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/work_months/${id}/detail`,
     headers: { 'Content-Type': 'application/json' },
@@ -41,7 +41,7 @@ export const fetchWorkMonth = id => dispatch => dispatch({
   },
 });
 
-export const fetchWorkMonthList = uid => dispatch => dispatch({
+export const fetchWorkMonthList = (uid) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/users/${uid}/work_months`,
     headers: { 'Content-Type': 'application/json' },
@@ -54,7 +54,7 @@ export const fetchWorkMonthList = uid => dispatch => dispatch({
   },
 });
 
-export const markApproved = id => dispatch => dispatch({
+export const markApproved = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/work_months/${id}/mark_approved`,
     headers: { 'Content-Type': 'application/json' },
@@ -67,7 +67,7 @@ export const markApproved = id => dispatch => dispatch({
   },
 });
 
-export const markWaitingForApproval = id => dispatch => dispatch({
+export const markWaitingForApproval = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/work_months/${id}/mark_waiting_for_approval`,
     headers: { 'Content-Type': 'application/json' },

@@ -77,33 +77,33 @@ const mapStateToProps = (state) => {
   });
 };
 
-const mapDispatchToProps = dispatch => ({
-  fetchBusinessTripWorkLog: id => dispatch(fetchBusinessTripWorkLog(id)),
+const mapDispatchToProps = (dispatch) => ({
+  fetchBusinessTripWorkLog: (id) => dispatch(fetchBusinessTripWorkLog(id)),
   fetchConfig: () => dispatch(fetchConfig()),
-  fetchHomeOfficeWorkLog: id => dispatch(fetchHomeOfficeWorkLog(id)),
-  fetchOvertimeWorkLog: id => dispatch(fetchOvertimeWorkLog(id)),
-  fetchSpecialApprovalList: uid => dispatch(fetchRecentSpecialApprovalList(uid)),
-  fetchTimeOffWorkLog: id => dispatch(fetchTimeOffWorkLog(id)),
-  fetchVacationWorkLog: id => dispatch(fetchVacationWorkLog(id)),
-  markBusinessTripWorkLogApproved: id => dispatch(markBusinessTripWorkLogApproved(id)),
+  fetchHomeOfficeWorkLog: (id) => dispatch(fetchHomeOfficeWorkLog(id)),
+  fetchOvertimeWorkLog: (id) => dispatch(fetchOvertimeWorkLog(id)),
+  fetchSpecialApprovalList: (uid) => dispatch(fetchRecentSpecialApprovalList(uid)),
+  fetchTimeOffWorkLog: (id) => dispatch(fetchTimeOffWorkLog(id)),
+  fetchVacationWorkLog: (id) => dispatch(fetchVacationWorkLog(id)),
+  markBusinessTripWorkLogApproved: (id) => dispatch(markBusinessTripWorkLogApproved(id)),
   markBusinessTripWorkLogRejected: (id, data) => dispatch(
-    markBusinessTripWorkLogRejected(id, data)
+    markBusinessTripWorkLogRejected(id, data),
   ),
-  markHomeOfficeWorkLogApproved: id => dispatch(markHomeOfficeWorkLogApproved(id)),
+  markHomeOfficeWorkLogApproved: (id) => dispatch(markHomeOfficeWorkLogApproved(id)),
   markHomeOfficeWorkLogRejected: (id, data) => dispatch(markHomeOfficeWorkLogRejected(id, data)),
-  markMultipleVacationWorkLogApproved: ids => dispatch(markMultipleVacationWorkLogApproved(ids)),
+  markMultipleVacationWorkLogApproved: (ids) => dispatch(markMultipleVacationWorkLogApproved(ids)),
   markMultipleVacationWorkLogRejected: (ids, data) => dispatch(
-    markMultipleVacationWorkLogRejected(ids, data)
+    markMultipleVacationWorkLogRejected(ids, data),
   ),
-  markOvertimeWorkLogApproved: id => dispatch(markOvertimeWorkLogApproved(id)),
+  markOvertimeWorkLogApproved: (id) => dispatch(markOvertimeWorkLogApproved(id)),
   markOvertimeWorkLogRejected: (id, data) => dispatch(markOvertimeWorkLogRejected(id, data)),
-  markTimeOffWorkLogApproved: id => dispatch(markTimeOffWorkLogApproved(id)),
+  markTimeOffWorkLogApproved: (id) => dispatch(markTimeOffWorkLogApproved(id)),
   markTimeOffWorkLogRejected: (id, data) => dispatch(markTimeOffWorkLogRejected(id, data)),
-  markVacationWorkLogApproved: id => dispatch(markVacationWorkLogApproved(id)),
+  markVacationWorkLogApproved: (id) => dispatch(markVacationWorkLogApproved(id)),
   markVacationWorkLogRejected: (id, data) => dispatch(markVacationWorkLogRejected(id, data)),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(RecentListComponent);

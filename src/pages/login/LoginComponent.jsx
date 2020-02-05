@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import jwt from 'jsonwebtoken';
 import { Link } from 'react-router-dom';
-import { withNamespaces } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 import { Login } from 'react-ui';
 import {
   ROLE_ADMIN,
@@ -110,4 +110,4 @@ LoginComponent.propTypes = {
   token: PropTypes.string,
 };
 
-export default withNamespaces()(LoginComponent);
+export default withTranslation()(LoginComponent);

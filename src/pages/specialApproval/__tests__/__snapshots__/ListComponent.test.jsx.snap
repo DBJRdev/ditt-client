@@ -10,7 +10,6 @@ exports[`rendering renders correctly 1`] = `
     specialApproval:text.specialApprovalsBeginningPart
      
     <Link
-      replace={false}
       to="/recent-special-approvals"
     >
       specialApproval:text.specialApprovalsButtonPart

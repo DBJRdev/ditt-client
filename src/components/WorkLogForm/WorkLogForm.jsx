@@ -2,7 +2,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withNamespaces } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 import {
   Button,
   Modal,
@@ -112,7 +112,7 @@ class WorkLogForm extends React.Component {
     const eventTarget = e.target;
 
     this.setState((prevState) => {
-      const formData = Object.assign({}, prevState.formData);
+      const formData = { ...prevState.formData };
       formData[eventTarget.id] = eventTarget.value;
 
       return { formData };
@@ -128,7 +128,7 @@ class WorkLogForm extends React.Component {
     } = this.props;
     const { formData } = this.state;
 
-    const modifiedFormData = Object.assign({}, formData);
+    const modifiedFormData = { ...formData };
     modifiedFormData.expectedArrival = formData.expectedArrival || '23:59';
     modifiedFormData.expectedDeparture = formData.expectedDeparture || '00:00';
 
@@ -137,7 +137,7 @@ class WorkLogForm extends React.Component {
       modifiedFormData,
       config,
       user,
-      workLogsOfDay.toJS()
+      workLogsOfDay.toJS(),
     );
 
     this.setState({ formValidity });
@@ -490,7 +490,7 @@ class WorkLogForm extends React.Component {
     } = this.state;
 
     return (
-      <React.Fragment>
+      <>
         <fieldset className={styles.fieldset}>
           <legend>{t('workLog:element.startTime')}</legend>
           <div>
@@ -546,7 +546,7 @@ class WorkLogForm extends React.Component {
             &nbsp;h
           </div>
         </fieldset>
-      </React.Fragment>
+      </>
     );
   }
 
@@ -735,4 +735,4 @@ WorkLogForm.propTypes = {
   })).isRequired,
 };
 
-export default withNamespaces()(WorkLogForm);
+export default withTranslation()(WorkLogForm);

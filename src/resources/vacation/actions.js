@@ -2,7 +2,7 @@ import { RSAA } from 'redux-api-middleware';
 import { API_URL } from '../../../config/envspecific';
 import * as types from './actionTypes';
 
-const fetchVacationList = id => dispatch => dispatch({
+const fetchVacationList = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/users/${id}/vacations`,
     headers: { 'Content-Type': 'application/json' },

@@ -1,7 +1,7 @@
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withNamespaces } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 import { Icon } from 'react-ui';
 import WorkLogForm from '../../components/WorkLogForm';
 import { ROLE_EMPLOYEE } from '../../resources/user';
@@ -58,7 +58,7 @@ class FastAccessAddWorkLogComponent extends React.Component {
 
       fetchConfig();
       fetchWorkMonthList(userResponse.payload.id).then((workMonthListResponse) => {
-        const filterWorkMonth = data => ({
+        const filterWorkMonth = (data) => ({
           id: data.id,
           month: parseInt(data.month, 10),
           status: data.status,
@@ -67,7 +67,7 @@ class FastAccessAddWorkLogComponent extends React.Component {
         });
         const workMonth = getWorkMonthByMonth(
           selectedDate,
-          workMonthListResponse.payload.map(filterWorkMonth)
+          workMonthListResponse.payload.map(filterWorkMonth),
         );
 
         if (workMonth) {
@@ -125,7 +125,7 @@ class FastAccessAddWorkLogComponent extends React.Component {
 
     if (VACATION_WORK_LOG === data.type) {
       const workingDays = getWorkingDays(data.date, data.dateTo, this.props.config.get('supportedHolidays'));
-      const workLogs = workingDays.map(workingDay => ({ date: workingDay }));
+      const workLogs = workingDays.map((workingDay) => ({ date: workingDay }));
 
       return this.props.addMultipleVacationWorkLog(workLogs).then(this.handleSaveWorkLog);
     }
@@ -246,4 +246,4 @@ FastAccessAddWorkLogComponent.propTypes = {
   })),
 };
 
-export default withNamespaces()(FastAccessAddWorkLogComponent);
+export default withTranslation()(FastAccessAddWorkLogComponent);

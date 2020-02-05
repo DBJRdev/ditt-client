@@ -34,7 +34,6 @@ exports[`rendering renders correctly 1`] = `
   </div>
   <div
     className="yearsAndHolidaysHeader"
-    key="2018"
   >
     <div
       className="yearsAndHolidaysHeaderBox"
@@ -84,7 +83,6 @@ exports[`rendering renders correctly 1`] = `
   </div>
   <div
     className="yearsAndHolidaysHeader"
-    key="2019"
   >
     <div
       className="yearsAndHolidaysHeaderBox"
@@ -134,7 +132,6 @@ exports[`rendering renders correctly 1`] = `
   </div>
   <div
     className="yearsAndHolidaysHeader"
-    key="2020"
   >
     <div
       className="yearsAndHolidaysHeaderBox"
@@ -184,7 +181,6 @@ exports[`rendering renders correctly 1`] = `
   </div>
   <div
     className="yearsAndHolidaysHeader"
-    key="2021"
   >
     <div
       className="yearsAndHolidaysHeaderBox"

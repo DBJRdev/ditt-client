@@ -39,16 +39,16 @@ const mapStateToProps = (state) => {
   });
 };
 
-const mapDispatchToProps = dispatch => ({
-  editUser: data => dispatch(editUser(data)),
+const mapDispatchToProps = (dispatch) => ({
+  editUser: (data) => dispatch(editUser(data)),
   fetchConfig: () => dispatch(fetchConfig()),
-  fetchUser: id => dispatch(fetchUser(id)),
-  fetchWorkHoursList: id => dispatch(fetchWorkHoursList(id)),
-  renewUserApiToken: id => dispatch(renewUserApiToken(id)),
-  resetUserApiToken: id => dispatch(resetUserApiToken(id)),
+  fetchUser: (id) => dispatch(fetchUser(id)),
+  fetchWorkHoursList: (id) => dispatch(fetchWorkHoursList(id)),
+  renewUserApiToken: (id) => dispatch(renewUserApiToken(id)),
+  resetUserApiToken: (id) => dispatch(resetUserApiToken(id)),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(ProfileComponent);

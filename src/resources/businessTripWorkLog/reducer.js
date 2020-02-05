@@ -30,7 +30,7 @@ export default (state, action) => {
     return STATUS_WAITING_FOR_APPROVAL;
   };
 
-  const filterWorkLog = data => ({
+  const filterWorkLog = (data) => ({
     date: toMomentDateTime(data.date),
     destination: data.destination,
     expectedArrival: data.expectedArrival,
