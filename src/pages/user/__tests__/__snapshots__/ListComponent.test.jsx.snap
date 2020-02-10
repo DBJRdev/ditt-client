@@ -8,22 +8,25 @@ exports[`rendering renders correctly 1`] = `
   <div
     className="actions"
   >
-    <Button
+    <s
+      afterLabel={null}
+      beforeLabel={null}
       block={false}
       clickHandler={[Function]}
       disabled={false}
-      icon={null}
-      iconPosition="before"
-      isLabelVisible={true}
+      endCorner={null}
+      grouped={false}
       label="user:action.addUser"
-      loading={false}
-      priority="primary"
+      labelVisibility="all"
+      loadingIcon={null}
+      priority="default"
       size="medium"
+      startCorner={null}
       type="button"
-      variant="default"
+      variant="primary"
     />
   </div>
-  <Table
+  <t
     columns={
       Array [
         Object {
@@ -55,8 +58,16 @@ exports[`rendering renders correctly 1`] = `
     rows={Array []}
     sort={
       Object {
+        "ascendingIcon": <c
+          icon="arrow_upward"
+          size="medium"
+        />,
         "changeHandler": [Function],
         "column": "lastName",
+        "descendingIcon": <c
+          icon="arrow_downward"
+          size="medium"
+        />,
         "direction": "asc",
       }
     }

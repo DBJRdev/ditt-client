@@ -2,7 +2,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withTranslation } from 'react-i18next';
-import { Icon } from 'react-ui';
+import { Icon } from '@react-ui-org/react-ui';
 import WorkLogForm from '../../components/WorkLogForm';
 import { ROLE_EMPLOYEE } from '../../resources/user';
 import {

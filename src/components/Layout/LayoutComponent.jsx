@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import jwt from 'jsonwebtoken';
 import { withTranslation } from 'react-i18next';
-import { Button } from 'react-ui';
+import { Button } from '@react-ui-org/react-ui';
 import { Link } from 'react-router-dom';
 import {
   ROLE_ADMIN,
@@ -96,7 +96,7 @@ class LayoutComponent extends React.Component {
                   <Button
                     clickHandler={() => history.push(routes.index)}
                     label={t('layout:menu.workLogs')}
-                    priority="default"
+                    priority="outline"
                   />
                 </div>
               )}
@@ -105,7 +105,7 @@ class LayoutComponent extends React.Component {
                   <Button
                     clickHandler={() => history.push(routes.specialApprovalList)}
                     label={t('layout:menu.specialApprovals')}
-                    priority="default"
+                    priority="outline"
                   />
                 </div>
               )}
@@ -114,7 +114,7 @@ class LayoutComponent extends React.Component {
                   <Button
                     clickHandler={() => history.push(routes.supervisedUserList)}
                     label={t('layout:menu.supervisedUsers')}
-                    priority="default"
+                    priority="outline"
                   />
                 </div>
               )}
@@ -123,7 +123,7 @@ class LayoutComponent extends React.Component {
                   <Button
                     clickHandler={() => history.push(routes.userList)}
                     label={t('layout:menu.users')}
-                    priority="default"
+                    priority="outline"
                   />
                 </div>
               )}
@@ -132,7 +132,7 @@ class LayoutComponent extends React.Component {
                   <Button
                     clickHandler={() => history.push(routes.settings)}
                     label={t('layout:menu.settings')}
-                    priority="default"
+                    priority="outline"
                   />
                 </div>
               )}

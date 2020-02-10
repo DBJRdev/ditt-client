@@ -3,26 +3,11 @@
   color: #a32100;
 }
 
-.fieldset {
-  display: flex;
-  flex-direction: column;
-  max-width: 10em;
-  padding: 0;
-  margin: 0 auto;
-  border: 0;
-}
-
-.field {
-  display: inline-block;
-  min-width: 8.5rem;
-}
-
 .fieldDate {
-  min-width: 3em;
+  display: inline-block;
 }
 
 .fieldDate input {
-  width: 3em;
   text-align: center;
 }
 
@@ -32,12 +17,14 @@
   color: #666;
 }
 
-.workLogTimerButton {
-  margin-bottom: 1rem;
-}
-
 .colon {
   margin-right: 0.25rem;
   margin-left: 0.25rem;
-  vertical-align: top;
+}
+
+.centeredLayout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }

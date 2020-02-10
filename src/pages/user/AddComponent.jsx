@@ -5,9 +5,12 @@ import { withTranslation } from 'react-i18next';
 import {
   Button,
   CheckboxField,
+  Icon,
+  List,
+  ListItem,
   SelectField,
   TextField,
-} from 'react-ui';
+} from '@react-ui-org/react-ui';
 import {
   ADD_USER_SUCCESS,
   ADD_USER_FAILURE,
@@ -240,144 +243,179 @@ class AddComponent extends React.Component {
               {this.state.formValidity.elements.form}
             </p>
           )}
-          <TextField
-            changeHandler={this.changeHandler}
-            error={this.state.formValidity.elements.firstName}
-            fieldId="firstName"
-            label={t('user:element.firstName')}
-            required
-            value={this.state.formData.firstName || ''}
-          />
-          <TextField
-            changeHandler={this.changeHandler}
-            error={this.state.formValidity.elements.lastName}
-            fieldId="lastName"
-            label={t('user:element.lastName')}
-            required
-            value={this.state.formData.lastName || ''}
-          />
-          <SelectField
-            changeHandler={this.changeHandler}
-            error={this.state.formValidity.elements.supervisor}
-            fieldId="supervisor"
-            label={t('user:element.supervisor')}
-            options={userList}
-            value={this.state.formData.supervisor || ''}
-          />
-          <TextField
-            changeHandler={this.changeHandler}
-            error={this.state.formValidity.elements.email}
-            fieldId="email"
-            label={t('user:element.email')}
-            required
-            value={this.state.formData.email || ''}
-          />
-          <TextField
-            changeHandler={this.changeHandler}
-            error={this.state.formValidity.elements.employeeId}
-            fieldId="employeeId"
-            label={t('user:element.employeeId')}
-            required
-            value={this.state.formData.employeeId || ''}
-          />
-          <TextField
-            changeHandler={this.changeHandler}
-            error={this.state.formValidity.elements.plainPassword}
-            fieldId="plainPassword"
-            label={t('user:element.plainPassword')}
-            type="password"
-            required
-            value={this.state.formData.plainPassword || ''}
-          />
-          <CheckboxField
-            changeHandler={this.changeHandler}
-            checked={this.state.formData.isActive}
-            error={this.state.formValidity.elements.isActive}
-            fieldId="isActive"
-            label={t('user:element.isActive')}
-            required
-          />
-          <h2 className={styles.detailSubheader}>
-            {t('user:text.vacationDays')}
-          </h2>
-          {this.props.config && this.props.config.get('supportedYears').map((year) => {
-            if (!this.state.formData.vacations[year]) {
-              return null;
-            }
-
-            return (
-              <div
-                className={styles.vacationsRow}
-                key={year}
-              >
-                <p>{year}</p>
-                <TextField
-                  changeHandler={this.changeVacationDaysHandler}
-                  error={this.state.formValidity.elements.vacations[year].vacationDays}
-                  fieldId={`vacationDays_${year.toString()}`}
-                  label={t('vacation:text.total')}
-                  value={this.state.formData.vacations[year].vacationDays || ''}
-                />
-                <TextField
-                  changeHandler={this.changeVacationDaysCorrectionHandler}
-                  error={this.state.formValidity.elements.vacations[year].vacationDaysCorrection}
-                  fieldId={`vacationDaysCorrection_${year.toString()}`}
-                  label={t('vacation:text.correction')}
-                  value={this.state.formData.vacations[year].vacationDaysCorrection || ''}
-                />
-                <TextField
-                  changeHandler={() => {}}
-                  disabled
-                  fieldId={`vacationDaysUsed_${year.toString()}`}
-                  label={t('vacation:text.used')}
-                  value={this.state.formData.vacations[year].vacationDaysUsed || ''}
-                />
-                <TextField
-                  changeHandler={() => {}}
-                  disabled
-                  fieldId={`remainingVacationDays_${year.toString()}`}
-                  label={t('vacation:text.remaining')}
-                  value={this.state.formData.vacations[year].remainingVacationDays || ''}
-                />
-              </div>
-            );
-          })}
-          <h2 className={styles.detailSubheader}>
-            {t('user:text.averageWorkingHoursTitle')}
-          </h2>
-          <p>{t('user:text.averageWorkingHoursDescription')}</p>
-          {this.props.config && this.props.config.get('supportedYears').map((year) => {
-            if (!this.state.formData.workHours[year]) {
-              return null;
-            }
-
-            return (
+          <List>
+            <ListItem>
               <TextField
-                changeHandler={this.changeWorkHourHandler}
-                error={this.state.formValidity.elements.workHours[year]}
-                fieldId={year.toString()}
-                key={year}
-                label={year.toString()}
-                value={
-                  this.state.formData.workHours[year]
-                  && this.state.formData.workHours[year].reduce((accValue, requiredHours) => {
-                    if (!accValue) {
-                      return requiredHours.toString();
-                    }
-
-                    return `${accValue},${requiredHours}`;
-                  }, null)
-                }
+                changeHandler={this.changeHandler}
+                helperText={this.state.formValidity.elements.firstName}
+                id="firstName"
+                label={t('user:element.firstName')}
+                required
+                value={this.state.formData.firstName || ''}
+                validationState={this.state.formValidity.elements.firstName ? 'invalid' : null}
               />
-            );
-          })}
+            </ListItem>
+            <ListItem>
+              <TextField
+                changeHandler={this.changeHandler}
+                helperText={this.state.formValidity.elements.lastName}
+                id="lastName"
+                label={t('user:element.lastName')}
+                required
+                value={this.state.formData.lastName || ''}
+                validationState={this.state.formValidity.elements.lastName ? 'invalid' : null}
+              />
+            </ListItem>
+            <ListItem>
+              <SelectField
+                changeHandler={this.changeHandler}
+                helperText={this.state.formValidity.elements.supervisor}
+                id="supervisor"
+                label={t('user:element.supervisor')}
+                options={userList}
+                value={this.state.formData.supervisor || ''}
+                validationState={this.state.formValidity.elements.supervisor ? 'invalid' : null}
+              />
+            </ListItem>
+            <ListItem>
+              <TextField
+                changeHandler={this.changeHandler}
+                helperText={this.state.formValidity.elements.email}
+                id="email"
+                label={t('user:element.email')}
+                required
+                value={this.state.formData.email || ''}
+                validationState={this.state.formValidity.elements.email ? 'invalid' : null}
+              />
+            </ListItem>
+            <ListItem>
+              <TextField
+                changeHandler={this.changeHandler}
+                helperText={this.state.formValidity.elements.employeeId}
+                id="employeeId"
+                label={t('user:element.employeeId')}
+                required
+                value={this.state.formData.employeeId || ''}
+                validationState={this.state.formValidity.elements.employeeId ? 'invalid' : null}
+              />
+            </ListItem>
+            <ListItem>
+              <TextField
+                changeHandler={this.changeHandler}
+                helperText={this.state.formValidity.elements.plainPassword}
+                id="plainPassword"
+                label={t('user:element.plainPassword')}
+                type="password"
+                required
+                value={this.state.formData.plainPassword || ''}
+                validationState={this.state.formValidity.elements.plainPassword ? 'invalid' : null}
+              />
+            </ListItem>
+            <ListItem>
+              <CheckboxField
+                changeHandler={this.changeHandler}
+                checked={this.state.formData.isActive}
+                error={this.state.formValidity.elements.isActive}
+                id="isActive"
+                label={t('user:element.isActive')}
+                required
+              />
+            </ListItem>
+            <h2 className={styles.detailSubheader}>
+              {t('user:text.vacationDays')}
+            </h2>
+            {this.props.config && this.props.config.get('supportedYears').map((year) => {
+              if (!this.state.formData.vacations[year]) {
+                return null;
+              }
 
-          <Button
-            clickHandler={this.saveHandler}
-            label={t('general:action.save')}
-            loading={this.props.isPosting}
-            priority="primary"
-          />
+              return (
+                <div
+                  className={styles.vacationsRow}
+                  key={year}
+                >
+                  <p>{year}</p>
+                  <TextField
+                    changeHandler={this.changeVacationDaysHandler}
+                    helperText={this.state.formValidity.elements.vacations[year].vacationDays}
+                    id={`vacationDays_${year.toString()}`}
+                    inputSize={6}
+                    label={t('vacation:text.total')}
+                    value={this.state.formData.vacations[year].vacationDays || ''}
+                    validationState={this.state.formValidity.elements.vacations[year].vacationDays ? 'invalid' : null}
+                  />
+                  <TextField
+                    changeHandler={this.changeVacationDaysCorrectionHandler}
+                    helperText={
+                      this.state.formValidity.elements.vacations[year].vacationDaysCorrection
+                    }
+                    id={`vacationDaysCorrection_${year.toString()}`}
+                    inputSize={6}
+                    label={t('vacation:text.correction')}
+                    value={this.state.formData.vacations[year].vacationDaysCorrection || ''}
+                    validationState={
+                      this.state.formValidity.elements.vacations[year].vacationDaysCorrection ? 'invalid' : null
+                    }
+                  />
+                  <TextField
+                    changeHandler={() => {}}
+                    disabled
+                    id={`vacationDaysUsed_${year.toString()}`}
+                    inputSize={6}
+                    label={t('vacation:text.used')}
+                    value={this.state.formData.vacations[year].vacationDaysUsed || ''}
+                  />
+                  <TextField
+                    changeHandler={() => {}}
+                    disabled
+                    id={`remainingVacationDays_${year.toString()}`}
+                    inputSize={6}
+                    label={t('vacation:text.remaining')}
+                  />
+                </div>
+              );
+            })}
+            <h2 className={styles.detailSubheader}>
+              {t('user:text.averageWorkingHoursTitle')}
+            </h2>
+            <p>{t('user:text.averageWorkingHoursDescription')}</p>
+            {this.props.config && this.props.config.get('supportedYears').map((year) => {
+              if (!this.state.formData.workHours[year]) {
+                return null;
+              }
+
+              return (
+                <ListItem>
+                  <TextField
+                    changeHandler={this.changeWorkHourHandler}
+                    helperText={this.state.formValidity.elements.workHours[year]}
+                    id={year.toString()}
+                    key={year}
+                    label={year.toString()}
+                    value={
+                      this.state.formData.workHours[year]
+                      && this.state.formData.workHours[year].reduce((accValue, requiredHours) => {
+                        if (!accValue) {
+                          return requiredHours.toString();
+                        }
+
+                        return `${accValue},${requiredHours}`;
+                      }, null)
+                    }
+                    validationState={this.state.formValidity.elements.workHours[year] ? 'invalid' : null}
+                  />
+                </ListItem>
+              );
+            })}
+
+            <ListItem>
+              <Button
+                clickHandler={this.saveHandler}
+                label={t('general:action.save')}
+                loadingIcon={this.props.isPosting ? <Icon icon="sync" /> : null}
+              />
+            </ListItem>
+          </List>
         </form>
       </Layout>
     );

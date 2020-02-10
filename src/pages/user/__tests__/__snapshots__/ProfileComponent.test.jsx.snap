@@ -88,20 +88,27 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="profileTableValue"
               >
-                <Button
+                <s
+                  afterLabel={null}
+                  beforeLabel={
+                    <c
+                      icon="open_in_new"
+                      size="medium"
+                    />
+                  }
                   block={false}
                   clickHandler={[Function]}
                   disabled={false}
-                  icon="open_in_new"
-                  iconPosition="before"
-                  isLabelVisible={true}
+                  endCorner={null}
+                  grouped={false}
                   label="user:action.showApiToken"
-                  labelVisibility="none"
-                  loading={false}
-                  priority="primary"
+                  labelVisibility="all"
+                  loadingIcon={null}
+                  priority="default"
                   size="small"
+                  startCorner={null}
                   type="button"
-                  variant="default"
+                  variant="primary"
                 />
                 <div
                   className="apiTokenButtonsWrapper"
@@ -109,37 +116,51 @@ exports[`rendering renders correctly 1`] = `
                   <div
                     className="apiTokenButton"
                   >
-                    <Button
+                    <s
+                      afterLabel={null}
+                      beforeLabel={
+                        <c
+                          icon="autorenew"
+                          size="medium"
+                        />
+                      }
                       block={false}
                       clickHandler={[Function]}
                       disabled={false}
-                      icon="autorenew"
-                      iconPosition="before"
-                      isLabelVisible={true}
+                      endCorner={null}
+                      grouped={false}
                       label="user:action.renewApiToken"
-                      labelVisibility="none"
-                      loading={false}
-                      priority="primary"
+                      labelVisibility="all"
+                      loadingIcon={null}
+                      priority="default"
                       size="small"
+                      startCorner={null}
                       type="button"
-                      variant="default"
+                      variant="primary"
                     />
                   </div>
                   <div
                     className="apiTokenButton"
                   >
-                    <Button
+                    <s
+                      afterLabel={null}
+                      beforeLabel={
+                        <c
+                          icon="clear"
+                          size="medium"
+                        />
+                      }
                       block={false}
                       clickHandler={[Function]}
                       disabled={false}
-                      icon="clear"
-                      iconPosition="before"
-                      isLabelVisible={true}
+                      endCorner={null}
+                      grouped={false}
                       label="user:action.resetApiToken"
-                      labelVisibility="none"
-                      loading={false}
-                      priority="primary"
+                      labelVisibility="all"
+                      loadingIcon={null}
+                      priority="default"
                       size="small"
+                      startCorner={null}
                       type="button"
                       variant="danger"
                     />
@@ -394,33 +415,40 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsCheckbox"
               >
-                <CheckboxField
+                <c
                   changeHandler={[Function]}
                   checked={false}
                   description={null}
                   disabled={false}
                   error={null}
-                  fieldId="supervisorInfoMondayTime"
+                  id="supervisorInfoMondayTime"
                   isLabelVisible={false}
                   label=""
+                  labelPosition="after"
                   required={false}
+                  validationState={null}
                 />
               </td>
               <td
                 className="notificationSettingsInput"
               >
-                <TextField
+                <c
                   changeHandler={[Function]}
-                  description={null}
                   disabled={true}
-                  error={null}
-                  fieldId="supervisorInfoMondayTime"
+                  fullWidth={false}
+                  helperText={null}
+                  id="supervisorInfoMondayTime"
+                  inputSize={5}
                   isLabelVisible={false}
                   label=""
+                  layout="vertical"
                   placeholder={null}
                   required={false}
+                  size="medium"
                   type="time"
+                  validationState={null}
                   value=""
+                  variant="outline"
                 />
               </td>
             </tr>
@@ -433,33 +461,40 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsCheckbox"
               >
-                <CheckboxField
+                <c
                   changeHandler={[Function]}
                   checked={false}
                   description={null}
                   disabled={false}
                   error={null}
-                  fieldId="supervisorInfoTuesdayTime"
+                  id="supervisorInfoTuesdayTime"
                   isLabelVisible={false}
                   label=""
+                  labelPosition="after"
                   required={false}
+                  validationState={null}
                 />
               </td>
               <td
                 className="notificationSettingsInput"
               >
-                <TextField
+                <c
                   changeHandler={[Function]}
-                  description={null}
                   disabled={true}
-                  error={null}
-                  fieldId="supervisorInfoTuesdayTime"
+                  fullWidth={false}
+                  helperText={null}
+                  id="supervisorInfoTuesdayTime"
+                  inputSize={5}
                   isLabelVisible={false}
                   label=""
+                  layout="vertical"
                   placeholder={null}
                   required={false}
+                  size="medium"
                   type="time"
+                  validationState={null}
                   value=""
+                  variant="outline"
                 />
               </td>
             </tr>
@@ -472,33 +507,40 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsCheckbox"
               >
-                <CheckboxField
+                <c
                   changeHandler={[Function]}
                   checked={false}
                   description={null}
                   disabled={false}
                   error={null}
-                  fieldId="supervisorInfoWednesdayTime"
+                  id="supervisorInfoWednesdayTime"
                   isLabelVisible={false}
                   label=""
+                  labelPosition="after"
                   required={false}
+                  validationState={null}
                 />
               </td>
               <td
                 className="notificationSettingsInput"
               >
-                <TextField
+                <c
                   changeHandler={[Function]}
-                  description={null}
                   disabled={true}
-                  error={null}
-                  fieldId="supervisorInfoWednesdayTime"
+                  fullWidth={false}
+                  helperText={null}
+                  id="supervisorInfoWednesdayTime"
+                  inputSize={5}
                   isLabelVisible={false}
                   label=""
+                  layout="vertical"
                   placeholder={null}
                   required={false}
+                  size="medium"
                   type="time"
+                  validationState={null}
                   value=""
+                  variant="outline"
                 />
               </td>
             </tr>
@@ -511,33 +553,40 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsCheckbox"
               >
-                <CheckboxField
+                <c
                   changeHandler={[Function]}
                   checked={false}
                   description={null}
                   disabled={false}
                   error={null}
-                  fieldId="supervisorInfoThursdayTime"
+                  id="supervisorInfoThursdayTime"
                   isLabelVisible={false}
                   label=""
+                  labelPosition="after"
                   required={false}
+                  validationState={null}
                 />
               </td>
               <td
                 className="notificationSettingsInput"
               >
-                <TextField
+                <c
                   changeHandler={[Function]}
-                  description={null}
                   disabled={true}
-                  error={null}
-                  fieldId="supervisorInfoThursdayTime"
+                  fullWidth={false}
+                  helperText={null}
+                  id="supervisorInfoThursdayTime"
+                  inputSize={5}
                   isLabelVisible={false}
                   label=""
+                  layout="vertical"
                   placeholder={null}
                   required={false}
+                  size="medium"
                   type="time"
+                  validationState={null}
                   value=""
+                  variant="outline"
                 />
               </td>
             </tr>
@@ -550,33 +599,40 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsCheckbox"
               >
-                <CheckboxField
+                <c
                   changeHandler={[Function]}
                   checked={false}
                   description={null}
                   disabled={false}
                   error={null}
-                  fieldId="supervisorInfoFridayTime"
+                  id="supervisorInfoFridayTime"
                   isLabelVisible={false}
                   label=""
+                  labelPosition="after"
                   required={false}
+                  validationState={null}
                 />
               </td>
               <td
                 className="notificationSettingsInput"
               >
-                <TextField
+                <c
                   changeHandler={[Function]}
-                  description={null}
                   disabled={true}
-                  error={null}
-                  fieldId="supervisorInfoFridayTime"
+                  fullWidth={false}
+                  helperText={null}
+                  id="supervisorInfoFridayTime"
+                  inputSize={5}
                   isLabelVisible={false}
                   label=""
+                  layout="vertical"
                   placeholder={null}
                   required={false}
+                  size="medium"
                   type="time"
+                  validationState={null}
                   value=""
+                  variant="outline"
                 />
               </td>
             </tr>
@@ -589,33 +645,40 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsCheckbox"
               >
-                <CheckboxField
+                <c
                   changeHandler={[Function]}
                   checked={false}
                   description={null}
                   disabled={false}
                   error={null}
-                  fieldId="supervisorInfoSaturdayTime"
+                  id="supervisorInfoSaturdayTime"
                   isLabelVisible={false}
                   label=""
+                  labelPosition="after"
                   required={false}
+                  validationState={null}
                 />
               </td>
               <td
                 className="notificationSettingsInput"
               >
-                <TextField
+                <c
                   changeHandler={[Function]}
-                  description={null}
                   disabled={true}
-                  error={null}
-                  fieldId="supervisorInfoSaturdayTime"
+                  fullWidth={false}
+                  helperText={null}
+                  id="supervisorInfoSaturdayTime"
+                  inputSize={5}
                   isLabelVisible={false}
                   label=""
+                  layout="vertical"
                   placeholder={null}
                   required={false}
+                  size="medium"
                   type="time"
+                  validationState={null}
                   value=""
+                  variant="outline"
                 />
               </td>
             </tr>
@@ -628,33 +691,40 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsCheckbox"
               >
-                <CheckboxField
+                <c
                   changeHandler={[Function]}
                   checked={false}
                   description={null}
                   disabled={false}
                   error={null}
-                  fieldId="supervisorInfoSundayTime"
+                  id="supervisorInfoSundayTime"
                   isLabelVisible={false}
                   label=""
+                  labelPosition="after"
                   required={false}
+                  validationState={null}
                 />
               </td>
               <td
                 className="notificationSettingsInput"
               >
-                <TextField
+                <c
                   changeHandler={[Function]}
-                  description={null}
                   disabled={true}
-                  error={null}
-                  fieldId="supervisorInfoSundayTime"
+                  fullWidth={false}
+                  helperText={null}
+                  id="supervisorInfoSundayTime"
+                  inputSize={5}
                   isLabelVisible={false}
                   label=""
+                  layout="vertical"
                   placeholder={null}
                   required={false}
+                  size="medium"
                   type="time"
+                  validationState={null}
                   value=""
+                  variant="outline"
                 />
               </td>
             </tr>
@@ -672,16 +742,18 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsCheckbox"
               >
-                <CheckboxField
+                <c
                   changeHandler={[Function]}
                   checked={false}
                   description={null}
                   disabled={false}
                   error={null}
-                  fieldId="supervisorInfoSendOnHolidays"
+                  id="supervisorInfoSendOnHolidays"
                   isLabelVisible={false}
                   label=""
+                  labelPosition="after"
                   required={false}
+                  validationState={null}
                 />
               </td>
               <td
@@ -694,19 +766,22 @@ exports[`rendering renders correctly 1`] = `
       <div
         className="saveButton"
       >
-        <Button
+        <s
+          afterLabel={null}
+          beforeLabel={null}
           block={false}
           clickHandler={[Function]}
           disabled={true}
-          icon={null}
-          iconPosition="before"
-          isLabelVisible={true}
+          endCorner={null}
+          grouped={false}
           label="general:action.save"
-          loading={false}
-          priority="primary"
+          labelVisibility="all"
+          loadingIcon={null}
+          priority="default"
           size="medium"
+          startCorner={null}
           type="button"
-          variant="default"
+          variant="primary"
         />
       </div>
     </div>

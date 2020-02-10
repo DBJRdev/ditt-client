@@ -6,9 +6,10 @@ import shortid from 'shortid';
 import {
   Button,
   CheckboxField,
+  Icon,
   Modal,
   TextField,
-} from 'react-ui';
+} from '@react-ui-org/react-ui';
 import { withTranslation } from 'react-i18next';
 import { ROLE_EMPLOYEE } from '../../resources/user';
 import { getWorkHoursString } from '../../services/workHoursService';
@@ -242,35 +243,29 @@ class ProfileComponent extends React.Component {
                           {!user.get('apiToken') && '-'}
                           {!!user.get('apiToken') && (
                             <Button
+                              beforeLabel={<Icon icon="open_in_new" />}
                               clickHandler={() => this.setState({ apiTokenDialogOpened: true })}
-                              icon="open_in_new"
-                              labelVisibility="none"
                               label={t('user:action.showApiToken')}
-                              priority="primary"
                               size="small"
                             />
                           )}
                           <div className={styles.apiTokenButtonsWrapper}>
                             <div className={styles.apiTokenButton}>
                               <Button
+                                beforeLabel={<Icon icon="autorenew" />}
                                 clickHandler={() => renewUserApiToken(user.get('id'))}
-                                icon="autorenew"
-                                labelVisibility="none"
                                 label={t('user:action.renewApiToken')}
-                                loading={isPosting}
-                                priority="primary"
+                                loadingIcon={isPosting ? <Icon icon="sync" /> : null}
                                 size="small"
                               />
                             </div>
                             {!!user.get('apiToken') && (
                               <div className={styles.apiTokenButton}>
                                 <Button
+                                  beforeLabel={<Icon icon="clear" />}
                                   clickHandler={() => resetUserApiToken(user.get('id'))}
-                                  icon="clear"
-                                  labelVisibility="none"
                                   label={t('user:action.resetApiToken')}
-                                  loading={isPosting}
-                                  priority="primary"
+                                  loadingIcon={isPosting ? <Icon icon="sync" /> : null}
                                   size="small"
                                   variant="danger"
                                 />
@@ -378,7 +373,7 @@ class ProfileComponent extends React.Component {
                               changeHandler={this.handleCheckboxWithInputChange}
                               isLabelVisible={false}
                               label=""
-                              fieldId={`supervisorInfo${day}Time`}
+                              id={`supervisorInfo${day}Time`}
                               checked={notifications[`supervisorInfo${day}Time`] !== null}
                             />
                           </td>
@@ -386,7 +381,8 @@ class ProfileComponent extends React.Component {
                             <TextField
                               changeHandler={this.handleInputChange}
                               disabled={notifications[`supervisorInfo${day}Time`] === null}
-                              fieldId={`supervisorInfo${day}Time`}
+                              id={`supervisorInfo${day}Time`}
+                              inputSize={5}
                               isLabelVisible={false}
                               label=""
                               type="time"
@@ -407,7 +403,7 @@ class ProfileComponent extends React.Component {
                             changeHandler={this.handleCheckboxChange}
                             isLabelVisible={false}
                             label=""
-                            fieldId="supervisorInfoSendOnHolidays"
+                            id="supervisorInfoSendOnHolidays"
                             checked={notifications.supervisorInfoSendOnHolidays}
                           />
                         </td>
@@ -422,8 +418,7 @@ class ProfileComponent extends React.Component {
                     clickHandler={this.handleSave}
                     disabled={loggedUserId === null}
                     label={t('general:action.save')}
-                    loading={isPosting}
-                    priority="primary"
+                    loadingIcon={isPosting ? <Icon icon="sync" /> : null}
                   />
                 </div>
               </div>

@@ -106,7 +106,7 @@ $_breakpoint: 55em;
 }
 
 .notificationSettingsDay {
-  width: 50%;
+  width: 75%;
   padding: 5px 10px;
   font-weight: bold;
   border-top: 1px solid #ccc;
@@ -121,17 +121,12 @@ $_breakpoint: 55em;
 
 // stylelint-disable-next-line selector-max-universal
 .notificationSettingsCheckbox > * {
-  transform: translateY(0.65rem);
+  transform: translateY(0.25rem);
 }
 
 .notificationSettingsInput {
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
-}
-
-// stylelint-disable-next-line selector-max-universal
-.notificationSettingsInput > * {
-  transform: translateY(0.65rem);
 }
 
 .actions {
