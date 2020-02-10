@@ -6,8 +6,9 @@ import React from 'react';
 import { withTranslation } from 'react-i18next';
 import {
   Button,
+  Icon,
   Modal,
-} from 'react-ui';
+} from '@react-ui-org/react-ui';
 import WorkLogForm from '../WorkLogForm';
 import {
   VARIANT_SICK_CHILD,
@@ -684,7 +685,7 @@ class WorkLogCalendar extends React.Component {
           this.state.showDeleteWorkLogDialogType,
         ),
         label: t('general:action.delete'),
-        loading: this.props.isPosting,
+        loadingIcon: this.props.isPosting ? <Icon icon="sync" /> : null,
         variant: 'danger',
       });
     }
@@ -770,6 +771,7 @@ class WorkLogCalendar extends React.Component {
                                 className={styles.workLogButtonWrapper}
                               >
                                 <Button
+                                  beforeLabel={<Icon icon="train" />}
                                   clickHandler={
                                     (e) => this.openDeleteWorkLogDialog(
                                       e,
@@ -777,8 +779,8 @@ class WorkLogCalendar extends React.Component {
                                       BUSINESS_TRIP_WORK_LOG,
                                     )
                                   }
-                                  icon="train"
                                   label={resolveLabel(workLog)}
+                                  priority="outline"
                                 />
                               </div>
                             );
@@ -791,6 +793,7 @@ class WorkLogCalendar extends React.Component {
                                 className={styles.workLogButtonWrapper}
                               >
                                 <Button
+                                  beforeLabel={<Icon icon="home" />}
                                   clickHandler={
                                     (e) => this.openDeleteWorkLogDialog(
                                       e,
@@ -798,8 +801,8 @@ class WorkLogCalendar extends React.Component {
                                       HOME_OFFICE_WORK_LOG,
                                     )
                                   }
-                                  icon="home"
                                   label={resolveLabel(workLog)}
+                                  priority="outline"
                                 />
                               </div>
                             );
@@ -812,6 +815,7 @@ class WorkLogCalendar extends React.Component {
                                 className={styles.workLogButtonWrapper}
                               >
                                 <Button
+                                  beforeLabel={<Icon icon="hourglass_empty" />}
                                   clickHandler={
                                     (e) => this.openDeleteWorkLogDialog(
                                       e,
@@ -819,8 +823,8 @@ class WorkLogCalendar extends React.Component {
                                       OVERTIME_WORK_LOG,
                                     )
                                   }
-                                  icon="hourglass_empty"
                                   label={resolveLabel(workLog)}
+                                  priority="outline"
                                 />
                               </div>
                             );
@@ -833,6 +837,7 @@ class WorkLogCalendar extends React.Component {
                                 className={styles.workLogButtonWrapper}
                               >
                                 <Button
+                                  beforeLabel={<Icon icon="pregnant_woman" />}
                                   clickHandler={
                                     (e) => this.openDeleteWorkLogDialog(
                                       e,
@@ -840,12 +845,12 @@ class WorkLogCalendar extends React.Component {
                                       SICK_DAY_WORK_LOG,
                                     )
                                   }
-                                  icon="pregnant_woman"
                                   label={
                                     VARIANT_SICK_CHILD === workLog.variant
                                       ? `${resolveLabel(workLog)} (${getSickDayVariantLabel(t, workLog.variant)})`
                                       : resolveLabel(workLog)
                                   }
+                                  priority="outline"
                                 />
                               </div>
                             );
@@ -858,6 +863,7 @@ class WorkLogCalendar extends React.Component {
                                 className={styles.workLogButtonWrapper}
                               >
                                 <Button
+                                  beforeLabel={<Icon icon="flag" />}
                                   clickHandler={
                                     (e) => this.openDeleteWorkLogDialog(
                                       e,
@@ -865,8 +871,8 @@ class WorkLogCalendar extends React.Component {
                                       TIME_OFF_WORK_LOG,
                                     )
                                   }
-                                  icon="flag"
                                   label={resolveLabel(workLog)}
+                                  priority="outline"
                                 />
                               </div>
                             );
@@ -879,6 +885,7 @@ class WorkLogCalendar extends React.Component {
                                 className={styles.workLogButtonWrapper}
                               >
                                 <Button
+                                  beforeLabel={<Icon icon="flag" />}
                                   clickHandler={
                                     (e) => this.openDeleteWorkLogDialog(
                                       e,
@@ -886,8 +893,8 @@ class WorkLogCalendar extends React.Component {
                                       VACATION_WORK_LOG,
                                     )
                                   }
-                                  icon="flag"
                                   label={resolveLabel(workLog)}
+                                  priority="outline"
                                 />
                               </div>
                             );
@@ -899,6 +906,7 @@ class WorkLogCalendar extends React.Component {
                               className={styles.workLogButtonWrapper}
                             >
                               <Button
+                                beforeLabel={<Icon icon="access_time" />}
                                 clickHandler={
                                   (e) => this.openDeleteWorkLogDialog(
                                     e,
@@ -906,8 +914,8 @@ class WorkLogCalendar extends React.Component {
                                     WORK_LOG,
                                   )
                                 }
-                                icon="access_time"
                                 label={`${toHourMinuteFormat(workLog.startTime)} - ${toHourMinuteFormat(workLog.endTime)}`}
+                                priority="outline"
                               />
                             </div>
                           );
@@ -923,17 +931,15 @@ class WorkLogCalendar extends React.Component {
                                 this.state.workLogTimer
                                   ? (
                                     <Button
+                                      beforeLabel={<Icon icon="stop" />}
                                       clickHandler={this.stopWorkLogTimer}
-                                      icon="stop"
                                       label={`${t('workLog:action.endWork')} | ${this.state.workLogTimerInterval}`}
-                                      priority="primary"
                                     />
                                   ) : (
                                     <Button
+                                      beforeLabel={<Icon icon="play_arrow" />}
                                       clickHandler={this.initAndStartWorkLogTimer}
-                                      icon="play_arrow"
                                       label={t('workLog:action.startWork')}
-                                      priority="primary"
                                     />
                                   )
                               }
@@ -949,10 +955,9 @@ class WorkLogCalendar extends React.Component {
                             <div className={styles.addWorkLogButtonWrapper}>
                               <Button
                                 clickHandler={() => this.openWorkLogForm(day.date)}
-                                icon="add"
+                                beforeLabel={<Icon icon="add" />}
                                 label={t('workLog:action.addWorkLog')}
-                                isLabelVisible={false}
-                                priority="default"
+                                labelVisibility="none"
                               />
                             </div>
                           </td>
@@ -977,16 +982,15 @@ class WorkLogCalendar extends React.Component {
             && (
               <div className={styles.sendForApprovalButtonWrapper}>
                 <Button
+                  beforeLabel={<Icon icon="send" />}
                   clickHandler={() => {
                     if (this.props.workMonth) {
                       this.props.markWaitingForApproval(this.props.workMonth.get('id'));
                     }
                   }}
                   disabled={!this.props.workMonth || !!this.countWaitingForApprovalWorkLogs()}
-                  icon="send"
                   label={t('workLog:action.sendWorkMonthForApproval')}
-                  loading={this.props.isPosting}
-                  priority="primary"
+                  loadingIcon={this.props.isPosting ? <Icon icon="sync" /> : null}
                 />
               </div>
             )
@@ -1002,6 +1006,7 @@ class WorkLogCalendar extends React.Component {
         <nav className={styles.navigation}>
           <div className={styles.navigationPrevious}>
             <Button
+              beforeLabel={<Icon icon="keyboard_arrow_left" />}
               clickHandler={this.selectPreviousMonth}
               disabled={
                 !getWorkMonthByMonth(
@@ -1009,9 +1014,7 @@ class WorkLogCalendar extends React.Component {
                   this.props.workMonthList.toJS(),
                 )
               }
-              icon="keyboard_arrow_left"
               label={t('workLog:action.previousMonth')}
-              priority="primary"
             />
           </div>
           <div>
@@ -1027,16 +1030,17 @@ class WorkLogCalendar extends React.Component {
               this.props.supervisorView
               && status === STATUS_WAITING_FOR_APPROVAL
               && (
-                <Button
-                  clickHandler={() => {
-                    if (this.props.workMonth) {
-                      this.props.markApproved(this.props.workMonth.get('id'));
-                    }
-                  }}
-                  label={t('workLog:action.approveMonth')}
-                  priority="primary"
-                  variant="success"
-                />
+                <div className="mt-2">
+                  <Button
+                    clickHandler={() => {
+                      if (this.props.workMonth) {
+                        this.props.markApproved(this.props.workMonth.get('id'));
+                      }
+                    }}
+                    label={t('workLog:action.approveMonth')}
+                    variant="success"
+                  />
+                </div>
               )
             }
             {
@@ -1051,6 +1055,7 @@ class WorkLogCalendar extends React.Component {
           </div>
           <div className={styles.navigationNext}>
             <Button
+              afterLabel={<Icon icon="keyboard_arrow_right" />}
               clickHandler={this.selectNextMonth}
               disabled={
                 !getWorkMonthByMonth(
@@ -1058,10 +1063,7 @@ class WorkLogCalendar extends React.Component {
                   this.props.workMonthList.toJS(),
                 )
               }
-              icon="keyboard_arrow_right"
-              iconPosition="after"
               label={t('workLog:action.nextMonth')}
-              priority="primary"
             />
           </div>
         </nav>

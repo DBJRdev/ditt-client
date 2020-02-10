@@ -3,7 +3,7 @@ import React from 'react';
 import jwt from 'jsonwebtoken';
 import { Link } from 'react-router-dom';
 import { withTranslation } from 'react-i18next';
-import { Login } from 'react-ui';
+import { Login } from '@react-ui-org/react-ui';
 import {
   ROLE_ADMIN,
   ROLE_EMPLOYEE,

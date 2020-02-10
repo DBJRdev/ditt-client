@@ -1,5 +1,12 @@
 $_layout-spacer-y: 2rem;
 
+.centeredLayout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 .yearsAndHolidaysTitle {
   display: inline-block;
   margin-top: $_layout-spacer-y / 4;

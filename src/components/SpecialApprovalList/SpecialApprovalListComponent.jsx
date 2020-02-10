@@ -7,9 +7,10 @@ import { withTranslation } from 'react-i18next';
 import {
   Button,
   Modal,
+  Icon,
   TextField,
   Table,
-} from 'react-ui';
+} from '@react-ui-org/react-ui';
 import {
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,
@@ -330,7 +331,7 @@ class SpecialApprovalListComponent extends React.Component {
           {
             clickHandler: this.rejectWorkLogHandler,
             label: t('general:action.reject'),
-            loading: this.props.isPosting,
+            loadingIcon: this.props.isPosting ? <Icon icon="sync" /> : null,
           },
         ]}
         closeHandler={this.closeDeleteWorkLogForm}
@@ -344,9 +345,14 @@ class SpecialApprovalListComponent extends React.Component {
           <p>{t('specialApproval:modal.reject.description')}</p>
           <TextField
             changeHandler={this.changeRejectWorkLogFormHandler}
-            error={this.state.rejectWorkLogFormValidity.elements.rejectionMessage}
-            fieldId="rejectionMessage"
+            helperText={this.state.rejectWorkLogFormValidity.elements.rejectionMessage}
+            id="rejectionMessage"
             label={t('workLog:element.rejectionMessage')}
+            validationState={
+              this.state.rejectWorkLogFormValidity.elements.rejectionMessage !== null
+                ? 'invalid'
+                : null
+            }
             value={this.state.rejectWorkLogForm.rejectionMessage || ''}
           />
         </form>
@@ -636,7 +642,7 @@ class SpecialApprovalListComponent extends React.Component {
                           row.dateTo,
                         )}
                         label={t('specialApproval:action.workLogDetail')}
-                        priority="default"
+                        priority="outline"
                       />
                     </div>
                     {
@@ -661,12 +667,15 @@ class SpecialApprovalListComponent extends React.Component {
                                 return this.handleMarkApproved(row.rawId, row.type, row.isBulk);
                               }}
                               label={t('specialApproval:action.approveWorkLog')}
-                              loading={
-                                this.props.isPosting
-                                && this.state.lastApprovedWorkLogId === row.rawId
-                                && this.state.lastApprovedWorkLogType === row.type
+                              loadingIcon={
+                                (
+                                  this.props.isPosting
+                                  && this.state.lastApprovedWorkLogId === row.rawId
+                                  && this.state.lastApprovedWorkLogType === row.type
+                                ) ? <Icon icon="sync" />
+                                  : null
                               }
-                              priority="default"
+                              priority="outline"
                               variant="success"
                             />
                           </div>
@@ -684,12 +693,15 @@ class SpecialApprovalListComponent extends React.Component {
                                 return this.openRejectWorkLogForm(row.rawId, row.type, row.isBulk);
                               }}
                               label={t('specialApproval:action.rejectWorkLog')}
-                              loading={
-                                this.props.isPosting
-                                && this.state.lastRejectedWorkLogId === row.rawId
-                                && this.state.lastRejectedWorkLogType === row.type
+                              loadingIcon={
+                                (
+                                  this.props.isPosting
+                                  && this.state.lastRejectedWorkLogId === row.rawId
+                                  && this.state.lastRejectedWorkLogType === row.type
+                                ) ? <Icon icon="sync" />
+                                  : null
                               }
-                              priority="default"
+                              priority="outline"
                               variant="danger"
                             />
                           </div>

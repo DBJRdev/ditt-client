@@ -16,19 +16,27 @@ exports[`rendering renders correctly 1`] = `
     <div
       className="yearButtonsWrapper"
     >
-      <Button
+      <s
+        afterLabel={null}
+        beforeLabel={
+          <c
+            icon="add"
+            size="medium"
+          />
+        }
         block={false}
         clickHandler={[Function]}
         disabled={false}
-        icon="add"
-        iconPosition="before"
-        isLabelVisible={true}
+        endCorner={null}
+        grouped={false}
         label="settings:action.addYear"
-        loading={false}
-        priority="primary"
+        labelVisibility="all"
+        loadingIcon={null}
+        priority="default"
         size="medium"
+        startCorner={null}
         type="button"
-        variant="default"
+        variant="primary"
       />
     </div>
   </div>
@@ -49,34 +57,49 @@ exports[`rendering renders correctly 1`] = `
         <div
           className="yearEditButtonWrapper"
         >
-          <Button
+          <s
+            afterLabel={null}
+            beforeLabel={
+              <c
+                icon="edit"
+                size="medium"
+              />
+            }
             block={false}
             clickHandler={[Function]}
             disabled={false}
-            icon="edit"
-            iconPosition="before"
-            isLabelVisible={false}
+            endCorner={null}
+            grouped={false}
             label="settings:action.editYear"
-            loading={false}
-            priority="default"
+            labelVisibility="none"
+            loadingIcon={null}
+            priority="outline"
             size="medium"
+            startCorner={null}
             type="button"
-            variant="default"
+            variant="primary"
           />
         </div>
-        <Button
+        <s
+          afterLabel={null}
+          beforeLabel={
+            <c
+              icon="expand_more"
+              size="medium"
+            />
+          }
           block={false}
           clickHandler={[Function]}
           disabled={false}
-          icon="expand_more"
-          iconPosition="before"
-          isLabelVisible={false}
-          label=""
-          loading={false}
-          priority="default"
+          endCorner={null}
+          grouped={false}
+          labelVisibility="none"
+          loadingIcon={null}
+          priority="outline"
           size="medium"
+          startCorner={null}
           type="button"
-          variant="default"
+          variant="primary"
         />
       </div>
     </div>
@@ -98,34 +121,49 @@ exports[`rendering renders correctly 1`] = `
         <div
           className="yearEditButtonWrapper"
         >
-          <Button
+          <s
+            afterLabel={null}
+            beforeLabel={
+              <c
+                icon="edit"
+                size="medium"
+              />
+            }
             block={false}
             clickHandler={[Function]}
             disabled={false}
-            icon="edit"
-            iconPosition="before"
-            isLabelVisible={false}
+            endCorner={null}
+            grouped={false}
             label="settings:action.editYear"
-            loading={false}
-            priority="default"
+            labelVisibility="none"
+            loadingIcon={null}
+            priority="outline"
             size="medium"
+            startCorner={null}
             type="button"
-            variant="default"
+            variant="primary"
           />
         </div>
-        <Button
+        <s
+          afterLabel={null}
+          beforeLabel={
+            <c
+              icon="expand_more"
+              size="medium"
+            />
+          }
           block={false}
           clickHandler={[Function]}
           disabled={false}
-          icon="expand_more"
-          iconPosition="before"
-          isLabelVisible={false}
-          label=""
-          loading={false}
-          priority="default"
+          endCorner={null}
+          grouped={false}
+          labelVisibility="none"
+          loadingIcon={null}
+          priority="outline"
           size="medium"
+          startCorner={null}
           type="button"
-          variant="default"
+          variant="primary"
         />
       </div>
     </div>
@@ -147,34 +185,49 @@ exports[`rendering renders correctly 1`] = `
         <div
           className="yearEditButtonWrapper"
         >
-          <Button
+          <s
+            afterLabel={null}
+            beforeLabel={
+              <c
+                icon="edit"
+                size="medium"
+              />
+            }
             block={false}
             clickHandler={[Function]}
             disabled={false}
-            icon="edit"
-            iconPosition="before"
-            isLabelVisible={false}
+            endCorner={null}
+            grouped={false}
             label="settings:action.editYear"
-            loading={false}
-            priority="default"
+            labelVisibility="none"
+            loadingIcon={null}
+            priority="outline"
             size="medium"
+            startCorner={null}
             type="button"
-            variant="default"
+            variant="primary"
           />
         </div>
-        <Button
+        <s
+          afterLabel={null}
+          beforeLabel={
+            <c
+              icon="expand_more"
+              size="medium"
+            />
+          }
           block={false}
           clickHandler={[Function]}
           disabled={false}
-          icon="expand_more"
-          iconPosition="before"
-          isLabelVisible={false}
-          label=""
-          loading={false}
-          priority="default"
+          endCorner={null}
+          grouped={false}
+          labelVisibility="none"
+          loadingIcon={null}
+          priority="outline"
           size="medium"
+          startCorner={null}
           type="button"
-          variant="default"
+          variant="primary"
         />
       </div>
     </div>
@@ -196,34 +249,49 @@ exports[`rendering renders correctly 1`] = `
         <div
           className="yearEditButtonWrapper"
         >
-          <Button
+          <s
+            afterLabel={null}
+            beforeLabel={
+              <c
+                icon="edit"
+                size="medium"
+              />
+            }
             block={false}
             clickHandler={[Function]}
             disabled={false}
-            icon="edit"
-            iconPosition="before"
-            isLabelVisible={false}
+            endCorner={null}
+            grouped={false}
             label="settings:action.editYear"
-            loading={false}
-            priority="default"
+            labelVisibility="none"
+            loadingIcon={null}
+            priority="outline"
             size="medium"
+            startCorner={null}
             type="button"
-            variant="default"
+            variant="primary"
           />
         </div>
-        <Button
+        <s
+          afterLabel={null}
+          beforeLabel={
+            <c
+              icon="expand_more"
+              size="medium"
+            />
+          }
           block={false}
           clickHandler={[Function]}
           disabled={false}
-          icon="expand_more"
-          iconPosition="before"
-          isLabelVisible={false}
-          label=""
-          loading={false}
-          priority="default"
+          endCorner={null}
+          grouped={false}
+          labelVisibility="none"
+          loadingIcon={null}
+          priority="outline"
           size="medium"
+          startCorner={null}
           type="button"
-          variant="default"
+          variant="primary"
         />
       </div>
     </div>

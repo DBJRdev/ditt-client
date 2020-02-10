@@ -8,19 +8,27 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
     <div
       className="navigationPrevious"
     >
-      <Button
+      <s
+        afterLabel={null}
+        beforeLabel={
+          <c
+            icon="keyboard_arrow_left"
+            size="medium"
+          />
+        }
         block={false}
         clickHandler={[Function]}
         disabled={false}
-        icon="keyboard_arrow_left"
-        iconPosition="before"
-        isLabelVisible={true}
+        endCorner={null}
+        grouped={false}
         label="workLog:action.previousMonth"
-        loading={false}
-        priority="primary"
+        labelVisibility="all"
+        loadingIcon={null}
+        priority="default"
         size="medium"
+        startCorner={null}
         type="button"
-        variant="default"
+        variant="primary"
       />
     </div>
     <div>
@@ -45,19 +53,27 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
     <div
       className="navigationNext"
     >
-      <Button
+      <s
+        afterLabel={
+          <c
+            icon="keyboard_arrow_right"
+            size="medium"
+          />
+        }
+        beforeLabel={null}
         block={false}
         clickHandler={[Function]}
         disabled={false}
-        icon="keyboard_arrow_right"
-        iconPosition="after"
-        isLabelVisible={true}
+        endCorner={null}
+        grouped={false}
         label="workLog:action.nextMonth"
-        loading={false}
-        priority="primary"
+        labelVisibility="all"
+        loadingIcon={null}
+        priority="default"
         size="medium"
+        startCorner={null}
         type="button"
-        variant="default"
+        variant="primary"
       />
     </div>
   </nav>
@@ -1012,19 +1028,27 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
     <div
       className="navigationPrevious"
     >
-      <Button
+      <s
+        afterLabel={null}
+        beforeLabel={
+          <c
+            icon="keyboard_arrow_left"
+            size="medium"
+          />
+        }
         block={false}
         clickHandler={[Function]}
         disabled={false}
-        icon="keyboard_arrow_left"
-        iconPosition="before"
-        isLabelVisible={true}
+        endCorner={null}
+        grouped={false}
         label="workLog:action.previousMonth"
-        loading={false}
-        priority="primary"
+        labelVisibility="all"
+        loadingIcon={null}
+        priority="default"
         size="medium"
+        startCorner={null}
         type="button"
-        variant="default"
+        variant="primary"
       />
     </div>
     <div>
@@ -1046,19 +1070,27 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
     <div
       className="navigationNext"
     >
-      <Button
+      <s
+        afterLabel={
+          <c
+            icon="keyboard_arrow_right"
+            size="medium"
+          />
+        }
+        beforeLabel={null}
         block={false}
         clickHandler={[Function]}
         disabled={false}
-        icon="keyboard_arrow_right"
-        iconPosition="after"
-        isLabelVisible={true}
+        endCorner={null}
+        grouped={false}
         label="workLog:action.nextMonth"
-        loading={false}
-        priority="primary"
+        labelVisibility="all"
+        loadingIcon={null}
+        priority="default"
         size="medium"
+        startCorner={null}
         type="button"
-        variant="default"
+        variant="primary"
       />
     </div>
   </nav>
@@ -1074,19 +1106,27 @@ exports[`rendering renders correctly supervisor view with work month waiting for
     <div
       className="navigationPrevious"
     >
-      <Button
+      <s
+        afterLabel={null}
+        beforeLabel={
+          <c
+            icon="keyboard_arrow_left"
+            size="medium"
+          />
+        }
         block={false}
         clickHandler={[Function]}
         disabled={false}
-        icon="keyboard_arrow_left"
-        iconPosition="before"
-        isLabelVisible={true}
+        endCorner={null}
+        grouped={false}
         label="workLog:action.previousMonth"
-        loading={false}
-        priority="primary"
+        labelVisibility="all"
+        loadingIcon={null}
+        priority="default"
         size="medium"
+        startCorner={null}
         type="button"
-        variant="default"
+        variant="primary"
       />
     </div>
     <div>
@@ -1104,37 +1144,52 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           workLog:text.workedAndRequiredHours
         </span>
       </div>
-      <Button
-        block={false}
-        clickHandler={[Function]}
-        disabled={false}
-        icon={null}
-        iconPosition="before"
-        isLabelVisible={true}
-        label="workLog:action.approveMonth"
-        loading={false}
-        priority="primary"
-        size="medium"
-        type="button"
-        variant="success"
-      />
+      <div
+        className="mt-2"
+      >
+        <s
+          afterLabel={null}
+          beforeLabel={null}
+          block={false}
+          clickHandler={[Function]}
+          disabled={false}
+          endCorner={null}
+          grouped={false}
+          label="workLog:action.approveMonth"
+          labelVisibility="all"
+          loadingIcon={null}
+          priority="default"
+          size="medium"
+          startCorner={null}
+          type="button"
+          variant="success"
+        />
+      </div>
     </div>
     <div
       className="navigationNext"
     >
-      <Button
+      <s
+        afterLabel={
+          <c
+            icon="keyboard_arrow_right"
+            size="medium"
+          />
+        }
+        beforeLabel={null}
         block={false}
         clickHandler={[Function]}
         disabled={false}
-        icon="keyboard_arrow_right"
-        iconPosition="after"
-        isLabelVisible={true}
+        endCorner={null}
+        grouped={false}
         label="workLog:action.nextMonth"
-        loading={false}
-        priority="primary"
+        labelVisibility="all"
+        loadingIcon={null}
+        priority="default"
         size="medium"
+        startCorner={null}
         type="button"
-        variant="default"
+        variant="primary"
       />
     </div>
   </nav>
@@ -2089,19 +2144,27 @@ exports[`rendering renders correctly with closed work month 1`] = `
     <div
       className="navigationPrevious"
     >
-      <Button
+      <s
+        afterLabel={null}
+        beforeLabel={
+          <c
+            icon="keyboard_arrow_left"
+            size="medium"
+          />
+        }
         block={false}
         clickHandler={[Function]}
         disabled={false}
-        icon="keyboard_arrow_left"
-        iconPosition="before"
-        isLabelVisible={true}
+        endCorner={null}
+        grouped={false}
         label="workLog:action.previousMonth"
-        loading={false}
-        priority="primary"
+        labelVisibility="all"
+        loadingIcon={null}
+        priority="default"
         size="medium"
+        startCorner={null}
         type="button"
-        variant="default"
+        variant="primary"
       />
     </div>
     <div>
@@ -2126,19 +2189,27 @@ exports[`rendering renders correctly with closed work month 1`] = `
     <div
       className="navigationNext"
     >
-      <Button
+      <s
+        afterLabel={
+          <c
+            icon="keyboard_arrow_right"
+            size="medium"
+          />
+        }
+        beforeLabel={null}
         block={false}
         clickHandler={[Function]}
         disabled={false}
-        icon="keyboard_arrow_right"
-        iconPosition="after"
-        isLabelVisible={true}
+        endCorner={null}
+        grouped={false}
         label="workLog:action.nextMonth"
-        loading={false}
-        priority="primary"
+        labelVisibility="all"
+        loadingIcon={null}
+        priority="default"
         size="medium"
+        startCorner={null}
         type="button"
-        variant="default"
+        variant="primary"
       />
     </div>
   </nav>
@@ -3093,19 +3164,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
     <div
       className="navigationPrevious"
     >
-      <Button
+      <s
+        afterLabel={null}
+        beforeLabel={
+          <c
+            icon="keyboard_arrow_left"
+            size="medium"
+          />
+        }
         block={false}
         clickHandler={[Function]}
         disabled={false}
-        icon="keyboard_arrow_left"
-        iconPosition="before"
-        isLabelVisible={true}
+        endCorner={null}
+        grouped={false}
         label="workLog:action.previousMonth"
-        loading={false}
-        priority="primary"
+        labelVisibility="all"
+        loadingIcon={null}
+        priority="default"
         size="medium"
+        startCorner={null}
         type="button"
-        variant="default"
+        variant="primary"
       />
     </div>
     <div>
@@ -3127,19 +3206,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
     <div
       className="navigationNext"
     >
-      <Button
+      <s
+        afterLabel={
+          <c
+            icon="keyboard_arrow_right"
+            size="medium"
+          />
+        }
+        beforeLabel={null}
         block={false}
         clickHandler={[Function]}
         disabled={false}
-        icon="keyboard_arrow_right"
-        iconPosition="after"
-        isLabelVisible={true}
+        endCorner={null}
+        grouped={false}
         label="workLog:action.nextMonth"
-        loading={false}
-        priority="primary"
+        labelVisibility="all"
+        loadingIcon={null}
+        priority="default"
         size="medium"
+        startCorner={null}
         type="button"
-        variant="default"
+        variant="primary"
       />
     </div>
   </nav>
@@ -3172,19 +3259,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             className="tableCell"
           >
             <div>
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="play_arrow"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="play_arrow"
-                iconPosition="before"
-                isLabelVisible={true}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.startWork"
-                loading={false}
-                priority="primary"
+                labelVisibility="all"
+                loadingIcon={null}
+                priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -3194,19 +3289,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -3247,19 +3350,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -3300,19 +3411,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -3353,19 +3472,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -3406,19 +3533,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -3459,19 +3594,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -3512,19 +3655,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -3565,19 +3716,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -3618,19 +3777,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -3671,19 +3838,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -3724,19 +3899,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -3777,19 +3960,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -3830,19 +4021,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -3883,19 +4082,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -3936,19 +4143,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -3989,19 +4204,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -4042,19 +4265,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -4095,19 +4326,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -4148,19 +4387,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -4201,19 +4448,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -4254,19 +4509,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -4307,19 +4570,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -4360,19 +4631,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -4413,19 +4692,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -4466,19 +4753,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -4519,19 +4814,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -4572,19 +4875,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -4625,19 +4936,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -4678,19 +4997,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -4731,19 +5058,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -4784,19 +5119,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -4816,19 +5159,27 @@ exports[`rendering renders correctly with opened work month 1`] = `
   <div
     className="sendForApprovalButtonWrapper"
   >
-    <Button
+    <s
+      afterLabel={null}
+      beforeLabel={
+        <c
+          icon="send"
+          size="medium"
+        />
+      }
       block={false}
       clickHandler={[Function]}
       disabled={false}
-      icon="send"
-      iconPosition="before"
-      isLabelVisible={true}
+      endCorner={null}
+      grouped={false}
       label="workLog:action.sendWorkMonthForApproval"
-      loading={false}
-      priority="primary"
+      labelVisibility="all"
+      loadingIcon={null}
+      priority="default"
       size="medium"
+      startCorner={null}
       type="button"
-      variant="default"
+      variant="primary"
     />
   </div>
 </div>
@@ -4842,19 +5193,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
     <div
       className="navigationPrevious"
     >
-      <Button
+      <s
+        afterLabel={null}
+        beforeLabel={
+          <c
+            icon="keyboard_arrow_left"
+            size="medium"
+          />
+        }
         block={false}
         clickHandler={[Function]}
         disabled={false}
-        icon="keyboard_arrow_left"
-        iconPosition="before"
-        isLabelVisible={true}
+        endCorner={null}
+        grouped={false}
         label="workLog:action.previousMonth"
-        loading={false}
-        priority="primary"
+        labelVisibility="all"
+        loadingIcon={null}
+        priority="default"
         size="medium"
+        startCorner={null}
         type="button"
-        variant="default"
+        variant="primary"
       />
     </div>
     <div>
@@ -4879,19 +5238,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
     <div
       className="navigationNext"
     >
-      <Button
+      <s
+        afterLabel={
+          <c
+            icon="keyboard_arrow_right"
+            size="medium"
+          />
+        }
+        beforeLabel={null}
         block={false}
         clickHandler={[Function]}
         disabled={false}
-        icon="keyboard_arrow_right"
-        iconPosition="after"
-        isLabelVisible={true}
+        endCorner={null}
+        grouped={false}
         label="workLog:action.nextMonth"
-        loading={false}
-        priority="primary"
+        labelVisibility="all"
+        loadingIcon={null}
+        priority="default"
         size="medium"
+        startCorner={null}
         type="button"
-        variant="default"
+        variant="primary"
       />
     </div>
   </nav>
@@ -4924,19 +5291,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             className="tableCell"
           >
             <div>
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="play_arrow"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="play_arrow"
-                iconPosition="before"
-                isLabelVisible={true}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.startWork"
-                loading={false}
-                priority="primary"
+                labelVisibility="all"
+                loadingIcon={null}
+                priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -4946,19 +5321,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -4999,19 +5382,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -5052,19 +5443,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -5105,19 +5504,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -5158,19 +5565,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -5211,19 +5626,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -5264,19 +5687,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -5317,19 +5748,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -5370,19 +5809,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -5423,19 +5870,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -5476,19 +5931,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -5529,19 +5992,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -5582,19 +6053,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -5635,19 +6114,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -5688,19 +6175,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -5741,19 +6236,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -5794,19 +6297,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -5847,19 +6358,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -5900,19 +6419,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -5953,19 +6480,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -6006,19 +6541,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -6059,19 +6602,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -6112,19 +6663,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -6165,19 +6724,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -6218,19 +6785,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -6271,19 +6846,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -6324,19 +6907,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -6377,19 +6968,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -6430,19 +7029,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -6483,19 +7090,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>
@@ -6536,19 +7151,27 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <Button
+              <s
+                afterLabel={null}
+                beforeLabel={
+                  <c
+                    icon="add"
+                    size="medium"
+                  />
+                }
                 block={false}
                 clickHandler={[Function]}
                 disabled={false}
-                icon="add"
-                iconPosition="before"
-                isLabelVisible={false}
+                endCorner={null}
+                grouped={false}
                 label="workLog:action.addWorkLog"
-                loading={false}
+                labelVisibility="none"
+                loadingIcon={null}
                 priority="default"
                 size="medium"
+                startCorner={null}
                 type="button"
-                variant="default"
+                variant="primary"
               />
             </div>
           </td>

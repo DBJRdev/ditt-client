@@ -2,323 +2,400 @@
 
 exports[`rendering renders correctly with all props 1`] = `
 <div
-  className="Modal__overlay___2LRch"
+  className="Modal__overlay__3W6lN"
   onClick={[Function]}
+  onScroll={[Function]}
   role="presentation"
 >
   <div
-    className="Modal__root___386pN"
+    className="Modal__root__1qznC"
     onClick={[Function]}
     role="presentation"
   >
     <div
-      className="Modal__head___1Z5Bn"
+      className="Modal__head__2Hins"
     >
       <h3
-        className="Modal__headTitle___29_OR"
+        className="Modal__headTitle__1pyeA"
       >
         workLog:modal.add.title
       </h3>
+      <button
+        className="Modal__close__32CSY"
+        onClick={[Function]}
+        title="general:action.close"
+        type="button"
+      >
+        ×
+      </button>
     </div>
     <div
-      className="Modal__body___3KyQK"
+      className="Modal__body__12OYJ"
     >
       <p
         className="formErrorText"
       />
       <form>
-        <fieldset
-          className="fieldset"
+        <div
+          className="centeredLayout"
         >
           <div
-            className="field"
+            className="List__root__2xV8p"
           >
-            <p
-              className="formInfoText"
+            <ul
+              className="List__list__31oLw
+          List__alignLeft__WvLH5"
             >
-              workLog:modal.add.alreadySendForApprovalDescription
-            </p>
-          </div>
-        </fieldset>
-        <fieldset
-          className="fieldset"
-        >
-          <legend>
-            workLog:element.date
-          </legend>
-          <div
-            className="field"
-          >
-            <div
-              className="TextField__root___3Dilx"
-            >
-              <label
-                htmlFor="date"
+              <li
+                className="List__item__31l9a"
+              >
+                <p
+                  className="formInfoText"
+                >
+                  workLog:modal.add.alreadySendForApprovalDescription
+                </p>
+              </li>
+              <li
+                className="List__item__31l9a"
+              >
+                <label
+                  className="TextField__root__3yDmd
+        
+        TextField__rootLayoutVertical__3YCcU
+        
+        TextField__rootSizeMedium__3o17O
+        
+        TextField__rootVariantOutline__1RuTC"
+                  htmlFor="date"
+                >
+                  <div
+                    className="TextField__label__2bJzQ"
+                    id="date__label"
+                  >
+                    workLog:element.date
+                  </div>
+                  <div
+                    className="TextField__inputContainer__3NDux"
+                  >
+                    <input
+                      className="TextField__input__dZrOw"
+                      disabled={true}
+                      id="date"
+                      onChange={null}
+                      placeholder={null}
+                      required={false}
+                      size={null}
+                      type="text"
+                      value="01.01.2018"
+                    />
+                  </div>
+                </label>
+              </li>
+              <li
+                className="List__item__31l9a"
+              >
+                <label
+                  className="SelectField__root__13lek
+        
+        SelectField__rootLayoutVertical__1zUMi
+        
+        SelectField__rootSizeMedium__RKna5
+        
+        SelectField__rootVariantOutline__24jUj"
+                  htmlFor="type"
+                >
+                  <div
+                    className="SelectField__label__MJ9pH"
+                    id="type__label"
+                  >
+                    workLog:element.type
+                  </div>
+                  <div
+                    className="SelectField__inputContainer__1Lkme"
+                  >
+                    <select
+                      className="SelectField__input__15KJ0"
+                      disabled={false}
+                      id="type"
+                      onChange={[Function]}
+                      required={false}
+                      value="WORK_LOG"
+                    >
+                      <option
+                        id="type__item__WORK_LOG"
+                        value="WORK_LOG"
+                      >
+                        workMonth:constant.type.workLog
+                      </option>
+                      <option
+                        id="type__item__BUSINESS_TRIP_WORK_LOG"
+                        value="BUSINESS_TRIP_WORK_LOG"
+                      >
+                        workMonth:constant.type.businessTripWorkLog
+                      </option>
+                      <option
+                        id="type__item__HOME_OFFICE_WORK_LOG"
+                        value="HOME_OFFICE_WORK_LOG"
+                      >
+                        workMonth:constant.type.homeOfficeWorkLog
+                      </option>
+                      <option
+                        id="type__item__OVERTIME_WORK_LOG"
+                        value="OVERTIME_WORK_LOG"
+                      >
+                        workMonth:constant.type.overtimeWorkLog
+                      </option>
+                      <option
+                        id="type__item__SICK_DAY_WORK_LOG"
+                        value="SICK_DAY_WORK_LOG"
+                      >
+                        workMonth:constant.type.sickDayWorkLog
+                      </option>
+                      <option
+                        id="type__item__TIME_OFF_WORK_LOG"
+                        value="TIME_OFF_WORK_LOG"
+                      >
+                        workMonth:constant.type.timeOffWorkLog
+                      </option>
+                      <option
+                        id="type__item__VACATION_WORK_LOG"
+                        value="VACATION_WORK_LOG"
+                      >
+                        workMonth:constant.type.vacationWorkLog
+                      </option>
+                    </select>
+                    <div
+                      className="SelectField__caret__-27wG"
+                    >
+                      <span
+                        className="SelectField__caretIcon__hQwUY"
+                      />
+                    </div>
+                  </div>
+                </label>
+              </li>
+              <li
+                className="List__item__31l9a"
               >
                 <div
-                  className="TextField__isLabelHidden___3U6DG"
+                  className="mb-1"
                 >
-                  workLog:element.date
+                  workLog:element.startTime
                 </div>
-                <input
-                  className="TextField__input___7fOry"
-                  disabled={true}
-                  id="date"
-                  onChange={null}
-                  placeholder={null}
-                  required={false}
-                  type="text"
-                  value="01.01.2018"
-                />
-              </label>
-            </div>
-          </div>
-        </fieldset>
-        <fieldset
-          className="fieldset"
-        >
-          <legend>
-            workLog:element.type
-          </legend>
-          <div
-            className="field"
-          >
-            <div
-              className="SelectField__isRootCondensed___hi5xq SelectField__root___2payh"
-            >
-              <label
-                htmlFor="type"
+                <div>
+                  <div
+                    className="fieldDate"
+                  >
+                    <label
+                      className="TextField__root__3yDmd
+        
+        TextField__rootLayoutVertical__3YCcU
+        
+        TextField__rootSizeMedium__3o17O
+        
+        TextField__rootVariantOutline__1RuTC"
+                      htmlFor="startHour"
+                    >
+                      <div
+                        className="TextField__label__2bJzQ
+          TextField__isLabelHidden__IR-3m"
+                        id="startHour__label"
+                      >
+                        workLog:element.startHour
+                      </div>
+                      <div
+                        className="TextField__inputContainer__3NDux"
+                      >
+                        <input
+                          className="TextField__input__dZrOw"
+                          disabled={false}
+                          id="startHour"
+                          onChange={[Function]}
+                          placeholder={null}
+                          required={false}
+                          size={2}
+                          type="text"
+                          value="00"
+                        />
+                      </div>
+                    </label>
+                  </div>
+                  <span
+                    className="colon"
+                  >
+                    :
+                  </span>
+                  <div
+                    className="fieldDate"
+                  >
+                    <label
+                      className="TextField__root__3yDmd
+        
+        TextField__rootLayoutVertical__3YCcU
+        
+        TextField__rootSizeMedium__3o17O
+        
+        TextField__rootVariantOutline__1RuTC"
+                      htmlFor="startMinute"
+                    >
+                      <div
+                        className="TextField__label__2bJzQ
+          TextField__isLabelHidden__IR-3m"
+                        id="startMinute__label"
+                      >
+                        workLog:element.startMinute
+                      </div>
+                      <div
+                        className="TextField__inputContainer__3NDux"
+                      >
+                        <input
+                          className="TextField__input__dZrOw"
+                          disabled={false}
+                          id="startMinute"
+                          onChange={[Function]}
+                          placeholder={null}
+                          required={false}
+                          size={2}
+                          type="text"
+                          value="57"
+                        />
+                      </div>
+                    </label>
+                  </div>
+                   h
+                </div>
+              </li>
+              <li
+                className="List__item__31l9a"
               >
                 <div
-                  className="SelectField__isLabelHidden___VCBL3"
+                  className="mb-1"
                 >
-                  workLog:element.type
+                  workLog:element.endTime
                 </div>
-                <select
-                  className="SelectField__select___3Lq-l"
-                  disabled={false}
-                  id="type"
-                  onChange={[Function]}
-                  required={false}
-                  value="WORK_LOG"
-                >
-                  <option
-                    value="WORK_LOG"
+                <div>
+                  <div
+                    className="fieldDate"
                   >
-                    workMonth:constant.type.workLog
-                  </option>
-                  <option
-                    value="BUSINESS_TRIP_WORK_LOG"
+                    <label
+                      className="TextField__root__3yDmd
+        
+        TextField__rootLayoutVertical__3YCcU
+        
+        TextField__rootSizeMedium__3o17O
+        
+        TextField__rootVariantOutline__1RuTC"
+                      htmlFor="endHour"
+                    >
+                      <div
+                        className="TextField__label__2bJzQ
+          TextField__isLabelHidden__IR-3m"
+                        id="endHour__label"
+                      >
+                        workLog:element.endHour
+                      </div>
+                      <div
+                        className="TextField__inputContainer__3NDux"
+                      >
+                        <input
+                          className="TextField__input__dZrOw"
+                          disabled={false}
+                          id="endHour"
+                          onChange={[Function]}
+                          placeholder={null}
+                          required={false}
+                          size={2}
+                          type="text"
+                          value="01"
+                        />
+                      </div>
+                    </label>
+                  </div>
+                  <span
+                    className="colon"
                   >
-                    workMonth:constant.type.businessTripWorkLog
-                  </option>
-                  <option
-                    value="HOME_OFFICE_WORK_LOG"
+                    :
+                  </span>
+                  <div
+                    className="fieldDate"
                   >
-                    workMonth:constant.type.homeOfficeWorkLog
-                  </option>
-                  <option
-                    value="OVERTIME_WORK_LOG"
-                  >
-                    workMonth:constant.type.overtimeWorkLog
-                  </option>
-                  <option
-                    value="SICK_DAY_WORK_LOG"
-                  >
-                    workMonth:constant.type.sickDayWorkLog
-                  </option>
-                  <option
-                    value="TIME_OFF_WORK_LOG"
-                  >
-                    workMonth:constant.type.timeOffWorkLog
-                  </option>
-                  <option
-                    value="VACATION_WORK_LOG"
-                  >
-                    workMonth:constant.type.vacationWorkLog
-                  </option>
-                </select>
-              </label>
-            </div>
+                    <label
+                      className="TextField__root__3yDmd
+        
+        TextField__rootLayoutVertical__3YCcU
+        
+        TextField__rootSizeMedium__3o17O
+        
+        TextField__rootVariantOutline__1RuTC"
+                      htmlFor="endMinute"
+                    >
+                      <div
+                        className="TextField__label__2bJzQ
+          TextField__isLabelHidden__IR-3m"
+                        id="endMinute__label"
+                      >
+                        workLog:element.endMinute
+                      </div>
+                      <div
+                        className="TextField__inputContainer__3NDux"
+                      >
+                        <input
+                          className="TextField__input__dZrOw"
+                          disabled={false}
+                          id="endMinute"
+                          onChange={[Function]}
+                          placeholder={null}
+                          required={false}
+                          size={2}
+                          type="text"
+                          value="03"
+                        />
+                      </div>
+                    </label>
+                  </div>
+                   h
+                </div>
+              </li>
+            </ul>
           </div>
-        </fieldset>
-        <fieldset
-          className="fieldset"
-        >
-          <legend>
-            workLog:element.startTime
-          </legend>
-          <div>
-            <div
-              className="field fieldDate"
-            >
-              <div
-                className="TextField__root___3Dilx"
-              >
-                <label
-                  htmlFor="startHour"
-                >
-                  <div
-                    className="TextField__isLabelHidden___3U6DG"
-                  >
-                    workLog:element.startHour
-                  </div>
-                  <input
-                    className="TextField__input___7fOry"
-                    disabled={false}
-                    id="startHour"
-                    onChange={[Function]}
-                    placeholder={null}
-                    required={false}
-                    type="text"
-                    value="00"
-                  />
-                </label>
-              </div>
-            </div>
-            <span
-              className="colon"
-            >
-              :
-            </span>
-            <div
-              className="field fieldDate"
-            >
-              <div
-                className="TextField__root___3Dilx"
-              >
-                <label
-                  htmlFor="startMinute"
-                >
-                  <div
-                    className="TextField__isLabelHidden___3U6DG"
-                  >
-                    workLog:element.startMinute
-                  </div>
-                  <input
-                    className="TextField__input___7fOry"
-                    disabled={false}
-                    id="startMinute"
-                    onChange={[Function]}
-                    placeholder={null}
-                    required={false}
-                    type="text"
-                    value="57"
-                  />
-                </label>
-              </div>
-            </div>
-             h
-          </div>
-        </fieldset>
-        <fieldset
-          className="fieldset"
-        >
-          <legend>
-            workLog:element.endTime
-          </legend>
-          <div>
-            <div
-              className="field fieldDate"
-            >
-              <div
-                className="TextField__root___3Dilx"
-              >
-                <label
-                  htmlFor="endHour"
-                >
-                  <div
-                    className="TextField__isLabelHidden___3U6DG"
-                  >
-                    workLog:element.endHour
-                  </div>
-                  <input
-                    className="TextField__input___7fOry"
-                    disabled={false}
-                    id="endHour"
-                    onChange={[Function]}
-                    placeholder={null}
-                    required={false}
-                    type="text"
-                    value="01"
-                  />
-                </label>
-              </div>
-            </div>
-            <span
-              className="colon"
-            >
-              :
-            </span>
-            <div
-              className="field fieldDate"
-            >
-              <div
-                className="TextField__root___3Dilx"
-              >
-                <label
-                  htmlFor="endMinute"
-                >
-                  <div
-                    className="TextField__isLabelHidden___3U6DG"
-                  >
-                    workLog:element.endMinute
-                  </div>
-                  <input
-                    className="TextField__input___7fOry"
-                    disabled={false}
-                    id="endMinute"
-                    onChange={[Function]}
-                    placeholder={null}
-                    required={false}
-                    type="text"
-                    value="03"
-                  />
-                </label>
-              </div>
-            </div>
-             h
-          </div>
-        </fieldset>
+        </div>
       </form>
     </div>
     <div
-      className="Modal__footer___2iTPs"
+      className="Modal__footer__2YXCJ"
     >
-      <span
-        className="Modal__button___2E3BA"
+      <button
+        className="Button__root__3zrxR
+        Button__priorityDefault__hcWO8
+        Button__sizeMedium__168V1
+        Button__variantPrimary__30PKn"
+        disabled={false}
+        onClick={[Function]}
+        title={null}
+        type="button"
       >
-        <button
-          className="Button__root___1d_g4
-        Button__priorityPrimary___3cllH
-        Button__sizeMedium___3hH6Z"
-          disabled={false}
-          onClick={[Function]}
-          title={null}
-          type="button"
+        <span
+          className="Button__label__3YN6e"
         >
-          <span>
-            general:action.save
-          </span>
-        </button>
-      </span>
-      <span
-        className="Modal__button___2E3BA"
+          general:action.save
+        </span>
+      </button>
+      <button
+        className="Button__root__3zrxR
+        Button__priorityFlat__50w12
+        Button__sizeMedium__168V1
+        Button__variantPrimary__30PKn"
+        disabled={false}
+        onClick={[Function]}
+        title={null}
+        type="button"
       >
-        <button
-          className="Button__root___1d_g4
-        Button__priorityDefault___2rB14
-        Button__sizeMedium___3hH6Z"
-          disabled={false}
-          onClick={[Function]}
-          title={null}
-          type="button"
+        <span
+          className="Button__label__3YN6e"
         >
-          <span>
-            general:action.close
-          </span>
-        </button>
-      </span>
+          general:action.close
+        </span>
+      </button>
     </div>
   </div>
 </div>
@@ -326,317 +403,391 @@ exports[`rendering renders correctly with all props 1`] = `
 
 exports[`rendering renders correctly with mandatory props 1`] = `
 <div
-  className="Modal__overlay___2LRch"
+  className="Modal__overlay__3W6lN"
   onClick={[Function]}
+  onScroll={[Function]}
   role="presentation"
 >
   <div
-    className="Modal__root___386pN"
+    className="Modal__root__1qznC"
     onClick={[Function]}
     role="presentation"
   >
     <div
-      className="Modal__head___1Z5Bn"
+      className="Modal__head__2Hins"
     >
       <h3
-        className="Modal__headTitle___29_OR"
+        className="Modal__headTitle__1pyeA"
       >
         workLog:modal.add.title
       </h3>
+      <button
+        className="Modal__close__32CSY"
+        onClick={[Function]}
+        title="general:action.close"
+        type="button"
+      >
+        ×
+      </button>
     </div>
     <div
-      className="Modal__body___3KyQK"
+      className="Modal__body__12OYJ"
     >
       <p
         className="formErrorText"
       />
       <form>
-        <fieldset
-          className="fieldset"
+        <div
+          className="centeredLayout"
         >
-          <legend>
-            workLog:element.date
-          </legend>
           <div
-            className="field"
+            className="List__root__2xV8p"
           >
-            <div
-              className="TextField__root___3Dilx"
+            <ul
+              className="List__list__31oLw
+          List__alignLeft__WvLH5"
             >
-              <label
-                htmlFor="date"
+              <li
+                className="List__item__31l9a"
+              >
+                <label
+                  className="TextField__root__3yDmd
+        
+        TextField__rootLayoutVertical__3YCcU
+        
+        TextField__rootSizeMedium__3o17O
+        
+        TextField__rootVariantOutline__1RuTC"
+                  htmlFor="date"
+                >
+                  <div
+                    className="TextField__label__2bJzQ"
+                    id="date__label"
+                  >
+                    workLog:element.date
+                  </div>
+                  <div
+                    className="TextField__inputContainer__3NDux"
+                  >
+                    <input
+                      className="TextField__input__dZrOw"
+                      disabled={true}
+                      id="date"
+                      onChange={null}
+                      placeholder={null}
+                      required={false}
+                      size={null}
+                      type="text"
+                      value="01.01.2018"
+                    />
+                  </div>
+                </label>
+              </li>
+              <li
+                className="List__item__31l9a"
+              >
+                <label
+                  className="SelectField__root__13lek
+        
+        SelectField__rootLayoutVertical__1zUMi
+        
+        SelectField__rootSizeMedium__RKna5
+        
+        SelectField__rootVariantOutline__24jUj"
+                  htmlFor="type"
+                >
+                  <div
+                    className="SelectField__label__MJ9pH"
+                    id="type__label"
+                  >
+                    workLog:element.type
+                  </div>
+                  <div
+                    className="SelectField__inputContainer__1Lkme"
+                  >
+                    <select
+                      className="SelectField__input__15KJ0"
+                      disabled={false}
+                      id="type"
+                      onChange={[Function]}
+                      required={false}
+                      value="WORK_LOG"
+                    >
+                      <option
+                        id="type__item__WORK_LOG"
+                        value="WORK_LOG"
+                      >
+                        workMonth:constant.type.workLog
+                      </option>
+                      <option
+                        id="type__item__BUSINESS_TRIP_WORK_LOG"
+                        value="BUSINESS_TRIP_WORK_LOG"
+                      >
+                        workMonth:constant.type.businessTripWorkLog
+                      </option>
+                      <option
+                        id="type__item__HOME_OFFICE_WORK_LOG"
+                        value="HOME_OFFICE_WORK_LOG"
+                      >
+                        workMonth:constant.type.homeOfficeWorkLog
+                      </option>
+                      <option
+                        id="type__item__OVERTIME_WORK_LOG"
+                        value="OVERTIME_WORK_LOG"
+                      >
+                        workMonth:constant.type.overtimeWorkLog
+                      </option>
+                      <option
+                        id="type__item__SICK_DAY_WORK_LOG"
+                        value="SICK_DAY_WORK_LOG"
+                      >
+                        workMonth:constant.type.sickDayWorkLog
+                      </option>
+                      <option
+                        id="type__item__TIME_OFF_WORK_LOG"
+                        value="TIME_OFF_WORK_LOG"
+                      >
+                        workMonth:constant.type.timeOffWorkLog
+                      </option>
+                      <option
+                        id="type__item__VACATION_WORK_LOG"
+                        value="VACATION_WORK_LOG"
+                      >
+                        workMonth:constant.type.vacationWorkLog
+                      </option>
+                    </select>
+                    <div
+                      className="SelectField__caret__-27wG"
+                    >
+                      <span
+                        className="SelectField__caretIcon__hQwUY"
+                      />
+                    </div>
+                  </div>
+                </label>
+              </li>
+              <li
+                className="List__item__31l9a"
               >
                 <div
-                  className="TextField__isLabelHidden___3U6DG"
+                  className="mb-1"
                 >
-                  workLog:element.date
+                  workLog:element.startTime
                 </div>
-                <input
-                  className="TextField__input___7fOry"
-                  disabled={true}
-                  id="date"
-                  onChange={null}
-                  placeholder={null}
-                  required={false}
-                  type="text"
-                  value="01.01.2018"
-                />
-              </label>
-            </div>
-          </div>
-        </fieldset>
-        <fieldset
-          className="fieldset"
-        >
-          <legend>
-            workLog:element.type
-          </legend>
-          <div
-            className="field"
-          >
-            <div
-              className="SelectField__isRootCondensed___hi5xq SelectField__root___2payh"
-            >
-              <label
-                htmlFor="type"
+                <div>
+                  <div
+                    className="fieldDate"
+                  >
+                    <label
+                      className="TextField__root__3yDmd
+        
+        TextField__rootLayoutVertical__3YCcU
+        
+        TextField__rootSizeMedium__3o17O
+        
+        TextField__rootVariantOutline__1RuTC"
+                      htmlFor="startHour"
+                    >
+                      <div
+                        className="TextField__label__2bJzQ
+          TextField__isLabelHidden__IR-3m"
+                        id="startHour__label"
+                      >
+                        workLog:element.startHour
+                      </div>
+                      <div
+                        className="TextField__inputContainer__3NDux"
+                      >
+                        <input
+                          className="TextField__input__dZrOw"
+                          disabled={false}
+                          id="startHour"
+                          onChange={[Function]}
+                          placeholder={null}
+                          required={false}
+                          size={2}
+                          type="text"
+                          value="00"
+                        />
+                      </div>
+                    </label>
+                  </div>
+                  <span
+                    className="colon"
+                  >
+                    :
+                  </span>
+                  <div
+                    className="fieldDate"
+                  >
+                    <label
+                      className="TextField__root__3yDmd
+        
+        TextField__rootLayoutVertical__3YCcU
+        
+        TextField__rootSizeMedium__3o17O
+        
+        TextField__rootVariantOutline__1RuTC"
+                      htmlFor="startMinute"
+                    >
+                      <div
+                        className="TextField__label__2bJzQ
+          TextField__isLabelHidden__IR-3m"
+                        id="startMinute__label"
+                      >
+                        workLog:element.startMinute
+                      </div>
+                      <div
+                        className="TextField__inputContainer__3NDux"
+                      >
+                        <input
+                          className="TextField__input__dZrOw"
+                          disabled={false}
+                          id="startMinute"
+                          onChange={[Function]}
+                          placeholder={null}
+                          required={false}
+                          size={2}
+                          type="text"
+                          value="57"
+                        />
+                      </div>
+                    </label>
+                  </div>
+                   h
+                </div>
+              </li>
+              <li
+                className="List__item__31l9a"
               >
                 <div
-                  className="SelectField__isLabelHidden___VCBL3"
+                  className="mb-1"
                 >
-                  workLog:element.type
+                  workLog:element.endTime
                 </div>
-                <select
-                  className="SelectField__select___3Lq-l"
-                  disabled={false}
-                  id="type"
-                  onChange={[Function]}
-                  required={false}
-                  value="WORK_LOG"
-                >
-                  <option
-                    key="WORK_LOG"
-                    value="WORK_LOG"
+                <div>
+                  <div
+                    className="fieldDate"
                   >
-                    workMonth:constant.type.workLog
-                  </option>
-                  <option
-                    key="BUSINESS_TRIP_WORK_LOG"
-                    value="BUSINESS_TRIP_WORK_LOG"
+                    <label
+                      className="TextField__root__3yDmd
+        
+        TextField__rootLayoutVertical__3YCcU
+        
+        TextField__rootSizeMedium__3o17O
+        
+        TextField__rootVariantOutline__1RuTC"
+                      htmlFor="endHour"
+                    >
+                      <div
+                        className="TextField__label__2bJzQ
+          TextField__isLabelHidden__IR-3m"
+                        id="endHour__label"
+                      >
+                        workLog:element.endHour
+                      </div>
+                      <div
+                        className="TextField__inputContainer__3NDux"
+                      >
+                        <input
+                          className="TextField__input__dZrOw"
+                          disabled={false}
+                          id="endHour"
+                          onChange={[Function]}
+                          placeholder={null}
+                          required={false}
+                          size={2}
+                          type="text"
+                          value="01"
+                        />
+                      </div>
+                    </label>
+                  </div>
+                  <span
+                    className="colon"
                   >
-                    workMonth:constant.type.businessTripWorkLog
-                  </option>
-                  <option
-                    key="HOME_OFFICE_WORK_LOG"
-                    value="HOME_OFFICE_WORK_LOG"
+                    :
+                  </span>
+                  <div
+                    className="fieldDate"
                   >
-                    workMonth:constant.type.homeOfficeWorkLog
-                  </option>
-                  <option
-                    key="OVERTIME_WORK_LOG"
-                    value="OVERTIME_WORK_LOG"
-                  >
-                    workMonth:constant.type.overtimeWorkLog
-                  </option>
-                  <option
-                    key="SICK_DAY_WORK_LOG"
-                    value="SICK_DAY_WORK_LOG"
-                  >
-                    workMonth:constant.type.sickDayWorkLog
-                  </option>
-                  <option
-                    key="TIME_OFF_WORK_LOG"
-                    value="TIME_OFF_WORK_LOG"
-                  >
-                    workMonth:constant.type.timeOffWorkLog
-                  </option>
-                  <option
-                    key="VACATION_WORK_LOG"
-                    value="VACATION_WORK_LOG"
-                  >
-                    workMonth:constant.type.vacationWorkLog
-                  </option>
-                </select>
-              </label>
-            </div>
+                    <label
+                      className="TextField__root__3yDmd
+        
+        TextField__rootLayoutVertical__3YCcU
+        
+        TextField__rootSizeMedium__3o17O
+        
+        TextField__rootVariantOutline__1RuTC"
+                      htmlFor="endMinute"
+                    >
+                      <div
+                        className="TextField__label__2bJzQ
+          TextField__isLabelHidden__IR-3m"
+                        id="endMinute__label"
+                      >
+                        workLog:element.endMinute
+                      </div>
+                      <div
+                        className="TextField__inputContainer__3NDux"
+                      >
+                        <input
+                          className="TextField__input__dZrOw"
+                          disabled={false}
+                          id="endMinute"
+                          onChange={[Function]}
+                          placeholder={null}
+                          required={false}
+                          size={2}
+                          type="text"
+                          value="03"
+                        />
+                      </div>
+                    </label>
+                  </div>
+                   h
+                </div>
+              </li>
+            </ul>
           </div>
-        </fieldset>
-        <fieldset
-          className="fieldset"
-        >
-          <legend>
-            workLog:element.startTime
-          </legend>
-          <div>
-            <div
-              className="field fieldDate"
-            >
-              <div
-                className="TextField__root___3Dilx"
-              >
-                <label
-                  htmlFor="startHour"
-                >
-                  <div
-                    className="TextField__isLabelHidden___3U6DG"
-                  >
-                    workLog:element.startHour
-                  </div>
-                  <input
-                    className="TextField__input___7fOry"
-                    disabled={false}
-                    id="startHour"
-                    onChange={[Function]}
-                    placeholder={null}
-                    required={false}
-                    type="text"
-                    value="00"
-                  />
-                </label>
-              </div>
-            </div>
-            <span
-              className="colon"
-            >
-              :
-            </span>
-            <div
-              className="field fieldDate"
-            >
-              <div
-                className="TextField__root___3Dilx"
-              >
-                <label
-                  htmlFor="startMinute"
-                >
-                  <div
-                    className="TextField__isLabelHidden___3U6DG"
-                  >
-                    workLog:element.startMinute
-                  </div>
-                  <input
-                    className="TextField__input___7fOry"
-                    disabled={false}
-                    id="startMinute"
-                    onChange={[Function]}
-                    placeholder={null}
-                    required={false}
-                    type="text"
-                    value="57"
-                  />
-                </label>
-              </div>
-            </div>
-             h
-          </div>
-        </fieldset>
-        <fieldset
-          className="fieldset"
-        >
-          <legend>
-            workLog:element.endTime
-          </legend>
-          <div>
-            <div
-              className="field fieldDate"
-            >
-              <div
-                className="TextField__root___3Dilx"
-              >
-                <label
-                  htmlFor="endHour"
-                >
-                  <div
-                    className="TextField__isLabelHidden___3U6DG"
-                  >
-                    workLog:element.endHour
-                  </div>
-                  <input
-                    className="TextField__input___7fOry"
-                    disabled={false}
-                    id="endHour"
-                    onChange={[Function]}
-                    placeholder={null}
-                    required={false}
-                    type="text"
-                    value="01"
-                  />
-                </label>
-              </div>
-            </div>
-            <span
-              className="colon"
-            >
-              :
-            </span>
-            <div
-              className="field fieldDate"
-            >
-              <div
-                className="TextField__root___3Dilx"
-              >
-                <label
-                  htmlFor="endMinute"
-                >
-                  <div
-                    className="TextField__isLabelHidden___3U6DG"
-                  >
-                    workLog:element.endMinute
-                  </div>
-                  <input
-                    className="TextField__input___7fOry"
-                    disabled={false}
-                    id="endMinute"
-                    onChange={[Function]}
-                    placeholder={null}
-                    required={false}
-                    type="text"
-                    value="03"
-                  />
-                </label>
-              </div>
-            </div>
-             h
-          </div>
-        </fieldset>
+        </div>
       </form>
     </div>
     <div
-      className="Modal__footer___2iTPs"
+      className="Modal__footer__2YXCJ"
     >
-      <span
-        className="Modal__button___2E3BA"
+      <button
+        className="Button__root__3zrxR
+        Button__priorityDefault__hcWO8
+        Button__sizeMedium__168V1
+        Button__variantPrimary__30PKn"
+        disabled={false}
+        onClick={[Function]}
+        title={null}
+        type="button"
       >
-        <button
-          className="Button__root___1d_g4
-        Button__priorityPrimary___3cllH
-        Button__sizeMedium___3hH6Z"
-          disabled={false}
-          onClick={[Function]}
-          title={null}
-          type="button"
+        <span
+          className="Button__label__3YN6e"
         >
-          <span>
-            general:action.save
-          </span>
-        </button>
-      </span>
-      <span
-        className="Modal__button___2E3BA"
+          general:action.save
+        </span>
+      </button>
+      <button
+        className="Button__root__3zrxR
+        Button__priorityFlat__50w12
+        Button__sizeMedium__168V1
+        Button__variantPrimary__30PKn"
+        disabled={false}
+        onClick={[Function]}
+        title={null}
+        type="button"
       >
-        <button
-          className="Button__root___1d_g4
-        Button__priorityDefault___2rB14
-        Button__sizeMedium___3hH6Z"
-          disabled={false}
-          onClick={[Function]}
-          title={null}
-          type="button"
+        <span
+          className="Button__label__3YN6e"
         >
-          <span>
-            general:action.close
-          </span>
-        </button>
-      </span>
+          general:action.close
+        </span>
+      </button>
     </div>
   </div>
 </div>

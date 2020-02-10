@@ -5,10 +5,13 @@ import React from 'react';
 import { withTranslation } from 'react-i18next';
 import {
   Button,
+  Icon,
+  List,
+  ListItem,
   Modal,
   SelectField,
   TextField,
-} from 'react-ui';
+} from '@react-ui-org/react-ui';
 import {
   VARIANT_WITH_NOTE,
   VARIANT_WITHOUT_NOTE,
@@ -277,63 +280,58 @@ class WorkLogForm extends React.Component {
     const { t } = this.props;
 
     return (
-      <fieldset className={styles.fieldset}>
-        <legend>{t('businessTripWorkLog:element.purpose')}</legend>
-        <div className={styles.field}>
+      <>
+        <ListItem>
           <TextField
             changeHandler={this.changeHandler}
-            error={this.state.formValidity.elements.purpose}
-            fieldId="purpose"
-            isLabelVisible={false}
+            helperText={this.state.formValidity.elements.purpose}
+            id="purpose"
             label={t('businessTripWorkLog:element.purpose')}
             value={this.state.formData.purpose || ''}
+            validationState={this.state.formValidity.elements.purpose ? 'invalid' : null}
           />
-        </div>
-        <legend>{t('businessTripWorkLog:element.destination')}</legend>
-        <div className={styles.field}>
+        </ListItem>
+        <ListItem>
           <TextField
             changeHandler={this.changeHandler}
-            error={this.state.formValidity.elements.destination}
-            fieldId="destination"
-            isLabelVisible={false}
+            helperText={this.state.formValidity.elements.destination}
+            id="destination"
             label={t('businessTripWorkLog:element.destination')}
             value={this.state.formData.destination || ''}
+            validationState={this.state.formValidity.elements.destination ? 'invalid' : null}
           />
-        </div>
-        <legend>{t('businessTripWorkLog:element.transport')}</legend>
-        <div className={styles.field}>
+        </ListItem>
+        <ListItem>
           <TextField
             changeHandler={this.changeHandler}
-            error={this.state.formValidity.elements.transport}
-            fieldId="transport"
-            isLabelVisible={false}
+            helperText={this.state.formValidity.elements.transport}
+            id="transport"
             label={t('businessTripWorkLog:element.transport')}
             value={this.state.formData.transport || ''}
+            validationState={this.state.formValidity.elements.transport ? 'invalid' : null}
           />
-        </div>
-        <legend>{t('businessTripWorkLog:element.expectedDeparture')}</legend>
-        <div className={styles.field}>
+        </ListItem>
+        <ListItem>
           <TextField
             changeHandler={this.changeHandler}
-            error={this.state.formValidity.elements.expectedDeparture}
-            fieldId="expectedDeparture"
-            isLabelVisible={false}
+            helperText={this.state.formValidity.elements.expectedDeparture}
+            id="expectedDeparture"
             label={t('businessTripWorkLog:element.expectedDeparture')}
             value={this.state.formData.expectedDeparture || ''}
+            validationState={this.state.formValidity.elements.expectedDeparture ? 'invalid' : null}
           />
-        </div>
-        <legend>{t('businessTripWorkLog:element.expectedArrival')}</legend>
-        <div className={styles.field}>
+        </ListItem>
+        <ListItem>
           <TextField
             changeHandler={this.changeHandler}
-            error={this.state.formValidity.elements.expectedArrival}
-            fieldId="expectedArrival"
-            isLabelVisible={false}
+            helperText={this.state.formValidity.elements.expectedArrival}
+            id="expectedArrival"
             label={t('businessTripWorkLog:element.expectedArrival')}
             value={this.state.formData.expectedArrival || ''}
+            validationState={this.state.formValidity.elements.expectedArrival ? 'invalid' : null}
           />
-        </div>
-      </fieldset>
+        </ListItem>
+      </>
     );
   }
 
@@ -341,19 +339,16 @@ class WorkLogForm extends React.Component {
     const { t } = this.props;
 
     return (
-      <fieldset className={styles.fieldset}>
-        <legend>{t('homeOfficeWorkLog:element.comment')}</legend>
-        <div style={this.fieldStyle}>
-          <TextField
-            changeHandler={this.changeHandler}
-            error={this.state.formValidity.elements.comment}
-            fieldId="comment"
-            isLabelVisible={false}
-            label={t('homeOfficeWorkLog:element.comment')}
-            value={this.state.formData.comment || ''}
-          />
-        </div>
-      </fieldset>
+      <ListItem>
+        <TextField
+          changeHandler={this.changeHandler}
+          helperText={this.state.formValidity.elements.comment}
+          id="comment"
+          label={t('homeOfficeWorkLog:element.comment')}
+          value={this.state.formData.comment || ''}
+          validationState={this.state.formValidity.elements.comment ? 'invalid' : null}
+        />
+      </ListItem>
     );
   }
 
@@ -361,19 +356,16 @@ class WorkLogForm extends React.Component {
     const { t } = this.props;
 
     return (
-      <fieldset className={styles.fieldset}>
-        <legend>{t('overtimeWorkLog:element.reason')}</legend>
-        <div className={styles.field}>
-          <TextField
-            changeHandler={this.changeHandler}
-            error={this.state.formValidity.elements.reason}
-            fieldId="reason"
-            isLabelVisible={false}
-            label={t('overtimeWorkLog:element.reason')}
-            value={this.state.formData.reason || ''}
-          />
-        </div>
-      </fieldset>
+      <ListItem>
+        <TextField
+          changeHandler={this.changeHandler}
+          helperText={this.state.formValidity.elements.reason}
+          id="reason"
+          label={t('overtimeWorkLog:element.reason')}
+          value={this.state.formData.reason || ''}
+          validationState={this.state.formValidity.elements.reason ? 'invalid' : null}
+        />
+      </ListItem>
     );
   }
 
@@ -381,33 +373,30 @@ class WorkLogForm extends React.Component {
     const { t } = this.props;
 
     return (
-      <fieldset className={styles.fieldset}>
-        <legend>{t('sickDayWorkLog:element.variant')}</legend>
-        <div className={styles.field}>
-          <SelectField
-            changeHandler={this.changeHandler}
-            error={this.state.formValidity.elements.variant}
-            fieldId="variant"
-            isLabelVisible={false}
-            label={t('sickDayWorkLog:element.variant')}
-            options={[
-              {
-                label: t('sickDayWorkLog:constant.variant.withNote'),
-                value: VARIANT_WITH_NOTE,
-              },
-              {
-                label: t('sickDayWorkLog:constant.variant.withoutNote'),
-                value: VARIANT_WITHOUT_NOTE,
-              },
-              {
-                label: t('sickDayWorkLog:constant.variant.sickChild'),
-                value: VARIANT_SICK_CHILD,
-              },
-            ]}
-            value={this.state.formData.variant || ''}
-          />
-        </div>
-      </fieldset>
+      <ListItem>
+        <SelectField
+          changeHandler={this.changeHandler}
+          helperText={this.state.formValidity.elements.variant}
+          id="variant"
+          label={t('sickDayWorkLog:element.variant')}
+          options={[
+            {
+              label: t('sickDayWorkLog:constant.variant.withNote'),
+              value: VARIANT_WITH_NOTE,
+            },
+            {
+              label: t('sickDayWorkLog:constant.variant.withoutNote'),
+              value: VARIANT_WITHOUT_NOTE,
+            },
+            {
+              label: t('sickDayWorkLog:constant.variant.sickChild'),
+              value: VARIANT_SICK_CHILD,
+            },
+          ]}
+          validationState={this.state.formValidity.elements.variant ? 'invalid' : null}
+          value={this.state.formData.variant || ''}
+        />
+      </ListItem>
     );
   }
 
@@ -415,30 +404,28 @@ class WorkLogForm extends React.Component {
     const { t } = this.props;
 
     return (
-      <fieldset className={styles.fieldset}>
-        <legend>{t('sickDayWorkLog:element.childName')}</legend>
-        <div className={styles.field}>
+      <>
+        <ListItem>
           <TextField
             changeHandler={this.changeHandler}
-            error={this.state.formValidity.elements.childName}
-            fieldId="childName"
-            isLabelVisible={false}
+            helperText={this.state.formValidity.elements.childName}
+            id="childName"
             label={t('sickDayWorkLog:element.childName')}
             value={this.state.formData.childName || ''}
+            validationState={this.state.formValidity.elements.childName ? 'invalid' : null}
           />
-        </div>
-        <legend>{t('sickDayWorkLog:element.childDateOfBirth')}</legend>
-        <div className={styles.field}>
+        </ListItem>
+        <ListItem>
           <TextField
             changeHandler={this.changeHandler}
-            error={this.state.formValidity.elements.childDateOfBirth}
-            fieldId="childDateOfBirth"
-            isLabelVisible={false}
+            helperText={this.state.formValidity.elements.childDateOfBirth}
+            id="childDateOfBirth"
             label={t('sickDayWorkLog:element.childDateOfBirth')}
             value={this.state.formData.childDateOfBirth || ''}
+            validationState={this.state.formValidity.elements.childDateOfBirth ? 'invalid' : null}
           />
-        </div>
-      </fieldset>
+        </ListItem>
+      </>
     );
   }
 
@@ -446,19 +433,16 @@ class WorkLogForm extends React.Component {
     const { t } = this.props;
 
     return (
-      <fieldset className={styles.fieldset}>
-        <legend>{t('timeOffWorkLog:element.comment')}</legend>
-        <div style={this.fieldStyle}>
-          <TextField
-            changeHandler={this.changeHandler}
-            error={this.state.formValidity.elements.comment}
-            fieldId="comment"
-            isLabelVisible={false}
-            label={t('timeOffWorkLog:element.comment')}
-            value={this.state.formData.comment || ''}
-          />
-        </div>
-      </fieldset>
+      <ListItem>
+        <TextField
+          changeHandler={this.changeHandler}
+          helperText={this.state.formValidity.elements.comment}
+          id="comment"
+          label={t('timeOffWorkLog:element.comment')}
+          value={this.state.formData.comment || ''}
+          validationState={this.state.formValidity.elements.comment ? 'invalid' : null}
+        />
+      </ListItem>
     );
   }
 
@@ -466,19 +450,16 @@ class WorkLogForm extends React.Component {
     const { t } = this.props;
 
     return (
-      <fieldset className={styles.fieldset}>
-        <legend>{t('vacationWorkLog:element.dateTo')}</legend>
-        <div style={this.fieldStyle}>
-          <TextField
-            error={this.state.formValidity.elements.dateTo}
-            changeHandler={this.changeHandler}
-            fieldId="dateTo"
-            isLabelVisible={false}
-            label={t('vacationWorkLog:element.dateTo')}
-            value={this.state.formData.dateTo || ''}
-          />
-        </div>
-      </fieldset>
+      <ListItem>
+        <TextField
+          helperText={this.state.formValidity.elements.dateTo}
+          changeHandler={this.changeHandler}
+          id="dateTo"
+          label={t('vacationWorkLog:element.dateTo')}
+          value={this.state.formData.dateTo || ''}
+          validationState={this.state.formValidity.elements.dateTo ? 'invalid' : null}
+        />
+      </ListItem>
     );
   }
 
@@ -491,61 +472,73 @@ class WorkLogForm extends React.Component {
 
     return (
       <>
-        <fieldset className={styles.fieldset}>
-          <legend>{t('workLog:element.startTime')}</legend>
+        <ListItem>
+          <div className="mb-1">
+            {t('workLog:element.startTime')}
+          </div>
           <div>
-            <div className={[styles.field, styles.fieldDate].join(' ')}>
+            <div className={styles.fieldDate}>
               <TextField
                 autoFocus
                 changeHandler={this.changeHandler}
-                error={formValidity.elements.startHour}
-                fieldId="startHour"
+                helperText={formValidity.elements.startHour}
+                id="startHour"
+                inputSize={2}
                 isLabelVisible={false}
                 label={t('workLog:element.startHour')}
                 value={formData.startHour || ''}
+                validationState={this.state.formValidity.elements.startHour ? 'invalid' : null}
               />
             </div>
             <span className={styles.colon}>:</span>
-            <div className={[styles.field, styles.fieldDate].join(' ')}>
+            <div className={styles.fieldDate}>
               <TextField
                 changeHandler={this.changeHandler}
-                error={formValidity.elements.startMinute}
-                fieldId="startMinute"
+                helperText={formValidity.elements.startMinute}
+                id="startMinute"
+                inputSize={2}
                 isLabelVisible={false}
                 label={t('workLog:element.startMinute')}
                 value={formData.startMinute || ''}
+                validationState={this.state.formValidity.elements.startMinute ? 'invalid' : null}
               />
             </div>
             &nbsp;h
           </div>
-        </fieldset>
-        <fieldset className={styles.fieldset}>
-          <legend>{t('workLog:element.endTime')}</legend>
+        </ListItem>
+        <ListItem>
+          <div className="mb-1">
+            {t('workLog:element.endTime')}
+          </div>
           <div>
-            <div className={[styles.field, styles.fieldDate].join(' ')}>
+            <div className={styles.fieldDate}>
               <TextField
                 changeHandler={this.changeHandler}
-                error={formValidity.elements.endHour}
-                fieldId="endHour"
+                helperText={formValidity.elements.endHour}
+                id="endHour"
+                inputSize={2}
                 isLabelVisible={false}
                 label={t('workLog:element.endHour')}
                 value={formData.endHour || ''}
+                validationState={this.state.formValidity.elements.endHour ? 'invalid' : null}
               />
             </div>
             <span className={styles.colon}>:</span>
-            <div className={[styles.field, styles.fieldDate].join(' ')}>
+            <div className={styles.fieldDate}>
               <TextField
                 changeHandler={this.changeHandler}
-                error={formValidity.elements.endMinute}
-                fieldId="endMinute"
+                helperText={formValidity.elements.endMinute}
+                id="endMinute"
+                inputSize={2}
                 isLabelVisible={false}
                 label={t('workLog:element.endMinute')}
                 value={formData.endMinute || ''}
+                validationState={this.state.formValidity.elements.endMinute ? 'invalid' : null}
               />
             </div>
             &nbsp;h
           </div>
-        </fieldset>
+        </ListItem>
       </>
     );
   }
@@ -567,7 +560,7 @@ class WorkLogForm extends React.Component {
           {
             clickHandler: this.saveHandler,
             label: t('general:action.save'),
-            loading: this.props.isPosting,
+            loadingIcon: this.props.isPosting ? <Icon icon="sync" /> : null,
           },
         ]}
         closeHandler={this.props.closeHandler}
@@ -578,130 +571,118 @@ class WorkLogForm extends React.Component {
           {formValidity.elements.form}
         </p>
         <form>
-          {this.props.showInfoText && (
-            <fieldset className={styles.fieldset}>
-              <div className={styles.field}>
-                <p className={styles.formInfoText}>
-                  {t('workLog:modal.add.alreadySendForApprovalDescription')}
-                </p>
-              </div>
-            </fieldset>
-          )}
-          {showWorkLogTimer && (
-            <fieldset className={styles.fieldset}>
-              <div className={styles.workLogTimerButton}>
-                {
-                  this.state.workLogTimer
-                    ? (
-                      <Button
-                        clickHandler={this.stopWorkLogTimer}
-                        icon="stop"
-                        label={`${t('workLog:action.endWork')} | ${workLogTimerInterval}`}
-                        priority="primary"
-                      />
-                    ) : (
-                      <Button
-                        clickHandler={this.initAndStartWorkLogTimer}
-                        icon="play_arrow"
-                        label={t('workLog:action.startWork')}
-                        priority="primary"
-                      />
-                    )
-                }
-              </div>
-            </fieldset>
-          )}
-          <fieldset className={styles.fieldset}>
-            <legend>
-              {t((
+          <div className={styles.centeredLayout}>
+            <List>
+              {this.props.showInfoText && (
+                <ListItem>
+                  <p className={styles.formInfoText}>
+                    {t('workLog:modal.add.alreadySendForApprovalDescription')}
+                  </p>
+                </ListItem>
+              )}
+              {showWorkLogTimer && (
+                <ListItem>
+                  {
+                    this.state.workLogTimer
+                      ? (
+                        <Button
+                          beforeLabel={<Icon icon="stop" />}
+                          block
+                          clickHandler={this.stopWorkLogTimer}
+                          label={`${t('workLog:action.endWork')} | ${workLogTimerInterval}`}
+                        />
+                      ) : (
+                        <Button
+                          beforeLabel={<Icon icon="play_arrow" />}
+                          block
+                          clickHandler={this.initAndStartWorkLogTimer}
+                          label={t('workLog:action.startWork')}
+                          priority="primary"
+                        />
+                      )
+                  }
+                </ListItem>
+              )}
+              <ListItem>
+                <TextField
+                  disabled
+                  id="date"
+                  label={
+                    t((
+                      formData.type === VACATION_WORK_LOG
+                        ? 'vacationWorkLog:element.dateFrom'
+                        : 'workLog:element.date'
+                    ))
+                  }
+                  value={toDayMonthYearFormat(this.props.date) || ''}
+                />
+              </ListItem>
+              <ListItem>
+                <SelectField
+                  changeHandler={this.changeHandler}
+                  helperText={formValidity.elements.type}
+                  id="type"
+                  label={t('workLog:element.type')}
+                  options={[
+                    {
+                      label: t('workMonth:constant.type.workLog'),
+                      value: WORK_LOG,
+                    },
+                    {
+                      label: t('workMonth:constant.type.businessTripWorkLog'),
+                      value: BUSINESS_TRIP_WORK_LOG,
+                    },
+                    {
+                      label: t('workMonth:constant.type.homeOfficeWorkLog'),
+                      value: HOME_OFFICE_WORK_LOG,
+                    },
+                    {
+                      label: t('workMonth:constant.type.overtimeWorkLog'),
+                      value: OVERTIME_WORK_LOG,
+                    },
+                    {
+                      label: t('workMonth:constant.type.sickDayWorkLog'),
+                      value: SICK_DAY_WORK_LOG,
+                    },
+                    {
+                      label: t('workMonth:constant.type.timeOffWorkLog'),
+                      value: TIME_OFF_WORK_LOG,
+                    },
+                    {
+                      label: t('workMonth:constant.type.vacationWorkLog'),
+                      value: VACATION_WORK_LOG,
+                    },
+                  ]}
+                  value={formData.type || ''}
+                  validationState={formValidity.elements.type ? 'invalid' : null}
+                />
+              </ListItem>
+              {
+                formData.type === BUSINESS_TRIP_WORK_LOG
+                && this.renderBusinessTripWorkLogFields()
+              }
+              {
+                formData.type === HOME_OFFICE_WORK_LOG
+                && this.renderHomeOfficeWorkLogFields()
+              }
+              {formData.type === OVERTIME_WORK_LOG && this.renderOvertimeWorkLogFields()}
+              {formData.type === SICK_DAY_WORK_LOG && this.renderSickDayWorkLogFields()}
+              {
+                formData.type === SICK_DAY_WORK_LOG
+                && formData.variant === VARIANT_SICK_CHILD
+                && this.renderSickDayWorkLogSickChildFields()
+              }
+              {
+                formData.type === TIME_OFF_WORK_LOG
+                && this.renderTimeOffWorkLogFields()
+              }
+              {
                 formData.type === VACATION_WORK_LOG
-                  ? 'vacationWorkLog:element.dateFrom'
-                  : 'workLog:element.date'
-              ))}
-            </legend>
-            <div className={styles.field}>
-              <TextField
-                disabled
-                fieldId="date"
-                isLabelVisible={false}
-                label={
-                  t((
-                    formData.type === VACATION_WORK_LOG
-                      ? 'vacationWorkLog:element.dateFrom'
-                      : 'workLog:element.date'
-                  ))
-                }
-                value={toDayMonthYearFormat(this.props.date) || ''}
-              />
-            </div>
-          </fieldset>
-          <fieldset className={styles.fieldset}>
-            <legend>{t('workLog:element.type')}</legend>
-            <div className={styles.field}>
-              <SelectField
-                changeHandler={this.changeHandler}
-                error={formValidity.elements.type}
-                fieldId="type"
-                isLabelVisible={false}
-                label={t('workLog:element.type')}
-                options={[
-                  {
-                    label: t('workMonth:constant.type.workLog'),
-                    value: WORK_LOG,
-                  },
-                  {
-                    label: t('workMonth:constant.type.businessTripWorkLog'),
-                    value: BUSINESS_TRIP_WORK_LOG,
-                  },
-                  {
-                    label: t('workMonth:constant.type.homeOfficeWorkLog'),
-                    value: HOME_OFFICE_WORK_LOG,
-                  },
-                  {
-                    label: t('workMonth:constant.type.overtimeWorkLog'),
-                    value: OVERTIME_WORK_LOG,
-                  },
-                  {
-                    label: t('workMonth:constant.type.sickDayWorkLog'),
-                    value: SICK_DAY_WORK_LOG,
-                  },
-                  {
-                    label: t('workMonth:constant.type.timeOffWorkLog'),
-                    value: TIME_OFF_WORK_LOG,
-                  },
-                  {
-                    label: t('workMonth:constant.type.vacationWorkLog'),
-                    value: VACATION_WORK_LOG,
-                  },
-                ]}
-                value={formData.type || ''}
-              />
-            </div>
-          </fieldset>
-          {
-            formData.type === BUSINESS_TRIP_WORK_LOG
-            && this.renderBusinessTripWorkLogFields()
-          }
-          {
-            formData.type === HOME_OFFICE_WORK_LOG
-            && this.renderHomeOfficeWorkLogFields()
-          }
-          {formData.type === OVERTIME_WORK_LOG && this.renderOvertimeWorkLogFields()}
-          {formData.type === SICK_DAY_WORK_LOG && this.renderSickDayWorkLogFields()}
-          {
-            formData.type === SICK_DAY_WORK_LOG
-              && formData.variant === VARIANT_SICK_CHILD
-              && this.renderSickDayWorkLogSickChildFields()
-          }
-          {
-            formData.type === TIME_OFF_WORK_LOG
-            && this.renderTimeOffWorkLogFields()
-          }
-          {
-            formData.type === VACATION_WORK_LOG
-            && this.renderVacationWorkLogFields()
-          }
-          {formData.type === WORK_LOG && this.renderWorkLogFields()}
+                && this.renderVacationWorkLogFields()
+              }
+              {formData.type === WORK_LOG && this.renderWorkLogFields()}
+            </List>
+          </div>
         </form>
       </Modal>
     );
