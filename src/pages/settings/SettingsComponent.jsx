@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {
   Button,
+  Icon,
+  List,
+  ListItem,
   Modal,
   TextArea,
   TextField,
-} from 'react-ui';
+} from '@react-ui-org/react-ui';
 import { withTranslation } from 'react-i18next';
 import Layout from '../../components/Layout';
 import {
@@ -222,19 +225,18 @@ class SettingsComponent extends React.Component {
           <div className={styles.yearButtonsWrapper}>
             <div className={styles.yearEditButtonWrapper}>
               <Button
+                beforeLabel={<Icon icon="edit" />}
                 clickHandler={() => this.openEditYearDialog(supportedYear)}
-                icon="edit"
                 label={t('settings:action.editYear')}
-                isLabelVisible={false}
-                priority="default"
+                labelVisibility="none"
+                priority="outline"
               />
             </div>
             <Button
+              beforeLabel={isOpened ? <Icon icon="expand_less" /> : <Icon icon="expand_more" />}
               clickHandler={() => this.changeOpenedYearHandler(supportedYear)}
-              icon={isOpened ? 'expand_less' : 'expand_more'}
-              label=""
-              isLabelVisible={false}
-              priority="default"
+              labelVisibility="none"
+              priority="outline"
             />
           </div>
         </div>
@@ -273,34 +275,44 @@ class SettingsComponent extends React.Component {
           {
             clickHandler: this.addHandler,
             label: t('general:action.save'),
-            loading: isPosting,
+            loadingIcon: isPosting ? <Icon icon="sync" /> : null,
           },
         ]}
         closeHandler={this.closeAddYearDialog}
         title={t('settings:title.addYear')}
         translations={{ close: t('general:action.close') }}
       >
-        <form>
-          <TextField
-            changeHandler={this.changeHandler}
-            error={this.state.formValidity.elements.year}
-            fieldId="year"
-            label={t('config:element.year')}
-            required
-            type="number"
-            value={this.state.formData.year || ''}
-          />
-          <TextArea
-            changeHandler={this.changeHandler}
-            error={this.state.formValidity.elements.holidays}
-            fieldId="holidays"
-            label={t('config:element.holidays')}
-            required
-            value={this.state.formData.holidays || ''}
-          />
-          <p className={styles.holidaysInfoText}>
-            {t('settings:text.holidayInfoText')}
-          </p>
+        <form className={styles.centeredLayout}>
+          <List>
+            <ListItem>
+              <TextField
+                changeHandler={this.changeHandler}
+                helperText={this.state.formValidity.elements.year}
+                id="year"
+                label={t('config:element.year')}
+                required
+                type="number"
+                value={this.state.formData.year || ''}
+                validationState={this.state.formValidity.elements.year ? 'invalid' : null}
+              />
+            </ListItem>
+            <ListItem>
+              <TextArea
+                changeHandler={this.changeHandler}
+                helperText={this.state.formValidity.elements.holidays}
+                id="holidays"
+                label={t('config:element.holidays')}
+                required
+                value={this.state.formData.holidays || ''}
+                validationState={this.state.formValidity.elements.holidays ? 'invalid' : null}
+              />
+            </ListItem>
+            <ListItem>
+              <span className={styles.holidaysInfoText}>
+                {t('settings:text.holidayInfoText')}
+              </span>
+            </ListItem>
+          </List>
         </form>
       </Modal>
     );
@@ -318,35 +330,45 @@ class SettingsComponent extends React.Component {
           {
             clickHandler: this.editHandler,
             label: t('general:action.save'),
-            loading: isPosting,
+            loadingIcon: isPosting ? <Icon icon="sync" /> : null,
           },
         ]}
         closeHandler={this.closeEditYearDialog}
         title={t('settings:title.editYear')}
         translations={{ close: t('general:action.close') }}
       >
-        <form>
-          <TextField
-            changeHandler={this.changeHandler}
-            disabled
-            error={this.state.formValidity.elements.year}
-            fieldId="year"
-            label={t('config:element.year')}
-            required
-            type="number"
-            value={this.state.formData.year || ''}
-          />
-          <TextArea
-            changeHandler={this.changeHandler}
-            error={this.state.formValidity.elements.holidays}
-            fieldId="holidays"
-            label={t('config:element.holidays')}
-            required
-            value={this.state.formData.holidays || ''}
-          />
-          <p className={styles.holidaysInfoText}>
-            {t('settings:text.holidayInfoText')}
-          </p>
+        <form className={styles.centeredLayout}>
+          <List>
+            <ListItem>
+              <TextField
+                changeHandler={this.changeHandler}
+                disabled
+                helperText={this.state.formValidity.elements.year}
+                id="year"
+                label={t('config:element.year')}
+                required
+                type="number"
+                value={this.state.formData.year || ''}
+                validationState={this.state.formValidity.elements.year ? 'invalid' : null}
+              />
+            </ListItem>
+            <ListItem>
+              <TextArea
+                changeHandler={this.changeHandler}
+                helperText={this.state.formValidity.elements.holidays}
+                id="holidays"
+                label={t('config:element.holidays')}
+                required
+                value={this.state.formData.holidays || ''}
+                validationState={this.state.formValidity.elements.holidays ? 'invalid' : null}
+              />
+            </ListItem>
+            <ListItem>
+              <span className={styles.holidaysInfoText}>
+                {t('settings:text.holidayInfoText')}
+              </span>
+            </ListItem>
+          </List>
         </form>
       </Modal>
     );
@@ -374,10 +396,9 @@ class SettingsComponent extends React.Component {
           </h2>
           <div className={styles.yearButtonsWrapper}>
             <Button
+              beforeLabel={<Icon icon="add" />}
               clickHandler={this.openAddYearDialog}
-              icon="add"
               label={t('settings:action.addYear')}
-              priority="primary"
             />
           </div>
         </div>

@@ -5,6 +5,7 @@
   "description": "DBJR Internal Time Tracking application developed by VisionApps",
   "main": "src/main.jsx",
   "dependencies": {
+    "@react-ui-org/react-ui": "^0.25.0",
     "history": "^4.10.1",
     "i18next": "^19.1.0",
     "immutable": "^3.8.2",
@@ -20,7 +21,6 @@
     "react-pointable": "^1.1.3",
     "react-redux": "^7.1.3",
     "react-router-dom": "^5.1.2",
-    "react-ui": "git+https://github.com/react-ui-org/react-ui.git#v0.4.3",
     "redux": "^4.0.5",
     "redux-api-middleware": "^3.2.0",
     "redux-devtools-extension": "^2.13.8",

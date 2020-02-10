@@ -4,7 +4,10 @@ import React from 'react';
 import jwt from 'jsonwebtoken';
 import { Link } from 'react-router-dom';
 import { withTranslation } from 'react-i18next';
-import { Table } from 'react-ui';
+import {
+  Icon,
+  Table,
+} from '@react-ui-org/react-ui';
 import Layout from '../../components/Layout';
 import routes from '../../routes';
 import {
@@ -139,6 +142,7 @@ class ListComponent extends React.Component {
             ]}
             rows={this.props.supervisedUserList.toJS()}
             sort={{
+              ascendingIcon: <Icon icon="arrow_upward" />,
               changeHandler: (column, direction) => {
                 if (this.props.token) {
                   const decodedToken = jwt.decode(this.props.token);
@@ -164,6 +168,7 @@ class ListComponent extends React.Component {
                 }
               },
               column: this.state.tableSortColumn,
+              descendingIcon: <Icon icon="arrow_downward" />,
               direction: this.state.tableSortDirection,
             }}
           />

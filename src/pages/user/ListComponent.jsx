@@ -6,8 +6,9 @@ import React from 'react';
 import { withTranslation } from 'react-i18next';
 import {
   Button,
+  Icon,
   Table,
-} from 'react-ui';
+} from '@react-ui-org/react-ui';
 import { Link } from 'react-router-dom';
 import routes from '../../routes';
 import Layout from '../../components/Layout';
@@ -122,13 +123,13 @@ class ListComponent extends React.Component {
           <Button
             clickHandler={() => this.props.history.push(routes.addUser)}
             label={t('user:action.addUser')}
-            priority="primary"
           />
         </div>
         <Table
           columns={columns}
           rows={this.props.userList.toJS()}
           sort={{
+            ascendingIcon: <Icon icon="arrow_upward" />,
             changeHandler: (column, direction) => {
               const orderDirection = direction === 'asc' ? 'desc' : 'asc';
 
@@ -145,6 +146,7 @@ class ListComponent extends React.Component {
               });
             },
             column: this.state.tableSortColumn,
+            descendingIcon: <Icon icon="arrow_downward" />,
             direction: this.state.tableSortDirection,
           }}
         />

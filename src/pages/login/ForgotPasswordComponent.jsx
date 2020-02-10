@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { withTranslation } from 'react-i18next';
-import { ForgotPassword } from 'react-ui';
+import { ForgotPassword } from '@react-ui-org/react-ui';
 import {
   RESET_PASSWORD_FAILURE,
   RESET_PASSWORD_SUCCESS,
