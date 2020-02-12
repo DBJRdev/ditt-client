@@ -52,7 +52,23 @@ describe('rendering', () => {
       markApproved={() => {}}
       markWaitingForApproval={() => {}}
       selectedDate={fakeMomentDateTime}
-      workHoursList={Immutable.List()}
+      workHoursList={Immutable.fromJS([
+        {
+          month: 12,
+          requiredHours: 6,
+          year: 2017,
+        },
+        {
+          month: 1,
+          requiredHours: 6,
+          year: 2018,
+        },
+        {
+          month: 2,
+          requiredHours: 6,
+          year: 2018,
+        },
+      ])}
       workMonth={
         Immutable.fromJS({
           businessTripWorkLogs: [],
@@ -135,7 +151,23 @@ describe('rendering', () => {
       markApproved={() => {}}
       markWaitingForApproval={() => {}}
       selectedDate={fakeMomentDateTime}
-      workHoursList={Immutable.List()}
+      workHoursList={Immutable.fromJS([
+        {
+          month: 12,
+          requiredHours: 6,
+          year: 2017,
+        },
+        {
+          month: 1,
+          requiredHours: 6,
+          year: 2018,
+        },
+        {
+          month: 2,
+          requiredHours: 6,
+          year: 2018,
+        },
+      ])}
       workMonth={
         Immutable.fromJS({
           businessTripWorkLogs: [],
@@ -218,7 +250,23 @@ describe('rendering', () => {
       markApproved={() => {}}
       markWaitingForApproval={() => {}}
       selectedDate={fakeMomentDateTime}
-      workHoursList={Immutable.List()}
+      workHoursList={Immutable.fromJS([
+        {
+          month: 12,
+          requiredHours: 6,
+          year: 2017,
+        },
+        {
+          month: 1,
+          requiredHours: 6,
+          year: 2018,
+        },
+        {
+          month: 2,
+          requiredHours: 6,
+          year: 2018,
+        },
+      ])}
       workMonth={
         Immutable.fromJS({
           businessTripWorkLogs: [],
@@ -302,7 +350,23 @@ describe('rendering', () => {
       markWaitingForApproval={() => {}}
       selectedDate={fakeMomentDateTime}
       supervisorView
-      workHoursList={Immutable.List()}
+      workHoursList={Immutable.fromJS([
+        {
+          month: 12,
+          requiredHours: 6,
+          year: 2017,
+        },
+        {
+          month: 1,
+          requiredHours: 6,
+          year: 2018,
+        },
+        {
+          month: 2,
+          requiredHours: 6,
+          year: 2018,
+        },
+      ])}
       workMonth={
         Immutable.fromJS({
           businessTripWorkLogs: [],
@@ -386,7 +450,23 @@ describe('rendering', () => {
       markWaitingForApproval={() => {}}
       selectedDate={fakeMomentDateTime}
       supervisorView
-      workHoursList={Immutable.List()}
+      workHoursList={Immutable.fromJS([
+        {
+          month: 12,
+          requiredHours: 6,
+          year: 2017,
+        },
+        {
+          month: 1,
+          requiredHours: 6,
+          year: 2018,
+        },
+        {
+          month: 2,
+          requiredHours: 6,
+          year: 2018,
+        },
+      ])}
       workMonth={
         Immutable.fromJS({
           businessTripWorkLogs: [],
@@ -470,7 +550,23 @@ describe('rendering', () => {
       markWaitingForApproval={() => {}}
       selectedDate={fakeMomentDateTime}
       supervisorView
-      workHoursList={Immutable.List()}
+      workHoursList={Immutable.fromJS([
+        {
+          month: 12,
+          requiredHours: 6,
+          year: 2017,
+        },
+        {
+          month: 1,
+          requiredHours: 6,
+          year: 2018,
+        },
+        {
+          month: 2,
+          requiredHours: 6,
+          year: 2018,
+        },
+      ])}
       workMonth={
         Immutable.fromJS({
           businessTripWorkLogs: [],
@@ -556,7 +652,23 @@ describe('functionality', () => {
       markApproved={() => {}}
       markWaitingForApproval={() => {}}
       selectedDate={fakeMomentDateTime}
-      workHoursList={Immutable.List()}
+      workHoursList={Immutable.fromJS([
+        {
+          month: 12,
+          requiredHours: 6,
+          year: 2017,
+        },
+        {
+          month: 1,
+          requiredHours: 6,
+          year: 2018,
+        },
+        {
+          month: 2,
+          requiredHours: 6,
+          year: 2018,
+        },
+      ])}
       workMonth={
         Immutable.fromJS({
           businessTripWorkLogs: [],
@@ -644,7 +756,23 @@ describe('functionality', () => {
       markApproved={() => {}}
       markWaitingForApproval={() => {}}
       selectedDate={fakeMomentDateTime}
-      workHoursList={Immutable.List()}
+      workHoursList={Immutable.fromJS([
+        {
+          month: 12,
+          requiredHours: 6,
+          year: 2017,
+        },
+        {
+          month: 1,
+          requiredHours: 6,
+          year: 2018,
+        },
+        {
+          month: 2,
+          requiredHours: 6,
+          year: 2018,
+        },
+      ])}
       workMonth={
         Immutable.fromJS({
           businessTripWorkLogs: [],
@@ -732,7 +860,23 @@ describe('functionality', () => {
       markApproved={() => {}}
       markWaitingForApproval={spy}
       selectedDate={fakeMomentDateTime}
-      workHoursList={Immutable.List()}
+      workHoursList={Immutable.fromJS([
+        {
+          month: 12,
+          requiredHours: 6,
+          year: 2017,
+        },
+        {
+          month: 1,
+          requiredHours: 6,
+          year: 2018,
+        },
+        {
+          month: 2,
+          requiredHours: 6,
+          year: 2018,
+        },
+      ])}
       workMonth={
         Immutable.fromJS({
           businessTripWorkLogs: [],
@@ -819,7 +963,23 @@ describe('functionality', () => {
       markWaitingForApproval={() => {}}
       selectedDate={fakeMomentDateTime}
       supervisorView
-      workHoursList={Immutable.List()}
+      workHoursList={Immutable.fromJS([
+        {
+          month: 12,
+          requiredHours: 6,
+          year: 2017,
+        },
+        {
+          month: 1,
+          requiredHours: 6,
+          year: 2018,
+        },
+        {
+          month: 2,
+          requiredHours: 6,
+          year: 2018,
+        },
+      ])}
       workMonth={
         Immutable.fromJS({
           businessTripWorkLogs: [],
