@@ -122,12 +122,11 @@ class WorkLogCalendar extends React.Component {
         date: renderingDay.clone(),
         workLogList: workLogListForRenderingDay,
         workTime: getWorkedTime(
-          renderingDay.clone(),
           workLogListForRenderingDay,
           workHoursList.find((
             (workHour) => workHour.get('month') === (renderingDay.clone().month() + 1)
               && workHour.get('year') === renderingDay.clone().year()
-          )),
+          )).toJS(),
           this.props.config.get('workedHoursLimits').toJS(),
         ),
       });
@@ -361,7 +360,7 @@ class WorkLogCalendar extends React.Component {
     }
 
     daysOfSelectedMonth.forEach((day) => {
-      workedTime.add(day.workTime);
+      workedTime.add(day.workTime.workTime);
     });
 
     if (this.props.workMonth && this.props.workMonth.get('status') !== STATUS_APPROVED) {
@@ -964,10 +963,10 @@ class WorkLogCalendar extends React.Component {
                         )
                       }
                       <td className={styles.tableCellRight}>
-                        {day.workTime.hours()}
+                        {day.workTime.workTime.hours()}
                         :
-                        {day.workTime.minutes() < 10 && '0'}
-                        {day.workTime.minutes()}
+                        {day.workTime.workTime.minutes() < 10 && '0'}
+                        {day.workTime.workTime.minutes()}
                         &nbsp;h
                       </td>
                     </tr>
