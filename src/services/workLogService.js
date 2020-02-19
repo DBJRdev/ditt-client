@@ -3,6 +3,7 @@ import moment from 'moment';
 import {
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,
+  MATERNITY_PROTECTION_WORK_LOG,
   OVERTIME_WORK_LOG,
   SICK_DAY_WORK_LOG,
   STATUS_APPROVED,
@@ -64,6 +65,8 @@ export const getTypeLabel = (t, type) => {
     typeLabel = t('workMonth:constant.type.businessTripWorkLog');
   } else if (HOME_OFFICE_WORK_LOG === type) {
     typeLabel = t('workMonth:constant.type.homeOfficeWorkLog');
+  } else if (MATERNITY_PROTECTION_WORK_LOG === type) {
+    typeLabel = t('workMonth:constant.type.maternityProtectionWorkLog');
   } else if (OVERTIME_WORK_LOG === type) {
     typeLabel = t('workMonth:constant.type.overtimeWorkLog');
   } else if (SICK_DAY_WORK_LOG === type) {

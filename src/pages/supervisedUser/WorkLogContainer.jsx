@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { selectJwtToken } from '../../resources/auth';
 import {
   fetchBusinessTripWorkLog,
   selectBusinessTripWorkLog,
@@ -12,6 +13,13 @@ import {
   fetchHomeOfficeWorkLog,
   selectHomeOfficeWorkLog,
 } from '../../resources/homeOfficeWorkLog';
+import {
+  addMultipleMaternityProtectionWorkLogs,
+  deleteMaternityProtectionWorkLog,
+  fetchMaternityProtectionWorkLog,
+  selectMaternityProtectionWorkLog,
+  selectMaternityProtectionWorkLogMeta,
+} from '../../resources/maternityProtectionWorkLog';
 import {
   fetchOvertimeWorkLog,
   selectOvertimeWorkLog,
@@ -50,6 +58,7 @@ import WorkLogComponent from './WorkLogComponent';
 
 const mapStateToProps = (state) => {
   const configMeta = selectConfigMeta(state);
+  const maternityProtectionWorkLogMeta = selectMaternityProtectionWorkLogMeta(state);
   const workHourListMeta = selectWorkHoursListMeta(state);
   const workMonthListMeta = selectWorkMonthListMeta(state);
   const workMonthMeta = selectWorkMonthMeta(state);
@@ -62,10 +71,13 @@ const mapStateToProps = (state) => {
       || workHourListMeta.isFetching
       || workMonthListMeta.isFetching
       || workMonthMeta.isFetching,
-    isPosting: workMonthMeta.isPosting,
+    isPosting: workMonthMeta.isPosting
+      || maternityProtectionWorkLogMeta.isPosting,
+    maternityProtectionWorkLog: selectMaternityProtectionWorkLog(state),
     overtimeWorkLog: selectOvertimeWorkLog(state),
     sickDayWorkLog: selectSickDayWorkLog(state),
     timeOffWorkLog: selectTimeOffWorkLog(state),
+    token: selectJwtToken(state),
     vacationWorkLog: selectVacationWorkLog(state),
     workHoursList: selectWorkHoursList(state),
     workLog: selectWorkLog(state),
@@ -75,9 +87,14 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
+  addMultipleMaternityProtectionWorkLogs: (data) => dispatch(
+    addMultipleMaternityProtectionWorkLogs(data),
+  ),
+  deleteMaternityProtectionWorkLog: (id) => dispatch(deleteMaternityProtectionWorkLog(id)),
   fetchBusinessTripWorkLog: (id) => dispatch(fetchBusinessTripWorkLog(id)),
   fetchConfig: () => dispatch(fetchConfig()),
   fetchHomeOfficeWorkLog: (id) => dispatch(fetchHomeOfficeWorkLog(id)),
+  fetchMaternityProtectionWorkLog: (id) => dispatch(fetchMaternityProtectionWorkLog(id)),
   fetchOvertimeWorkLog: (id) => dispatch(fetchOvertimeWorkLog(id)),
   fetchSickDayWorkLog: (id) => dispatch(fetchSickDayWorkLog(id)),
   fetchTimeOffWorkLog: (id) => dispatch(fetchTimeOffWorkLog(id)),

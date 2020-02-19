@@ -26,6 +26,7 @@ describe('rendering', () => {
     const tree = shallow(<WorkLogCalendar
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
+      addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addOvertimeWorkLog={() => {}}
@@ -34,6 +35,7 @@ describe('rendering', () => {
       config={configMock}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteMaternityProtectionWorkLog={() => {}}
       deleteOvertimeWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
@@ -41,6 +43,7 @@ describe('rendering', () => {
       deleteWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
+      fetchMaternityProtectionWorkLog={() => {}}
       fetchOvertimeWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
@@ -74,6 +77,7 @@ describe('rendering', () => {
           businessTripWorkLogs: [],
           homeOfficeWorkLogs: [],
           id: 2,
+          maternityProtectionWorkLogs: [],
           month: 1,
           overtimeWorkLogs: [],
           sickDayWorkLogs: [],
@@ -128,11 +132,13 @@ describe('rendering', () => {
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteMaternityProtectionWorkLog={() => {}}
       deleteOvertimeWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
@@ -140,6 +146,7 @@ describe('rendering', () => {
       deleteWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
+      fetchMaternityProtectionWorkLog={() => {}}
       fetchOvertimeWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
@@ -173,6 +180,7 @@ describe('rendering', () => {
           businessTripWorkLogs: [],
           homeOfficeWorkLogs: [],
           id: 2,
+          maternityProtectionWorkLogs: [],
           month: 1,
           overtimeWorkLogs: [],
           sickDayWorkLogs: [],
@@ -227,11 +235,13 @@ describe('rendering', () => {
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteMaternityProtectionWorkLog={() => {}}
       deleteOvertimeWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
@@ -239,6 +249,7 @@ describe('rendering', () => {
       deleteWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
+      fetchMaternityProtectionWorkLog={() => {}}
       fetchOvertimeWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
@@ -272,6 +283,7 @@ describe('rendering', () => {
           businessTripWorkLogs: [],
           homeOfficeWorkLogs: [],
           id: 2,
+          maternityProtectionWorkLogs: [],
           month: 1,
           overtimeWorkLogs: [],
           sickDayWorkLogs: [],
@@ -326,11 +338,13 @@ describe('rendering', () => {
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteMaternityProtectionWorkLog={() => {}}
       deleteOvertimeWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
@@ -338,6 +352,7 @@ describe('rendering', () => {
       deleteWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
+      fetchMaternityProtectionWorkLog={() => {}}
       fetchOvertimeWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
@@ -372,6 +387,7 @@ describe('rendering', () => {
           businessTripWorkLogs: [],
           homeOfficeWorkLogs: [],
           id: 2,
+          maternityProtectionWorkLogs: [],
           month: 1,
           overtimeWorkLogs: [],
           sickDayWorkLogs: [],
@@ -426,11 +442,13 @@ describe('rendering', () => {
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteMaternityProtectionWorkLog={() => {}}
       deleteOvertimeWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
@@ -438,6 +456,7 @@ describe('rendering', () => {
       deleteWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
+      fetchMaternityProtectionWorkLog={() => {}}
       fetchOvertimeWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
@@ -472,6 +491,7 @@ describe('rendering', () => {
           businessTripWorkLogs: [],
           homeOfficeWorkLogs: [],
           id: 2,
+          maternityProtectionWorkLogs: [],
           month: 1,
           overtimeWorkLogs: [],
           sickDayWorkLogs: [],
@@ -526,11 +546,13 @@ describe('rendering', () => {
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteMaternityProtectionWorkLog={() => {}}
       deleteOvertimeWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
@@ -538,6 +560,7 @@ describe('rendering', () => {
       deleteWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
+      fetchMaternityProtectionWorkLog={() => {}}
       fetchOvertimeWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
@@ -572,6 +595,7 @@ describe('rendering', () => {
           businessTripWorkLogs: [],
           homeOfficeWorkLogs: [],
           id: 2,
+          maternityProtectionWorkLogs: [],
           month: 1,
           overtimeWorkLogs: [],
           sickDayWorkLogs: [],
@@ -629,11 +653,13 @@ describe('functionality', () => {
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteMaternityProtectionWorkLog={() => {}}
       deleteOvertimeWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
@@ -641,6 +667,7 @@ describe('functionality', () => {
       deleteWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
+      fetchMaternityProtectionWorkLog={() => {}}
       fetchOvertimeWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
@@ -674,6 +701,7 @@ describe('functionality', () => {
           businessTripWorkLogs: [],
           homeOfficeWorkLogs: [],
           id: 2,
+          maternityProtectionWorkLogs: [],
           month: 1,
           overtimeWorkLogs: [],
           sickDayWorkLogs: [],
@@ -733,11 +761,13 @@ describe('functionality', () => {
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteMaternityProtectionWorkLog={() => {}}
       deleteOvertimeWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
@@ -745,6 +775,7 @@ describe('functionality', () => {
       deleteWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
+      fetchMaternityProtectionWorkLog={() => {}}
       fetchOvertimeWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
@@ -778,6 +809,7 @@ describe('functionality', () => {
           businessTripWorkLogs: [],
           homeOfficeWorkLogs: [],
           id: 2,
+          maternityProtectionWorkLogs: [],
           month: 1,
           overtimeWorkLogs: [],
           sickDayWorkLogs: [],
@@ -837,11 +869,13 @@ describe('functionality', () => {
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteMaternityProtectionWorkLog={() => {}}
       deleteOvertimeWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
@@ -849,6 +883,7 @@ describe('functionality', () => {
       deleteWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
+      fetchMaternityProtectionWorkLog={() => {}}
       fetchOvertimeWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
@@ -882,6 +917,7 @@ describe('functionality', () => {
           businessTripWorkLogs: [],
           homeOfficeWorkLogs: [],
           id: 2,
+          maternityProtectionWorkLogs: [],
           month: 1,
           overtimeWorkLogs: [],
           sickDayWorkLogs: [],
@@ -939,11 +975,13 @@ describe('functionality', () => {
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
+      deleteMaternityProtectionWorkLog={() => {}}
       deleteOvertimeWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
@@ -951,6 +989,7 @@ describe('functionality', () => {
       deleteWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
+      fetchMaternityProtectionWorkLog={() => {}}
       fetchOvertimeWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
@@ -985,6 +1024,7 @@ describe('functionality', () => {
           businessTripWorkLogs: [],
           homeOfficeWorkLogs: [],
           id: 2,
+          maternityProtectionWorkLogs: [],
           month: 1,
           overtimeWorkLogs: [],
           sickDayWorkLogs: [],

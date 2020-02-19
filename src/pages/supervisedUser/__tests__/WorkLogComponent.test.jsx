@@ -18,10 +18,13 @@ afterEach(() => {
 describe('rendering', () => {
   it('renders correctly', () => {
     const props = {
+      addMultipleMaternityProtectionWorkLogs: () => {},
       config: configMock,
+      deleteMaternityProtectionWorkLog: () => {},
       fetchBusinessTripWorkLog: () => {},
       fetchConfig: () => {},
       fetchHomeOfficeWorkLog: () => {},
+      fetchMaternityProtectionWorkLog: () => {},
       fetchOvertimeWorkLog: () => {},
       fetchSickDayWorkLog: () => {},
       fetchTimeOffWorkLog: () => {},
@@ -41,6 +44,7 @@ describe('rendering', () => {
           id: '1',
         },
       },
+      token: 'token',
       workHoursList: Immutable.List(),
       workMonth: null,
       workMonthList: Immutable.List(),

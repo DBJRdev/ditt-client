@@ -8,6 +8,7 @@ import { withTranslation } from 'react-i18next';
 import {
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,
+  MATERNITY_PROTECTION_WORK_LOG,
   OVERTIME_WORK_LOG,
   SICK_DAY_WORK_LOG,
   STATUS_APPROVED,
@@ -36,6 +37,7 @@ const WorkLogDetailModal = (props) => {
     homeOfficeWorkLog,
     isInSupervisorMode,
     isPosting,
+    maternityProtectionWorkLog,
     onClose,
     onDelete,
     overtimeWorkLog,
@@ -43,6 +45,7 @@ const WorkLogDetailModal = (props) => {
     t,
     type,
     timeOffWorkLog,
+    uid,
     vacationWorkLog,
     workLog,
     workMonth,
@@ -133,6 +136,20 @@ const WorkLogDetailModal = (props) => {
             <br />
           </>
         )}
+      </p>
+    );
+  } else if (MATERNITY_PROTECTION_WORK_LOG === type && maternityProtectionWorkLog) {
+    content = (
+      <p>
+        {t('workLog:element.type')}
+        {': '}
+        {getTypeLabel(t, type)}
+        <br />
+
+        {t('workLog:element.date')}
+        {': '}
+        {toDayDayMonthYearFormat(maternityProtectionWorkLog.date)}
+        <br />
       </p>
     );
   } else if (OVERTIME_WORK_LOG === type && overtimeWorkLog) {
@@ -282,13 +299,29 @@ const WorkLogDetailModal = (props) => {
   }
 
   const actions = [];
-  let status = null;
 
-  if (workMonth) {
-    ({ status } = workMonth);
-  }
-
-  if (!isInSupervisorMode && status !== STATUS_APPROVED) {
+  if (
+    (
+      [
+        BUSINESS_TRIP_WORK_LOG,
+        HOME_OFFICE_WORK_LOG,
+        OVERTIME_WORK_LOG,
+        SICK_DAY_WORK_LOG,
+        TIME_OFF_WORK_LOG,
+        VACATION_WORK_LOG,
+        WORK_LOG,
+      ].includes(type)
+      && !isInSupervisorMode
+      && workMonth.status !== STATUS_APPROVED
+    ) || (
+      [
+        MATERNITY_PROTECTION_WORK_LOG,
+      ].includes(type)
+      && isInSupervisorMode
+      && workMonth.status !== STATUS_APPROVED
+      && uid !== workMonth.user.id
+    )
+  ) {
     actions.push({
       clickHandler: onDelete,
       label: t('general:action.delete'),
@@ -312,6 +345,7 @@ const WorkLogDetailModal = (props) => {
 WorkLogDetailModal.defaultProps = {
   businessTripWorkLog: null,
   homeOfficeWorkLog: null,
+  maternityProtectionWorkLog: null,
   overtimeWorkLog: null,
   sickDayWorkLog: null,
   timeOffWorkLog: null,
@@ -348,6 +382,9 @@ WorkLogDetailModal.propTypes = {
   }),
   isInSupervisorMode: PropTypes.bool.isRequired,
   isPosting: PropTypes.bool.isRequired,
+  maternityProtectionWorkLog: PropTypes.shape({
+    date: PropTypes.object.isRequired,
+  }),
   onClose: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
   overtimeWorkLog: PropTypes.shape({
@@ -378,6 +415,7 @@ WorkLogDetailModal.propTypes = {
     ]).isRequired,
   }),
   type: PropTypes.string.isRequired,
+  uid: PropTypes.number.isRequired,
   vacationWorkLog: PropTypes.shape({
     date: PropTypes.object.isRequired,
     id: PropTypes.number.isRequired,
@@ -399,6 +437,9 @@ WorkLogDetailModal.propTypes = {
       STATUS_OPENED,
       STATUS_WAITING_FOR_APPROVAL,
     ]).isRequired,
+    user: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    }),
   }),
 };
 

@@ -2,6 +2,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withTranslation } from 'react-i18next';
+import jwt from 'jsonwebtoken';
 import WorkLogCalendar from '../../components/WorkLogCalendar';
 import Layout from '../../components/Layout';
 import {
@@ -11,6 +12,7 @@ import {
 } from '../../resources/workMonth';
 import {
   createDate,
+  getAllDays,
   localizedMoment,
 } from '../../services/dateTimeService';
 import { getWorkMonthByMonth } from '../../services/workLogService';
@@ -34,6 +36,10 @@ class WorkLogComponent extends React.Component {
     }
 
     this.changeSelectedDate = this.changeSelectedDate.bind(this);
+    this.addMultipleMaternityProtectionWorkLogs = this.addMultipleMaternityProtectionWorkLogs
+      .bind(this);
+    this.deleteMultipleMaternityProtectionWorkLogs = this.deleteMultipleMaternityProtectionWorkLogs
+      .bind(this);
   }
 
   componentDidMount() {
@@ -58,6 +64,33 @@ class WorkLogComponent extends React.Component {
     this.fetchWorkMonth(selectedDate).then(() => this.setState({ selectedDate }));
   }
 
+  addMultipleMaternityProtectionWorkLogs(data) {
+    const { addMultipleMaternityProtectionWorkLogs } = this.props;
+    const workingDays = getAllDays(data.date, data.dateTo);
+    const workLogs = workingDays.map((workingDay) => ({ date: workingDay }));
+
+    return addMultipleMaternityProtectionWorkLogs({
+      user: data.user,
+      workLogs,
+    }).then((response) => {
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+
+      return response;
+    });
+  }
+
+  deleteMultipleMaternityProtectionWorkLogs(id) {
+    return this.props.deleteMaternityProtectionWorkLog(id).then((response) => {
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+
+      return response;
+    });
+  }
+
   render() {
     let title = this.props.t('workLog:title.workLogs');
 
@@ -65,6 +98,17 @@ class WorkLogComponent extends React.Component {
       const user = this.props.workMonth.get('user');
       const name = `${user.get('firstName')} ${user.get('lastName')}`;
       title = this.props.t('workLog:title.supervisedUserWorkLogs', { name });
+    }
+
+    let uid = null;
+
+    if (this.props.token) {
+      const decodedToken = jwt.decode(this.props.token);
+
+      if (decodedToken) {
+        // eslint-disable-next-line prefer-destructuring
+        uid = decodedToken.uid;
+      }
     }
 
     return (
@@ -76,6 +120,7 @@ class WorkLogComponent extends React.Component {
             addOvertimeWorkLog={() => {}}
             addSickDayWorkLog={() => {}}
             addTimeOffWorkLog={() => {}}
+            addMultipleMaternityProtectionWorkLogs={this.addMultipleMaternityProtectionWorkLogs}
             addMultipleVacationWorkLog={() => {}}
             addWorkLog={() => {}}
             businessTripWorkLog={this.props.businessTripWorkLog}
@@ -83,6 +128,7 @@ class WorkLogComponent extends React.Component {
             config={this.props.config}
             deleteBusinessTripWorkLog={() => {}}
             deleteHomeOfficeWorkLog={() => {}}
+            deleteMaternityProtectionWorkLog={this.deleteMultipleMaternityProtectionWorkLogs}
             deleteOvertimeWorkLog={() => {}}
             deleteSickDayWorkLog={() => {}}
             deleteTimeOffWorkLog={() => {}}
@@ -90,6 +136,7 @@ class WorkLogComponent extends React.Component {
             deleteWorkLog={() => {}}
             fetchBusinessTripWorkLog={this.props.fetchBusinessTripWorkLog}
             fetchHomeOfficeWorkLog={this.props.fetchHomeOfficeWorkLog}
+            fetchMaternityProtectionWorkLog={this.props.fetchMaternityProtectionWorkLog}
             fetchOvertimeWorkLog={this.props.fetchOvertimeWorkLog}
             fetchSickDayWorkLog={this.props.fetchSickDayWorkLog}
             fetchTimeOffWorkLog={this.props.fetchTimeOffWorkLog}
@@ -99,11 +146,13 @@ class WorkLogComponent extends React.Component {
             isPosting={this.props.isPosting}
             markApproved={this.props.markApproved}
             markWaitingForApproval={() => {}}
+            maternityProtectionWorkLog={this.props.maternityProtectionWorkLog}
             overtimeWorkLog={this.props.overtimeWorkLog}
             selectedDate={this.state.selectedDate}
             supervisorView
             sickDayWorkLog={this.props.sickDayWorkLog}
             timeOffWorkLog={this.props.timeOffWorkLog}
+            uid={uid}
             vacationWorkLog={this.props.vacationWorkLog}
             workHoursList={this.props.workHoursList}
             workLog={this.props.workLog}
@@ -120,6 +169,7 @@ WorkLogComponent.defaultProps = {
   businessTripWorkLog: null,
   config: {},
   homeOfficeWorkLog: null,
+  maternityProtectionWorkLog: null,
   overtimeWorkLog: null,
   sickDayWorkLog: null,
   timeOffWorkLog: null,
@@ -129,6 +179,7 @@ WorkLogComponent.defaultProps = {
 };
 
 WorkLogComponent.propTypes = {
+  addMultipleMaternityProtectionWorkLogs: PropTypes.func.isRequired,
   businessTripWorkLog: ImmutablePropTypes.mapContains({
     date: PropTypes.object.isRequired,
     destination: PropTypes.string.isRequired,
@@ -140,9 +191,11 @@ WorkLogComponent.propTypes = {
     transport: PropTypes.string.isRequired,
   }),
   config: ImmutablePropTypes.mapContains({}),
+  deleteMaternityProtectionWorkLog: PropTypes.func.isRequired,
   fetchBusinessTripWorkLog: PropTypes.func.isRequired,
   fetchConfig: PropTypes.func.isRequired,
   fetchHomeOfficeWorkLog: PropTypes.func.isRequired,
+  fetchMaternityProtectionWorkLog: PropTypes.func.isRequired,
   fetchOvertimeWorkLog: PropTypes.func.isRequired,
   fetchSickDayWorkLog: PropTypes.func.isRequired,
   fetchTimeOffWorkLog: PropTypes.func.isRequired,
@@ -167,6 +220,9 @@ WorkLogComponent.propTypes = {
       year: PropTypes.string,
     }).isRequired,
   }).isRequired,
+  maternityProtectionWorkLog: ImmutablePropTypes.mapContains({
+    date: PropTypes.object.isRequired,
+  }),
   overtimeWorkLog: ImmutablePropTypes.mapContains({
     date: PropTypes.object.isRequired,
     reason: PropTypes.string,
@@ -186,6 +242,7 @@ WorkLogComponent.propTypes = {
     rejectionMessage: PropTypes.string,
     status: PropTypes.string.isRequired,
   }),
+  token: PropTypes.string.isRequired,
   vacationWorkLog: ImmutablePropTypes.mapContains({
     date: PropTypes.object.isRequired,
     rejectionMessage: PropTypes.string,

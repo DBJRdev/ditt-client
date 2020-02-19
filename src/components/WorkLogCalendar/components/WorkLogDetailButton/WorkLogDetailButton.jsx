@@ -9,6 +9,7 @@ import styles from '../../WorkLogCalendar.scss';
 import {
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,
+  MATERNITY_PROTECTION_WORK_LOG,
   OVERTIME_WORK_LOG,
   SICK_DAY_WORK_LOG,
   STATUS_REJECTED,
@@ -74,6 +75,10 @@ const WorkLogDetailButton = (props) => {
 
   if (workLog.type === HOME_OFFICE_WORK_LOG) {
     return createDetailButton(workLog, 'home');
+  }
+
+  if (workLog.type === MATERNITY_PROTECTION_WORK_LOG) {
+    return createDetailButton(workLog, 'hourglass_empty');
   }
 
   if (workLog.type === OVERTIME_WORK_LOG) {
