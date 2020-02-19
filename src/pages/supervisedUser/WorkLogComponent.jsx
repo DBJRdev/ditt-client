@@ -12,7 +12,7 @@ import {
 } from '../../resources/workMonth';
 import {
   createDate,
-  getAllDays,
+  getWorkingDays,
   localizedMoment,
 } from '../../services/dateTimeService';
 import { getWorkMonthByMonth } from '../../services/workLogService';
@@ -67,8 +67,11 @@ class WorkLogComponent extends React.Component {
   }
 
   addMultipleMaternityProtectionWorkLogs(data) {
-    const { addMultipleMaternityProtectionWorkLogs } = this.props;
-    const workingDays = getAllDays(data.date, data.dateTo);
+    const {
+      addMultipleMaternityProtectionWorkLogs,
+      config,
+    } = this.props;
+    const workingDays = getWorkingDays(data.date, data.dateTo, config.get('supportedHolidays'));
     const workLogs = workingDays.map((workingDay) => ({ date: workingDay }));
 
     return addMultipleMaternityProtectionWorkLogs({
@@ -84,8 +87,12 @@ class WorkLogComponent extends React.Component {
   }
 
   addMultipleParentalLeaveWorkLogs(data) {
-    const { addMultipleParentalLeaveWorkLogs } = this.props;
-    const workingDays = getAllDays(data.date, data.dateTo);
+    const {
+      addMultipleParentalLeaveWorkLogs,
+      config,
+    } = this.props;
+
+    const workingDays = getWorkingDays(data.date, data.dateTo, config.get('supportedHolidays'));
     const workLogs = workingDays.map((workingDay) => ({ date: workingDay }));
 
     return addMultipleParentalLeaveWorkLogs({

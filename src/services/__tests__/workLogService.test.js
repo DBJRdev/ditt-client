@@ -944,6 +944,610 @@ describe('getWorkedTime', () => {
     expect(result.workTime.asSeconds()).toEqual(10 * 3600);
   });
 
+  // Maternity protection work logs
+
+  it('test calculate maternity protection work logs without work logs', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        type: 'MATERNITY_PROTECTION_WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      workLogs,
+      workHours,
+      workedHoursLimits,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate maternity protection work logs without break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        type: 'MATERNITY_PROTECTION_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T10:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T14:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T12:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      workLogs,
+      workHours,
+      workedHoursLimits,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate maternity protection work logs with long break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        type: 'MATERNITY_PROTECTION_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T10:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T15:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T14:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T17:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T16:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      workLogs,
+      workHours,
+      workedHoursLimits,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate maternity protection work logs with one standard work log more than 6 hours long', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        type: 'MATERNITY_PROTECTION_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T18:20:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      workLogs,
+      workHours,
+      workedHoursLimits,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate maternity protection work logs above lower limit without break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        type: 'MATERNITY_PROTECTION_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T15:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T12:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      workLogs,
+      workHours,
+      workedHoursLimits,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate maternity protection work logs above lower limit with short break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        type: 'MATERNITY_PROTECTION_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T11:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T12:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T11:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T15:20:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T12:20:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      workLogs,
+      workHours,
+      workedHoursLimits,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate maternity protection work logs above lower limit with long break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        type: 'MATERNITY_PROTECTION_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T16:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T14:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T18:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T17:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      workLogs,
+      workHours,
+      workedHoursLimits,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate maternity protection work logs above upper limit without break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        type: 'MATERNITY_PROTECTION_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T18:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T12:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      workLogs,
+      workHours,
+      workedHoursLimits,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate maternity protection work logs above upper limit with short break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        type: 'MATERNITY_PROTECTION_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T11:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T12:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T11:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T18:20:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T12:20:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      workLogs,
+      workHours,
+      workedHoursLimits,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate maternity protection work logs above upper limit with long break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        type: 'MATERNITY_PROTECTION_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T18:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T14:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T21:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T19:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      workLogs,
+      workHours,
+      workedHoursLimits,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  // Parental leave work logs
+
+  it('test calculate parental leave work logs without work logs', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        type: 'PARENTAL_LEAVE_WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      workLogs,
+      workHours,
+      workedHoursLimits,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate parental leave work logs without break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        type: 'PARENTAL_LEAVE_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T10:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T14:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T12:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      workLogs,
+      workHours,
+      workedHoursLimits,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate parental leave work logs with long break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        type: 'PARENTAL_LEAVE_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T10:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T15:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T14:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T17:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T16:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      workLogs,
+      workHours,
+      workedHoursLimits,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate parental leave work logs with one standard work log more than 6 hours long', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        type: 'PARENTAL_LEAVE_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T18:20:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      workLogs,
+      workHours,
+      workedHoursLimits,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate parental leave work logs above lower limit without break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        type: 'PARENTAL_LEAVE_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T15:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T12:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      workLogs,
+      workHours,
+      workedHoursLimits,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate parental leave work logs above lower limit with short break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        type: 'PARENTAL_LEAVE_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T11:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T12:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T11:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T15:20:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T12:20:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      workLogs,
+      workHours,
+      workedHoursLimits,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate parental leave work logs above lower limit with long break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        type: 'PARENTAL_LEAVE_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T16:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T14:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T18:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T17:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      workLogs,
+      workHours,
+      workedHoursLimits,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate parental leave work logs above upper limit without break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        type: 'PARENTAL_LEAVE_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T18:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T12:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      workLogs,
+      workHours,
+      workedHoursLimits,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate parental leave work logs above upper limit with short break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        type: 'PARENTAL_LEAVE_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T11:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T12:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T11:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T18:20:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T12:20:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      workLogs,
+      workHours,
+      workedHoursLimits,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate parental leave work logs above upper limit with long break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        type: 'PARENTAL_LEAVE_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T18:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T14:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T21:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T19:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      workLogs,
+      workHours,
+      workedHoursLimits,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
   // Sick day work log
 
   it('test calculate sick day work logs without work logs', () => {
