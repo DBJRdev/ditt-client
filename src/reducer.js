@@ -5,6 +5,7 @@ import { reducer as configReducer } from './resources/config';
 import { reducer as homeOfficeWorkLogReducer } from './resources/homeOfficeWorkLog';
 import { reducer as maternityProtectionWorkLogReducer } from './resources/maternityProtectionWorkLog';
 import { reducer as overtimeWorkLogReducer } from './resources/overtimeWorkLog';
+import { reducer as parentalLeaveWorkLogReducer } from './resources/parentalLeaveWorkLog';
 import { reducer as sickDayWorkLogReducer } from './resources/sickDayWorkLog';
 import { reducer as timeOffWorkLogReducer } from './resources/timeOffWorkLog';
 import { reducer as userReducer } from './resources/user';
@@ -21,6 +22,7 @@ const appReducers = combineReducers({
   homeOfficeWorkLog: homeOfficeWorkLogReducer,
   maternityProtectionWorkLog: maternityProtectionWorkLogReducer,
   overtimeWorkLog: overtimeWorkLogReducer,
+  parentalLeaveWorkLog: parentalLeaveWorkLogReducer,
   sickDayWorkLog: sickDayWorkLogReducer,
   timeOffWorkLog: timeOffWorkLogReducer,
   user: userReducer,

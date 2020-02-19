@@ -9,7 +9,7 @@ import {
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,
   MATERNITY_PROTECTION_WORK_LOG,
-  OVERTIME_WORK_LOG,
+  OVERTIME_WORK_LOG, PARENTAL_LEAVE_WORK_LOG,
   SICK_DAY_WORK_LOG,
   STATUS_APPROVED,
   STATUS_OPENED,
@@ -41,6 +41,7 @@ const WorkLogDetailModal = (props) => {
     onClose,
     onDelete,
     overtimeWorkLog,
+    parentalLeaveWorkLog,
     sickDayWorkLog,
     t,
     type,
@@ -184,6 +185,20 @@ const WorkLogDetailModal = (props) => {
         {overtimeWorkLog.reason}
       </p>
     );
+  } else if (PARENTAL_LEAVE_WORK_LOG === type && parentalLeaveWorkLog) {
+    content = (
+      <p>
+        {t('workLog:element.type')}
+        {': '}
+        {getTypeLabel(t, type)}
+        <br />
+
+        {t('workLog:element.date')}
+        {': '}
+        {toDayDayMonthYearFormat(parentalLeaveWorkLog.date)}
+        <br />
+      </p>
+    );
   } else if (SICK_DAY_WORK_LOG === type && sickDayWorkLog) {
     content = (
       <p>
@@ -316,6 +331,7 @@ const WorkLogDetailModal = (props) => {
     ) || (
       [
         MATERNITY_PROTECTION_WORK_LOG,
+        PARENTAL_LEAVE_WORK_LOG,
       ].includes(type)
       && isInSupervisorMode
       && workMonth.status !== STATUS_APPROVED
@@ -347,6 +363,7 @@ WorkLogDetailModal.defaultProps = {
   homeOfficeWorkLog: null,
   maternityProtectionWorkLog: null,
   overtimeWorkLog: null,
+  parentalLeaveWorkLog: null,
   sickDayWorkLog: null,
   timeOffWorkLog: null,
   vacationWorkLog: null,
@@ -396,6 +413,9 @@ WorkLogDetailModal.propTypes = {
       STATUS_REJECTED,
       STATUS_WAITING_FOR_APPROVAL,
     ]).isRequired,
+  }),
+  parentalLeaveWorkLog: PropTypes.shape({
+    date: PropTypes.object.isRequired,
   }),
   sickDayWorkLog: PropTypes.shape({
     childDateOfBirth: PropTypes.object,
