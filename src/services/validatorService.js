@@ -5,6 +5,7 @@ import {
   MATERNITY_PROTECTION_WORK_LOG,
   OVERTIME_WORK_LOG,
   PARENTAL_LEAVE_WORK_LOG,
+  SICK_DAY_UNPAID_WORK_LOG,
   SICK_DAY_WORK_LOG,
   TIME_OFF_WORK_LOG,
   VACATION_WORK_LOG,
@@ -446,6 +447,7 @@ export const validateSupervisorWorkLog = (t, workLog) => {
   if ([
     MATERNITY_PROTECTION_WORK_LOG,
     PARENTAL_LEAVE_WORK_LOG,
+    SICK_DAY_UNPAID_WORK_LOG,
   ].indexOf(workLog.type) === -1) {
     errors.elements.type = t('workLog:validation.invalidType');
     errors.isValid = false;

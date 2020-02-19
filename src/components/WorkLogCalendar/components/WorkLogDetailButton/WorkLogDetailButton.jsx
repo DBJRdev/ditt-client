@@ -12,6 +12,7 @@ import {
   MATERNITY_PROTECTION_WORK_LOG,
   OVERTIME_WORK_LOG,
   PARENTAL_LEAVE_WORK_LOG,
+  SICK_DAY_UNPAID_WORK_LOG,
   SICK_DAY_WORK_LOG,
   STATUS_REJECTED,
   STATUS_WAITING_FOR_APPROVAL,
@@ -88,6 +89,10 @@ const WorkLogDetailButton = (props) => {
 
   if (workLog.type === PARENTAL_LEAVE_WORK_LOG) {
     return createDetailButton(workLog, 'child_friendly');
+  }
+
+  if (workLog.type === SICK_DAY_UNPAID_WORK_LOG) {
+    return createDetailButton(workLog, 'local_pharmacy');
   }
 
   if (workLog.type === SICK_DAY_WORK_LOG) {
