@@ -11,6 +11,7 @@ import {
   HOME_OFFICE_WORK_LOG,
   MATERNITY_PROTECTION_WORK_LOG,
   OVERTIME_WORK_LOG,
+  PARENTAL_LEAVE_WORK_LOG,
   SICK_DAY_WORK_LOG,
   STATUS_REJECTED,
   STATUS_WAITING_FOR_APPROVAL,
@@ -78,11 +79,15 @@ const WorkLogDetailButton = (props) => {
   }
 
   if (workLog.type === MATERNITY_PROTECTION_WORK_LOG) {
-    return createDetailButton(workLog, 'hourglass_empty');
+    return createDetailButton(workLog, 'pregnant_woman');
   }
 
   if (workLog.type === OVERTIME_WORK_LOG) {
     return createDetailButton(workLog, 'hourglass_empty');
+  }
+
+  if (workLog.type === PARENTAL_LEAVE_WORK_LOG) {
+    return createDetailButton(workLog, 'child_friendly');
   }
 
   if (workLog.type === SICK_DAY_WORK_LOG) {
@@ -91,19 +96,19 @@ const WorkLogDetailButton = (props) => {
         workLog.type,
         workLog.id,
         `${resolveLabel(workLog)} (${getSickDayVariantLabel(t, workLog.variant)})`,
-        'pregnant_woman',
+        'local_hospital',
       );
     }
 
-    return createDetailButton(workLog, 'pregnant_woman');
+    return createDetailButton(workLog, 'local_hospital');
   }
 
   if (workLog.type === TIME_OFF_WORK_LOG) {
-    return createDetailButton(workLog, 'flag');
+    return createDetailButton(workLog, 'phonelink_off');
   }
 
   if (workLog.type === VACATION_WORK_LOG) {
-    return createDetailButton(workLog, 'flag');
+    return createDetailButton(workLog, 'beach_access');
   }
 
   return createButton(

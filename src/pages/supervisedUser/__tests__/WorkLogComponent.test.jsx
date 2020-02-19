@@ -19,13 +19,16 @@ describe('rendering', () => {
   it('renders correctly', () => {
     const props = {
       addMultipleMaternityProtectionWorkLogs: () => {},
+      addMultipleParentalLeaveWorkLogs: () => {},
       config: configMock,
       deleteMaternityProtectionWorkLog: () => {},
+      deleteParentalLeaveWorkLog: () => {},
       fetchBusinessTripWorkLog: () => {},
       fetchConfig: () => {},
       fetchHomeOfficeWorkLog: () => {},
       fetchMaternityProtectionWorkLog: () => {},
       fetchOvertimeWorkLog: () => {},
+      fetchParentalLeaveWorkLog: () => {},
       fetchSickDayWorkLog: () => {},
       fetchTimeOffWorkLog: () => {},
       fetchVacationWorkLog: () => {},
