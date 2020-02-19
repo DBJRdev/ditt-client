@@ -32,6 +32,13 @@ import {
   selectParentalLeaveWorkLogMeta,
 } from '../../resources/parentalLeaveWorkLog';
 import {
+  addMultipleSickDayUnpaidWorkLogs,
+  deleteSickDayUnpaidWorkLog,
+  fetchSickDayUnpaidWorkLog,
+  selectSickDayUnpaidWorkLog,
+  selectSickDayUnpaidWorkLogMeta,
+} from '../../resources/sickDayUnpaidWorkLog';
+import {
   fetchSickDayWorkLog,
   selectSickDayWorkLog,
 } from '../../resources/sickDayWorkLog';
@@ -67,6 +74,7 @@ const mapStateToProps = (state) => {
   const configMeta = selectConfigMeta(state);
   const maternityProtectionWorkLogMeta = selectMaternityProtectionWorkLogMeta(state);
   const parentalLeaveWorkLogMeta = selectParentalLeaveWorkLogMeta(state);
+  const sickDayUnpaidWorkLogMeta = selectSickDayUnpaidWorkLogMeta(state);
   const workHourListMeta = selectWorkHoursListMeta(state);
   const workMonthListMeta = selectWorkMonthListMeta(state);
   const workMonthMeta = selectWorkMonthMeta(state);
@@ -81,10 +89,12 @@ const mapStateToProps = (state) => {
       || workMonthMeta.isFetching,
     isPosting: workMonthMeta.isPosting
       || maternityProtectionWorkLogMeta.isPosting
-      || parentalLeaveWorkLogMeta.isPosting,
+      || parentalLeaveWorkLogMeta.isPosting
+      || sickDayUnpaidWorkLogMeta.isPosting,
     maternityProtectionWorkLog: selectMaternityProtectionWorkLog(state),
     overtimeWorkLog: selectOvertimeWorkLog(state),
     parentalLeaveWorkLog: selectParentalLeaveWorkLog(state),
+    sickDayUnpaidWorkLog: selectSickDayUnpaidWorkLog(state),
     sickDayWorkLog: selectSickDayWorkLog(state),
     timeOffWorkLog: selectTimeOffWorkLog(state),
     token: selectJwtToken(state),
@@ -103,14 +113,19 @@ const mapDispatchToProps = (dispatch) => ({
   addMultipleParentalLeaveWorkLogs: (data) => dispatch(
     addMultipleParentalLeaveWorkLogs(data),
   ),
+  addMultipleSickDayUnpaidWorkLogs: (data) => dispatch(
+    addMultipleSickDayUnpaidWorkLogs(data),
+  ),
   deleteMaternityProtectionWorkLog: (id) => dispatch(deleteMaternityProtectionWorkLog(id)),
   deleteParentalLeaveWorkLog: (id) => dispatch(deleteParentalLeaveWorkLog(id)),
+  deleteSickDayUnpaidWorkLog: (id) => dispatch(deleteSickDayUnpaidWorkLog(id)),
   fetchBusinessTripWorkLog: (id) => dispatch(fetchBusinessTripWorkLog(id)),
   fetchConfig: () => dispatch(fetchConfig()),
   fetchHomeOfficeWorkLog: (id) => dispatch(fetchHomeOfficeWorkLog(id)),
   fetchMaternityProtectionWorkLog: (id) => dispatch(fetchMaternityProtectionWorkLog(id)),
   fetchOvertimeWorkLog: (id) => dispatch(fetchOvertimeWorkLog(id)),
   fetchParentalLeaveWorkLog: (id) => dispatch(fetchParentalLeaveWorkLog(id)),
+  fetchSickDayUnpaidWorkLog: (id) => dispatch(fetchSickDayUnpaidWorkLog(id)),
   fetchSickDayWorkLog: (id) => dispatch(fetchSickDayWorkLog(id)),
   fetchTimeOffWorkLog: (id) => dispatch(fetchTimeOffWorkLog(id)),
   fetchVacationWorkLog: (id) => dispatch(fetchVacationWorkLog(id)),
