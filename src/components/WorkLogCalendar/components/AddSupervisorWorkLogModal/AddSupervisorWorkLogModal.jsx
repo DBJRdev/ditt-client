@@ -13,6 +13,7 @@ import { withTranslation } from 'react-i18next';
 import {
   MATERNITY_PROTECTION_WORK_LOG,
   PARENTAL_LEAVE_WORK_LOG,
+  SICK_DAY_UNPAID_WORK_LOG,
 } from '../../../../resources/workMonth';
 import {
   toDayMonthYearFormat,
@@ -29,7 +30,7 @@ class AddSupervisorWorkLogModal extends React.Component {
       formData: {
         date: toDayMonthYearFormat(props.date),
         dateTo: toDayMonthYearFormat(props.date),
-        type: MATERNITY_PROTECTION_WORK_LOG,
+        type: SICK_DAY_UNPAID_WORK_LOG,
       },
       formValidity: {
         elements: {
@@ -131,6 +132,10 @@ class AddSupervisorWorkLogModal extends React.Component {
                     {
                       label: t('workMonth:constant.type.parentalLeaveWorkLog'),
                       value: PARENTAL_LEAVE_WORK_LOG,
+                    },
+                    {
+                      label: t('workMonth:constant.type.sickDayUnpaidWorkLog'),
+                      value: SICK_DAY_UNPAID_WORK_LOG,
                     },
                   ]}
                   value={formData.type || ''}

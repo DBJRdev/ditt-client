@@ -28,6 +28,7 @@ describe('rendering', () => {
       addHomeOfficeWorkLog={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
+      addMultipleSickDayUnpaidWorkLogs={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addOvertimeWorkLog={() => {}}
@@ -39,6 +40,7 @@ describe('rendering', () => {
       deleteMaternityProtectionWorkLog={() => {}}
       deleteParentalLeaveWorkLog={() => {}}
       deleteOvertimeWorkLog={() => {}}
+      deleteSickDayUnpaidWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
@@ -48,6 +50,7 @@ describe('rendering', () => {
       fetchMaternityProtectionWorkLog={() => {}}
       fetchParentalLeaveWorkLog={() => {}}
       fetchOvertimeWorkLog={() => {}}
+      fetchSickDayUnpaidWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
       fetchVacationWorkLog={() => {}}
@@ -84,6 +87,7 @@ describe('rendering', () => {
           month: 1,
           overtimeWorkLogs: [],
           parentalLeaveWorkLogs: [],
+          sickDayUnpaidWorkLogs: [],
           sickDayWorkLogs: [],
           status: 'OPENED',
           timeOffWorkLogs: [],
@@ -138,6 +142,7 @@ describe('rendering', () => {
       addTimeOffWorkLog={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
+      addMultipleSickDayUnpaidWorkLogs={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
@@ -146,6 +151,7 @@ describe('rendering', () => {
       deleteMaternityProtectionWorkLog={() => {}}
       deleteParentalLeaveWorkLog={() => {}}
       deleteOvertimeWorkLog={() => {}}
+      deleteSickDayUnpaidWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
@@ -155,6 +161,7 @@ describe('rendering', () => {
       fetchMaternityProtectionWorkLog={() => {}}
       fetchParentalLeaveWorkLog={() => {}}
       fetchOvertimeWorkLog={() => {}}
+      fetchSickDayUnpaidWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
       fetchVacationWorkLog={() => {}}
@@ -191,6 +198,7 @@ describe('rendering', () => {
           month: 1,
           overtimeWorkLogs: [],
           parentalLeaveWorkLogs: [],
+          sickDayUnpaidWorkLogs: [],
           sickDayWorkLogs: [],
           status: 'WAITING_FOR_APPROVAL',
           timeOffWorkLogs: [],
@@ -245,6 +253,7 @@ describe('rendering', () => {
       addTimeOffWorkLog={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
+      addMultipleSickDayUnpaidWorkLogs={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
@@ -253,6 +262,7 @@ describe('rendering', () => {
       deleteMaternityProtectionWorkLog={() => {}}
       deleteParentalLeaveWorkLog={() => {}}
       deleteOvertimeWorkLog={() => {}}
+      deleteSickDayUnpaidWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
@@ -262,6 +272,7 @@ describe('rendering', () => {
       fetchMaternityProtectionWorkLog={() => {}}
       fetchParentalLeaveWorkLog={() => {}}
       fetchOvertimeWorkLog={() => {}}
+      fetchSickDayUnpaidWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
       fetchVacationWorkLog={() => {}}
@@ -298,6 +309,7 @@ describe('rendering', () => {
           month: 1,
           overtimeWorkLogs: [],
           parentalLeaveWorkLogs: [],
+          sickDayUnpaidWorkLogs: [],
           sickDayWorkLogs: [],
           status: 'APPROVED',
           timeOffWorkLogs: [],
@@ -352,6 +364,7 @@ describe('rendering', () => {
       addTimeOffWorkLog={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
+      addMultipleSickDayUnpaidWorkLogs={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
@@ -360,6 +373,7 @@ describe('rendering', () => {
       deleteMaternityProtectionWorkLog={() => {}}
       deleteParentalLeaveWorkLog={() => {}}
       deleteOvertimeWorkLog={() => {}}
+      deleteSickDayUnpaidWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
@@ -369,6 +383,7 @@ describe('rendering', () => {
       fetchMaternityProtectionWorkLog={() => {}}
       fetchParentalLeaveWorkLog={() => {}}
       fetchOvertimeWorkLog={() => {}}
+      fetchSickDayUnpaidWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
       fetchVacationWorkLog={() => {}}
@@ -406,6 +421,7 @@ describe('rendering', () => {
           month: 1,
           overtimeWorkLogs: [],
           parentalLeaveWorkLogs: [],
+          sickDayUnpaidWorkLogs: [],
           sickDayWorkLogs: [],
           status: 'OPENED',
           timeOffWorkLogs: [],
@@ -460,6 +476,7 @@ describe('rendering', () => {
       addTimeOffWorkLog={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
+      addMultipleSickDayUnpaidWorkLogs={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
@@ -468,6 +485,7 @@ describe('rendering', () => {
       deleteMaternityProtectionWorkLog={() => {}}
       deleteParentalLeaveWorkLog={() => {}}
       deleteOvertimeWorkLog={() => {}}
+      deleteSickDayUnpaidWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
@@ -477,6 +495,7 @@ describe('rendering', () => {
       fetchMaternityProtectionWorkLog={() => {}}
       fetchParentalLeaveWorkLog={() => {}}
       fetchOvertimeWorkLog={() => {}}
+      fetchSickDayUnpaidWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
       fetchVacationWorkLog={() => {}}
@@ -514,6 +533,7 @@ describe('rendering', () => {
           month: 1,
           overtimeWorkLogs: [],
           parentalLeaveWorkLogs: [],
+          sickDayUnpaidWorkLogs: [],
           sickDayWorkLogs: [],
           status: 'WAITING_FOR_APPROVAL',
           timeOffWorkLogs: [],
@@ -568,6 +588,7 @@ describe('rendering', () => {
       addTimeOffWorkLog={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
+      addMultipleSickDayUnpaidWorkLogs={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
@@ -576,6 +597,7 @@ describe('rendering', () => {
       deleteMaternityProtectionWorkLog={() => {}}
       deleteParentalLeaveWorkLog={() => {}}
       deleteOvertimeWorkLog={() => {}}
+      deleteSickDayUnpaidWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
@@ -585,6 +607,7 @@ describe('rendering', () => {
       fetchMaternityProtectionWorkLog={() => {}}
       fetchParentalLeaveWorkLog={() => {}}
       fetchOvertimeWorkLog={() => {}}
+      fetchSickDayUnpaidWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
       fetchVacationWorkLog={() => {}}
@@ -622,6 +645,7 @@ describe('rendering', () => {
           month: 1,
           overtimeWorkLogs: [],
           parentalLeaveWorkLogs: [],
+          sickDayUnpaidWorkLogs: [],
           sickDayWorkLogs: [],
           status: 'APPROVED',
           timeOffWorkLogs: [],
@@ -679,6 +703,7 @@ describe('functionality', () => {
       addTimeOffWorkLog={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
+      addMultipleSickDayUnpaidWorkLogs={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
@@ -687,6 +712,7 @@ describe('functionality', () => {
       deleteMaternityProtectionWorkLog={() => {}}
       deleteParentalLeaveWorkLog={() => {}}
       deleteOvertimeWorkLog={() => {}}
+      deleteSickDayUnpaidWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
@@ -696,6 +722,7 @@ describe('functionality', () => {
       fetchMaternityProtectionWorkLog={() => {}}
       fetchParentalLeaveWorkLog={() => {}}
       fetchOvertimeWorkLog={() => {}}
+      fetchSickDayUnpaidWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
       fetchVacationWorkLog={() => {}}
@@ -732,6 +759,7 @@ describe('functionality', () => {
           month: 1,
           overtimeWorkLogs: [],
           parentalLeaveWorkLogs: [],
+          sickDayUnpaidWorkLogs: [],
           sickDayWorkLogs: [],
           status: 'OPENED',
           timeOffWorkLogs: [],
@@ -791,6 +819,7 @@ describe('functionality', () => {
       addTimeOffWorkLog={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
+      addMultipleSickDayUnpaidWorkLogs={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
@@ -799,6 +828,7 @@ describe('functionality', () => {
       deleteMaternityProtectionWorkLog={() => {}}
       deleteParentalLeaveWorkLog={() => {}}
       deleteOvertimeWorkLog={() => {}}
+      deleteSickDayUnpaidWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
@@ -808,6 +838,7 @@ describe('functionality', () => {
       fetchMaternityProtectionWorkLog={() => {}}
       fetchParentalLeaveWorkLog={() => {}}
       fetchOvertimeWorkLog={() => {}}
+      fetchSickDayUnpaidWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
       fetchVacationWorkLog={() => {}}
@@ -844,6 +875,7 @@ describe('functionality', () => {
           month: 1,
           overtimeWorkLogs: [],
           parentalLeaveWorkLogs: [],
+          sickDayUnpaidWorkLogs: [],
           sickDayWorkLogs: [],
           status: 'OPENED',
           timeOffWorkLogs: [],
@@ -903,6 +935,7 @@ describe('functionality', () => {
       addTimeOffWorkLog={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
+      addMultipleSickDayUnpaidWorkLogs={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
@@ -911,6 +944,7 @@ describe('functionality', () => {
       deleteMaternityProtectionWorkLog={() => {}}
       deleteParentalLeaveWorkLog={() => {}}
       deleteOvertimeWorkLog={() => {}}
+      deleteSickDayUnpaidWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
@@ -920,6 +954,7 @@ describe('functionality', () => {
       fetchMaternityProtectionWorkLog={() => {}}
       fetchParentalLeaveWorkLog={() => {}}
       fetchOvertimeWorkLog={() => {}}
+      fetchSickDayUnpaidWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
       fetchVacationWorkLog={() => {}}
@@ -956,6 +991,7 @@ describe('functionality', () => {
           month: 1,
           overtimeWorkLogs: [],
           parentalLeaveWorkLogs: [],
+          sickDayUnpaidWorkLogs: [],
           sickDayWorkLogs: [],
           status: 'OPENED',
           timeOffWorkLogs: [],
@@ -1013,6 +1049,7 @@ describe('functionality', () => {
       addTimeOffWorkLog={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
+      addMultipleSickDayUnpaidWorkLogs={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
@@ -1021,6 +1058,7 @@ describe('functionality', () => {
       deleteMaternityProtectionWorkLog={() => {}}
       deleteParentalLeaveWorkLog={() => {}}
       deleteOvertimeWorkLog={() => {}}
+      deleteSickDayUnpaidWorkLog={() => {}}
       deleteSickDayWorkLog={() => {}}
       deleteTimeOffWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
@@ -1030,6 +1068,7 @@ describe('functionality', () => {
       fetchMaternityProtectionWorkLog={() => {}}
       fetchParentalLeaveWorkLog={() => {}}
       fetchOvertimeWorkLog={() => {}}
+      fetchSickDayUnpaidWorkLog={() => {}}
       fetchSickDayWorkLog={() => {}}
       fetchTimeOffWorkLog={() => {}}
       fetchVacationWorkLog={() => {}}
@@ -1067,6 +1106,7 @@ describe('functionality', () => {
           month: 1,
           overtimeWorkLogs: [],
           parentalLeaveWorkLogs: [],
+          sickDayUnpaidWorkLogs: [],
           sickDayWorkLogs: [],
           status: 'WAITING_FOR_APPROVAL',
           timeOffWorkLogs: [],

@@ -312,6 +312,7 @@
         "maternityProtectionWorkLog": "Mutterschutz",
         "overtimeWorkLog": "Mehrarbeit",
         "parentalLeaveWorkLog": "Elternzeit",
+        "sickDayUnpaidWorkLog": "Krank ohne Lohnfortzahlung",
         "sickDayWorkLog": "Kranktag",
         "timeOffWorkLog": "Freizeitausgleich",
         "vacationWorkLog": "Urlaub",

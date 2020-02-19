@@ -36,6 +36,10 @@ import {
   selectParentalLeaveWorkLog,
 } from '../../resources/parentalLeaveWorkLog';
 import {
+  fetchSickDayUnpaidWorkLog,
+  selectSickDayUnpaidWorkLog,
+} from '../../resources/sickDayUnpaidWorkLog';
+import {
   addSickDayWorkLog,
   deleteSickDayWorkLog,
   fetchSickDayWorkLog,
@@ -120,6 +124,7 @@ const mapStateToProps = (state) => {
     maternityProtectionWorkLog: selectMaternityProtectionWorkLog(state),
     overtimeWorkLog: selectOvertimeWorkLog(state),
     parentalLeaveWorkLog: selectParentalLeaveWorkLog(state),
+    sickDayUnpaidWorkLog: selectSickDayUnpaidWorkLog(state),
     sickDayWorkLog: selectSickDayWorkLog(state),
     timeOffWorkLog: selectTimeOffWorkLog(state),
     uid: decodedToken ? decodedToken.uid : null,
@@ -152,6 +157,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchMaternityProtectionWorkLog: (id) => dispatch(fetchMaternityProtectionWorkLog(id)),
   fetchOvertimeWorkLog: (id) => dispatch(fetchOvertimeWorkLog(id)),
   fetchParentalLeaveWorkLog: (id) => dispatch(fetchParentalLeaveWorkLog(id)),
+  fetchSickDayUnpaidWorkLog: (id) => dispatch(fetchSickDayUnpaidWorkLog(id)),
   fetchSickDayWorkLog: (id) => dispatch(fetchSickDayWorkLog(id)),
   fetchTimeOffWorkLog: (id) => dispatch(fetchTimeOffWorkLog(id)),
   fetchVacationWorkLog: (id) => dispatch(fetchVacationWorkLog(id)),

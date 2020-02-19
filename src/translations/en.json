@@ -312,6 +312,7 @@
         "maternityProtectionWorkLog": "Maternity protection",
         "overtimeWorkLog": "Overtime",
         "parentalLeaveWorkLog": "Parental leave",
+        "sickDayUnpaidWorkLog": "Sick day without sick pay",
         "sickDayWorkLog": "Sick day",
         "timeOffWorkLog": "Time off",
         "vacationWorkLog": "Vacation",

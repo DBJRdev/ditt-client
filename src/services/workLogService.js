@@ -6,6 +6,7 @@ import {
   MATERNITY_PROTECTION_WORK_LOG,
   OVERTIME_WORK_LOG,
   PARENTAL_LEAVE_WORK_LOG,
+  SICK_DAY_UNPAID_WORK_LOG,
   SICK_DAY_WORK_LOG,
   STATUS_APPROVED,
   STATUS_OPENED,
@@ -72,6 +73,8 @@ export const getTypeLabel = (t, type) => {
     typeLabel = t('workMonth:constant.type.overtimeWorkLog');
   } else if (PARENTAL_LEAVE_WORK_LOG === type) {
     typeLabel = t('workMonth:constant.type.parentalLeaveWorkLog');
+  } else if (SICK_DAY_UNPAID_WORK_LOG === type) {
+    typeLabel = t('workMonth:constant.type.sickDayUnpaidWorkLog');
   } else if (SICK_DAY_WORK_LOG === type) {
     typeLabel = t('workMonth:constant.type.sickDayWorkLog');
   } else if (TIME_OFF_WORK_LOG === type) {
