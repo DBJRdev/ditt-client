@@ -36,6 +36,7 @@ describe('rendering', () => {
       fetchBusinessTripWorkLog: () => {},
       fetchConfig: () => {},
       fetchHomeOfficeWorkLog: () => {},
+      fetchMaternityProtectionWorkLog: () => {},
       fetchOvertimeWorkLog: () => {},
       fetchSickDayWorkLog: () => {},
       fetchTimeOffWorkLog: () => {},

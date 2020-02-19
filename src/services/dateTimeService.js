@@ -159,6 +159,18 @@ export const getWorkingDays = (firstDay, lastDay, holidays) => {
   return workingDays;
 };
 
+export const getAllDays = (firstDay, lastDay) => {
+  const currentDay = firstDay;
+  const workingDays = [];
+
+  while (currentDay.isSameOrBefore(lastDay, 'day')) {
+    workingDays.push(currentDay.clone());
+    currentDay.add(1, 'day');
+  }
+
+  return workingDays;
+};
+
 export const getNumberOfWorkingDays = (firstDay, lastDay, holidays) => {
   const currentDay = firstDay;
   let workingDays = 0;

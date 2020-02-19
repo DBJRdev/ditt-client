@@ -213,6 +213,7 @@ class WorkLogComponent extends React.Component {
             addOvertimeWorkLog={this.addOvertimeWorkLog}
             addSickDayWorkLog={this.addSickDayWorkLog}
             addTimeOffWorkLog={this.addTimeOffWorkLog}
+            addMultipleMaternityProtectionWorkLogs={() => {}}
             addMultipleVacationWorkLog={this.addMultipleVacationWorkLog}
             addWorkLog={this.addWorkLog}
             businessTripWorkLog={this.props.businessTripWorkLog}
@@ -220,6 +221,7 @@ class WorkLogComponent extends React.Component {
             config={this.props.config}
             deleteBusinessTripWorkLog={this.deleteBusinessTripWorkLog}
             deleteHomeOfficeWorkLog={this.deleteHomeOfficeWorkLog}
+            deleteMaternityProtectionWorkLog={() => {}}
             deleteOvertimeWorkLog={this.deleteOvertimeWorkLog}
             deleteSickDayWorkLog={this.deleteSickDayWorkLog}
             deleteTimeOffWorkLog={this.deleteTimeOffWorkLog}
@@ -227,6 +229,7 @@ class WorkLogComponent extends React.Component {
             deleteWorkLog={this.deleteWorkLog}
             fetchBusinessTripWorkLog={this.props.fetchBusinessTripWorkLog}
             fetchHomeOfficeWorkLog={this.props.fetchHomeOfficeWorkLog}
+            fetchMaternityProtectionWorkLog={this.props.fetchMaternityProtectionWorkLog}
             fetchOvertimeWorkLog={this.props.fetchOvertimeWorkLog}
             fetchSickDayWorkLog={this.props.fetchSickDayWorkLog}
             fetchTimeOffWorkLog={this.props.fetchTimeOffWorkLog}
@@ -236,6 +239,7 @@ class WorkLogComponent extends React.Component {
             isPosting={this.props.isPosting}
             markApproved={() => {}}
             markWaitingForApproval={this.props.markWaitingForApproval}
+            maternityProtectionWorkLog={this.props.maternityProtectionWorkLog}
             overtimeWorkLog={this.props.overtimeWorkLog}
             selectedDate={this.state.selectedDate}
             sickDayWorkLog={this.props.sickDayWorkLog}
@@ -256,6 +260,7 @@ WorkLogComponent.defaultProps = {
   businessTripWorkLog: null,
   config: {},
   homeOfficeWorkLog: null,
+  maternityProtectionWorkLog: null,
   overtimeWorkLog: null,
   sickDayWorkLog: null,
   timeOffWorkLog: null,
@@ -294,6 +299,7 @@ WorkLogComponent.propTypes = {
   fetchBusinessTripWorkLog: PropTypes.func.isRequired,
   fetchConfig: PropTypes.func.isRequired,
   fetchHomeOfficeWorkLog: PropTypes.func.isRequired,
+  fetchMaternityProtectionWorkLog: PropTypes.func.isRequired,
   fetchOvertimeWorkLog: PropTypes.func.isRequired,
   fetchSickDayWorkLog: PropTypes.func.isRequired,
   fetchTimeOffWorkLog: PropTypes.func.isRequired,
@@ -311,6 +317,9 @@ WorkLogComponent.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   isPosting: PropTypes.bool.isRequired,
   markWaitingForApproval: PropTypes.func.isRequired,
+  maternityProtectionWorkLog: ImmutablePropTypes.mapContains({
+    date: PropTypes.object.isRequired,
+  }),
   overtimeWorkLog: ImmutablePropTypes.mapContains({
     date: PropTypes.object.isRequired,
     reason: PropTypes.string,
