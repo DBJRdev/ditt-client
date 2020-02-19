@@ -2,6 +2,7 @@ import validator from 'validator';
 import {
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,
+  MATERNITY_PROTECTION_WORK_LOG,
   OVERTIME_WORK_LOG,
   SICK_DAY_WORK_LOG,
   TIME_OFF_WORK_LOG,
@@ -423,6 +424,75 @@ export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay) => 
       errors.elements.form = t('workLog:validation.workLogOverlaps');
       errors.isValid = false;
     }
+  }
+
+  return errors;
+};
+
+export const validateSupervisorWorkLog = (t, workLog) => {
+  const errors = {
+    elements: {
+      date: null,
+      dateTo: null,
+      form: null,
+      type: null,
+    },
+    isValid: true,
+  };
+
+  // Check if current type of supervisor work log is supported
+
+  if ([
+    MATERNITY_PROTECTION_WORK_LOG,
+  ].indexOf(workLog.type) === -1) {
+    errors.elements.type = t('workLog:validation.invalidType');
+    errors.isValid = false;
+
+    return errors;
+  }
+
+  // Validate date from and date to fields
+
+  let dateFrom = null;
+  let dateTo = null;
+
+  if (workLog.date === null || validator.isEmpty(workLog.date)) {
+    errors.elements.date = t('general:validation.required');
+    errors.isValid = false;
+
+    return errors;
+  }
+
+  if (workLog.dateTo === null || validator.isEmpty(workLog.dateTo)) {
+    errors.elements.dateTo = t('general:validation.required');
+    errors.isValid = false;
+
+    return errors;
+  }
+
+  try {
+    dateFrom = toMomentDateTimeFromDayMonthYear(workLog.date);
+  } catch (ex) {
+    errors.elements.date = t('general:validation.invalidDate');
+    errors.isValid = false;
+
+    return errors;
+  }
+
+  try {
+    dateTo = toMomentDateTimeFromDayMonthYear(workLog.dateTo);
+  } catch (ex) {
+    errors.elements.dateTo = t('general:validation.invalidDate');
+    errors.isValid = false;
+
+    return errors;
+  }
+
+  if (dateTo.isBefore(dateFrom, 'day')) {
+    errors.elements.dateTo = t('general:validation.invalidDate');
+    errors.isValid = false;
+
+    return errors;
   }
 
   return errors;

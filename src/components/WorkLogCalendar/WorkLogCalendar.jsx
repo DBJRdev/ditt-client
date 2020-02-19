@@ -17,6 +17,7 @@ import {
 import {
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,
+  MATERNITY_PROTECTION_WORK_LOG,
   OVERTIME_WORK_LOG,
   SICK_DAY_WORK_LOG,
   STATUS_APPROVED,
@@ -49,6 +50,7 @@ import {
   getWorkLogsByDay,
   getWorkMonthByMonth,
 } from '../../services/workLogService';
+import { AddSupervisorWorkLogModal } from './components/AddSupervisorWorkLogModal';
 import { WorkLogDetailButton } from './components/WorkLogDetailButton';
 import { WorkLogDetailModal } from './components/WorkLogDetailModal';
 
@@ -62,6 +64,8 @@ class WorkLogCalendar extends React.Component {
       showDeleteWorkLogDialog: false,
       showDeleteWorkLogDialogId: null,
       showDeleteWorkLogDialogType: null,
+      showSupervisorWorkLogForm: false,
+      showSupervisorWorkLogFormDate: localizedMoment(),
       showWorkLogForm: false,
       showWorkLogFormDate: localizedMoment(),
       workLogTimer: getWorkLogTimer() ? toMomentDateTime(getWorkLogTimer()) : null,
@@ -76,6 +80,10 @@ class WorkLogCalendar extends React.Component {
     this.closeDeleteWorkLogDialog = this.closeDeleteWorkLogDialog.bind(this);
     this.initAndStartWorkLogTimer = this.initAndStartWorkLogTimer.bind(this);
     this.stopWorkLogTimer = this.stopWorkLogTimer.bind(this);
+
+    this.openSupervisorWorkLogForm = this.openSupervisorWorkLogForm.bind(this);
+    this.closeSupervisorWorkLogForm = this.closeSupervisorWorkLogForm.bind(this);
+    this.saveSupervisorWorkLogForm = this.saveSupervisorWorkLogForm.bind(this);
 
     this.workLogTimer = null;
 
@@ -103,6 +111,7 @@ class WorkLogCalendar extends React.Component {
           'workLogs',
           'businessTripWorkLogs',
           'homeOfficeWorkLogs',
+          'maternityProtectionWorkLogs',
           'overtimeWorkLogs',
           'sickDayWorkLogs',
           'timeOffWorkLogs',
@@ -150,6 +159,8 @@ class WorkLogCalendar extends React.Component {
       this.props.fetchBusinessTripWorkLog(id);
     } else if (HOME_OFFICE_WORK_LOG === type) {
       this.props.fetchHomeOfficeWorkLog(id);
+    } else if (MATERNITY_PROTECTION_WORK_LOG === type) {
+      this.props.fetchMaternityProtectionWorkLog(id);
     } else if (OVERTIME_WORK_LOG === type) {
       this.props.fetchOvertimeWorkLog(id);
     } else if (SICK_DAY_WORK_LOG === type) {
@@ -176,6 +187,8 @@ class WorkLogCalendar extends React.Component {
       return this.props.deleteHomeOfficeWorkLog(id).then(this.closeDeleteWorkLogDialog);
     } if (OVERTIME_WORK_LOG === type) {
       return this.props.deleteOvertimeWorkLog(id).then(this.closeDeleteWorkLogDialog);
+    } if (MATERNITY_PROTECTION_WORK_LOG === type) {
+      return this.props.deleteMaternityProtectionWorkLog(id).then(this.closeDeleteWorkLogDialog);
     } if (SICK_DAY_WORK_LOG === type) {
       return this.props.deleteSickDayWorkLog(id).then(this.closeDeleteWorkLogDialog);
     } if (TIME_OFF_WORK_LOG === type) {
@@ -204,6 +217,15 @@ class WorkLogCalendar extends React.Component {
     this.setState({
       showWorkLogForm: true,
       showWorkLogFormDate: date,
+    });
+  }
+
+  openSupervisorWorkLogForm(date) {
+    date.hour(0).minute(0);
+
+    this.setState({
+      showSupervisorWorkLogForm: true,
+      showSupervisorWorkLogFormDate: date,
     });
   }
 
@@ -266,8 +288,31 @@ class WorkLogCalendar extends React.Component {
     throw new Error(`Unknown type ${data.type}`);
   }
 
+  saveSupervisorWorkLogForm(data) {
+    const {
+      addMultipleMaternityProtectionWorkLogs,
+      workMonth,
+    } = this.props;
+
+    if (MATERNITY_PROTECTION_WORK_LOG === data.type) {
+      return addMultipleMaternityProtectionWorkLogs({
+        date: data.date,
+        dateTo: data.dateTo,
+        user: {
+          id: workMonth.get('user').get('id'),
+        },
+      });
+    }
+
+    throw new Error(`Unknown type ${data.type}`);
+  }
+
   closeWorkLogForm() {
     this.setState({ showWorkLogForm: false });
+  }
+
+  closeSupervisorWorkLogForm() {
+    this.setState({ showSupervisorWorkLogForm: false });
   }
 
   countWaitingForApprovalWorkLogs() {
@@ -431,15 +476,31 @@ class WorkLogCalendar extends React.Component {
     );
   }
 
+  renderSupervisorWorkLogForm() {
+    const { isPosting } = this.props;
+    const { showSupervisorWorkLogFormDate } = this.state;
+
+    return (
+      <AddSupervisorWorkLogModal
+        date={showSupervisorWorkLogFormDate}
+        isPosting={isPosting}
+        onClose={this.closeSupervisorWorkLogForm}
+        onSave={this.saveSupervisorWorkLogForm}
+      />
+    );
+  }
+
   renderDeleteWorkLogModal() {
     const {
       businessTripWorkLog,
       homeOfficeWorkLog,
       isPosting,
+      maternityProtectionWorkLog,
       overtimeWorkLog,
       sickDayWorkLog,
       supervisorView,
       timeOffWorkLog,
+      uid,
       vacationWorkLog,
       workLog,
       workMonth,
@@ -455,6 +516,9 @@ class WorkLogCalendar extends React.Component {
         homeOfficeWorkLog={homeOfficeWorkLog ? homeOfficeWorkLog.toJS() : null}
         isInSupervisorMode={supervisorView}
         isPosting={isPosting}
+        maternityProtectionWorkLog={
+          maternityProtectionWorkLog ? maternityProtectionWorkLog.toJS() : null
+        }
         onClose={this.closeDeleteWorkLogDialog}
         onDelete={() => this.deleteWorkLog(
           showDeleteWorkLogDialogId,
@@ -464,6 +528,7 @@ class WorkLogCalendar extends React.Component {
         sickDayWorkLog={sickDayWorkLog ? sickDayWorkLog.toJS() : null}
         timeOffWorkLog={timeOffWorkLog ? timeOffWorkLog.toJS() : null}
         type={showDeleteWorkLogDialogType}
+        uid={uid}
         vacationWorkLog={vacationWorkLog ? vacationWorkLog.toJS() : null}
         workLog={workLog ? workLog.toJS() : null}
         workMonth={workMonth ? workMonth.toJS() : null}
@@ -475,9 +540,11 @@ class WorkLogCalendar extends React.Component {
     const { t } = this.props;
     const date = localizedMoment();
     let status = null;
+    let userId = null;
 
     if (this.props.workMonth) {
       status = this.props.workMonth.get('status');
+      userId = this.props.workMonth.get('user').get('id');
     }
 
     const daysOfSelectedMonth = this.getDaysOfSelectedMonth();
@@ -564,17 +631,27 @@ class WorkLogCalendar extends React.Component {
                   : styles.tableRow;
 
                 const canAddWorkLog = !this.props.supervisorView
-                && (status === STATUS_OPENED || status === STATUS_WAITING_FOR_APPROVAL);
+                  && (status === STATUS_OPENED || status === STATUS_WAITING_FOR_APPROVAL);
+                const canAddSupervisorWorkLog = this.props.supervisorView
+                  && (this.props.uid !== userId)
+                  && (status === STATUS_OPENED || status === STATUS_WAITING_FOR_APPROVAL);
 
-                if (canAddWorkLog) {
+                if (canAddWorkLog || canAddSupervisorWorkLog) {
                   rowClassName = `${rowClassName} ${styles.tableRowAddWorkLog}`;
+                }
+
+                let onRowClick;
+                if (canAddWorkLog) {
+                  onRowClick = () => this.openWorkLogForm(day.date);
+                } else if (canAddSupervisorWorkLog) {
+                  onRowClick = () => this.openSupervisorWorkLogForm(day.date);
                 }
 
                 return (
                   <tr
                     className={rowClassName}
                     key={day.date.date()}
-                    onClick={canAddWorkLog ? () => this.openWorkLogForm(day.date) : undefined}
+                    onClick={onRowClick}
                   >
                     <td className={styles.tableCell}>
                       <div className={styles.date}>
@@ -595,8 +672,7 @@ class WorkLogCalendar extends React.Component {
 
                       {
                       day.date.isSame(date, 'day')
-                      && !this.props.supervisorView
-                      && (status === STATUS_OPENED || status === STATUS_WAITING_FOR_APPROVAL)
+                      && canAddWorkLog
                       && (
                         <div>
                           {
@@ -620,21 +696,35 @@ class WorkLogCalendar extends React.Component {
                     }
                     </td>
                     {
-                    !this.props.supervisorView
-                    && (status === STATUS_OPENED || status === STATUS_WAITING_FOR_APPROVAL)
-                    && (
-                      <td className={styles.tableCellRight}>
-                        <div className={styles.addWorkLogButtonWrapper}>
-                          <Button
-                            clickHandler={() => this.openWorkLogForm(day.date)}
-                            beforeLabel={<Icon icon="add" />}
-                            label={t('workLog:action.addWorkLog')}
-                            labelVisibility="none"
-                          />
-                        </div>
-                      </td>
-                    )
-                  }
+                      canAddWorkLog
+                      && (
+                        <td className={styles.tableCellRight}>
+                          <div className={styles.addWorkLogButtonWrapper}>
+                            <Button
+                              clickHandler={() => this.openWorkLogForm(day.date)}
+                              beforeLabel={<Icon icon="add" />}
+                              label={t('workLog:action.addWorkLog')}
+                              labelVisibility="none"
+                            />
+                          </div>
+                        </td>
+                      )
+                    }
+                    {
+                      canAddSupervisorWorkLog
+                      && (
+                        <td className={styles.tableCellRight}>
+                          <div className={styles.addWorkLogButtonWrapper}>
+                            <Button
+                              clickHandler={() => this.openSupervisorWorkLogForm(day.date)}
+                              beforeLabel={<Icon icon="add" />}
+                              label={t('workLog:action.addWorkLog')}
+                              labelVisibility="none"
+                            />
+                          </div>
+                        </td>
+                      )
+                    }
                     <td className={styles.tableCellRight}>
                       {day.workTime.workTime.hours()}
                       :
@@ -669,6 +759,7 @@ class WorkLogCalendar extends React.Component {
         }
         {this.state.showDeleteWorkLogDialog ? this.renderDeleteWorkLogModal() : null}
         {this.state.showWorkLogForm ? this.renderWorkLogForm() : null}
+        {this.state.showSupervisorWorkLogForm ? this.renderSupervisorWorkLogForm() : null}
       </div>
     );
   }
@@ -678,10 +769,12 @@ WorkLogCalendar.defaultProps = {
   businessTripWorkLog: null,
   config: {},
   homeOfficeWorkLog: null,
+  maternityProtectionWorkLog: null,
   overtimeWorkLog: null,
   sickDayWorkLog: null,
   supervisorView: false,
   timeOffWorkLog: null,
+  uid: null,
   vacationWorkLog: null,
   workLog: null,
   workMonth: null,
@@ -690,6 +783,7 @@ WorkLogCalendar.defaultProps = {
 WorkLogCalendar.propTypes = {
   addBusinessTripWorkLog: PropTypes.func.isRequired,
   addHomeOfficeWorkLog: PropTypes.func.isRequired,
+  addMultipleMaternityProtectionWorkLogs: PropTypes.func.isRequired,
   addMultipleVacationWorkLog: PropTypes.func.isRequired,
   addOvertimeWorkLog: PropTypes.func.isRequired,
   addSickDayWorkLog: PropTypes.func.isRequired,
@@ -709,6 +803,7 @@ WorkLogCalendar.propTypes = {
   config: ImmutablePropTypes.mapContains({}),
   deleteBusinessTripWorkLog: PropTypes.func.isRequired,
   deleteHomeOfficeWorkLog: PropTypes.func.isRequired,
+  deleteMaternityProtectionWorkLog: PropTypes.func.isRequired,
   deleteOvertimeWorkLog: PropTypes.func.isRequired,
   deleteSickDayWorkLog: PropTypes.func.isRequired,
   deleteTimeOffWorkLog: PropTypes.func.isRequired,
@@ -716,6 +811,7 @@ WorkLogCalendar.propTypes = {
   deleteWorkLog: PropTypes.func.isRequired,
   fetchBusinessTripWorkLog: PropTypes.func.isRequired,
   fetchHomeOfficeWorkLog: PropTypes.func.isRequired,
+  fetchMaternityProtectionWorkLog: PropTypes.func.isRequired,
   fetchOvertimeWorkLog: PropTypes.func.isRequired,
   fetchSickDayWorkLog: PropTypes.func.isRequired,
   fetchTimeOffWorkLog: PropTypes.func.isRequired,
@@ -729,6 +825,9 @@ WorkLogCalendar.propTypes = {
   isPosting: PropTypes.bool.isRequired,
   markApproved: PropTypes.func.isRequired,
   markWaitingForApproval: PropTypes.func.isRequired,
+  maternityProtectionWorkLog: ImmutablePropTypes.mapContains({
+    date: PropTypes.object.isRequired,
+  }),
   overtimeWorkLog: ImmutablePropTypes.mapContains({
     date: PropTypes.object.isRequired,
     reason: PropTypes.string,
@@ -753,6 +852,7 @@ WorkLogCalendar.propTypes = {
     rejectionMessage: PropTypes.string,
     status: PropTypes.string.isRequired,
   }),
+  uid: PropTypes.number,
   vacationWorkLog: ImmutablePropTypes.mapContains({
     date: PropTypes.object.isRequired,
     rejectionMessage: PropTypes.string,

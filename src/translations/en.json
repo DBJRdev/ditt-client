@@ -259,6 +259,8 @@
     "element": {
       "type": "Type",
       "date": "Date",
+      "dateFrom": "Date from",
+      "dateTo": "Date to",
       "status": "Status",
       "rejectionMessage": "Reason",
       "startTime": "Start time",
@@ -307,6 +309,7 @@
       "type": {
         "businessTripWorkLog": "Business trip",
         "homeOfficeWorkLog": "Home office",
+        "maternityProtectionWorkLog": "Maternity protection",
         "overtimeWorkLog": "Overtime",
         "sickDayWorkLog": "Sick day",
         "timeOffWorkLog": "Time off",

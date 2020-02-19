@@ -21,6 +21,11 @@ import {
   selectHomeOfficeWorkLogMeta,
 } from '../../resources/homeOfficeWorkLog';
 import {
+  fetchMaternityProtectionWorkLog,
+  selectMaternityProtectionWorkLog,
+} from '../../resources/maternityProtectionWorkLog';
+
+import {
   addOvertimeWorkLog,
   deleteOvertimeWorkLog,
   fetchOvertimeWorkLog,
@@ -109,6 +114,7 @@ const mapStateToProps = (state) => {
       || timeOffWorkLogMeta.isPosting
       || vacationWorkLogMeta.isPosting
       || workMonthMeta.isPosting,
+    maternityProtectionWorkLog: selectMaternityProtectionWorkLog(state),
     overtimeWorkLog: selectOvertimeWorkLog(state),
     sickDayWorkLog: selectSickDayWorkLog(state),
     timeOffWorkLog: selectTimeOffWorkLog(state),
@@ -139,6 +145,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchBusinessTripWorkLog: (id) => dispatch(fetchBusinessTripWorkLog(id)),
   fetchConfig: () => dispatch(fetchConfig()),
   fetchHomeOfficeWorkLog: (id) => dispatch(fetchHomeOfficeWorkLog(id)),
+  fetchMaternityProtectionWorkLog: (id) => dispatch(fetchMaternityProtectionWorkLog(id)),
   fetchOvertimeWorkLog: (id) => dispatch(fetchOvertimeWorkLog(id)),
   fetchSickDayWorkLog: (id) => dispatch(fetchSickDayWorkLog(id)),
   fetchTimeOffWorkLog: (id) => dispatch(fetchTimeOffWorkLog(id)),
