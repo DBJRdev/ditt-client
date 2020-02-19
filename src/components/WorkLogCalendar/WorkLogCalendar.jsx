@@ -19,6 +19,7 @@ import {
   HOME_OFFICE_WORK_LOG,
   MATERNITY_PROTECTION_WORK_LOG,
   OVERTIME_WORK_LOG,
+  PARENTAL_LEAVE_WORK_LOG,
   SICK_DAY_WORK_LOG,
   STATUS_APPROVED,
   STATUS_OPENED,
@@ -113,6 +114,7 @@ class WorkLogCalendar extends React.Component {
           'homeOfficeWorkLogs',
           'maternityProtectionWorkLogs',
           'overtimeWorkLogs',
+          'parentalLeaveWorkLogs',
           'sickDayWorkLogs',
           'timeOffWorkLogs',
           'vacationWorkLogs',
@@ -163,6 +165,8 @@ class WorkLogCalendar extends React.Component {
       this.props.fetchMaternityProtectionWorkLog(id);
     } else if (OVERTIME_WORK_LOG === type) {
       this.props.fetchOvertimeWorkLog(id);
+    } else if (PARENTAL_LEAVE_WORK_LOG === type) {
+      this.props.fetchParentalLeaveWorkLog(id);
     } else if (SICK_DAY_WORK_LOG === type) {
       this.props.fetchSickDayWorkLog(id);
     } else if (TIME_OFF_WORK_LOG === type) {
@@ -185,10 +189,12 @@ class WorkLogCalendar extends React.Component {
       return this.props.deleteBusinessTripWorkLog(id).then(this.closeDeleteWorkLogDialog);
     } if (HOME_OFFICE_WORK_LOG === type) {
       return this.props.deleteHomeOfficeWorkLog(id).then(this.closeDeleteWorkLogDialog);
-    } if (OVERTIME_WORK_LOG === type) {
-      return this.props.deleteOvertimeWorkLog(id).then(this.closeDeleteWorkLogDialog);
     } if (MATERNITY_PROTECTION_WORK_LOG === type) {
       return this.props.deleteMaternityProtectionWorkLog(id).then(this.closeDeleteWorkLogDialog);
+    } if (OVERTIME_WORK_LOG === type) {
+      return this.props.deleteOvertimeWorkLog(id).then(this.closeDeleteWorkLogDialog);
+    } if (PARENTAL_LEAVE_WORK_LOG === type) {
+      return this.props.deleteParentalLeaveWorkLog(id).then(this.closeDeleteWorkLogDialog);
     } if (SICK_DAY_WORK_LOG === type) {
       return this.props.deleteSickDayWorkLog(id).then(this.closeDeleteWorkLogDialog);
     } if (TIME_OFF_WORK_LOG === type) {
@@ -291,11 +297,22 @@ class WorkLogCalendar extends React.Component {
   saveSupervisorWorkLogForm(data) {
     const {
       addMultipleMaternityProtectionWorkLogs,
+      addMultipleParentalLeaveWorkLogs,
       workMonth,
     } = this.props;
 
     if (MATERNITY_PROTECTION_WORK_LOG === data.type) {
       return addMultipleMaternityProtectionWorkLogs({
+        date: data.date,
+        dateTo: data.dateTo,
+        user: {
+          id: workMonth.get('user').get('id'),
+        },
+      });
+    }
+
+    if (PARENTAL_LEAVE_WORK_LOG === data.type) {
+      return addMultipleParentalLeaveWorkLogs({
         date: data.date,
         dateTo: data.dateTo,
         user: {
@@ -497,6 +514,7 @@ class WorkLogCalendar extends React.Component {
       isPosting,
       maternityProtectionWorkLog,
       overtimeWorkLog,
+      parentalLeaveWorkLog,
       sickDayWorkLog,
       supervisorView,
       timeOffWorkLog,
@@ -525,6 +543,7 @@ class WorkLogCalendar extends React.Component {
           showDeleteWorkLogDialogType,
         )}
         overtimeWorkLog={overtimeWorkLog ? overtimeWorkLog.toJS() : null}
+        parentalLeaveWorkLog={parentalLeaveWorkLog ? parentalLeaveWorkLog.toJS() : null}
         sickDayWorkLog={sickDayWorkLog ? sickDayWorkLog.toJS() : null}
         timeOffWorkLog={timeOffWorkLog ? timeOffWorkLog.toJS() : null}
         type={showDeleteWorkLogDialogType}
@@ -771,6 +790,7 @@ WorkLogCalendar.defaultProps = {
   homeOfficeWorkLog: null,
   maternityProtectionWorkLog: null,
   overtimeWorkLog: null,
+  parentalLeaveWorkLog: null,
   sickDayWorkLog: null,
   supervisorView: false,
   timeOffWorkLog: null,
@@ -784,6 +804,7 @@ WorkLogCalendar.propTypes = {
   addBusinessTripWorkLog: PropTypes.func.isRequired,
   addHomeOfficeWorkLog: PropTypes.func.isRequired,
   addMultipleMaternityProtectionWorkLogs: PropTypes.func.isRequired,
+  addMultipleParentalLeaveWorkLogs: PropTypes.func.isRequired,
   addMultipleVacationWorkLog: PropTypes.func.isRequired,
   addOvertimeWorkLog: PropTypes.func.isRequired,
   addSickDayWorkLog: PropTypes.func.isRequired,
@@ -805,6 +826,7 @@ WorkLogCalendar.propTypes = {
   deleteHomeOfficeWorkLog: PropTypes.func.isRequired,
   deleteMaternityProtectionWorkLog: PropTypes.func.isRequired,
   deleteOvertimeWorkLog: PropTypes.func.isRequired,
+  deleteParentalLeaveWorkLog: PropTypes.func.isRequired,
   deleteSickDayWorkLog: PropTypes.func.isRequired,
   deleteTimeOffWorkLog: PropTypes.func.isRequired,
   deleteVacationWorkLog: PropTypes.func.isRequired,
@@ -813,6 +835,7 @@ WorkLogCalendar.propTypes = {
   fetchHomeOfficeWorkLog: PropTypes.func.isRequired,
   fetchMaternityProtectionWorkLog: PropTypes.func.isRequired,
   fetchOvertimeWorkLog: PropTypes.func.isRequired,
+  fetchParentalLeaveWorkLog: PropTypes.func.isRequired,
   fetchSickDayWorkLog: PropTypes.func.isRequired,
   fetchTimeOffWorkLog: PropTypes.func.isRequired,
   fetchVacationWorkLog: PropTypes.func.isRequired,
@@ -833,6 +856,9 @@ WorkLogCalendar.propTypes = {
     reason: PropTypes.string,
     rejectionMessage: PropTypes.string,
     status: PropTypes.string.isRequired,
+  }),
+  parentalLeaveWorkLog: ImmutablePropTypes.mapContains({
+    date: PropTypes.object.isRequired,
   }),
   selectedDate: PropTypes.shape({
     clone: PropTypes.func.isRequired,
@@ -887,6 +913,10 @@ WorkLogCalendar.propTypes = {
       ]).isRequired,
     })).isRequired,
     id: PropTypes.number.isRequired,
+    maternityProtectionWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+      date: PropTypes.shape.isRequired,
+      id: PropTypes.number.isRequired,
+    })).isRequired,
     month: PropTypes.shape.isRequired,
     overtimeWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
       date: PropTypes.shape.isRequired,
@@ -896,6 +926,10 @@ WorkLogCalendar.propTypes = {
         STATUS_REJECTED,
         STATUS_WAITING_FOR_APPROVAL,
       ]).isRequired,
+    })).isRequired,
+    parentalLeaveWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+      date: PropTypes.shape.isRequired,
+      id: PropTypes.number.isRequired,
     })).isRequired,
     sickDayWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
       date: PropTypes.shape.isRequired,

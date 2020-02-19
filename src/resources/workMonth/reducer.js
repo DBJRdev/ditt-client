@@ -4,7 +4,7 @@ import {
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,
   MATERNITY_PROTECTION_WORK_LOG,
-  OVERTIME_WORK_LOG,
+  OVERTIME_WORK_LOG, PARENTAL_LEAVE_WORK_LOG,
   SICK_DAY_WORK_LOG,
   STATUS_APPROVED,
   STATUS_REJECTED,
@@ -110,6 +110,12 @@ export default (state, action) => {
       status: resolveWorkLogStatus(overtimeWorkLogsData),
       type: OVERTIME_WORK_LOG,
     })),
+    parentalLeaveWorkLogs: data.parentalLeaveWorkLogs
+      .map((parentalLeaveWorkLogsData) => ({
+        date: toMomentDateTime(parentalLeaveWorkLogsData.date),
+        id: parseInt(parentalLeaveWorkLogsData.id, 10),
+        type: PARENTAL_LEAVE_WORK_LOG,
+      })),
     sickDayWorkLogs: data.sickDayWorkLogs.map((sickDayWorkLogsData) => ({
       date: toMomentDateTime(sickDayWorkLogsData.date),
       id: parseInt(sickDayWorkLogsData.id, 10),
