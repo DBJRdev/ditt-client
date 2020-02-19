@@ -91,6 +91,8 @@ export const getWorkedTime = (workLogList, workHours, workedHoursLimits) => {
   const standardWorkLogs = [];
   const businessTripWorkLogs = [];
   const homeOfficeWorkLogs = [];
+  const maternityProtectionWorkLogs = [];
+  const parentalLeaveWorkLogs = [];
   const sickDayWorkLogs = [];
   const timeOffWorkLogs = [];
   const vacationWorkLogs = [];
@@ -121,6 +123,10 @@ export const getWorkedTime = (workLogList, workHours, workedHoursLimits) => {
       businessTripWorkLogs.push(workLog);
     } else if (workLog.type === HOME_OFFICE_WORK_LOG && workLog.status === STATUS_APPROVED) {
       homeOfficeWorkLogs.push(workLog);
+    } else if (workLog.type === MATERNITY_PROTECTION_WORK_LOG) {
+      maternityProtectionWorkLogs.push(workLog);
+    } else if (workLog.type === PARENTAL_LEAVE_WORK_LOG) {
+      parentalLeaveWorkLogs.push(workLog);
     } else if (workLog.type === SICK_DAY_WORK_LOG) {
       sickDayWorkLogs.push(workLog);
     } else if (workLog.type === TIME_OFF_WORK_LOG && workLog.status === STATUS_APPROVED) {
@@ -186,7 +192,9 @@ export const getWorkedTime = (workLogList, workHours, workedHoursLimits) => {
         || sickDayWorkLogs.length > 0
         || timeOffWorkLogs.length > 0
       )
-    ) || vacationWorkLogs.length > 0
+    ) || maternityProtectionWorkLogs.length > 0
+      || parentalLeaveWorkLogs.length > 0
+      || vacationWorkLogs.length > 0
   ) {
     workTime = workHours.requiredHours * 3600;
     workTimeWithoutCorrection = workTime;
