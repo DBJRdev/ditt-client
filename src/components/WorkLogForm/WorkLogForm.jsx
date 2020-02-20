@@ -22,6 +22,7 @@ import {
   HOME_OFFICE_WORK_LOG,
   OVERTIME_WORK_LOG,
   SICK_DAY_WORK_LOG,
+  SPECIAL_LEAVE_WORK_LOG,
   TIME_OFF_WORK_LOG,
   VACATION_WORK_LOG,
   WORK_LOG,
@@ -170,7 +171,7 @@ class WorkLogForm extends React.Component {
         date: formData.type !== WORK_LOG
           ? date.clone()
           : null,
-        dateTo: formData.type === VACATION_WORK_LOG
+        dateTo: (formData.type === SPECIAL_LEAVE_WORK_LOG || formData.type === VACATION_WORK_LOG)
           ? toMomentDateTimeFromDayMonthYear(formData.dateTo)
           : null,
         destination: formData.type === BUSINESS_TRIP_WORK_LOG
@@ -429,6 +430,23 @@ class WorkLogForm extends React.Component {
     );
   }
 
+  renderSpecialLeaveWorkLogFields() {
+    const { t } = this.props;
+
+    return (
+      <ListItem>
+        <TextField
+          helperText={this.state.formValidity.elements.dateTo}
+          changeHandler={this.changeHandler}
+          id="dateTo"
+          label={t('vacationWorkLog:element.dateTo')}
+          value={this.state.formData.dateTo || ''}
+          validationState={this.state.formValidity.elements.dateTo ? 'invalid' : null}
+        />
+      </ListItem>
+    );
+  }
+
   renderTimeOffWorkLogFields() {
     const { t } = this.props;
 
@@ -609,7 +627,10 @@ class WorkLogForm extends React.Component {
                   id="date"
                   label={
                     t((
-                      formData.type === VACATION_WORK_LOG
+                      (
+                        formData.type === SPECIAL_LEAVE_WORK_LOG
+                        || formData.type === VACATION_WORK_LOG
+                      )
                         ? 'vacationWorkLog:element.dateFrom'
                         : 'workLog:element.date'
                     ))
@@ -645,6 +666,10 @@ class WorkLogForm extends React.Component {
                       value: SICK_DAY_WORK_LOG,
                     },
                     {
+                      label: t('workMonth:constant.type.specialLeaveWorkLog'),
+                      value: SPECIAL_LEAVE_WORK_LOG,
+                    },
+                    {
                       label: t('workMonth:constant.type.timeOffWorkLog'),
                       value: TIME_OFF_WORK_LOG,
                     },
@@ -671,6 +696,10 @@ class WorkLogForm extends React.Component {
                 formData.type === SICK_DAY_WORK_LOG
                 && formData.variant === VARIANT_SICK_CHILD
                 && this.renderSickDayWorkLogSickChildFields()
+              }
+              {
+                formData.type === SPECIAL_LEAVE_WORK_LOG
+                && this.renderSpecialLeaveWorkLogFields()
               }
               {
                 formData.type === TIME_OFF_WORK_LOG

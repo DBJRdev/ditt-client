@@ -28,12 +28,14 @@ class WorkLogComponent extends React.Component {
     this.addOvertimeWorkLog = this.addOvertimeWorkLog.bind(this);
     this.addSickDayWorkLog = this.addSickDayWorkLog.bind(this);
     this.addTimeOffWorkLog = this.addTimeOffWorkLog.bind(this);
+    this.addMultipleSpecialLeaveWorkLog = this.addMultipleSpecialLeaveWorkLog.bind(this);
     this.addMultipleVacationWorkLog = this.addMultipleVacationWorkLog.bind(this);
     this.addWorkLog = this.addWorkLog.bind(this);
     this.deleteBusinessTripWorkLog = this.deleteBusinessTripWorkLog.bind(this);
     this.deleteHomeOfficeWorkLog = this.deleteHomeOfficeWorkLog.bind(this);
     this.deleteOvertimeWorkLog = this.deleteOvertimeWorkLog.bind(this);
     this.deleteSickDayWorkLog = this.deleteSickDayWorkLog.bind(this);
+    this.deleteSpecialLeaveWorkLog = this.deleteSpecialLeaveWorkLog.bind(this);
     this.deleteTimeOffWorkLog = this.deleteTimeOffWorkLog.bind(this);
     this.deleteVacationWorkLog = this.deleteVacationWorkLog.bind(this);
     this.deleteWorkLog = this.deleteWorkLog.bind(this);
@@ -90,6 +92,18 @@ class WorkLogComponent extends React.Component {
 
   addTimeOffWorkLog(data) {
     return this.props.addTimeOffWorkLog(data).then((response) => {
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+      return response;
+    });
+  }
+
+  addMultipleSpecialLeaveWorkLog(data) {
+    const workingDays = getWorkingDays(data.date, data.dateTo, this.props.config.get('supportedHolidays'));
+    const workLogs = workingDays.map((workingDay) => ({ date: workingDay }));
+
+    return this.props.addMultipleSpecialLeaveWorkLog(workLogs).then((response) => {
       if (!response.error) {
         this.fetchWorkMonth(this.state.selectedDate);
       }
@@ -159,6 +173,16 @@ class WorkLogComponent extends React.Component {
     });
   }
 
+  deleteSpecialLeaveWorkLog(id) {
+    return this.props.deleteSpecialLeaveWorkLog(id).then((response) => {
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+
+      return response;
+    });
+  }
+
   deleteTimeOffWorkLog(id) {
     return this.props.deleteTimeOffWorkLog(id).then((response) => {
       if (!response.error) {
@@ -216,6 +240,7 @@ class WorkLogComponent extends React.Component {
             addMultipleMaternityProtectionWorkLogs={() => {}}
             addMultipleParentalLeaveWorkLogs={() => {}}
             addMultipleSickDayUnpaidWorkLogs={() => {}}
+            addMultipleSpecialLeaveWorkLog={this.addMultipleSpecialLeaveWorkLog}
             addMultipleVacationWorkLog={this.addMultipleVacationWorkLog}
             addWorkLog={this.addWorkLog}
             businessTripWorkLog={this.props.businessTripWorkLog}
@@ -228,6 +253,7 @@ class WorkLogComponent extends React.Component {
             deleteParentalLeaveWorkLog={() => {}}
             deleteSickDayUnpaidWorkLog={() => {}}
             deleteSickDayWorkLog={this.deleteSickDayWorkLog}
+            deleteSpecialLeaveWorkLog={this.deleteSpecialLeaveWorkLog}
             deleteTimeOffWorkLog={this.deleteTimeOffWorkLog}
             deleteVacationWorkLog={this.deleteVacationWorkLog}
             deleteWorkLog={this.deleteWorkLog}
@@ -238,6 +264,7 @@ class WorkLogComponent extends React.Component {
             fetchParentalLeaveWorkLog={this.props.fetchParentalLeaveWorkLog}
             fetchSickDayUnpaidWorkLog={this.props.fetchSickDayUnpaidWorkLog}
             fetchSickDayWorkLog={this.props.fetchSickDayWorkLog}
+            fetchSpecialLeaveWorkLog={this.props.fetchSpecialLeaveWorkLog}
             fetchTimeOffWorkLog={this.props.fetchTimeOffWorkLog}
             fetchVacationWorkLog={this.props.fetchVacationWorkLog}
             fetchWorkLog={this.props.fetchWorkLog}
@@ -251,6 +278,7 @@ class WorkLogComponent extends React.Component {
             selectedDate={this.state.selectedDate}
             sickDayUnpaidWorkLog={this.props.sickDayUnpaidWorkLog}
             sickDayWorkLog={this.props.sickDayWorkLog}
+            specialLeaveWorkLog={this.props.specialLeaveWorkLog}
             timeOffWorkLog={this.props.timeOffWorkLog}
             vacationWorkLog={this.props.vacationWorkLog}
             workHoursList={this.props.workHoursList}
@@ -273,6 +301,7 @@ WorkLogComponent.defaultProps = {
   parentalLeaveWorkLog: null,
   sickDayUnpaidWorkLog: null,
   sickDayWorkLog: null,
+  specialLeaveWorkLog: null,
   timeOffWorkLog: null,
   uid: null,
   vacationWorkLog: null,
@@ -283,6 +312,7 @@ WorkLogComponent.defaultProps = {
 WorkLogComponent.propTypes = {
   addBusinessTripWorkLog: PropTypes.func.isRequired,
   addHomeOfficeWorkLog: PropTypes.func.isRequired,
+  addMultipleSpecialLeaveWorkLog: PropTypes.func.isRequired,
   addMultipleVacationWorkLog: PropTypes.func.isRequired,
   addOvertimeWorkLog: PropTypes.func.isRequired,
   addSickDayWorkLog: PropTypes.func.isRequired,
@@ -303,6 +333,7 @@ WorkLogComponent.propTypes = {
   deleteHomeOfficeWorkLog: PropTypes.func.isRequired,
   deleteOvertimeWorkLog: PropTypes.func.isRequired,
   deleteSickDayWorkLog: PropTypes.func.isRequired,
+  deleteSpecialLeaveWorkLog: PropTypes.func.isRequired,
   deleteTimeOffWorkLog: PropTypes.func.isRequired,
   deleteVacationWorkLog: PropTypes.func.isRequired,
   deleteWorkLog: PropTypes.func.isRequired,
@@ -314,6 +345,7 @@ WorkLogComponent.propTypes = {
   fetchParentalLeaveWorkLog: PropTypes.func.isRequired,
   fetchSickDayUnpaidWorkLog: PropTypes.func.isRequired,
   fetchSickDayWorkLog: PropTypes.func.isRequired,
+  fetchSpecialLeaveWorkLog: PropTypes.func.isRequired,
   fetchTimeOffWorkLog: PropTypes.func.isRequired,
   fetchVacationWorkLog: PropTypes.func.isRequired,
   fetchWorkHoursList: PropTypes.func.isRequired,
@@ -349,6 +381,11 @@ WorkLogComponent.propTypes = {
     childName: PropTypes.string,
     date: PropTypes.object.isRequired,
     variant: PropTypes.string.isRequired,
+  }),
+  specialLeaveWorkLog: ImmutablePropTypes.mapContains({
+    date: PropTypes.object.isRequired,
+    rejectionMessage: PropTypes.string,
+    status: PropTypes.string.isRequired,
   }),
   t: PropTypes.func.isRequired,
   timeOffWorkLog: ImmutablePropTypes.mapContains({

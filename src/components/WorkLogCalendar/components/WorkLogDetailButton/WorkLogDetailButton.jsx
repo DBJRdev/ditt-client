@@ -14,6 +14,7 @@ import {
   PARENTAL_LEAVE_WORK_LOG,
   SICK_DAY_UNPAID_WORK_LOG,
   SICK_DAY_WORK_LOG,
+  SPECIAL_LEAVE_WORK_LOG,
   STATUS_REJECTED,
   STATUS_WAITING_FOR_APPROVAL,
   TIME_OFF_WORK_LOG,
@@ -106,6 +107,10 @@ const WorkLogDetailButton = (props) => {
     }
 
     return createDetailButton(workLog, 'local_hospital');
+  }
+
+  if (workLog.type === SPECIAL_LEAVE_WORK_LOG) {
+    return createDetailButton(workLog, 'location_off');
   }
 
   if (workLog.type === TIME_OFF_WORK_LOG) {

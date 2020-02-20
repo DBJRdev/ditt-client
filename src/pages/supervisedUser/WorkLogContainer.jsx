@@ -43,6 +43,10 @@ import {
   selectSickDayWorkLog,
 } from '../../resources/sickDayWorkLog';
 import {
+  fetchSpecialLeaveWorkLog,
+  selectSpecialLeaveWorkLog,
+} from '../../resources/specialLeaveWorkLog';
+import {
   fetchTimeOffWorkLog,
   selectTimeOffWorkLog,
 } from '../../resources/timeOffWorkLog';
@@ -96,6 +100,7 @@ const mapStateToProps = (state) => {
     parentalLeaveWorkLog: selectParentalLeaveWorkLog(state),
     sickDayUnpaidWorkLog: selectSickDayUnpaidWorkLog(state),
     sickDayWorkLog: selectSickDayWorkLog(state),
+    specialLeaveWorkLog: selectSpecialLeaveWorkLog(state),
     timeOffWorkLog: selectTimeOffWorkLog(state),
     token: selectJwtToken(state),
     vacationWorkLog: selectVacationWorkLog(state),
@@ -127,6 +132,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchParentalLeaveWorkLog: (id) => dispatch(fetchParentalLeaveWorkLog(id)),
   fetchSickDayUnpaidWorkLog: (id) => dispatch(fetchSickDayUnpaidWorkLog(id)),
   fetchSickDayWorkLog: (id) => dispatch(fetchSickDayWorkLog(id)),
+  fetchSpecialLeaveWorkLog: (id) => dispatch(fetchSpecialLeaveWorkLog(id)),
   fetchTimeOffWorkLog: (id) => dispatch(fetchTimeOffWorkLog(id)),
   fetchVacationWorkLog: (id) => dispatch(fetchVacationWorkLog(id)),
   fetchWorkHoursList: (uid) => dispatch(fetchWorkHoursList(uid)),

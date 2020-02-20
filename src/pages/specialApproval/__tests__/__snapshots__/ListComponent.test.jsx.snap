@@ -51,6 +51,7 @@ exports[`rendering renders correctly 1`] = `
     fetchHomeOfficeWorkLog={[Function]}
     fetchOvertimeWorkLog={[Function]}
     fetchSpecialApprovalList={[Function]}
+    fetchSpecialLeaveWorkLog={[Function]}
     fetchTimeOffWorkLog={[Function]}
     fetchVacationWorkLog={[Function]}
     homeOfficeWorkLog={null}
@@ -60,10 +61,14 @@ exports[`rendering renders correctly 1`] = `
     markBusinessTripWorkLogRejected={[Function]}
     markHomeOfficeWorkLogApproved={[Function]}
     markHomeOfficeWorkLogRejected={[Function]}
+    markMultipleSpecialLeaveWorkLogApproved={[Function]}
+    markMultipleSpecialLeaveWorkLogRejected={[Function]}
     markMultipleVacationWorkLogApproved={[Function]}
     markMultipleVacationWorkLogRejected={[Function]}
     markOvertimeWorkLogApproved={[Function]}
     markOvertimeWorkLogRejected={[Function]}
+    markSpecialLeaveWorkLogApproved={[Function]}
+    markSpecialLeaveWorkLogRejected={[Function]}
     markTimeOffWorkLogApproved={[Function]}
     markTimeOffWorkLogRejected={[Function]}
     markVacationWorkLogApproved={[Function]}
@@ -74,10 +79,12 @@ exports[`rendering renders correctly 1`] = `
         "businessTripWorkLogs": Immutable.List [],
         "homeOfficeWorkLogs": Immutable.List [],
         "overtimeWorkLogs": Immutable.List [],
+        "specialLeaveWorkLogs": Immutable.List [],
         "timeOffWorkLogs": Immutable.List [],
         "vacationWorkLogs": Immutable.List [],
       }
     }
+    specialLeaveWorkLog={null}
     t={[Function]}
     timeOffWorkLog={null}
     token="token"

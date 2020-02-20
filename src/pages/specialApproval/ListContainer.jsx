@@ -27,6 +27,15 @@ import {
   selectOvertimeWorkLogMeta,
 } from '../../resources/overtimeWorkLog';
 import {
+  fetchSpecialLeaveWorkLog,
+  markMultipleSpecialLeaveWorkLogApproved,
+  markMultipleSpecialLeaveWorkLogRejected,
+  markSpecialLeaveWorkLogApproved,
+  markSpecialLeaveWorkLogRejected,
+  selectSpecialLeaveWorkLog,
+  selectSpecialLeaveWorkLogMeta,
+} from '../../resources/specialLeaveWorkLog';
+import {
   fetchTimeOffWorkLog,
   markTimeOffWorkLogApproved,
   markTimeOffWorkLogRejected,
@@ -54,6 +63,7 @@ const mapStateToProps = (state) => {
   const configMeta = selectConfigMeta(state);
   const homeOfficeWorkLogMeta = selectHomeOfficeWorkLogMeta(state);
   const overtimeWorkLogMeta = selectOvertimeWorkLogMeta(state);
+  const specialLeaveWorkLogMeta = selectSpecialLeaveWorkLogMeta(state);
   const timeOffWorkLogMeta = selectTimeOffWorkLogMeta(state);
   const vacationWorkLogMeta = selectVacationWorkLogMeta(state);
   const specialApprovalListMeta = selectSpecialApprovalListMeta(state);
@@ -67,10 +77,12 @@ const mapStateToProps = (state) => {
     isPosting: businessTripWorkLogMeta.isPosting
       || homeOfficeWorkLogMeta.isPosting
       || overtimeWorkLogMeta.isPosting
+      || specialLeaveWorkLogMeta.isPosting
       || timeOffWorkLogMeta.isPosting
       || vacationWorkLogMeta.isPosting,
     overtimeWorkLog: selectOvertimeWorkLog(state),
     specialApprovalList: selectSpecialApprovalList(state),
+    specialLeaveWorkLog: selectSpecialLeaveWorkLog(state),
     timeOffWorkLog: selectTimeOffWorkLog(state),
     token: selectJwtToken(state),
     vacationWorkLog: selectVacationWorkLog(state),
@@ -83,6 +95,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchHomeOfficeWorkLog: (id) => dispatch(fetchHomeOfficeWorkLog(id)),
   fetchOvertimeWorkLog: (id) => dispatch(fetchOvertimeWorkLog(id)),
   fetchSpecialApprovalList: (uid) => dispatch(fetchSpecialApprovalList(uid)),
+  fetchSpecialLeaveWorkLog: (id) => dispatch(fetchSpecialLeaveWorkLog(id)),
   fetchTimeOffWorkLog: (id) => dispatch(fetchTimeOffWorkLog(id)),
   fetchVacationWorkLog: (id) => dispatch(fetchVacationWorkLog(id)),
   markBusinessTripWorkLogApproved: (id) => dispatch(markBusinessTripWorkLogApproved(id)),
@@ -91,12 +104,22 @@ const mapDispatchToProps = (dispatch) => ({
   ),
   markHomeOfficeWorkLogApproved: (id) => dispatch(markHomeOfficeWorkLogApproved(id)),
   markHomeOfficeWorkLogRejected: (id, data) => dispatch(markHomeOfficeWorkLogRejected(id, data)),
+  markMultipleSpecialLeaveWorkLogApproved: (ids) => dispatch(
+    markMultipleSpecialLeaveWorkLogApproved(ids),
+  ),
+  markMultipleSpecialLeaveWorkLogRejected: (ids, data) => dispatch(
+    markMultipleSpecialLeaveWorkLogRejected(ids, data),
+  ),
   markMultipleVacationWorkLogApproved: (ids) => dispatch(markMultipleVacationWorkLogApproved(ids)),
   markMultipleVacationWorkLogRejected: (ids, data) => dispatch(
     markMultipleVacationWorkLogRejected(ids, data),
   ),
   markOvertimeWorkLogApproved: (id) => dispatch(markOvertimeWorkLogApproved(id)),
   markOvertimeWorkLogRejected: (id, data) => dispatch(markOvertimeWorkLogRejected(id, data)),
+  markSpecialLeaveWorkLogApproved: (id) => dispatch(markSpecialLeaveWorkLogApproved(id)),
+  markSpecialLeaveWorkLogRejected: (id, data) => dispatch(
+    markSpecialLeaveWorkLogRejected(id, data),
+  ),
   markTimeOffWorkLogApproved: (id) => dispatch(markTimeOffWorkLogApproved(id)),
   markTimeOffWorkLogRejected: (id, data) => dispatch(markTimeOffWorkLogRejected(id, data)),
   markVacationWorkLogApproved: (id) => dispatch(markVacationWorkLogApproved(id)),

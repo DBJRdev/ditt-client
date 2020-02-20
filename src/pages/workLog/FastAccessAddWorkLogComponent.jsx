@@ -10,6 +10,7 @@ import {
   HOME_OFFICE_WORK_LOG,
   OVERTIME_WORK_LOG,
   SICK_DAY_WORK_LOG,
+  SPECIAL_LEAVE_WORK_LOG,
   STATUS_APPROVED,
   STATUS_OPENED,
   STATUS_WAITING_FOR_APPROVAL,
@@ -116,6 +117,13 @@ class FastAccessAddWorkLogComponent extends React.Component {
       }).then(this.handleSaveWorkLog);
     }
 
+    if (SPECIAL_LEAVE_WORK_LOG === data.type) {
+      const workingDays = getWorkingDays(data.date, data.dateTo, this.props.config.get('supportedHolidays'));
+      const workLogs = workingDays.map((workingDay) => ({ date: workingDay }));
+
+      return this.props.addMultipleSpecialLeaveWorkLog(workLogs).then(this.handleSaveWorkLog);
+    }
+
     if (TIME_OFF_WORK_LOG === data.type) {
       return this.props.addTimeOffWorkLog({
         comment: data.comment,
@@ -206,6 +214,7 @@ FastAccessAddWorkLogComponent.defaultProps = {
 FastAccessAddWorkLogComponent.propTypes = {
   addBusinessTripWorkLog: PropTypes.func.isRequired,
   addHomeOfficeWorkLog: PropTypes.func.isRequired,
+  addMultipleSpecialLeaveWorkLog: PropTypes.func.isRequired,
   addMultipleVacationWorkLog: PropTypes.func.isRequired,
   addOvertimeWorkLog: PropTypes.func.isRequired,
   addSickDayWorkLog: PropTypes.func.isRequired,

@@ -192,6 +192,7 @@ class WorkLogComponent extends React.Component {
             addMultipleMaternityProtectionWorkLogs={this.addMultipleMaternityProtectionWorkLogs}
             addMultipleParentalLeaveWorkLogs={this.addMultipleParentalLeaveWorkLogs}
             addMultipleSickDayUnpaidWorkLogs={this.addMultipleSickDayUnpaidWorkLogs}
+            addMultipleSpecialLeaveWorkLog={() => {}}
             addMultipleVacationWorkLog={() => {}}
             addWorkLog={() => {}}
             businessTripWorkLog={this.props.businessTripWorkLog}
@@ -204,6 +205,7 @@ class WorkLogComponent extends React.Component {
             deleteParentalLeaveWorkLog={this.deleteParentalLeaveWorkLogs}
             deleteSickDayUnpaidWorkLog={this.deleteSickDayUnpaidWorkLogs}
             deleteSickDayWorkLog={() => {}}
+            deleteSpecialLeaveWorkLog={() => {}}
             deleteTimeOffWorkLog={() => {}}
             deleteVacationWorkLog={() => {}}
             deleteWorkLog={() => {}}
@@ -214,6 +216,7 @@ class WorkLogComponent extends React.Component {
             fetchParentalLeaveWorkLog={this.props.fetchParentalLeaveWorkLog}
             fetchSickDayUnpaidWorkLog={this.props.fetchSickDayUnpaidWorkLog}
             fetchSickDayWorkLog={this.props.fetchSickDayWorkLog}
+            fetchSpecialLeaveWorkLog={this.props.fetchSpecialLeaveWorkLog}
             fetchTimeOffWorkLog={this.props.fetchTimeOffWorkLog}
             fetchVacationWorkLog={this.props.fetchVacationWorkLog}
             fetchWorkLog={this.props.fetchWorkLog}
@@ -228,6 +231,7 @@ class WorkLogComponent extends React.Component {
             supervisorView
             sickDayUnpaidWorkLog={this.props.sickDayUnpaidWorkLog}
             sickDayWorkLog={this.props.sickDayWorkLog}
+            specialLeaveWorkLog={this.props.specialLeaveWorkLog}
             timeOffWorkLog={this.props.timeOffWorkLog}
             uid={uid}
             vacationWorkLog={this.props.vacationWorkLog}
@@ -251,6 +255,7 @@ WorkLogComponent.defaultProps = {
   parentalLeaveWorkLog: null,
   sickDayUnpaidWorkLog: null,
   sickDayWorkLog: null,
+  specialLeaveWorkLog: null,
   timeOffWorkLog: null,
   vacationWorkLog: null,
   workLog: null,
@@ -283,6 +288,7 @@ WorkLogComponent.propTypes = {
   fetchParentalLeaveWorkLog: PropTypes.func.isRequired,
   fetchSickDayUnpaidWorkLog: PropTypes.func.isRequired,
   fetchSickDayWorkLog: PropTypes.func.isRequired,
+  fetchSpecialLeaveWorkLog: PropTypes.func.isRequired,
   fetchTimeOffWorkLog: PropTypes.func.isRequired,
   fetchVacationWorkLog: PropTypes.func.isRequired,
   fetchWorkHoursList: PropTypes.func.isRequired,
@@ -325,6 +331,11 @@ WorkLogComponent.propTypes = {
     childName: PropTypes.string,
     date: PropTypes.object.isRequired,
     variant: PropTypes.string.isRequired,
+  }),
+  specialLeaveWorkLog: ImmutablePropTypes.mapContains({
+    date: PropTypes.object.isRequired,
+    rejectionMessage: PropTypes.string,
+    status: PropTypes.string.isRequired,
   }),
   t: PropTypes.func.isRequired,
   timeOffWorkLog: ImmutablePropTypes.mapContains({
