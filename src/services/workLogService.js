@@ -93,7 +93,13 @@ export const getTypeLabel = (t, type) => {
   return typeLabel;
 };
 
-export const getWorkedTime = (workLogList, workHours, workedHoursLimits) => {
+export const getWorkedTime = (
+  date,
+  workLogList,
+  workHours,
+  workedHoursLimits,
+  supportedHolidays,
+) => {
   const standardWorkLogs = [];
   const businessTripWorkLogs = [];
   const homeOfficeWorkLogs = [];
@@ -110,6 +116,14 @@ export const getWorkedTime = (workLogList, workHours, workedHoursLimits) => {
 
   // Split work logs into arrays by its type and calculate work time of standard work logs.
   workLogList.forEach((workLog) => {
+    // Filter those work logs that do not match with date
+    if (
+      (workLog.type === WORK_LOG && !workLog.startTime.isSame(date, 'day'))
+      || (workLog.type !== WORK_LOG && !workLog.date.isSame(date, 'day'))
+    ) {
+      return;
+    }
+
     if (workLog.type === WORK_LOG) {
       standardWorkLogs.push(workLog);
 
@@ -213,6 +227,13 @@ export const getWorkedTime = (workLogList, workHours, workedHoursLimits) => {
     workTime = Math.min(workTimeWithoutCorrection, workHours.requiredHours * 3600);
     workTimeWithoutCorrection = workTime;
     breakTime = 0;
+  }
+
+  // Increase times during sundays and public holidays
+  if (includesSameDate(date, supportedHolidays)) {
+    workTime *= 1.35;
+  } else if (date.day() === 0) {
+    workTime *= 1.25;
   }
 
   return {

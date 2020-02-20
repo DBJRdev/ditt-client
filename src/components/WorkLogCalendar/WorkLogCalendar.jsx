@@ -135,12 +135,14 @@ class WorkLogCalendar extends React.Component {
         date: renderingDay.clone(),
         workLogList: workLogListForRenderingDay,
         workTime: getWorkedTime(
+          renderingDay.clone(),
           workLogListForRenderingDay,
           workHoursList.find((
             (workHour) => workHour.get('month') === (renderingDay.clone().month() + 1)
               && workHour.get('year') === renderingDay.clone().year()
           )).toJS(),
           this.props.config.get('workedHoursLimits').toJS(),
+          this.props.config.get('supportedHolidays').toJS(),
         ),
       });
 
