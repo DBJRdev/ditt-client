@@ -33,6 +33,7 @@ describe('rendering', () => {
       fetchParentalLeaveWorkLog: () => {},
       fetchSickDayUnpaidWorkLog: () => {},
       fetchSickDayWorkLog: () => {},
+      fetchSpecialLeaveWorkLog: () => {},
       fetchTimeOffWorkLog: () => {},
       fetchVacationWorkLog: () => {},
       fetchWorkHoursList: () => {},

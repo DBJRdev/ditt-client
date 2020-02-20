@@ -314,6 +314,7 @@
         "parentalLeaveWorkLog": "Elternzeit",
         "sickDayUnpaidWorkLog": "Krank ohne Lohnfortzahlung",
         "sickDayWorkLog": "Kranktag",
+        "specialLeaveWorkLog": "Sonderurlaub",
         "timeOffWorkLog": "Freizeitausgleich",
         "vacationWorkLog": "Urlaub",
         "workLog": "Arbeitzeit"

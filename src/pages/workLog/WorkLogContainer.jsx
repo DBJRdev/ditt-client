@@ -47,6 +47,13 @@ import {
   selectSickDayWorkLogMeta,
 } from '../../resources/sickDayWorkLog';
 import {
+  addMultipleSpecialLeaveWorkLog,
+  deleteSpecialLeaveWorkLog,
+  fetchSpecialLeaveWorkLog,
+  selectSpecialLeaveWorkLog,
+  selectSpecialLeaveWorkLogMeta,
+} from '../../resources/specialLeaveWorkLog';
+import {
   addTimeOffWorkLog,
   deleteTimeOffWorkLog,
   fetchTimeOffWorkLog,
@@ -91,6 +98,7 @@ const mapStateToProps = (state) => {
   const homeOfficeWorkLogMeta = selectHomeOfficeWorkLogMeta(state);
   const overtimeWorkLogMeta = selectOvertimeWorkLogMeta(state);
   const sickDayWorkLogMeta = selectSickDayWorkLogMeta(state);
+  const specialLeaveWorkLogMeta = selectSpecialLeaveWorkLogMeta(state);
   const timeOffWorkLogMeta = selectTimeOffWorkLogMeta(state);
   const vacationWorkLogMeta = selectVacationWorkLogMeta(state);
   const deleteWorkLogMeta = selectDeleteWorkLogMeta(state);
@@ -118,6 +126,7 @@ const mapStateToProps = (state) => {
       || homeOfficeWorkLogMeta.isPosting
       || overtimeWorkLogMeta.isPosting
       || sickDayWorkLogMeta.isPosting
+      || specialLeaveWorkLogMeta.isPosting
       || timeOffWorkLogMeta.isPosting
       || vacationWorkLogMeta.isPosting
       || workMonthMeta.isPosting,
@@ -126,6 +135,7 @@ const mapStateToProps = (state) => {
     parentalLeaveWorkLog: selectParentalLeaveWorkLog(state),
     sickDayUnpaidWorkLog: selectSickDayUnpaidWorkLog(state),
     sickDayWorkLog: selectSickDayWorkLog(state),
+    specialLeaveWorkLog: selectSpecialLeaveWorkLog(state),
     timeOffWorkLog: selectTimeOffWorkLog(state),
     uid: decodedToken ? decodedToken.uid : null,
     vacationWorkLog: selectVacationWorkLog(state),
@@ -139,6 +149,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   addBusinessTripWorkLog: (data) => dispatch(addBusinessTripWorkLog(data)),
   addHomeOfficeWorkLog: (data) => dispatch(addHomeOfficeWorkLog(data)),
+  addMultipleSpecialLeaveWorkLog: (data) => dispatch(addMultipleSpecialLeaveWorkLog(data)),
   addMultipleVacationWorkLog: (data) => dispatch(addMultipleVacationWorkLog(data)),
   addOvertimeWorkLog: (data) => dispatch(addOvertimeWorkLog(data)),
   addSickDayWorkLog: (data) => dispatch(addSickDayWorkLog(data)),
@@ -148,6 +159,7 @@ const mapDispatchToProps = (dispatch) => ({
   deleteHomeOfficeWorkLog: (id) => dispatch(deleteHomeOfficeWorkLog(id)),
   deleteOvertimeWorkLog: (id) => dispatch(deleteOvertimeWorkLog(id)),
   deleteSickDayWorkLog: (id) => dispatch(deleteSickDayWorkLog(id)),
+  deleteSpecialLeaveWorkLog: (id) => dispatch(deleteSpecialLeaveWorkLog(id)),
   deleteTimeOffWorkLog: (id) => dispatch(deleteTimeOffWorkLog(id)),
   deleteVacationWorkLog: (id) => dispatch(deleteVacationWorkLog(id)),
   deleteWorkLog: (id) => dispatch(deleteWorkLog(id)),
@@ -159,6 +171,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchParentalLeaveWorkLog: (id) => dispatch(fetchParentalLeaveWorkLog(id)),
   fetchSickDayUnpaidWorkLog: (id) => dispatch(fetchSickDayUnpaidWorkLog(id)),
   fetchSickDayWorkLog: (id) => dispatch(fetchSickDayWorkLog(id)),
+  fetchSpecialLeaveWorkLog: (id) => dispatch(fetchSpecialLeaveWorkLog(id)),
   fetchTimeOffWorkLog: (id) => dispatch(fetchTimeOffWorkLog(id)),
   fetchVacationWorkLog: (id) => dispatch(fetchVacationWorkLog(id)),
   fetchWorkHoursList: (uid) => dispatch(fetchWorkHoursList(uid)),

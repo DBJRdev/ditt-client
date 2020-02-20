@@ -152,6 +152,12 @@ exports[`rendering renders correctly with all props 1`] = `
                         workMonth:constant.type.sickDayWorkLog
                       </option>
                       <option
+                        id="type__item__SPECIAL_LEAVE_WORK_LOG"
+                        value="SPECIAL_LEAVE_WORK_LOG"
+                      >
+                        workMonth:constant.type.specialLeaveWorkLog
+                      </option>
+                      <option
                         id="type__item__TIME_OFF_WORK_LOG"
                         value="TIME_OFF_WORK_LOG"
                       >
@@ -542,6 +548,12 @@ exports[`rendering renders correctly with mandatory props 1`] = `
                         value="SICK_DAY_WORK_LOG"
                       >
                         workMonth:constant.type.sickDayWorkLog
+                      </option>
+                      <option
+                        id="type__item__SPECIAL_LEAVE_WORK_LOG"
+                        value="SPECIAL_LEAVE_WORK_LOG"
+                      >
+                        workMonth:constant.type.specialLeaveWorkLog
                       </option>
                       <option
                         id="type__item__TIME_OFF_WORK_LOG"

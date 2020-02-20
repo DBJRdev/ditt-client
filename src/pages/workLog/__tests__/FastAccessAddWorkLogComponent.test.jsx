@@ -20,6 +20,7 @@ describe('rendering', () => {
     const props = {
       addBusinessTripWorkLog: () => {},
       addHomeOfficeWorkLog: () => {},
+      addMultipleSpecialLeaveWorkLog: () => {},
       addMultipleVacationWorkLog: () => {},
       addOvertimeWorkLog: () => {},
       addSickDayWorkLog: () => {},
@@ -44,6 +45,7 @@ describe('rendering', () => {
         month: 1,
         overtimeWorkLogs: [],
         sickDayWorkLogs: [],
+        specialLeaveWorkLogs: [],
         status: 'WAITING_FOR_APPROVAL',
         timeOffWorkLogs: [],
         user: {
