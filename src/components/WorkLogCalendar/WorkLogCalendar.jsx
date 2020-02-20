@@ -22,6 +22,7 @@ import {
   PARENTAL_LEAVE_WORK_LOG,
   SICK_DAY_UNPAID_WORK_LOG,
   SICK_DAY_WORK_LOG,
+  SPECIAL_LEAVE_WORK_LOG,
   STATUS_APPROVED,
   STATUS_OPENED,
   STATUS_REJECTED,
@@ -118,6 +119,7 @@ class WorkLogCalendar extends React.Component {
           'parentalLeaveWorkLogs',
           'sickDayWorkLogs',
           'sickDayUnpaidWorkLogs',
+          'specialLeaveWorkLogs',
           'timeOffWorkLogs',
           'vacationWorkLogs',
         ].forEach((key) => {
@@ -173,6 +175,8 @@ class WorkLogCalendar extends React.Component {
       this.props.fetchSickDayUnpaidWorkLog(id);
     } else if (SICK_DAY_WORK_LOG === type) {
       this.props.fetchSickDayWorkLog(id);
+    } else if (SPECIAL_LEAVE_WORK_LOG === type) {
+      this.props.fetchSpecialLeaveWorkLog(id);
     } else if (TIME_OFF_WORK_LOG === type) {
       this.props.fetchTimeOffWorkLog(id);
     } else if (VACATION_WORK_LOG === type) {
@@ -203,6 +207,8 @@ class WorkLogCalendar extends React.Component {
       return this.props.deleteSickDayUnpaidWorkLog(id).then(this.closeDeleteWorkLogDialog);
     } if (SICK_DAY_WORK_LOG === type) {
       return this.props.deleteSickDayWorkLog(id).then(this.closeDeleteWorkLogDialog);
+    } if (SPECIAL_LEAVE_WORK_LOG === type) {
+      return this.props.deleteSpecialLeaveWorkLog(id).then(this.closeDeleteWorkLogDialog);
     } if (TIME_OFF_WORK_LOG === type) {
       return this.props.deleteTimeOffWorkLog(id).then(this.closeDeleteWorkLogDialog);
     } if (VACATION_WORK_LOG === type) {
@@ -273,6 +279,13 @@ class WorkLogCalendar extends React.Component {
         childName: data.childName,
         date: data.date,
         variant: data.variant,
+      });
+    }
+
+    if (SPECIAL_LEAVE_WORK_LOG === data.type) {
+      return this.props.addMultipleSpecialLeaveWorkLog({
+        date: data.date,
+        dateTo: data.dateTo,
       });
     }
 
@@ -347,6 +360,7 @@ class WorkLogCalendar extends React.Component {
         'businessTripWorkLogs',
         'homeOfficeWorkLogs',
         'overtimeWorkLogs',
+        'specialLeaveWorkLogs',
         'timeOffWorkLogs',
         'vacationWorkLogs',
       ].forEach((key) => {
@@ -524,6 +538,7 @@ class WorkLogCalendar extends React.Component {
       parentalLeaveWorkLog,
       sickDayUnpaidWorkLog,
       sickDayWorkLog,
+      specialLeaveWorkLog,
       supervisorView,
       timeOffWorkLog,
       uid,
@@ -554,6 +569,7 @@ class WorkLogCalendar extends React.Component {
         parentalLeaveWorkLog={parentalLeaveWorkLog ? parentalLeaveWorkLog.toJS() : null}
         sickDayUnpaidWorkLog={sickDayUnpaidWorkLog ? sickDayUnpaidWorkLog.toJS() : null}
         sickDayWorkLog={sickDayWorkLog ? sickDayWorkLog.toJS() : null}
+        specialLeaveWorkLog={specialLeaveWorkLog ? specialLeaveWorkLog.toJS() : null}
         timeOffWorkLog={timeOffWorkLog ? timeOffWorkLog.toJS() : null}
         type={showDeleteWorkLogDialogType}
         uid={uid}
@@ -802,6 +818,7 @@ WorkLogCalendar.defaultProps = {
   parentalLeaveWorkLog: null,
   sickDayUnpaidWorkLog: null,
   sickDayWorkLog: null,
+  specialLeaveWorkLog: null,
   supervisorView: false,
   timeOffWorkLog: null,
   uid: null,
@@ -816,6 +833,7 @@ WorkLogCalendar.propTypes = {
   addMultipleMaternityProtectionWorkLogs: PropTypes.func.isRequired,
   addMultipleParentalLeaveWorkLogs: PropTypes.func.isRequired,
   addMultipleSickDayUnpaidWorkLogs: PropTypes.func.isRequired,
+  addMultipleSpecialLeaveWorkLog: PropTypes.func.isRequired,
   addMultipleVacationWorkLog: PropTypes.func.isRequired,
   addOvertimeWorkLog: PropTypes.func.isRequired,
   addSickDayWorkLog: PropTypes.func.isRequired,
@@ -840,6 +858,7 @@ WorkLogCalendar.propTypes = {
   deleteParentalLeaveWorkLog: PropTypes.func.isRequired,
   deleteSickDayUnpaidWorkLog: PropTypes.func.isRequired,
   deleteSickDayWorkLog: PropTypes.func.isRequired,
+  deleteSpecialLeaveWorkLog: PropTypes.func.isRequired,
   deleteTimeOffWorkLog: PropTypes.func.isRequired,
   deleteVacationWorkLog: PropTypes.func.isRequired,
   deleteWorkLog: PropTypes.func.isRequired,
@@ -850,6 +869,7 @@ WorkLogCalendar.propTypes = {
   fetchParentalLeaveWorkLog: PropTypes.func.isRequired,
   fetchSickDayUnpaidWorkLog: PropTypes.func.isRequired,
   fetchSickDayWorkLog: PropTypes.func.isRequired,
+  fetchSpecialLeaveWorkLog: PropTypes.func.isRequired,
   fetchTimeOffWorkLog: PropTypes.func.isRequired,
   fetchVacationWorkLog: PropTypes.func.isRequired,
   fetchWorkLog: PropTypes.func.isRequired,
@@ -886,6 +906,11 @@ WorkLogCalendar.propTypes = {
     childName: PropTypes.string,
     date: PropTypes.object.isRequired,
     variant: PropTypes.string.isRequired,
+  }),
+  specialLeaveWorkLog: ImmutablePropTypes.mapContains({
+    date: PropTypes.object.isRequired,
+    rejectionMessage: PropTypes.string,
+    status: PropTypes.string.isRequired,
   }),
   supervisorView: PropTypes.bool,
   t: PropTypes.func.isRequired,
@@ -958,6 +983,15 @@ WorkLogCalendar.propTypes = {
         VARIANT_SICK_CHILD,
         VARIANT_WITH_NOTE,
         VARIANT_WITHOUT_NOTE,
+      ]).isRequired,
+    })).isRequired,
+    specialLeaveWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+      date: PropTypes.shape.isRequired,
+      id: PropTypes.number.isRequired,
+      status: PropTypes.oneOf([
+        STATUS_APPROVED,
+        STATUS_REJECTED,
+        STATUS_WAITING_FOR_APPROVAL,
       ]).isRequired,
     })).isRequired,
     status: PropTypes.oneOf([

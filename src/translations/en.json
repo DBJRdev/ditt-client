@@ -314,6 +314,7 @@
         "parentalLeaveWorkLog": "Parental leave",
         "sickDayUnpaidWorkLog": "Sick day without sick pay",
         "sickDayWorkLog": "Sick day",
+        "specialLeaveWorkLog": "Special leave",
         "timeOffWorkLog": "Time off",
         "vacationWorkLog": "Vacation",
         "workLog": "Work"

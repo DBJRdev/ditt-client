@@ -7,6 +7,7 @@ import {
   PARENTAL_LEAVE_WORK_LOG,
   SICK_DAY_UNPAID_WORK_LOG,
   SICK_DAY_WORK_LOG,
+  SPECIAL_LEAVE_WORK_LOG,
   TIME_OFF_WORK_LOG,
   VACATION_WORK_LOG,
   WORK_LOG,
@@ -230,6 +231,7 @@ export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay) => 
     HOME_OFFICE_WORK_LOG,
     OVERTIME_WORK_LOG,
     SICK_DAY_WORK_LOG,
+    SPECIAL_LEAVE_WORK_LOG,
     TIME_OFF_WORK_LOG,
     VACATION_WORK_LOG,
     WORK_LOG,
@@ -293,6 +295,34 @@ export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay) => 
         errors.elements.childDateOfBirth = t('general:validation.invalidDate');
         errors.isValid = false;
       }
+    }
+
+    return errors;
+  }
+
+  if (workLog.type === SPECIAL_LEAVE_WORK_LOG) {
+    if (workLog.dateTo === null || validator.isEmpty(workLog.dateTo)) {
+      errors.elements.dateTo = t('general:validation.required');
+      errors.isValid = false;
+
+      return errors;
+    }
+
+    const dateFrom = toMomentDateTimeFromDayMonthYear(workLog.date);
+    let dateTo = null;
+
+    try {
+      dateTo = toMomentDateTimeFromDayMonthYear(workLog.dateTo);
+    } catch (ex) {
+      errors.elements.dateTo = t('general:validation.invalidDate');
+      errors.isValid = false;
+
+      return errors;
+    }
+
+    if (dateTo.isBefore(dateFrom, 'day')) {
+      errors.elements.dateTo = t('general:validation.invalidDate');
+      errors.isValid = false;
     }
 
     return errors;

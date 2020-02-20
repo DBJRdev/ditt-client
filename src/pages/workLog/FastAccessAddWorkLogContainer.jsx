@@ -8,6 +8,7 @@ import {
 import { addHomeOfficeWorkLog } from '../../resources/homeOfficeWorkLog';
 import { addOvertimeWorkLog } from '../../resources/overtimeWorkLog';
 import { addSickDayWorkLog } from '../../resources/sickDayWorkLog';
+import { addMultipleSpecialLeaveWorkLog } from '../../resources/specialLeaveWorkLog';
 import { addTimeOffWorkLog } from '../../resources/timeOffWorkLog';
 import {
   fetchUserByApiToken,
@@ -50,6 +51,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   addBusinessTripWorkLog: (data) => dispatch(addBusinessTripWorkLog(data)),
   addHomeOfficeWorkLog: (data) => dispatch(addHomeOfficeWorkLog(data)),
+  addMultipleSpecialLeaveWorkLog: (data) => dispatch(addMultipleSpecialLeaveWorkLog(data)),
   addMultipleVacationWorkLog: (data) => dispatch(addMultipleVacationWorkLog(data)),
   addOvertimeWorkLog: (data) => dispatch(addOvertimeWorkLog(data)),
   addSickDayWorkLog: (data) => dispatch(addSickDayWorkLog(data)),
