@@ -1,6 +1,7 @@
 import Immutable from 'immutable';
 import { toMomentDateTime } from '../../services/dateTimeService';
 import {
+  BAN_WORK_LOG,
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,
   MATERNITY_PROTECTION_WORK_LOG,
@@ -87,6 +88,13 @@ export default (state, action) => {
   });
 
   const filterWorkMonthDetail = (data) => ({
+    banWorkLogs: data.banWorkLogs
+      .map((banWorkLogsData) => ({
+        date: toMomentDateTime(banWorkLogsData.date),
+        id: parseInt(banWorkLogsData.id, 10),
+        type: BAN_WORK_LOG,
+        workTimeLimit: parseInt(banWorkLogsData.workTimeLimit, 10),
+      })),
     businessTripWorkLogs: data.businessTripWorkLogs.map((businessTripWorkLogsData) => ({
       date: toMomentDateTime(businessTripWorkLogsData.date),
       id: parseInt(businessTripWorkLogsData.id, 10),

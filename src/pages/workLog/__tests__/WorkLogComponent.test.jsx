@@ -35,6 +35,7 @@ describe('rendering', () => {
       deleteTimeOffWorkLog: () => {},
       deleteVacationWorkLog: () => {},
       deleteWorkLog: () => {},
+      fetchBanWorkLog: () => {},
       fetchBusinessTripWorkLog: () => {},
       fetchConfig: () => {},
       fetchHomeOfficeWorkLog: () => {},

@@ -7,6 +7,7 @@ import {
 import { withTranslation } from 'react-i18next';
 import styles from '../../WorkLogCalendar.scss';
 import {
+  BAN_WORK_LOG,
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,
   MATERNITY_PROTECTION_WORK_LOG,
@@ -71,6 +72,31 @@ const WorkLogDetailButton = (props) => {
     resolveLabel(workLogData),
     icon,
   );
+
+  if (workLog.type === BAN_WORK_LOG) {
+    const { workTimeLimit } = workLog;
+    let workTimeLimitText = '0:00';
+
+    if (workTimeLimit !== 0) {
+      const hour = parseInt(workTimeLimit / 3600, 10);
+      const minute = parseInt((workTimeLimit - (hour * 3600)) / 60, 10);
+
+      if (minute === 0) {
+        workTimeLimitText = `${hour}:00`;
+      } else if (minute < 10) {
+        workTimeLimitText = `${hour}:0${minute}`;
+      } else {
+        workTimeLimitText = `${hour}:${minute}`;
+      }
+    }
+
+    return createButton(
+      workLog.type,
+      workLog.id,
+      `${resolveLabel(workLog)} (${workTimeLimitText})`,
+      'block',
+    );
+  }
 
   if (workLog.type === BUSINESS_TRIP_WORK_LOG) {
     return createDetailButton(workLog, 'train');

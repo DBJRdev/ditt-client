@@ -6,6 +6,7 @@ import {
 } from '@react-ui-org/react-ui';
 import { withTranslation } from 'react-i18next';
 import {
+  BAN_WORK_LOG,
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,
   MATERNITY_PROTECTION_WORK_LOG,
@@ -36,6 +37,7 @@ import {
 
 const WorkLogDetailModal = (props) => {
   const {
+    banWorkLog,
     businessTripWorkLog,
     homeOfficeWorkLog,
     isInSupervisorMode,
@@ -59,7 +61,42 @@ const WorkLogDetailModal = (props) => {
 
   let content = t('general:text.loading');
 
-  if (BUSINESS_TRIP_WORK_LOG === type && businessTripWorkLog) {
+  if (BAN_WORK_LOG === type && banWorkLog) {
+    const { workTimeLimit } = banWorkLog;
+    let workTimeLimitText = '0:00';
+
+    if (workTimeLimit !== 0) {
+      const hour = parseInt(workTimeLimit / 3600, 10);
+      const minute = parseInt((workTimeLimit - (hour * 3600)) / 60, 10);
+
+      if (minute === 0) {
+        workTimeLimitText = ` ${hour}:00`;
+      } else if (minute < 10) {
+        workTimeLimitText = ` ${hour}:0${minute}`;
+      } else {
+        workTimeLimitText = ` ${hour}:${minute}`;
+      }
+    }
+
+    content = (
+      <p>
+        {t('workLog:element.type')}
+        {': '}
+        {getTypeLabel(t, type)}
+        <br />
+
+        {t('workLog:element.date')}
+        {': '}
+        {toDayDayMonthYearFormat(banWorkLog.date)}
+        <br />
+
+        {t('banWorkLog:element.workTimeLimit')}
+        {': '}
+        {workTimeLimitText}
+        <br />
+      </p>
+    );
+  } else if (BUSINESS_TRIP_WORK_LOG === type && businessTripWorkLog) {
     content = (
       <p>
         {t('workLog:element.type')}
@@ -378,6 +415,7 @@ const WorkLogDetailModal = (props) => {
       && workMonth.status !== STATUS_APPROVED
     ) || (
       [
+        BAN_WORK_LOG,
         MATERNITY_PROTECTION_WORK_LOG,
         PARENTAL_LEAVE_WORK_LOG,
         SICK_DAY_UNPAID_WORK_LOG,
@@ -408,6 +446,7 @@ const WorkLogDetailModal = (props) => {
 };
 
 WorkLogDetailModal.defaultProps = {
+  banWorkLog: null,
   businessTripWorkLog: null,
   homeOfficeWorkLog: null,
   maternityProtectionWorkLog: null,
@@ -423,6 +462,10 @@ WorkLogDetailModal.defaultProps = {
 };
 
 WorkLogDetailModal.propTypes = {
+  banWorkLog: PropTypes.shape({
+    date: PropTypes.object.isRequired,
+    workTimeLimit: PropTypes.number.isRequired,
+  }),
   businessTripWorkLog: PropTypes.shape({
     date: PropTypes.object.isRequired,
     destination: PropTypes.string.isRequired,

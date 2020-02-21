@@ -237,15 +237,18 @@ class WorkLogComponent extends React.Component {
             addOvertimeWorkLog={this.addOvertimeWorkLog}
             addSickDayWorkLog={this.addSickDayWorkLog}
             addTimeOffWorkLog={this.addTimeOffWorkLog}
+            addMultipleBanWorkLogs={() => {}}
             addMultipleMaternityProtectionWorkLogs={() => {}}
             addMultipleParentalLeaveWorkLogs={() => {}}
             addMultipleSickDayUnpaidWorkLogs={() => {}}
             addMultipleSpecialLeaveWorkLog={this.addMultipleSpecialLeaveWorkLog}
             addMultipleVacationWorkLog={this.addMultipleVacationWorkLog}
             addWorkLog={this.addWorkLog}
+            banWorkLog={this.props.banWorkLog}
             businessTripWorkLog={this.props.businessTripWorkLog}
             changeSelectedDate={this.changeSelectedDate}
             config={this.props.config}
+            deleteBanWorkLog={() => {}}
             deleteBusinessTripWorkLog={this.deleteBusinessTripWorkLog}
             deleteHomeOfficeWorkLog={this.deleteHomeOfficeWorkLog}
             deleteMaternityProtectionWorkLog={() => {}}
@@ -257,6 +260,7 @@ class WorkLogComponent extends React.Component {
             deleteTimeOffWorkLog={this.deleteTimeOffWorkLog}
             deleteVacationWorkLog={this.deleteVacationWorkLog}
             deleteWorkLog={this.deleteWorkLog}
+            fetchBanWorkLog={this.props.fetchBanWorkLog}
             fetchBusinessTripWorkLog={this.props.fetchBusinessTripWorkLog}
             fetchHomeOfficeWorkLog={this.props.fetchHomeOfficeWorkLog}
             fetchMaternityProtectionWorkLog={this.props.fetchMaternityProtectionWorkLog}
@@ -293,6 +297,7 @@ class WorkLogComponent extends React.Component {
 }
 
 WorkLogComponent.defaultProps = {
+  banWorkLog: null,
   businessTripWorkLog: null,
   config: {},
   homeOfficeWorkLog: null,
@@ -318,6 +323,10 @@ WorkLogComponent.propTypes = {
   addSickDayWorkLog: PropTypes.func.isRequired,
   addTimeOffWorkLog: PropTypes.func.isRequired,
   addWorkLog: PropTypes.func.isRequired,
+  banWorkLog: ImmutablePropTypes.mapContains({
+    date: PropTypes.object.isRequired,
+    workTimeLimit: PropTypes.number.isRequired,
+  }),
   businessTripWorkLog: ImmutablePropTypes.mapContains({
     date: PropTypes.object.isRequired,
     destination: PropTypes.string.isRequired,
@@ -337,6 +346,7 @@ WorkLogComponent.propTypes = {
   deleteTimeOffWorkLog: PropTypes.func.isRequired,
   deleteVacationWorkLog: PropTypes.func.isRequired,
   deleteWorkLog: PropTypes.func.isRequired,
+  fetchBanWorkLog: PropTypes.func.isRequired,
   fetchBusinessTripWorkLog: PropTypes.func.isRequired,
   fetchConfig: PropTypes.func.isRequired,
   fetchHomeOfficeWorkLog: PropTypes.func.isRequired,

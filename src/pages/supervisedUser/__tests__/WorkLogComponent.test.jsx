@@ -18,13 +18,16 @@ afterEach(() => {
 describe('rendering', () => {
   it('renders correctly', () => {
     const props = {
+      addMultipleBanWorkLogs: () => {},
       addMultipleMaternityProtectionWorkLogs: () => {},
       addMultipleParentalLeaveWorkLogs: () => {},
       addMultipleSickDayUnpaidWorkLogs: () => {},
       config: configMock,
+      deleteBanWorkLog: () => {},
       deleteMaternityProtectionWorkLog: () => {},
       deleteParentalLeaveWorkLog: () => {},
       deleteSickDayUnpaidWorkLog: () => {},
+      fetchBanWorkLog: () => {},
       fetchBusinessTripWorkLog: () => {},
       fetchConfig: () => {},
       fetchHomeOfficeWorkLog: () => {},

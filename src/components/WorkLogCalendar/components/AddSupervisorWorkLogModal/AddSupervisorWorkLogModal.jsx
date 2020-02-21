@@ -11,6 +11,7 @@ import {
 } from '@react-ui-org/react-ui';
 import { withTranslation } from 'react-i18next';
 import {
+  BAN_WORK_LOG,
   MATERNITY_PROTECTION_WORK_LOG,
   PARENTAL_LEAVE_WORK_LOG,
   SICK_DAY_UNPAID_WORK_LOG,
@@ -30,6 +31,8 @@ class AddSupervisorWorkLogModal extends React.Component {
       formData: {
         date: toDayMonthYearFormat(props.date),
         dateTo: toDayMonthYearFormat(props.date),
+        hour: '0',
+        minute: '00',
         type: SICK_DAY_UNPAID_WORK_LOG,
       },
       formValidity: {
@@ -37,6 +40,8 @@ class AddSupervisorWorkLogModal extends React.Component {
           date: null,
           dateTo: null,
           form: null,
+          hour: null,
+          minute: null,
           type: null,
         },
         isValid: false,
@@ -69,10 +74,14 @@ class AddSupervisorWorkLogModal extends React.Component {
     this.setState({ formValidity });
 
     if (formValidity.isValid) {
+      const workTimeLimit = (parseInt(formData.hour, 10) * 3600)
+        + (parseInt(formData.minute, 10) * 60);
+
       onSave({
         date: toMomentDateTimeFromDayMonthYear(formData.date),
         dateTo: toMomentDateTimeFromDayMonthYear(formData.dateTo),
         type: formData.type,
+        workTimeLimit,
       })
         .then((response) => {
           if (response.type.endsWith('WORK_LOG_FAILURE')) {
@@ -126,6 +135,10 @@ class AddSupervisorWorkLogModal extends React.Component {
                   label={t('workLog:element.type')}
                   options={[
                     {
+                      label: t('workMonth:constant.type.banWorkLog'),
+                      value: BAN_WORK_LOG,
+                    },
+                    {
                       label: t('workMonth:constant.type.maternityProtectionWorkLog'),
                       value: MATERNITY_PROTECTION_WORK_LOG,
                     },
@@ -163,6 +176,44 @@ class AddSupervisorWorkLogModal extends React.Component {
                   validationState={formValidity.elements.dateTo ? 'invalid' : null}
                 />
               </ListItem>
+              {formData.type === BAN_WORK_LOG && (
+                <ListItem>
+                  <div className="mb-1">
+                    {t('banWorkLog:element.workTimeLimit')}
+                  </div>
+                  <div>
+                    <div className={styles.fieldDate}>
+                      <TextField
+                        autoFocus
+                        changeHandler={this.changeHandler}
+                        helperText={formValidity.elements.hour}
+                        id="hour"
+                        inputSize={2}
+                        isLabelVisible={false}
+                        label={t('workMonth:element.hours')}
+                        required
+                        value={formData.hour || ''}
+                        validationState={formValidity.elements.hour ? 'invalid' : null}
+                      />
+                    </div>
+                    <span className={styles.colon}>:</span>
+                    <div className={styles.fieldDate}>
+                      <TextField
+                        changeHandler={this.changeHandler}
+                        helperText={formValidity.elements.minute}
+                        id="minute"
+                        inputSize={2}
+                        isLabelVisible={false}
+                        label={t('workMonth:element.minutes')}
+                        required
+                        value={formData.minute || ''}
+                        validationState={formValidity.elements.minute ? 'invalid' : null}
+                      />
+                    </div>
+                    &nbsp;h
+                  </div>
+                </ListItem>
+              )}
             </List>
           </div>
         </form>

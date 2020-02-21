@@ -3,6 +3,19 @@
   color: #a32100;
 }
 
+.fieldDate {
+  display: inline-block;
+}
+
+.fieldDate input {
+  text-align: center;
+}
+
+.colon {
+  margin-right: 0.25rem;
+  margin-left: 0.25rem;
+}
+
 .centeredLayout {
   display: flex;
   align-items: center;

@@ -1,5 +1,6 @@
 import validator from 'validator';
 import {
+  BAN_WORK_LOG,
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,
   MATERNITY_PROTECTION_WORK_LOG,
@@ -461,12 +462,15 @@ export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay) => 
   return errors;
 };
 
-export const validateSupervisorWorkLog = (t, workLog) => {
+export const validateSupervisorWorkLog = (t, workLogAttr) => {
+  const workLog = { ...workLogAttr };
   const errors = {
     elements: {
       date: null,
       dateTo: null,
       form: null,
+      hour: null,
+      minute: null,
       type: null,
     },
     isValid: true,
@@ -475,6 +479,7 @@ export const validateSupervisorWorkLog = (t, workLog) => {
   // Check if current type of supervisor work log is supported
 
   if ([
+    BAN_WORK_LOG,
     MATERNITY_PROTECTION_WORK_LOG,
     PARENTAL_LEAVE_WORK_LOG,
     SICK_DAY_UNPAID_WORK_LOG,
@@ -527,6 +532,40 @@ export const validateSupervisorWorkLog = (t, workLog) => {
     errors.isValid = false;
 
     return errors;
+  }
+
+  if (workLog.type === BAN_WORK_LOG) {
+    const requiredCheck = [
+      'hour',
+      'minute',
+    ];
+
+    requiredCheck.forEach((element) => {
+      if (
+        workLog[element] === null
+        || validator.isEmpty(workLog[element].toString())
+        || !validator.isNumeric(workLog[element].toString())
+      ) {
+        errors.elements[element] = t('general:validation.invalidNumber');
+        errors.isValid = false;
+      }
+
+      workLog[element] = parseInt(workLog[element], 10);
+    });
+
+    if (!errors.isValid) {
+      return errors;
+    }
+
+    if (workLog.hour < 0 || workLog.hour > 23) {
+      errors.elements.hour = t('workLog:validation.invalidHour');
+      errors.isValid = false;
+    }
+
+    if (workLog.minute < 0 || workLog.minute > 59) {
+      errors.elements.minute = t('workLog:validation.invalidMinute');
+      errors.isValid = false;
+    }
   }
 
   return errors;

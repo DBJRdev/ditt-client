@@ -9,6 +9,7 @@ export {
 } from './actions';
 
 export {
+  BAN_WORK_LOG,
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,
   MATERNITY_PROTECTION_WORK_LOG,

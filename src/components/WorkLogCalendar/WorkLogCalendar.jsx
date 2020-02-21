@@ -15,6 +15,7 @@ import {
   VARIANT_WITHOUT_NOTE,
 } from '../../resources/sickDayWorkLog';
 import {
+  BAN_WORK_LOG,
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,
   MATERNITY_PROTECTION_WORK_LOG,
@@ -119,6 +120,7 @@ class WorkLogCalendar extends React.Component {
       if (workMonth) {
         [
           'workLogs',
+          'banWorkLogs',
           'businessTripWorkLogs',
           'homeOfficeWorkLogs',
           'maternityProtectionWorkLogs',
@@ -170,7 +172,9 @@ class WorkLogCalendar extends React.Component {
   openDeleteWorkLogDialog(e, id, type) {
     e.stopPropagation();
 
-    if (BUSINESS_TRIP_WORK_LOG === type) {
+    if (BAN_WORK_LOG === type) {
+      this.props.fetchBanWorkLog(id);
+    } else if (BUSINESS_TRIP_WORK_LOG === type) {
       this.props.fetchBusinessTripWorkLog(id);
     } else if (HOME_OFFICE_WORK_LOG === type) {
       this.props.fetchHomeOfficeWorkLog(id);
@@ -202,7 +206,9 @@ class WorkLogCalendar extends React.Component {
   }
 
   deleteWorkLog(id, type) {
-    if (BUSINESS_TRIP_WORK_LOG === type) {
+    if (BAN_WORK_LOG === type) {
+      return this.props.deleteBanWorkLog(id).then(this.closeDeleteWorkLogDialog);
+    } if (BUSINESS_TRIP_WORK_LOG === type) {
       return this.props.deleteBusinessTripWorkLog(id).then(this.closeDeleteWorkLogDialog);
     } if (HOME_OFFICE_WORK_LOG === type) {
       return this.props.deleteHomeOfficeWorkLog(id).then(this.closeDeleteWorkLogDialog);
@@ -330,6 +336,7 @@ class WorkLogCalendar extends React.Component {
 
   saveSupervisorWorkLogForm(data) {
     const {
+      addMultipleBanWorkLogs,
       addMultipleMaternityProtectionWorkLogs,
       addMultipleParentalLeaveWorkLogs,
       addMultipleSickDayUnpaidWorkLogs,
@@ -343,6 +350,13 @@ class WorkLogCalendar extends React.Component {
         id: workMonth.get('user').get('id'),
       },
     };
+
+    if (BAN_WORK_LOG === data.type) {
+      return addMultipleBanWorkLogs({
+        ...requestData,
+        workTimeLimit: data.workTimeLimit,
+      });
+    }
 
     if (MATERNITY_PROTECTION_WORK_LOG === data.type) {
       return addMultipleMaternityProtectionWorkLogs(requestData);
@@ -594,6 +608,7 @@ class WorkLogCalendar extends React.Component {
 
   renderDeleteWorkLogModal() {
     const {
+      banWorkLog,
       businessTripWorkLog,
       homeOfficeWorkLog,
       isPosting,
@@ -617,6 +632,7 @@ class WorkLogCalendar extends React.Component {
 
     return (
       <WorkLogDetailModal
+        banWorkLog={banWorkLog ? banWorkLog.toJS() : null}
         businessTripWorkLog={businessTripWorkLog ? businessTripWorkLog.toJS() : null}
         homeOfficeWorkLog={homeOfficeWorkLog ? homeOfficeWorkLog.toJS() : null}
         isInSupervisorMode={supervisorView}
@@ -890,6 +906,7 @@ class WorkLogCalendar extends React.Component {
 }
 
 WorkLogCalendar.defaultProps = {
+  banWorkLog: null,
   businessTripWorkLog: null,
   config: {},
   homeOfficeWorkLog: null,
@@ -911,6 +928,7 @@ WorkLogCalendar.defaultProps = {
 WorkLogCalendar.propTypes = {
   addBusinessTripWorkLog: PropTypes.func.isRequired,
   addHomeOfficeWorkLog: PropTypes.func.isRequired,
+  addMultipleBanWorkLogs: PropTypes.func.isRequired,
   addMultipleMaternityProtectionWorkLogs: PropTypes.func.isRequired,
   addMultipleParentalLeaveWorkLogs: PropTypes.func.isRequired,
   addMultipleSickDayUnpaidWorkLogs: PropTypes.func.isRequired,
@@ -920,6 +938,10 @@ WorkLogCalendar.propTypes = {
   addSickDayWorkLog: PropTypes.func.isRequired,
   addTimeOffWorkLog: PropTypes.func.isRequired,
   addWorkLog: PropTypes.func.isRequired,
+  banWorkLog: ImmutablePropTypes.mapContains({
+    date: PropTypes.object.isRequired,
+    workTimeLimit: PropTypes.number.isRequired,
+  }),
   businessTripWorkLog: ImmutablePropTypes.mapContains({
     date: PropTypes.object.isRequired,
     destination: PropTypes.string.isRequired,
@@ -932,6 +954,7 @@ WorkLogCalendar.propTypes = {
   }),
   changeSelectedDate: PropTypes.func.isRequired,
   config: ImmutablePropTypes.mapContains({}),
+  deleteBanWorkLog: PropTypes.func.isRequired,
   deleteBusinessTripWorkLog: PropTypes.func.isRequired,
   deleteHomeOfficeWorkLog: PropTypes.func.isRequired,
   deleteMaternityProtectionWorkLog: PropTypes.func.isRequired,
@@ -943,6 +966,7 @@ WorkLogCalendar.propTypes = {
   deleteTimeOffWorkLog: PropTypes.func.isRequired,
   deleteVacationWorkLog: PropTypes.func.isRequired,
   deleteWorkLog: PropTypes.func.isRequired,
+  fetchBanWorkLog: PropTypes.func.isRequired,
   fetchBusinessTripWorkLog: PropTypes.func.isRequired,
   fetchHomeOfficeWorkLog: PropTypes.func.isRequired,
   fetchMaternityProtectionWorkLog: PropTypes.func.isRequired,
@@ -1017,6 +1041,11 @@ WorkLogCalendar.propTypes = {
     startTime: PropTypes.object.isRequired,
   }),
   workMonth: ImmutablePropTypes.mapContains({
+    banWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+      date: PropTypes.shape.isRequired,
+      id: PropTypes.number.isRequired,
+      workTimeLimit: PropTypes.number.isRequired,
+    })).isRequired,
     businessTripWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
       date: PropTypes.shape.isRequired,
       id: PropTypes.number.isRequired,

@@ -2,6 +2,10 @@ import { connect } from 'react-redux';
 import jwt from 'jsonwebtoken';
 import { selectJwtToken } from '../../resources/auth';
 import {
+  fetchBanWorkLog,
+  selectBanWorkLog,
+} from '../../resources/banWorkLog';
+import {
   addBusinessTripWorkLog,
   deleteBusinessTripWorkLog,
   fetchBusinessTripWorkLog,
@@ -113,6 +117,7 @@ const mapStateToProps = (state) => {
   }
 
   return ({
+    banWorkLog: selectBanWorkLog(state),
     businessTripWorkLog: selectBusinessTripWorkLog(state),
     config: selectConfig(state),
     homeOfficeWorkLog: selectHomeOfficeWorkLog(state),
@@ -163,6 +168,7 @@ const mapDispatchToProps = (dispatch) => ({
   deleteTimeOffWorkLog: (id) => dispatch(deleteTimeOffWorkLog(id)),
   deleteVacationWorkLog: (id) => dispatch(deleteVacationWorkLog(id)),
   deleteWorkLog: (id) => dispatch(deleteWorkLog(id)),
+  fetchBanWorkLog: (id) => dispatch(fetchBanWorkLog(id)),
   fetchBusinessTripWorkLog: (id) => dispatch(fetchBusinessTripWorkLog(id)),
   fetchConfig: () => dispatch(fetchConfig()),
   fetchHomeOfficeWorkLog: (id) => dispatch(fetchHomeOfficeWorkLog(id)),

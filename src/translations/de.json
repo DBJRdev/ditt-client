@@ -1,4 +1,9 @@
 {
+  "banWorkLog": {
+    "element": {
+      "workTimeLimit": "Arbeitszeitbeschränkung"
+    }
+  },
   "businessTripWorkLog": {
     "element": {
       "purpose": "Zweck",
@@ -312,6 +317,7 @@
         "waitingForApproval": "Warte auf Freigabe"
       },
       "type": {
+        "banWorkLog": "Beschäftigungsverbot",
         "businessTripWorkLog": "Dienstreise",
         "homeOfficeWorkLog": "Mobile Arbeit",
         "maternityProtectionWorkLog": "Mutterschutz",

@@ -1,6 +1,13 @@
 import { connect } from 'react-redux';
 import { selectJwtToken } from '../../resources/auth';
 import {
+  addMultipleBanWorkLogs,
+  deleteBanWorkLog,
+  fetchBanWorkLog,
+  selectBanWorkLog,
+  selectBanWorkLogMeta,
+} from '../../resources/banWorkLog';
+import {
   fetchBusinessTripWorkLog,
   selectBusinessTripWorkLog,
 } from '../../resources/businessTripWorkLog';
@@ -77,6 +84,7 @@ import WorkLogComponent from './WorkLogComponent';
 
 const mapStateToProps = (state) => {
   const configMeta = selectConfigMeta(state);
+  const banWorkLogMeta = selectBanWorkLogMeta(state);
   const maternityProtectionWorkLogMeta = selectMaternityProtectionWorkLogMeta(state);
   const parentalLeaveWorkLogMeta = selectParentalLeaveWorkLogMeta(state);
   const sickDayUnpaidWorkLogMeta = selectSickDayUnpaidWorkLogMeta(state);
@@ -85,6 +93,7 @@ const mapStateToProps = (state) => {
   const workMonthMeta = selectWorkMonthMeta(state);
 
   return ({
+    banWorkLog: selectBanWorkLog(state),
     businessTripWorkLog: selectBusinessTripWorkLog(state),
     config: selectConfig(state),
     homeOfficeWorkLog: selectHomeOfficeWorkLog(state),
@@ -93,6 +102,7 @@ const mapStateToProps = (state) => {
       || workMonthListMeta.isFetching
       || workMonthMeta.isFetching,
     isPosting: workMonthMeta.isPosting
+      || banWorkLogMeta.isPosting
       || maternityProtectionWorkLogMeta.isPosting
       || parentalLeaveWorkLogMeta.isPosting
       || sickDayUnpaidWorkLogMeta.isPosting,
@@ -113,6 +123,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
+  addMultipleBanWorkLogs: (data) => dispatch(
+    addMultipleBanWorkLogs(data),
+  ),
   addMultipleMaternityProtectionWorkLogs: (data) => dispatch(
     addMultipleMaternityProtectionWorkLogs(data),
   ),
@@ -122,9 +135,11 @@ const mapDispatchToProps = (dispatch) => ({
   addMultipleSickDayUnpaidWorkLogs: (data) => dispatch(
     addMultipleSickDayUnpaidWorkLogs(data),
   ),
+  deleteBanWorkLog: (id) => dispatch(deleteBanWorkLog(id)),
   deleteMaternityProtectionWorkLog: (id) => dispatch(deleteMaternityProtectionWorkLog(id)),
   deleteParentalLeaveWorkLog: (id) => dispatch(deleteParentalLeaveWorkLog(id)),
   deleteSickDayUnpaidWorkLog: (id) => dispatch(deleteSickDayUnpaidWorkLog(id)),
+  fetchBanWorkLog: (id) => dispatch(fetchBanWorkLog(id)),
   fetchBusinessTripWorkLog: (id) => dispatch(fetchBusinessTripWorkLog(id)),
   fetchConfig: () => dispatch(fetchConfig()),
   fetchHomeOfficeWorkLog: (id) => dispatch(fetchHomeOfficeWorkLog(id)),
