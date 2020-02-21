@@ -1,6 +1,7 @@
 import Immutable from 'immutable';
 import moment from 'moment';
 import {
+  BAN_WORK_LOG,
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,
   MATERNITY_PROTECTION_WORK_LOG,
@@ -64,7 +65,9 @@ export const getStatusLabel = (t, status) => {
 export const getTypeLabel = (t, type) => {
   let typeLabel = '';
 
-  if (BUSINESS_TRIP_WORK_LOG === type) {
+  if (BAN_WORK_LOG === type) {
+    typeLabel = t('workMonth:constant.type.banWorkLog');
+  } else if (BUSINESS_TRIP_WORK_LOG === type) {
     typeLabel = t('workMonth:constant.type.businessTripWorkLog');
   } else if (HOME_OFFICE_WORK_LOG === type) {
     typeLabel = t('workMonth:constant.type.homeOfficeWorkLog');

@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux-immutable';
 import { reducer as authReducer } from './resources/auth';
+import { reducer as banWorkLogReducer } from './resources/banWorkLog';
 import { reducer as businessTripWorkLogReducer } from './resources/businessTripWorkLog';
 import { reducer as configReducer } from './resources/config';
 import { reducer as homeOfficeWorkLogReducer } from './resources/homeOfficeWorkLog';
@@ -19,6 +20,7 @@ import { reducer as workMonthReducer } from './resources/workMonth';
 
 const appReducers = combineReducers({
   auth: authReducer,
+  banWorkLog: banWorkLogReducer,
   businessTripWorkLog: businessTripWorkLogReducer,
   config: configReducer,
   homeOfficeWorkLog: homeOfficeWorkLogReducer,

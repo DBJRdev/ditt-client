@@ -1,4 +1,9 @@
 {
+  "banWorkLog": {
+    "element": {
+      "workTimeLimit": "Work time limit"
+    }
+  },
   "businessTripWorkLog": {
     "element": {
       "purpose": "Purpose",
@@ -312,6 +317,7 @@
         "waitingForApproval": "Waiting for approval"
       },
       "type": {
+        "banWorkLog": "Ban on working",
         "businessTripWorkLog": "Business trip",
         "homeOfficeWorkLog": "Home office",
         "maternityProtectionWorkLog": "Maternity protection",

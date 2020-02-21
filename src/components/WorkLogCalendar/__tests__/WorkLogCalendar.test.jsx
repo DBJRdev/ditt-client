@@ -26,6 +26,7 @@ describe('rendering', () => {
     const tree = shallow(<WorkLogCalendar
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
+      addMultipleBanWorkLogs={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
       addMultipleSickDayUnpaidWorkLogs={() => {}}
@@ -36,6 +37,7 @@ describe('rendering', () => {
       addTimeOffWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
+      deleteBanWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
       deleteMaternityProtectionWorkLog={() => {}}
@@ -47,6 +49,7 @@ describe('rendering', () => {
       deleteSpecialLeaveWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      fetchBanWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
       fetchMaternityProtectionWorkLog={() => {}}
@@ -83,6 +86,7 @@ describe('rendering', () => {
       ])}
       workMonth={
         Immutable.fromJS({
+          banWorkLogs: [],
           businessTripWorkLogs: [],
           homeOfficeWorkLogs: [],
           id: 2,
@@ -144,6 +148,7 @@ describe('rendering', () => {
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addMultipleBanWorkLogs={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
       addMultipleSickDayUnpaidWorkLogs={() => {}}
@@ -151,6 +156,7 @@ describe('rendering', () => {
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
+      deleteBanWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
       deleteMaternityProtectionWorkLog={() => {}}
@@ -162,6 +168,7 @@ describe('rendering', () => {
       deleteSpecialLeaveWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      fetchBanWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
       fetchMaternityProtectionWorkLog={() => {}}
@@ -198,6 +205,7 @@ describe('rendering', () => {
       ])}
       workMonth={
         Immutable.fromJS({
+          banWorkLogs: [],
           businessTripWorkLogs: [],
           homeOfficeWorkLogs: [],
           id: 2,
@@ -259,6 +267,7 @@ describe('rendering', () => {
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addMultipleBanWorkLogs={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
       addMultipleSickDayUnpaidWorkLogs={() => {}}
@@ -266,6 +275,7 @@ describe('rendering', () => {
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
+      deleteBanWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
       deleteMaternityProtectionWorkLog={() => {}}
@@ -277,6 +287,7 @@ describe('rendering', () => {
       deleteSpecialLeaveWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      fetchBanWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
       fetchMaternityProtectionWorkLog={() => {}}
@@ -313,6 +324,7 @@ describe('rendering', () => {
       ])}
       workMonth={
         Immutable.fromJS({
+          banWorkLogs: [],
           businessTripWorkLogs: [],
           homeOfficeWorkLogs: [],
           id: 2,
@@ -374,6 +386,7 @@ describe('rendering', () => {
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addMultipleBanWorkLogs={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
       addMultipleSickDayUnpaidWorkLogs={() => {}}
@@ -381,6 +394,7 @@ describe('rendering', () => {
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
+      deleteBanWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
       deleteMaternityProtectionWorkLog={() => {}}
@@ -392,6 +406,7 @@ describe('rendering', () => {
       deleteSpecialLeaveWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      fetchBanWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
       fetchMaternityProtectionWorkLog={() => {}}
@@ -429,6 +444,7 @@ describe('rendering', () => {
       ])}
       workMonth={
         Immutable.fromJS({
+          banWorkLogs: [],
           businessTripWorkLogs: [],
           homeOfficeWorkLogs: [],
           id: 2,
@@ -490,6 +506,7 @@ describe('rendering', () => {
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addMultipleBanWorkLogs={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
       addMultipleSickDayUnpaidWorkLogs={() => {}}
@@ -497,6 +514,7 @@ describe('rendering', () => {
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
+      deleteBanWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
       deleteMaternityProtectionWorkLog={() => {}}
@@ -508,6 +526,7 @@ describe('rendering', () => {
       deleteSpecialLeaveWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      fetchBanWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
       fetchMaternityProtectionWorkLog={() => {}}
@@ -545,6 +564,7 @@ describe('rendering', () => {
       ])}
       workMonth={
         Immutable.fromJS({
+          banWorkLogs: [],
           businessTripWorkLogs: [],
           homeOfficeWorkLogs: [],
           id: 2,
@@ -606,6 +626,7 @@ describe('rendering', () => {
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addMultipleBanWorkLogs={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
       addMultipleSickDayUnpaidWorkLogs={() => {}}
@@ -613,6 +634,7 @@ describe('rendering', () => {
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
+      deleteBanWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
       deleteMaternityProtectionWorkLog={() => {}}
@@ -624,6 +646,7 @@ describe('rendering', () => {
       deleteSpecialLeaveWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      fetchBanWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
       fetchMaternityProtectionWorkLog={() => {}}
@@ -661,6 +684,7 @@ describe('rendering', () => {
       ])}
       workMonth={
         Immutable.fromJS({
+          banWorkLogs: [],
           businessTripWorkLogs: [],
           homeOfficeWorkLogs: [],
           id: 2,
@@ -725,6 +749,7 @@ describe('functionality', () => {
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addMultipleBanWorkLogs={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
       addMultipleSickDayUnpaidWorkLogs={() => {}}
@@ -732,6 +757,7 @@ describe('functionality', () => {
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
+      deleteBanWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
       deleteMaternityProtectionWorkLog={() => {}}
@@ -743,6 +769,7 @@ describe('functionality', () => {
       deleteSpecialLeaveWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      fetchBanWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
       fetchMaternityProtectionWorkLog={() => {}}
@@ -779,6 +806,7 @@ describe('functionality', () => {
       ])}
       workMonth={
         Immutable.fromJS({
+          banWorkLogs: [],
           businessTripWorkLogs: [],
           homeOfficeWorkLogs: [],
           id: 2,
@@ -845,6 +873,7 @@ describe('functionality', () => {
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addMultipleBanWorkLogs={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
       addMultipleSickDayUnpaidWorkLogs={() => {}}
@@ -852,6 +881,7 @@ describe('functionality', () => {
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
+      deleteBanWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
       deleteMaternityProtectionWorkLog={() => {}}
@@ -863,6 +893,7 @@ describe('functionality', () => {
       deleteSpecialLeaveWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      fetchBanWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
       fetchMaternityProtectionWorkLog={() => {}}
@@ -899,6 +930,7 @@ describe('functionality', () => {
       ])}
       workMonth={
         Immutable.fromJS({
+          banWorkLogs: [],
           businessTripWorkLogs: [],
           homeOfficeWorkLogs: [],
           id: 2,
@@ -965,6 +997,7 @@ describe('functionality', () => {
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addMultipleBanWorkLogs={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
       addMultipleSickDayUnpaidWorkLogs={() => {}}
@@ -972,6 +1005,7 @@ describe('functionality', () => {
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
+      deleteBanWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
       deleteMaternityProtectionWorkLog={() => {}}
@@ -983,6 +1017,7 @@ describe('functionality', () => {
       deleteSpecialLeaveWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      fetchBanWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
       fetchMaternityProtectionWorkLog={() => {}}
@@ -1019,6 +1054,7 @@ describe('functionality', () => {
       ])}
       workMonth={
         Immutable.fromJS({
+          banWorkLogs: [],
           businessTripWorkLogs: [],
           homeOfficeWorkLogs: [],
           id: 2,
@@ -1083,6 +1119,7 @@ describe('functionality', () => {
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addMultipleBanWorkLogs={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
       addMultipleSickDayUnpaidWorkLogs={() => {}}
@@ -1090,6 +1127,7 @@ describe('functionality', () => {
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
+      deleteBanWorkLog={() => {}}
       deleteBusinessTripWorkLog={() => {}}
       deleteHomeOfficeWorkLog={() => {}}
       deleteMaternityProtectionWorkLog={() => {}}
@@ -1101,6 +1139,7 @@ describe('functionality', () => {
       deleteSpecialLeaveWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      fetchBanWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
       fetchMaternityProtectionWorkLog={() => {}}
@@ -1138,6 +1177,7 @@ describe('functionality', () => {
       ])}
       workMonth={
         Immutable.fromJS({
+          banWorkLogs: [],
           businessTripWorkLogs: [],
           homeOfficeWorkLogs: [],
           id: 2,

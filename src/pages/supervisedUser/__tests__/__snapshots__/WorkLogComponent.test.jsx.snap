@@ -8,6 +8,7 @@ exports[`rendering renders correctly 1`] = `
   <WorkLogCalendar
     addBusinessTripWorkLog={[Function]}
     addHomeOfficeWorkLog={[Function]}
+    addMultipleBanWorkLogs={[Function]}
     addMultipleMaternityProtectionWorkLogs={[Function]}
     addMultipleParentalLeaveWorkLogs={[Function]}
     addMultipleSickDayUnpaidWorkLogs={[Function]}
@@ -17,6 +18,7 @@ exports[`rendering renders correctly 1`] = `
     addSickDayWorkLog={[Function]}
     addTimeOffWorkLog={[Function]}
     addWorkLog={[Function]}
+    banWorkLog={null}
     businessTripWorkLog={null}
     changeSelectedDate={[Function]}
     config={
@@ -46,6 +48,7 @@ exports[`rendering renders correctly 1`] = `
         },
       }
     }
+    deleteBanWorkLog={[Function]}
     deleteBusinessTripWorkLog={[Function]}
     deleteHomeOfficeWorkLog={[Function]}
     deleteMaternityProtectionWorkLog={[Function]}
@@ -57,6 +60,7 @@ exports[`rendering renders correctly 1`] = `
     deleteTimeOffWorkLog={[Function]}
     deleteVacationWorkLog={[Function]}
     deleteWorkLog={[Function]}
+    fetchBanWorkLog={[Function]}
     fetchBusinessTripWorkLog={[Function]}
     fetchHomeOfficeWorkLog={[Function]}
     fetchMaternityProtectionWorkLog={[Function]}
