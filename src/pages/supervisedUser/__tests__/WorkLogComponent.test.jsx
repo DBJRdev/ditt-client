@@ -51,6 +51,7 @@ describe('rendering', () => {
           id: '1',
         },
       },
+      setWorkTimeCorrection: () => {},
       token: 'token',
       workHoursList: Immutable.List(),
       workMonth: null,

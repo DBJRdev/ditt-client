@@ -1098,6 +1098,27 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
     workLog:text.openedWorkMonth
   </p>
   <div
+    className="tableToolbar"
+  >
+    <s
+      afterLabel={null}
+      beforeLabel={null}
+      block={false}
+      clickHandler={[Function]}
+      disabled={false}
+      endCorner={null}
+      grouped={false}
+      label="workMonth:actions.setWorkTimeCorrection"
+      labelVisibility="all"
+      loadingIcon={null}
+      priority="default"
+      size="medium"
+      startCorner={null}
+      type="button"
+      variant="primary"
+    />
+  </div>
+  <div
     className="tableWrapper"
   >
     <table
@@ -3096,6 +3117,27 @@ exports[`rendering renders correctly supervisor view with work month waiting for
       />
     </div>
   </nav>
+  <div
+    className="tableToolbar"
+  >
+    <s
+      afterLabel={null}
+      beforeLabel={null}
+      block={false}
+      clickHandler={[Function]}
+      disabled={false}
+      endCorner={null}
+      grouped={false}
+      label="workMonth:actions.setWorkTimeCorrection"
+      labelVisibility="all"
+      loadingIcon={null}
+      priority="default"
+      size="medium"
+      startCorner={null}
+      type="button"
+      variant="primary"
+    />
+  </div>
   <div
     className="tableWrapper"
   >

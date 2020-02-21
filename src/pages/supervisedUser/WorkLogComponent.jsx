@@ -228,6 +228,7 @@ class WorkLogComponent extends React.Component {
             overtimeWorkLog={this.props.overtimeWorkLog}
             parentalLeaveWorkLog={this.props.parentalLeaveWorkLog}
             selectedDate={this.state.selectedDate}
+            setWorkTimeCorrection={this.props.setWorkTimeCorrection}
             supervisorView
             sickDayUnpaidWorkLog={this.props.sickDayUnpaidWorkLog}
             sickDayWorkLog={this.props.sickDayWorkLog}
@@ -323,6 +324,7 @@ WorkLogComponent.propTypes = {
   parentalLeaveWorkLog: ImmutablePropTypes.mapContains({
     date: PropTypes.object.isRequired,
   }),
+  setWorkTimeCorrection: PropTypes.func.isRequired,
   sickDayUnpaidWorkLog: ImmutablePropTypes.mapContains({
     date: PropTypes.object.isRequired,
   }),

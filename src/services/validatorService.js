@@ -532,6 +532,52 @@ export const validateSupervisorWorkLog = (t, workLog) => {
   return errors;
 };
 
+export const validateWorkTimeCorrection = (t, data) => {
+  const cData = { ...data };
+  const errors = {
+    elements: {
+      form: null,
+      hour: null,
+      minute: null,
+    },
+    isValid: true,
+  };
+
+  const requiredCheck = [
+    'hour',
+    'minute',
+  ];
+
+  requiredCheck.forEach((element) => {
+    if (
+      cData[element] === null
+      || validator.isEmpty(cData[element].toString())
+      || !validator.isNumeric(cData[element].toString())
+    ) {
+      errors.elements[element] = t('general:validation.invalidNumber');
+      errors.isValid = false;
+    }
+
+    cData[element] = parseInt(cData[element], 10);
+  });
+
+  if (!errors.isValid) {
+    return errors;
+  }
+
+  if (data.hour < 0) {
+    errors.elements.hour = t('workLog:validation.invalidHour');
+    errors.isValid = false;
+  }
+
+  if (data.minute < 0 || data.minute > 59) {
+    errors.elements.minute = t('workLog:validation.invalidMinute');
+    errors.isValid = false;
+  }
+
+  return errors;
+};
+
 export const validateRejectWorkLog = (t, rejectWorkLog) => {
   const errors = {
     elements: {
