@@ -71,6 +71,7 @@ import {
   selectWorkMonthMeta,
   selectWorkMonthList,
   selectWorkMonthListMeta,
+  setWorkTimeCorrection,
 } from '../../resources/workMonth';
 import WorkLogComponent from './WorkLogComponent';
 
@@ -140,6 +141,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchWorkMonth: (id) => dispatch(fetchWorkMonth(id)),
   fetchWorkMonthList: (uid) => dispatch(fetchWorkMonthList(uid)),
   markApproved: (id) => dispatch(markApproved(id)),
+  setWorkTimeCorrection: (id, data) => dispatch(setWorkTimeCorrection(id, data)),
 });
 
 export default connect(

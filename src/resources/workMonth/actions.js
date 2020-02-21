@@ -79,3 +79,19 @@ export const markWaitingForApproval = (id) => (dispatch) => dispatch({
     ],
   },
 });
+
+export const setWorkTimeCorrection = (id, data) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify({
+      workTimeCorrection: data.workTimeCorrection,
+    }),
+    endpoint: `${API_URL}/work_months/${id}/set_work_time_correction`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.MARK_WORK_MONTH_APPROVED_REQUEST,
+      types.MARK_WORK_MONTH_APPROVED_SUCCESS,
+      types.MARK_WORK_MONTH_APPROVED_FAILURE,
+    ],
+  },
+});

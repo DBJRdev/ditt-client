@@ -280,10 +280,12 @@
       }
     },
     "text": {
+      "addedByHR": "added by HR",
+      "subtractedByHR": "subtracted by HR",
       "openedWorkMonth": "This month appears empty, because the employee has not submitted it yet.",
-      "workedAndRequiredHours": "{{ workedHours }} h out of {{ requiredHours }} h",
-      "workedAndRequiredHoursPlusLeft": "{{ workedHours }} h out of {{ requiredHours }} h ({{ requiredHoursWithoutLeft }} h + {{ requiredHoursLeft }} h from previous months)",
-      "workedAndRequiredHoursMinusLeft": "{{ workedHours }} h out of {{ requiredHours }} h ({{ requiredHoursWithoutLeft }} h - {{ requiredHoursLeft }} h from previous months)"
+      "workedAndRequiredHours": "{{ workedHours }} h{{ workedHoursText }} out of {{ requiredHours }} h",
+      "workedAndRequiredHoursPlusLeft": "{{ workedHours }} h{{ workedHoursText }} out of {{ requiredHours }} h ({{ requiredHoursWithoutLeft }} h + {{ requiredHoursLeft }} h from previous months)",
+      "workedAndRequiredHoursMinusLeft": "{{ workedHours }} h{{ workedHoursText }} out of {{ requiredHours }} h ({{ requiredHoursWithoutLeft }} h - {{ requiredHoursLeft }} h from previous months)"
     },
     "title": {
       "supervisedUserWorkLogs": "Monthly logs for {{ name }}",
@@ -298,6 +300,9 @@
     }
   },
   "workMonth": {
+    "actions": {
+      "setWorkTimeCorrection": "Set work time correction"
+    },
     "constant": {
       "status": {
         "approved": "Approved",
@@ -319,6 +324,17 @@
         "vacationWorkLog": "Vacation",
         "workLog": "Work"
       }
+    },
+    "element": {
+      "hours": "Hours",
+      "minutes": "Minutes",
+      "workTimeCorrection": "Work time correction",
+      "variant": "Variant"
+    },
+    "text": {
+      "modeAdd": "Add time",
+      "modeSubtract": "Subtract time",
+      "workTimeCorrection": "Work time correction"
     }
   }
 }

@@ -159,6 +159,7 @@ export default (state, action) => {
       startTime: toMomentDateTime(workLogData.startTime),
       type: WORK_LOG,
     })),
+    workTimeCorrection: parseInt(data.workTimeCorrection, 10),
     year: parseInt(data.year.year, 10),
   });
 
@@ -360,6 +361,25 @@ export default (state, action) => {
   }
 
   if (type === actionTypes.MARK_WORK_MONTH_WAITING_FOR_APPROVAL_FAILURE) {
+    return state
+      .setIn(['workMonth', 'isPosting'], false)
+      .setIn(['workMonth', 'isPostingFailure'], true);
+  }
+
+  if (type === actionTypes.SET_WORK_TIME_CORRECTION_REQUEST) {
+    return state
+      .setIn(['workMonth', 'isPosting'], true)
+      .setIn(['workMonth', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.SET_WORK_TIME_CORRECTION_SUCCESS) {
+    return state
+      .setIn(['workMonth', 'data'], Immutable.fromJS(filterWorkMonthDetail(payload)))
+      .setIn(['workMonth', 'isPosting'], false)
+      .setIn(['workMonth', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.SET_WORK_TIME_CORRECTION_FAILURE) {
     return state
       .setIn(['workMonth', 'isPosting'], false)
       .setIn(['workMonth', 'isPostingFailure'], true);

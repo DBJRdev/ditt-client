@@ -54,6 +54,7 @@ import {
   getWorkMonthByMonth,
 } from '../../services/workLogService';
 import { AddSupervisorWorkLogModal } from './components/AddSupervisorWorkLogModal';
+import { SupervisorWorkTimeCorrectionModal } from './components/SupervisorWorkTimeCorrectionModal';
 import { WorkLogDetailButton } from './components/WorkLogDetailButton';
 import { WorkLogDetailModal } from './components/WorkLogDetailModal';
 
@@ -69,6 +70,7 @@ class WorkLogCalendar extends React.Component {
       showDeleteWorkLogDialogType: null,
       showSupervisorWorkLogForm: false,
       showSupervisorWorkLogFormDate: localizedMoment(),
+      showSupervisorWorkTimeCorrectionModal: false,
       showWorkLogForm: false,
       showWorkLogFormDate: localizedMoment(),
       workLogTimer: getWorkLogTimer() ? toMomentDateTime(getWorkLogTimer()) : null,
@@ -87,6 +89,11 @@ class WorkLogCalendar extends React.Component {
     this.openSupervisorWorkLogForm = this.openSupervisorWorkLogForm.bind(this);
     this.closeSupervisorWorkLogForm = this.closeSupervisorWorkLogForm.bind(this);
     this.saveSupervisorWorkLogForm = this.saveSupervisorWorkLogForm.bind(this);
+
+    this.openSupervisorWorkTimeCorrectionModal = this.openSupervisorWorkTimeCorrectionModal
+      .bind(this);
+    this.closeSupervisorWorkTimeCorrectionModal = this.closeSupervisorWorkTimeCorrectionModal
+      .bind(this);
 
     this.workLogTimer = null;
 
@@ -249,6 +256,12 @@ class WorkLogCalendar extends React.Component {
     });
   }
 
+  openSupervisorWorkTimeCorrectionModal() {
+    this.setState({
+      showSupervisorWorkTimeCorrectionModal: true,
+    });
+  }
+
   saveWorkLogForm(data) {
     if (BUSINESS_TRIP_WORK_LOG === data.type) {
       return this.props.addBusinessTripWorkLog({
@@ -354,6 +367,10 @@ class WorkLogCalendar extends React.Component {
     this.setState({ showSupervisorWorkLogForm: false });
   }
 
+  closeSupervisorWorkTimeCorrectionModal() {
+    this.setState({ showSupervisorWorkTimeCorrectionModal: false });
+  }
+
   countWaitingForApprovalWorkLogs() {
     if (this.props.workMonth) {
       let count = 0;
@@ -446,6 +463,31 @@ class WorkLogCalendar extends React.Component {
       workedTime.add(day.workTime.workTime);
     });
 
+    let workTimeCorrectionText = null;
+
+    if (this.props.workMonth) {
+      workedTime.add(this.props.workMonth.get('workTimeCorrection'), 'seconds');
+
+      const workTimeCorrection = Math.abs(this.props.workMonth.get('workTimeCorrection'));
+      if (workTimeCorrection !== 0) {
+        const hour = parseInt(workTimeCorrection / 3600, 10);
+        const minute = parseInt((workTimeCorrection - (hour * 3600)) / 60, 10);
+        let minuteText = minute;
+
+        if (minute === 0) {
+          minuteText = '00';
+        } else if (minute < 10) {
+          minuteText = `0${minute}`;
+        }
+
+        if (this.props.workMonth.get('workTimeCorrection') > 0) {
+          workTimeCorrectionText = ` (${hour}:${minuteText} ${t('workLog:text.addedByHR')})`;
+        } else {
+          workTimeCorrectionText = ` (${hour}:${minuteText} ${t('workLog:text.subtractedByHR')})`;
+        }
+      }
+    }
+
     if (this.props.workMonth && this.props.workMonth.get('status') !== STATUS_APPROVED) {
       const userYearStats = this.props.workMonth.getIn(['user', 'yearStats']).toJS();
       const requiredHoursTotal = userYearStats.reduce(
@@ -469,6 +511,7 @@ class WorkLogCalendar extends React.Component {
             requiredHoursLeft: toHourMinuteFormatFromInt(requiredHoursLeft),
             requiredHoursWithoutLeft: toHourMinuteFormatFromInt(requiredHours),
             workedHours: `${workedTime.hours() + (workedTime.days() * 24)}:${(workedTime.minutes()) < 10 ? '0' : ''}${workedTime.minutes()}`,
+            workedHoursText: workTimeCorrectionText,
           },
         );
       }
@@ -483,6 +526,7 @@ class WorkLogCalendar extends React.Component {
             requiredHoursLeft: toHourMinuteFormatFromInt(requiredHoursLeft),
             requiredHoursWithoutLeft: toHourMinuteFormatFromInt(requiredHours),
             workedHours: `${workedTime.hours() + (workedTime.days() * 24)}:${(workedTime.minutes()) < 10 ? '0' : ''}${workedTime.minutes()}`,
+            workedHoursText: workTimeCorrectionText,
           },
         );
       }
@@ -493,6 +537,7 @@ class WorkLogCalendar extends React.Component {
       {
         requiredHours: toHourMinuteFormatFromInt(requiredHours),
         workedHours: `${workedTime.hours() + (workedTime.days() * 24)}:${(workedTime.minutes()) < 10 ? '0' : ''}${workedTime.minutes()}`,
+        workedHoursText: workTimeCorrectionText,
       },
     );
   }
@@ -526,6 +571,23 @@ class WorkLogCalendar extends React.Component {
         isPosting={isPosting}
         onClose={this.closeSupervisorWorkLogForm}
         onSave={this.saveSupervisorWorkLogForm}
+      />
+    );
+  }
+
+  renderSupervisorWorkTimeCorrectionModal() {
+    const {
+      isPosting,
+      setWorkTimeCorrection,
+      workMonth,
+    } = this.props;
+
+    return (
+      <SupervisorWorkTimeCorrectionModal
+        isPosting={isPosting}
+        onClose={this.closeSupervisorWorkTimeCorrectionModal}
+        onSetWorkTimeCorrection={setWorkTimeCorrection}
+        workMonth={workMonth.toJS()}
       />
     );
   }
@@ -665,6 +727,17 @@ class WorkLogCalendar extends React.Component {
           <p>
             {t('workLog:text.openedWorkMonth')}
           </p>
+        )}
+        {(
+          this.props.supervisorView
+          && (status === STATUS_OPENED || status === STATUS_WAITING_FOR_APPROVAL)
+        ) && (
+          <div className={styles.tableToolbar}>
+            <Button
+              clickHandler={this.openSupervisorWorkTimeCorrectionModal}
+              label={t('workMonth:actions.setWorkTimeCorrection')}
+            />
+          </div>
         )}
         <div className={styles.tableWrapper}>
           <table className={styles.table}>
@@ -806,6 +879,11 @@ class WorkLogCalendar extends React.Component {
         {this.state.showDeleteWorkLogDialog ? this.renderDeleteWorkLogModal() : null}
         {this.state.showWorkLogForm ? this.renderWorkLogForm() : null}
         {this.state.showSupervisorWorkLogForm ? this.renderSupervisorWorkLogForm() : null}
+        {
+          this.state.showSupervisorWorkTimeCorrectionModal
+            ? this.renderSupervisorWorkTimeCorrectionModal()
+            : null
+        }
       </div>
     );
   }
@@ -818,6 +896,7 @@ WorkLogCalendar.defaultProps = {
   maternityProtectionWorkLog: null,
   overtimeWorkLog: null,
   parentalLeaveWorkLog: null,
+  setWorkTimeCorrection: null,
   sickDayUnpaidWorkLog: null,
   sickDayWorkLog: null,
   specialLeaveWorkLog: null,
@@ -900,6 +979,7 @@ WorkLogCalendar.propTypes = {
     month: PropTypes.func,
     year: PropTypes.func,
   }).isRequired,
+  setWorkTimeCorrection: PropTypes.func,
   sickDayUnpaidWorkLog: ImmutablePropTypes.mapContains({
     date: PropTypes.object.isRequired,
   }),

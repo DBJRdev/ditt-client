@@ -123,3 +123,12 @@ $_table-cell-padding-y: 0.25rem;
   margin-right: -$_table-cell-padding-x;
   margin-left: -$_table-cell-padding-x;
 }
+
+.tableToolbar {
+  width: 100%;
+  padding: $_table-cell-padding-x;
+  margin-bottom: 2rem;
+  border: 1px solid #ccc;
+  background-color: #f6f5f4;
+  transform: translateX(-0.5rem);
+}

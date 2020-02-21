@@ -280,10 +280,12 @@
       }
     },
     "text": {
+      "addedByHR": "von HR hinzugefügt",
+      "subtractedByHR": "von HR abgezogen",
       "openedWorkMonth": "Dieser Monat erscheint leer, weil der/die Arbeitnehmer*in ihn noch nicht übermittelt hat.",
-      "workedAndRequiredHours": "{{ workedHours }} h von {{ requiredHours }} h",
-      "workedAndRequiredHoursPlusLeft": "{{ workedHours }} h von {{ requiredHours }} h ({{ requiredHoursWithoutLeft }} h + {{ requiredHoursLeft }} h aus den letzten Monaten)",
-      "workedAndRequiredHoursMinusLeft": "{{ workedHours }} h von {{ requiredHours }} h ({{ requiredHoursWithoutLeft }} h - {{ requiredHoursLeft }} h aus den letzten Monaten)"
+      "workedAndRequiredHours": "{{ workedHours }} h{{ workedHoursText }} von {{ requiredHours }} h",
+      "workedAndRequiredHoursPlusLeft": "{{ workedHours }} h{{ workedHoursText }} von {{ requiredHours }} h ({{ requiredHoursWithoutLeft }} h + {{ requiredHoursLeft }} h aus den letzten Monaten)",
+      "workedAndRequiredHoursMinusLeft": "{{ workedHours }} h{{ workedHoursText }} von {{ requiredHours }} h ({{ requiredHoursWithoutLeft }} h - {{ requiredHoursLeft }} h aus den letzten Monaten)"
     },
     "title": {
       "supervisedUserWorkLogs": "Monatsübersicht für {{ name }}",
@@ -298,6 +300,9 @@
     }
   },
   "workMonth": {
+    "actions": {
+      "setWorkTimeCorrection": "Arbeitszeitkorrektur einstellen"
+    },
     "constant": {
       "status": {
         "approved": "Freigegeben",
@@ -319,6 +324,17 @@
         "vacationWorkLog": "Urlaub",
         "workLog": "Arbeitzeit"
       }
+    },
+    "element": {
+      "hours": "Stunden",
+      "minutes": "Minuten",
+      "workTimeCorrection": "Arbeitszeitkorrektur",
+      "variant": "Variante"
+    },
+    "text": {
+      "modeAdd": "Zeit hinzufügen",
+      "modeSubtract": "Zeit abziehen",
+      "workTimeCorrection": "Arbeitszeitkorrektur"
     }
   }
 }
