@@ -247,6 +247,7 @@ class AddComponent extends React.Component {
             <ListItem>
               <TextField
                 changeHandler={this.changeHandler}
+                fullWidth
                 helperText={this.state.formValidity.elements.firstName}
                 id="firstName"
                 label={t('user:element.firstName')}
@@ -258,6 +259,7 @@ class AddComponent extends React.Component {
             <ListItem>
               <TextField
                 changeHandler={this.changeHandler}
+                fullWidth
                 helperText={this.state.formValidity.elements.lastName}
                 id="lastName"
                 label={t('user:element.lastName')}
@@ -269,6 +271,7 @@ class AddComponent extends React.Component {
             <ListItem>
               <SelectField
                 changeHandler={this.changeHandler}
+                fullWidth
                 helperText={this.state.formValidity.elements.supervisor}
                 id="supervisor"
                 label={t('user:element.supervisor')}
@@ -280,6 +283,7 @@ class AddComponent extends React.Component {
             <ListItem>
               <TextField
                 changeHandler={this.changeHandler}
+                fullWidth
                 helperText={this.state.formValidity.elements.email}
                 id="email"
                 label={t('user:element.email')}
@@ -291,6 +295,7 @@ class AddComponent extends React.Component {
             <ListItem>
               <TextField
                 changeHandler={this.changeHandler}
+                fullWidth
                 helperText={this.state.formValidity.elements.employeeId}
                 id="employeeId"
                 label={t('user:element.employeeId')}
@@ -302,6 +307,7 @@ class AddComponent extends React.Component {
             <ListItem>
               <TextField
                 changeHandler={this.changeHandler}
+                fullWidth
                 helperText={this.state.formValidity.elements.plainPassword}
                 id="plainPassword"
                 label={t('user:element.plainPassword')}
@@ -334,7 +340,7 @@ class AddComponent extends React.Component {
                   className={styles.vacationsRow}
                   key={year}
                 >
-                  <p>{year}</p>
+                  <span>{year}</span>
                   <TextField
                     changeHandler={this.changeVacationDaysHandler}
                     helperText={this.state.formValidity.elements.vacations[year].vacationDays}
@@ -388,6 +394,7 @@ class AddComponent extends React.Component {
                 <ListItem>
                   <TextField
                     changeHandler={this.changeWorkHourHandler}
+                    fullWidth
                     helperText={this.state.formValidity.elements.workHours[year]}
                     id={year.toString()}
                     key={year}

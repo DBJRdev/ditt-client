@@ -37,7 +37,7 @@ exports[`rendering renders correctly 1`] = `
         <c
           changeHandler={[Function]}
           disabled={false}
-          fullWidth={false}
+          fullWidth={true}
           helperText={null}
           id="firstName"
           inputSize={null}
@@ -57,7 +57,7 @@ exports[`rendering renders correctly 1`] = `
         <c
           changeHandler={[Function]}
           disabled={false}
-          fullWidth={false}
+          fullWidth={true}
           helperText={null}
           id="lastName"
           inputSize={null}
@@ -77,7 +77,7 @@ exports[`rendering renders correctly 1`] = `
         <c
           changeHandler={[Function]}
           disabled={false}
-          fullWidth={false}
+          fullWidth={true}
           helperText={null}
           id="supervisor"
           isLabelVisible={true}
@@ -102,7 +102,7 @@ exports[`rendering renders correctly 1`] = `
         <c
           changeHandler={[Function]}
           disabled={false}
-          fullWidth={false}
+          fullWidth={true}
           helperText={null}
           id="email"
           inputSize={null}
@@ -122,7 +122,7 @@ exports[`rendering renders correctly 1`] = `
         <c
           changeHandler={[Function]}
           disabled={false}
-          fullWidth={false}
+          fullWidth={true}
           helperText={null}
           id="employeeId"
           inputSize={null}
@@ -142,7 +142,7 @@ exports[`rendering renders correctly 1`] = `
         <c
           changeHandler={[Function]}
           disabled={false}
-          fullWidth={false}
+          fullWidth={true}
           helperText={null}
           id="plainPassword"
           inputSize={null}
@@ -165,6 +165,7 @@ exports[`rendering renders correctly 1`] = `
           description={null}
           disabled={false}
           error={null}
+          fullWidth={true}
           id="isActive"
           isLabelVisible={true}
           label="user:element.isActive"

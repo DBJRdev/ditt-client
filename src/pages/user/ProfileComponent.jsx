@@ -242,36 +242,36 @@ class ProfileComponent extends React.Component {
                         <td className={styles.profileTableValue}>
                           {!user.get('apiToken') && '-'}
                           {!!user.get('apiToken') && (
-                            <Button
-                              beforeLabel={<Icon icon="open_in_new" />}
-                              clickHandler={() => this.setState({ apiTokenDialogOpened: true })}
-                              label={t('user:action.showApiToken')}
-                              size="small"
-                            />
-                          )}
-                          <div className={styles.apiTokenButtonsWrapper}>
-                            <div className={styles.apiTokenButton}>
+                            <div className="mt-1">
                               <Button
-                                beforeLabel={<Icon icon="autorenew" />}
-                                clickHandler={() => renewUserApiToken(user.get('id'))}
-                                label={t('user:action.renewApiToken')}
-                                loadingIcon={isPosting ? <Icon icon="sync" /> : null}
+                                beforeLabel={<Icon icon="open_in_new" />}
+                                clickHandler={() => this.setState({ apiTokenDialogOpened: true })}
+                                label={t('user:action.showApiToken')}
                                 size="small"
                               />
                             </div>
-                            {!!user.get('apiToken') && (
-                              <div className={styles.apiTokenButton}>
-                                <Button
-                                  beforeLabel={<Icon icon="clear" />}
-                                  clickHandler={() => resetUserApiToken(user.get('id'))}
-                                  label={t('user:action.resetApiToken')}
-                                  loadingIcon={isPosting ? <Icon icon="sync" /> : null}
-                                  size="small"
-                                  variant="danger"
-                                />
-                              </div>
-                            )}
+                          )}
+                          <div className="mt-1 mb-1">
+                            <Button
+                              beforeLabel={<Icon icon="autorenew" />}
+                              clickHandler={() => renewUserApiToken(user.get('id'))}
+                              label={t('user:action.renewApiToken')}
+                              loadingIcon={isPosting ? <Icon icon="sync" /> : null}
+                              size="small"
+                            />
                           </div>
+                          {!!user.get('apiToken') && (
+                            <div className="mb-1">
+                              <Button
+                                beforeLabel={<Icon icon="clear" />}
+                                clickHandler={() => resetUserApiToken(user.get('id'))}
+                                label={t('user:action.resetApiToken')}
+                                loadingIcon={isPosting ? <Icon icon="sync" /> : null}
+                                size="small"
+                                variant="danger"
+                              />
+                            </div>
+                          )}
                         </td>
                       </tr>
                       {(user.get('roles') && user.get('roles').includes(ROLE_EMPLOYEE)) && (
