@@ -384,6 +384,7 @@ class EditComponent extends React.Component {
             <ListItem>
               <TextField
                 changeHandler={this.changeHandler}
+                fullWidth
                 helperText={this.state.formValidity.elements.firstName}
                 id="firstName"
                 label={t('user:element.firstName')}
@@ -395,6 +396,7 @@ class EditComponent extends React.Component {
             <ListItem>
               <TextField
                 changeHandler={this.changeHandler}
+                fullWidth
                 helperText={this.state.formValidity.elements.lastName}
                 id="lastName"
                 label={t('user:element.lastName')}
@@ -406,6 +408,7 @@ class EditComponent extends React.Component {
             <ListItem>
               <SelectField
                 changeHandler={this.changeHandler}
+                fullWidth
                 helperText={this.state.formValidity.elements.supervisor}
                 id="supervisor"
                 label={t('user:element.supervisor')}
@@ -417,6 +420,7 @@ class EditComponent extends React.Component {
             <ListItem>
               <TextField
                 changeHandler={this.changeHandler}
+                fullWidth
                 helperText={this.state.formValidity.elements.email}
                 id="email"
                 label={t('user:element.email')}
@@ -428,6 +432,7 @@ class EditComponent extends React.Component {
             <ListItem>
               <TextField
                 changeHandler={this.changeHandler}
+                fullWidth
                 helperText={this.state.formValidity.elements.employeeId}
                 id="employeeId"
                 label={t('user:element.employeeId')}
@@ -439,6 +444,7 @@ class EditComponent extends React.Component {
             <ListItem>
               <TextField
                 changeHandler={this.changeHandler}
+                fullWidth
                 helperText={this.state.formValidity.elements.plainPassword}
                 id="plainPassword"
                 label={t('user:element.plainPassword')}
@@ -451,6 +457,7 @@ class EditComponent extends React.Component {
             <ListItem>
               <CheckboxField
                 changeHandler={this.changeHandler}
+                fullWidth
                 checked={this.state.formData.isActive}
                 error={this.state.formValidity.elements.isActive}
                 id="isActive"
@@ -471,7 +478,7 @@ class EditComponent extends React.Component {
                   className={styles.vacationsRow}
                   key={year}
                 >
-                  <p>{year}</p>
+                  <span>{year}</span>
                   <TextField
                     changeHandler={this.changeVacationDaysHandler}
                     helperText={this.state.formValidity.elements.vacations[year].vacationDays}
@@ -529,6 +536,7 @@ class EditComponent extends React.Component {
                   <TextField
                     changeHandler={this.changeWorkHourHandler}
                     error={this.state.formValidity.elements.workHours[year]}
+                    fullWidth
                     id={`workHours_${year.toString()}`}
                     key={year}
                     label={year.toString()}

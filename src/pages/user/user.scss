@@ -70,6 +70,13 @@ $_breakpoint: 55em;
   margin-left: auto;
 }
 
+.workHoursTable {
+  width: 100%;
+  max-width: 600px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .detailSubheader {
   margin: 3rem auto 1.5rem;
   font-weight: 500;
@@ -80,8 +87,9 @@ $_breakpoint: 55em;
   display: flex;
 }
 
-.vacationsRow > p {
+.vacationsRow > span {
   flex: 5%;
+  margin-right: 1rem;
   font-weight: bold;
   transform: translateY(50%);
 }
@@ -96,7 +104,7 @@ $_breakpoint: 55em;
     display: block;
   }
 
-  .vacationsRow > p {
+  .vacationsRow > span {
     transform: translateY(0%);
   }
 
@@ -160,4 +168,48 @@ $_breakpoint: 55em;
 
 .saveButton {
   margin-top: 1.5rem;
+}
+
+.vacationTable {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 600px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.vacationTable th {
+  padding: 5px 10px;
+}
+
+.vacationDaysTitle {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 600px;
+  padding: 0 10px;
+  margin: 3rem auto 1.5rem;
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
+.workHoursTitle {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 600px;
+  padding: 0 10px;
+  margin: 3rem auto 1.5rem;
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
+.profileTableWrap {
+  overflow-x: auto;
+}
+
+.profileTable {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 600px;
+  margin-right: auto;
+  margin-left: auto;
 }
