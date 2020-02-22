@@ -103,6 +103,7 @@ export const getWorkedTime = (
   workedHoursLimits,
   supportedHolidays,
 ) => {
+  const banWorkLogs = [];
   const standardWorkLogs = [];
   const businessTripWorkLogs = [];
   const homeOfficeWorkLogs = [];
@@ -116,6 +117,8 @@ export const getWorkedTime = (
   let workTime = 0;
   let workTimeWithoutCorrection = 0;
   let breakTime = 0;
+
+  let isWorkTimeLimitExceeded = false;
 
   // Split work logs into arrays by its type and calculate work time of standard work logs.
   workLogList.forEach((workLog) => {
@@ -143,6 +146,8 @@ export const getWorkedTime = (
       } else {
         workTime += currentWorkTime;
       }
+    } else if (workLog.type === BAN_WORK_LOG) {
+      banWorkLogs.push(workLog);
     } else if (workLog.type === BUSINESS_TRIP_WORK_LOG && workLog.status === STATUS_APPROVED) {
       businessTripWorkLogs.push(workLog);
     } else if (workLog.type === HOME_OFFICE_WORK_LOG && workLog.status === STATUS_APPROVED) {
@@ -208,6 +213,23 @@ export const getWorkedTime = (
     }
   }
 
+  // Ban work log correction if standard work log was entered before ban work log
+  if (banWorkLogs.length > 0) {
+    let { workTimeLimit } = banWorkLogs[0];
+
+    banWorkLogs.forEach((banWorkLog) => {
+      if (banWorkLog.workTimeLimit < workTimeLimit) {
+        workTimeLimit = banWorkLog.workTimeLimit;
+      }
+    });
+
+    if (workTimeWithoutCorrection > workTimeLimit) {
+      workTimeWithoutCorrection = Math.min(workTimeLimit, workTimeWithoutCorrection);
+      workTime = Math.min(workTimeLimit, workTime);
+      isWorkTimeLimitExceeded = true;
+    }
+  }
+
   // Special work log time calculations
   if (
     (
@@ -241,7 +263,7 @@ export const getWorkedTime = (
 
   return {
     breakTime: moment.duration({ seconds: breakTime }),
-    isWorkTimeCorrected: workTime !== workTimeWithoutCorrection,
+    isWorkTimeCorrected: workTime !== workTimeWithoutCorrection || isWorkTimeLimitExceeded,
     workTime: moment.duration({ seconds: workTime }),
   };
 };
