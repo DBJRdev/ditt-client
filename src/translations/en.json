@@ -301,6 +301,7 @@
       "invalidHour": "Invalid hour.",
       "invalidMinute": "Invalid minute.",
       "vacationDaysExceeded": "Set duration exceeds number of vacation days allocated for this year.",
+      "workLogExceededLimit": "Set duration exceeds work time limit for this day.",
       "workLogOverlaps": "Entered worklog overlaps existing one."
     }
   },

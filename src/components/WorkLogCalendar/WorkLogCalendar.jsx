@@ -559,6 +559,11 @@ class WorkLogCalendar extends React.Component {
   renderWorkLogForm() {
     return (
       <WorkLogForm
+        banWorkLogsOfDay={
+          this.props.workMonth
+            ? getWorkLogsByDay(this.state.showWorkLogFormDate, this.props.workMonth.get('banWorkLogs'))
+            : []
+        }
         closeHandler={this.closeWorkLogForm}
         config={this.props.config}
         date={this.state.showWorkLogFormDate}

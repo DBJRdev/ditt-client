@@ -17,6 +17,7 @@ import { VARIANT_SICK_CHILD } from '../resources/sickDayWorkLog';
 import {
   getWorkingDays,
   isOverlapping,
+  localizedMoment,
   toMomentDateTimeFromDayMonth,
   toMomentDateTimeFromDayMonthYear,
 } from './dateTimeService';
@@ -205,7 +206,7 @@ export const validateUser = (t, user, userList, supportedWorkHours) => {
   return errors;
 };
 
-export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay) => {
+export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay, banWorkLogsOfDay) => {
   const errors = {
     elements: {
       comment: null,
@@ -441,6 +442,8 @@ export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay) => 
     return errors;
   }
 
+  let workLogsTime = 0;
+
   if (workLogsOfDay.length > 0) {
     let overlapping = false;
     const todayDate = workLogsOfDay[0].startTime;
@@ -451,10 +454,33 @@ export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay) => 
       if (isOverlapping(startTime, endTime, workLogItem.startTime, workLogItem.endTime)) {
         overlapping = true;
       }
+
+      workLogsTime += workLogItem.endTime.diff(workLogItem.startTime) / 1000;
     });
 
     if (overlapping) {
       errors.elements.form = t('workLog:validation.workLogOverlaps');
+      errors.isValid = false;
+    }
+  }
+
+  if (banWorkLogsOfDay.length > 0) {
+    let { workTimeLimit } = banWorkLogsOfDay[0];
+
+    if (banWorkLogsOfDay.length > 1) {
+      banWorkLogsOfDay.forEach((banWorkLog) => {
+        if (banWorkLog.workTimeLimit < workTimeLimit) {
+          workTimeLimit = banWorkLog.workTimeLimit;
+        }
+      });
+    }
+
+    const startTime = localizedMoment().clone().hour(workLog.startHour).minute(workLog.startMinute);
+    const endTime = localizedMoment().clone().hour(workLog.endHour).minute(workLog.endMinute);
+    const newWorkLogDuration = endTime.diff(startTime) / 1000;
+
+    if (newWorkLogDuration + workLogsTime > workTimeLimit) {
+      errors.elements.form = t('workLog:validation.workLogExceededLimit');
       errors.isValid = false;
     }
   }
