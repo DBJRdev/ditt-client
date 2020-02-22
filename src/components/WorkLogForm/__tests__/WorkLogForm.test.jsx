@@ -20,6 +20,8 @@ afterEach(() => {
 describe('rendering', () => {
   it('renders correctly with mandatory props', () => {
     const tree = mount(<WorkLogForm
+
+      banWorkLogsOfDay={Immutable.List([])}
       config={Immutable.Map()}
       closeHandler={() => {}}
       date={fakeMomentDateTime}
@@ -45,6 +47,7 @@ describe('rendering', () => {
 
   it('renders correctly with all props', () => {
     const tree = mount(<WorkLogForm
+      banWorkLogsOfDay={Immutable.List([])}
       config={Immutable.Map()}
       closeHandler={() => {}}
       date={fakeMomentDateTime}
@@ -74,6 +77,7 @@ describe('functionality', () => {
   it('calls closeHandler() date when previous month button is clicked', () => {
     const spy = sinon.spy();
     const tree = mount(<WorkLogForm
+      banWorkLogsOfDay={Immutable.List([])}
       config={Immutable.Map()}
       closeHandler={spy}
       date={fakeMomentDateTime}

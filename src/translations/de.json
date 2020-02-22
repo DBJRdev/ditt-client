@@ -301,6 +301,7 @@
       "invalidHour": "Ungültige Stundenangabe.",
       "invalidMinute": "Ungültige Minutenangabe.",
       "vacationDaysExceeded": "Eingestellte Dauer überschreitet die Anzahl der Urlaubstage im laufenden Jahr.",
+      "workLogExceededLimit": "Singestellte Dauer überschreitet das Arbeitszeitlimit für diesen Tag.",
       "workLogOverlaps": "Eintrag überschneidet sich mit bereits existierendem."
     }
   },

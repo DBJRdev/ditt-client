@@ -125,6 +125,7 @@ class WorkLogForm extends React.Component {
 
   saveHandler() {
     const {
+      banWorkLogsOfDay,
       config,
       date,
       user,
@@ -142,6 +143,7 @@ class WorkLogForm extends React.Component {
       config,
       user,
       workLogsOfDay.toJS(),
+      banWorkLogsOfDay.toJS(),
     );
 
     this.setState({ formValidity });
@@ -724,6 +726,11 @@ WorkLogForm.defaultProps = {
 };
 
 WorkLogForm.propTypes = {
+  banWorkLogsOfDay: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+    date: PropTypes.shape.isRequired,
+    id: PropTypes.number.isRequired,
+    workTimeLimit: PropTypes.shape.isRequired,
+  })).isRequired,
   closeHandler: PropTypes.func.isRequired,
   config: ImmutablePropTypes.mapContains({}).isRequired,
   date: PropTypes.instanceOf(moment).isRequired,
