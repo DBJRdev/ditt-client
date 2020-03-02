@@ -1,0 +1,13 @@
+:root {
+  --rui-color-primary: #007cbb;
+  --rui-color-primary-light: #{lighten(#007cbb, 70%)};
+  --rui-color-primary-dark: #{darken(#007cbb, 4%)};
+  --rui-color-primary-darker: #{darken(#007cbb, 8%)};
+}
+
+$colors-theme: (
+  primary: --rui-color-primary,
+  primary-light: --rui-color-primary-light,
+  primary-dark: --rui-color-primary-dark,
+  primary-darker: --rui-color-primary-darker,
+);
