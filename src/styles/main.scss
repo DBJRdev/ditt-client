@@ -3,6 +3,8 @@
   --rui-color-primary-light: #{lighten(#007cbb, 70%)};
   --rui-color-primary-dark: #{darken(#007cbb, 4%)};
   --rui-color-primary-darker: #{darken(#007cbb, 8%)};
+  --rui-link-color: #007cbb;
+  --rui-link-hover-color: #{darken(#007cbb, 8%)};
 }
 
 $colors-theme: (
@@ -11,3 +13,6 @@ $colors-theme: (
   primary-dark: --rui-color-primary-dark,
   primary-darker: --rui-color-primary-darker,
 );
+
+$link-color: var(--rui-link-color);
+$link-hover-color: var(--rui-link-hover-color);
