@@ -12,7 +12,7 @@ import '@react-ui-org/react-ui/src/lib/foundation.scss';
 import '@react-ui-org/react-ui/src/lib/helpers.scss';
 
 // App and theme CSS
-// import './styles/main.scss';
+import './styles/main.scss';
 
 // React UI utility classes
 import '@react-ui-org/react-ui/src/lib/utilities.scss';
