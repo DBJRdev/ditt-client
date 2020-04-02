@@ -88,6 +88,7 @@ exports[`rendering renders correctly 1`] = `
     t={[Function]}
     timeOffWorkLog={null}
     uid={null}
+    userRoles={Array []}
     vacationWorkLog={null}
     workHoursList={Immutable.List []}
     workLog={null}

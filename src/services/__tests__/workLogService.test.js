@@ -2540,7 +2540,7 @@ describe('getWorkedTime', () => {
 
     expect(result.breakTime.asSeconds()).toEqual(0.5 * 3600);
     expect(result.isWorkTimeCorrected).toEqual(true);
-    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600 - 600);
   });
 
   it('test calculate parental leave work logs above lower limit without break', () => {
