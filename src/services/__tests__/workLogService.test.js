@@ -2385,7 +2385,7 @@ describe('getWorkedTime', () => {
 
     expect(result.breakTime.asSeconds()).toEqual(0);
     expect(result.isWorkTimeCorrected).toEqual(false);
-    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+    expect(result.workTime.asSeconds()).toEqual(0);
   });
 
   it('test calculate parental leave work logs without break', () => {
@@ -2416,7 +2416,7 @@ describe('getWorkedTime', () => {
 
     expect(result.breakTime.asSeconds()).toEqual(0);
     expect(result.isWorkTimeCorrected).toEqual(false);
-    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+    expect(result.workTime.asSeconds()).toEqual(4 * 3600);
   });
 
   it('test calculate parental leave work logs without break during public holidays', () => {
@@ -2447,7 +2447,7 @@ describe('getWorkedTime', () => {
 
     expect(result.breakTime.asSeconds()).toEqual(0);
     expect(result.isWorkTimeCorrected).toEqual(true);
-    expect(result.workTime.asSeconds()).toEqual(6 * 3600 * 1.35);
+    expect(result.workTime.asSeconds()).toEqual(4 * 3600 * 1.35);
   });
 
   it('test calculate parental leave work logs without break during sunday', () => {
@@ -2478,7 +2478,7 @@ describe('getWorkedTime', () => {
 
     expect(result.breakTime.asSeconds()).toEqual(0);
     expect(result.isWorkTimeCorrected).toEqual(true);
-    expect(result.workTime.asSeconds()).toEqual(6 * 3600 * 1.25);
+    expect(result.workTime.asSeconds()).toEqual(4 * 3600 * 1.25);
   });
 
   it('test calculate parental leave work logs with long break', () => {
@@ -2512,9 +2512,9 @@ describe('getWorkedTime', () => {
       supportedHolidays,
     );
 
-    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.breakTime.asSeconds()).toEqual(3 * 3600);
     expect(result.isWorkTimeCorrected).toEqual(false);
-    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+    expect(result.workTime.asSeconds()).toEqual(4 * 3600);
   });
 
   it('test calculate parental leave work logs with one standard work log more than 6 hours long', () => {
@@ -2538,8 +2538,8 @@ describe('getWorkedTime', () => {
       supportedHolidays,
     );
 
-    expect(result.breakTime.asSeconds()).toEqual(0);
-    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.breakTime.asSeconds()).toEqual(0.5 * 3600);
+    expect(result.isWorkTimeCorrected).toEqual(true);
     expect(result.workTime.asSeconds()).toEqual(6 * 3600);
   });
 
@@ -2569,9 +2569,9 @@ describe('getWorkedTime', () => {
       supportedHolidays,
     );
 
-    expect(result.breakTime.asSeconds()).toEqual(0);
-    expect(result.isWorkTimeCorrected).toEqual(false);
-    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+    expect(result.breakTime.asSeconds()).toEqual(0.5 * 3600);
+    expect(result.isWorkTimeCorrected).toEqual(true);
+    expect(result.workTime.asSeconds()).toEqual(6.5 * 3600);
   });
 
   it('test calculate parental leave work logs above lower limit with short break', () => {
@@ -2605,9 +2605,9 @@ describe('getWorkedTime', () => {
       supportedHolidays,
     );
 
-    expect(result.breakTime.asSeconds()).toEqual(0);
-    expect(result.isWorkTimeCorrected).toEqual(false);
-    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+    expect(result.breakTime.asSeconds()).toEqual(0.5 * 3600);
+    expect(result.isWorkTimeCorrected).toEqual(true);
+    expect(result.workTime.asSeconds()).toEqual(6.75 * 3600);
   });
 
   it('test calculate parental leave work logs above lower limit with long break', () => {
@@ -2641,9 +2641,9 @@ describe('getWorkedTime', () => {
       supportedHolidays,
     );
 
-    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.breakTime.asSeconds()).toEqual(3 * 3600);
     expect(result.isWorkTimeCorrected).toEqual(false);
-    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+    expect(result.workTime.asSeconds()).toEqual(7 * 3600);
   });
 
   it('test calculate parental leave work logs above upper limit without break', () => {
@@ -2672,9 +2672,9 @@ describe('getWorkedTime', () => {
       supportedHolidays,
     );
 
-    expect(result.breakTime.asSeconds()).toEqual(0);
-    expect(result.isWorkTimeCorrected).toEqual(false);
-    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+    expect(result.breakTime.asSeconds()).toEqual(0.75 * 3600);
+    expect(result.isWorkTimeCorrected).toEqual(true);
+    expect(result.workTime.asSeconds()).toEqual(9.25 * 3600);
   });
 
   it('test calculate parental leave work logs above upper limit with short break', () => {
@@ -2708,9 +2708,9 @@ describe('getWorkedTime', () => {
       supportedHolidays,
     );
 
-    expect(result.breakTime.asSeconds()).toEqual(0);
-    expect(result.isWorkTimeCorrected).toEqual(false);
-    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+    expect(result.breakTime.asSeconds()).toEqual(0.75 * 3600);
+    expect(result.isWorkTimeCorrected).toEqual(true);
+    expect(result.workTime.asSeconds()).toEqual(9.5 * 3600);
   });
 
   it('test calculate parental leave work logs above upper limit with long break', () => {
@@ -2744,9 +2744,9 @@ describe('getWorkedTime', () => {
       supportedHolidays,
     );
 
-    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.breakTime.asSeconds()).toEqual(3 * 3600);
     expect(result.isWorkTimeCorrected).toEqual(false);
-    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+    expect(result.workTime.asSeconds()).toEqual(10 * 3600);
   });
 
   // Sick day work log
