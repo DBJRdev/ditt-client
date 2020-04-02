@@ -1098,27 +1098,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
     workLog:text.openedWorkMonth
   </p>
   <div
-    className="tableToolbar"
-  >
-    <s
-      afterLabel={null}
-      beforeLabel={null}
-      block={false}
-      clickHandler={[Function]}
-      disabled={false}
-      endCorner={null}
-      grouped={false}
-      label="workMonth:actions.setWorkTimeCorrection"
-      labelVisibility="all"
-      loadingIcon={null}
-      priority="default"
-      size="medium"
-      startCorner={null}
-      type="button"
-      variant="primary"
-    />
-  </div>
-  <div
     className="tableWrapper"
   >
     <table
@@ -1126,8 +1105,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
     >
       <tbody>
         <tr
-          className="tableRowWeekend tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRowWeekend"
         >
           <td
             className="tableCell"
@@ -1149,36 +1127,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -1187,8 +1135,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -1210,36 +1157,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -1248,8 +1165,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -1271,36 +1187,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -1309,8 +1195,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -1332,36 +1217,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -1370,8 +1225,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -1393,36 +1247,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -1431,8 +1255,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRowWeekend tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRowWeekend"
         >
           <td
             className="tableCell"
@@ -1454,36 +1277,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -1492,8 +1285,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRowWeekend tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRowWeekend"
         >
           <td
             className="tableCell"
@@ -1515,36 +1307,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -1553,8 +1315,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -1576,36 +1337,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -1614,8 +1345,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -1637,36 +1367,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -1675,8 +1375,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -1698,36 +1397,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -1736,8 +1405,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -1759,36 +1427,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -1797,8 +1435,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -1820,36 +1457,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -1858,8 +1465,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRowWeekend tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRowWeekend"
         >
           <td
             className="tableCell"
@@ -1881,36 +1487,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -1919,8 +1495,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRowWeekend tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRowWeekend"
         >
           <td
             className="tableCell"
@@ -1942,36 +1517,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -1980,8 +1525,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -2003,36 +1547,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -2041,8 +1555,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -2064,36 +1577,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -2102,8 +1585,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -2125,36 +1607,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -2163,8 +1615,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -2186,36 +1637,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -2224,8 +1645,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -2247,36 +1667,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -2285,8 +1675,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRowWeekend tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRowWeekend"
         >
           <td
             className="tableCell"
@@ -2308,36 +1697,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -2346,8 +1705,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRowWeekend tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRowWeekend"
         >
           <td
             className="tableCell"
@@ -2369,36 +1727,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -2407,8 +1735,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -2430,36 +1757,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -2468,8 +1765,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -2491,36 +1787,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -2529,8 +1795,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -2552,36 +1817,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -2590,8 +1825,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -2613,36 +1847,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -2651,8 +1855,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -2674,36 +1877,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -2712,8 +1885,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRowWeekend tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRowWeekend"
         >
           <td
             className="tableCell"
@@ -2735,36 +1907,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -2773,8 +1915,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRowWeekend tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRowWeekend"
         >
           <td
             className="tableCell"
@@ -2796,36 +1937,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -2834,8 +1945,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -2857,36 +1967,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -2895,8 +1975,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -2918,36 +1997,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -2956,8 +2005,7 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -2976,36 +2024,6 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           <td
             className="tableCell"
           />
-          <td
-            className="tableCellRight"
-          >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
           <td
             className="tableCellRight"
           >
@@ -3118,27 +2136,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
     </div>
   </nav>
   <div
-    className="tableToolbar"
-  >
-    <s
-      afterLabel={null}
-      beforeLabel={null}
-      block={false}
-      clickHandler={[Function]}
-      disabled={false}
-      endCorner={null}
-      grouped={false}
-      label="workMonth:actions.setWorkTimeCorrection"
-      labelVisibility="all"
-      loadingIcon={null}
-      priority="default"
-      size="medium"
-      startCorner={null}
-      type="button"
-      variant="primary"
-    />
-  </div>
-  <div
     className="tableWrapper"
   >
     <table
@@ -3146,8 +2143,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
     >
       <tbody>
         <tr
-          className="tableRowWeekend tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRowWeekend"
         >
           <td
             className="tableCell"
@@ -3169,36 +2165,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -3207,8 +2173,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -3230,36 +2195,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -3268,8 +2203,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -3291,36 +2225,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -3329,8 +2233,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -3352,36 +2255,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -3390,8 +2263,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -3413,36 +2285,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -3451,8 +2293,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRowWeekend tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRowWeekend"
         >
           <td
             className="tableCell"
@@ -3474,36 +2315,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -3512,8 +2323,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRowWeekend tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRowWeekend"
         >
           <td
             className="tableCell"
@@ -3535,36 +2345,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -3573,8 +2353,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -3596,36 +2375,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -3634,8 +2383,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -3657,36 +2405,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -3695,8 +2413,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -3718,36 +2435,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -3756,8 +2443,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -3779,36 +2465,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -3817,8 +2473,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -3840,36 +2495,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -3878,8 +2503,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRowWeekend tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRowWeekend"
         >
           <td
             className="tableCell"
@@ -3901,36 +2525,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -3939,8 +2533,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRowWeekend tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRowWeekend"
         >
           <td
             className="tableCell"
@@ -3962,36 +2555,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -4000,8 +2563,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -4023,36 +2585,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -4061,8 +2593,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -4084,36 +2615,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -4122,8 +2623,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -4145,36 +2645,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -4183,8 +2653,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -4206,36 +2675,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -4244,8 +2683,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -4267,36 +2705,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -4305,8 +2713,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRowWeekend tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRowWeekend"
         >
           <td
             className="tableCell"
@@ -4328,36 +2735,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -4366,8 +2743,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRowWeekend tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRowWeekend"
         >
           <td
             className="tableCell"
@@ -4389,36 +2765,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -4427,8 +2773,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -4450,36 +2795,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -4488,8 +2803,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -4511,36 +2825,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -4549,8 +2833,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -4572,36 +2855,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -4610,8 +2863,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -4633,36 +2885,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -4671,8 +2893,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -4694,36 +2915,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -4732,8 +2923,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRowWeekend tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRowWeekend"
         >
           <td
             className="tableCell"
@@ -4755,36 +2945,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -4793,8 +2953,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRowWeekend tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRowWeekend"
         >
           <td
             className="tableCell"
@@ -4816,36 +2975,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -4854,8 +2983,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -4877,36 +3005,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -4915,8 +3013,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -4938,36 +3035,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCellRight"
           >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
-          <td
-            className="tableCellRight"
-          >
             0
             :
             0
@@ -4976,8 +3043,7 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
         </tr>
         <tr
-          className="tableRow tableRowAddWorkLog"
-          onClick={[Function]}
+          className="tableRow"
         >
           <td
             className="tableCell"
@@ -4996,36 +3062,6 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           <td
             className="tableCell"
           />
-          <td
-            className="tableCellRight"
-          >
-            <div
-              className="addWorkLogButtonWrapper"
-            >
-              <s
-                afterLabel={null}
-                beforeLabel={
-                  <c
-                    icon="add"
-                    size="medium"
-                  />
-                }
-                block={false}
-                clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
-                label="workLog:action.addWorkLog"
-                labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
-              />
-            </div>
-          </td>
           <td
             className="tableCellRight"
           >
