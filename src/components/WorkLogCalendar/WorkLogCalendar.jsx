@@ -10,6 +10,11 @@ import {
 } from '@react-ui-org/react-ui';
 import WorkLogForm from '../WorkLogForm';
 import {
+  ROLE_ADMIN,
+  ROLE_EMPLOYEE,
+  ROLE_SUPER_ADMIN,
+} from '../../resources/user';
+import {
   VARIANT_SICK_CHILD,
   VARIANT_WITH_NOTE,
   VARIANT_WITHOUT_NOTE,
@@ -623,6 +628,7 @@ class WorkLogCalendar extends React.Component {
       sickDayUnpaidWorkLog,
       sickDayWorkLog,
       specialLeaveWorkLog,
+      userRoles,
       supervisorView,
       timeOffWorkLog,
       uid,
@@ -640,7 +646,7 @@ class WorkLogCalendar extends React.Component {
         banWorkLog={banWorkLog ? banWorkLog.toJS() : null}
         businessTripWorkLog={businessTripWorkLog ? businessTripWorkLog.toJS() : null}
         homeOfficeWorkLog={homeOfficeWorkLog ? homeOfficeWorkLog.toJS() : null}
-        isInSupervisorMode={supervisorView}
+        isInSupervisorMode={supervisorView && userRoles.includes(ROLE_SUPER_ADMIN)}
         isPosting={isPosting}
         maternityProtectionWorkLog={
           maternityProtectionWorkLog ? maternityProtectionWorkLog.toJS() : null
@@ -666,7 +672,10 @@ class WorkLogCalendar extends React.Component {
   }
 
   render() {
-    const { t } = this.props;
+    const {
+      t,
+      userRoles,
+    } = this.props;
     const date = localizedMoment();
     let status = null;
     let userId = null;
@@ -751,6 +760,7 @@ class WorkLogCalendar extends React.Component {
         )}
         {(
           this.props.supervisorView
+          && userRoles.includes(ROLE_SUPER_ADMIN)
           && (status === STATUS_OPENED || status === STATUS_WAITING_FOR_APPROVAL)
         ) && (
           <div className={styles.tableToolbar}>
@@ -773,6 +783,7 @@ class WorkLogCalendar extends React.Component {
                 const canAddWorkLog = !this.props.supervisorView
                   && (status === STATUS_OPENED || status === STATUS_WAITING_FOR_APPROVAL);
                 const canAddSupervisorWorkLog = this.props.supervisorView
+                  && userRoles.includes(ROLE_SUPER_ADMIN)
                   && (this.props.uid !== userId)
                   && (status === STATUS_OPENED || status === STATUS_WAITING_FOR_APPROVAL);
 
@@ -925,6 +936,7 @@ WorkLogCalendar.defaultProps = {
   supervisorView: false,
   timeOffWorkLog: null,
   uid: null,
+  userRoles: [],
   vacationWorkLog: null,
   workLog: null,
   workMonth: null,
@@ -1031,6 +1043,11 @@ WorkLogCalendar.propTypes = {
     status: PropTypes.string.isRequired,
   }),
   uid: PropTypes.number,
+  userRoles: PropTypes.arrayOf(PropTypes.oneOf([
+    ROLE_ADMIN,
+    ROLE_EMPLOYEE,
+    ROLE_SUPER_ADMIN,
+  ])),
   vacationWorkLog: ImmutablePropTypes.mapContains({
     date: PropTypes.object.isRequired,
     rejectionMessage: PropTypes.string,

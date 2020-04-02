@@ -205,6 +205,7 @@ class WorkLogComponent extends React.Component {
     }
 
     let uid = null;
+    let userRoles = [];
 
     if (this.props.token) {
       const decodedToken = jwt.decode(this.props.token);
@@ -212,6 +213,7 @@ class WorkLogComponent extends React.Component {
       if (decodedToken) {
         // eslint-disable-next-line prefer-destructuring
         uid = decodedToken.uid;
+        userRoles = decodedToken.roles;
       }
     }
 
@@ -274,6 +276,7 @@ class WorkLogComponent extends React.Component {
             specialLeaveWorkLog={this.props.specialLeaveWorkLog}
             timeOffWorkLog={this.props.timeOffWorkLog}
             uid={uid}
+            userRoles={userRoles}
             vacationWorkLog={this.props.vacationWorkLog}
             workHoursList={this.props.workHoursList}
             workLog={this.props.workLog}
