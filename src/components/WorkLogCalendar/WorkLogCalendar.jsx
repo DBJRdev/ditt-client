@@ -761,6 +761,7 @@ class WorkLogCalendar extends React.Component {
         {(
           this.props.supervisorView
           && userRoles.includes(ROLE_SUPER_ADMIN)
+          && (this.props.uid !== userId)
           && (status === STATUS_OPENED || status === STATUS_WAITING_FOR_APPROVAL)
         ) && (
           <div className={styles.tableToolbar}>
