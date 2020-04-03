@@ -3,6 +3,7 @@ export default {
   editUser: '/users/:id/edit',
   fastAccessAddWorkLog: '/fast-access/:apiToken/work-logs/add',
   forgotPassword: '/forgot-password',
+  hrOverview: '/hr/overview',
   index: '/',
   login: '/login',
   newPassword: '/new-password/:resetPasswordToken',

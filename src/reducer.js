@@ -4,6 +4,7 @@ import { reducer as banWorkLogReducer } from './resources/banWorkLog';
 import { reducer as businessTripWorkLogReducer } from './resources/businessTripWorkLog';
 import { reducer as configReducer } from './resources/config';
 import { reducer as homeOfficeWorkLogReducer } from './resources/homeOfficeWorkLog';
+import { reducer as hrReducer } from './resources/hr';
 import { reducer as maternityProtectionWorkLogReducer } from './resources/maternityProtectionWorkLog';
 import { reducer as overtimeWorkLogReducer } from './resources/overtimeWorkLog';
 import { reducer as parentalLeaveWorkLogReducer } from './resources/parentalLeaveWorkLog';
@@ -24,6 +25,7 @@ const appReducers = combineReducers({
   businessTripWorkLog: businessTripWorkLogReducer,
   config: configReducer,
   homeOfficeWorkLog: homeOfficeWorkLogReducer,
+  hr: hrReducer,
   maternityProtectionWorkLog: maternityProtectionWorkLogReducer,
   overtimeWorkLog: overtimeWorkLogReducer,
   parentalLeaveWorkLog: parentalLeaveWorkLogReducer,

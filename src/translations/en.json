@@ -65,6 +65,29 @@
       "required": "This field is required."
     }
   },
+  "hr": {
+    "action": {
+      "refresh": "Refresh"
+    },
+    "element": {
+      "dateFrom": "Date from",
+      "dateTo": "Date to",
+      "employeeId": "Employee ID",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "contractChanges": "Contract changes",
+      "childSickDays": "Child sick days",
+      "employeeSickDays": "Employee sick days"
+    },
+    "text": {
+      "reductionText": "01.{{ month }}. - Work time reduction to {{ time }}",
+      "increaseText": "01.{{ month }}. - Work time increase to {{ time }}"
+    },
+    "title": {
+      "changesAndAbsenceRegistration": "Changes and absence registrations",
+      "overview": "HR overview"
+    }
+  },
   "layout": {
     "menu": {
       "workLogs": "Monthly logs",
@@ -72,6 +95,7 @@
       "specialApprovals": "Special approvals",
       "supervisedUsers": "Supervised users",
       "users": "Users",
+      "hrOverview": "HR overview",
       "logout": "Logout"
     },
     "text": {
