@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import routes from './routes';
 import ErrorPage from './pages/error';
+import { OverviewPage } from './pages/hr';
 import {
   ForgotPasswordPage,
   LoginPage,
@@ -102,6 +103,12 @@ export default (store, history) => (
           path={routes.userList}
           roles={[ROLE_ADMIN, ROLE_SUPER_ADMIN]}
           component={UserListPage}
+        />
+        <AuthorizedRoute
+          exact
+          path={routes.hrOverview}
+          roles={[ROLE_SUPER_ADMIN]}
+          component={OverviewPage}
         />
         <AuthorizedRoute
           exact

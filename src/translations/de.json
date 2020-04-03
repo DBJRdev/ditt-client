@@ -65,6 +65,29 @@
       "required": "Dieses Feld wird benötigt."
     }
   },
+  "hr": {
+    "action": {
+      "refresh": "Aktualisierung"
+    },
+    "element": {
+      "dateFrom": "Datum von",
+      "dateTo": "Datum bis",
+      "employeeId": "Mitarbeiter-ID",
+      "firstName": "Familienname",
+      "lastName": "Vorname",
+      "contractChanges": "Stellenveränderungen",
+      "childSickDays": "Kind-krank-Tage",
+      "employeeSickDays": "Eigene Krankmeldungen"
+    },
+    "text": {
+      "reductionText": "{{ date }}: Verkürzung der Arbeitszeit auf {{ time }}",
+      "increaseText": "{{ date }}: Verlängerung der Arbeitszeit auf {{ time }}"
+    },
+    "title": {
+      "changesAndAbsenceRegistration": "Veränderungen und Abwesenheitsmeldungen",
+      "overview": "HR Übersicht"
+    }
+  },
   "layout": {
     "menu": {
       "workLogs": "Monatsübersicht",
@@ -72,6 +95,7 @@
       "specialApprovals": "Anträge",
       "supervisedUsers": "Mitarbeiter*innen",
       "users": "Nutzer*innen",
+      "hrOverview": "HR Übersicht",
       "logout": "Ausloggen"
     },
     "text": {

@@ -130,6 +130,15 @@ class LayoutComponent extends React.Component {
               {this.isAuthorized([ROLE_SUPER_ADMIN]) && (
                 <div className={styles.navigationItem}>
                   <Button
+                    clickHandler={() => history.push(routes.hrOverview)}
+                    label={t('layout:menu.hrOverview')}
+                    priority="outline"
+                  />
+                </div>
+              )}
+              {this.isAuthorized([ROLE_SUPER_ADMIN]) && (
+                <div className={styles.navigationItem}>
+                  <Button
                     clickHandler={() => history.push(routes.settings)}
                     label={t('layout:menu.settings')}
                     priority="outline"
