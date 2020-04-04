@@ -685,6 +685,14 @@ class WorkLogCalendar extends React.Component {
       userId = this.props.workMonth.get('user').get('id');
     }
 
+    if (
+      !this.props.workMonth
+      || !this.props.workMonthList
+      || !this.props.workHoursList
+    ) {
+      return null;
+    }
+
     const daysOfSelectedMonth = this.getDaysOfSelectedMonth();
 
     return (
