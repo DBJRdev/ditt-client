@@ -6,4 +6,9 @@ export default Immutable.fromJS({
     isFetching: false,
     isFetchingFailure: false,
   },
+  yearOverview: {
+    data: null,
+    isFetching: false,
+    isFetchingFailure: false,
+  },
 });

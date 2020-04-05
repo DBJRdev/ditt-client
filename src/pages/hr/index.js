@@ -1,1 +1,2 @@
-export { default as OverviewPage } from './OverviewContainer';
+export { default as ChangesAndAbsenceRegistrationPage } from './ChangesAndAbsenceRegistrationContainer';
+export { default as YearOverviewPage } from './YearOverviewContainer';

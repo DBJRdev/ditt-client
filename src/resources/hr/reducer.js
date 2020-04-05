@@ -13,7 +13,7 @@ export default (state, action) => {
     type,
   } = action;
 
-  const filterData = (data) => ({
+  const filterChangesAndAbsenceRegistrations = (data) => ({
     ...data,
     sickDays: data.sickDays.map((sickDay) => ({
       ...sickDay,
@@ -24,6 +24,8 @@ export default (state, action) => {
     })),
   });
 
+  const filterYearOverview = filterChangesAndAbsenceRegistrations;
+
   if (type === actionTypes.FETCH_CHANGES_AND_ABSENCE_REGISTRATIONS_REQUEST) {
     return state
       .setIn(['changesAndAbsenceRegistrations', 'isFetching'], true)
@@ -32,7 +34,10 @@ export default (state, action) => {
 
   if (type === actionTypes.FETCH_CHANGES_AND_ABSENCE_REGISTRATIONS_SUCCESS) {
     return state
-      .setIn(['changesAndAbsenceRegistrations', 'data'], Immutable.fromJS(payload.map(filterData)))
+      .setIn(
+        ['changesAndAbsenceRegistrations', 'data'],
+        Immutable.fromJS(payload.map(filterChangesAndAbsenceRegistrations)),
+      )
       .setIn(['changesAndAbsenceRegistrations', 'isFetching'], false)
       .setIn(['changesAndAbsenceRegistrations', 'isFetchingFailure'], false);
   }
@@ -41,6 +46,28 @@ export default (state, action) => {
     return state
       .setIn(['changesAndAbsenceRegistrations', 'isFetching'], false)
       .setIn(['changesAndAbsenceRegistrations', 'isFetchingFailure'], true);
+  }
+
+  if (type === actionTypes.FETCH_YEAR_OVERVIEW_REQUEST) {
+    return state
+      .setIn(['yearOverview', 'isFetching'], true)
+      .setIn(['yearOverview', 'isFetchingFailure'], false);
+  }
+
+  if (type === actionTypes.FETCH_YEAR_OVERVIEW_SUCCESS) {
+    return state
+      .setIn(
+        ['yearOverview', 'data'],
+        Immutable.fromJS(payload.map(filterYearOverview)),
+      )
+      .setIn(['yearOverview', 'isFetching'], false)
+      .setIn(['yearOverview', 'isFetchingFailure'], false);
+  }
+
+  if (type === actionTypes.FETCH_YEAR_OVERVIEW_FAILURE) {
+    return state
+      .setIn(['yearOverview', 'isFetching'], false)
+      .setIn(['yearOverview', 'isFetchingFailure'], true);
   }
 
   return state;

@@ -130,8 +130,17 @@ class LayoutComponent extends React.Component {
               {this.isAuthorized([ROLE_SUPER_ADMIN]) && (
                 <div className={styles.navigationItem}>
                   <Button
-                    clickHandler={() => history.push(routes.hrOverview)}
-                    label={t('layout:menu.hrOverview')}
+                    clickHandler={() => history.push(routes.hrChangesAndAbsenceRegistration)}
+                    label={t('layout:menu.hrChangesAndAbsenceRegistration')}
+                    priority="outline"
+                  />
+                </div>
+              )}
+              {this.isAuthorized([ROLE_SUPER_ADMIN]) && (
+                <div className={styles.navigationItem}>
+                  <Button
+                    clickHandler={() => history.push(routes.hrYearOverview)}
+                    label={t('layout:menu.hrYearOverview')}
                     priority="outline"
                   />
                 </div>
@@ -164,7 +173,9 @@ class LayoutComponent extends React.Component {
         )}
         <main className={styles.main}>
           <div className={styles.body}>
-            <h1 className={styles.bodyTitle}>{this.props.title}</h1>
+            {this.props.title && (
+              <h1 className={styles.bodyTitle}>{this.props.title}</h1>
+            )}
             {
               this.props.loading
                 ? t('general:text.loading')
@@ -191,6 +202,7 @@ class LayoutComponent extends React.Component {
 LayoutComponent.defaultProps = {
   children: null,
   loading: false,
+  title: null,
   token: null,
 };
 
@@ -202,7 +214,7 @@ LayoutComponent.propTypes = {
   loading: PropTypes.bool,
   logout: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   token: PropTypes.string,
 };
 

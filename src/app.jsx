@@ -7,7 +7,10 @@ import {
 } from 'react-router-dom';
 import routes from './routes';
 import ErrorPage from './pages/error';
-import { OverviewPage } from './pages/hr';
+import {
+  ChangesAndAbsenceRegistrationPage,
+  YearOverviewPage,
+} from './pages/hr';
 import {
   ForgotPasswordPage,
   LoginPage,
@@ -106,9 +109,15 @@ export default (store, history) => (
         />
         <AuthorizedRoute
           exact
-          path={routes.hrOverview}
+          path={routes.hrChangesAndAbsenceRegistration}
           roles={[ROLE_SUPER_ADMIN]}
-          component={OverviewPage}
+          component={ChangesAndAbsenceRegistrationPage}
+        />
+        <AuthorizedRoute
+          exact
+          path={routes.hrYearOverview}
+          roles={[ROLE_SUPER_ADMIN]}
+          component={YearOverviewPage}
         />
         <AuthorizedRoute
           exact
