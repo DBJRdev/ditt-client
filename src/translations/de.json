@@ -77,15 +77,19 @@
       "lastName": "Vorname",
       "contractChanges": "Stellenveränderungen",
       "childSickDays": "Kind-krank-Tage",
-      "employeeSickDays": "Eigene Krankmeldungen"
+      "employeeSickDays": "Eigene Krankmeldungen",
+      "sickDaySickChild": "Kind krank",
+      "sickDayWithoutNote": "Ohne Krankenschein",
+      "sickDayWithNote": "Mit Krankenschein",
+      "total": "Insgesamt"
     },
     "text": {
-      "reductionText": "{{ date }}: Verkürzung der Arbeitszeit auf {{ time }}",
-      "increaseText": "{{ date }}: Verlängerung der Arbeitszeit auf {{ time }}"
+      "reductionText": "01.{{ month }}. - Verkürzung der Arbeitszeit auf {{ time }}",
+      "increaseText": "01.{{ month }}. - Verlängerung der Arbeitszeit auf {{ time }}"
     },
     "title": {
       "changesAndAbsenceRegistration": "Veränderungen und Abwesenheitsmeldungen",
-      "overview": "HR Übersicht"
+      "yearOverview": "Jahresübersicht"
     }
   },
   "layout": {
@@ -95,7 +99,8 @@
       "specialApprovals": "Anträge",
       "supervisedUsers": "Mitarbeiter*innen",
       "users": "Nutzer*innen",
-      "hrOverview": "HR Übersicht",
+      "hrChangesAndAbsenceRegistration": "HR - Veränderungen",
+      "hrYearOverview": "HR - Jahresübersicht",
       "logout": "Ausloggen"
     },
     "text": {

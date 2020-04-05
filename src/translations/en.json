@@ -77,7 +77,11 @@
       "lastName": "Last name",
       "contractChanges": "Contract changes",
       "childSickDays": "Child sick days",
-      "employeeSickDays": "Employee sick days"
+      "employeeSickDays": "Employee sick days",
+      "sickDaySickChild": "Sick child",
+      "sickDayWithoutNote": "Sick day without note",
+      "sickDayWithNote": "Sick day with note",
+      "total": "Total"
     },
     "text": {
       "reductionText": "01.{{ month }}. - Work time reduction to {{ time }}",
@@ -85,7 +89,8 @@
     },
     "title": {
       "changesAndAbsenceRegistration": "Changes and absence registrations",
-      "overview": "HR overview"
+      "overview": "HR overview",
+      "yearOverview": "Year overview"
     }
   },
   "layout": {
@@ -95,7 +100,8 @@
       "specialApprovals": "Special approvals",
       "supervisedUsers": "Supervised users",
       "users": "Users",
-      "hrOverview": "HR overview",
+      "hrChangesAndAbsenceRegistration": "HR - Changes",
+      "hrYearOverview": "HR - Year overview",
       "logout": "Logout"
     },
     "text": {

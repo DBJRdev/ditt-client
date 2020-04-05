@@ -27,7 +27,7 @@ import {
 import Layout from '../../components/Layout';
 import styles from './styles.scss';
 
-const OverviewComponent = (props) => {
+const ChangesAndAbsenceRegistrationComponent = (props) => {
   const [dateFrom, setDateFrom] = useState(toDayMonthYearFormat(localizedMoment().subtract(1, 'month')));
   const [dateTo, setDateTo] = useState(toDayMonthYearFormat(localizedMoment()));
 
@@ -39,11 +39,11 @@ const OverviewComponent = (props) => {
   }, [props.fetchConfig]);
 
   return (
-    <Layout title={props.t('hr:title.overview')} loading={!props.config}>
+    <Layout loading={!props.config}>
       <div className="mb-5">
         <Toolbar>
           <ToolbarItem>
-            <h2 className={styles.subtitle}>
+            <h2 className={styles.bodyTitle}>
               {props.t('hr:title.changesAndAbsenceRegistration')}
             </h2>
           </ToolbarItem>
@@ -224,12 +224,12 @@ const OverviewComponent = (props) => {
   );
 };
 
-OverviewComponent.defaultProps = {
+ChangesAndAbsenceRegistrationComponent.defaultProps = {
   changesAndAbsenceRegistrations: [],
   config: null,
 };
 
-OverviewComponent.propTypes = {
+ChangesAndAbsenceRegistrationComponent.propTypes = {
   changesAndAbsenceRegistrations: PropTypes.arrayOf(PropTypes.shape),
   config: PropTypes.shape({
     get: PropTypes.func.isRequired,
@@ -240,4 +240,4 @@ OverviewComponent.propTypes = {
   t: PropTypes.func.isRequired,
 };
 
-export default withTranslation()(OverviewComponent);
+export default withTranslation()(ChangesAndAbsenceRegistrationComponent);

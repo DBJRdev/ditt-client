@@ -10,7 +10,7 @@ import {
   selectChangesAndAbsenceRegistrations,
   selectChangesAndAbsenceRegistrationsMeta,
 } from '../../resources/hr';
-import Component from './OverviewComponent';
+import Component from './ChangesAndAbsenceRegistrationComponent';
 
 const mapStateToProps = (state) => {
   const changesAndAbsenceRegistrationsMeta = selectChangesAndAbsenceRegistrationsMeta(state);

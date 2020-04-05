@@ -1,11 +1,13 @@
 $_layout-spacer-y: 2rem;
 
-.subtitle {
+.bodyTitle {
+  margin-top: $_layout-spacer-y / 4;
+  margin-bottom: $_layout-spacer-y;
   overflow-x: auto;
   font-weight: 500;
-  font-size: 1.25rem;
+  font-size: 1.75rem;
 }
 
 .filters {
-  margin-bottom: 1em;
+  margin-bottom: 1.75em;
 }
