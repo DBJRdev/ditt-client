@@ -74,6 +74,7 @@ class SupervisorWorkTimeCorrectionModal extends React.Component {
 
   saveHandler() {
     const {
+      onClose,
       onSetWorkTimeCorrection,
       t,
       workMonth,
@@ -97,6 +98,8 @@ class SupervisorWorkTimeCorrectionModal extends React.Component {
             formValidity.elements.form = response.payload.response.detail;
 
             this.setState({ formValidity });
+          } else {
+            onClose();
           }
         });
     }

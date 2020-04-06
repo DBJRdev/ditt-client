@@ -415,7 +415,9 @@ class WorkLogCalendar extends React.Component {
     return 0;
   }
 
-  initAndStartWorkLogTimer() {
+  initAndStartWorkLogTimer(e) {
+    e.stopPropagation();
+
     const startTime = localizedMoment();
 
     this.setState({ workLogTimer: startTime });
@@ -433,7 +435,9 @@ class WorkLogCalendar extends React.Component {
     }, 1000);
   }
 
-  stopWorkLogTimer() {
+  stopWorkLogTimer(e) {
+    e.stopPropagation();
+
     const startTime = toMomentDateTime(getWorkLogTimer());
     const endTime = localizedMoment();
     const intervalMiliseconds = localizedMoment().diff(this.state.workLogTimer);
@@ -482,29 +486,8 @@ class WorkLogCalendar extends React.Component {
       workedTime.add(day.workTime.workTime);
     });
 
-    let workTimeCorrectionText = null;
-
     if (this.props.workMonth) {
       workedTime.add(this.props.workMonth.get('workTimeCorrection'), 'seconds');
-
-      const workTimeCorrection = Math.abs(this.props.workMonth.get('workTimeCorrection'));
-      if (workTimeCorrection !== 0) {
-        const hour = parseInt(workTimeCorrection / 3600, 10);
-        const minute = parseInt((workTimeCorrection - (hour * 3600)) / 60, 10);
-        let minuteText = minute;
-
-        if (minute === 0) {
-          minuteText = '00';
-        } else if (minute < 10) {
-          minuteText = `0${minute}`;
-        }
-
-        if (this.props.workMonth.get('workTimeCorrection') > 0) {
-          workTimeCorrectionText = ` (${hour}:${minuteText} ${t('workLog:text.addedByHR')})`;
-        } else {
-          workTimeCorrectionText = ` (${hour}:${minuteText} ${t('workLog:text.subtractedByHR')})`;
-        }
-      }
     }
 
     if (this.props.workMonth && this.props.workMonth.get('status') !== STATUS_APPROVED) {
@@ -530,7 +513,6 @@ class WorkLogCalendar extends React.Component {
             requiredHoursLeft: toHourMinuteFormatFromInt(requiredHoursLeft),
             requiredHoursWithoutLeft: toHourMinuteFormatFromInt(requiredHours),
             workedHours: `${workedTime.hours() + (workedTime.days() * 24)}:${(workedTime.minutes()) < 10 ? '0' : ''}${workedTime.minutes()}`,
-            workedHoursText: workTimeCorrectionText,
           },
         );
       }
@@ -545,7 +527,6 @@ class WorkLogCalendar extends React.Component {
             requiredHoursLeft: toHourMinuteFormatFromInt(requiredHoursLeft),
             requiredHoursWithoutLeft: toHourMinuteFormatFromInt(requiredHours),
             workedHours: `${workedTime.hours() + (workedTime.days() * 24)}:${(workedTime.minutes()) < 10 ? '0' : ''}${workedTime.minutes()}`,
-            workedHoursText: workTimeCorrectionText,
           },
         );
       }
@@ -556,7 +537,6 @@ class WorkLogCalendar extends React.Component {
       {
         requiredHours: toHourMinuteFormatFromInt(requiredHours),
         workedHours: `${workedTime.hours() + (workedTime.days() * 24)}:${(workedTime.minutes()) < 10 ? '0' : ''}${workedTime.minutes()}`,
-        workedHoursText: workTimeCorrectionText,
       },
     );
   }
@@ -695,6 +675,36 @@ class WorkLogCalendar extends React.Component {
 
     const daysOfSelectedMonth = this.getDaysOfSelectedMonth();
 
+    const canAddWorkLog = !this.props.supervisorView
+      && (status === STATUS_OPENED || status === STATUS_WAITING_FOR_APPROVAL);
+    const canAddSupervisorWorkLog = this.props.supervisorView
+      && userRoles.includes(ROLE_SUPER_ADMIN)
+      && (this.props.uid !== userId)
+      && (status === STATUS_OPENED || status === STATUS_WAITING_FOR_APPROVAL);
+
+    let workTimeCorrectionText = null;
+
+    if (this.props.workMonth) {
+      const workTimeCorrection = Math.abs(this.props.workMonth.get('workTimeCorrection'));
+      if (workTimeCorrection !== 0) {
+        const hour = parseInt(workTimeCorrection / 3600, 10);
+        const minute = parseInt((workTimeCorrection - (hour * 3600)) / 60, 10);
+        let minuteText = minute;
+
+        if (minute === 0) {
+          minuteText = '00';
+        } else if (minute < 10) {
+          minuteText = `0${minute}`;
+        }
+
+        if (this.props.workMonth.get('workTimeCorrection') > 0) {
+          workTimeCorrectionText = `${t('workLog:text.correction')}: + ${hour}:${minuteText} h`;
+        } else {
+          workTimeCorrectionText = `${t('workLog:text.correction')}: - ${hour}:${minuteText} h`;
+        }
+      }
+    }
+
     return (
       <div>
         <nav className={styles.navigation}>
@@ -782,19 +792,22 @@ class WorkLogCalendar extends React.Component {
         <div className={styles.tableWrapper}>
           <table className={styles.table}>
             <tbody>
+              {workTimeCorrectionText && (
+                <tr>
+                  <td
+                    colSpan={(canAddWorkLog || canAddSupervisorWorkLog) ? 4 : 3}
+                    className={styles.tableCellRight}
+                  >
+                    {workTimeCorrectionText}
+                  </td>
+                </tr>
+              )}
               {daysOfSelectedMonth.map((day) => {
                 let rowClassName = (
                   isWeekend(day.date)
                 || includesSameDate(day.date, this.props.config.get('supportedHolidays'))
                 ) ? styles.tableRowWeekend
                   : styles.tableRow;
-
-                const canAddWorkLog = !this.props.supervisorView
-                  && (status === STATUS_OPENED || status === STATUS_WAITING_FOR_APPROVAL);
-                const canAddSupervisorWorkLog = this.props.supervisorView
-                  && userRoles.includes(ROLE_SUPER_ADMIN)
-                  && (this.props.uid !== userId)
-                  && (status === STATUS_OPENED || status === STATUS_WAITING_FOR_APPROVAL);
 
                 if (canAddWorkLog || canAddSupervisorWorkLog) {
                   rowClassName = `${rowClassName} ${styles.tableRowAddWorkLog}`;
@@ -813,7 +826,7 @@ class WorkLogCalendar extends React.Component {
                     key={day.date.date()}
                     onClick={onRowClick}
                   >
-                    <td className={styles.tableCell}>
+                    <td className={styles.dateTableCell}>
                       <div className={styles.date}>
                         {toDayMonthYearFormat(day.date)}
                       </div>
