@@ -70,6 +70,7 @@
       "refresh": "Refresh"
     },
     "element": {
+      "period": "Zeitraum",
       "dateFrom": "Date from",
       "dateTo": "Date to",
       "employeeId": "Employee ID",
@@ -81,7 +82,9 @@
       "sickDaySickChild": "Sick child",
       "sickDayWithoutNote": "Sick day without note",
       "sickDayWithNote": "Sick day with note",
-      "total": "Total"
+      "sickChildTotal": "Sick child",
+      "sickDayTotal": "Sickness",
+      "last365Days": "Last 365 days"
     },
     "text": {
       "reductionText": "01.{{ month }}. - Work time reduction to {{ time }}",
@@ -100,8 +103,8 @@
       "specialApprovals": "Special approvals",
       "supervisedUsers": "Supervised users",
       "users": "Users",
-      "hrChangesAndAbsenceRegistration": "HR - Changes",
-      "hrYearOverview": "HR - Year overview",
+      "hrChangesAndAbsenceRegistration": "Changes",
+      "hrYearOverview": "Year overview",
       "logout": "Logout"
     },
     "text": {

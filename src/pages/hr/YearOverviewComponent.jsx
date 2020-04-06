@@ -85,8 +85,27 @@ const OverviewComponent = (props) => {
             name: 'sickDayWithoutNote',
           },
           {
-            format: (rowData) => rowData.sickDays.length,
-            label: props.t('hr:element.total'),
+            format: (rowData) => rowData.sickDays
+              .filter((sickDay) => sickDay.variant === VARIANT_SICK_CHILD).length,
+            label: (
+              <>
+                {props.t('hr:element.sickChildTotal')}
+                <br />
+                {props.t('hr:element.last365Days')}
+              </>
+            ),
+            name: 'total',
+          },
+          {
+            format: (rowData) => rowData.sickDays
+              .filter((sickDay) => sickDay.variant !== VARIANT_SICK_CHILD).length,
+            label: (
+              <>
+                {props.t('hr:element.sickDayTotal')}
+                <br />
+                {props.t('hr:element.last365Days')}
+              </>
+            ),
             name: 'total',
           },
         ]}

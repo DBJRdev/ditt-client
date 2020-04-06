@@ -50,22 +50,33 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
           <ToolbarSpacer />
           <ToolbarItem>
             <div className={styles.filters}>
+              <span className="mr-5">
+                {props.t('hr:element.period')}
+                :
+              </span>
               <TextField
                 changeHandler={(e) => setDateFrom(e.target.value)}
                 helperText={dateFromError}
+                isLabelVisible={false}
                 label={props.t('hr:element.dateFrom')}
                 layout="horizontal"
                 value={dateFrom || ''}
                 validationState={dateFromError ? 'invalid' : null}
               />
+              <span className="mr-4">–</span>
               <TextField
                 changeHandler={(e) => setDateTo(e.target.value)}
                 helperText={dateToError}
+                isLabelVisible={false}
                 label={props.t('hr:element.dateTo')}
                 layout="horizontal"
                 value={dateTo || ''}
                 validationState={dateToError ? 'invalid' : null}
               />
+            </div>
+          </ToolbarItem>
+          <ToolbarItem>
+            <div className={styles.filters}>
               <Button
                 clickHandler={() => {
                   let hasError = false;

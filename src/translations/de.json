@@ -67,9 +67,10 @@
   },
   "hr": {
     "action": {
-      "refresh": "Aktualisierung"
+      "refresh": "Aktualisieren"
     },
     "element": {
+      "period": "Zeitraum",
       "dateFrom": "Datum von",
       "dateTo": "Datum bis",
       "employeeId": "Mitarbeiter-ID",
@@ -81,7 +82,9 @@
       "sickDaySickChild": "Kind krank",
       "sickDayWithoutNote": "Ohne Krankenschein",
       "sickDayWithNote": "Mit Krankenschein",
-      "total": "Insgesamt"
+      "sickChildTotal": "Kind krank",
+      "sickDayTotal": "Krankheit",
+      "last365Days": "Letzte 365 Tage"
     },
     "text": {
       "reductionText": "01.{{ month }}. - Verkürzung der Arbeitszeit auf {{ time }}",
@@ -99,8 +102,8 @@
       "specialApprovals": "Anträge",
       "supervisedUsers": "Mitarbeiter*innen",
       "users": "Nutzer*innen",
-      "hrChangesAndAbsenceRegistration": "HR - Veränderungen",
-      "hrYearOverview": "HR - Jahresübersicht",
+      "hrChangesAndAbsenceRegistration": "Veränderungen",
+      "hrYearOverview": "Jahresübersicht",
       "logout": "Ausloggen"
     },
     "text": {
