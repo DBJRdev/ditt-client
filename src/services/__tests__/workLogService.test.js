@@ -3278,7 +3278,7 @@ describe('getWorkedTime', () => {
 
     expect(result.breakTime.asSeconds()).toEqual(0);
     expect(result.isWorkTimeCorrected).toEqual(false);
-    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+    expect(result.workTime.asSeconds()).toEqual(0);
   });
 
   it('test calculate unapproved time off work logs without work logs', () => {
