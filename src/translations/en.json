@@ -70,7 +70,7 @@
       "refresh": "Refresh"
     },
     "element": {
-      "period": "Zeitraum",
+      "period": "Period",
       "dateFrom": "Date from",
       "dateTo": "Date to",
       "employeeId": "Employee ID",
