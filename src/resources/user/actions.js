@@ -11,7 +11,7 @@ export const addUser = (data) => (dispatch) => dispatch({
       isActive: data.isActive,
       lastName: data.lastName,
       plainPassword: data.plainPassword,
-      supervisor: data.supervisor ? `/users/${data.supervisor}` : null,
+      supervisor: data.supervisor ? `/users/${data.supervisor.id}` : null,
       vacations: data.vacations
         .map((vacation) => ({
           ...vacation,
@@ -59,7 +59,7 @@ export const editUser = (data) => (dispatch) => dispatch({
       lastName: data.lastName,
       notifications: data.notifications,
       plainPassword: data.plainPassword ? data.plainPassword : null,
-      supervisor: data.supervisor ? `/users/${data.supervisor}` : null,
+      supervisor: data.supervisor ? `/users/${data.supervisor.id}` : null,
       vacations: data.vacations
         .map((vacation) => ({
           ...vacation,
