@@ -233,7 +233,7 @@
       "plainPassword": "Passwort",
       "remainingVacationDays": "Restliche Urlaubstage",
       "supervisor": "Vorgesetzte*r",
-      "supervisorInfoSendOnHolidays": "Benachrichtigen Sie an Feiertagen",
+      "supervisorInfoSendOnHolidays": "Benachrichtigung auch an Feiertagen",
       "vacationDays": "Urlaubstage",
       "vacationDaysUsed": "Verplante Urlaubstage",
       "workedAndRequiredHours": "Gearbeitete / Benötigte Stunden"
@@ -250,7 +250,7 @@
       "averageWorkingHoursTitle": "Tägliche Arbeitszeit",
       "fastAccess": "Schneller Zugang",
       "notificationSettings": "Benachrichtigungseinstellungen",
-      "supervisorInfo": "Tägliche Übersicht des Betreuers",
+      "supervisorInfo": "Versand Erinnerungsmails",
       "vacationDays": "Urlaubstage",
       "vacationDaysLeft": "{{ remainingDays }} von {{ vacationDays }} Tagen nicht verplant"
     },

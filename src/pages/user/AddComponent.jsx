@@ -203,8 +203,10 @@ class AddComponent extends React.Component {
 
       formData.workHours = workHours;
 
-      if (formData.supervisor === '') {
+      if (formData.supervisor === '' || formData.supervisor == null) {
         formData.supervisor = null;
+      } else {
+        formData.supervisor = { id: formData.supervisor };
       }
 
       this.props.addUser(formData)
