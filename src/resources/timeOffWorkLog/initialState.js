@@ -8,4 +8,8 @@ export default Immutable.fromJS({
     isPosting: false,
     isPostingFailure: false,
   },
+  timeOffWorkLogSupport: {
+    isPosting: false,
+    isPostingFailure: false,
+  },
 });

@@ -39,6 +39,8 @@ class SpecialApprovalListComponent extends React.Component {
       lastApprovedWorkLogType: null,
       lastRejectedWorkLogId: null,
       lastRejectedWorkLogType: null,
+      lastSupportedWorkLogId: null,
+      lastSupportedWorkLogType: null,
       rejectWorkLogForm: {
         rejectionMessage: null,
       },
@@ -180,6 +182,8 @@ class SpecialApprovalListComponent extends React.Component {
           lastApprovedWorkLogType: type,
           lastRejectedWorkLogId: null,
           lastRejectedWorkLogType: null,
+          lastSupportedWorkLogId: null,
+          lastSupportedWorkLogType: null,
         });
 
         return action(id).then((response) => {
@@ -241,9 +245,74 @@ class SpecialApprovalListComponent extends React.Component {
           lastApprovedWorkLogType: null,
           lastRejectedWorkLogId: id,
           lastRejectedWorkLogType: type,
+          lastSupportedWorkLogId: null,
+          lastSupportedWorkLogType: null,
         });
 
         return action(id, { rejectionMessage }).then((response) => {
+          this.props.fetchSpecialApprovalList(decodedToken.uid);
+
+          return response;
+        });
+      }
+    }
+
+    return null;
+  }
+
+  handleSupport(id, type, isBulk) {
+    if (this.props.token) {
+      const decodedToken = jwt.decode(this.props.token);
+
+      if (decodedToken) {
+        let action = null;
+
+        if (isBulk) {
+          switch (type) {
+            case SPECIAL_LEAVE_WORK_LOG:
+              action = this.props.supportMultipleSpecialLeaveWorkLog;
+              break;
+            case VACATION_WORK_LOG:
+              action = this.props.supportMultipleVacationWorkLog;
+              break;
+            default:
+              throw new Error(`Unknown bulk type ${type}`);
+          }
+        } else {
+          switch (type) {
+            case BUSINESS_TRIP_WORK_LOG:
+              action = this.props.supportBusinessTripWorkLog;
+              break;
+            case HOME_OFFICE_WORK_LOG:
+              action = this.props.supportHomeOfficeWorkLog;
+              break;
+            case OVERTIME_WORK_LOG:
+              action = this.props.supportOvertimeWorkLog;
+              break;
+            case SPECIAL_LEAVE_WORK_LOG:
+              action = this.props.supportSpecialLeaveWorkLog;
+              break;
+            case TIME_OFF_WORK_LOG:
+              action = this.props.supportTimeOffWorkLog;
+              break;
+            case VACATION_WORK_LOG:
+              action = this.props.supportVacationWorkLog;
+              break;
+            default:
+              throw new Error(`Unknown type ${type}`);
+          }
+        }
+
+        this.setState({
+          lastApprovedWorkLogId: null,
+          lastApprovedWorkLogType: null,
+          lastRejectedWorkLogId: null,
+          lastRejectedWorkLogType: null,
+          lastSupportedWorkLogId: id,
+          lastSupportedWorkLogType: type,
+        });
+
+        return action(id).then((response) => {
           this.props.fetchSpecialApprovalList(decodedToken.uid);
 
           return response;
@@ -710,85 +779,161 @@ class SpecialApprovalListComponent extends React.Component {
                 name: 'type',
               },
               {
-                format: (row) => (
-                  <div>
-                    <div className={styles.workLogButtonWrapper}>
-                      <Button
-                        clickHandler={() => this.openWorkLogDetail(
-                          row.rawId,
-                          row.type,
-                          row.isBulk,
-                          row.dateTo,
-                        )}
-                        label={t('specialApproval:action.workLogDetail')}
-                        priority="outline"
-                      />
-                    </div>
-                    {
-                      STATUS_WAITING_FOR_APPROVAL === row.status
-                      && row.workMonth.user.allSupervisors
-                      && row.workMonth.user.allSupervisors.find(
-                        (supervisor) => supervisor.id === uid,
-                      )
-                      && (
-                        <>
-                          <div className={styles.workLogButtonWrapper}>
-                            <Button
-                              clickHandler={() => {
-                                if (row.isBulk) {
-                                  return this.handleMarkApproved(
-                                    row.bulkIds,
-                                    row.type,
-                                    row.isBulk,
-                                  );
-                                }
+                format: (row) => {
+                  const isAcknowledgedByMe = !!row.support.find(
+                    (support) => support.supportedBy.id === uid,
+                  );
+                  const acknowledgeBy = row.support.map(
+                    (support) => `${support.supportedBy.firstName} ${support.supportedBy.lastName}`,
+                  ).join(', ');
+                  let isSameIdApproved = this.state.lastApprovedWorkLogId === row.rawId;
+                  let isSameIdRejected = this.state.lastRejectedWorkLogId === row.rawId;
+                  let isSameIdSupported = this.state.lastSupportedWorkLogId === row.rawId;
 
-                                return this.handleMarkApproved(row.rawId, row.type, row.isBulk);
-                              }}
-                              label={t('specialApproval:action.approveWorkLog')}
-                              loadingIcon={
-                                (
-                                  this.props.isPosting
-                                  && this.state.lastApprovedWorkLogId === row.rawId
-                                  && this.state.lastApprovedWorkLogType === row.type
-                                ) ? <Icon icon="sync" />
-                                  : null
-                              }
-                              priority="outline"
-                              variant="success"
-                            />
-                          </div>
-                          <div className={styles.workLogButtonWrapper}>
-                            <Button
-                              clickHandler={() => {
-                                if (row.isBulk) {
+                  if (row.isBulk && Array.isArray(this.state.lastApprovedWorkLogId)) {
+                    isSameIdApproved = !!row.bulkIds.find(
+                      (id) => this.state.lastApprovedWorkLogId.includes(id),
+                    );
+                  }
+
+                  if (row.isBulk && Array.isArray(this.state.lastRejectedWorkLogId)) {
+                    isSameIdRejected = !!row.bulkIds.find(
+                      (id) => this.state.lastRejectedWorkLogId.includes(id),
+                    );
+                  }
+
+                  if (row.isBulk && Array.isArray(this.state.lastSupportedWorkLogId)) {
+                    isSameIdSupported = !!row.bulkIds.find(
+                      (id) => this.state.lastSupportedWorkLogId.includes(id),
+                    );
+                  }
+
+                  return (
+                    <div>
+                      <div className={styles.workLogButtonWrapper}>
+                        <Button
+                          clickHandler={() => this.openWorkLogDetail(
+                            row.rawId,
+                            row.type,
+                            row.isBulk,
+                            row.dateTo,
+                          )}
+                          label={t('specialApproval:action.workLogDetail')}
+                          priority="outline"
+                        />
+                      </div>
+                      {
+                        STATUS_WAITING_FOR_APPROVAL === row.status
+                        && row.workMonth.user.allSupervisors
+                        && row.workMonth.user.allSupervisors.find(
+                          (supervisor) => supervisor.id === uid,
+                        )
+                        && (
+                          <>
+                            <div className={styles.workLogButtonWrapper}>
+                              <Button
+                                clickHandler={() => {
+                                  if (row.isBulk) {
+                                    return this.handleMarkApproved(
+                                      row.bulkIds,
+                                      row.type,
+                                      row.isBulk,
+                                    );
+                                  }
+
+                                  return this.handleMarkApproved(row.rawId, row.type, row.isBulk);
+                                }}
+                                label={t('specialApproval:action.approveWorkLog')}
+                                loadingIcon={
+                                  (
+                                    this.props.isPosting
+                                    && isSameIdApproved
+                                    && this.state.lastApprovedWorkLogType === row.type
+                                  ) ? <Icon icon="sync" />
+                                    : null
+                                }
+                                priority="outline"
+                                variant="success"
+                              />
+                            </div>
+                            <div className={styles.workLogButtonWrapper}>
+                              <Button
+                                clickHandler={() => {
+                                  if (row.isBulk) {
+                                    return this.openRejectWorkLogForm(
+                                      row.bulkIds,
+                                      row.type,
+                                      row.isBulk,
+                                    );
+                                  }
+
                                   return this.openRejectWorkLogForm(
-                                    row.bulkIds,
+                                    row.rawId,
                                     row.type,
                                     row.isBulk,
                                   );
+                                }}
+                                label={t('specialApproval:action.rejectWorkLog')}
+                                loadingIcon={
+                                  (
+                                    this.props.isPosting
+                                    && isSameIdRejected
+                                    && this.state.lastRejectedWorkLogType === row.type
+                                  ) ? <Icon icon="sync" />
+                                    : null
                                 }
+                                priority="outline"
+                                variant="danger"
+                              />
+                            </div>
+                            <div className={styles.workLogButtonWrapper}>
+                              <Button
+                                clickHandler={() => {
+                                  if (row.isBulk) {
+                                    return this.handleSupport(
+                                      row.bulkIds,
+                                      row.type,
+                                      row.isBulk,
+                                    );
+                                  }
 
-                                return this.openRejectWorkLogForm(row.rawId, row.type, row.isBulk);
-                              }}
-                              label={t('specialApproval:action.rejectWorkLog')}
-                              loadingIcon={
-                                (
-                                  this.props.isPosting
-                                  && this.state.lastRejectedWorkLogId === row.rawId
-                                  && this.state.lastRejectedWorkLogType === row.type
-                                ) ? <Icon icon="sync" />
-                                  : null
-                              }
-                              priority="outline"
-                              variant="danger"
-                            />
-                          </div>
-                        </>
-                      )
-                    }
-                  </div>
-                ),
+                                  return this.handleSupport(row.rawId, row.type, row.isBulk);
+                                }}
+                                disabled={isAcknowledgedByMe}
+                                label={
+                                  isAcknowledgedByMe
+                                    ? t('specialApproval:action.acknowledged')
+                                    : t('specialApproval:action.acknowledge')
+                                }
+                                loadingIcon={
+                                  (
+                                    this.props.isPosting
+                                    && isSameIdSupported
+                                    && this.state.lastSupportedWorkLogType === row.type
+                                  ) ? <Icon icon="sync" />
+                                    : null
+                                }
+                                priority="outline"
+                                variant="warning"
+                              />
+                            </div>
+                            {
+                              row.support.length > 0
+                                ? (
+                                  <div
+                                    className={styles.thumbUpIcon}
+                                    title={`${t('specialApproval:text.acknowledgedBy')}: ${acknowledgeBy}`}
+                                  >
+                                    <Icon icon="thumb_up" size="large" />
+                                  </div>
+                                ) : null
+                            }
+                          </>
+                        )
+                      }
+                    </div>
+                  );
+                },
                 label: t('general:element.actions'),
                 name: 'actions',
               },
@@ -940,6 +1085,14 @@ SpecialApprovalListComponent.propTypes = {
     rejectionMessage: PropTypes.string,
     status: PropTypes.string.isRequired,
   }),
+  supportBusinessTripWorkLog: PropTypes.func.isRequired,
+  supportHomeOfficeWorkLog: PropTypes.func.isRequired,
+  supportMultipleSpecialLeaveWorkLog: PropTypes.func.isRequired,
+  supportMultipleVacationWorkLog: PropTypes.func.isRequired,
+  supportOvertimeWorkLog: PropTypes.func.isRequired,
+  supportSpecialLeaveWorkLog: PropTypes.func.isRequired,
+  supportTimeOffWorkLog: PropTypes.func.isRequired,
+  supportVacationWorkLog: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
   timeOffWorkLog: ImmutablePropTypes.mapContains({
     date: PropTypes.object.isRequired,

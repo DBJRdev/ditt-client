@@ -144,5 +144,24 @@ export default (state, action) => {
       .setIn(['homeOfficeWorkLog', 'isPostingFailure'], true);
   }
 
+  if (type === actionTypes.SUPPORT_HOME_OFFICE_WORK_LOG_REQUEST) {
+    return state
+      .setIn(['homeOfficeWorkLogSupport', 'isPosting'], true)
+      .setIn(['homeOfficeWorkLogSupport', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.SUPPORT_HOME_OFFICE_WORK_LOG_SUCCESS) {
+    // Fetch is required to reload home office work log list with added work log
+    return state
+      .setIn(['homeOfficeWorkLogSupport', 'isPosting'], false)
+      .setIn(['homeOfficeWorkLogSupport', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.SUPPORT_HOME_OFFICE_WORK_LOG_FAILURE) {
+    return state
+      .setIn(['homeOfficeWorkLogSupport', 'isPosting'], false)
+      .setIn(['homeOfficeWorkLogSupport', 'isPostingFailure'], true);
+  }
+
   return state;
 };

@@ -105,3 +105,32 @@ export const markSpecialLeaveWorkLogRejected = (id, data) => (dispatch) => dispa
   },
 });
 
+export const supportSpecialLeaveWorkLog = (id) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify({
+      workLog: `/special_leave_work_logs/${id}`,
+    }),
+    endpoint: `${API_URL}/special_leave_work_log_supports`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'POST',
+    types: [
+      types.SUPPORT_SPECIAL_LEAVE_WORK_LOG_REQUEST,
+      types.SUPPORT_SPECIAL_LEAVE_WORK_LOG_SUCCESS,
+      types.SUPPORT_SPECIAL_LEAVE_WORK_LOG_FAILURE,
+    ],
+  },
+});
+
+export const supportMultipleSpecialLeaveWorkLog = (ids) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify(ids.map((id) => ({ workLog: `/special_leave_work_logs/${id}` }))),
+    endpoint: `${API_URL}/special_leave_work_log_supports/bulk`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'POST',
+    types: [
+      types.SUPPORT_SPECIAL_LEAVE_WORK_LOG_REQUEST,
+      types.SUPPORT_SPECIAL_LEAVE_WORK_LOG_SUCCESS,
+      types.SUPPORT_SPECIAL_LEAVE_WORK_LOG_FAILURE,
+    ],
+  },
+});
