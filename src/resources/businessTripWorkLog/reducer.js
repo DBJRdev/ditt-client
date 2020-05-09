@@ -148,5 +148,24 @@ export default (state, action) => {
       .setIn(['businessTripWorkLog', 'isPostingFailure'], true);
   }
 
+  if (type === actionTypes.SUPPORT_BUSINESS_TRIP_WORK_LOG_REQUEST) {
+    return state
+      .setIn(['businessTripWorkLogSupport', 'isPosting'], true)
+      .setIn(['businessTripWorkLogSupport', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.SUPPORT_BUSINESS_TRIP_WORK_LOG_SUCCESS) {
+    // Fetch is required to reload business trip work log list with added work log
+    return state
+      .setIn(['businessTripWorkLogSupport', 'isPosting'], false)
+      .setIn(['businessTripWorkLogSupport', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.SUPPORT_BUSINESS_TRIP_WORK_LOG_FAILURE) {
+    return state
+      .setIn(['businessTripWorkLogSupport', 'isPosting'], false)
+      .setIn(['businessTripWorkLogSupport', 'isPostingFailure'], true);
+  }
+
   return state;
 };

@@ -181,5 +181,24 @@ export default (state, action) => {
       .setIn(['vacationWorkLog', 'isPostingFailure'], true);
   }
 
+  if (type === actionTypes.SUPPORT_VACATION_WORK_LOG_REQUEST) {
+    return state
+      .setIn(['vacationWorkLogSupport', 'isPosting'], true)
+      .setIn(['vacationWorkLogSupport', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.SUPPORT_VACATION_WORK_LOG_SUCCESS) {
+    // Fetch is required to reload vacation work log list with added work log
+    return state
+      .setIn(['vacationWorkLogSupport', 'isPosting'], false)
+      .setIn(['vacationWorkLogSupport', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.SUPPORT_VACATION_WORK_LOG_FAILURE) {
+    return state
+      .setIn(['vacationWorkLogSupport', 'isPosting'], false)
+      .setIn(['vacationWorkLogSupport', 'isPostingFailure'], true);
+  }
+
   return state;
 };

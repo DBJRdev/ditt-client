@@ -102,3 +102,33 @@ export const markVacationWorkLogRejected = (id, data) => (dispatch) => dispatch(
   },
 });
 
+export const supportVacationWorkLog = (id) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify({
+      workLog: `/vacation_work_logs/${id}`,
+    }),
+    endpoint: `${API_URL}/vacation_work_log_supports`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'POST',
+    types: [
+      types.SUPPORT_VACATION_WORK_LOG_REQUEST,
+      types.SUPPORT_VACATION_WORK_LOG_SUCCESS,
+      types.SUPPORT_VACATION_WORK_LOG_FAILURE,
+    ],
+  },
+});
+
+export const supportMultipleVacationWorkLog = (ids) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify(ids.map((id) => ({ workLog: `/vacation_work_logs/${id}` }))),
+    endpoint: `${API_URL}/vacation_work_log_supports/bulk`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'POST',
+    types: [
+      types.SUPPORT_VACATION_WORK_LOG_REQUEST,
+      types.SUPPORT_VACATION_WORK_LOG_SUCCESS,
+      types.SUPPORT_VACATION_WORK_LOG_FAILURE,
+    ],
+  },
+});
+

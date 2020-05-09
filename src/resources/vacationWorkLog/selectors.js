@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
 
 const getVacationWorkLog = (state) => state.getIn(['vacationWorkLog', 'vacationWorkLog']);
+const getVacationWorkLogSupport = (state) => state.getIn(['vacationWorkLog', 'vacationWorkLogSupport']);
 
 export const selectVacationWorkLog = createSelector(
   [getVacationWorkLog],
@@ -16,3 +17,10 @@ export const selectVacationWorkLogMeta = createSelector(
   }),
 );
 
+export const selectVacationWorkLogSupportMeta = createSelector(
+  [getVacationWorkLogSupport],
+  (data) => ({
+    isPosting: data.get('isPosting'),
+    isPostingFailure: data.get('isPostingFailure'),
+  }),
+);

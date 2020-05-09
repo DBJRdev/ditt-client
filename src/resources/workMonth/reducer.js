@@ -87,6 +87,12 @@ export default (state, action) => {
     year: parseInt(data.year.year, 10),
   });
 
+  const filterSupport = (data) => ({
+    dateTime: toMomentDateTime(data.dateTime),
+    id: data.id,
+    supportedBy: filterUser(data.supportedBy),
+  });
+
   const filterWorkMonthDetail = (data) => ({
     banWorkLogs: data.banWorkLogs
       .map((banWorkLogsData) => ({
@@ -176,6 +182,7 @@ export default (state, action) => {
       date: toMomentDateTime(businessTripWorkLogsData.date),
       id: parseInt(businessTripWorkLogsData.id, 10),
       status: resolveWorkLogStatus(businessTripWorkLogsData),
+      support: businessTripWorkLogsData.support.map(filterSupport),
       type: BUSINESS_TRIP_WORK_LOG,
       workMonth: {
         id: parseInt(businessTripWorkLogsData.workMonth.id, 10),
@@ -190,6 +197,7 @@ export default (state, action) => {
       date: toMomentDateTime(homeOfficeWorkLogsData.date),
       id: parseInt(homeOfficeWorkLogsData.id, 10),
       status: resolveWorkLogStatus(homeOfficeWorkLogsData),
+      support: homeOfficeWorkLogsData.support.map(filterSupport),
       type: HOME_OFFICE_WORK_LOG,
       workMonth: {
         id: parseInt(homeOfficeWorkLogsData.workMonth.id, 10),
@@ -203,6 +211,7 @@ export default (state, action) => {
       date: toMomentDateTime(overtimeWorkLogsData.date),
       id: parseInt(overtimeWorkLogsData.id, 10),
       status: resolveWorkLogStatus(overtimeWorkLogsData),
+      support: overtimeWorkLogsData.support.map(filterSupport),
       type: OVERTIME_WORK_LOG,
       workMonth: {
         id: parseInt(overtimeWorkLogsData.workMonth.id, 10),
@@ -217,6 +226,7 @@ export default (state, action) => {
       id: parseInt(specialLeaveWorkLogsData.id, 10),
       rejectionMessage: specialLeaveWorkLogsData.rejectionMessage,
       status: resolveWorkLogStatus(specialLeaveWorkLogsData),
+      support: specialLeaveWorkLogsData.support.map(filterSupport),
       type: SPECIAL_LEAVE_WORK_LOG,
       workMonth: {
         id: parseInt(specialLeaveWorkLogsData.workMonth.id, 10),
@@ -231,6 +241,7 @@ export default (state, action) => {
       date: toMomentDateTime(timeOffWorkLogsData.date),
       id: parseInt(timeOffWorkLogsData.id, 10),
       status: resolveWorkLogStatus(timeOffWorkLogsData),
+      support: timeOffWorkLogsData.support.map(filterSupport),
       type: TIME_OFF_WORK_LOG,
       workMonth: {
         id: parseInt(timeOffWorkLogsData.workMonth.id, 10),
@@ -245,6 +256,7 @@ export default (state, action) => {
       id: parseInt(vacationWorkLogsData.id, 10),
       rejectionMessage: vacationWorkLogsData.rejectionMessage,
       status: resolveWorkLogStatus(vacationWorkLogsData),
+      support: vacationWorkLogsData.support.map(filterSupport),
       type: VACATION_WORK_LOG,
       workMonth: {
         id: parseInt(vacationWorkLogsData.workMonth.id, 10),

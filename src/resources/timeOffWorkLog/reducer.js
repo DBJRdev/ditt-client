@@ -144,5 +144,24 @@ export default (state, action) => {
       .setIn(['timeOffWorkLog', 'isPostingFailure'], true);
   }
 
+  if (type === actionTypes.SUPPORT_TIME_OFF_WORK_LOG_REQUEST) {
+    return state
+      .setIn(['timeOffWorkLogSupport', 'isPosting'], true)
+      .setIn(['timeOffWorkLogSupport', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.SUPPORT_TIME_OFF_WORK_LOG_SUCCESS) {
+    // Fetch is required to reload time off work log list with added work log
+    return state
+      .setIn(['timeOffWorkLogSupport', 'isPosting'], false)
+      .setIn(['timeOffWorkLogSupport', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.SUPPORT_TIME_OFF_WORK_LOG_FAILURE) {
+    return state
+      .setIn(['timeOffWorkLogSupport', 'isPosting'], false)
+      .setIn(['timeOffWorkLogSupport', 'isPostingFailure'], true);
+  }
+
   return state;
 };
