@@ -73,3 +73,19 @@ export const markHomeOfficeWorkLogRejected = (id, data) => (dispatch) => dispatc
     ],
   },
 });
+
+export const supportHomeOfficeWorkLog = (id) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify({
+      workLog: `/home_office_work_logs/${id}`,
+    }),
+    endpoint: `${API_URL}/home_office_work_log_supports`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'POST',
+    types: [
+      types.SUPPORT_HOME_OFFICE_WORK_LOG_REQUEST,
+      types.SUPPORT_HOME_OFFICE_WORK_LOG_SUCCESS,
+      types.SUPPORT_HOME_OFFICE_WORK_LOG_FAILURE,
+    ],
+  },
+});

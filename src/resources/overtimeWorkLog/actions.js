@@ -73,3 +73,20 @@ export const markOvertimeWorkLogRejected = (id, data) => (dispatch) => dispatch(
     ],
   },
 });
+
+export const supportOvertimeWorkLog = (id) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify({
+      workLog: `/overtime_work_logs/${id}`,
+    }),
+    endpoint: `${API_URL}/overtime_work_log_supports`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'POST',
+    types: [
+      types.SUPPORT_OVERTIME_WORK_LOG_REQUEST,
+      types.SUPPORT_OVERTIME_WORK_LOG_SUCCESS,
+      types.SUPPORT_OVERTIME_WORK_LOG_FAILURE,
+    ],
+  },
+});
+

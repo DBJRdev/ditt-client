@@ -181,6 +181,8 @@
   },
   "specialApproval": {
     "action": {
+      "acknowledge": "Zustimmen",
+      "acknowledged": "Zustimmung",
       "approveWorkLog": "Freigeben",
       "rejectWorkLog": "Ablehnen",
       "workLogDetail": "Detail"
@@ -196,6 +198,7 @@
       "recentSpecialApprovals": "Vergangene Anträge"
     },
     "text": {
+      "acknowledgedBy": "Zustimmung von",
       "emptyList": "Es sieht so aus als gäbe es keine ausstehenden Anträge.",
       "specialApprovalsBeginningPart": "Die Seite »Anträge« zeigt dir eine Liste von Einträgen, die von Vorgesetzte*n angenommen oder abgelehnt werden müssen. Wenn du eine vollständige Liste aller Einträge des laufenden und des vorausgegangenen Monats sehen möchtest, wechsle zur",
       "specialApprovalsButtonPart": "Frühere Anträge",

@@ -6,6 +6,8 @@ import {
   markBusinessTripWorkLogRejected,
   selectBusinessTripWorkLog,
   selectBusinessTripWorkLogMeta,
+  selectBusinessTripWorkLogSupportMeta,
+  supportBusinessTripWorkLog,
 } from '../../resources/businessTripWorkLog';
 import {
   fetchConfig,
@@ -18,6 +20,8 @@ import {
   markHomeOfficeWorkLogRejected,
   selectHomeOfficeWorkLog,
   selectHomeOfficeWorkLogMeta,
+  selectHomeOfficeWorkLogSupportMeta,
+  supportHomeOfficeWorkLog,
 } from '../../resources/homeOfficeWorkLog';
 import {
   fetchOvertimeWorkLog,
@@ -25,6 +29,8 @@ import {
   markOvertimeWorkLogRejected,
   selectOvertimeWorkLog,
   selectOvertimeWorkLogMeta,
+  selectOvertimeWorkLogSupportMeta,
+  supportOvertimeWorkLog,
 } from '../../resources/overtimeWorkLog';
 import {
   fetchSpecialLeaveWorkLog,
@@ -34,6 +40,9 @@ import {
   markSpecialLeaveWorkLogRejected,
   selectSpecialLeaveWorkLog,
   selectSpecialLeaveWorkLogMeta,
+  selectSpecialLeaveWorkLogSupportMeta,
+  supportMultipleSpecialLeaveWorkLog,
+  supportSpecialLeaveWorkLog,
 } from '../../resources/specialLeaveWorkLog';
 import {
   fetchTimeOffWorkLog,
@@ -41,6 +50,8 @@ import {
   markTimeOffWorkLogRejected,
   selectTimeOffWorkLog,
   selectTimeOffWorkLogMeta,
+  selectTimeOffWorkLogSupportMeta,
+  supportTimeOffWorkLog,
 } from '../../resources/timeOffWorkLog';
 import {
   fetchVacationWorkLog,
@@ -50,6 +61,9 @@ import {
   markVacationWorkLogRejected,
   selectVacationWorkLog,
   selectVacationWorkLogMeta,
+  selectVacationWorkLogSupportMeta,
+  supportMultipleVacationWorkLog,
+  supportVacationWorkLog,
 } from '../../resources/vacationWorkLog';
 import {
   fetchSpecialApprovalList,
@@ -60,12 +74,18 @@ import ListComponent from './ListComponent';
 
 const mapStateToProps = (state) => {
   const businessTripWorkLogMeta = selectBusinessTripWorkLogMeta(state);
+  const businessTripWorkLogSupportMeta = selectBusinessTripWorkLogSupportMeta(state);
   const configMeta = selectConfigMeta(state);
   const homeOfficeWorkLogMeta = selectHomeOfficeWorkLogMeta(state);
+  const homeOfficeWorkLogSupportMeta = selectHomeOfficeWorkLogSupportMeta(state);
   const overtimeWorkLogMeta = selectOvertimeWorkLogMeta(state);
+  const overtimeWorkLogSupportMeta = selectOvertimeWorkLogSupportMeta(state);
   const specialLeaveWorkLogMeta = selectSpecialLeaveWorkLogMeta(state);
+  const specialLeaveWorkLogSupportMeta = selectSpecialLeaveWorkLogSupportMeta(state);
   const timeOffWorkLogMeta = selectTimeOffWorkLogMeta(state);
+  const timeOffWorkLogSupportMeta = selectTimeOffWorkLogSupportMeta(state);
   const vacationWorkLogMeta = selectVacationWorkLogMeta(state);
+  const vacationWorkLogSupportMeta = selectVacationWorkLogSupportMeta(state);
   const specialApprovalListMeta = selectSpecialApprovalListMeta(state);
 
   return ({
@@ -75,11 +95,17 @@ const mapStateToProps = (state) => {
     isFetching: configMeta.isFetching
       || specialApprovalListMeta.isFetching,
     isPosting: businessTripWorkLogMeta.isPosting
+      || businessTripWorkLogSupportMeta.isPosting
       || homeOfficeWorkLogMeta.isPosting
+      || homeOfficeWorkLogSupportMeta.isPosting
       || overtimeWorkLogMeta.isPosting
+      || overtimeWorkLogSupportMeta.isPosting
       || specialLeaveWorkLogMeta.isPosting
+      || specialLeaveWorkLogSupportMeta.isPosting
       || timeOffWorkLogMeta.isPosting
-      || vacationWorkLogMeta.isPosting,
+      || timeOffWorkLogSupportMeta.isPosting
+      || vacationWorkLogMeta.isPosting
+      || vacationWorkLogSupportMeta.isPosting,
     overtimeWorkLog: selectOvertimeWorkLog(state),
     specialApprovalList: selectSpecialApprovalList(state),
     specialLeaveWorkLog: selectSpecialLeaveWorkLog(state),
@@ -124,6 +150,14 @@ const mapDispatchToProps = (dispatch) => ({
   markTimeOffWorkLogRejected: (id, data) => dispatch(markTimeOffWorkLogRejected(id, data)),
   markVacationWorkLogApproved: (id) => dispatch(markVacationWorkLogApproved(id)),
   markVacationWorkLogRejected: (id, data) => dispatch(markVacationWorkLogRejected(id, data)),
+  supportBusinessTripWorkLog: (id) => dispatch(supportBusinessTripWorkLog(id)),
+  supportHomeOfficeWorkLog: (id) => dispatch(supportHomeOfficeWorkLog(id)),
+  supportMultipleSpecialLeaveWorkLog: (id) => dispatch(supportMultipleSpecialLeaveWorkLog(id)),
+  supportMultipleVacationWorkLog: (id) => dispatch(supportMultipleVacationWorkLog(id)),
+  supportOvertimeWorkLog: (id) => dispatch(supportOvertimeWorkLog(id)),
+  supportSpecialLeaveWorkLog: (id) => dispatch(supportSpecialLeaveWorkLog(id)),
+  supportTimeOffWorkLog: (id) => dispatch(supportTimeOffWorkLog(id)),
+  supportVacationWorkLog: (id) => dispatch(supportVacationWorkLog(id)),
 });
 
 export default connect(
