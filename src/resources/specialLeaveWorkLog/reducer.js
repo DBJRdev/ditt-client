@@ -181,5 +181,24 @@ export default (state, action) => {
       .setIn(['specialLeaveWorkLog', 'isPostingFailure'], true);
   }
 
+  if (type === actionTypes.SUPPORT_SPECIAL_LEAVE_WORK_LOG_REQUEST) {
+    return state
+      .setIn(['specialLeaveWorkLogSupport', 'isPosting'], true)
+      .setIn(['specialLeaveWorkLogSupport', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.SUPPORT_SPECIAL_LEAVE_WORK_LOG_SUCCESS) {
+    // Fetch is required to reload special leave work log list with added work log
+    return state
+      .setIn(['specialLeaveWorkLogSupport', 'isPosting'], false)
+      .setIn(['specialLeaveWorkLogSupport', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.SUPPORT_SPECIAL_LEAVE_WORK_LOG_FAILURE) {
+    return state
+      .setIn(['specialLeaveWorkLogSupport', 'isPosting'], false)
+      .setIn(['specialLeaveWorkLogSupport', 'isPostingFailure'], true);
+  }
+
   return state;
 };

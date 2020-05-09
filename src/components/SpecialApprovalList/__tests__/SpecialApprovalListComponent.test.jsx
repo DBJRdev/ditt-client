@@ -42,6 +42,14 @@ describe('rendering', () => {
         timeOffWorkLogs: [],
         vacationWorkLogs: [],
       }),
+      supportBusinessTripWorkLog: () => {},
+      supportHomeOfficeWorkLog: () => {},
+      supportMultipleSpecialLeaveWorkLog: () => {},
+      supportMultipleVacationWorkLog: () => {},
+      supportOvertimeWorkLog: () => {},
+      supportSpecialLeaveWorkLog: () => {},
+      supportTimeOffWorkLog: () => {},
+      supportVacationWorkLog: () => {},
       token: 'token',
     };
     const tree = shallow(<SpecialApprovalListComponent {...props} />);

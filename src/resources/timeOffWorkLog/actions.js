@@ -73,3 +73,19 @@ export const markTimeOffWorkLogRejected = (id, data) => (dispatch) => dispatch({
     ],
   },
 });
+
+export const supportTimeOffWorkLog = (id) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify({
+      workLog: `/time_off_work_logs/${id}`,
+    }),
+    endpoint: `${API_URL}/time_off_work_log_supports`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'POST',
+    types: [
+      types.SUPPORT_TIME_OFF_WORK_LOG_REQUEST,
+      types.SUPPORT_TIME_OFF_WORK_LOG_SUCCESS,
+      types.SUPPORT_TIME_OFF_WORK_LOG_FAILURE,
+    ],
+  },
+});

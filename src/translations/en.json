@@ -182,6 +182,8 @@
   },
   "specialApproval": {
     "action": {
+      "acknowledge": "Acknowledge",
+      "acknowledged": "Acknowledged",
       "approveWorkLog": "Approve",
       "rejectWorkLog": "Reject",
       "workLogDetail": "Detail"
@@ -197,6 +199,7 @@
       "recentSpecialApprovals": "Recent special approvals"
     },
     "text": {
+      "acknowledgedBy": "Acknowledged by",
       "emptyList": "You do not seem to have any pending special approvals.",
       "specialApprovalsBeginningPart": "Special approvals page shows you a list of work logs that are requested to be approved or rejected by a supervisor. If you want to see a list of all work logs for current and previous month, go to the",
       "specialApprovalsButtonPart": "recent special approvals",

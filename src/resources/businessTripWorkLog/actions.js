@@ -77,3 +77,19 @@ export const markBusinessTripWorkLogRejected = (id, data) => (dispatch) => dispa
     ],
   },
 });
+
+export const supportBusinessTripWorkLog = (id) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify({
+      workLog: `/business_trip_work_logs/${id}`,
+    }),
+    endpoint: `${API_URL}/business_trip_work_log_supports`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'POST',
+    types: [
+      types.SUPPORT_BUSINESS_TRIP_WORK_LOG_REQUEST,
+      types.SUPPORT_BUSINESS_TRIP_WORK_LOG_SUCCESS,
+      types.SUPPORT_BUSINESS_TRIP_WORK_LOG_FAILURE,
+    ],
+  },
+});

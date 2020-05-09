@@ -144,5 +144,24 @@ export default (state, action) => {
       .setIn(['overtimeWorkLog', 'isPostingFailure'], true);
   }
 
+  if (type === actionTypes.SUPPORT_OVERTIME_WORK_LOG_REQUEST) {
+    return state
+      .setIn(['overtimeWorkLogSupport', 'isPosting'], true)
+      .setIn(['overtimeWorkLogSupport', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.SUPPORT_OVERTIME_WORK_LOG_SUCCESS) {
+    // Fetch is required to reload overtime work log list with added work log
+    return state
+      .setIn(['overtimeWorkLogSupport', 'isPosting'], false)
+      .setIn(['overtimeWorkLogSupport', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.SUPPORT_OVERTIME_WORK_LOG_FAILURE) {
+    return state
+      .setIn(['overtimeWorkLogSupport', 'isPosting'], false)
+      .setIn(['overtimeWorkLogSupport', 'isPostingFailure'], true);
+  }
+
   return state;
 };
