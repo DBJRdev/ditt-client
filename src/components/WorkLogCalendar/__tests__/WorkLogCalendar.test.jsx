@@ -70,17 +70,17 @@ describe('rendering', () => {
       workHoursList={Immutable.fromJS([
         {
           month: 12,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2017,
         },
         {
           month: 1,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2018,
         },
         {
           month: 2,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2018,
         },
       ])}
@@ -189,17 +189,17 @@ describe('rendering', () => {
       workHoursList={Immutable.fromJS([
         {
           month: 12,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2017,
         },
         {
           month: 1,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2018,
         },
         {
           month: 2,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2018,
         },
       ])}
@@ -308,17 +308,17 @@ describe('rendering', () => {
       workHoursList={Immutable.fromJS([
         {
           month: 12,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2017,
         },
         {
           month: 1,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2018,
         },
         {
           month: 2,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2018,
         },
       ])}
@@ -428,17 +428,17 @@ describe('rendering', () => {
       workHoursList={Immutable.fromJS([
         {
           month: 12,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2017,
         },
         {
           month: 1,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2018,
         },
         {
           month: 2,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2018,
         },
       ])}
@@ -548,17 +548,17 @@ describe('rendering', () => {
       workHoursList={Immutable.fromJS([
         {
           month: 12,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2017,
         },
         {
           month: 1,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2018,
         },
         {
           month: 2,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2018,
         },
       ])}
@@ -668,17 +668,17 @@ describe('rendering', () => {
       workHoursList={Immutable.fromJS([
         {
           month: 12,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2017,
         },
         {
           month: 1,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2018,
         },
         {
           month: 2,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2018,
         },
       ])}
@@ -790,17 +790,17 @@ describe('functionality', () => {
       workHoursList={Immutable.fromJS([
         {
           month: 12,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2017,
         },
         {
           month: 1,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2018,
         },
         {
           month: 2,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2018,
         },
       ])}
@@ -914,17 +914,17 @@ describe('functionality', () => {
       workHoursList={Immutable.fromJS([
         {
           month: 12,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2017,
         },
         {
           month: 1,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2018,
         },
         {
           month: 2,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2018,
         },
       ])}
@@ -1038,17 +1038,17 @@ describe('functionality', () => {
       workHoursList={Immutable.fromJS([
         {
           month: 12,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2017,
         },
         {
           month: 1,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2018,
         },
         {
           month: 2,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2018,
         },
       ])}
@@ -1161,17 +1161,17 @@ describe('functionality', () => {
       workHoursList={Immutable.fromJS([
         {
           month: 12,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2017,
         },
         {
           month: 1,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2018,
         },
         {
           month: 2,
-          requiredHours: 6,
+          requiredHours: 21600,
           year: 2018,
         },
       ])}
