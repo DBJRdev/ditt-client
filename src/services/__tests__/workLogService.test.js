@@ -12,7 +12,7 @@ describe('getWorkedTime', () => {
   const sundayDate = toMomentDateTime('2018-01-07T00:00:00.000Z');
   const workHours = {
     month: 1,
-    requiredHours: 6,
+    requiredHours: 21600,
     year: 2018,
   };
   const workedHoursLimits = {

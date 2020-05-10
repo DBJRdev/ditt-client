@@ -85,6 +85,14 @@ exports[`rendering renders correctly 1`] = `
       }
     }
     specialLeaveWorkLog={null}
+    supportBusinessTripWorkLog={[Function]}
+    supportHomeOfficeWorkLog={[Function]}
+    supportMultipleSpecialLeaveWorkLog={[Function]}
+    supportMultipleVacationWorkLog={[Function]}
+    supportOvertimeWorkLog={[Function]}
+    supportSpecialLeaveWorkLog={[Function]}
+    supportTimeOffWorkLog={[Function]}
+    supportVacationWorkLog={[Function]}
     t={[Function]}
     timeOffWorkLog={null}
     token="token"
