@@ -101,21 +101,15 @@ export const toHourMinuteFormat = (momentDateTime) => {
   throw new Error('Invalid datetime');
 };
 
-export const toHourMinuteFormatFromInt = (rawHours) => {
-  let rawHoursCorrected = rawHours;
+export const toHourMinuteFormatFromInt = (rawSeconds) => {
+  let rawSecondsCorrected = rawSeconds;
 
-  if (rawHoursCorrected < 0) {
-    rawHoursCorrected *= -1;
+  if (rawSecondsCorrected < 0) {
+    rawSecondsCorrected *= -1;
   }
 
-  const hours = Math.floor(rawHoursCorrected);
-  let minutes = 0;
-
-  if (hours < 1) {
-    minutes = Math.floor(rawHoursCorrected * 60);
-  } else {
-    minutes = Math.floor((rawHoursCorrected % hours) * 60);
-  }
+  const hours = Math.floor(rawSecondsCorrected / 3600);
+  const minutes = Math.floor((rawSecondsCorrected - (hours * 3600)) / 60);
 
   return `${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
 };

@@ -237,11 +237,11 @@ export const getWorkedTime = (
       || specialLeaveWorkLogs.length > 0
       || vacationWorkLogs.length > 0
   ) {
-    workTime = workHours.requiredHours * 3600;
+    workTime = workHours.requiredHours;
     workTimeWithoutCorrection = workTime;
     breakTime = 0;
   } else if (sickDayWorkLogs.length > 0 && standardWorkLogs.length !== 0) {
-    workTime = Math.min(workTimeWithoutCorrection, workHours.requiredHours * 3600);
+    workTime = Math.min(workTimeWithoutCorrection, workHours.requiredHours);
     workTimeWithoutCorrection = workTime;
     breakTime = 0;
   }
