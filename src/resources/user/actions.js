@@ -154,6 +154,19 @@ export const renewUserApiToken = (id) => (dispatch) => dispatch({
   },
 });
 
+export const renewUserICalToken = (id) => (dispatch) => dispatch({
+  [RSAA]: {
+    endpoint: `${API_URL}/users/${id}/ical_token/renew`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.RENEW_USER_ICAL_TOKEN_REQUEST,
+      types.RENEW_USER_ICAL_TOKEN_SUCCESS,
+      types.RENEW_USER_ICAL_TOKEN_FAILURE,
+    ],
+  },
+});
+
 export const resetUserApiToken = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/users/${id}/api_token/reset`,
@@ -163,6 +176,19 @@ export const resetUserApiToken = (id) => (dispatch) => dispatch({
       types.RESET_USER_API_TOKEN_REQUEST,
       types.RESET_USER_API_TOKEN_SUCCESS,
       types.RESET_USER_API_TOKEN_FAILURE,
+    ],
+  },
+});
+
+export const resetUserICalToken = (id) => (dispatch) => dispatch({
+  [RSAA]: {
+    endpoint: `${API_URL}/users/${id}/ical_token/reset`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.RESET_USER_ICAL_TOKEN_REQUEST,
+      types.RESET_USER_ICAL_TOKEN_SUCCESS,
+      types.RESET_USER_ICAL_TOKEN_FAILURE,
     ],
   },
 });

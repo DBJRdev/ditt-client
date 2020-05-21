@@ -8,7 +8,9 @@ import {
 import {
   fetchUser,
   renewUserApiToken,
+  renewUserICalToken,
   resetUserApiToken,
+  resetUserICalToken,
   editUser,
   selectUser,
   selectUserMeta,
@@ -45,7 +47,9 @@ const mapDispatchToProps = (dispatch) => ({
   fetchUser: (id) => dispatch(fetchUser(id)),
   fetchWorkHoursList: (id) => dispatch(fetchWorkHoursList(id)),
   renewUserApiToken: (id) => dispatch(renewUserApiToken(id)),
+  renewUserICalToken: (id) => dispatch(renewUserICalToken(id)),
   resetUserApiToken: (id) => dispatch(resetUserApiToken(id)),
+  resetUserICalToken: (id) => dispatch(resetUserICalToken(id)),
 });
 
 export default connect(

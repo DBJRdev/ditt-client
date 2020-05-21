@@ -7,7 +7,9 @@ export {
   fetchUserByApiToken,
   fetchUserList,
   renewUserApiToken,
+  renewUserICalToken,
   resetUserApiToken,
+  resetUserICalToken,
 } from './actions';
 
 export {

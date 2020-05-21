@@ -168,6 +168,43 @@ exports[`rendering renders correctly 1`] = `
                 </div>
               </td>
             </tr>
+            <tr>
+              <td
+                colSpan={2}
+              />
+            </tr>
+            <tr>
+              <td
+                className="profileTableTitle"
+              >
+                user:element.iCal
+              </td>
+              <td
+                className="profileTableValue"
+              >
+                <div
+                  className="mb-1 mt-1"
+                >
+                  <s
+                    afterLabel={null}
+                    beforeLabel={null}
+                    block={false}
+                    clickHandler={[Function]}
+                    disabled={false}
+                    endCorner={null}
+                    grouped={false}
+                    label="user:action.enableICal"
+                    labelVisibility="all"
+                    loadingIcon={null}
+                    priority="default"
+                    size="small"
+                    startCorner={null}
+                    type="button"
+                    variant="primary"
+                  />
+                </div>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>

@@ -11,6 +11,7 @@ import {
   TextField,
 } from '@react-ui-org/react-ui';
 import { withTranslation } from 'react-i18next';
+import { API_URL } from '../../../config/envspecific';
 import { ROLE_EMPLOYEE } from '../../resources/user';
 import { getWorkHoursString } from '../../services/workHoursService';
 import Layout from '../../components/Layout';
@@ -158,7 +159,9 @@ class ProfileComponent extends React.Component {
       config,
       isPosting,
       renewUserApiToken,
+      renewUserICalToken,
       resetUserApiToken,
+      resetUserICalToken,
       t,
       user,
       workHours,
@@ -289,6 +292,51 @@ class ProfileComponent extends React.Component {
                           </td>
                         </tr>
                       )}
+                      <tr>
+                        <td colSpan={2} />
+                      </tr>
+                      <tr>
+                        <td className={styles.profileTableTitle}>
+                          {t('user:element.iCal')}
+                        </td>
+                        <td className={styles.profileTableValue}>
+                          {!user.get('iCalToken') && (
+                            <div className="mb-1 mt-1">
+                              <Button
+                                clickHandler={() => renewUserICalToken(user.get('id'))}
+                                label={t('user:action.enableICal')}
+                                loadingIcon={isPosting ? <Icon icon="sync" /> : null}
+                                size="small"
+                              />
+                            </div>
+                          )}
+                          {!!user.get('iCalToken') && (
+                            <>
+                              <div className="mb-1 mt-1">
+                                <Button
+                                  clickHandler={() => {
+                                    const webcalUrl = API_URL.replace('https', 'webcal')
+                                      .replace('http', 'webcal');
+
+                                    window.location = `${webcalUrl}/ical/${user.get('iCalToken')}/ditt.ics`;
+                                  }}
+                                  label={t('user:action.downloadICal')}
+                                  size="small"
+                                />
+                              </div>
+                              <div className="mb-1">
+                                <Button
+                                  clickHandler={() => resetUserICalToken(user.get('id'))}
+                                  label={t('user:action.disableICal')}
+                                  loadingIcon={isPosting ? <Icon icon="sync" /> : null}
+                                  size="small"
+                                  variant="danger"
+                                />
+                              </div>
+                            </>
+                          )}
+                        </td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
@@ -456,7 +504,9 @@ ProfileComponent.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   isPosting: PropTypes.bool.isRequired,
   renewUserApiToken: PropTypes.func.isRequired,
+  renewUserICalToken: PropTypes.func.isRequired,
   resetUserApiToken: PropTypes.func.isRequired,
+  resetUserICalToken: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
   token: PropTypes.string.isRequired,
   user: ImmutablePropTypes.mapContains({
