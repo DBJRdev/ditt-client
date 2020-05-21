@@ -220,6 +220,9 @@
     "action": {
       "addUser": "Nutzer*in hinzufügen",
       "deleteUser": "Nutzer*in löschen",
+      "disableICal": "iCalendar deaktivieren",
+      "downloadICal": "iCalendar herunterladen",
+      "enableICal": "iCalendar aktivieren",
       "resetApiToken": "Lösche API-Token",
       "renewApiToken": "Erneuere API-Token",
       "showApiToken": "Zeige API-Token",
@@ -230,6 +233,7 @@
       "email": "E-Mail",
       "employeeId": "Mitarbeiter-ID",
       "firstName": "Vorname",
+      "iCal": "iCalendar",
       "isActive": "Aktiv",
       "lastName": "Familiennname",
       "name": "Name",

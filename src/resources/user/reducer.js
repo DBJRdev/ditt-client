@@ -244,6 +244,26 @@ export default (state, action) => {
       .setIn(['user', 'isPostingFailure'], true);
   }
 
+  if (type === actionTypes.RENEW_USER_ICAL_TOKEN_REQUEST) {
+    return state
+      .setIn(['user', 'isPosting'], true)
+      .setIn(['user', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.RENEW_USER_ICAL_TOKEN_SUCCESS) {
+    return state
+      .setIn(['user', 'data', 'iCalToken'], payload.iCalToken)
+      .setIn(['user', 'isPosting'], false)
+      .setIn(['user', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.RENEW_USER_ICAL_TOKEN_FAILURE) {
+    return state
+      .setIn(['user', 'data'], null)
+      .setIn(['user', 'isPosting'], false)
+      .setIn(['user', 'isPostingFailure'], true);
+  }
+
   if (type === actionTypes.RESET_USER_API_TOKEN_REQUEST) {
     return state
       .setIn(['user', 'isPosting'], true)
@@ -258,6 +278,26 @@ export default (state, action) => {
   }
 
   if (type === actionTypes.RESET_USER_API_TOKEN_FAILURE) {
+    return state
+      .setIn(['user', 'data'], null)
+      .setIn(['user', 'isPosting'], false)
+      .setIn(['user', 'isPostingFailure'], true);
+  }
+
+  if (type === actionTypes.RESET_USER_ICAL_TOKEN_REQUEST) {
+    return state
+      .setIn(['user', 'isPosting'], true)
+      .setIn(['user', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.RESET_USER_ICAL_TOKEN_SUCCESS) {
+    return state
+      .setIn(['user', 'data', 'iCalToken'], payload.iCalToken)
+      .setIn(['user', 'isPosting'], false)
+      .setIn(['user', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.RESET_USER_ICAL_TOKEN_FAILURE) {
     return state
       .setIn(['user', 'data'], null)
       .setIn(['user', 'isPosting'], false)
