@@ -40,10 +40,19 @@ class NewPasswordComponent extends React.Component {
       return;
     }
 
-    if (this.state.newPassword && this.state.newPassword.length < 8) {
+    if (
+      this.state.newPassword
+      && (this.state.newPassword.length < 8 || this.state.newPassword.length > 64)
+    ) {
       e.preventDefault();
       this.setState({
-        error: this.props.t('login:validation.passwordInvalidMinLength', { min: 8 }),
+        error: this.props.t(
+          'login:validation.passwordInvalidMinLength',
+          {
+            max: 64,
+            min: 8,
+          },
+        ),
       });
 
       return;
