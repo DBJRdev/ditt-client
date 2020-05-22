@@ -57,6 +57,22 @@ export default (state, action) => {
       .setIn(['jwt', 'isFetchingFailure'], true);
   }
 
+  if (type === actionTypes.SET_LOGOUT_LOCALLY) {
+    if (window.localStorage) {
+      window.localStorage.removeItem('jwt');
+    }
+
+    return state
+      .setIn(['jwt', 'isFetching'], false)
+      .setIn(['jwt', 'isFetchingFailure'], false)
+      .setIn(['jwt', 'token'], null)
+      .set('isLoggedOutLocally', true);
+  }
+
+  if (type === actionTypes.RESET_LOGOUT_LOCALLY) {
+    return state.set('isLoggedOutLocally', false);
+  }
+
   if (type === actionTypes.RESET) {
     return state
       .setIn(['jwt', 'isFetching'], false)

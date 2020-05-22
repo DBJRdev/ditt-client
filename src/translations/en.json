@@ -125,6 +125,7 @@
       "signIn": "Sign in"
     },
     "text": {
+      "loggedOutAutomatically": "Session expired. You have been automatically logged out.",
       "passwordReset": "Password has been successfully reset. Click on a link in e-mail to be able to set a new password.",
       "passwordSet": "New password has been successfully set."
     },

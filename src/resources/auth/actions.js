@@ -47,6 +47,19 @@ export const login = (data) => (dispatch) => dispatch({
   return response;
 });
 
+export const reset = () => (dispatch) => dispatch({ type: types.RESET });
+
+export const setLogoutLocally = () => (dispatch) => {
+  dispatch(reset());
+  dispatch({ type: types.SET_LOGOUT_LOCALLY });
+
+  history.push(routes.login);
+};
+
+export const resetLogoutLocally = () => (dispatch) => {
+  dispatch({ type: types.RESET_LOGOUT_LOCALLY });
+};
+
 export const logout = () => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/logout`,
@@ -59,14 +72,11 @@ export const logout = () => (dispatch) => dispatch({
     ],
   },
 }).then((response) => {
-  if (response.type === types.LOGOUT_SUCCESS) {
-    history.push(routes.login);
-  }
+  dispatch(reset());
+  history.push(routes.login);
 
   return response;
 });
-
-export const reset = () => (dispatch) => dispatch({ type: types.RESET });
 
 export const resetPassword = (data) => (dispatch) => dispatch({
   [RSAA]: {

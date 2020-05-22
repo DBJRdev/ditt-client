@@ -124,6 +124,7 @@
       "signIn": "Login"
     },
     "text": {
+      "loggedOutAutomatically": "Sitzung abgelaufen. Sie wurden automatisch abgemeldet.",
       "passwordReset": "Das Passwort wurde erfolgreich zurückgesetzt. Bitte auf den Link in der E-Mail klicken, um ein neues Passwort zu vergeben.",
       "passwordSet": "Das neue Passwort wurde erfolgreich gespeichert."
     },
