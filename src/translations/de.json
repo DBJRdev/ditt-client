@@ -130,7 +130,7 @@
     "validation": {
       "invalidUsernameOrPassword": "Ungültiges User-Name oder Passwort",
       "passwordsNotSame": "Eingegebene Passwörter sind unterschiedlich.",
-      "passwordInvalidMinLength": "Das eingegebene Passwort muss mindestens {{ min }} Zeichen lang sein."
+      "passwordInvalidMinLength": "Das eingegebene Passwort muss zwischen {{ min }} und {{ max }} Zeichen lang sein."
     }
   },
   "overtimeWorkLog": {

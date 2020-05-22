@@ -183,8 +183,16 @@ export const validateUser = (t, user, userList, supportedWorkHours) => {
     errors.isValid = false;
   }
 
-  if (!errors.elements.plainPassword && user.plainPassword && user.plainPassword.length < 8) {
-    errors.elements.plainPassword = t('general:validation.invalidMinLength', { min: 8 });
+  if (!errors.elements.plainPassword && user.plainPassword && (
+    user.plainPassword.length < 8 || user.plainPassword.length > 64
+  )) {
+    errors.elements.plainPassword = t(
+      'general:validation.invalidLength',
+      {
+        max: 64,
+        min: 8,
+      },
+    );
     errors.isValid = false;
   }
 

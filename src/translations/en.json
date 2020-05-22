@@ -131,7 +131,7 @@
     "validation": {
       "invalidUsernameOrPassword": "Invalid username or password",
       "passwordsNotSame": "Entered passwords are not same.",
-      "passwordInvalidMinLength": "Entered password has to be at least {{ min }} characters long."
+      "passwordInvalidMinLength": "Entered password  must be long between {{ min }} and {{ max }} characters."
     }
   },
   "overtimeWorkLog": {
