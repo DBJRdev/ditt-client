@@ -9,9 +9,11 @@ describe('rendering', () => {
       history: {
         push: () => {},
       },
+      isLoggedOutLocally: false,
       isPosting: false,
       isPostingFailure: false,
       login: () => {},
+      resetLogoutLocally: () => {},
     };
     const tree = mount((
       <StaticRouter context={{}} location="/path">

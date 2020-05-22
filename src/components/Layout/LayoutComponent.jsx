@@ -15,6 +15,29 @@ import styles from './Layout.scss';
 import logoImage from './images/logo.svg';
 
 class LayoutComponent extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.jwtTokenTimer = null;
+  }
+
+  componentDidMount() {
+    this.jwtTokenTimer = setInterval(() => {
+      if (this.props.token) {
+        const decodedToken = jwt.decode(this.props.token);
+
+        if (decodedToken && ((decodedToken.exp * 1000) - Date.now()) < 0) {
+          this.props.setLogoutLocally();
+          clearInterval(this.jwtTokenTimer);
+        }
+      }
+    }, 15000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.jwtTokenTimer);
+  }
+
   getIndexUrl() {
     if (this.props.token) {
       const decodedToken = jwt.decode(this.props.token);
@@ -213,6 +236,7 @@ LayoutComponent.propTypes = {
   ]),
   loading: PropTypes.bool,
   logout: PropTypes.func.isRequired,
+  setLogoutLocally: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
   title: PropTypes.string,
   token: PropTypes.string,

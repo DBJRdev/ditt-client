@@ -6,6 +6,7 @@ if (window.localStorage) {
 }
 
 export default Immutable.fromJS({
+  isLoggedOutLocally: false,
   jwt: {
     isPosting: false,
     isPostingFailure: false,
