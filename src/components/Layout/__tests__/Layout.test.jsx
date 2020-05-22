@@ -7,6 +7,7 @@ describe('rendering', () => {
     const tree = shallow((
       <LayoutComponent
         logout={() => {}}
+        setLogoutLocally={() => {}}
         title="Title"
         roles={['ROLE_EMPLOYEE']}
       >
@@ -22,6 +23,7 @@ describe('rendering', () => {
       <LayoutComponent
         loading={false}
         logout={() => {}}
+        setLogoutLocally={() => {}}
         title="Title"
         token="token"
         roles={['ROLE_EMPLOYEE']}

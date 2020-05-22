@@ -1,8 +1,14 @@
 import { createSelector } from 'reselect';
 
+const getIsLoggedOutLocally = (state) => state.getIn(['auth', 'isLoggedOutLocally']);
 const getJwt = (state) => state.getIn(['auth', 'jwt']);
 const getResetPassword = (state) => state.getIn(['auth', 'resetPassword']);
 const getSetNewPassword = (state) => state.getIn(['auth', 'setNewPassword']);
+
+export const selectIsLoggedOutLocally = createSelector(
+  [getIsLoggedOutLocally],
+  (data) => data,
+);
 
 export const selectJwtToken = createSelector([getJwt], (data) => data.get('token'));
 export const selectJwtMeta = createSelector([getJwt], (data) => ({

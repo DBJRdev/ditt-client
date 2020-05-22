@@ -69,8 +69,9 @@ class LoginComponent extends React.Component {
                     {t('login:action.forgotPassword')}
                   </Link>
                 )}
-                hasError={this.props.isPostingFailure}
+                hasError={this.props.isPostingFailure || this.props.isLoggedOutLocally}
                 submitHandler={() => {
+                  this.props.resetLogoutLocally();
                   this.props.login({
                     password: this.state.password,
                     username: this.state.username,
@@ -82,7 +83,9 @@ class LoginComponent extends React.Component {
                 title={t('layout:title')}
                 translations={{
                   email: t('user:element.email'),
-                  invalidUsernameOrPassword: t('login:validation.invalidUsernameOrPassword'),
+                  invalidUsernameOrPassword: this.props.isLoggedOutLocally
+                    ? t('login:text.loggedOutAutomatically')
+                    : t('login:validation.invalidUsernameOrPassword'),
                   password: t('user:element.plainPassword'),
                   signIn: t('login:action.signIn'),
                 }}
@@ -103,9 +106,11 @@ LoginComponent.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
+  isLoggedOutLocally: PropTypes.bool.isRequired,
   isPosting: PropTypes.bool.isRequired,
   isPostingFailure: PropTypes.bool.isRequired,
   login: PropTypes.func.isRequired,
+  resetLogoutLocally: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
   token: PropTypes.string,
 };
