@@ -227,6 +227,7 @@
       "resetApiToken": "Lösche API-Token",
       "renewApiToken": "Erneuere API-Token",
       "showApiToken": "Zeige API-Token",
+      "showICalUrl": "iCalendar URL anzeigen",
       "showWorkLog": "Zeige Einträge"
     },
     "element": {
@@ -235,6 +236,7 @@
       "employeeId": "Mitarbeiter-ID",
       "firstName": "Vorname",
       "iCal": "iCalendar",
+      "iCalUrl": "iCalendar URL",
       "isActive": "Aktiv",
       "lastName": "Familiennname",
       "name": "Name",

@@ -24,6 +24,7 @@ class ProfileComponent extends React.Component {
 
     this.state = {
       apiTokenDialogOpened: false,
+      iCalDialogOpened: false,
       notifications: {
         isInit: false,
         supervisorInfoFridayTime: null,
@@ -81,6 +82,18 @@ class ProfileComponent extends React.Component {
         },
       }));
     }
+  }
+
+  getICalUrl(useWebcalProtocol = true) {
+    const { user } = this.props;
+    let iCalUrl = API_URL;
+
+    if (useWebcalProtocol) {
+      iCalUrl = iCalUrl.replace('https', 'webcal')
+        .replace('http', 'webcal');
+    }
+
+    return `${iCalUrl}/ical/${user.get('iCalToken')}/ditt.ics`;
   }
 
   getRequiredHours(year) {
@@ -168,6 +181,7 @@ class ProfileComponent extends React.Component {
     } = this.props;
     const {
       apiTokenDialogOpened,
+      iCalDialogOpened,
       notifications,
     } = this.state;
 
@@ -312,13 +326,18 @@ class ProfileComponent extends React.Component {
                           )}
                           {!!user.get('iCalToken') && (
                             <>
+                              <div className="mt-1 mb-1">
+                                <Button
+                                  beforeLabel={<Icon icon="open_in_new" />}
+                                  clickHandler={() => this.setState({ iCalDialogOpened: true })}
+                                  label={t('user:action.showICalUrl')}
+                                  size="small"
+                                />
+                              </div>
                               <div className="mb-1 mt-1">
                                 <Button
                                   clickHandler={() => {
-                                    const webcalUrl = API_URL.replace('https', 'webcal')
-                                      .replace('http', 'webcal');
-
-                                    window.location = `${webcalUrl}/ical/${user.get('iCalToken')}/ditt.ics`;
+                                    window.location = this.getICalUrl();
                                   }}
                                   label={t('user:action.downloadICal')}
                                   size="small"
@@ -480,6 +499,18 @@ class ProfileComponent extends React.Component {
                   }}
                 >
                   {user.get('apiToken')}
+                </Modal>
+              )}
+
+              {iCalDialogOpened && user.get('iCalToken') && (
+                <Modal
+                  closeHandler={() => this.setState({ iCalDialogOpened: false })}
+                  title={t('user:element.iCalUrl')}
+                  translations={{
+                    close: t('general:action.close'),
+                  }}
+                >
+                  {this.getICalUrl()}
                 </Modal>
               )}
             </div>
