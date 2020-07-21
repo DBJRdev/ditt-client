@@ -2,7 +2,12 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import jwt from 'jsonwebtoken';
 import { withTranslation } from 'react-i18next';
-import { Button } from '@react-ui-org/react-ui';
+import {
+  Button,
+  Toolbar,
+  ToolbarGroup,
+  ToolbarItem,
+} from '@react-ui-org/react-ui';
 import { Link } from 'react-router-dom';
 import {
   ROLE_ADMIN,
@@ -114,83 +119,89 @@ class LayoutComponent extends React.Component {
               <span className={styles.title}>{t('layout:title')}</span>
             </div>
             <div className={styles.navigation}>
-              {this.isAuthorized([ROLE_EMPLOYEE]) && (
-                <div className={styles.navigationItem}>
-                  <Button
-                    clickHandler={() => history.push(routes.index)}
-                    label={t('layout:menu.workLogs')}
-                    priority="outline"
-                  />
-                </div>
-              )}
-              {this.isAuthorized([ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]) && (
-                <div className={styles.navigationItem}>
-                  <Button
-                    clickHandler={() => history.push(routes.specialApprovalList)}
-                    label={t('layout:menu.specialApprovals')}
-                    priority="outline"
-                  />
-                </div>
-              )}
-              {this.isAuthorized([ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]) && (
-                <div className={styles.navigationItem}>
-                  <Button
-                    clickHandler={() => history.push(routes.supervisedUserList)}
-                    label={t('layout:menu.supervisedUsers')}
-                    priority="outline"
-                  />
-                </div>
-              )}
-              {this.isAuthorized([ROLE_ADMIN, ROLE_SUPER_ADMIN]) && (
-                <div className={styles.navigationItem}>
-                  <Button
-                    clickHandler={() => history.push(routes.userList)}
-                    label={t('layout:menu.users')}
-                    priority="outline"
-                  />
-                </div>
-              )}
-              {this.isAuthorized([ROLE_SUPER_ADMIN]) && (
-                <div className={styles.navigationItem}>
-                  <Button
-                    clickHandler={() => history.push(routes.hrChangesAndAbsenceRegistration)}
-                    label={t('layout:menu.hrChangesAndAbsenceRegistration')}
-                    priority="outline"
-                  />
-                </div>
-              )}
-              {this.isAuthorized([ROLE_SUPER_ADMIN]) && (
-                <div className={styles.navigationItem}>
-                  <Button
-                    clickHandler={() => history.push(routes.hrYearOverview)}
-                    label={t('layout:menu.hrYearOverview')}
-                    priority="outline"
-                  />
-                </div>
-              )}
-              {this.isAuthorized([ROLE_SUPER_ADMIN]) && (
-                <div className={styles.navigationItem}>
-                  <Button
-                    clickHandler={() => history.push(routes.settings)}
-                    label={t('layout:menu.settings')}
-                    priority="outline"
-                  />
-                </div>
-              )}
-              <div className={styles.navigationItem}>
-                <Button
-                  clickHandler={() => history.push(routes.profile)}
-                  label={this.getName()}
-                  priority="flat"
-                />
-              </div>
-              <div className={styles.navigationItem}>
-                <Button
-                  clickHandler={this.props.logout}
-                  label={t('layout:menu.logout')}
-                  priority="flat"
-                />
-              </div>
+              <Toolbar align="baseline" justify="space-between">
+                <ToolbarGroup dense>
+                  {this.isAuthorized([ROLE_EMPLOYEE]) && (
+                    <ToolbarItem>
+                      <Button
+                        clickHandler={() => history.push(routes.index)}
+                        label={t('layout:menu.workLogs')}
+                        priority="outline"
+                      />
+                    </ToolbarItem>
+                  )}
+                  {this.isAuthorized([ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]) && (
+                    <ToolbarItem>
+                      <Button
+                        clickHandler={() => history.push(routes.specialApprovalList)}
+                        label={t('layout:menu.specialApprovals')}
+                        priority="outline"
+                      />
+                    </ToolbarItem>
+                  )}
+                  {this.isAuthorized([ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]) && (
+                    <ToolbarItem>
+                      <Button
+                        clickHandler={() => history.push(routes.supervisedUserList)}
+                        label={t('layout:menu.supervisedUsers')}
+                        priority="outline"
+                      />
+                    </ToolbarItem>
+                  )}
+                  {this.isAuthorized([ROLE_ADMIN, ROLE_SUPER_ADMIN]) && (
+                    <ToolbarItem>
+                      <Button
+                        clickHandler={() => history.push(routes.userList)}
+                        label={t('layout:menu.users')}
+                        priority="outline"
+                      />
+                    </ToolbarItem>
+                  )}
+                  {this.isAuthorized([ROLE_SUPER_ADMIN]) && (
+                    <ToolbarItem>
+                      <Button
+                        clickHandler={() => history.push(routes.hrChangesAndAbsenceRegistration)}
+                        label={t('layout:menu.hrChangesAndAbsenceRegistration')}
+                        priority="outline"
+                      />
+                    </ToolbarItem>
+                  )}
+                  {this.isAuthorized([ROLE_SUPER_ADMIN]) && (
+                    <ToolbarItem>
+                      <Button
+                        clickHandler={() => history.push(routes.hrYearOverview)}
+                        label={t('layout:menu.hrYearOverview')}
+                        priority="outline"
+                      />
+                    </ToolbarItem>
+                  )}
+                  {this.isAuthorized([ROLE_SUPER_ADMIN]) && (
+                    <ToolbarItem>
+                      <Button
+                        clickHandler={() => history.push(routes.settings)}
+                        label={t('layout:menu.settings')}
+                        priority="outline"
+                      />
+                    </ToolbarItem>
+                  )}
+                </ToolbarGroup>
+                <ToolbarGroup>
+                  <ToolbarItem>
+                    <Button
+                      clickHandler={() => history.push(routes.profile)}
+                      label={this.getName()}
+                      priority="link"
+                    />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Button
+                      clickHandler={this.props.logout}
+                      label={t('layout:menu.logout')}
+                      priority="link"
+                    />
+                  </ToolbarItem>
+                </ToolbarGroup>
+              </Toolbar>
             </div>
           </header>
         )}
