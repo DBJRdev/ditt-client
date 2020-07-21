@@ -21,10 +21,12 @@ $_layout-padding-x: 4vw;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 1rem;
 
   @media screen and (min-width: $_breakpoint) {
     flex-direction: row;
-    padding-right: $_layout-spacer-x / 2;
+    padding-right: 5vw;
+    margin-bottom: 0;
   }
 }
 
@@ -43,6 +45,7 @@ $_layout-padding-x: 4vw;
   display: block;
   font-weight: 500;
   line-height: 2rem;
+  white-space: nowrap;
 
   @media screen and (min-width: $_breakpoint) {
     padding-left: $_layout-spacer-x;
@@ -52,19 +55,7 @@ $_layout-padding-x: 4vw;
 }
 
 .navigation {
-  display: flex;
-  max-width: 100%;
-  padding: ($_layout-spacer-y / 2) 0;
-  overflow-x: auto;
-
-  @media screen and (min-width: $_breakpoint) {
-    padding-right: $_layout-spacer-x / 2;
-    margin-bottom: 0;
-  }
-}
-
-.navigationItem {
-  margin-left: 1rem;
+  width: 100%;
 }
 
 .main {

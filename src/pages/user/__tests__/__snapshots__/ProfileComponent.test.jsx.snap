@@ -91,78 +91,45 @@ exports[`rendering renders correctly 1`] = `
                 <div
                   className="mt-1"
                 >
-                  <s
-                    afterLabel={null}
+                  <ForwardRef(withForwardedRef(c))
                     beforeLabel={
-                      <c
+                      <UNDEFINED
                         icon="open_in_new"
-                        size="medium"
                       />
                     }
-                    block={false}
                     clickHandler={[Function]}
-                    disabled={false}
-                    endCorner={null}
-                    grouped={false}
                     label="user:action.showApiToken"
-                    labelVisibility="all"
-                    loadingIcon={null}
-                    priority="default"
                     size="small"
-                    startCorner={null}
-                    type="button"
-                    variant="primary"
                   />
                 </div>
                 <div
                   className="mt-1 mb-1"
                 >
-                  <s
-                    afterLabel={null}
+                  <ForwardRef(withForwardedRef(c))
                     beforeLabel={
-                      <c
+                      <UNDEFINED
                         icon="autorenew"
-                        size="medium"
                       />
                     }
-                    block={false}
                     clickHandler={[Function]}
-                    disabled={false}
-                    endCorner={null}
-                    grouped={false}
                     label="user:action.renewApiToken"
-                    labelVisibility="all"
                     loadingIcon={null}
-                    priority="default"
                     size="small"
-                    startCorner={null}
-                    type="button"
-                    variant="primary"
                   />
                 </div>
                 <div
                   className="mb-1"
                 >
-                  <s
-                    afterLabel={null}
+                  <ForwardRef(withForwardedRef(c))
                     beforeLabel={
-                      <c
+                      <UNDEFINED
                         icon="clear"
-                        size="medium"
                       />
                     }
-                    block={false}
                     clickHandler={[Function]}
-                    disabled={false}
-                    endCorner={null}
-                    grouped={false}
                     label="user:action.resetApiToken"
-                    labelVisibility="all"
                     loadingIcon={null}
-                    priority="default"
                     size="small"
-                    startCorner={null}
-                    type="button"
                     variant="danger"
                   />
                 </div>
@@ -185,22 +152,11 @@ exports[`rendering renders correctly 1`] = `
                 <div
                   className="mb-1 mt-1"
                 >
-                  <s
-                    afterLabel={null}
-                    beforeLabel={null}
-                    block={false}
+                  <ForwardRef(withForwardedRef(c))
                     clickHandler={[Function]}
-                    disabled={false}
-                    endCorner={null}
-                    grouped={false}
                     label="user:action.enableICal"
-                    labelVisibility="all"
                     loadingIcon={null}
-                    priority="default"
                     size="small"
-                    startCorner={null}
-                    type="button"
-                    variant="primary"
                   />
                 </div>
               </td>
@@ -452,40 +408,26 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsCheckbox"
               >
-                <c
+                <ForwardRef(withForwardedRef(c))
                   changeHandler={[Function]}
                   checked={false}
-                  description={null}
-                  disabled={false}
-                  error={null}
                   id="supervisorInfoMondayTime"
                   isLabelVisible={false}
                   label=""
-                  labelPosition="after"
-                  required={false}
-                  validationState={null}
                 />
               </td>
               <td
                 className="notificationSettingsInput"
               >
-                <c
+                <ForwardRef(withForwardedRef(c))
                   changeHandler={[Function]}
                   disabled={true}
-                  fullWidth={false}
-                  helperText={null}
                   id="supervisorInfoMondayTime"
                   inputSize={5}
                   isLabelVisible={false}
                   label=""
-                  layout="vertical"
-                  placeholder={null}
-                  required={false}
-                  size="medium"
                   type="time"
-                  validationState={null}
                   value=""
-                  variant="outline"
                 />
               </td>
             </tr>
@@ -498,40 +440,26 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsCheckbox"
               >
-                <c
+                <ForwardRef(withForwardedRef(c))
                   changeHandler={[Function]}
                   checked={false}
-                  description={null}
-                  disabled={false}
-                  error={null}
                   id="supervisorInfoTuesdayTime"
                   isLabelVisible={false}
                   label=""
-                  labelPosition="after"
-                  required={false}
-                  validationState={null}
                 />
               </td>
               <td
                 className="notificationSettingsInput"
               >
-                <c
+                <ForwardRef(withForwardedRef(c))
                   changeHandler={[Function]}
                   disabled={true}
-                  fullWidth={false}
-                  helperText={null}
                   id="supervisorInfoTuesdayTime"
                   inputSize={5}
                   isLabelVisible={false}
                   label=""
-                  layout="vertical"
-                  placeholder={null}
-                  required={false}
-                  size="medium"
                   type="time"
-                  validationState={null}
                   value=""
-                  variant="outline"
                 />
               </td>
             </tr>
@@ -544,40 +472,26 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsCheckbox"
               >
-                <c
+                <ForwardRef(withForwardedRef(c))
                   changeHandler={[Function]}
                   checked={false}
-                  description={null}
-                  disabled={false}
-                  error={null}
                   id="supervisorInfoWednesdayTime"
                   isLabelVisible={false}
                   label=""
-                  labelPosition="after"
-                  required={false}
-                  validationState={null}
                 />
               </td>
               <td
                 className="notificationSettingsInput"
               >
-                <c
+                <ForwardRef(withForwardedRef(c))
                   changeHandler={[Function]}
                   disabled={true}
-                  fullWidth={false}
-                  helperText={null}
                   id="supervisorInfoWednesdayTime"
                   inputSize={5}
                   isLabelVisible={false}
                   label=""
-                  layout="vertical"
-                  placeholder={null}
-                  required={false}
-                  size="medium"
                   type="time"
-                  validationState={null}
                   value=""
-                  variant="outline"
                 />
               </td>
             </tr>
@@ -590,40 +504,26 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsCheckbox"
               >
-                <c
+                <ForwardRef(withForwardedRef(c))
                   changeHandler={[Function]}
                   checked={false}
-                  description={null}
-                  disabled={false}
-                  error={null}
                   id="supervisorInfoThursdayTime"
                   isLabelVisible={false}
                   label=""
-                  labelPosition="after"
-                  required={false}
-                  validationState={null}
                 />
               </td>
               <td
                 className="notificationSettingsInput"
               >
-                <c
+                <ForwardRef(withForwardedRef(c))
                   changeHandler={[Function]}
                   disabled={true}
-                  fullWidth={false}
-                  helperText={null}
                   id="supervisorInfoThursdayTime"
                   inputSize={5}
                   isLabelVisible={false}
                   label=""
-                  layout="vertical"
-                  placeholder={null}
-                  required={false}
-                  size="medium"
                   type="time"
-                  validationState={null}
                   value=""
-                  variant="outline"
                 />
               </td>
             </tr>
@@ -636,40 +536,26 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsCheckbox"
               >
-                <c
+                <ForwardRef(withForwardedRef(c))
                   changeHandler={[Function]}
                   checked={false}
-                  description={null}
-                  disabled={false}
-                  error={null}
                   id="supervisorInfoFridayTime"
                   isLabelVisible={false}
                   label=""
-                  labelPosition="after"
-                  required={false}
-                  validationState={null}
                 />
               </td>
               <td
                 className="notificationSettingsInput"
               >
-                <c
+                <ForwardRef(withForwardedRef(c))
                   changeHandler={[Function]}
                   disabled={true}
-                  fullWidth={false}
-                  helperText={null}
                   id="supervisorInfoFridayTime"
                   inputSize={5}
                   isLabelVisible={false}
                   label=""
-                  layout="vertical"
-                  placeholder={null}
-                  required={false}
-                  size="medium"
                   type="time"
-                  validationState={null}
                   value=""
-                  variant="outline"
                 />
               </td>
             </tr>
@@ -682,40 +568,26 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsCheckbox"
               >
-                <c
+                <ForwardRef(withForwardedRef(c))
                   changeHandler={[Function]}
                   checked={false}
-                  description={null}
-                  disabled={false}
-                  error={null}
                   id="supervisorInfoSaturdayTime"
                   isLabelVisible={false}
                   label=""
-                  labelPosition="after"
-                  required={false}
-                  validationState={null}
                 />
               </td>
               <td
                 className="notificationSettingsInput"
               >
-                <c
+                <ForwardRef(withForwardedRef(c))
                   changeHandler={[Function]}
                   disabled={true}
-                  fullWidth={false}
-                  helperText={null}
                   id="supervisorInfoSaturdayTime"
                   inputSize={5}
                   isLabelVisible={false}
                   label=""
-                  layout="vertical"
-                  placeholder={null}
-                  required={false}
-                  size="medium"
                   type="time"
-                  validationState={null}
                   value=""
-                  variant="outline"
                 />
               </td>
             </tr>
@@ -728,40 +600,26 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsCheckbox"
               >
-                <c
+                <ForwardRef(withForwardedRef(c))
                   changeHandler={[Function]}
                   checked={false}
-                  description={null}
-                  disabled={false}
-                  error={null}
                   id="supervisorInfoSundayTime"
                   isLabelVisible={false}
                   label=""
-                  labelPosition="after"
-                  required={false}
-                  validationState={null}
                 />
               </td>
               <td
                 className="notificationSettingsInput"
               >
-                <c
+                <ForwardRef(withForwardedRef(c))
                   changeHandler={[Function]}
                   disabled={true}
-                  fullWidth={false}
-                  helperText={null}
                   id="supervisorInfoSundayTime"
                   inputSize={5}
                   isLabelVisible={false}
                   label=""
-                  layout="vertical"
-                  placeholder={null}
-                  required={false}
-                  size="medium"
                   type="time"
-                  validationState={null}
                   value=""
-                  variant="outline"
                 />
               </td>
             </tr>
@@ -779,18 +637,12 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsCheckbox"
               >
-                <c
+                <ForwardRef(withForwardedRef(c))
                   changeHandler={[Function]}
                   checked={false}
-                  description={null}
-                  disabled={false}
-                  error={null}
                   id="supervisorInfoSendOnHolidays"
                   isLabelVisible={false}
                   label=""
-                  labelPosition="after"
-                  required={false}
-                  validationState={null}
                 />
               </td>
               <td
@@ -803,22 +655,11 @@ exports[`rendering renders correctly 1`] = `
       <div
         className="saveButton"
       >
-        <s
-          afterLabel={null}
-          beforeLabel={null}
-          block={false}
+        <ForwardRef(withForwardedRef(c))
           clickHandler={[Function]}
           disabled={true}
-          endCorner={null}
-          grouped={false}
           label="general:action.save"
-          labelVisibility="all"
           loadingIcon={null}
-          priority="default"
-          size="medium"
-          startCorner={null}
-          type="button"
-          variant="primary"
         />
       </div>
     </div>

@@ -8,81 +8,51 @@ exports[`rendering renders correctly 1`] = `
   <div
     className="actions"
   >
-    <s
-      afterLabel={null}
-      beforeLabel={null}
-      block={false}
+    <ForwardRef(withForwardedRef(c))
       clickHandler={[Function]}
-      disabled={false}
-      endCorner={null}
-      grouped={false}
       label="user:action.deleteUser"
-      labelVisibility="all"
       loadingIcon={null}
-      priority="default"
-      size="medium"
-      startCorner={null}
-      type="button"
       variant="danger"
     />
   </div>
   <form
     className="detailPageWrapper"
   >
-    <c
+    <n
       align="left"
       autoWidth={false}
     >
-      <c>
-        <c
+      <n>
+        <ForwardRef(withForwardedRef(c))
           changeHandler={[Function]}
-          disabled={false}
           fullWidth={true}
           helperText={null}
           id="firstName"
-          inputSize={null}
-          isLabelVisible={true}
           label="user:element.firstName"
-          layout="vertical"
-          placeholder={null}
           required={true}
-          size="medium"
-          type="text"
           validationState={null}
           value=""
-          variant="outline"
         />
-      </c>
-      <c>
-        <c
+      </n>
+      <n>
+        <ForwardRef(withForwardedRef(c))
           changeHandler={[Function]}
-          disabled={false}
           fullWidth={true}
           helperText={null}
           id="lastName"
-          inputSize={null}
-          isLabelVisible={true}
           label="user:element.lastName"
-          layout="vertical"
-          placeholder={null}
           required={true}
-          size="medium"
-          type="text"
           validationState={null}
           value=""
-          variant="outline"
         />
-      </c>
-      <c>
-        <c
+      </n>
+      <n>
+        <ForwardRef(withForwardedRef(c))
           changeHandler={[Function]}
-          disabled={false}
           fullWidth={true}
           helperText={null}
           id="supervisor"
-          isLabelVisible={true}
           label="user:element.supervisor"
-          layout="vertical"
           options={
             Array [
               Object {
@@ -91,89 +61,57 @@ exports[`rendering renders correctly 1`] = `
               },
             ]
           }
-          required={false}
-          size="medium"
           validationState={null}
           value=""
-          variant="outline"
         />
-      </c>
-      <c>
-        <c
+      </n>
+      <n>
+        <ForwardRef(withForwardedRef(c))
           changeHandler={[Function]}
-          disabled={false}
           fullWidth={true}
           helperText={null}
           id="email"
-          inputSize={null}
-          isLabelVisible={true}
           label="user:element.email"
-          layout="vertical"
-          placeholder={null}
           required={true}
-          size="medium"
-          type="text"
           validationState={null}
           value=""
-          variant="outline"
         />
-      </c>
-      <c>
-        <c
+      </n>
+      <n>
+        <ForwardRef(withForwardedRef(c))
           changeHandler={[Function]}
-          disabled={false}
           fullWidth={true}
           helperText={null}
           id="employeeId"
-          inputSize={null}
-          isLabelVisible={true}
           label="user:element.employeeId"
-          layout="vertical"
-          placeholder={null}
           required={true}
-          size="medium"
-          type="text"
           validationState={null}
           value=""
-          variant="outline"
         />
-      </c>
-      <c>
-        <c
+      </n>
+      <n>
+        <ForwardRef(withForwardedRef(c))
           changeHandler={[Function]}
-          disabled={false}
           fullWidth={true}
-          helperText={null}
           id="plainPassword"
-          inputSize={null}
-          isLabelVisible={true}
           label="user:element.plainPassword"
-          layout="vertical"
-          placeholder={null}
           required={true}
-          size="medium"
           type="password"
           validationState={null}
           value=""
-          variant="outline"
         />
-      </c>
-      <c>
-        <c
+      </n>
+      <n>
+        <ForwardRef(withForwardedRef(c))
           changeHandler={[Function]}
           checked={false}
-          description={null}
-          disabled={false}
           error={null}
           fullWidth={true}
           id="isActive"
-          isLabelVisible={true}
           label="user:element.isActive"
-          labelPosition="after"
           required={true}
-          validationState={null}
         />
-      </c>
+      </n>
       <h2
         className="detailSubheader"
       >
@@ -187,26 +125,14 @@ exports[`rendering renders correctly 1`] = `
       <p>
         user:text.averageWorkingHoursDescription
       </p>
-      <c>
-        <s
-          afterLabel={null}
-          beforeLabel={null}
-          block={false}
+      <n>
+        <ForwardRef(withForwardedRef(c))
           clickHandler={[Function]}
-          disabled={false}
-          endCorner={null}
-          grouped={false}
           label="general:action.save"
-          labelVisibility="all"
           loadingIcon={null}
-          priority="default"
-          size="medium"
-          startCorner={null}
-          type="button"
-          variant="primary"
         />
-      </c>
-    </c>
+      </n>
+    </n>
   </form>
 </Connect(LayoutComponent)>
 `;
