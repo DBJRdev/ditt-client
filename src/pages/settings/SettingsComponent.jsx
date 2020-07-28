@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {
   Button,
-  Icon,
   List,
   ListItem,
   Modal,
@@ -11,6 +10,7 @@ import {
   TextField,
 } from '@react-ui-org/react-ui';
 import { withTranslation } from 'react-i18next';
+import { Icon } from '../../components/Icon';
 import Layout from '../../components/Layout';
 import {
   createDate,

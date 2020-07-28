@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {
-  Icon,
   List,
   ListItem,
   Modal,
@@ -9,6 +8,7 @@ import {
   TextField,
 } from '@react-ui-org/react-ui';
 import { withTranslation } from 'react-i18next';
+import { Icon } from '../../../Icon';
 import styles from '../../../WorkLogForm/WorkLogForm.scss';
 import { validateWorkTimeCorrection } from '../../../../services/validatorService';
 

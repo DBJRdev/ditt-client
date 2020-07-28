@@ -5,12 +5,12 @@ import { withTranslation } from 'react-i18next';
 import {
   Button,
   CheckboxField,
-  Icon,
   List,
   ListItem,
   SelectField,
   TextField,
 } from '@react-ui-org/react-ui';
+import { Icon } from '../../components/Icon';
 import {
   ADD_USER_SUCCESS,
   ADD_USER_FAILURE,

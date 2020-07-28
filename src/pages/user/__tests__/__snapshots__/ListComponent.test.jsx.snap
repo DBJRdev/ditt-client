@@ -8,25 +8,12 @@ exports[`rendering renders correctly 1`] = `
   <div
     className="actions"
   >
-    <s
-      afterLabel={null}
-      beforeLabel={null}
-      block={false}
+    <ForwardRef(withForwardedRef(c))
       clickHandler={[Function]}
-      disabled={false}
-      endCorner={null}
-      grouped={false}
       label="user:action.addUser"
-      labelVisibility="all"
-      loadingIcon={null}
-      priority="default"
-      size="medium"
-      startCorner={null}
-      type="button"
-      variant="primary"
     />
   </div>
-  <t
+  <u
     columns={
       Array [
         Object {
@@ -58,13 +45,10 @@ exports[`rendering renders correctly 1`] = `
     rows={Array []}
     sort={
       Object {
-        "ascendingIcon": <c
-          icon="arrow_upward"
-          size="medium"
-        />,
+        "ascendingIcon": null,
         "changeHandler": [Function],
         "column": "lastName",
-        "descendingIcon": <c
+        "descendingIcon": <Icon
           icon="arrow_downward"
           size="medium"
         />,

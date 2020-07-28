@@ -1,8 +1,8 @@
 import ReactDOM from 'react-dom';
+import loadMaterialDesignIcons from './components/Icon/load-material-design-icons';
 import app from './app';
 import history from './routerHistory';
 import store from './store';
-
 // Initialize translator
 import './translator';
 
@@ -16,6 +16,9 @@ import './styles/main.scss';
 
 // React UI utility classes
 import '@react-ui-org/react-ui/src/lib/utilities.scss';
+
+// Load Material Design icons
+loadMaterialDesignIcons();
 
 ReactDOM.render(
   app(store, history),

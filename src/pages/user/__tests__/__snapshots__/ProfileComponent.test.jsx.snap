@@ -93,8 +93,9 @@ exports[`rendering renders correctly 1`] = `
                 >
                   <ForwardRef(withForwardedRef(c))
                     beforeLabel={
-                      <UNDEFINED
+                      <Icon
                         icon="open_in_new"
+                        size="medium"
                       />
                     }
                     clickHandler={[Function]}
@@ -107,8 +108,9 @@ exports[`rendering renders correctly 1`] = `
                 >
                   <ForwardRef(withForwardedRef(c))
                     beforeLabel={
-                      <UNDEFINED
+                      <Icon
                         icon="autorenew"
+                        size="medium"
                       />
                     }
                     clickHandler={[Function]}
@@ -122,8 +124,9 @@ exports[`rendering renders correctly 1`] = `
                 >
                   <ForwardRef(withForwardedRef(c))
                     beforeLabel={
-                      <UNDEFINED
+                      <Icon
                         icon="clear"
+                        size="medium"
                       />
                     }
                     clickHandler={[Function]}
@@ -423,7 +426,7 @@ exports[`rendering renders correctly 1`] = `
                   changeHandler={[Function]}
                   disabled={true}
                   id="supervisorInfoMondayTime"
-                  inputSize={5}
+                  inputSize={9}
                   isLabelVisible={false}
                   label=""
                   type="time"
@@ -455,7 +458,7 @@ exports[`rendering renders correctly 1`] = `
                   changeHandler={[Function]}
                   disabled={true}
                   id="supervisorInfoTuesdayTime"
-                  inputSize={5}
+                  inputSize={9}
                   isLabelVisible={false}
                   label=""
                   type="time"
@@ -487,7 +490,7 @@ exports[`rendering renders correctly 1`] = `
                   changeHandler={[Function]}
                   disabled={true}
                   id="supervisorInfoWednesdayTime"
-                  inputSize={5}
+                  inputSize={9}
                   isLabelVisible={false}
                   label=""
                   type="time"
@@ -519,7 +522,7 @@ exports[`rendering renders correctly 1`] = `
                   changeHandler={[Function]}
                   disabled={true}
                   id="supervisorInfoThursdayTime"
-                  inputSize={5}
+                  inputSize={9}
                   isLabelVisible={false}
                   label=""
                   type="time"
@@ -551,7 +554,7 @@ exports[`rendering renders correctly 1`] = `
                   changeHandler={[Function]}
                   disabled={true}
                   id="supervisorInfoFridayTime"
-                  inputSize={5}
+                  inputSize={9}
                   isLabelVisible={false}
                   label=""
                   type="time"
@@ -583,7 +586,7 @@ exports[`rendering renders correctly 1`] = `
                   changeHandler={[Function]}
                   disabled={true}
                   id="supervisorInfoSaturdayTime"
-                  inputSize={5}
+                  inputSize={9}
                   isLabelVisible={false}
                   label=""
                   type="time"
@@ -615,7 +618,7 @@ exports[`rendering renders correctly 1`] = `
                   changeHandler={[Function]}
                   disabled={true}
                   id="supervisorInfoSundayTime"
-                  inputSize={5}
+                  inputSize={9}
                   isLabelVisible={false}
                   label=""
                   type="time"

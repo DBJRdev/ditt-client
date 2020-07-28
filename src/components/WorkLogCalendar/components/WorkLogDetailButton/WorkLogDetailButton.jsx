@@ -1,10 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import {
-  Button,
-  Icon,
-} from '@react-ui-org/react-ui';
+import { Button } from '@react-ui-org/react-ui';
 import { withTranslation } from 'react-i18next';
+import { Icon } from '../../../Icon';
 import styles from '../../WorkLogCalendar.scss';
 import {
   BAN_WORK_LOG,

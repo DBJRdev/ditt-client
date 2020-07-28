@@ -6,11 +6,11 @@ import React from 'react';
 import { withTranslation } from 'react-i18next';
 import {
   Button,
-  Icon,
   Table,
 } from '@react-ui-org/react-ui';
 import { Link } from 'react-router-dom';
 import routes from '../../routes';
+import { Icon } from '../../components/Icon';
 import Layout from '../../components/Layout';
 import { ROLE_SUPER_ADMIN } from '../../resources/user';
 import { toHourMinuteFormatFromInt } from '../../services/dateTimeService';
@@ -129,7 +129,7 @@ class ListComponent extends React.Component {
           columns={columns}
           rows={this.props.userList.toJS()}
           sort={{
-            ascendingIcon: <Icon icon="arrow_upward" />,
+            ascendingIcon: null,
             changeHandler: (column, direction) => {
               const orderDirection = direction === 'asc' ? 'desc' : 'asc';
 

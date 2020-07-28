@@ -7,14 +7,13 @@ import React, {
 } from 'react';
 import {
   Button,
-  Icon,
   Table,
   TextField,
   Toolbar,
   ToolbarItem,
-  ToolbarSpacer,
 } from '@react-ui-org/react-ui';
 import { withTranslation } from 'react-i18next';
+import { Icon } from '../../components/Icon';
 import { VARIANT_SICK_CHILD } from '../../resources/sickDayWorkLog';
 import {
   localizedMoment,
@@ -47,7 +46,6 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
               {props.t('hr:title.changesAndAbsenceRegistration')}
             </h2>
           </ToolbarItem>
-          <ToolbarSpacer />
           <ToolbarItem>
             <div className={styles.filters}>
               <span className="mr-5">
