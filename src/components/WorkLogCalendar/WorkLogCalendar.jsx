@@ -436,8 +436,13 @@ class WorkLogCalendar extends React.Component {
   stopWorkLogTimer(e) {
     e.stopPropagation();
 
-    const startTime = toMomentDateTime(getWorkLogTimer());
-    const endTime = localizedMoment();
+    const startTime = toMomentDateTime(getWorkLogTimer()).second(0);
+    let endTime = localizedMoment().second(0);
+
+    if (startTime.unix() === endTime.unix()) {
+      endTime = endTime.add(1, 'minutes');
+    }
+
     const intervalMiliseconds = localizedMoment().diff(this.state.workLogTimer);
 
     clearInterval(this.workLogTimer);
