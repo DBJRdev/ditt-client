@@ -6,12 +6,12 @@ import shortid from 'shortid';
 import {
   Button,
   CheckboxField,
-  Icon,
   Modal,
   TextField,
 } from '@react-ui-org/react-ui';
 import { withTranslation } from 'react-i18next';
 import { API_URL } from '../../../config/envspecific';
+import { Icon } from '../../components/Icon';
 import { ROLE_EMPLOYEE } from '../../resources/user';
 import { getWorkHoursString } from '../../services/workHoursService';
 import Layout from '../../components/Layout';
@@ -449,7 +449,7 @@ class ProfileComponent extends React.Component {
                               changeHandler={this.handleInputChange}
                               disabled={notifications[`supervisorInfo${day}Time`] === null}
                               id={`supervisorInfo${day}Time`}
-                              inputSize={5}
+                              inputSize={9}
                               isLabelVisible={false}
                               label=""
                               type="time"

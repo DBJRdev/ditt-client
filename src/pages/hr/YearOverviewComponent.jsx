@@ -94,7 +94,7 @@ const OverviewComponent = (props) => {
                 {props.t('hr:element.last365Days')}
               </>
             ),
-            name: 'total',
+            name: 'totalSickChild',
           },
           {
             format: (rowData) => rowData.sickDays
@@ -106,7 +106,7 @@ const OverviewComponent = (props) => {
                 {props.t('hr:element.last365Days')}
               </>
             ),
-            name: 'total',
+            name: 'totalSick',
           },
         ]}
         rows={props.yearOverview || []}

@@ -8,27 +8,16 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
     <div
       className="navigationPrevious"
     >
-      <s
-        afterLabel={null}
+      <ForwardRef(withForwardedRef(c))
         beforeLabel={
-          <c
+          <Icon
             icon="keyboard_arrow_left"
             size="medium"
           />
         }
-        block={false}
         clickHandler={[Function]}
         disabled={false}
-        endCorner={null}
-        grouped={false}
         label="workLog:action.previousMonth"
-        labelVisibility="all"
-        loadingIcon={null}
-        priority="default"
-        size="medium"
-        startCorner={null}
-        type="button"
-        variant="primary"
       />
     </div>
     <div>
@@ -53,27 +42,16 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
     <div
       className="navigationNext"
     >
-      <s
+      <ForwardRef(withForwardedRef(c))
         afterLabel={
-          <c
+          <Icon
             icon="keyboard_arrow_right"
             size="medium"
           />
         }
-        beforeLabel={null}
-        block={false}
         clickHandler={[Function]}
         disabled={false}
-        endCorner={null}
-        grouped={false}
         label="workLog:action.nextMonth"
-        labelVisibility="all"
-        loadingIcon={null}
-        priority="default"
-        size="medium"
-        startCorner={null}
-        type="button"
-        variant="primary"
       />
     </div>
   </nav>
@@ -1036,27 +1014,16 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
     <div
       className="navigationPrevious"
     >
-      <s
-        afterLabel={null}
+      <ForwardRef(withForwardedRef(c))
         beforeLabel={
-          <c
+          <Icon
             icon="keyboard_arrow_left"
             size="medium"
           />
         }
-        block={false}
         clickHandler={[Function]}
         disabled={false}
-        endCorner={null}
-        grouped={false}
         label="workLog:action.previousMonth"
-        labelVisibility="all"
-        loadingIcon={null}
-        priority="default"
-        size="medium"
-        startCorner={null}
-        type="button"
-        variant="primary"
       />
     </div>
     <div>
@@ -1078,27 +1045,16 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
     <div
       className="navigationNext"
     >
-      <s
+      <ForwardRef(withForwardedRef(c))
         afterLabel={
-          <c
+          <Icon
             icon="keyboard_arrow_right"
             size="medium"
           />
         }
-        beforeLabel={null}
-        block={false}
         clickHandler={[Function]}
         disabled={false}
-        endCorner={null}
-        grouped={false}
         label="workLog:action.nextMonth"
-        labelVisibility="all"
-        loadingIcon={null}
-        priority="default"
-        size="medium"
-        startCorner={null}
-        type="button"
-        variant="primary"
       />
     </div>
   </nav>
@@ -2064,27 +2020,16 @@ exports[`rendering renders correctly supervisor view with work month waiting for
     <div
       className="navigationPrevious"
     >
-      <s
-        afterLabel={null}
+      <ForwardRef(withForwardedRef(c))
         beforeLabel={
-          <c
+          <Icon
             icon="keyboard_arrow_left"
             size="medium"
           />
         }
-        block={false}
         clickHandler={[Function]}
         disabled={false}
-        endCorner={null}
-        grouped={false}
         label="workLog:action.previousMonth"
-        labelVisibility="all"
-        loadingIcon={null}
-        priority="default"
-        size="medium"
-        startCorner={null}
-        type="button"
-        variant="primary"
       />
     </div>
     <div>
@@ -2105,21 +2050,9 @@ exports[`rendering renders correctly supervisor view with work month waiting for
       <div
         className="mt-2"
       >
-        <s
-          afterLabel={null}
-          beforeLabel={null}
-          block={false}
+        <ForwardRef(withForwardedRef(c))
           clickHandler={[Function]}
-          disabled={false}
-          endCorner={null}
-          grouped={false}
           label="workLog:action.approveMonth"
-          labelVisibility="all"
-          loadingIcon={null}
-          priority="default"
-          size="medium"
-          startCorner={null}
-          type="button"
           variant="success"
         />
       </div>
@@ -2127,27 +2060,16 @@ exports[`rendering renders correctly supervisor view with work month waiting for
     <div
       className="navigationNext"
     >
-      <s
+      <ForwardRef(withForwardedRef(c))
         afterLabel={
-          <c
+          <Icon
             icon="keyboard_arrow_right"
             size="medium"
           />
         }
-        beforeLabel={null}
-        block={false}
         clickHandler={[Function]}
         disabled={false}
-        endCorner={null}
-        grouped={false}
         label="workLog:action.nextMonth"
-        labelVisibility="all"
-        loadingIcon={null}
-        priority="default"
-        size="medium"
-        startCorner={null}
-        type="button"
-        variant="primary"
       />
     </div>
   </nav>
@@ -3110,27 +3032,16 @@ exports[`rendering renders correctly with closed work month 1`] = `
     <div
       className="navigationPrevious"
     >
-      <s
-        afterLabel={null}
+      <ForwardRef(withForwardedRef(c))
         beforeLabel={
-          <c
+          <Icon
             icon="keyboard_arrow_left"
             size="medium"
           />
         }
-        block={false}
         clickHandler={[Function]}
         disabled={false}
-        endCorner={null}
-        grouped={false}
         label="workLog:action.previousMonth"
-        labelVisibility="all"
-        loadingIcon={null}
-        priority="default"
-        size="medium"
-        startCorner={null}
-        type="button"
-        variant="primary"
       />
     </div>
     <div>
@@ -3155,27 +3066,16 @@ exports[`rendering renders correctly with closed work month 1`] = `
     <div
       className="navigationNext"
     >
-      <s
+      <ForwardRef(withForwardedRef(c))
         afterLabel={
-          <c
+          <Icon
             icon="keyboard_arrow_right"
             size="medium"
           />
         }
-        beforeLabel={null}
-        block={false}
         clickHandler={[Function]}
         disabled={false}
-        endCorner={null}
-        grouped={false}
         label="workLog:action.nextMonth"
-        labelVisibility="all"
-        loadingIcon={null}
-        priority="default"
-        size="medium"
-        startCorner={null}
-        type="button"
-        variant="primary"
       />
     </div>
   </nav>
@@ -4138,27 +4038,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
     <div
       className="navigationPrevious"
     >
-      <s
-        afterLabel={null}
+      <ForwardRef(withForwardedRef(c))
         beforeLabel={
-          <c
+          <Icon
             icon="keyboard_arrow_left"
             size="medium"
           />
         }
-        block={false}
         clickHandler={[Function]}
         disabled={false}
-        endCorner={null}
-        grouped={false}
         label="workLog:action.previousMonth"
-        labelVisibility="all"
-        loadingIcon={null}
-        priority="default"
-        size="medium"
-        startCorner={null}
-        type="button"
-        variant="primary"
       />
     </div>
     <div>
@@ -4180,27 +4069,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
     <div
       className="navigationNext"
     >
-      <s
+      <ForwardRef(withForwardedRef(c))
         afterLabel={
-          <c
+          <Icon
             icon="keyboard_arrow_right"
             size="medium"
           />
         }
-        beforeLabel={null}
-        block={false}
         clickHandler={[Function]}
         disabled={false}
-        endCorner={null}
-        grouped={false}
         label="workLog:action.nextMonth"
-        labelVisibility="all"
-        loadingIcon={null}
-        priority="default"
-        size="medium"
-        startCorner={null}
-        type="button"
-        variant="primary"
       />
     </div>
   </nav>
@@ -4241,27 +4119,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
             className="tableCell"
           >
             <div>
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="play_arrow"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.startWork"
-                labelVisibility="all"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -4271,27 +4137,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -4332,27 +4187,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -4393,27 +4237,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -4454,27 +4287,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -4515,27 +4337,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -4576,27 +4387,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -4637,27 +4437,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -4698,27 +4487,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -4759,27 +4537,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -4820,27 +4587,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -4881,27 +4637,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -4942,27 +4687,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -5003,27 +4737,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -5064,27 +4787,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -5125,27 +4837,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -5186,27 +4887,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -5247,27 +4937,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -5308,27 +4987,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -5369,27 +5037,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -5430,27 +5087,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -5491,27 +5137,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -5552,27 +5187,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -5613,27 +5237,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -5674,27 +5287,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -5735,27 +5337,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -5796,27 +5387,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -5857,27 +5437,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -5918,27 +5487,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -5979,27 +5537,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -6040,27 +5587,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -6101,27 +5637,16 @@ exports[`rendering renders correctly with opened work month 1`] = `
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -6141,27 +5666,17 @@ exports[`rendering renders correctly with opened work month 1`] = `
   <div
     className="sendForApprovalButtonWrapper"
   >
-    <s
-      afterLabel={null}
+    <ForwardRef(withForwardedRef(c))
       beforeLabel={
-        <c
+        <Icon
           icon="send"
           size="medium"
         />
       }
-      block={false}
       clickHandler={[Function]}
       disabled={false}
-      endCorner={null}
-      grouped={false}
       label="workLog:action.sendWorkMonthForApproval"
-      labelVisibility="all"
       loadingIcon={null}
-      priority="default"
-      size="medium"
-      startCorner={null}
-      type="button"
-      variant="primary"
     />
   </div>
 </div>
@@ -6175,27 +5690,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
     <div
       className="navigationPrevious"
     >
-      <s
-        afterLabel={null}
+      <ForwardRef(withForwardedRef(c))
         beforeLabel={
-          <c
+          <Icon
             icon="keyboard_arrow_left"
             size="medium"
           />
         }
-        block={false}
         clickHandler={[Function]}
         disabled={false}
-        endCorner={null}
-        grouped={false}
         label="workLog:action.previousMonth"
-        labelVisibility="all"
-        loadingIcon={null}
-        priority="default"
-        size="medium"
-        startCorner={null}
-        type="button"
-        variant="primary"
       />
     </div>
     <div>
@@ -6220,27 +5724,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
     <div
       className="navigationNext"
     >
-      <s
+      <ForwardRef(withForwardedRef(c))
         afterLabel={
-          <c
+          <Icon
             icon="keyboard_arrow_right"
             size="medium"
           />
         }
-        beforeLabel={null}
-        block={false}
         clickHandler={[Function]}
         disabled={false}
-        endCorner={null}
-        grouped={false}
         label="workLog:action.nextMonth"
-        labelVisibility="all"
-        loadingIcon={null}
-        priority="default"
-        size="medium"
-        startCorner={null}
-        type="button"
-        variant="primary"
       />
     </div>
   </nav>
@@ -6281,27 +5774,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             className="tableCell"
           >
             <div>
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="play_arrow"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.startWork"
-                labelVisibility="all"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -6311,27 +5792,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -6372,27 +5842,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -6433,27 +5892,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -6494,27 +5942,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -6555,27 +5992,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -6616,27 +6042,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -6677,27 +6092,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -6738,27 +6142,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -6799,27 +6192,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -6860,27 +6242,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -6921,27 +6292,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -6982,27 +6342,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -7043,27 +6392,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -7104,27 +6442,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -7165,27 +6492,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -7226,27 +6542,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -7287,27 +6592,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -7348,27 +6642,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -7409,27 +6692,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -7470,27 +6742,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -7531,27 +6792,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -7592,27 +6842,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -7653,27 +6892,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -7714,27 +6942,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -7775,27 +6992,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -7836,27 +7042,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -7897,27 +7092,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -7958,27 +7142,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -8019,27 +7192,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -8080,27 +7242,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>
@@ -8141,27 +7292,16 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             <div
               className="addWorkLogButtonWrapper"
             >
-              <s
-                afterLabel={null}
+              <ForwardRef(withForwardedRef(c))
                 beforeLabel={
-                  <c
+                  <Icon
                     icon="add"
                     size="medium"
                   />
                 }
-                block={false}
                 clickHandler={[Function]}
-                disabled={false}
-                endCorner={null}
-                grouped={false}
                 label="workLog:action.addWorkLog"
                 labelVisibility="none"
-                loadingIcon={null}
-                priority="default"
-                size="medium"
-                startCorner={null}
-                type="button"
-                variant="primary"
               />
             </div>
           </td>

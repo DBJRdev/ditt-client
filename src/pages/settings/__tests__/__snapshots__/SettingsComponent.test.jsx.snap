@@ -16,27 +16,15 @@ exports[`rendering renders correctly 1`] = `
     <div
       className="yearButtonsWrapper"
     >
-      <s
-        afterLabel={null}
+      <ForwardRef(withForwardedRef(c))
         beforeLabel={
-          <c
+          <Icon
             icon="add"
             size="medium"
           />
         }
-        block={false}
         clickHandler={[Function]}
-        disabled={false}
-        endCorner={null}
-        grouped={false}
         label="settings:action.addYear"
-        labelVisibility="all"
-        loadingIcon={null}
-        priority="default"
-        size="medium"
-        startCorner={null}
-        type="button"
-        variant="primary"
       />
     </div>
   </div>
@@ -57,49 +45,29 @@ exports[`rendering renders correctly 1`] = `
         <div
           className="yearEditButtonWrapper"
         >
-          <s
-            afterLabel={null}
+          <ForwardRef(withForwardedRef(c))
             beforeLabel={
-              <c
+              <Icon
                 icon="edit"
                 size="medium"
               />
             }
-            block={false}
             clickHandler={[Function]}
-            disabled={false}
-            endCorner={null}
-            grouped={false}
             label="settings:action.editYear"
             labelVisibility="none"
-            loadingIcon={null}
             priority="outline"
-            size="medium"
-            startCorner={null}
-            type="button"
-            variant="primary"
           />
         </div>
-        <s
-          afterLabel={null}
+        <ForwardRef(withForwardedRef(c))
           beforeLabel={
-            <c
+            <Icon
               icon="expand_more"
               size="medium"
             />
           }
-          block={false}
           clickHandler={[Function]}
-          disabled={false}
-          endCorner={null}
-          grouped={false}
           labelVisibility="none"
-          loadingIcon={null}
           priority="outline"
-          size="medium"
-          startCorner={null}
-          type="button"
-          variant="primary"
         />
       </div>
     </div>
@@ -121,49 +89,29 @@ exports[`rendering renders correctly 1`] = `
         <div
           className="yearEditButtonWrapper"
         >
-          <s
-            afterLabel={null}
+          <ForwardRef(withForwardedRef(c))
             beforeLabel={
-              <c
+              <Icon
                 icon="edit"
                 size="medium"
               />
             }
-            block={false}
             clickHandler={[Function]}
-            disabled={false}
-            endCorner={null}
-            grouped={false}
             label="settings:action.editYear"
             labelVisibility="none"
-            loadingIcon={null}
             priority="outline"
-            size="medium"
-            startCorner={null}
-            type="button"
-            variant="primary"
           />
         </div>
-        <s
-          afterLabel={null}
+        <ForwardRef(withForwardedRef(c))
           beforeLabel={
-            <c
+            <Icon
               icon="expand_more"
               size="medium"
             />
           }
-          block={false}
           clickHandler={[Function]}
-          disabled={false}
-          endCorner={null}
-          grouped={false}
           labelVisibility="none"
-          loadingIcon={null}
           priority="outline"
-          size="medium"
-          startCorner={null}
-          type="button"
-          variant="primary"
         />
       </div>
     </div>
@@ -185,49 +133,29 @@ exports[`rendering renders correctly 1`] = `
         <div
           className="yearEditButtonWrapper"
         >
-          <s
-            afterLabel={null}
+          <ForwardRef(withForwardedRef(c))
             beforeLabel={
-              <c
+              <Icon
                 icon="edit"
                 size="medium"
               />
             }
-            block={false}
             clickHandler={[Function]}
-            disabled={false}
-            endCorner={null}
-            grouped={false}
             label="settings:action.editYear"
             labelVisibility="none"
-            loadingIcon={null}
             priority="outline"
-            size="medium"
-            startCorner={null}
-            type="button"
-            variant="primary"
           />
         </div>
-        <s
-          afterLabel={null}
+        <ForwardRef(withForwardedRef(c))
           beforeLabel={
-            <c
+            <Icon
               icon="expand_more"
               size="medium"
             />
           }
-          block={false}
           clickHandler={[Function]}
-          disabled={false}
-          endCorner={null}
-          grouped={false}
           labelVisibility="none"
-          loadingIcon={null}
           priority="outline"
-          size="medium"
-          startCorner={null}
-          type="button"
-          variant="primary"
         />
       </div>
     </div>
@@ -249,49 +177,29 @@ exports[`rendering renders correctly 1`] = `
         <div
           className="yearEditButtonWrapper"
         >
-          <s
-            afterLabel={null}
+          <ForwardRef(withForwardedRef(c))
             beforeLabel={
-              <c
+              <Icon
                 icon="edit"
                 size="medium"
               />
             }
-            block={false}
             clickHandler={[Function]}
-            disabled={false}
-            endCorner={null}
-            grouped={false}
             label="settings:action.editYear"
             labelVisibility="none"
-            loadingIcon={null}
             priority="outline"
-            size="medium"
-            startCorner={null}
-            type="button"
-            variant="primary"
           />
         </div>
-        <s
-          afterLabel={null}
+        <ForwardRef(withForwardedRef(c))
           beforeLabel={
-            <c
+            <Icon
               icon="expand_more"
               size="medium"
             />
           }
-          block={false}
           clickHandler={[Function]}
-          disabled={false}
-          endCorner={null}
-          grouped={false}
           labelVisibility="none"
-          loadingIcon={null}
           priority="outline"
-          size="medium"
-          startCorner={null}
-          type="button"
-          variant="primary"
         />
       </div>
     </div>

@@ -2,7 +2,6 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {
-  Icon,
   List,
   ListItem,
   Modal,
@@ -10,6 +9,7 @@ import {
   TextField,
 } from '@react-ui-org/react-ui';
 import { withTranslation } from 'react-i18next';
+import { Icon } from '../../../Icon';
 import {
   BAN_WORK_LOG,
   MATERNITY_PROTECTION_WORK_LOG,

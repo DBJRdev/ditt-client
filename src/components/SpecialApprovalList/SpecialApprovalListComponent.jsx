@@ -7,10 +7,10 @@ import { withTranslation } from 'react-i18next';
 import {
   Button,
   Modal,
-  Icon,
   TextField,
   Table,
 } from '@react-ui-org/react-ui';
+import { Icon } from '../Icon';
 import {
   BUSINESS_TRIP_WORK_LOG,
   HOME_OFFICE_WORK_LOG,

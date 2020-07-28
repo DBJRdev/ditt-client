@@ -5,13 +5,13 @@ import React from 'react';
 import { withTranslation } from 'react-i18next';
 import {
   Button,
-  Icon,
   List,
   ListItem,
   Modal,
   SelectField,
   TextField,
 } from '@react-ui-org/react-ui';
+import { Icon } from '../Icon';
 import {
   VARIANT_WITH_NOTE,
   VARIANT_WITHOUT_NOTE,
@@ -617,7 +617,6 @@ class WorkLogForm extends React.Component {
                           block
                           clickHandler={this.initAndStartWorkLogTimer}
                           label={t('workLog:action.startWork')}
-                          priority="primary"
                         />
                       )
                   }

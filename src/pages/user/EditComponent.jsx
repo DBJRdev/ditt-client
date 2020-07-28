@@ -6,13 +6,13 @@ import { withTranslation } from 'react-i18next';
 import {
   Button,
   CheckboxField,
-  Icon,
   List,
   ListItem,
   Modal,
   SelectField,
   TextField,
 } from '@react-ui-org/react-ui';
+import { Icon } from '../../components/Icon';
 import {
   DELETE_USER_SUCCESS,
   DELETE_USER_FAILURE,

@@ -4,10 +4,8 @@ import React from 'react';
 import jwt from 'jsonwebtoken';
 import { Link } from 'react-router-dom';
 import { withTranslation } from 'react-i18next';
-import {
-  Icon,
-  Table,
-} from '@react-ui-org/react-ui';
+import { Table } from '@react-ui-org/react-ui';
+import { Icon } from '../../components/Icon';
 import Layout from '../../components/Layout';
 import routes from '../../routes';
 import {
