@@ -3,6 +3,20 @@ import { API_URL } from '../../../config/envspecific';
 import { toJson } from '../../services/dateTimeService';
 import * as types from './actionTypes';
 
+export const addVacationWorkLog = (data) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify({ date: toJson(data.date) }),
+    endpoint: `${API_URL}/vacation_work_logs`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'POST',
+    types: [
+      types.ADD_VACATION_WORK_LOG_REQUEST,
+      types.ADD_VACATION_WORK_LOG_SUCCESS,
+      types.ADD_VACATION_WORK_LOG_FAILURE,
+    ],
+  },
+});
+
 export const addMultipleVacationWorkLog = (data) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify(data.map((workLog) => ({ date: toJson(workLog.date) }))),

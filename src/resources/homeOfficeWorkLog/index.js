@@ -7,6 +7,8 @@ export {
   supportHomeOfficeWorkLog,
 } from './actions';
 
+export { transformHomeOfficeWorkLog } from './dataTransformers';
+
 export {
   selectHomeOfficeWorkLog,
   selectHomeOfficeWorkLogMeta,

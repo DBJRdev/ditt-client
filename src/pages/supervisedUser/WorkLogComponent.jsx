@@ -225,7 +225,9 @@ class WorkLogComponent extends React.Component {
             addHomeOfficeWorkLog={() => {}}
             addOvertimeWorkLog={() => {}}
             addSickDayWorkLog={() => {}}
+            addSpecialLeaveWorkLog={() => {}}
             addTimeOffWorkLog={() => {}}
+            addVacationWorkLog={() => {}}
             addMultipleBanWorkLogs={this.addMultipleBanWorkLogs}
             addMultipleMaternityProtectionWorkLogs={this.addMultipleMaternityProtectionWorkLogs}
             addMultipleParentalLeaveWorkLogs={this.addMultipleParentalLeaveWorkLogs}

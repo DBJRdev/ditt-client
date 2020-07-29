@@ -1,5 +1,5 @@
 import Immutable from 'immutable';
-import { toMomentDateTime } from '../../services/dateTimeService';
+import { transformWorkLog } from './dataTransformers';
 import initialState from './initialState';
 import * as actionTypes from './actionTypes';
 
@@ -13,12 +13,6 @@ export default (state, action) => {
     type,
   } = action;
 
-  const filterWorkLog = (data) => ({
-    endTime: toMomentDateTime(data.endTime),
-    id: parseInt(data.id, 10),
-    startTime: toMomentDateTime(data.startTime),
-  });
-
   if (type === actionTypes.ADD_WORK_LOG_REQUEST) {
     return state
       .setIn(['addWorkLog', 'isPosting'], true)
@@ -28,7 +22,7 @@ export default (state, action) => {
   if (type === actionTypes.ADD_WORK_LOG_SUCCESS) {
     // Fetch is required to reload work log list with added work log
     return state
-      .setIn(['addWorkLog', 'data'], Immutable.fromJS(filterWorkLog(payload)))
+      .setIn(['addWorkLog', 'data'], Immutable.fromJS(transformWorkLog(payload)))
       .setIn(['addWorkLog', 'isPosting'], false)
       .setIn(['addWorkLog', 'isPostingFailure'], false);
   }
@@ -67,7 +61,7 @@ export default (state, action) => {
 
   if (type === actionTypes.FETCH_WORK_LOG_SUCCESS) {
     return state
-      .setIn(['workLog', 'data'], Immutable.fromJS(filterWorkLog(payload)))
+      .setIn(['workLog', 'data'], Immutable.fromJS(transformWorkLog(payload)))
       .setIn(['workLog', 'isFetching'], false)
       .setIn(['workLog', 'isFetchingFailure'], false);
   }

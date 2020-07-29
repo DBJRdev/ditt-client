@@ -7,6 +7,8 @@ export {
   supportOvertimeWorkLog,
 } from './actions';
 
+export { transformOvertimeWorkLog } from './dataTransformers';
+
 export {
   selectOvertimeWorkLog,
   selectOvertimeWorkLogMeta,

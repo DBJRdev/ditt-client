@@ -10,6 +10,8 @@ export {
   VARIANT_WITHOUT_NOTE,
 } from './constants';
 
+export { transformSickDayWorkLog } from './dataTransformers';
+
 export {
   selectSickDayWorkLog,
   selectSickDayWorkLogMeta,

@@ -1,4 +1,5 @@
 export {
+  addVacationWorkLog,
   addMultipleVacationWorkLog,
   deleteVacationWorkLog,
   fetchVacationWorkLog,
@@ -9,6 +10,8 @@ export {
   supportVacationWorkLog,
   supportMultipleVacationWorkLog,
 } from './actions';
+
+export { transformVacationWorkLog } from './dataTransformers';
 
 export {
   selectVacationWorkLog,

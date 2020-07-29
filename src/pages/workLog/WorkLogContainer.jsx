@@ -52,6 +52,7 @@ import {
 } from '../../resources/sickDayWorkLog';
 import {
   addMultipleSpecialLeaveWorkLog,
+  addSpecialLeaveWorkLog,
   deleteSpecialLeaveWorkLog,
   fetchSpecialLeaveWorkLog,
   selectSpecialLeaveWorkLog,
@@ -65,6 +66,7 @@ import {
   selectTimeOffWorkLogMeta,
 } from '../../resources/timeOffWorkLog';
 import {
+  addVacationWorkLog,
   addMultipleVacationWorkLog,
   deleteVacationWorkLog,
   fetchVacationWorkLog,
@@ -158,7 +160,9 @@ const mapDispatchToProps = (dispatch) => ({
   addMultipleVacationWorkLog: (data) => dispatch(addMultipleVacationWorkLog(data)),
   addOvertimeWorkLog: (data) => dispatch(addOvertimeWorkLog(data)),
   addSickDayWorkLog: (data) => dispatch(addSickDayWorkLog(data)),
+  addSpecialLeaveWorkLog: (data) => dispatch(addSpecialLeaveWorkLog(data)),
   addTimeOffWorkLog: (data) => dispatch(addTimeOffWorkLog(data)),
+  addVacationWorkLog: (data) => dispatch(addVacationWorkLog(data)),
   addWorkLog: (data) => dispatch(addWorkLog(data)),
   deleteBusinessTripWorkLog: (id) => dispatch(deleteBusinessTripWorkLog(id)),
   deleteHomeOfficeWorkLog: (id) => dispatch(deleteHomeOfficeWorkLog(id)),

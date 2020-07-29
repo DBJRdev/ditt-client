@@ -7,6 +7,8 @@ export {
   supportTimeOffWorkLog,
 } from './actions';
 
+export { transformTimeOffWorkLog } from './dataTransformers';
+
 export {
   selectTimeOffWorkLog,
   selectTimeOffWorkLogMeta,

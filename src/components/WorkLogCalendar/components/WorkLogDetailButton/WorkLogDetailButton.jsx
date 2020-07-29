@@ -1,9 +1,15 @@
 import PropTypes from 'prop-types';
-import React from 'react';
-import { Button } from '@react-ui-org/react-ui';
+import React, { useState } from 'react';
+import {
+  Button,
+  ButtonGroup,
+  ToolbarItem,
+} from '@react-ui-org/react-ui';
 import { withTranslation } from 'react-i18next';
-import { Icon } from '../../../Icon';
-import styles from '../../WorkLogCalendar.scss';
+import {
+  Icon,
+  LoadingIcon,
+} from '../../../Icon';
 import {
   BAN_WORK_LOG,
   BUSINESS_TRIP_WORK_LOG,
@@ -18,6 +24,7 @@ import {
   STATUS_WAITING_FOR_APPROVAL,
   TIME_OFF_WORK_LOG,
   VACATION_WORK_LOG,
+  WORK_LOG,
 } from '../../../../resources/workMonth';
 import {
   getSickDayVariantLabel,
@@ -29,9 +36,11 @@ import { toHourMinuteFormat } from '../../../../services/dateTimeService';
 const WorkLogDetailButton = (props) => {
   const {
     onClick,
+    onDuplicateClick,
     workLog,
     t,
   } = props;
+  const [isDuplicateReqPending, setDuplicateReqPending] = useState(false);
 
   const resolveLabel = (workLogData) => {
     let label = getTypeLabel(t, workLogData.type);
@@ -45,23 +54,54 @@ const WorkLogDetailButton = (props) => {
     return label;
   };
 
+  const supportsDuplicate = [BUSINESS_TRIP_WORK_LOG, HOME_OFFICE_WORK_LOG, OVERTIME_WORK_LOG,
+    SICK_DAY_WORK_LOG, SPECIAL_LEAVE_WORK_LOG, TIME_OFF_WORK_LOG, VACATION_WORK_LOG, WORK_LOG];
+
   const createButton = (type, id, label, icon) => (
-    <div
-      className={styles.workLogButtonWrapper}
-    >
-      <Button
-        beforeLabel={<Icon icon={icon} />}
-        clickHandler={
-          (e) => onClick(
-            e,
-            id,
-            type,
-          )
-        }
-        label={label}
+    <ToolbarItem>
+      <ButtonGroup
+        disabled={isDuplicateReqPending}
         priority="outline"
-      />
-    </div>
+      >
+        <Button
+          beforeLabel={<Icon icon={icon} />}
+          clickHandler={
+            (e) => onClick(
+              e,
+              id,
+              type,
+            )
+          }
+          label={label}
+        />
+        {supportsDuplicate.includes(type) && (
+          <Button
+            beforeLabel={
+              isDuplicateReqPending
+                ? <LoadingIcon />
+                : <Icon icon="content_copy" />
+            }
+            clickHandler={
+              (e) => {
+                setDuplicateReqPending(true);
+
+                return onDuplicateClick(
+                  e,
+                  id,
+                  type,
+                ).then((response) => {
+                  setDuplicateReqPending(false);
+
+                  return response;
+                });
+              }
+            }
+            label=""
+            labelVisibility="none"
+          />
+        )}
+      </ButtonGroup>
+    </ToolbarItem>
   );
 
   const createDetailButton = (workLogData, icon) => createButton(
@@ -153,8 +193,13 @@ const WorkLogDetailButton = (props) => {
   );
 };
 
+WorkLogDetailButton.defaultProps = {
+  onDuplicateClick: null,
+};
+
 WorkLogDetailButton.propTypes = {
   onClick: PropTypes.func.isRequired,
+  onDuplicateClick: PropTypes.func,
   t: PropTypes.func.isRequired,
   workLog: PropTypes.shape({
     endTime: PropTypes.shape(),
