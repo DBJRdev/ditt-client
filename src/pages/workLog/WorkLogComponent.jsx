@@ -27,7 +27,9 @@ class WorkLogComponent extends React.Component {
     this.addHomeOfficeWorkLog = this.addHomeOfficeWorkLog.bind(this);
     this.addOvertimeWorkLog = this.addOvertimeWorkLog.bind(this);
     this.addSickDayWorkLog = this.addSickDayWorkLog.bind(this);
+    this.addSpecialLeaveWorkLog = this.addSpecialLeaveWorkLog.bind(this);
     this.addTimeOffWorkLog = this.addTimeOffWorkLog.bind(this);
+    this.addVacationWorkLog = this.addVacationWorkLog.bind(this);
     this.addMultipleSpecialLeaveWorkLog = this.addMultipleSpecialLeaveWorkLog.bind(this);
     this.addMultipleVacationWorkLog = this.addMultipleVacationWorkLog.bind(this);
     this.addWorkLog = this.addWorkLog.bind(this);
@@ -90,8 +92,27 @@ class WorkLogComponent extends React.Component {
     });
   }
 
+  addSpecialLeaveWorkLog(data) {
+    return this.props.addSpecialLeaveWorkLog(data).then((response) => {
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+
+      return response;
+    });
+  }
+
   addTimeOffWorkLog(data) {
     return this.props.addTimeOffWorkLog(data).then((response) => {
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+      return response;
+    });
+  }
+
+  addVacationWorkLog(data) {
+    return this.props.addVacationWorkLog(data).then((response) => {
       if (!response.error) {
         this.fetchWorkMonth(this.state.selectedDate);
       }
@@ -236,7 +257,9 @@ class WorkLogComponent extends React.Component {
             addHomeOfficeWorkLog={this.addHomeOfficeWorkLog}
             addOvertimeWorkLog={this.addOvertimeWorkLog}
             addSickDayWorkLog={this.addSickDayWorkLog}
+            addSpecialLeaveWorkLog={this.addSpecialLeaveWorkLog}
             addTimeOffWorkLog={this.addTimeOffWorkLog}
+            addVacationWorkLog={this.addVacationWorkLog}
             addMultipleBanWorkLogs={() => {}}
             addMultipleMaternityProtectionWorkLogs={() => {}}
             addMultipleParentalLeaveWorkLogs={() => {}}
@@ -321,7 +344,9 @@ WorkLogComponent.propTypes = {
   addMultipleVacationWorkLog: PropTypes.func.isRequired,
   addOvertimeWorkLog: PropTypes.func.isRequired,
   addSickDayWorkLog: PropTypes.func.isRequired,
+  addSpecialLeaveWorkLog: PropTypes.func.isRequired,
   addTimeOffWorkLog: PropTypes.func.isRequired,
+  addVacationWorkLog: PropTypes.func.isRequired,
   addWorkLog: PropTypes.func.isRequired,
   banWorkLog: ImmutablePropTypes.mapContains({
     date: PropTypes.object.isRequired,

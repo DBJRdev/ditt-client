@@ -6,7 +6,11 @@
   },
   "overrides": [
     {
-      "files": ["**/index.js", "src/service/*.js"],
+      "files": [
+        "**/index.js",
+        "src/resources/**/*.js",
+        "src/service/*.js"
+      ],
       "rules": {
         "import/prefer-default-export": "off"
       }

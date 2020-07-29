@@ -4,6 +4,8 @@ export {
   fetchWorkLog,
 } from './actions';
 
+export { transformWorkLog } from './dataTransformers';
+
 export {
   selectAddWorkLog,
   selectAddWorkLogMeta,

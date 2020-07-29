@@ -39,20 +39,29 @@ export default (state, action) => {
     timeRejected: data.timeRejected ? toMomentDateTime(data.timeRejected) : null,
   });
 
-  if (type === actionTypes.ADD_MULTIPLE_VACATION_WORK_LOG_REQUEST) {
+  if (
+    type === actionTypes.ADD_VACATION_WORK_LOG_REQUEST
+    || type === actionTypes.ADD_MULTIPLE_VACATION_WORK_LOG_REQUEST
+  ) {
     return state
       .setIn(['vacationWorkLog', 'isPosting'], true)
       .setIn(['vacationWorkLog', 'isPostingFailure'], false);
   }
 
-  if (type === actionTypes.ADD_MULTIPLE_VACATION_WORK_LOG_SUCCESS) {
+  if (
+    type === actionTypes.ADD_VACATION_WORK_LOG_SUCCESS
+    || type === actionTypes.ADD_MULTIPLE_VACATION_WORK_LOG_SUCCESS
+  ) {
     // Fetch is required to reload vacation work log list with added work logs
     return state
       .setIn(['vacationWorkLog', 'isPosting'], false)
       .setIn(['vacationWorkLog', 'isPostingFailure'], false);
   }
 
-  if (type === actionTypes.ADD_MULTIPLE_VACATION_WORK_LOG_FAILURE) {
+  if (
+    type === actionTypes.ADD_VACATION_WORK_LOG_FAILURE
+    || type === actionTypes.ADD_MULTIPLE_VACATION_WORK_LOG_FAILURE
+  ) {
     return state
       .setIn(['vacationWorkLog', 'isPosting'], false)
       .setIn(['vacationWorkLog', 'isPostingFailure'], true);

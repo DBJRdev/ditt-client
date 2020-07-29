@@ -1,10 +1,5 @@
 import Immutable from 'immutable';
-import { toMomentDateTime } from '../../services/dateTimeService';
-import {
-  STATUS_APPROVED,
-  STATUS_REJECTED,
-  STATUS_WAITING_FOR_APPROVAL,
-} from '../workMonth';
+import { transformHomeOfficeWorkLog } from './dataTransformers';
 import initialState from './initialState';
 import * as actionTypes from './actionTypes';
 
@@ -18,28 +13,6 @@ export default (state, action) => {
     type,
   } = action;
 
-  const resolveWorkLogStatus = (workLog) => {
-    if (workLog.timeApproved) {
-      return STATUS_APPROVED;
-    }
-
-    if (workLog.timeRejected) {
-      return STATUS_REJECTED;
-    }
-
-    return STATUS_WAITING_FOR_APPROVAL;
-  };
-
-  const filterWorkLog = (data) => ({
-    comment: data.comment,
-    date: toMomentDateTime(data.date),
-    id: parseInt(data.id, 10),
-    rejectionMessage: data.rejectionMessage,
-    status: resolveWorkLogStatus(data),
-    timeApproved: data.timeApproved ? toMomentDateTime(data.timeApproved) : null,
-    timeRejected: data.timeRejected ? toMomentDateTime(data.timeRejected) : null,
-  });
-
   if (type === actionTypes.ADD_HOME_OFFICE_WORK_LOG_REQUEST) {
     return state
       .setIn(['homeOfficeWorkLog', 'isPosting'], true)
@@ -49,7 +22,7 @@ export default (state, action) => {
   if (type === actionTypes.ADD_HOME_OFFICE_WORK_LOG_SUCCESS) {
     // Fetch is required to reload home office work log list with added work log
     return state
-      .setIn(['homeOfficeWorkLog', 'data'], Immutable.fromJS(filterWorkLog(payload)))
+      .setIn(['homeOfficeWorkLog', 'data'], Immutable.fromJS(transformHomeOfficeWorkLog(payload)))
       .setIn(['homeOfficeWorkLog', 'isPosting'], false)
       .setIn(['homeOfficeWorkLog', 'isPostingFailure'], false);
   }
@@ -90,7 +63,7 @@ export default (state, action) => {
 
   if (type === actionTypes.FETCH_HOME_OFFICE_WORK_LOG_SUCCESS) {
     return state
-      .setIn(['homeOfficeWorkLog', 'data'], Immutable.fromJS(filterWorkLog(payload)))
+      .setIn(['homeOfficeWorkLog', 'data'], Immutable.fromJS(transformHomeOfficeWorkLog(payload)))
       .setIn(['homeOfficeWorkLog', 'isFetching'], false)
       .setIn(['homeOfficeWorkLog', 'isFetchingFailure'], false);
   }
@@ -111,7 +84,7 @@ export default (state, action) => {
   if (type === actionTypes.MARK_HOME_OFFICE_WORK_LOG_APPROVED_SUCCESS) {
     // Fetch is required to reload home office work log list with marked work log
     return state
-      .setIn(['homeOfficeWorkLog', 'data'], Immutable.fromJS(filterWorkLog(payload)))
+      .setIn(['homeOfficeWorkLog', 'data'], Immutable.fromJS(transformHomeOfficeWorkLog(payload)))
       .setIn(['homeOfficeWorkLog', 'isPosting'], false)
       .setIn(['homeOfficeWorkLog', 'isPostingFailure'], false);
   }
@@ -132,7 +105,7 @@ export default (state, action) => {
   if (type === actionTypes.MARK_HOME_OFFICE_WORK_LOG_REJECTED_SUCCESS) {
     // Fetch is required to reload home office work log list with marked work log
     return state
-      .setIn(['homeOfficeWorkLog', 'data'], Immutable.fromJS(filterWorkLog(payload)))
+      .setIn(['homeOfficeWorkLog', 'data'], Immutable.fromJS(transformHomeOfficeWorkLog(payload)))
       .setIn(['homeOfficeWorkLog', 'isPosting'], false)
       .setIn(['homeOfficeWorkLog', 'isPostingFailure'], false);
   }

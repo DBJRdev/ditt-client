@@ -3,6 +3,20 @@ import { API_URL } from '../../../config/envspecific';
 import { toJson } from '../../services/dateTimeService';
 import * as types from './actionTypes';
 
+export const addSpecialLeaveWorkLog = (data) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify({ date: toJson(data.date) }),
+    endpoint: `${API_URL}/special_leave_work_logs`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'POST',
+    types: [
+      types.ADD_SPECIAL_LEAVE_WORK_LOG_REQUEST,
+      types.ADD_SPECIAL_LEAVE_WORK_LOG_SUCCESS,
+      types.ADD_SPECIAL_LEAVE_WORK_LOG_FAILURE,
+    ],
+  },
+});
+
 export const addMultipleSpecialLeaveWorkLog = (data) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify(data.map((workLog) => ({ date: toJson(workLog.date) }))),

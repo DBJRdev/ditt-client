@@ -4,9 +4,18 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withTranslation } from 'react-i18next';
-import { Button } from '@react-ui-org/react-ui';
+import {
+  Button,
+  Toolbar,
+  ToolbarItem,
+} from '@react-ui-org/react-ui';
 import { Icon } from '../Icon';
 import WorkLogForm from '../WorkLogForm';
+import { transformBusinessTripWorkLog } from '../../resources/businessTripWorkLog';
+import { transformHomeOfficeWorkLog } from '../../resources/homeOfficeWorkLog';
+import { transformOvertimeWorkLog } from '../../resources/overtimeWorkLog';
+import { transformSpecialLeaveWorkLog } from '../../resources/specialLeaveWorkLog';
+import { transformTimeOffWorkLog } from '../../resources/timeOffWorkLog';
 import {
   ROLE_ADMIN,
   ROLE_EMPLOYEE,
@@ -16,7 +25,9 @@ import {
   VARIANT_SICK_CHILD,
   VARIANT_WITH_NOTE,
   VARIANT_WITHOUT_NOTE,
+  transformSickDayWorkLog,
 } from '../../resources/sickDayWorkLog';
+import { transformVacationWorkLog } from '../../resources/vacationWorkLog';
 import {
   BAN_WORK_LOG,
   BUSINESS_TRIP_WORK_LOG,
@@ -35,6 +46,7 @@ import {
   VACATION_WORK_LOG,
   WORK_LOG,
 } from '../../resources/workMonth';
+import { transformWorkLog } from '../../resources/workLog';
 import {
   getNumberOfWorkingDays,
   includesSameDate,
@@ -87,6 +99,7 @@ class WorkLogCalendar extends React.Component {
     this.saveWorkLogForm = this.saveWorkLogForm.bind(this);
     this.closeWorkLogForm = this.closeWorkLogForm.bind(this);
     this.closeDeleteWorkLogDialog = this.closeDeleteWorkLogDialog.bind(this);
+    this.duplicateWorkLog = this.duplicateWorkLog.bind(this);
     this.initAndStartWorkLogTimer = this.initAndStartWorkLogTimer.bind(this);
     this.stopWorkLogTimer = this.stopWorkLogTimer.bind(this);
 
@@ -170,6 +183,108 @@ class WorkLogCalendar extends React.Component {
 
   selectPreviousMonth() {
     this.props.changeSelectedDate(this.props.selectedDate.clone().subtract(1, 'month'));
+  }
+
+  async duplicateWorkLog(e, id, type) {
+    const {
+      addBusinessTripWorkLog,
+      addHomeOfficeWorkLog,
+      addOvertimeWorkLog,
+      addSickDayWorkLog,
+      addSpecialLeaveWorkLog,
+      addTimeOffWorkLog,
+      addVacationWorkLog,
+      addWorkLog,
+      fetchBusinessTripWorkLog,
+      fetchHomeOfficeWorkLog,
+      fetchOvertimeWorkLog,
+      fetchSickDayWorkLog,
+      fetchSpecialLeaveWorkLog,
+      fetchTimeOffWorkLog,
+      fetchVacationWorkLog,
+      fetchWorkLog,
+    } = this.props;
+
+    e.stopPropagation();
+
+    const getDupliciteWorkLogFunction = async (addFunction, fetchFunction, transformFunction) => {
+      const response = await fetchFunction(id);
+      const data = transformFunction(response.payload);
+      data.id = null;
+      data.date = data.date.add(1, 'days');
+      data.timeApproved = null;
+      data.timeRejected = null;
+      data.rejectionMessage = null;
+
+      return addFunction(data);
+    };
+
+    if (BUSINESS_TRIP_WORK_LOG === type) {
+      return getDupliciteWorkLogFunction(
+        addBusinessTripWorkLog,
+        fetchBusinessTripWorkLog,
+        transformBusinessTripWorkLog,
+      );
+    }
+
+    if (HOME_OFFICE_WORK_LOG === type) {
+      return getDupliciteWorkLogFunction(
+        addHomeOfficeWorkLog,
+        fetchHomeOfficeWorkLog,
+        transformHomeOfficeWorkLog,
+      );
+    }
+
+    if (OVERTIME_WORK_LOG === type) {
+      return getDupliciteWorkLogFunction(
+        addOvertimeWorkLog,
+        fetchOvertimeWorkLog,
+        transformOvertimeWorkLog,
+      );
+    }
+
+    if (SICK_DAY_WORK_LOG === type) {
+      return getDupliciteWorkLogFunction(
+        addSickDayWorkLog,
+        fetchSickDayWorkLog,
+        transformSickDayWorkLog,
+      );
+    }
+
+    if (SPECIAL_LEAVE_WORK_LOG === type) {
+      return getDupliciteWorkLogFunction(
+        addSpecialLeaveWorkLog,
+        fetchSpecialLeaveWorkLog,
+        transformSpecialLeaveWorkLog,
+      );
+    }
+
+    if (TIME_OFF_WORK_LOG === type) {
+      return getDupliciteWorkLogFunction(
+        addTimeOffWorkLog,
+        fetchTimeOffWorkLog,
+        transformTimeOffWorkLog,
+      );
+    }
+
+    if (VACATION_WORK_LOG === type) {
+      return getDupliciteWorkLogFunction(
+        addVacationWorkLog,
+        fetchVacationWorkLog,
+        transformVacationWorkLog,
+      );
+    }
+
+    if (WORK_LOG === type) {
+      const response = await fetchWorkLog(id);
+      const data = transformWorkLog(response.payload);
+      data.startTime = data.startTime.add(1, 'days');
+      data.endTime = data.endTime.add(1, 'days');
+
+      return addWorkLog(data);
+    }
+
+    return null;
   }
 
   openDeleteWorkLogDialog(e, id, type) {
@@ -838,38 +953,41 @@ class WorkLogCalendar extends React.Component {
                       </div>
                     </td>
                     <td className={styles.tableCell}>
-                      {day.workLogList.map((workLog) => (
-                        <WorkLogDetailButton
-                          key={`${workLog.type}_${workLog.id}`}
-                          onClick={this.openDeleteWorkLogDialog}
-                          workLog={workLog}
-                        />
-                      ))}
+                      <Toolbar dense>
+                        {day.workLogList.map((workLog) => (
+                          <WorkLogDetailButton
+                            key={`${workLog.type}_${workLog.id}`}
+                            onClick={this.openDeleteWorkLogDialog}
+                            onDuplicateClick={this.duplicateWorkLog}
+                            workLog={workLog}
+                          />
+                        ))}
 
-                      {
-                      day.date.isSame(date, 'day')
-                      && canAddWorkLog
-                      && (
-                        <div>
-                          {
-                            this.state.workLogTimer
-                              ? (
-                                <Button
-                                  beforeLabel={<Icon icon="stop" />}
-                                  clickHandler={this.stopWorkLogTimer}
-                                  label={`${t('workLog:action.endWork')} | ${this.state.workLogTimerInterval}`}
-                                />
-                              ) : (
-                                <Button
-                                  beforeLabel={<Icon icon="play_arrow" />}
-                                  clickHandler={this.initAndStartWorkLogTimer}
-                                  label={t('workLog:action.startWork')}
-                                />
-                              )
-                          }
-                        </div>
-                      )
-                    }
+                        {
+                          day.date.isSame(date, 'day')
+                          && canAddWorkLog
+                          && (
+                            <ToolbarItem>
+                              {
+                                this.state.workLogTimer
+                                  ? (
+                                    <Button
+                                      beforeLabel={<Icon icon="stop" />}
+                                      clickHandler={this.stopWorkLogTimer}
+                                      label={`${t('workLog:action.endWork')} | ${this.state.workLogTimerInterval}`}
+                                    />
+                                  ) : (
+                                    <Button
+                                      beforeLabel={<Icon icon="play_arrow" />}
+                                      clickHandler={this.initAndStartWorkLogTimer}
+                                      label={t('workLog:action.startWork')}
+                                    />
+                                  )
+                              }
+                            </ToolbarItem>
+                          )
+                        }
+                      </Toolbar>
                     </td>
                     {
                       canAddWorkLog
@@ -978,7 +1096,9 @@ WorkLogCalendar.propTypes = {
   addMultipleVacationWorkLog: PropTypes.func.isRequired,
   addOvertimeWorkLog: PropTypes.func.isRequired,
   addSickDayWorkLog: PropTypes.func.isRequired,
+  addSpecialLeaveWorkLog: PropTypes.func.isRequired,
   addTimeOffWorkLog: PropTypes.func.isRequired,
+  addVacationWorkLog: PropTypes.func.isRequired,
   addWorkLog: PropTypes.func.isRequired,
   banWorkLog: ImmutablePropTypes.mapContains({
     date: PropTypes.object.isRequired,

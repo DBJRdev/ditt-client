@@ -89,7 +89,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -119,7 +126,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -149,7 +163,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -179,7 +200,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -209,7 +237,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -239,7 +274,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -269,7 +311,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -299,7 +348,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -329,7 +385,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -359,7 +422,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -389,7 +459,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -419,7 +496,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -449,7 +533,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -479,7 +570,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -509,7 +607,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -539,7 +644,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -569,7 +681,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -599,7 +718,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -629,7 +755,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -659,7 +792,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -689,7 +829,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -719,7 +866,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -749,7 +903,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -779,7 +940,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -809,7 +977,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -839,7 +1014,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -869,7 +1051,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -899,7 +1088,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -929,7 +1125,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -959,7 +1162,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -989,7 +1199,14 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1095,7 +1312,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1125,7 +1349,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1155,7 +1386,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1185,7 +1423,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1215,7 +1460,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1245,7 +1497,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1275,7 +1534,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1305,7 +1571,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1335,7 +1608,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1365,7 +1645,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1395,7 +1682,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1425,7 +1719,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1455,7 +1756,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1485,7 +1793,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1515,7 +1830,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1545,7 +1867,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1575,7 +1904,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1605,7 +1941,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1635,7 +1978,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1665,7 +2015,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1695,7 +2052,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1725,7 +2089,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1755,7 +2126,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1785,7 +2163,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1815,7 +2200,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1845,7 +2237,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1875,7 +2274,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1905,7 +2311,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1935,7 +2348,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1965,7 +2385,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -1995,7 +2422,14 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2107,7 +2541,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2137,7 +2578,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2167,7 +2615,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2197,7 +2652,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2227,7 +2689,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2257,7 +2726,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2287,7 +2763,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2317,7 +2800,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2347,7 +2837,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2377,7 +2874,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2407,7 +2911,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2437,7 +2948,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2467,7 +2985,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2497,7 +3022,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2527,7 +3059,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2557,7 +3096,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2587,7 +3133,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2617,7 +3170,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2647,7 +3207,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2677,7 +3244,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2707,7 +3281,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2737,7 +3318,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2767,7 +3355,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2797,7 +3392,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2827,7 +3429,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2857,7 +3466,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2887,7 +3503,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2917,7 +3540,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2947,7 +3577,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -2977,7 +3614,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3007,7 +3651,14 @@ exports[`rendering renders correctly supervisor view with work month waiting for
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3113,7 +3764,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3143,7 +3801,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3173,7 +3838,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3203,7 +3875,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3233,7 +3912,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3263,7 +3949,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3293,7 +3986,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3323,7 +4023,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3353,7 +4060,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3383,7 +4097,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3413,7 +4134,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3443,7 +4171,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3473,7 +4208,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3503,7 +4245,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3533,7 +4282,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3563,7 +4319,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3593,7 +4356,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3623,7 +4393,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3653,7 +4430,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3683,7 +4467,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3713,7 +4504,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3743,7 +4541,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3773,7 +4578,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3803,7 +4615,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3833,7 +4652,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3863,7 +4689,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3893,7 +4726,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3923,7 +4763,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3953,7 +4800,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -3983,7 +4837,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >
@@ -4013,7 +4874,14 @@ exports[`rendering renders correctly with closed work month 1`] = `
           </td>
           <td
             className="tableCell"
-          />
+          >
+            <n
+              align="top"
+              dense={true}
+              justify="start"
+              nowrap={false}
+            />
+          </td>
           <td
             className="tableCellRight"
           >

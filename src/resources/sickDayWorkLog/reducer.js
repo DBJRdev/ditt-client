@@ -1,5 +1,5 @@
 import Immutable from 'immutable';
-import { toMomentDateTime } from '../../services/dateTimeService';
+import { transformSickDayWorkLog } from './dataTransformers';
 import initialState from './initialState';
 import * as actionTypes from './actionTypes';
 
@@ -13,14 +13,6 @@ export default (state, action) => {
     type,
   } = action;
 
-  const filterWorkLog = (data) => ({
-    childDateOfBirth: data.childDateOfBirth ? toMomentDateTime(data.childDateOfBirth) : null,
-    childName: data.childName,
-    date: toMomentDateTime(data.date),
-    id: parseInt(data.id, 10),
-    variant: data.variant,
-  });
-
   if (type === actionTypes.ADD_SICK_DAY_WORK_LOG_REQUEST) {
     return state
       .setIn(['sickDayWorkLog', 'isPosting'], true)
@@ -30,7 +22,7 @@ export default (state, action) => {
   if (type === actionTypes.ADD_SICK_DAY_WORK_LOG_SUCCESS) {
     // Fetch is required to reload sick day work log list with added work log
     return state
-      .setIn(['sickDayWorkLog', 'data'], Immutable.fromJS(filterWorkLog(payload)))
+      .setIn(['sickDayWorkLog', 'data'], Immutable.fromJS(transformSickDayWorkLog(payload)))
       .setIn(['sickDayWorkLog', 'isPosting'], false)
       .setIn(['sickDayWorkLog', 'isPostingFailure'], false);
   }
@@ -71,7 +63,7 @@ export default (state, action) => {
 
   if (type === actionTypes.FETCH_SICK_DAY_WORK_LOG_SUCCESS) {
     return state
-      .setIn(['sickDayWorkLog', 'data'], Immutable.fromJS(filterWorkLog(payload)))
+      .setIn(['sickDayWorkLog', 'data'], Immutable.fromJS(transformSickDayWorkLog(payload)))
       .setIn(['sickDayWorkLog', 'isFetching'], false)
       .setIn(['sickDayWorkLog', 'isFetchingFailure'], false);
   }

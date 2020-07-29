@@ -1,4 +1,5 @@
 export {
+  addSpecialLeaveWorkLog,
   addMultipleSpecialLeaveWorkLog,
   deleteSpecialLeaveWorkLog,
   fetchSpecialLeaveWorkLog,
@@ -9,6 +10,8 @@ export {
   supportSpecialLeaveWorkLog,
   supportMultipleSpecialLeaveWorkLog,
 } from './actions';
+
+export { transformSpecialLeaveWorkLog } from './dataTransformers';
 
 export {
   selectSpecialLeaveWorkLog,

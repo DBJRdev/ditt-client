@@ -7,6 +7,8 @@ export {
   supportBusinessTripWorkLog,
 } from './actions';
 
+export { transformBusinessTripWorkLog } from './dataTransformers';
+
 export {
   selectBusinessTripWorkLog,
   selectBusinessTripWorkLogMeta,
