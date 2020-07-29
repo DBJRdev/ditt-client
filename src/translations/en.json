@@ -288,12 +288,6 @@
       "year": "Year"
     }
   },
-  "vacationWorkLog": {
-    "element": {
-      "dateFrom": "Date from",
-      "dateTo": "Date to"
-    }
-  },
   "workLog": {
     "action": {
       "addWorkLog": "Add work log",

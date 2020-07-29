@@ -20,6 +20,23 @@ export const addTimeOffWorkLog = (data) => (dispatch) => dispatch({
   },
 });
 
+export const addMultipleTimeOffWorkLog = (data) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify(data.map((workLog) => ({
+      comment: workLog.comment,
+      date: toJson(workLog.date),
+    }))),
+    endpoint: `${API_URL}/time_off_work_logs/bulk`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'POST',
+    types: [
+      types.ADD_MULTIPLE_TIME_OFF_WORK_LOG_REQUEST,
+      types.ADD_MULTIPLE_TIME_OFF_WORK_LOG_SUCCESS,
+      types.ADD_MULTIPLE_TIME_OFF_WORK_LOG_FAILURE,
+    ],
+  },
+});
+
 export const deleteTimeOffWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/time_off_work_logs/${id}`,

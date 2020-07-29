@@ -13,23 +13,30 @@ export default (state, action) => {
     type,
   } = action;
 
-  if (type === actionTypes.ADD_TIME_OFF_WORK_LOG_REQUEST) {
+  if (
+    type === actionTypes.ADD_TIME_OFF_WORK_LOG_REQUEST
+    || type === actionTypes.ADD_MULTIPLE_TIME_OFF_WORK_LOG_REQUEST
+  ) {
     return state
       .setIn(['timeOffWorkLog', 'isPosting'], true)
       .setIn(['timeOffWorkLog', 'isPostingFailure'], false);
   }
 
-  if (type === actionTypes.ADD_TIME_OFF_WORK_LOG_SUCCESS) {
+  if (
+    type === actionTypes.ADD_TIME_OFF_WORK_LOG_SUCCESS
+    || type === actionTypes.ADD_MULTIPLE_TIME_OFF_WORK_LOG_SUCCESS
+  ) {
     // Fetch is required to reload time off work log list with added work log
     return state
-      .setIn(['timeOffWorkLog', 'data'], Immutable.fromJS(transformTimeOffWorkLog(payload)))
       .setIn(['timeOffWorkLog', 'isPosting'], false)
       .setIn(['timeOffWorkLog', 'isPostingFailure'], false);
   }
 
-  if (type === actionTypes.ADD_TIME_OFF_WORK_LOG_FAILURE) {
+  if (
+    type === actionTypes.ADD_TIME_OFF_WORK_LOG_FAILURE
+    || type === actionTypes.ADD_MULTIPLE_TIME_OFF_WORK_LOG_FAILURE
+  ) {
     return state
-      .setIn(['timeOffWorkLog', 'data'], null)
       .setIn(['timeOffWorkLog', 'isPosting'], false)
       .setIn(['timeOffWorkLog', 'isPostingFailure'], true);
   }

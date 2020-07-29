@@ -24,6 +24,27 @@ export const addBusinessTripWorkLog = (data) => (dispatch) => dispatch({
   },
 });
 
+export const addMultipleBusinessTripWorkLog = (data) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify(data.map((workLog) => ({
+      date: toJson(workLog.date),
+      destination: workLog.destination,
+      expectedArrival: workLog.expectedArrival,
+      expectedDeparture: workLog.expectedDeparture,
+      purpose: workLog.purpose,
+      transport: workLog.transport,
+    }))),
+    endpoint: `${API_URL}/business_trip_work_logs/bulk`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'POST',
+    types: [
+      types.ADD_MULTIPLE_BUSINESS_TRIP_WORK_LOG_REQUEST,
+      types.ADD_MULTIPLE_BUSINESS_TRIP_WORK_LOG_SUCCESS,
+      types.ADD_MULTIPLE_BUSINESS_TRIP_WORK_LOG_FAILURE,
+    ],
+  },
+});
+
 export const deleteBusinessTripWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/business_trip_work_logs/${id}`,

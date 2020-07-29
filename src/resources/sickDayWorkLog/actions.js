@@ -22,6 +22,25 @@ export const addSickDayWorkLog = (data) => (dispatch) => dispatch({
   },
 });
 
+export const addMultipleSickDayWorkLog = (data) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify(data.map((workLog) => ({
+      childDateOfBirth: workLog.childDateOfBirth ? toJson(workLog.childDateOfBirth) : null,
+      childName: workLog.childName,
+      date: toJson(workLog.date),
+      variant: workLog.variant,
+    }))),
+    endpoint: `${API_URL}/sick_day_work_logs/bulk`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'POST',
+    types: [
+      types.ADD_MULTIPLE_SICK_DAY_WORK_LOG_REQUEST,
+      types.ADD_MULTIPLE_SICK_DAY_WORK_LOG_SUCCESS,
+      types.ADD_MULTIPLE_SICK_DAY_WORK_LOG_FAILURE,
+    ],
+  },
+});
+
 export const deleteSickDayWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/sick_day_work_logs/${id}`,

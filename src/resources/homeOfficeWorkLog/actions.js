@@ -20,6 +20,23 @@ export const addHomeOfficeWorkLog = (data) => (dispatch) => dispatch({
   },
 });
 
+export const addMultipleHomeOfficeWorkLog = (data) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify(data.map((workLog) => ({
+      comment: data.comment,
+      date: toJson(workLog.date),
+    }))),
+    endpoint: `${API_URL}/home_office_work_logs/bulk`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'POST',
+    types: [
+      types.ADD_MULTIPLE_HOME_OFFICE_WORK_LOG_REQUEST,
+      types.ADD_MULTIPLE_HOME_OFFICE_WORK_LOG_SUCCESS,
+      types.ADD_MULTIPLE_HOME_OFFICE_WORK_LOG_FAILURE,
+    ],
+  },
+});
+
 export const deleteHomeOfficeWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/home_office_work_logs/${id}`,

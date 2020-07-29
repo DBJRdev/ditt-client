@@ -173,7 +173,14 @@ class WorkLogForm extends React.Component {
         date: formData.type !== WORK_LOG
           ? date.clone()
           : null,
-        dateTo: (formData.type === SPECIAL_LEAVE_WORK_LOG || formData.type === VACATION_WORK_LOG)
+        dateTo: (
+          formData.type === BUSINESS_TRIP_WORK_LOG
+          || formData.type === HOME_OFFICE_WORK_LOG
+          || formData.type === SICK_DAY_WORK_LOG
+          || formData.type === SPECIAL_LEAVE_WORK_LOG
+          || formData.type === TIME_OFF_WORK_LOG
+          || formData.type === VACATION_WORK_LOG
+        )
           ? toMomentDateTimeFromDayMonthYear(formData.dateTo)
           : null,
         destination: formData.type === BUSINESS_TRIP_WORK_LOG
@@ -286,6 +293,16 @@ class WorkLogForm extends React.Component {
       <>
         <ListItem>
           <TextField
+            helperText={this.state.formValidity.elements.dateTo}
+            changeHandler={this.changeHandler}
+            id="dateTo"
+            label={t('workLog:element.dateTo')}
+            value={this.state.formData.dateTo || ''}
+            validationState={this.state.formValidity.elements.dateTo ? 'invalid' : null}
+          />
+        </ListItem>
+        <ListItem>
+          <TextField
             changeHandler={this.changeHandler}
             helperText={this.state.formValidity.elements.purpose}
             id="purpose"
@@ -342,16 +359,28 @@ class WorkLogForm extends React.Component {
     const { t } = this.props;
 
     return (
-      <ListItem>
-        <TextField
-          changeHandler={this.changeHandler}
-          helperText={this.state.formValidity.elements.comment}
-          id="comment"
-          label={t('homeOfficeWorkLog:element.comment')}
-          value={this.state.formData.comment || ''}
-          validationState={this.state.formValidity.elements.comment ? 'invalid' : null}
-        />
-      </ListItem>
+      <>
+        <ListItem>
+          <TextField
+            helperText={this.state.formValidity.elements.dateTo}
+            changeHandler={this.changeHandler}
+            id="dateTo"
+            label={t('workLog:element.dateTo')}
+            value={this.state.formData.dateTo || ''}
+            validationState={this.state.formValidity.elements.dateTo ? 'invalid' : null}
+          />
+        </ListItem>
+        <ListItem>
+          <TextField
+            changeHandler={this.changeHandler}
+            helperText={this.state.formValidity.elements.comment}
+            id="comment"
+            label={t('homeOfficeWorkLog:element.comment')}
+            value={this.state.formData.comment || ''}
+            validationState={this.state.formValidity.elements.comment ? 'invalid' : null}
+          />
+        </ListItem>
+      </>
     );
   }
 
@@ -376,30 +405,42 @@ class WorkLogForm extends React.Component {
     const { t } = this.props;
 
     return (
-      <ListItem>
-        <SelectField
-          changeHandler={this.changeHandler}
-          helperText={this.state.formValidity.elements.variant}
-          id="variant"
-          label={t('sickDayWorkLog:element.variant')}
-          options={[
-            {
-              label: t('sickDayWorkLog:constant.variant.withNote'),
-              value: VARIANT_WITH_NOTE,
-            },
-            {
-              label: t('sickDayWorkLog:constant.variant.withoutNote'),
-              value: VARIANT_WITHOUT_NOTE,
-            },
-            {
-              label: t('sickDayWorkLog:constant.variant.sickChild'),
-              value: VARIANT_SICK_CHILD,
-            },
-          ]}
-          validationState={this.state.formValidity.elements.variant ? 'invalid' : null}
-          value={this.state.formData.variant || ''}
-        />
-      </ListItem>
+      <>
+        <ListItem>
+          <TextField
+            helperText={this.state.formValidity.elements.dateTo}
+            changeHandler={this.changeHandler}
+            id="dateTo"
+            label={t('workLog:element.dateTo')}
+            value={this.state.formData.dateTo || ''}
+            validationState={this.state.formValidity.elements.dateTo ? 'invalid' : null}
+          />
+        </ListItem>
+        <ListItem>
+          <SelectField
+            changeHandler={this.changeHandler}
+            helperText={this.state.formValidity.elements.variant}
+            id="variant"
+            label={t('sickDayWorkLog:element.variant')}
+            options={[
+              {
+                label: t('sickDayWorkLog:constant.variant.withNote'),
+                value: VARIANT_WITH_NOTE,
+              },
+              {
+                label: t('sickDayWorkLog:constant.variant.withoutNote'),
+                value: VARIANT_WITHOUT_NOTE,
+              },
+              {
+                label: t('sickDayWorkLog:constant.variant.sickChild'),
+                value: VARIANT_SICK_CHILD,
+              },
+            ]}
+            validationState={this.state.formValidity.elements.variant ? 'invalid' : null}
+            value={this.state.formData.variant || ''}
+          />
+        </ListItem>
+      </>
     );
   }
 
@@ -441,7 +482,7 @@ class WorkLogForm extends React.Component {
           helperText={this.state.formValidity.elements.dateTo}
           changeHandler={this.changeHandler}
           id="dateTo"
-          label={t('vacationWorkLog:element.dateTo')}
+          label={t('workLog:element.dateTo')}
           value={this.state.formData.dateTo || ''}
           validationState={this.state.formValidity.elements.dateTo ? 'invalid' : null}
         />
@@ -453,16 +494,28 @@ class WorkLogForm extends React.Component {
     const { t } = this.props;
 
     return (
-      <ListItem>
-        <TextField
-          changeHandler={this.changeHandler}
-          helperText={this.state.formValidity.elements.comment}
-          id="comment"
-          label={t('timeOffWorkLog:element.comment')}
-          value={this.state.formData.comment || ''}
-          validationState={this.state.formValidity.elements.comment ? 'invalid' : null}
-        />
-      </ListItem>
+      <>
+        <ListItem>
+          <TextField
+            helperText={this.state.formValidity.elements.dateTo}
+            changeHandler={this.changeHandler}
+            id="dateTo"
+            label={t('workLog:element.dateTo')}
+            value={this.state.formData.dateTo || ''}
+            validationState={this.state.formValidity.elements.dateTo ? 'invalid' : null}
+          />
+        </ListItem>
+        <ListItem>
+          <TextField
+            changeHandler={this.changeHandler}
+            helperText={this.state.formValidity.elements.comment}
+            id="comment"
+            label={t('timeOffWorkLog:element.comment')}
+            value={this.state.formData.comment || ''}
+            validationState={this.state.formValidity.elements.comment ? 'invalid' : null}
+          />
+        </ListItem>
+      </>
     );
   }
 
@@ -475,7 +528,7 @@ class WorkLogForm extends React.Component {
           helperText={this.state.formValidity.elements.dateTo}
           changeHandler={this.changeHandler}
           id="dateTo"
-          label={t('vacationWorkLog:element.dateTo')}
+          label={t('workLog:element.dateTo')}
           value={this.state.formData.dateTo || ''}
           validationState={this.state.formValidity.elements.dateTo ? 'invalid' : null}
         />
@@ -629,10 +682,14 @@ class WorkLogForm extends React.Component {
                   label={
                     t((
                       (
-                        formData.type === SPECIAL_LEAVE_WORK_LOG
+                        formData.type === BUSINESS_TRIP_WORK_LOG
+                        || formData.type === HOME_OFFICE_WORK_LOG
+                        || formData.type === SICK_DAY_WORK_LOG
+                        || formData.type === SPECIAL_LEAVE_WORK_LOG
+                        || formData.type === TIME_OFF_WORK_LOG
                         || formData.type === VACATION_WORK_LOG
                       )
-                        ? 'vacationWorkLog:element.dateFrom'
+                        ? 'workLog:element.dateFrom'
                         : 'workLog:element.date'
                     ))
                   }

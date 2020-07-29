@@ -13,23 +13,30 @@ export default (state, action) => {
     type,
   } = action;
 
-  if (type === actionTypes.ADD_SICK_DAY_WORK_LOG_REQUEST) {
+  if (
+    type === actionTypes.ADD_SICK_DAY_WORK_LOG_REQUEST
+    || type === actionTypes.ADD_MULTIPLE_SICK_DAY_WORK_LOG_REQUEST
+  ) {
     return state
       .setIn(['sickDayWorkLog', 'isPosting'], true)
       .setIn(['sickDayWorkLog', 'isPostingFailure'], false);
   }
 
-  if (type === actionTypes.ADD_SICK_DAY_WORK_LOG_SUCCESS) {
+  if (
+    type === actionTypes.ADD_SICK_DAY_WORK_LOG_SUCCESS
+    || type === actionTypes.ADD_MULTIPLE_SICK_DAY_WORK_LOG_SUCCESS
+  ) {
     // Fetch is required to reload sick day work log list with added work log
     return state
-      .setIn(['sickDayWorkLog', 'data'], Immutable.fromJS(transformSickDayWorkLog(payload)))
       .setIn(['sickDayWorkLog', 'isPosting'], false)
       .setIn(['sickDayWorkLog', 'isPostingFailure'], false);
   }
 
-  if (type === actionTypes.ADD_SICK_DAY_WORK_LOG_FAILURE) {
+  if (
+    type === actionTypes.ADD_SICK_DAY_WORK_LOG_FAILURE
+    || type === actionTypes.ADD_MULTIPLE_SICK_DAY_WORK_LOG_FAILURE
+  ) {
     return state
-      .setIn(['sickDayWorkLog', 'data'], null)
       .setIn(['sickDayWorkLog', 'isPosting'], false)
       .setIn(['sickDayWorkLog', 'isPostingFailure'], true);
   }
