@@ -287,12 +287,6 @@
       "year": "Jahr"
     }
   },
-  "vacationWorkLog": {
-    "element": {
-      "dateFrom": "Datum von",
-      "dateTo": "Datum bis"
-    }
-  },
   "workLog": {
     "action": {
       "addWorkLog": "Eintrag hinzufügen",

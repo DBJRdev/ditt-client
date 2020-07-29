@@ -171,7 +171,7 @@ class AddSupervisorWorkLogModal extends React.Component {
                   changeHandler={this.changeHandler}
                   helperText={formValidity.elements.dateTo}
                   id="dateTo"
-                  label={t('vacationWorkLog:element.dateTo')}
+                  label={t('workLog:element.dateTo')}
                   value={formData.dateTo || ''}
                   validationState={formValidity.elements.dateTo ? 'invalid' : null}
                 />

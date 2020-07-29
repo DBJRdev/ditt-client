@@ -13,23 +13,30 @@ export default (state, action) => {
     type,
   } = action;
 
-  if (type === actionTypes.ADD_BUSINESS_TRIP_WORK_LOG_REQUEST) {
+  if (
+    type === actionTypes.ADD_BUSINESS_TRIP_WORK_LOG_REQUEST
+    || type === actionTypes.ADD_MULTIPLE_BUSINESS_TRIP_WORK_LOG_REQUEST
+  ) {
     return state
       .setIn(['businessTripWorkLog', 'isPosting'], true)
       .setIn(['businessTripWorkLog', 'isPostingFailure'], false);
   }
 
-  if (type === actionTypes.ADD_BUSINESS_TRIP_WORK_LOG_SUCCESS) {
+  if (
+    type === actionTypes.ADD_BUSINESS_TRIP_WORK_LOG_SUCCESS
+    || type === actionTypes.ADD_MULTIPLE_BUSINESS_TRIP_WORK_LOG_SUCCESS
+  ) {
     // Fetch is required to reload business trip work log list with added work log
     return state
-      .setIn(['businessTripWorkLog', 'data'], Immutable.fromJS(transformBusinessTripWorkLog(payload)))
       .setIn(['businessTripWorkLog', 'isPosting'], false)
       .setIn(['businessTripWorkLog', 'isPostingFailure'], false);
   }
 
-  if (type === actionTypes.ADD_BUSINESS_TRIP_WORK_LOG_FAILURE) {
+  if (
+    type === actionTypes.ADD_BUSINESS_TRIP_WORK_LOG_FAILURE
+    || type === actionTypes.ADD_MULTIPLE_BUSINESS_TRIP_WORK_LOG_FAILURE
+  ) {
     return state
-      .setIn(['businessTripWorkLog', 'data'], null)
       .setIn(['businessTripWorkLog', 'isPosting'], false)
       .setIn(['businessTripWorkLog', 'isPostingFailure'], true);
   }

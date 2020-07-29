@@ -388,8 +388,9 @@ class WorkLogCalendar extends React.Component {
 
   saveWorkLogForm(data) {
     if (BUSINESS_TRIP_WORK_LOG === data.type) {
-      return this.props.addBusinessTripWorkLog({
+      return this.props.addMultipleBusinessTripWorkLog({
         date: data.date,
+        dateTo: data.dateTo,
         destination: data.destination,
         expectedArrival: data.expectedArrival,
         expectedDeparture: data.expectedDeparture,
@@ -399,9 +400,10 @@ class WorkLogCalendar extends React.Component {
     }
 
     if (HOME_OFFICE_WORK_LOG === data.type) {
-      return this.props.addHomeOfficeWorkLog({
+      return this.props.addMultipleHomeOfficeWorkLog({
         comment: data.comment,
         date: data.date,
+        dateTo: data.dateTo,
       });
     }
 
@@ -413,10 +415,11 @@ class WorkLogCalendar extends React.Component {
     }
 
     if (SICK_DAY_WORK_LOG === data.type) {
-      return this.props.addSickDayWorkLog({
+      return this.props.addMultipleSickDayWorkLog({
         childDateOfBirth: data.childDateOfBirth,
         childName: data.childName,
         date: data.date,
+        dateTo: data.dateTo,
         variant: data.variant,
       });
     }
@@ -429,9 +432,10 @@ class WorkLogCalendar extends React.Component {
     }
 
     if (TIME_OFF_WORK_LOG === data.type) {
-      return this.props.addTimeOffWorkLog({
+      return this.props.addMultipleTimeOffWorkLog({
         comment: data.comment,
         date: data.date,
+        dateTo: data.dateTo,
       });
     }
 
@@ -1089,10 +1093,14 @@ WorkLogCalendar.propTypes = {
   addBusinessTripWorkLog: PropTypes.func.isRequired,
   addHomeOfficeWorkLog: PropTypes.func.isRequired,
   addMultipleBanWorkLogs: PropTypes.func.isRequired,
+  addMultipleBusinessTripWorkLog: PropTypes.func.isRequired,
+  addMultipleHomeOfficeWorkLog: PropTypes.func.isRequired,
   addMultipleMaternityProtectionWorkLogs: PropTypes.func.isRequired,
   addMultipleParentalLeaveWorkLogs: PropTypes.func.isRequired,
   addMultipleSickDayUnpaidWorkLogs: PropTypes.func.isRequired,
+  addMultipleSickDayWorkLog: PropTypes.func.isRequired,
   addMultipleSpecialLeaveWorkLog: PropTypes.func.isRequired,
+  addMultipleTimeOffWorkLog: PropTypes.func.isRequired,
   addMultipleVacationWorkLog: PropTypes.func.isRequired,
   addOvertimeWorkLog: PropTypes.func.isRequired,
   addSickDayWorkLog: PropTypes.func.isRequired,

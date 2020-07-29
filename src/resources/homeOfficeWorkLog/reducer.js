@@ -13,23 +13,30 @@ export default (state, action) => {
     type,
   } = action;
 
-  if (type === actionTypes.ADD_HOME_OFFICE_WORK_LOG_REQUEST) {
+  if (
+    type === actionTypes.ADD_HOME_OFFICE_WORK_LOG_REQUEST
+    || type === actionTypes.ADD_MULTIPLE_HOME_OFFICE_WORK_LOG_REQUEST
+  ) {
     return state
       .setIn(['homeOfficeWorkLog', 'isPosting'], true)
       .setIn(['homeOfficeWorkLog', 'isPostingFailure'], false);
   }
 
-  if (type === actionTypes.ADD_HOME_OFFICE_WORK_LOG_SUCCESS) {
+  if (
+    type === actionTypes.ADD_HOME_OFFICE_WORK_LOG_SUCCESS
+    || type === actionTypes.ADD_MULTIPLE_HOME_OFFICE_WORK_LOG_SUCCESS
+  ) {
     // Fetch is required to reload home office work log list with added work log
     return state
-      .setIn(['homeOfficeWorkLog', 'data'], Immutable.fromJS(transformHomeOfficeWorkLog(payload)))
       .setIn(['homeOfficeWorkLog', 'isPosting'], false)
       .setIn(['homeOfficeWorkLog', 'isPostingFailure'], false);
   }
 
-  if (type === actionTypes.ADD_HOME_OFFICE_WORK_LOG_FAILURE) {
+  if (
+    type === actionTypes.ADD_HOME_OFFICE_WORK_LOG_FAILURE
+    || type === actionTypes.ADD_MULTIPLE_HOME_OFFICE_WORK_LOG_FAILURE
+  ) {
     return state
-      .setIn(['homeOfficeWorkLog', 'data'], null)
       .setIn(['homeOfficeWorkLog', 'isPosting'], false)
       .setIn(['homeOfficeWorkLog', 'isPostingFailure'], true);
   }

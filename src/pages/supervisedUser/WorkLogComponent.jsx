@@ -229,10 +229,14 @@ class WorkLogComponent extends React.Component {
             addTimeOffWorkLog={() => {}}
             addVacationWorkLog={() => {}}
             addMultipleBanWorkLogs={this.addMultipleBanWorkLogs}
+            addMultipleBusinessTripWorkLog={() => {}}
+            addMultipleHomeOfficeWorkLog={() => {}}
             addMultipleMaternityProtectionWorkLogs={this.addMultipleMaternityProtectionWorkLogs}
             addMultipleParentalLeaveWorkLogs={this.addMultipleParentalLeaveWorkLogs}
             addMultipleSickDayUnpaidWorkLogs={this.addMultipleSickDayUnpaidWorkLogs}
+            addMultipleSickDayWorkLog={() => {}}
             addMultipleSpecialLeaveWorkLog={() => {}}
+            addMultipleTimeOffWorkLog={() => {}}
             addMultipleVacationWorkLog={() => {}}
             addWorkLog={() => {}}
             banWorkLog={this.props.banWorkLog}

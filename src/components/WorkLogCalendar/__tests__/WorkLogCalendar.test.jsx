@@ -27,14 +27,20 @@ describe('rendering', () => {
       addBusinessTripWorkLog={() => {}}
       addHomeOfficeWorkLog={() => {}}
       addMultipleBanWorkLogs={() => {}}
+      addMultipleBusinessTripWorkLog={() => {}}
+      addMultipleHomeOfficeWorkLog={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
       addMultipleSickDayUnpaidWorkLogs={() => {}}
+      addMultipleSickDayWorkLog={() => {}}
       addMultipleSpecialLeaveWorkLog={() => {}}
+      addMultipleTimeOffWorkLog={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
+      addSpecialLeaveWorkLog={() => {}}
       addOvertimeWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
       deleteBanWorkLog={() => {}}
@@ -147,12 +153,18 @@ describe('rendering', () => {
       addHomeOfficeWorkLog={() => {}}
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
+      addSpecialLeaveWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addVacationWorkLog={() => {}}
       addMultipleBanWorkLogs={() => {}}
+      addMultipleBusinessTripWorkLog={() => {}}
+      addMultipleHomeOfficeWorkLog={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
       addMultipleSickDayUnpaidWorkLogs={() => {}}
+      addMultipleSickDayWorkLog={() => {}}
       addMultipleSpecialLeaveWorkLog={() => {}}
+      addMultipleTimeOffWorkLog={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
@@ -266,12 +278,18 @@ describe('rendering', () => {
       addHomeOfficeWorkLog={() => {}}
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
+      addSpecialLeaveWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addVacationWorkLog={() => {}}
       addMultipleBanWorkLogs={() => {}}
+      addMultipleBusinessTripWorkLog={() => {}}
+      addMultipleHomeOfficeWorkLog={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
       addMultipleSickDayUnpaidWorkLogs={() => {}}
+      addMultipleSickDayWorkLog={() => {}}
       addMultipleSpecialLeaveWorkLog={() => {}}
+      addMultipleTimeOffWorkLog={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
@@ -385,12 +403,18 @@ describe('rendering', () => {
       addHomeOfficeWorkLog={() => {}}
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
+      addSpecialLeaveWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addVacationWorkLog={() => {}}
       addMultipleBanWorkLogs={() => {}}
+      addMultipleBusinessTripWorkLog={() => {}}
+      addMultipleHomeOfficeWorkLog={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
       addMultipleSickDayUnpaidWorkLogs={() => {}}
+      addMultipleSickDayWorkLog={() => {}}
       addMultipleSpecialLeaveWorkLog={() => {}}
+      addMultipleTimeOffWorkLog={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
@@ -505,12 +529,18 @@ describe('rendering', () => {
       addHomeOfficeWorkLog={() => {}}
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
+      addSpecialLeaveWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addVacationWorkLog={() => {}}
       addMultipleBanWorkLogs={() => {}}
+      addMultipleBusinessTripWorkLog={() => {}}
+      addMultipleHomeOfficeWorkLog={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
       addMultipleSickDayUnpaidWorkLogs={() => {}}
+      addMultipleSickDayWorkLog={() => {}}
       addMultipleSpecialLeaveWorkLog={() => {}}
+      addMultipleTimeOffWorkLog={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
@@ -625,12 +655,18 @@ describe('rendering', () => {
       addHomeOfficeWorkLog={() => {}}
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
+      addSpecialLeaveWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addVacationWorkLog={() => {}}
       addMultipleBanWorkLogs={() => {}}
+      addMultipleBusinessTripWorkLog={() => {}}
+      addMultipleHomeOfficeWorkLog={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
       addMultipleSickDayUnpaidWorkLogs={() => {}}
+      addMultipleSickDayWorkLog={() => {}}
       addMultipleSpecialLeaveWorkLog={() => {}}
+      addMultipleTimeOffWorkLog={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
@@ -748,12 +784,18 @@ describe('functionality', () => {
       addHomeOfficeWorkLog={() => {}}
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
+      addSpecialLeaveWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addVacationWorkLog={() => {}}
       addMultipleBanWorkLogs={() => {}}
+      addMultipleBusinessTripWorkLog={() => {}}
+      addMultipleHomeOfficeWorkLog={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
       addMultipleSickDayUnpaidWorkLogs={() => {}}
+      addMultipleSickDayWorkLog={() => {}}
       addMultipleSpecialLeaveWorkLog={() => {}}
+      addMultipleTimeOffWorkLog={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
@@ -872,12 +914,18 @@ describe('functionality', () => {
       addHomeOfficeWorkLog={() => {}}
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
+      addSpecialLeaveWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addVacationWorkLog={() => {}}
       addMultipleBanWorkLogs={() => {}}
+      addMultipleBusinessTripWorkLog={() => {}}
+      addMultipleHomeOfficeWorkLog={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
       addMultipleSickDayUnpaidWorkLogs={() => {}}
+      addMultipleSickDayWorkLog={() => {}}
       addMultipleSpecialLeaveWorkLog={() => {}}
+      addMultipleTimeOffWorkLog={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
@@ -996,12 +1044,18 @@ describe('functionality', () => {
       addHomeOfficeWorkLog={() => {}}
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
+      addSpecialLeaveWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addVacationWorkLog={() => {}}
       addMultipleBanWorkLogs={() => {}}
+      addMultipleBusinessTripWorkLog={() => {}}
+      addMultipleHomeOfficeWorkLog={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
       addMultipleSickDayUnpaidWorkLogs={() => {}}
+      addMultipleSickDayWorkLog={() => {}}
       addMultipleSpecialLeaveWorkLog={() => {}}
+      addMultipleTimeOffWorkLog={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}
@@ -1118,12 +1172,18 @@ describe('functionality', () => {
       addHomeOfficeWorkLog={() => {}}
       addOvertimeWorkLog={() => {}}
       addSickDayWorkLog={() => {}}
+      addSpecialLeaveWorkLog={() => {}}
       addTimeOffWorkLog={() => {}}
+      addVacationWorkLog={() => {}}
       addMultipleBanWorkLogs={() => {}}
+      addMultipleBusinessTripWorkLog={() => {}}
+      addMultipleHomeOfficeWorkLog={() => {}}
       addMultipleMaternityProtectionWorkLogs={() => {}}
       addMultipleParentalLeaveWorkLogs={() => {}}
       addMultipleSickDayUnpaidWorkLogs={() => {}}
+      addMultipleSickDayWorkLog={() => {}}
       addMultipleSpecialLeaveWorkLog={() => {}}
+      addMultipleTimeOffWorkLog={() => {}}
       addMultipleVacationWorkLog={() => {}}
       addWorkLog={() => {}}
       config={configMock}

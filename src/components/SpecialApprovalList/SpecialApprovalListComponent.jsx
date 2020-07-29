@@ -597,12 +597,12 @@ class SpecialApprovalListComponent extends React.Component {
       if (isBulk) {
         content = (
           <p>
-            {t('vacationWorkLog:element.dateFrom')}
+            {t('workLog:element.dateFrom')}
             {': '}
             {toDayDayMonthYearFormat(this.props.specialLeaveWorkLog.get('date'))}
             <br />
 
-            {t('vacationWorkLog:element.dateTo')}
+            {t('workLog:element.dateTo')}
             {': '}
             {toDayDayMonthYearFormat(dateTo)}
             <br />
@@ -650,12 +650,12 @@ class SpecialApprovalListComponent extends React.Component {
       if (isBulk) {
         content = (
           <p>
-            {t('vacationWorkLog:element.dateFrom')}
+            {t('workLog:element.dateFrom')}
             {': '}
             {toDayDayMonthYearFormat(this.props.vacationWorkLog.get('date'))}
             <br />
 
-            {t('vacationWorkLog:element.dateTo')}
+            {t('workLog:element.dateTo')}
             {': '}
             {toDayDayMonthYearFormat(dateTo)}
             <br />
