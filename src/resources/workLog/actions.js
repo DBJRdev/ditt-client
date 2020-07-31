@@ -32,6 +32,24 @@ export const deleteWorkLog = (id) => (dispatch) => dispatch({
   },
 });
 
+export const editWorkLog = (id, data) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify({
+      endTime: toJson(data.endTime),
+      id,
+      startTime: toJson(data.startTime),
+    }),
+    endpoint: `${API_URL}/work_logs/${id}`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.EDIT_WORK_LOG_REQUEST,
+      types.EDIT_WORK_LOG_SUCCESS,
+      types.EDIT_WORK_LOG_FAILURE,
+    ],
+  },
+});
+
 export const fetchWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/work_logs/${id}`,

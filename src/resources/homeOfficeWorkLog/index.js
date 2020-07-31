@@ -2,6 +2,7 @@ export {
   addHomeOfficeWorkLog,
   addMultipleHomeOfficeWorkLog,
   deleteHomeOfficeWorkLog,
+  editHomeOfficeWorkLog,
   fetchHomeOfficeWorkLog,
   markHomeOfficeWorkLogApproved,
   markHomeOfficeWorkLogRejected,

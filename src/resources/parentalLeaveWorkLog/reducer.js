@@ -58,6 +58,25 @@ export default (state, action) => {
       .setIn(['parentalLeaveWorkLog', 'isPostingFailure'], true);
   }
 
+  if (type === actionTypes.EDIT_PARENTAL_LEAVE_WORK_LOG_REQUEST) {
+    return state
+      .setIn(['parentalLeaveWorkLog', 'isPosting'], true)
+      .setIn(['parentalLeaveWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.EDIT_PARENTAL_LEAVE_WORK_LOG_SUCCESS) {
+    // Fetch is required to reload parental leave work log list with edited work log
+    return state
+      .setIn(['parentalLeaveWorkLog', 'isPosting'], false)
+      .setIn(['parentalLeaveWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.EDIT_PARENTAL_LEAVE_WORK_LOG_FAILURE) {
+    return state
+      .setIn(['parentalLeaveWorkLog', 'isPosting'], false)
+      .setIn(['parentalLeaveWorkLog', 'isPostingFailure'], true);
+  }
+
   if (type === actionTypes.FETCH_PARENTAL_LEAVE_WORK_LOG_REQUEST) {
     return state
       .setIn(['parentalLeaveWorkLog', 'isFetching'], true)

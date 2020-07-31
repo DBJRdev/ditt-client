@@ -1,6 +1,7 @@
 export {
   addOvertimeWorkLog,
   deleteOvertimeWorkLog,
+  editOvertimeWorkLog,
   fetchOvertimeWorkLog,
   markOvertimeWorkLogApproved,
   markOvertimeWorkLogRejected,

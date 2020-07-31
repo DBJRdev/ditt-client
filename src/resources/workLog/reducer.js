@@ -53,6 +53,25 @@ export default (state, action) => {
       .setIn(['deleteWorkLog', 'isPostingFailure'], true);
   }
 
+  if (type === actionTypes.EDIT_WORK_LOG_REQUEST) {
+    return state
+      .setIn(['deleteWorkLog', 'isPosting'], true)
+      .setIn(['deleteWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.EDIT_WORK_LOG_SUCCESS) {
+    // Fetch is required to reload  work log list with edited work log
+    return state
+      .setIn(['deleteWorkLog', 'isPosting'], false)
+      .setIn(['deleteWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.EDIT_WORK_LOG_FAILURE) {
+    return state
+      .setIn(['deleteWorkLog', 'isPosting'], false)
+      .setIn(['deleteWorkLog', 'isPostingFailure'], true);
+  }
+
   if (type === actionTypes.FETCH_WORK_LOG_REQUEST) {
     return state
       .setIn(['workLog', 'isFetching'], true)

@@ -34,6 +34,23 @@ export const deleteMaternityProtectionWorkLog = (id) => (dispatch) => dispatch({
   },
 });
 
+export const editMaternityProtectionWorkLog = (id, data) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify({
+      date: toJson(data.date),
+      id,
+    }),
+    endpoint: `${API_URL}/maternity_protection_work_logs/${id}`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.EDIT_MATERNITY_PROTECTION_WORK_LOG_REQUEST,
+      types.EDIT_MATERNITY_PROTECTION_WORK_LOG_SUCCESS,
+      types.EDIT_MATERNITY_PROTECTION_WORK_LOG_FAILURE,
+    ],
+  },
+});
+
 export const fetchMaternityProtectionWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/maternity_protection_work_logs/${id}`,

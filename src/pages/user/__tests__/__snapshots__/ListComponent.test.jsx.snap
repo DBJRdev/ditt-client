@@ -45,7 +45,10 @@ exports[`rendering renders correctly 1`] = `
     rows={Array []}
     sort={
       Object {
-        "ascendingIcon": null,
+        "ascendingIcon": <Icon
+          icon="arrow_upward"
+          size="medium"
+        />,
         "changeHandler": [Function],
         "column": "lastName",
         "descendingIcon": <Icon

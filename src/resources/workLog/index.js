@@ -1,6 +1,7 @@
 export {
   addWorkLog,
   deleteWorkLog,
+  editWorkLog,
   fetchWorkLog,
 } from './actions';
 

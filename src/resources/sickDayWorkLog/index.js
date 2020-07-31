@@ -2,6 +2,7 @@ export {
   addSickDayWorkLog,
   addMultipleSickDayWorkLog,
   deleteSickDayWorkLog,
+  editSickDayWorkLog,
   fetchSickDayWorkLog,
 } from './actions';
 

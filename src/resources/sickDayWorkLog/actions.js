@@ -53,6 +53,26 @@ export const deleteSickDayWorkLog = (id) => (dispatch) => dispatch({
   },
 });
 
+export const editSickDayWorkLog = (id, data) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify({
+      childDateOfBirth: data.childDateOfBirth ? toJson(data.childDateOfBirth) : null,
+      childName: data.childName,
+      date: toJson(data.date),
+      id,
+      variant: data.variant,
+    }),
+    endpoint: `${API_URL}/sick_day_work_logs/${id}`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.EDIT_SICK_DAY_WORK_LOG_REQUEST,
+      types.EDIT_SICK_DAY_WORK_LOG_SUCCESS,
+      types.EDIT_SICK_DAY_WORK_LOG_FAILURE,
+    ],
+  },
+});
+
 export const fetchSickDayWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/sick_day_work_logs/${id}`,

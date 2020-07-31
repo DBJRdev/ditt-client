@@ -74,7 +74,7 @@ const WorkLogDetailButton = (props) => {
           }
           label={label}
         />
-        {supportsDuplicate.includes(type) && (
+        {supportsDuplicate.includes(type) ? (
           <Button
             beforeLabel={
               isDuplicateReqPending
@@ -99,7 +99,7 @@ const WorkLogDetailButton = (props) => {
             label=""
             labelVisibility="none"
           />
-        )}
+        ) : null}
       </ButtonGroup>
     </ToolbarItem>
   );

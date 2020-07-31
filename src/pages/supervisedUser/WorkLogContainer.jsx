@@ -3,6 +3,7 @@ import { selectJwtToken } from '../../resources/auth';
 import {
   addMultipleBanWorkLogs,
   deleteBanWorkLog,
+  editBanWorkLog,
   fetchBanWorkLog,
   selectBanWorkLog,
   selectBanWorkLogMeta,
@@ -23,6 +24,7 @@ import {
 import {
   addMultipleMaternityProtectionWorkLogs,
   deleteMaternityProtectionWorkLog,
+  editMaternityProtectionWorkLog,
   fetchMaternityProtectionWorkLog,
   selectMaternityProtectionWorkLog,
   selectMaternityProtectionWorkLogMeta,
@@ -34,6 +36,7 @@ import {
 import {
   addMultipleParentalLeaveWorkLogs,
   deleteParentalLeaveWorkLog,
+  editParentalLeaveWorkLog,
   fetchParentalLeaveWorkLog,
   selectParentalLeaveWorkLog,
   selectParentalLeaveWorkLogMeta,
@@ -41,6 +44,7 @@ import {
 import {
   addMultipleSickDayUnpaidWorkLogs,
   deleteSickDayUnpaidWorkLog,
+  editSickDayUnpaidWorkLog,
   fetchSickDayUnpaidWorkLog,
   selectSickDayUnpaidWorkLog,
   selectSickDayUnpaidWorkLogMeta,
@@ -139,6 +143,10 @@ const mapDispatchToProps = (dispatch) => ({
   deleteMaternityProtectionWorkLog: (id) => dispatch(deleteMaternityProtectionWorkLog(id)),
   deleteParentalLeaveWorkLog: (id) => dispatch(deleteParentalLeaveWorkLog(id)),
   deleteSickDayUnpaidWorkLog: (id) => dispatch(deleteSickDayUnpaidWorkLog(id)),
+  editBanWorkLog: (id, data) => dispatch(editBanWorkLog(id, data)),
+  editMaternityProtectionWorkLog: (id, data) => dispatch(editMaternityProtectionWorkLog(id, data)),
+  editParentalLeaveWorkLog: (id, data) => dispatch(editParentalLeaveWorkLog(id, data)),
+  editSickDayUnpaidWorkLog: (id, data) => dispatch(editSickDayUnpaidWorkLog(id, data)),
   fetchBanWorkLog: (id) => dispatch(fetchBanWorkLog(id)),
   fetchBusinessTripWorkLog: (id) => dispatch(fetchBusinessTripWorkLog(id)),
   fetchConfig: () => dispatch(fetchConfig()),

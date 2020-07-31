@@ -45,11 +45,22 @@ import styles from './WorkLogForm.scss';
 class WorkLogForm extends React.Component {
   constructor(props) {
     super(props);
+
+    const { data } = props;
+
     let date = props.date.clone();
     let startTime = date.clone().subtract(3, 'minutes');
     let endTime = date.clone().add(3, 'minutes');
 
-    if (props.showWorkLogTimer && getWorkLogTimer()) {
+    if (data && data.date) {
+      date = data.date;
+      startTime = data.date;
+      endTime = data.date;
+    } else if (data && data.startTime) {
+      date = data.startTime;
+      startTime = data.startTime;
+      endTime = data.endTime;
+    } else if (props.showWorkLogTimer && getWorkLogTimer()) {
       date = toMomentDateTime(getWorkLogTimer());
       startTime = toMomentDateTime(getWorkLogTimer());
       endTime = localizedMoment();
@@ -57,23 +68,26 @@ class WorkLogForm extends React.Component {
 
     this.state = {
       formData: {
-        childDateOfBirth: null,
-        childName: null,
-        comment: null,
+        childDateOfBirth: (data && data.childDateOfBirth)
+          ? toDayMonthYearFormat(data.childDateOfBirth)
+          : null,
+        childName: (data && data.childName) || null,
+        comment: (data && data.comment) || null,
         date: toDayMonthYearFormat(date),
         dateTo: toDayMonthYearFormat(date),
-        destination: null,
+        destination: (data && data.destination) || null,
         endHour: endTime.format('HH'),
         endMinute: endTime.format('mm'),
-        expectedArrival: null,
-        expectedDeparture: null,
-        purpose: null,
-        reason: null,
+        expectedArrival: (data && data.expectedArrival) || null,
+        expectedDeparture: (data && data.expectedDeparture) || null,
+        id: (data && data.id) || null,
+        purpose: (data && data.purpose) || null,
+        reason: (data && data.reason) || null,
         startHour: startTime.format('HH'),
         startMinute: startTime.format('mm'),
-        transport: null,
-        type: WORK_LOG,
-        variant: VARIANT_WITH_NOTE,
+        transport: (data && data.transport) || null,
+        type: (data && data.type) || WORK_LOG,
+        variant: (data && data.variant) || VARIANT_WITH_NOTE,
       },
       formValidity: {
         elements: {
@@ -195,6 +209,7 @@ class WorkLogForm extends React.Component {
         expectedDeparture: formData.type === BUSINESS_TRIP_WORK_LOG
           ? formData.expectedDeparture || '00:00'
           : null,
+        id: formData.id || null,
         purpose: formData.type === BUSINESS_TRIP_WORK_LOG
           ? formData.purpose
           : null,
@@ -287,12 +302,16 @@ class WorkLogForm extends React.Component {
   }
 
   renderBusinessTripWorkLogFields() {
-    const { t } = this.props;
+    const {
+      data,
+      t,
+    } = this.props;
 
     return (
       <>
         <ListItem>
           <TextField
+            disabled={Boolean(data)}
             helperText={this.state.formValidity.elements.dateTo}
             changeHandler={this.changeHandler}
             id="dateTo"
@@ -356,12 +375,16 @@ class WorkLogForm extends React.Component {
   }
 
   renderHomeOfficeWorkLogFields() {
-    const { t } = this.props;
+    const {
+      data,
+      t,
+    } = this.props;
 
     return (
       <>
         <ListItem>
           <TextField
+            disabled={Boolean(data)}
             helperText={this.state.formValidity.elements.dateTo}
             changeHandler={this.changeHandler}
             id="dateTo"
@@ -402,12 +425,16 @@ class WorkLogForm extends React.Component {
   }
 
   renderSickDayWorkLogFields() {
-    const { t } = this.props;
+    const {
+      data,
+      t,
+    } = this.props;
 
     return (
       <>
         <ListItem>
           <TextField
+            disabled={Boolean(data)}
             helperText={this.state.formValidity.elements.dateTo}
             changeHandler={this.changeHandler}
             id="dateTo"
@@ -474,11 +501,15 @@ class WorkLogForm extends React.Component {
   }
 
   renderSpecialLeaveWorkLogFields() {
-    const { t } = this.props;
+    const {
+      data,
+      t,
+    } = this.props;
 
     return (
       <ListItem>
         <TextField
+          disabled={Boolean(data)}
           helperText={this.state.formValidity.elements.dateTo}
           changeHandler={this.changeHandler}
           id="dateTo"
@@ -491,12 +522,16 @@ class WorkLogForm extends React.Component {
   }
 
   renderTimeOffWorkLogFields() {
-    const { t } = this.props;
+    const {
+      data,
+      t,
+    } = this.props;
 
     return (
       <>
         <ListItem>
           <TextField
+            disabled={Boolean(data)}
             helperText={this.state.formValidity.elements.dateTo}
             changeHandler={this.changeHandler}
             id="dateTo"
@@ -520,11 +555,15 @@ class WorkLogForm extends React.Component {
   }
 
   renderVacationWorkLogFields() {
-    const { t } = this.props;
+    const {
+      data,
+      t,
+    } = this.props;
 
     return (
       <ListItem>
         <TextField
+          disabled={Boolean(data)}
           helperText={this.state.formValidity.elements.dateTo}
           changeHandler={this.changeHandler}
           id="dateTo"
@@ -618,6 +657,7 @@ class WorkLogForm extends React.Component {
 
   render() {
     const {
+      data,
       showWorkLogTimer,
       t,
     } = this.props;
@@ -637,7 +677,7 @@ class WorkLogForm extends React.Component {
           },
         ]}
         closeHandler={this.props.closeHandler}
-        title={t('workLog:modal.add.title')}
+        title={data ? t('workLog:modal.edit.title') : t('workLog:modal.add.title')}
         translations={{ close: t('general:action.close') }}
       >
         <p className={styles.formErrorText}>
@@ -699,6 +739,7 @@ class WorkLogForm extends React.Component {
               <ListItem>
                 <SelectField
                   changeHandler={this.changeHandler}
+                  disabled={Boolean(data)}
                   helperText={formValidity.elements.type}
                   id="type"
                   label={t('workLog:element.type')}
@@ -777,6 +818,7 @@ class WorkLogForm extends React.Component {
 }
 
 WorkLogForm.defaultProps = {
+  data: null,
   showInfoText: false,
   showWorkLogTimer: false,
 };
@@ -789,6 +831,33 @@ WorkLogForm.propTypes = {
   })).isRequired,
   closeHandler: PropTypes.func.isRequired,
   config: ImmutablePropTypes.mapContains({}).isRequired,
+  data: PropTypes.shape({
+    childDateOfBirth: PropTypes.instanceOf(moment),
+    childName: PropTypes.string,
+    comment: PropTypes.string,
+    date: PropTypes.instanceOf(moment),
+    destination: PropTypes.string,
+    endTime: PropTypes.instanceOf(moment),
+    expectedArrival: PropTypes.string,
+    expectedDeparture: PropTypes.string,
+    id: PropTypes.number.isRequired,
+    purpose: PropTypes.string,
+    reason: PropTypes.string,
+    startTime: PropTypes.instanceOf(moment),
+    transport: PropTypes.string,
+    type: PropTypes.oneOf([
+      BUSINESS_TRIP_WORK_LOG,
+      HOME_OFFICE_WORK_LOG,
+      OVERTIME_WORK_LOG,
+      SICK_DAY_WORK_LOG,
+      SPECIAL_LEAVE_WORK_LOG,
+      TIME_OFF_WORK_LOG,
+      VACATION_WORK_LOG,
+      WORK_LOG,
+    ]).isRequired,
+    variant: PropTypes.string,
+    workTimeLimit: PropTypes.number,
+  }),
   date: PropTypes.instanceOf(moment).isRequired,
   isPosting: PropTypes.bool.isRequired,
   saveHandler: PropTypes.func.isRequired,

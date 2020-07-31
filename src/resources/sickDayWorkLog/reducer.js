@@ -62,6 +62,25 @@ export default (state, action) => {
       .setIn(['sickDayWorkLog', 'isPostingFailure'], true);
   }
 
+  if (type === actionTypes.EDIT_SICK_DAY_WORK_LOG_REQUEST) {
+    return state
+      .setIn(['sickDayWorkLog', 'isPosting'], true)
+      .setIn(['sickDayWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.EDIT_SICK_DAY_WORK_LOG_SUCCESS) {
+    // Fetch is required to reload sick day work log list with edited work log
+    return state
+      .setIn(['sickDayWorkLog', 'isPosting'], false)
+      .setIn(['sickDayWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.EDIT_SICK_DAY_WORK_LOG_FAILURE) {
+    return state
+      .setIn(['sickDayWorkLog', 'isPosting'], false)
+      .setIn(['sickDayWorkLog', 'isPostingFailure'], true);
+  }
+
   if (type === actionTypes.FETCH_SICK_DAY_WORK_LOG_REQUEST) {
     return state
       .setIn(['sickDayWorkLog', 'isFetching'], true)

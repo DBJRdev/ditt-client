@@ -27,13 +27,24 @@ class AddSupervisorWorkLogModal extends React.Component {
   constructor(props) {
     super(props);
 
+    const { data } = props;
+
     this.state = {
       formData: {
-        date: toDayMonthYearFormat(props.date),
-        dateTo: toDayMonthYearFormat(props.date),
-        hour: '0',
-        minute: '00',
-        type: SICK_DAY_UNPAID_WORK_LOG,
+        date: (data && data.date)
+          ? toDayMonthYearFormat(data.date)
+          : toDayMonthYearFormat(props.date),
+        dateTo: (data && data.date)
+          ? toDayMonthYearFormat(data.date)
+          : toDayMonthYearFormat(props.date),
+        hour: (data && data.workTimeLimit)
+          ? Math.floor(data.workTimeLimit / 3600).toString()
+          : '0',
+        id: (data && data.id) || null,
+        minute: (data && data.workTimeLimit)
+          ? Math.floor((data.workTimeLimit % 3600) / 60).toString()
+          : '00',
+        type: (data && data.type) || SICK_DAY_UNPAID_WORK_LOG,
       },
       formValidity: {
         elements: {
@@ -80,6 +91,7 @@ class AddSupervisorWorkLogModal extends React.Component {
       onSave({
         date: toMomentDateTimeFromDayMonthYear(formData.date),
         dateTo: toMomentDateTimeFromDayMonthYear(formData.dateTo),
+        id: formData.id || null,
         type: formData.type,
         workTimeLimit,
       })
@@ -95,6 +107,7 @@ class AddSupervisorWorkLogModal extends React.Component {
 
   render() {
     const {
+      data,
       isPosting,
       onClose,
       t,
@@ -116,7 +129,7 @@ class AddSupervisorWorkLogModal extends React.Component {
           },
         ]}
         closeHandler={onClose}
-        title={t('workLog:modal.add.title')}
+        title={data ? t('workLog:modal.edit.title') : t('workLog:modal.add.title')}
         translations={{ close: t('general:action.close') }}
       >
         {formValidity.elements.form && (
@@ -130,6 +143,7 @@ class AddSupervisorWorkLogModal extends React.Component {
               <ListItem>
                 <SelectField
                   changeHandler={this.changeHandler}
+                  disabled={Boolean(data)}
                   helperText={formValidity.elements.type}
                   id="type"
                   label={t('workLog:element.type')}
@@ -169,6 +183,7 @@ class AddSupervisorWorkLogModal extends React.Component {
               <ListItem>
                 <TextField
                   changeHandler={this.changeHandler}
+                  disabled={Boolean(data)}
                   helperText={formValidity.elements.dateTo}
                   id="dateTo"
                   label={t('workLog:element.dateTo')}
@@ -222,7 +237,22 @@ class AddSupervisorWorkLogModal extends React.Component {
   }
 }
 
+AddSupervisorWorkLogModal.defaultProps = {
+  data: null,
+};
+
 AddSupervisorWorkLogModal.propTypes = {
+  data: PropTypes.shape({
+    date: PropTypes.instanceOf(moment).isRequired,
+    id: PropTypes.number.isRequired,
+    type: PropTypes.oneOf([
+      BAN_WORK_LOG,
+      MATERNITY_PROTECTION_WORK_LOG,
+      PARENTAL_LEAVE_WORK_LOG,
+      SICK_DAY_UNPAID_WORK_LOG,
+    ]).isRequired,
+    workTimeLimit: PropTypes.number,
+  }),
   date: PropTypes.instanceOf(moment).isRequired,
   isPosting: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,

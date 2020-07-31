@@ -1,6 +1,7 @@
 export {
   addMultipleMaternityProtectionWorkLogs,
   deleteMaternityProtectionWorkLog,
+  editMaternityProtectionWorkLog,
   fetchMaternityProtectionWorkLog,
 } from './actions';
 

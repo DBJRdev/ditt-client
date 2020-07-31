@@ -38,14 +38,19 @@ class WorkLogComponent extends React.Component {
     this.changeSelectedDate = this.changeSelectedDate.bind(this);
     this.addMultipleBanWorkLogs = this.addMultipleBanWorkLogs.bind(this);
     this.deleteBanWorkLogs = this.deleteBanWorkLogs.bind(this);
+    this.editBanWorkLog = this.editBanWorkLog.bind(this);
     this.addMultipleMaternityProtectionWorkLogs = this.addMultipleMaternityProtectionWorkLogs
       .bind(this);
     this.deleteMaternityProtectionWorkLogs = this.deleteMaternityProtectionWorkLogs
       .bind(this);
+    this.editMaternityProtectionWorkLog = this.editMaternityProtectionWorkLog
+      .bind(this);
     this.addMultipleParentalLeaveWorkLogs = this.addMultipleParentalLeaveWorkLogs.bind(this);
     this.deleteParentalLeaveWorkLogs = this.deleteParentalLeaveWorkLogs.bind(this);
+    this.editParentalLeaveWorkLog = this.editParentalLeaveWorkLog.bind(this);
     this.addMultipleSickDayUnpaidWorkLogs = this.addMultipleSickDayUnpaidWorkLogs.bind(this);
     this.deleteSickDayUnpaidWorkLogs = this.deleteSickDayUnpaidWorkLogs.bind(this);
+    this.editSickDayUnpaidWorkLog = this.editSickDayUnpaidWorkLog.bind(this);
   }
 
   componentDidMount() {
@@ -195,6 +200,54 @@ class WorkLogComponent extends React.Component {
     });
   }
 
+  editBanWorkLog(id, data) {
+    const { editBanWorkLog } = this.props;
+
+    return editBanWorkLog(id, data).then((response) => {
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+
+      return response;
+    });
+  }
+
+  editMaternityProtectionWorkLog(id, data) {
+    const { editMaternityProtectionWorkLog } = this.props;
+
+    return editMaternityProtectionWorkLog(id, data).then((response) => {
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+
+      return response;
+    });
+  }
+
+  editParentalLeaveWorkLog(id, data) {
+    const { editParentalLeaveWorkLog } = this.props;
+
+    return editParentalLeaveWorkLog(id, data).then((response) => {
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+
+      return response;
+    });
+  }
+
+  editSickDayUnpaidWorkLog(id, data) {
+    const { editSickDayUnpaidWorkLog } = this.props;
+
+    return editSickDayUnpaidWorkLog(id, data).then((response) => {
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+
+      return response;
+    });
+  }
+
   render() {
     let title = this.props.t('workLog:title.workLogs');
 
@@ -255,6 +308,18 @@ class WorkLogComponent extends React.Component {
             deleteTimeOffWorkLog={() => {}}
             deleteVacationWorkLog={() => {}}
             deleteWorkLog={() => {}}
+            editBanWorkLog={this.editBanWorkLog}
+            editBusinessTripWorkLog={() => {}}
+            editHomeOfficeWorkLog={() => {}}
+            editMaternityProtectionWorkLog={this.editMaternityProtectionWorkLog}
+            editOvertimeWorkLog={() => {}}
+            editParentalLeaveWorkLog={this.editParentalLeaveWorkLog}
+            editSickDayUnpaidWorkLog={this.editSickDayUnpaidWorkLog}
+            editSickDayWorkLog={() => {}}
+            editSpecialLeaveWorkLog={() => {}}
+            editTimeOffWorkLog={() => {}}
+            editVacationWorkLog={() => {}}
+            editWorkLog={() => {}}
             fetchBanWorkLog={this.props.fetchBanWorkLog}
             fetchBusinessTripWorkLog={this.props.fetchBusinessTripWorkLog}
             fetchHomeOfficeWorkLog={this.props.fetchHomeOfficeWorkLog}
@@ -336,6 +401,10 @@ WorkLogComponent.propTypes = {
   deleteMaternityProtectionWorkLog: PropTypes.func.isRequired,
   deleteParentalLeaveWorkLog: PropTypes.func.isRequired,
   deleteSickDayUnpaidWorkLog: PropTypes.func.isRequired,
+  editBanWorkLog: PropTypes.func.isRequired,
+  editMaternityProtectionWorkLog: PropTypes.func.isRequired,
+  editParentalLeaveWorkLog: PropTypes.func.isRequired,
+  editSickDayUnpaidWorkLog: PropTypes.func.isRequired,
   fetchBanWorkLog: PropTypes.func.isRequired,
   fetchBusinessTripWorkLog: PropTypes.func.isRequired,
   fetchConfig: PropTypes.func.isRequired,

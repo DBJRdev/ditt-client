@@ -459,7 +459,10 @@ export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay, ban
     const endTime = todayDate.clone().hour(workLog.endHour).minute(workLog.endMinute);
 
     workLogsOfDay.forEach((workLogItem) => {
-      if (isOverlapping(startTime, endTime, workLogItem.startTime, workLogItem.endTime)) {
+      if (
+        workLog.id !== workLogItem.id
+        && isOverlapping(startTime, endTime, workLogItem.startTime, workLogItem.endTime)
+      ) {
         overlapping = true;
       }
 

@@ -2,6 +2,7 @@ export {
   addBusinessTripWorkLog,
   addMultipleBusinessTripWorkLog,
   deleteBusinessTripWorkLog,
+  editBusinessTripWorkLog,
   fetchBusinessTripWorkLog,
   markBusinessTripWorkLogApproved,
   markBusinessTripWorkLogRejected,

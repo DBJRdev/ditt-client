@@ -62,6 +62,25 @@ export default (state, action) => {
       .setIn(['timeOffWorkLog', 'isPostingFailure'], true);
   }
 
+  if (type === actionTypes.EDIT_TIME_OFF_WORK_LOG_REQUEST) {
+    return state
+      .setIn(['timeOffWorkLog', 'isPosting'], true)
+      .setIn(['timeOffWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.EDIT_TIME_OFF_WORK_LOG_SUCCESS) {
+    // Fetch is required to reload time off work log list with edited work log
+    return state
+      .setIn(['timeOffWorkLog', 'isPosting'], false)
+      .setIn(['timeOffWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.EDIT_TIME_OFF_WORK_LOG_FAILURE) {
+    return state
+      .setIn(['timeOffWorkLog', 'isPosting'], false)
+      .setIn(['timeOffWorkLog', 'isPostingFailure'], true);
+  }
+
   if (type === actionTypes.FETCH_TIME_OFF_WORK_LOG_REQUEST) {
     return state
       .setIn(['timeOffWorkLog', 'isFetching'], true)

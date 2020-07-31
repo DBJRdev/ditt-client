@@ -38,11 +38,13 @@ const WorkLogDetailModal = (props) => {
     banWorkLog,
     businessTripWorkLog,
     homeOfficeWorkLog,
+    id,
     isInSupervisorMode,
     isPosting,
     maternityProtectionWorkLog,
     onClose,
     onDelete,
+    onEdit,
     overtimeWorkLog,
     parentalLeaveWorkLog,
     sickDayUnpaidWorkLog,
@@ -423,6 +425,48 @@ const WorkLogDetailModal = (props) => {
       && uid !== workMonth.user.id
     )
   ) {
+    if (
+      (
+        type === BUSINESS_TRIP_WORK_LOG
+        && businessTripWorkLog
+        && businessTripWorkLog.status === STATUS_WAITING_FOR_APPROVAL
+      ) || (
+        type === HOME_OFFICE_WORK_LOG
+        && homeOfficeWorkLog
+        && homeOfficeWorkLog.status === STATUS_WAITING_FOR_APPROVAL
+      ) || (
+        type === OVERTIME_WORK_LOG
+        && overtimeWorkLog
+        && overtimeWorkLog.status === STATUS_WAITING_FOR_APPROVAL
+      ) || (
+        type === SPECIAL_LEAVE_WORK_LOG
+        && specialLeaveWorkLog
+        && specialLeaveWorkLog.status === STATUS_WAITING_FOR_APPROVAL
+      ) || (
+        type === TIME_OFF_WORK_LOG
+        && timeOffWorkLog
+        && timeOffWorkLog.status === STATUS_WAITING_FOR_APPROVAL
+      ) || (
+        type === VACATION_WORK_LOG
+        && vacationWorkLog
+        && vacationWorkLog.status === STATUS_WAITING_FOR_APPROVAL
+      ) || [
+        BAN_WORK_LOG,
+        MATERNITY_PROTECTION_WORK_LOG,
+        PARENTAL_LEAVE_WORK_LOG,
+        SICK_DAY_UNPAID_WORK_LOG,
+        SICK_DAY_WORK_LOG,
+        WORK_LOG,
+      ].includes(type)
+    ) {
+      actions.push({
+        clickHandler: () => onEdit(id, type),
+        label: t('general:action.edit'),
+        loadingIcon: isPosting ? <Icon icon="sync" /> : null,
+        variant: 'primary',
+      });
+    }
+
     actions.push({
       clickHandler: onDelete,
       label: t('general:action.delete'),
@@ -489,6 +533,7 @@ WorkLogDetailModal.propTypes = {
       STATUS_WAITING_FOR_APPROVAL,
     ]).isRequired,
   }),
+  id: PropTypes.number.isRequired,
   isInSupervisorMode: PropTypes.bool.isRequired,
   isPosting: PropTypes.bool.isRequired,
   maternityProtectionWorkLog: PropTypes.shape({
@@ -496,6 +541,7 @@ WorkLogDetailModal.propTypes = {
   }),
   onClose: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
+  onEdit: PropTypes.func.isRequired,
   overtimeWorkLog: PropTypes.shape({
     date: PropTypes.object.isRequired,
     reason: PropTypes.string,

@@ -2,6 +2,7 @@ export {
   addSpecialLeaveWorkLog,
   addMultipleSpecialLeaveWorkLog,
   deleteSpecialLeaveWorkLog,
+  editSpecialLeaveWorkLog,
   fetchSpecialLeaveWorkLog,
   markMultipleSpecialLeaveWorkLogApproved,
   markMultipleSpecialLeaveWorkLogRejected,

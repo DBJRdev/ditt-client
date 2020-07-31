@@ -58,6 +58,25 @@ export default (state, action) => {
       .setIn(['maternityProtectionWorkLog', 'isPostingFailure'], true);
   }
 
+  if (type === actionTypes.EDIT_MATERNITY_PROTECTION_WORK_LOG_REQUEST) {
+    return state
+      .setIn(['maternityProtectionWorkLog', 'isPosting'], true)
+      .setIn(['maternityProtectionWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.EDIT_MATERNITY_PROTECTION_WORK_LOG_SUCCESS) {
+    // Fetch is required to reload maternity protection work log list with edited work log
+    return state
+      .setIn(['maternityProtectionWorkLog', 'isPosting'], false)
+      .setIn(['maternityProtectionWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.EDIT_MATERNITY_PROTECTION_WORK_LOG_FAILURE) {
+    return state
+      .setIn(['maternityProtectionWorkLog', 'isPosting'], false)
+      .setIn(['maternityProtectionWorkLog', 'isPostingFailure'], true);
+  }
+
   if (type === actionTypes.FETCH_MATERNITY_PROTECTION_WORK_LOG_REQUEST) {
     return state
       .setIn(['maternityProtectionWorkLog', 'isFetching'], true)

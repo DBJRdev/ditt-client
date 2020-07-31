@@ -85,9 +85,11 @@ class WorkLogCalendar extends React.Component {
       showDeleteWorkLogDialogId: null,
       showDeleteWorkLogDialogType: null,
       showSupervisorWorkLogForm: false,
+      showSupervisorWorkLogFormData: false,
       showSupervisorWorkLogFormDate: localizedMoment(),
       showSupervisorWorkTimeCorrectionModal: false,
       showWorkLogForm: false,
+      showWorkLogFormData: null,
       showWorkLogFormDate: localizedMoment(),
       workLogTimer: getWorkLogTimer() ? toMomentDateTime(getWorkLogTimer()) : null,
       workLogTimerInterval: '00:00:00',
@@ -361,22 +363,99 @@ class WorkLogCalendar extends React.Component {
     });
   }
 
-  openWorkLogForm(date) {
-    const todayDate = localizedMoment();
-    date.hour(todayDate.hour()).minute(todayDate.minute());
+  openWorkLogForm(date, type = null) {
+    const {
+      businessTripWorkLog,
+      homeOfficeWorkLog,
+      overtimeWorkLog,
+      sickDayWorkLog,
+      specialLeaveWorkLog,
+      timeOffWorkLog,
+      vacationWorkLog,
+      workLog,
+    } = this.props;
+
+    let showWorkLogFormData;
+    if (type === null) {
+      showWorkLogFormData = null;
+    } else if (type === BUSINESS_TRIP_WORK_LOG) {
+      showWorkLogFormData = businessTripWorkLog;
+    } else if (type === HOME_OFFICE_WORK_LOG) {
+      showWorkLogFormData = homeOfficeWorkLog;
+    } else if (type === OVERTIME_WORK_LOG) {
+      showWorkLogFormData = overtimeWorkLog;
+    } else if (type === SICK_DAY_WORK_LOG) {
+      showWorkLogFormData = sickDayWorkLog;
+    } else if (type === SPECIAL_LEAVE_WORK_LOG) {
+      showWorkLogFormData = specialLeaveWorkLog;
+    } else if (type === TIME_OFF_WORK_LOG) {
+      showWorkLogFormData = timeOffWorkLog;
+    } else if (type === VACATION_WORK_LOG) {
+      showWorkLogFormData = vacationWorkLog;
+    } else if (type === WORK_LOG) {
+      showWorkLogFormData = workLog;
+    }
+
+    let showWorkLogFormDate;
+    if (date === null && showWorkLogFormData !== null && showWorkLogFormData.has('date')) {
+      showWorkLogFormDate = showWorkLogFormData.get('date');
+    } else if (date === null && showWorkLogFormData !== null && showWorkLogFormData.has('startTime')) {
+      showWorkLogFormDate = showWorkLogFormData.get('startTime');
+    } else {
+      const todayDate = localizedMoment();
+      showWorkLogFormDate = date;
+      showWorkLogFormDate.hour(todayDate.hour()).minute(todayDate.minute());
+    }
 
     this.setState({
       showWorkLogForm: true,
-      showWorkLogFormDate: date,
+      showWorkLogFormData: showWorkLogFormData
+        ? {
+          ...showWorkLogFormData.toJS(),
+          type,
+        }
+        : null,
+      showWorkLogFormDate,
     });
   }
 
-  openSupervisorWorkLogForm(date) {
-    date.hour(0).minute(0);
+  openSupervisorWorkLogForm(date, type = null) {
+    const {
+      banWorkLog,
+      maternityProtectionWorkLog,
+      parentalLeaveWorkLog,
+      sickDayUnpaidWorkLog,
+    } = this.props;
+
+    let showSupervisorWorkLogFormData;
+    if (type === null) {
+      showSupervisorWorkLogFormData = null;
+    } else if (type === BAN_WORK_LOG) {
+      showSupervisorWorkLogFormData = banWorkLog;
+    } else if (type === MATERNITY_PROTECTION_WORK_LOG) {
+      showSupervisorWorkLogFormData = maternityProtectionWorkLog;
+    } else if (type === PARENTAL_LEAVE_WORK_LOG) {
+      showSupervisorWorkLogFormData = parentalLeaveWorkLog;
+    } else if (type === SICK_DAY_UNPAID_WORK_LOG) {
+      showSupervisorWorkLogFormData = sickDayUnpaidWorkLog;
+    }
+
+    let showSupervisorWorkLogFormDate;
+    if (date === null && showSupervisorWorkLogFormData !== null && showSupervisorWorkLogFormData.has('date')) {
+      showSupervisorWorkLogFormDate = showSupervisorWorkLogFormData.get('date');
+    } else {
+      showSupervisorWorkLogFormDate = date.hour(0).minute(0);
+    }
 
     this.setState({
       showSupervisorWorkLogForm: true,
-      showSupervisorWorkLogFormDate: date,
+      showSupervisorWorkLogFormData: showSupervisorWorkLogFormData
+        ? {
+          ...showSupervisorWorkLogFormData.toJS(),
+          type,
+        }
+        : null,
+      showSupervisorWorkLogFormDate,
     });
   }
 
@@ -387,8 +466,27 @@ class WorkLogCalendar extends React.Component {
   }
 
   saveWorkLogForm(data) {
+    const {
+      addMultipleBusinessTripWorkLog,
+      addMultipleHomeOfficeWorkLog,
+      addMultipleSickDayWorkLog,
+      addMultipleSpecialLeaveWorkLog,
+      addMultipleTimeOffWorkLog,
+      addMultipleVacationWorkLog,
+      addOvertimeWorkLog,
+      addWorkLog,
+      editBusinessTripWorkLog,
+      editHomeOfficeWorkLog,
+      editOvertimeWorkLog,
+      editSickDayWorkLog,
+      editSpecialLeaveWorkLog,
+      editTimeOffWorkLog,
+      editVacationWorkLog,
+      editWorkLog,
+    } = this.props;
+
     if (BUSINESS_TRIP_WORK_LOG === data.type) {
-      return this.props.addMultipleBusinessTripWorkLog({
+      const requestData = {
         date: data.date,
         dateTo: data.dateTo,
         destination: data.destination,
@@ -396,61 +494,109 @@ class WorkLogCalendar extends React.Component {
         expectedDeparture: data.expectedDeparture,
         purpose: data.purpose,
         transport: data.transport,
-      });
+      };
+
+      if (data.id) {
+        return editBusinessTripWorkLog(data.id, requestData);
+      }
+
+      return addMultipleBusinessTripWorkLog(requestData);
     }
 
     if (HOME_OFFICE_WORK_LOG === data.type) {
-      return this.props.addMultipleHomeOfficeWorkLog({
+      const requestData = {
         comment: data.comment,
         date: data.date,
         dateTo: data.dateTo,
-      });
+      };
+
+      if (data.id) {
+        return editHomeOfficeWorkLog(data.id, requestData);
+      }
+
+      return addMultipleHomeOfficeWorkLog(requestData);
     }
 
     if (OVERTIME_WORK_LOG === data.type) {
-      return this.props.addOvertimeWorkLog({
+      const requestData = {
         date: data.date,
         reason: data.reason,
-      });
+      };
+
+      if (data.id) {
+        return editOvertimeWorkLog(data.id, requestData);
+      }
+
+      return addOvertimeWorkLog(requestData);
     }
 
     if (SICK_DAY_WORK_LOG === data.type) {
-      return this.props.addMultipleSickDayWorkLog({
+      const requestData = {
         childDateOfBirth: data.childDateOfBirth,
         childName: data.childName,
         date: data.date,
         dateTo: data.dateTo,
         variant: data.variant,
-      });
+      };
+
+      if (data.id) {
+        return editSickDayWorkLog(data.id, requestData);
+      }
+
+      return addMultipleSickDayWorkLog(requestData);
     }
 
     if (SPECIAL_LEAVE_WORK_LOG === data.type) {
-      return this.props.addMultipleSpecialLeaveWorkLog({
+      const requestData = {
         date: data.date,
         dateTo: data.dateTo,
-      });
+      };
+
+      if (data.id) {
+        return editSpecialLeaveWorkLog(data.id, requestData);
+      }
+
+      return addMultipleSpecialLeaveWorkLog(requestData);
     }
 
     if (TIME_OFF_WORK_LOG === data.type) {
-      return this.props.addMultipleTimeOffWorkLog({
+      const requestData = {
         comment: data.comment,
         date: data.date,
         dateTo: data.dateTo,
-      });
+      };
+
+      if (data.id) {
+        return editTimeOffWorkLog(data.id, requestData);
+      }
+
+      return addMultipleTimeOffWorkLog(requestData);
     }
 
     if (VACATION_WORK_LOG === data.type) {
-      return this.props.addMultipleVacationWorkLog({
+      const requestData = {
         date: data.date,
         dateTo: data.dateTo,
-      });
+      };
+
+      if (data.id) {
+        return editVacationWorkLog(data.id, requestData);
+      }
+
+      return addMultipleVacationWorkLog(requestData);
     }
 
     if (WORK_LOG === data.type) {
-      return this.props.addWorkLog({
+      const requestData = {
         endTime: data.endTime,
         startTime: data.startTime,
-      });
+      };
+
+      if (data.id) {
+        return editWorkLog(data.id, requestData);
+      }
+
+      return addWorkLog(requestData);
     }
 
     throw new Error(`Unknown type ${data.type}`);
@@ -462,6 +608,10 @@ class WorkLogCalendar extends React.Component {
       addMultipleMaternityProtectionWorkLogs,
       addMultipleParentalLeaveWorkLogs,
       addMultipleSickDayUnpaidWorkLogs,
+      editBanWorkLog,
+      editMaternityProtectionWorkLog,
+      editParentalLeaveWorkLog,
+      editSickDayUnpaidWorkLog,
       workMonth,
     } = this.props;
 
@@ -474,6 +624,16 @@ class WorkLogCalendar extends React.Component {
     };
 
     if (BAN_WORK_LOG === data.type) {
+      if (data.id) {
+        return editBanWorkLog(
+          data.id,
+          {
+            ...requestData,
+            workTimeLimit: data.workTimeLimit,
+          },
+        );
+      }
+
       return addMultipleBanWorkLogs({
         ...requestData,
         workTimeLimit: data.workTimeLimit,
@@ -481,14 +641,26 @@ class WorkLogCalendar extends React.Component {
     }
 
     if (MATERNITY_PROTECTION_WORK_LOG === data.type) {
+      if (data.id) {
+        return editMaternityProtectionWorkLog(data.id, requestData);
+      }
+
       return addMultipleMaternityProtectionWorkLogs(requestData);
     }
 
     if (PARENTAL_LEAVE_WORK_LOG === data.type) {
+      if (data.id) {
+        return editParentalLeaveWorkLog(data.id, requestData);
+      }
+
       return addMultipleParentalLeaveWorkLogs(requestData);
     }
 
     if (SICK_DAY_UNPAID_WORK_LOG === data.type) {
+      if (data.id) {
+        return editSickDayUnpaidWorkLog(data.id, requestData);
+      }
+
       return addMultipleSickDayUnpaidWorkLogs(requestData);
     }
 
@@ -496,11 +668,19 @@ class WorkLogCalendar extends React.Component {
   }
 
   closeWorkLogForm() {
-    this.setState({ showWorkLogForm: false });
+    this.setState({
+      showWorkLogForm: false,
+      showWorkLogFormData: null,
+      showWorkLogFormDate: null,
+    });
   }
 
   closeSupervisorWorkLogForm() {
-    this.setState({ showSupervisorWorkLogForm: false });
+    this.setState({
+      showSupervisorWorkLogForm: false,
+      showSupervisorWorkLogFormData: null,
+      showSupervisorWorkLogFormDate: null,
+    });
   }
 
   closeSupervisorWorkTimeCorrectionModal() {
@@ -664,35 +844,50 @@ class WorkLogCalendar extends React.Component {
   }
 
   renderWorkLogForm() {
+    const {
+      config,
+      isPosting,
+      workMonth,
+    } = this.props;
+    const {
+      showWorkLogFormData,
+      showWorkLogFormDate,
+    } = this.state;
+
     return (
       <WorkLogForm
         banWorkLogsOfDay={
-          this.props.workMonth
-            ? getWorkLogsByDay(this.state.showWorkLogFormDate, this.props.workMonth.get('banWorkLogs'))
+          workMonth
+            ? getWorkLogsByDay(showWorkLogFormDate, workMonth.get('banWorkLogs'))
             : []
         }
         closeHandler={this.closeWorkLogForm}
-        config={this.props.config}
-        date={this.state.showWorkLogFormDate}
-        isPosting={this.props.isPosting}
+        config={config}
+        data={showWorkLogFormData}
+        date={showWorkLogFormDate}
+        isPosting={isPosting}
         saveHandler={this.saveWorkLogForm}
-        user={this.props.workMonth.get('user')}
+        user={workMonth.get('user')}
         workLogsOfDay={
-          this.props.workMonth
-            ? getWorkLogsByDay(this.state.showWorkLogFormDate, this.props.workMonth.get('workLogs'))
+          workMonth
+            ? getWorkLogsByDay(showWorkLogFormDate, workMonth.get('workLogs'))
             : []
         }
-        showInfoText={STATUS_WAITING_FOR_APPROVAL === this.props.workMonth.get('status')}
+        showInfoText={STATUS_WAITING_FOR_APPROVAL === workMonth.get('status')}
       />
     );
   }
 
   renderSupervisorWorkLogForm() {
     const { isPosting } = this.props;
-    const { showSupervisorWorkLogFormDate } = this.state;
+    const {
+      showSupervisorWorkLogFormData,
+      showSupervisorWorkLogFormDate,
+    } = this.state;
 
     return (
       <AddSupervisorWorkLogModal
+        data={showSupervisorWorkLogFormData}
         date={showSupervisorWorkLogFormDate}
         isPosting={isPosting}
         onClose={this.closeSupervisorWorkLogForm}
@@ -748,6 +943,7 @@ class WorkLogCalendar extends React.Component {
         banWorkLog={banWorkLog ? banWorkLog.toJS() : null}
         businessTripWorkLog={businessTripWorkLog ? businessTripWorkLog.toJS() : null}
         homeOfficeWorkLog={homeOfficeWorkLog ? homeOfficeWorkLog.toJS() : null}
+        id={showDeleteWorkLogDialogId}
         isInSupervisorMode={supervisorView && userRoles.includes(ROLE_SUPER_ADMIN)}
         isPosting={isPosting}
         maternityProtectionWorkLog={
@@ -758,6 +954,22 @@ class WorkLogCalendar extends React.Component {
           showDeleteWorkLogDialogId,
           showDeleteWorkLogDialogType,
         )}
+        onEdit={(_, type) => {
+          if ([
+            BAN_WORK_LOG,
+            MATERNITY_PROTECTION_WORK_LOG,
+            PARENTAL_LEAVE_WORK_LOG,
+            SICK_DAY_UNPAID_WORK_LOG,
+          ].includes(type)) {
+            this.closeDeleteWorkLogDialog();
+            this.openSupervisorWorkLogForm(null, type);
+
+            return;
+          }
+
+          this.closeDeleteWorkLogDialog();
+          this.openWorkLogForm(null, type);
+        }}
         overtimeWorkLog={overtimeWorkLog ? overtimeWorkLog.toJS() : null}
         parentalLeaveWorkLog={parentalLeaveWorkLog ? parentalLeaveWorkLog.toJS() : null}
         sickDayUnpaidWorkLog={sickDayUnpaidWorkLog ? sickDayUnpaidWorkLog.toJS() : null}
@@ -1136,6 +1348,18 @@ WorkLogCalendar.propTypes = {
   deleteTimeOffWorkLog: PropTypes.func.isRequired,
   deleteVacationWorkLog: PropTypes.func.isRequired,
   deleteWorkLog: PropTypes.func.isRequired,
+  editBanWorkLog: PropTypes.func.isRequired,
+  editBusinessTripWorkLog: PropTypes.func.isRequired,
+  editHomeOfficeWorkLog: PropTypes.func.isRequired,
+  editMaternityProtectionWorkLog: PropTypes.func.isRequired,
+  editOvertimeWorkLog: PropTypes.func.isRequired,
+  editParentalLeaveWorkLog: PropTypes.func.isRequired,
+  editSickDayUnpaidWorkLog: PropTypes.func.isRequired,
+  editSickDayWorkLog: PropTypes.func.isRequired,
+  editSpecialLeaveWorkLog: PropTypes.func.isRequired,
+  editTimeOffWorkLog: PropTypes.func.isRequired,
+  editVacationWorkLog: PropTypes.func.isRequired,
+  editWorkLog: PropTypes.func.isRequired,
   fetchBanWorkLog: PropTypes.func.isRequired,
   fetchBusinessTripWorkLog: PropTypes.func.isRequired,
   fetchHomeOfficeWorkLog: PropTypes.func.isRequired,

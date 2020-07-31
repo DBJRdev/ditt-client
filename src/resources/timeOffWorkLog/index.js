@@ -2,6 +2,7 @@ export {
   addTimeOffWorkLog,
   addMultipleTimeOffWorkLog,
   deleteTimeOffWorkLog,
+  editTimeOffWorkLog,
   fetchTimeOffWorkLog,
   markTimeOffWorkLogApproved,
   markTimeOffWorkLogRejected,

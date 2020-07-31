@@ -62,6 +62,25 @@ export default (state, action) => {
       .setIn(['homeOfficeWorkLog', 'isPostingFailure'], true);
   }
 
+  if (type === actionTypes.EDIT_HOME_OFFICE_WORK_LOG_REQUEST) {
+    return state
+      .setIn(['homeOfficeWorkLog', 'isPosting'], true)
+      .setIn(['homeOfficeWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.EDIT_HOME_OFFICE_WORK_LOG_SUCCESS) {
+    // Fetch is required to reload home office work log list with edited work log
+    return state
+      .setIn(['homeOfficeWorkLog', 'isPosting'], false)
+      .setIn(['homeOfficeWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.EDIT_HOME_OFFICE_WORK_LOG_FAILURE) {
+    return state
+      .setIn(['homeOfficeWorkLog', 'isPosting'], false)
+      .setIn(['homeOfficeWorkLog', 'isPostingFailure'], true);
+  }
+
   if (type === actionTypes.FETCH_HOME_OFFICE_WORK_LOG_REQUEST) {
     return state
       .setIn(['homeOfficeWorkLog', 'isFetching'], true)

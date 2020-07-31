@@ -55,6 +55,25 @@ export default (state, action) => {
       .setIn(['overtimeWorkLog', 'isPostingFailure'], true);
   }
 
+  if (type === actionTypes.EDIT_OVERTIME_WORK_LOG_REQUEST) {
+    return state
+      .setIn(['overtimeWorkLog', 'isPosting'], true)
+      .setIn(['overtimeWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.EDIT_OVERTIME_WORK_LOG_SUCCESS) {
+    // Fetch is required to reload overtime work log list with edited work log
+    return state
+      .setIn(['overtimeWorkLog', 'isPosting'], false)
+      .setIn(['overtimeWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.EDIT_OVERTIME_WORK_LOG_FAILURE) {
+    return state
+      .setIn(['overtimeWorkLog', 'isPosting'], false)
+      .setIn(['overtimeWorkLog', 'isPostingFailure'], true);
+  }
+
   if (type === actionTypes.FETCH_OVERTIME_WORK_LOG_REQUEST) {
     return state
       .setIn(['overtimeWorkLog', 'isFetching'], true)

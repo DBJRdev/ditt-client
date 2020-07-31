@@ -43,6 +43,23 @@ export const deleteSpecialLeaveWorkLog = (id) => (dispatch) => dispatch({
   },
 });
 
+export const editSpecialLeaveWorkLog = (id, data) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify({
+      date: toJson(data.date),
+      id,
+    }),
+    endpoint: `${API_URL}/special_leave_work_logs/${id}`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.EDIT_SPECIAL_LEAVE_WORK_LOG_REQUEST,
+      types.EDIT_SPECIAL_LEAVE_WORK_LOG_SUCCESS,
+      types.EDIT_SPECIAL_LEAVE_WORK_LOG_FAILURE,
+    ],
+  },
+});
+
 export const fetchSpecialLeaveWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/special_leave_work_logs/${id}`,

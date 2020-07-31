@@ -38,6 +38,25 @@ export default (state, action) => {
       .setIn(['banWorkLog', 'isPostingFailure'], true);
   }
 
+  if (type === actionTypes.EDIT_BAN_WORK_LOG_REQUEST) {
+    return state
+      .setIn(['banWorkLog', 'isPosting'], true)
+      .setIn(['banWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.EDIT_BAN_WORK_LOG_SUCCESS) {
+    // Fetch is required to reload ban work log list with edited work log
+    return state
+      .setIn(['banWorkLog', 'isPosting'], false)
+      .setIn(['banWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.EDIT_BAN_WORK_LOG_FAILURE) {
+    return state
+      .setIn(['banWorkLog', 'isPosting'], false)
+      .setIn(['banWorkLog', 'isPostingFailure'], true);
+  }
+
   if (type === actionTypes.DELETE_BAN_WORK_LOG_REQUEST) {
     return state
       .setIn(['banWorkLog', 'isPosting'], true)

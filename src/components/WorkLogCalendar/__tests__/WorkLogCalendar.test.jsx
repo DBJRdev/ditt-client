@@ -55,6 +55,18 @@ describe('rendering', () => {
       deleteSpecialLeaveWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      editBanWorkLog={() => {}}
+      editBusinessTripWorkLog={() => {}}
+      editHomeOfficeWorkLog={() => {}}
+      editMaternityProtectionWorkLog={() => {}}
+      editOvertimeWorkLog={() => {}}
+      editParentalLeaveWorkLog={() => {}}
+      editSickDayUnpaidWorkLog={() => {}}
+      editSickDayWorkLog={() => {}}
+      editSpecialLeaveWorkLog={() => {}}
+      editTimeOffWorkLog={() => {}}
+      editVacationWorkLog={() => {}}
+      editWorkLog={() => {}}
       fetchBanWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
@@ -180,6 +192,18 @@ describe('rendering', () => {
       deleteSpecialLeaveWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      editBanWorkLog={() => {}}
+      editBusinessTripWorkLog={() => {}}
+      editHomeOfficeWorkLog={() => {}}
+      editMaternityProtectionWorkLog={() => {}}
+      editOvertimeWorkLog={() => {}}
+      editParentalLeaveWorkLog={() => {}}
+      editSickDayUnpaidWorkLog={() => {}}
+      editSickDayWorkLog={() => {}}
+      editSpecialLeaveWorkLog={() => {}}
+      editTimeOffWorkLog={() => {}}
+      editVacationWorkLog={() => {}}
+      editWorkLog={() => {}}
       fetchBanWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
@@ -305,6 +329,18 @@ describe('rendering', () => {
       deleteSpecialLeaveWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      editBanWorkLog={() => {}}
+      editBusinessTripWorkLog={() => {}}
+      editHomeOfficeWorkLog={() => {}}
+      editMaternityProtectionWorkLog={() => {}}
+      editOvertimeWorkLog={() => {}}
+      editParentalLeaveWorkLog={() => {}}
+      editSickDayUnpaidWorkLog={() => {}}
+      editSickDayWorkLog={() => {}}
+      editSpecialLeaveWorkLog={() => {}}
+      editTimeOffWorkLog={() => {}}
+      editVacationWorkLog={() => {}}
+      editWorkLog={() => {}}
       fetchBanWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
@@ -430,6 +466,18 @@ describe('rendering', () => {
       deleteSpecialLeaveWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      editBanWorkLog={() => {}}
+      editBusinessTripWorkLog={() => {}}
+      editHomeOfficeWorkLog={() => {}}
+      editMaternityProtectionWorkLog={() => {}}
+      editOvertimeWorkLog={() => {}}
+      editParentalLeaveWorkLog={() => {}}
+      editSickDayUnpaidWorkLog={() => {}}
+      editSickDayWorkLog={() => {}}
+      editSpecialLeaveWorkLog={() => {}}
+      editTimeOffWorkLog={() => {}}
+      editVacationWorkLog={() => {}}
+      editWorkLog={() => {}}
       fetchBanWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
@@ -556,6 +604,18 @@ describe('rendering', () => {
       deleteSpecialLeaveWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      editBanWorkLog={() => {}}
+      editBusinessTripWorkLog={() => {}}
+      editHomeOfficeWorkLog={() => {}}
+      editMaternityProtectionWorkLog={() => {}}
+      editOvertimeWorkLog={() => {}}
+      editParentalLeaveWorkLog={() => {}}
+      editSickDayUnpaidWorkLog={() => {}}
+      editSickDayWorkLog={() => {}}
+      editSpecialLeaveWorkLog={() => {}}
+      editTimeOffWorkLog={() => {}}
+      editVacationWorkLog={() => {}}
+      editWorkLog={() => {}}
       fetchBanWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
@@ -682,6 +742,18 @@ describe('rendering', () => {
       deleteSpecialLeaveWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      editBanWorkLog={() => {}}
+      editBusinessTripWorkLog={() => {}}
+      editHomeOfficeWorkLog={() => {}}
+      editMaternityProtectionWorkLog={() => {}}
+      editOvertimeWorkLog={() => {}}
+      editParentalLeaveWorkLog={() => {}}
+      editSickDayUnpaidWorkLog={() => {}}
+      editSickDayWorkLog={() => {}}
+      editSpecialLeaveWorkLog={() => {}}
+      editTimeOffWorkLog={() => {}}
+      editVacationWorkLog={() => {}}
+      editWorkLog={() => {}}
       fetchBanWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
@@ -811,6 +883,18 @@ describe('functionality', () => {
       deleteSpecialLeaveWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      editBanWorkLog={() => {}}
+      editBusinessTripWorkLog={() => {}}
+      editHomeOfficeWorkLog={() => {}}
+      editMaternityProtectionWorkLog={() => {}}
+      editOvertimeWorkLog={() => {}}
+      editParentalLeaveWorkLog={() => {}}
+      editSickDayUnpaidWorkLog={() => {}}
+      editSickDayWorkLog={() => {}}
+      editSpecialLeaveWorkLog={() => {}}
+      editTimeOffWorkLog={() => {}}
+      editVacationWorkLog={() => {}}
+      editWorkLog={() => {}}
       fetchBanWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
@@ -941,6 +1025,18 @@ describe('functionality', () => {
       deleteSpecialLeaveWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      editBanWorkLog={() => {}}
+      editBusinessTripWorkLog={() => {}}
+      editHomeOfficeWorkLog={() => {}}
+      editMaternityProtectionWorkLog={() => {}}
+      editOvertimeWorkLog={() => {}}
+      editParentalLeaveWorkLog={() => {}}
+      editSickDayUnpaidWorkLog={() => {}}
+      editSickDayWorkLog={() => {}}
+      editSpecialLeaveWorkLog={() => {}}
+      editTimeOffWorkLog={() => {}}
+      editVacationWorkLog={() => {}}
+      editWorkLog={() => {}}
       fetchBanWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
@@ -1071,6 +1167,18 @@ describe('functionality', () => {
       deleteSpecialLeaveWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      editBanWorkLog={() => {}}
+      editBusinessTripWorkLog={() => {}}
+      editHomeOfficeWorkLog={() => {}}
+      editMaternityProtectionWorkLog={() => {}}
+      editOvertimeWorkLog={() => {}}
+      editParentalLeaveWorkLog={() => {}}
+      editSickDayUnpaidWorkLog={() => {}}
+      editSickDayWorkLog={() => {}}
+      editSpecialLeaveWorkLog={() => {}}
+      editTimeOffWorkLog={() => {}}
+      editVacationWorkLog={() => {}}
+      editWorkLog={() => {}}
       fetchBanWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}
@@ -1199,6 +1307,18 @@ describe('functionality', () => {
       deleteSpecialLeaveWorkLog={() => {}}
       deleteVacationWorkLog={() => {}}
       deleteWorkLog={() => {}}
+      editBanWorkLog={() => {}}
+      editBusinessTripWorkLog={() => {}}
+      editHomeOfficeWorkLog={() => {}}
+      editMaternityProtectionWorkLog={() => {}}
+      editOvertimeWorkLog={() => {}}
+      editParentalLeaveWorkLog={() => {}}
+      editSickDayUnpaidWorkLog={() => {}}
+      editSickDayWorkLog={() => {}}
+      editSpecialLeaveWorkLog={() => {}}
+      editTimeOffWorkLog={() => {}}
+      editVacationWorkLog={() => {}}
+      editWorkLog={() => {}}
       fetchBanWorkLog={() => {}}
       fetchBusinessTripWorkLog={() => {}}
       fetchHomeOfficeWorkLog={() => {}}

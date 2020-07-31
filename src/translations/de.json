@@ -35,6 +35,7 @@
     "action": {
       "approve": "Gewähren",
       "close": "Schließen",
+      "edit": "Bearbeiten",
       "reject": "Ablehnen",
       "delete": "Löschen",
       "save": "Speichern",
@@ -318,6 +319,9 @@
       },
       "detail": {
         "title": "Eintrag"
+      },
+      "edit": {
+        "title": "Eintrag bearbeiten"
       }
     },
     "text": {

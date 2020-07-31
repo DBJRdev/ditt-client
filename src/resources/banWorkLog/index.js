@@ -1,6 +1,7 @@
 export {
   addMultipleBanWorkLogs,
   deleteBanWorkLog,
+  editBanWorkLog,
   fetchBanWorkLog,
 } from './actions';
 

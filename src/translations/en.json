@@ -35,6 +35,7 @@
     "action": {
       "approve": "Approve",
       "close": "Close",
+      "edit": "Edit",
       "reject": "Reject",
       "delete": "Delete",
       "save": "Save",
@@ -319,6 +320,9 @@
       },
       "detail": {
         "title": "Work log"
+      },
+      "edit": {
+        "title": "Edit work log"
       }
     },
     "text": {

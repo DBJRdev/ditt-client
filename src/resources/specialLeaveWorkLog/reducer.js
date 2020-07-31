@@ -62,6 +62,25 @@ export default (state, action) => {
       .setIn(['specialLeaveWorkLog', 'isPostingFailure'], true);
   }
 
+  if (type === actionTypes.EDIT_SPECIAL_LEAVE_WORK_LOG_REQUEST) {
+    return state
+      .setIn(['specialLeaveWorkLog', 'isPosting'], true)
+      .setIn(['specialLeaveWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.EDIT_SPECIAL_LEAVE_WORK_LOG_SUCCESS) {
+    // Fetch is required to reload special leave work log list with edited work log
+    return state
+      .setIn(['specialLeaveWorkLog', 'isPosting'], false)
+      .setIn(['specialLeaveWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.EDIT_SPECIAL_LEAVE_WORK_LOG_FAILURE) {
+    return state
+      .setIn(['specialLeaveWorkLog', 'isPosting'], false)
+      .setIn(['specialLeaveWorkLog', 'isPostingFailure'], true);
+  }
+
   if (type === actionTypes.FETCH_VACATION_WORK_LOG_REQUEST) {
     return state
       .setIn(['specialLeaveWorkLog', 'isFetching'], true)

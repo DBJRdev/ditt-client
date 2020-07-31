@@ -34,6 +34,23 @@ export const deleteSickDayUnpaidWorkLog = (id) => (dispatch) => dispatch({
   },
 });
 
+export const editSickDayUnpaidWorkLog = (id, data) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify({
+      date: toJson(data.date),
+      id,
+    }),
+    endpoint: `${API_URL}/sick_day_unpaid_work_logs/${id}`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.EDIT_SICK_DAY_UNPAID_WORK_LOG_REQUEST,
+      types.EDIT_SICK_DAY_UNPAID_WORK_LOG_SUCCESS,
+      types.EDIT_SICK_DAY_UNPAID_WORK_LOG_FAILURE,
+    ],
+  },
+});
+
 export const fetchSickDayUnpaidWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/sick_day_unpaid_work_logs/${id}`,

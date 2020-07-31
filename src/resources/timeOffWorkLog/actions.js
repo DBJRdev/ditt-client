@@ -49,6 +49,24 @@ export const deleteTimeOffWorkLog = (id) => (dispatch) => dispatch({
   },
 });
 
+export const editTimeOffWorkLog = (id, data) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify({
+      comment: data.comment,
+      date: toJson(data.date),
+      id,
+    }),
+    endpoint: `${API_URL}/time_off_work_logs/${id}`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.EDIT_TIME_OFF_WORK_LOG_REQUEST,
+      types.EDIT_TIME_OFF_WORK_LOG_SUCCESS,
+      types.EDIT_TIME_OFF_WORK_LOG_FAILURE,
+    ],
+  },
+});
+
 export const fetchTimeOffWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/time_off_work_logs/${id}`,

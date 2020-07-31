@@ -1,6 +1,7 @@
 export {
   addMultipleParentalLeaveWorkLogs,
   deleteParentalLeaveWorkLog,
+  editParentalLeaveWorkLog,
   fetchParentalLeaveWorkLog,
 } from './actions';
 

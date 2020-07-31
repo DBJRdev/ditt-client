@@ -58,6 +58,25 @@ export default (state, action) => {
       .setIn(['sickDayUnpaidWorkLog', 'isPostingFailure'], true);
   }
 
+  if (type === actionTypes.EDIT_SICK_DAY_UNPAID_WORK_LOG_REQUEST) {
+    return state
+      .setIn(['sickDayUnpaidWorkLog', 'isPosting'], true)
+      .setIn(['sickDayUnpaidWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.EDIT_SICK_DAY_UNPAID_WORK_LOG_SUCCESS) {
+    // Fetch is required to reload sick day unpaid work log list with edited work log
+    return state
+      .setIn(['sickDayUnpaidWorkLog', 'isPosting'], false)
+      .setIn(['sickDayUnpaidWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.EDIT_SICK_DAY_UNPAID_WORK_LOG_FAILURE) {
+    return state
+      .setIn(['sickDayUnpaidWorkLog', 'isPosting'], false)
+      .setIn(['sickDayUnpaidWorkLog', 'isPostingFailure'], true);
+  }
+
   if (type === actionTypes.FETCH_SICK_DAY_UNPAID_WORK_LOG_REQUEST) {
     return state
       .setIn(['sickDayUnpaidWorkLog', 'isFetching'], true)

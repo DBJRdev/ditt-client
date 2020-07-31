@@ -45,6 +45,14 @@ class WorkLogComponent extends React.Component {
     this.deleteTimeOffWorkLog = this.deleteTimeOffWorkLog.bind(this);
     this.deleteVacationWorkLog = this.deleteVacationWorkLog.bind(this);
     this.deleteWorkLog = this.deleteWorkLog.bind(this);
+    this.editBusinessTripWorkLog = this.editBusinessTripWorkLog.bind(this);
+    this.editHomeOfficeWorkLog = this.editHomeOfficeWorkLog.bind(this);
+    this.editOvertimeWorkLog = this.editOvertimeWorkLog.bind(this);
+    this.editSickDayWorkLog = this.editSickDayWorkLog.bind(this);
+    this.editSpecialLeaveWorkLog = this.editSpecialLeaveWorkLog.bind(this);
+    this.editTimeOffWorkLog = this.editTimeOffWorkLog.bind(this);
+    this.editVacationWorkLog = this.editVacationWorkLog.bind(this);
+    this.editWorkLog = this.editWorkLog.bind(this);
     this.changeSelectedDate = this.changeSelectedDate.bind(this);
   }
 
@@ -298,6 +306,102 @@ class WorkLogComponent extends React.Component {
     });
   }
 
+  editBusinessTripWorkLog(id, data) {
+    const { editBusinessTripWorkLog } = this.props;
+
+    return editBusinessTripWorkLog(id, data).then((response) => {
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+
+      return response;
+    });
+  }
+
+  editHomeOfficeWorkLog(id, data) {
+    const { editHomeOfficeWorkLog } = this.props;
+
+    return editHomeOfficeWorkLog(id, data).then((response) => {
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+
+      return response;
+    });
+  }
+
+  editOvertimeWorkLog(id, data) {
+    const { editOvertimeWorkLog } = this.props;
+
+    return editOvertimeWorkLog(id, data).then((response) => {
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+
+      return response;
+    });
+  }
+
+  editSickDayWorkLog(id, data) {
+    const { editSickDayWorkLog } = this.props;
+
+    return editSickDayWorkLog(id, data).then((response) => {
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+
+      return response;
+    });
+  }
+
+  editSpecialLeaveWorkLog(id, data) {
+    const { editSpecialLeaveWorkLog } = this.props;
+
+    return editSpecialLeaveWorkLog(id, data).then((response) => {
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+
+      return response;
+    });
+  }
+
+  editTimeOffWorkLog(id, data) {
+    const { editTimeOffWorkLog } = this.props;
+
+    return editTimeOffWorkLog(id, data).then((response) => {
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+
+      return response;
+    });
+  }
+
+  editVacationWorkLog(id, data) {
+    const { editVacationWorkLog } = this.props;
+
+    return editVacationWorkLog(id, data).then((response) => {
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+
+      return response;
+    });
+  }
+
+  editWorkLog(id, data) {
+    const { editWorkLog } = this.props;
+
+    return editWorkLog(id, data).then((response) => {
+      if (!response.error) {
+        this.fetchWorkMonth(this.state.selectedDate);
+      }
+
+      return response;
+    });
+  }
+
   fetchWorkMonth(selectedDate) {
     const workMonth = getWorkMonthByMonth(selectedDate, this.props.workMonthList.toJS());
 
@@ -351,6 +455,18 @@ class WorkLogComponent extends React.Component {
             deleteTimeOffWorkLog={this.deleteTimeOffWorkLog}
             deleteVacationWorkLog={this.deleteVacationWorkLog}
             deleteWorkLog={this.deleteWorkLog}
+            editBanWorkLog={() => {}}
+            editBusinessTripWorkLog={this.editBusinessTripWorkLog}
+            editHomeOfficeWorkLog={this.editHomeOfficeWorkLog}
+            editMaternityProtectionWorkLog={() => {}}
+            editOvertimeWorkLog={this.editOvertimeWorkLog}
+            editParentalLeaveWorkLog={() => {}}
+            editSickDayUnpaidWorkLog={() => {}}
+            editSickDayWorkLog={this.editSickDayWorkLog}
+            editSpecialLeaveWorkLog={this.editSpecialLeaveWorkLog}
+            editTimeOffWorkLog={this.editTimeOffWorkLog}
+            editVacationWorkLog={this.editVacationWorkLog}
+            editWorkLog={this.editWorkLog}
             fetchBanWorkLog={this.props.fetchBanWorkLog}
             fetchBusinessTripWorkLog={this.props.fetchBusinessTripWorkLog}
             fetchHomeOfficeWorkLog={this.props.fetchHomeOfficeWorkLog}
@@ -375,6 +491,7 @@ class WorkLogComponent extends React.Component {
             sickDayWorkLog={this.props.sickDayWorkLog}
             specialLeaveWorkLog={this.props.specialLeaveWorkLog}
             timeOffWorkLog={this.props.timeOffWorkLog}
+            uid={this.props.uid}
             vacationWorkLog={this.props.vacationWorkLog}
             workHoursList={this.props.workHoursList}
             workLog={this.props.workLog}
@@ -443,6 +560,14 @@ WorkLogComponent.propTypes = {
   deleteTimeOffWorkLog: PropTypes.func.isRequired,
   deleteVacationWorkLog: PropTypes.func.isRequired,
   deleteWorkLog: PropTypes.func.isRequired,
+  editBusinessTripWorkLog: PropTypes.func.isRequired,
+  editHomeOfficeWorkLog: PropTypes.func.isRequired,
+  editOvertimeWorkLog: PropTypes.func.isRequired,
+  editSickDayWorkLog: PropTypes.func.isRequired,
+  editSpecialLeaveWorkLog: PropTypes.func.isRequired,
+  editTimeOffWorkLog: PropTypes.func.isRequired,
+  editVacationWorkLog: PropTypes.func.isRequired,
+  editWorkLog: PropTypes.func.isRequired,
   fetchBanWorkLog: PropTypes.func.isRequired,
   fetchBusinessTripWorkLog: PropTypes.func.isRequired,
   fetchConfig: PropTypes.func.isRequired,

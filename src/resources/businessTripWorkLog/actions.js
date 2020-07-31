@@ -57,6 +57,28 @@ export const deleteBusinessTripWorkLog = (id) => (dispatch) => dispatch({
   },
 });
 
+export const editBusinessTripWorkLog = (id, data) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify({
+      date: toJson(data.date),
+      destination: data.destination,
+      expectedArrival: data.expectedArrival,
+      expectedDeparture: data.expectedDeparture,
+      id,
+      purpose: data.purpose,
+      transport: data.transport,
+    }),
+    endpoint: `${API_URL}/business_trip_work_logs/${id}`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.EDIT_BUSINESS_TRIP_WORK_LOG_REQUEST,
+      types.EDIT_BUSINESS_TRIP_WORK_LOG_SUCCESS,
+      types.EDIT_BUSINESS_TRIP_WORK_LOG_FAILURE,
+    ],
+  },
+});
+
 export const fetchBusinessTripWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/business_trip_work_logs/${id}`,

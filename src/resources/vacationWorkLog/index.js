@@ -2,6 +2,7 @@ export {
   addVacationWorkLog,
   addMultipleVacationWorkLog,
   deleteVacationWorkLog,
+  editVacationWorkLog,
   fetchVacationWorkLog,
   markMultipleVacationWorkLogApproved,
   markMultipleVacationWorkLogRejected,

@@ -35,6 +35,24 @@ export const deleteBanWorkLog = (id) => (dispatch) => dispatch({
   },
 });
 
+export const editBanWorkLog = (id, data) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify({
+      date: toJson(data.date),
+      id,
+      workTimeLimit: data.workTimeLimit,
+    }),
+    endpoint: `${API_URL}/ban_work_logs/${id}`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.EDIT_BAN_WORK_LOG_REQUEST,
+      types.EDIT_BAN_WORK_LOG_SUCCESS,
+      types.EDIT_BAN_WORK_LOG_FAILURE,
+    ],
+  },
+});
+
 export const fetchBanWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/ban_work_logs/${id}`,

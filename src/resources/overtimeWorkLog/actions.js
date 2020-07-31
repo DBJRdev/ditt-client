@@ -32,6 +32,24 @@ export const deleteOvertimeWorkLog = (id) => (dispatch) => dispatch({
   },
 });
 
+export const editOvertimeWorkLog = (id, data) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify({
+      date: toJson(data.date),
+      id,
+      reason: data.reason,
+    }),
+    endpoint: `${API_URL}/overtime_work_logs/${id}`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.EDIT_OVERTIME_WORK_LOG_REQUEST,
+      types.EDIT_OVERTIME_WORK_LOG_SUCCESS,
+      types.EDIT_OVERTIME_WORK_LOG_FAILURE,
+    ],
+  },
+});
+
 export const fetchOvertimeWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/overtime_work_logs/${id}`,

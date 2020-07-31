@@ -67,7 +67,7 @@ export default (state, action) => {
       .setIn(['vacationWorkLog', 'isPostingFailure'], true);
   }
 
-  if (type === actionTypes.ADD_VACATION_WORK_LOG_REQUEST) {
+  if (type === actionTypes.DELETE_VACATION_WORK_LOG_REQUEST) {
     return state
       .setIn(['vacationWorkLog', 'isPosting'], true)
       .setIn(['vacationWorkLog', 'isPostingFailure'], false);
@@ -84,6 +84,25 @@ export default (state, action) => {
   if (type === actionTypes.DELETE_VACATION_WORK_LOG_FAILURE) {
     return state
       .setIn(['vacationWorkLog', 'data'], null)
+      .setIn(['vacationWorkLog', 'isPosting'], false)
+      .setIn(['vacationWorkLog', 'isPostingFailure'], true);
+  }
+
+  if (type === actionTypes.EDIT_VACATION_WORK_LOG_REQUEST) {
+    return state
+      .setIn(['vacationWorkLog', 'isPosting'], true)
+      .setIn(['vacationWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.EDIT_VACATION_WORK_LOG_SUCCESS) {
+    // Fetch is required to reload vacation work log list with edited work log
+    return state
+      .setIn(['vacationWorkLog', 'isPosting'], false)
+      .setIn(['vacationWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.EDIT_VACATION_WORK_LOG_FAILURE) {
+    return state
       .setIn(['vacationWorkLog', 'isPosting'], false)
       .setIn(['vacationWorkLog', 'isPostingFailure'], true);
   }

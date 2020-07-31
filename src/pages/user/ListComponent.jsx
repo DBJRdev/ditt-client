@@ -129,7 +129,7 @@ class ListComponent extends React.Component {
           columns={columns}
           rows={this.props.userList.toJS()}
           sort={{
-            ascendingIcon: null,
+            ascendingIcon: <Icon icon="arrow_upward" />,
             changeHandler: (column, direction) => {
               const orderDirection = direction === 'asc' ? 'desc' : 'asc';
 
