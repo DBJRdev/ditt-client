@@ -785,6 +785,14 @@ class WorkLogCalendar extends React.Component {
     }
 
     daysOfSelectedMonth.forEach((day) => {
+      const isParentalLeavePresent = !!day.workLogList.find(
+        (workLog) => workLog.type === PARENTAL_LEAVE_WORK_LOG,
+      );
+
+      if (isParentalLeavePresent) {
+        requiredHours -= workHours.get('requiredHours');
+      }
+
       workedTime.add(day.workTime.workTime);
     });
 
