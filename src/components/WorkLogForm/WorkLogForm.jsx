@@ -110,7 +110,9 @@ class WorkLogForm extends React.Component {
         },
         isValid: false,
       },
-      workLogTimer: getWorkLogTimer() ? toMomentDateTime(getWorkLogTimer()) : null,
+      workLogTimer: (props.showWorkLogTimer && getWorkLogTimer())
+        ? toMomentDateTime(getWorkLogTimer())
+        : null,
       workLogTimerInterval: '00:00:00',
     };
 
@@ -142,6 +144,7 @@ class WorkLogForm extends React.Component {
       banWorkLogsOfDay,
       config,
       date,
+      showWorkLogTimer,
       user,
       workLogsOfDay,
     } = this.props;
@@ -163,7 +166,7 @@ class WorkLogForm extends React.Component {
     this.setState({ formValidity });
 
     if (formValidity.isValid) {
-      if (formData.type === WORK_LOG) {
+      if (formData.type === WORK_LOG && showWorkLogTimer) {
         clearInterval(this.workLogTimer);
 
         this.setState({
@@ -251,10 +254,10 @@ class WorkLogForm extends React.Component {
         startMinute: startTime.format('mm'),
       },
       workLogTimer: startTime,
+    }, () => {
+      setWorkLogTimer(toJson(startTime));
+      this.startWorkLogTimer();
     });
-    setWorkLogTimer(toJson(startTime));
-
-    this.startWorkLogTimer();
   }
 
   startWorkLogTimer() {
@@ -273,6 +276,7 @@ class WorkLogForm extends React.Component {
           ...formData,
           endHour: endTime.format('HH'),
           endMinute: endTime.format('mm'),
+          type: WORK_LOG,
         },
         workLogTimerInterval: interval.format('HH:mm:ss'),
       });
@@ -664,6 +668,7 @@ class WorkLogForm extends React.Component {
     const {
       formData,
       formValidity,
+      workLogTimer,
       workLogTimerInterval,
     } = this.state;
 
@@ -739,7 +744,7 @@ class WorkLogForm extends React.Component {
               <ListItem>
                 <SelectField
                   changeHandler={this.changeHandler}
-                  disabled={Boolean(data)}
+                  disabled={Boolean(data) || (showWorkLogTimer && workLogTimer)}
                   helperText={formValidity.elements.type}
                   id="type"
                   label={t('workLog:element.type')}
