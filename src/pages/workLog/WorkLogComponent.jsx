@@ -194,7 +194,10 @@ class WorkLogComponent extends React.Component {
 
   addMultipleTimeOffWorkLog(data) {
     const workingDays = getWorkingDays(data.date, data.dateTo, this.props.config.get('supportedHolidays'));
-    const workLogs = workingDays.map((workingDay) => ({ date: workingDay }));
+    const workLogs = workingDays.map((workingDay) => ({
+      comment: data.comment,
+      date: workingDay,
+    }));
 
     return this.props.addMultipleTimeOffWorkLog(workLogs).then((response) => {
       if (!response.error) {

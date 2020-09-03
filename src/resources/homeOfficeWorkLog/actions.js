@@ -23,7 +23,7 @@ export const addHomeOfficeWorkLog = (data) => (dispatch) => dispatch({
 export const addMultipleHomeOfficeWorkLog = (data) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify(data.map((workLog) => ({
-      comment: data.comment,
+      comment: workLog.comment,
       date: toJson(workLog.date),
     }))),
     endpoint: `${API_URL}/home_office_work_logs/bulk`,
