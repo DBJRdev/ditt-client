@@ -1,3 +1,4 @@
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import {
@@ -31,10 +32,15 @@ import {
   getTypeLabel,
 } from '../../../../services/workLogService';
 import { VARIANT_SICK_CHILD } from '../../../../resources/sickDayWorkLog';
-import { toHourMinuteFormat } from '../../../../services/dateTimeService';
+import {
+  localizedMoment,
+  toHourMinuteFormat,
+} from '../../../../services/dateTimeService';
 
 const WorkLogDetailButton = (props) => {
   const {
+    currentDate,
+    daysOfCurrentMonth,
     onClick,
     onDuplicateClick,
     workLog,
@@ -57,6 +63,20 @@ const WorkLogDetailButton = (props) => {
   const supportsDuplicate = [BUSINESS_TRIP_WORK_LOG, HOME_OFFICE_WORK_LOG, OVERTIME_WORK_LOG,
     SICK_DAY_WORK_LOG, SPECIAL_LEAVE_WORK_LOG, TIME_OFF_WORK_LOG, VACATION_WORK_LOG, WORK_LOG];
 
+  let isDuplicateActionDisabled = localizedMoment()
+    .endOf('month')
+    .isSame(currentDate, 'day');
+
+  const foundDayOfMonth = daysOfCurrentMonth.find((day) => day.date.isSame(
+    currentDate.clone().add(1, 'days'),
+    'day',
+  ));
+  if (foundDayOfMonth) {
+    isDuplicateActionDisabled = foundDayOfMonth.workLogList.find(
+      (iWorkLog) => iWorkLog.type === workLog.type,
+    ) !== undefined;
+  }
+
   const createButton = (type, id, label, icon) => (
     <ToolbarItem>
       <ButtonGroup
@@ -74,7 +94,7 @@ const WorkLogDetailButton = (props) => {
           }
           label={label}
         />
-        {supportsDuplicate.includes(type) ? (
+        {!isDuplicateActionDisabled && supportsDuplicate.includes(type) ? (
           <Button
             beforeLabel={
               isDuplicateReqPending
@@ -198,6 +218,13 @@ WorkLogDetailButton.defaultProps = {
 };
 
 WorkLogDetailButton.propTypes = {
+  currentDate: PropTypes.instanceOf(moment).isRequired,
+  daysOfCurrentMonth: PropTypes.arrayOf(PropTypes.shape({
+    date: PropTypes.instanceOf(moment).isRequired,
+    workLogList: PropTypes.arrayOf(PropTypes.shape({
+      type: PropTypes.string.isRequired,
+    })).isRequired,
+  })).isRequired,
   onClick: PropTypes.func.isRequired,
   onDuplicateClick: PropTypes.func,
   t: PropTypes.func.isRequired,

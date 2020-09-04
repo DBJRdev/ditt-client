@@ -1180,13 +1180,14 @@ class WorkLogCalendar extends React.Component {
                       <Toolbar dense>
                         {day.workLogList.map((workLog) => (
                           <WorkLogDetailButton
+                            currentDate={day.date}
+                            daysOfCurrentMonth={daysOfSelectedMonth}
                             key={`${workLog.type}_${workLog.id}`}
                             onClick={this.openDeleteWorkLogDialog}
                             onDuplicateClick={this.duplicateWorkLog}
                             workLog={workLog}
                           />
                         ))}
-
                         {
                           day.date.isSame(date, 'day')
                           && canAddWorkLog
