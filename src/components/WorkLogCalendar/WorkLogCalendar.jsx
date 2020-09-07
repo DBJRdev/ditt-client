@@ -291,33 +291,38 @@ class WorkLogCalendar extends React.Component {
     return null;
   }
 
-  openDeleteWorkLogDialog(e, id, type) {
+  async openDeleteWorkLogDialog(e, id, type) {
     e.stopPropagation();
 
+    let response = null;
     if (BAN_WORK_LOG === type) {
-      this.props.fetchBanWorkLog(id);
+      response = await this.props.fetchBanWorkLog(id);
     } else if (BUSINESS_TRIP_WORK_LOG === type) {
-      this.props.fetchBusinessTripWorkLog(id);
+      response = await this.props.fetchBusinessTripWorkLog(id);
     } else if (HOME_OFFICE_WORK_LOG === type) {
-      this.props.fetchHomeOfficeWorkLog(id);
+      response = await this.props.fetchHomeOfficeWorkLog(id);
     } else if (MATERNITY_PROTECTION_WORK_LOG === type) {
-      this.props.fetchMaternityProtectionWorkLog(id);
+      response = await this.props.fetchMaternityProtectionWorkLog(id);
     } else if (OVERTIME_WORK_LOG === type) {
-      this.props.fetchOvertimeWorkLog(id);
+      response = await this.props.fetchOvertimeWorkLog(id);
     } else if (PARENTAL_LEAVE_WORK_LOG === type) {
-      this.props.fetchParentalLeaveWorkLog(id);
+      response = await this.props.fetchParentalLeaveWorkLog(id);
     } else if (SICK_DAY_UNPAID_WORK_LOG === type) {
-      this.props.fetchSickDayUnpaidWorkLog(id);
+      response = await this.props.fetchSickDayUnpaidWorkLog(id);
     } else if (SICK_DAY_WORK_LOG === type) {
-      this.props.fetchSickDayWorkLog(id);
+      response = await this.props.fetchSickDayWorkLog(id);
     } else if (SPECIAL_LEAVE_WORK_LOG === type) {
-      this.props.fetchSpecialLeaveWorkLog(id);
+      response = await this.props.fetchSpecialLeaveWorkLog(id);
     } else if (TIME_OFF_WORK_LOG === type) {
-      this.props.fetchTimeOffWorkLog(id);
+      response = await this.props.fetchTimeOffWorkLog(id);
     } else if (VACATION_WORK_LOG === type) {
-      this.props.fetchVacationWorkLog(id);
+      response = await this.props.fetchVacationWorkLog(id);
     } else if (WORK_LOG === type) {
-      this.props.fetchWorkLog(id);
+      response = await this.props.fetchWorkLog(id);
+    }
+
+    if (response === null || response.type.endsWith('FAILURE')) {
+      return;
     }
 
     this.setState({

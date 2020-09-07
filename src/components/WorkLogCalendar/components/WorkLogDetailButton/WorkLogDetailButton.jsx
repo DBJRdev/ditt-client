@@ -51,6 +51,7 @@ const WorkLogDetailButton = (props) => {
     workLog,
     workMonth,
   } = props;
+  const [isGetReqPending, setGetReqPending] = useState(false);
   const [isEditReqPending, setEditReqPending] = useState(false);
   const [isDuplicateReqPending, setDuplicateReqPending] = useState(false);
 
@@ -146,19 +147,24 @@ const WorkLogDetailButton = (props) => {
   const createButton = (type, id, label, icon) => (
     <ToolbarItem>
       <ButtonGroup
-        disabled={isDuplicateReqPending || isEditReqPending}
+        disabled={isDuplicateReqPending || isEditReqPending || isGetReqPending}
         priority="outline"
       >
         <Button
           beforeLabel={<Icon icon={icon} />}
           clickHandler={
-            (e) => onClick(
-              e,
-              id,
-              type,
-            )
+            async (e) => {
+              setGetReqPending(true);
+              await onClick(
+                e,
+                id,
+                type,
+              );
+              setGetReqPending(false);
+            }
           }
           label={label}
+          loadingIcon={isGetReqPending ? <LoadingIcon /> : null}
         />
         {isEnabled ? (
           <Button
