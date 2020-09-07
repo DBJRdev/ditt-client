@@ -124,7 +124,13 @@ class LayoutComponent extends React.Component {
                   {this.isAuthorized([ROLE_EMPLOYEE]) && (
                     <ToolbarItem>
                       <Button
-                        clickHandler={() => history.push(routes.index)}
+                        clickHandler={() => {
+                          if (history.location.pathname === routes.index) {
+                            window.location.reload();
+                          } else {
+                            history.push(routes.index);
+                          }
+                        }}
                         label={t('layout:menu.workLogs')}
                         priority="outline"
                       />
