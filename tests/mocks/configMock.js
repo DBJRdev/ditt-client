@@ -17,12 +17,8 @@ export default Immutable.fromJS({
   ],
   workedHoursLimits: {
     lowerLimit: {
-      changeBy: -900,
-      limit: 21600,
-    },
-    mediumLimit: {
       changeBy: -1800,
-      limit: 22500,
+      limit: 21600,
     },
     upperLimit: {
       changeBy: -2700,
