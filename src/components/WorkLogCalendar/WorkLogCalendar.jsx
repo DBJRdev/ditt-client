@@ -819,11 +819,25 @@ class WorkLogCalendar extends React.Component {
     const {
       selectedDate,
       t,
+      workMonth,
       workHoursList,
     } = this.props;
     let requiredHours = 0;
     let requiredHoursLeft = 0;
     const workedTime = moment.duration();
+
+    if (workMonth && workMonth.get('status') === STATUS_APPROVED) {
+      workedTime.add(workMonth.get('workedTime') * 1000);
+      requiredHours = workMonth.get('requiredTime');
+
+      return t(
+        'workLog:text.workedAndRequiredHours',
+        {
+          requiredHours: toHourMinuteFormatFromInt(requiredHours),
+          workedHours: `${workedTime.hours() + (workedTime.days() * 24)}:${(workedTime.minutes()) < 10 ? '0' : ''}${workedTime.minutes()}`,
+        },
+      );
+    }
 
     const workHours = workHoursList.find((item) => (
       item.get('year') === selectedDate.year()

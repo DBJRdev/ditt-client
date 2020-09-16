@@ -133,6 +133,7 @@ export default (state, action) => {
         id: parseInt(parentalLeaveWorkLogsData.id, 10),
         type: PARENTAL_LEAVE_WORK_LOG,
       })),
+    requiredTime: data.workedTime ? parseInt(data.requiredTime, 10) : null,
     sickDayUnpaidWorkLogs: data.sickDayUnpaidWorkLogs
       .map((sickDayUnpaidWorkLogsData) => ({
         date: toMomentDateTime(sickDayUnpaidWorkLogsData.date),
@@ -174,6 +175,7 @@ export default (state, action) => {
       type: WORK_LOG,
     })),
     workTimeCorrection: parseInt(data.workTimeCorrection, 10),
+    workedTime: data.workedTime ? parseInt(data.workedTime, 10) : null,
     year: parseInt(data.year.year, 10),
   });
 
