@@ -187,16 +187,23 @@ export const getWorkedTime = (
   if (standardWorkLogs.length > 0) {
     if (
       workTimeWithoutCorrection > workedHoursLimits.lowerLimit.limit
-      && workTimeWithoutCorrection <= workedHoursLimits.upperLimit.limit
+      && workTimeWithoutCorrection <= workedHoursLimits.mediumLimit.limit
       && breakTime < Math.abs(workedHoursLimits.lowerLimit.changeBy)
     ) {
       const timeToDeduct = Math.abs(workedHoursLimits.lowerLimit.changeBy) - breakTime;
 
       workTime -= timeToDeduct;
       breakTime += timeToDeduct;
-    }
+    } else if (
+      workTimeWithoutCorrection > workedHoursLimits.mediumLimit.limit
+      && workTimeWithoutCorrection <= workedHoursLimits.upperLimit.limit
+      && breakTime < Math.abs(workedHoursLimits.mediumLimit.changeBy)
+    ) {
+      const timeToDeduct = Math.abs(workedHoursLimits.mediumLimit.changeBy) - breakTime;
 
-    if (
+      workTime -= timeToDeduct;
+      breakTime += timeToDeduct;
+    } else if (
       workTimeWithoutCorrection > workedHoursLimits.upperLimit.limit
       && breakTime < Math.abs(workedHoursLimits.upperLimit.changeBy)
     ) {

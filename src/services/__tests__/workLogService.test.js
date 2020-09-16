@@ -17,12 +17,16 @@ describe('getWorkedTime', () => {
   };
   const workedHoursLimits = {
     lowerLimit: {
-      changeBy: -1800,
+      changeBy: -900,
       limit: 21600,
+    },
+    mediumLimit: {
+      changeBy: -1800,
+      limit: 22500,
     },
     upperLimit: {
       changeBy: -2700,
-      limit: 32400,
+      limit: 34200,
     },
   };
   const supportedHolidays = [
@@ -136,6 +140,97 @@ describe('getWorkedTime', () => {
         type: 'WORK_LOG',
       },
       {
+        endTime: toMomentDateTime('2018-01-02T14:20:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(900);
+    expect(result.isWorkTimeCorrected).toEqual(true);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate standard work logs above lower limit with short break', () => {
+    const workLogs = [
+      {
+        endTime: toMomentDateTime('2018-01-02T11:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T11:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T14:35:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T12:20:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(900);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6.25 * 3600);
+  });
+
+  it('test calculate standard work logs above lower limit with long break', () => {
+    const workLogs = [
+      {
+        endTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T16:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T14:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T17:15:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T17:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(3 * 3600);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6.25 * 3600);
+  });
+
+  it('test calculate standard work logs above medium limit without break', () => {
+    const workLogs = [
+      {
+        endTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
         endTime: toMomentDateTime('2018-01-02T15:05:00.000Z'),
         startTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
         type: 'WORK_LOG',
@@ -155,7 +250,7 @@ describe('getWorkedTime', () => {
     expect(result.workTime.asSeconds()).toEqual(6.5 * 3600);
   });
 
-  it('test calculate standard work logs above lower limit with short break', () => {
+  it('test calculate standard work logs above medium limit with short break', () => {
     const workLogs = [
       {
         endTime: toMomentDateTime('2018-01-02T11:00:00.000Z'),
@@ -187,7 +282,7 @@ describe('getWorkedTime', () => {
     expect(result.workTime.asSeconds()).toEqual(6.75 * 3600);
   });
 
-  it('test calculate standard work logs above lower limit with long break', () => {
+  it('test calculate standard work logs above medium limit with long break', () => {
     const workLogs = [
       {
         endTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
@@ -401,6 +496,97 @@ describe('getWorkedTime', () => {
         type: 'WORK_LOG',
       },
       {
+        endTime: toMomentDateTime('2018-01-01T14:20:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T12:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      publicHolidayDate,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(900);
+    expect(result.isWorkTimeCorrected).toEqual(true);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600 * 1.35);
+  });
+
+  it('test calculate standard work logs above lower limit with short break during public holidays', () => {
+    const workLogs = [
+      {
+        endTime: toMomentDateTime('2018-01-01T11:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T12:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T11:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T14:35:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T12:20:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      publicHolidayDate,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(900);
+    expect(result.isWorkTimeCorrected).toEqual(true);
+    expect(result.workTime.asSeconds()).toEqual(6.25 * 3600 * 1.35);
+  });
+
+  it('test calculate standard work logs above lower limit with long break during public holidays', () => {
+    const workLogs = [
+      {
+        endTime: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T16:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T14:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T17:15:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T17:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      publicHolidayDate,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(3 * 3600);
+    expect(result.isWorkTimeCorrected).toEqual(true);
+    expect(result.workTime.asSeconds()).toEqual(6.25 * 3600 * 1.35);
+  });
+
+  it('test calculate standard work logs above medium limit without break during public holidays', () => {
+    const workLogs = [
+      {
+        endTime: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
         endTime: toMomentDateTime('2018-01-01T15:05:00.000Z'),
         startTime: toMomentDateTime('2018-01-01T12:05:00.000Z'),
         type: 'WORK_LOG',
@@ -420,7 +606,7 @@ describe('getWorkedTime', () => {
     expect(result.workTime.asSeconds()).toEqual(6.5 * 3600 * 1.35);
   });
 
-  it('test calculate standard work logs above lower limit with short break during public holidays', () => {
+  it('test calculate standard work logs above medium limit with short break during public holidays', () => {
     const workLogs = [
       {
         endTime: toMomentDateTime('2018-01-01T11:00:00.000Z'),
@@ -452,7 +638,7 @@ describe('getWorkedTime', () => {
     expect(result.workTime.asSeconds()).toEqual(6.75 * 3600 * 1.35);
   });
 
-  it('test calculate standard work logs above lower limit with long break during public holidays', () => {
+  it('test calculate standard work logs above medium limit with long break during public holidays', () => {
     const workLogs = [
       {
         endTime: toMomentDateTime('2018-01-01T12:00:00.000Z'),
@@ -666,6 +852,97 @@ describe('getWorkedTime', () => {
         type: 'WORK_LOG',
       },
       {
+        endTime: toMomentDateTime('2018-01-07T14:20:00.000Z'),
+        startTime: toMomentDateTime('2018-01-07T12:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      sundayDate,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(900);
+    expect(result.isWorkTimeCorrected).toEqual(true);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600 * 1.25);
+  });
+
+  it('test calculate standard work logs above lower limit with short break during sunday', () => {
+    const workLogs = [
+      {
+        endTime: toMomentDateTime('2018-01-07T11:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-07T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-07T12:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-07T11:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-07T14:35:00.000Z'),
+        startTime: toMomentDateTime('2018-01-07T12:20:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      sundayDate,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(900);
+    expect(result.isWorkTimeCorrected).toEqual(true);
+    expect(result.workTime.asSeconds()).toEqual(6.25 * 3600 * 1.25);
+  });
+
+  it('test calculate standard work logs above lower limit with long break during sunday', () => {
+    const workLogs = [
+      {
+        endTime: toMomentDateTime('2018-01-07T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-07T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-07T16:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-07T14:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-07T17:15:00.000Z'),
+        startTime: toMomentDateTime('2018-01-07T17:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      sundayDate,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(3 * 3600);
+    expect(result.isWorkTimeCorrected).toEqual(true);
+    expect(result.workTime.asSeconds()).toEqual(6.25 * 3600 * 1.25);
+  });
+
+  it('test calculate standard work logs above medium limit without break during sunday', () => {
+    const workLogs = [
+      {
+        endTime: toMomentDateTime('2018-01-07T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-07T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
         endTime: toMomentDateTime('2018-01-07T15:05:00.000Z'),
         startTime: toMomentDateTime('2018-01-07T12:05:00.000Z'),
         type: 'WORK_LOG',
@@ -685,7 +962,7 @@ describe('getWorkedTime', () => {
     expect(result.workTime.asSeconds()).toEqual(6.5 * 3600 * 1.25);
   });
 
-  it('test calculate standard work logs above lower limit with short break during sunday', () => {
+  it('test calculate standard work logs above medium limit with short break during sunday', () => {
     const workLogs = [
       {
         endTime: toMomentDateTime('2018-01-07T11:00:00.000Z'),
@@ -717,7 +994,7 @@ describe('getWorkedTime', () => {
     expect(result.workTime.asSeconds()).toEqual(6.75 * 3600 * 1.25);
   });
 
-  it('test calculate standard work logs above lower limit with long break during sunday', () => {
+  it('test calculate standard work logs above medium limit with long break during sunday', () => {
     const workLogs = [
       {
         endTime: toMomentDateTime('2018-01-07T12:00:00.000Z'),
@@ -951,6 +1228,112 @@ describe('getWorkedTime', () => {
         type: 'WORK_LOG',
       },
       {
+        endTime: toMomentDateTime('2018-01-02T14:20:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(900);
+    expect(result.isWorkTimeCorrected).toEqual(true);
+    expect(result.workTime.asSeconds()).toEqual(2 * 3600);
+  });
+
+  it('test calculate ban work log with standard work logs above lower limit with short break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        type: 'BAN_WORK_LOG',
+        workTimeLimit: 2 * 3600,
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T11:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T11:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T14:35:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T12:20:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(900);
+    expect(result.isWorkTimeCorrected).toEqual(true);
+    expect(result.workTime.asSeconds()).toEqual(2 * 3600);
+  });
+
+  it('test calculate ban work log with standard work logs above lower limit with long break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        type: 'BAN_WORK_LOG',
+        workTimeLimit: 2 * 3600,
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T16:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T14:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T17:15:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T17:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(3 * 3600);
+    expect(result.isWorkTimeCorrected).toEqual(true);
+    expect(result.workTime.asSeconds()).toEqual(2 * 3600);
+  });
+
+  it('test calculate ban work log with standard work logs above medium limit without break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        type: 'BAN_WORK_LOG',
+        workTimeLimit: 2 * 3600,
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
         endTime: toMomentDateTime('2018-01-02T15:05:00.000Z'),
         startTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
         type: 'WORK_LOG',
@@ -970,7 +1353,7 @@ describe('getWorkedTime', () => {
     expect(result.workTime.asSeconds()).toEqual(2 * 3600);
   });
 
-  it('test calculate ban work log with standard work logs above lower limit with short break', () => {
+  it('test calculate ban work log with standard work logs above medium limit with short break', () => {
     const workLogs = [
       {
         date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
@@ -1007,7 +1390,7 @@ describe('getWorkedTime', () => {
     expect(result.workTime.asSeconds()).toEqual(2 * 3600);
   });
 
-  it('test calculate ban work log with standard work logs above lower limit with long break', () => {
+  it('test calculate ban work log with standard work logs above medium limit with long break', () => {
     const workLogs = [
       {
         date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
@@ -1364,6 +1747,112 @@ describe('getWorkedTime', () => {
         type: 'WORK_LOG',
       },
       {
+        endTime: toMomentDateTime('2018-01-02T14:20:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(900);
+    expect(result.isWorkTimeCorrected).toEqual(true);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate approved business trip work logs above lower limit with short break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'BUSINESS_TRIP_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T11:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T11:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T14:35:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T12:20:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(900);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6.25 * 3600);
+  });
+
+  it('test calculate approved business trip work logs above lower limit with long break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'BUSINESS_TRIP_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T16:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T14:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T17:15:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T17:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(3 * 3600);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6.25 * 3600);
+  });
+
+  it('test calculate approved business trip work logs above medium limit without break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'BUSINESS_TRIP_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
         endTime: toMomentDateTime('2018-01-02T15:05:00.000Z'),
         startTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
         type: 'WORK_LOG',
@@ -1383,7 +1872,7 @@ describe('getWorkedTime', () => {
     expect(result.workTime.asSeconds()).toEqual(6.5 * 3600);
   });
 
-  it('test calculate approved business trip work logs above lower limit with short break', () => {
+  it('test calculate approved business trip work logs above medium limit with short break', () => {
     const workLogs = [
       {
         date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
@@ -1420,7 +1909,7 @@ describe('getWorkedTime', () => {
     expect(result.workTime.asSeconds()).toEqual(6.75 * 3600);
   });
 
-  it('test calculate approved business trip work logs above lower limit with long break', () => {
+  it('test calculate approved business trip work logs above medium limit with long break', () => {
     const workLogs = [
       {
         date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
@@ -1782,6 +2271,112 @@ describe('getWorkedTime', () => {
         type: 'WORK_LOG',
       },
       {
+        endTime: toMomentDateTime('2018-01-02T14:20:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(900);
+    expect(result.isWorkTimeCorrected).toEqual(true);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate approved home office work logs above lower limit with short break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'HOME_OFFICE_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T11:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T11:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T14:35:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T12:20:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(900);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6.25 * 3600);
+  });
+
+  it('test calculate approved home office work logs above lower limit with long break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'HOME_OFFICE_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T16:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T14:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T17:15:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T17:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(3 * 3600);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6.25 * 3600);
+  });
+
+  it('test calculate approved home office work logs above medium limit without break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'HOME_OFFICE_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
         endTime: toMomentDateTime('2018-01-02T15:05:00.000Z'),
         startTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
         type: 'WORK_LOG',
@@ -1801,7 +2396,7 @@ describe('getWorkedTime', () => {
     expect(result.workTime.asSeconds()).toEqual(6.5 * 3600);
   });
 
-  it('test calculate approved home office work logs above lower limit with short break', () => {
+  it('test calculate approved home office work logs above medium limit with short break', () => {
     const workLogs = [
       {
         date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
@@ -1838,7 +2433,7 @@ describe('getWorkedTime', () => {
     expect(result.workTime.asSeconds()).toEqual(6.75 * 3600);
   });
 
-  it('test calculate approved home office work logs above lower limit with long break', () => {
+  it('test calculate approved home office work logs above medium limit with long break', () => {
     const workLogs = [
       {
         date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
@@ -2171,7 +2766,7 @@ describe('getWorkedTime', () => {
         type: 'WORK_LOG',
       },
       {
-        endTime: toMomentDateTime('2018-01-02T15:05:00.000Z'),
+        endTime: toMomentDateTime('2018-01-02T14:20:00.000Z'),
         startTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
         type: 'WORK_LOG',
       },
@@ -2207,7 +2802,7 @@ describe('getWorkedTime', () => {
         type: 'WORK_LOG',
       },
       {
-        endTime: toMomentDateTime('2018-01-02T15:20:00.000Z'),
+        endTime: toMomentDateTime('2018-01-02T14:35:00.000Z'),
         startTime: toMomentDateTime('2018-01-02T12:20:00.000Z'),
         type: 'WORK_LOG',
       },
@@ -2227,6 +2822,109 @@ describe('getWorkedTime', () => {
   });
 
   it('test calculate maternity protection work logs above lower limit with long break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        type: 'MATERNITY_PROTECTION_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T16:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T14:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T17:15:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T17:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate maternity protection work logs above medium limit without break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        type: 'MATERNITY_PROTECTION_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T15:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate maternity protection work logs above medium limit with short break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        type: 'MATERNITY_PROTECTION_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T11:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T11:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T15:20:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T12:20:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate maternity protection work logs above medium limit with long break', () => {
     const workLogs = [
       {
         date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
@@ -2555,6 +3253,109 @@ describe('getWorkedTime', () => {
         type: 'WORK_LOG',
       },
       {
+        endTime: toMomentDateTime('2018-01-02T14:20:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(900);
+    expect(result.isWorkTimeCorrected).toEqual(true);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate parental leave work logs above lower limit with short break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        type: 'PARENTAL_LEAVE_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T11:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T11:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T14:35:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T12:20:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(900);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6.25 * 3600);
+  });
+
+  it('test calculate parental leave work logs above lower limit with long break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        type: 'PARENTAL_LEAVE_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T16:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T14:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T17:15:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T17:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(3 * 3600);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6.25 * 3600);
+  });
+
+  it('test calculate parental leave work logs above medium limit without break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        type: 'PARENTAL_LEAVE_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
         endTime: toMomentDateTime('2018-01-02T15:05:00.000Z'),
         startTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
         type: 'WORK_LOG',
@@ -2574,7 +3375,7 @@ describe('getWorkedTime', () => {
     expect(result.workTime.asSeconds()).toEqual(6.5 * 3600);
   });
 
-  it('test calculate parental leave work logs above lower limit with short break', () => {
+  it('test calculate parental leave work logs above medium limit with short break', () => {
     const workLogs = [
       {
         date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
@@ -2610,7 +3411,7 @@ describe('getWorkedTime', () => {
     expect(result.workTime.asSeconds()).toEqual(6.75 * 3600);
   });
 
-  it('test calculate parental leave work logs above lower limit with long break', () => {
+  it('test calculate parental leave work logs above medium limit with long break', () => {
     const workLogs = [
       {
         date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
@@ -3058,7 +3859,7 @@ describe('getWorkedTime', () => {
         type: 'WORK_LOG',
       },
       {
-        endTime: toMomentDateTime('2018-01-02T15:05:00.000Z'),
+        endTime: toMomentDateTime('2018-01-02T14:20:00.000Z'),
         startTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
         type: 'WORK_LOG',
       },
@@ -3095,7 +3896,7 @@ describe('getWorkedTime', () => {
         type: 'WORK_LOG',
       },
       {
-        endTime: toMomentDateTime('2018-01-02T15:20:00.000Z'),
+        endTime: toMomentDateTime('2018-01-02T14:35:00.000Z'),
         startTime: toMomentDateTime('2018-01-02T12:20:00.000Z'),
         type: 'WORK_LOG',
       },
@@ -3115,6 +3916,112 @@ describe('getWorkedTime', () => {
   });
 
   it('test calculate approved special leave work logs above lower limit with long break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'SPECIAL_LEAVE_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T16:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T14:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T17:15:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T17:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate approved special leave work logs above medium limit without break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'SPECIAL_LEAVE_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T15:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate approved special leave work logs above medium limit with short break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'SPECIAL_LEAVE_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T11:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T11:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T15:20:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T12:20:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate approved special leave work logs above medium limit with long break', () => {
     const workLogs = [
       {
         date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
@@ -3476,6 +4383,112 @@ describe('getWorkedTime', () => {
         type: 'WORK_LOG',
       },
       {
+        endTime: toMomentDateTime('2018-01-02T14:20:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(900);
+    expect(result.isWorkTimeCorrected).toEqual(true);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate approved time off work logs above lower limit with short break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'TIME_OFF_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T11:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T11:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T14:35:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T12:20:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(900);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6.25 * 3600);
+  });
+
+  it('test calculate approved time off work logs above lower limit with long break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'TIME_OFF_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T16:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T14:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T17:15:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T17:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(3 * 3600);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6.25 * 3600);
+  });
+
+  it('test calculate approved time off work logs above medium limit without break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'TIME_OFF_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
         endTime: toMomentDateTime('2018-01-02T15:05:00.000Z'),
         startTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
         type: 'WORK_LOG',
@@ -3495,7 +4508,7 @@ describe('getWorkedTime', () => {
     expect(result.workTime.asSeconds()).toEqual(6.5 * 3600);
   });
 
-  it('test calculate approved time off work logs above lower limit with short break', () => {
+  it('test calculate approved time off work logs above medium limit with short break', () => {
     const workLogs = [
       {
         date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
@@ -3532,7 +4545,7 @@ describe('getWorkedTime', () => {
     expect(result.workTime.asSeconds()).toEqual(6.75 * 3600);
   });
 
-  it('test calculate approved time off work logs above lower limit with long break', () => {
+  it('test calculate approved time off work logs above medium limit with long break', () => {
     const workLogs = [
       {
         date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
@@ -3862,7 +4875,7 @@ describe('getWorkedTime', () => {
         type: 'WORK_LOG',
       },
       {
-        endTime: toMomentDateTime('2018-01-02T15:05:00.000Z'),
+        endTime: toMomentDateTime('2018-01-02T14:20:00.000Z'),
         startTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
         type: 'WORK_LOG',
       },
@@ -3899,7 +4912,7 @@ describe('getWorkedTime', () => {
         type: 'WORK_LOG',
       },
       {
-        endTime: toMomentDateTime('2018-01-02T15:20:00.000Z'),
+        endTime: toMomentDateTime('2018-01-02T14:35:00.000Z'),
         startTime: toMomentDateTime('2018-01-02T12:20:00.000Z'),
         type: 'WORK_LOG',
       },
@@ -3919,6 +4932,112 @@ describe('getWorkedTime', () => {
   });
 
   it('test calculate approved vacation work logs above lower limit with long break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'VACATION_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T16:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T14:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T17:15:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T17:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate approved vacation work logs above medium limit without break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'VACATION_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T15:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate approved vacation work logs above medium limit with short break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'VACATION_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T11:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T11:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T15:20:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T12:20:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate approved vacation work logs above medium limit with long break', () => {
     const workLogs = [
       {
         date: toMomentDateTime('2018-01-02T12:00:00.000Z'),

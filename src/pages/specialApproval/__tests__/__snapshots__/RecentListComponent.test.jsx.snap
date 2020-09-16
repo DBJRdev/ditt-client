@@ -36,8 +36,12 @@ exports[`rendering renders correctly 1`] = `
         ],
         "workedHoursLimits": Immutable.Map {
           "lowerLimit": Immutable.Map {
-            "changeBy": -1800,
+            "changeBy": -900,
             "limit": 21600,
+          },
+          "mediumLimit": Immutable.Map {
+            "changeBy": -1800,
+            "limit": 22500,
           },
           "upperLimit": Immutable.Map {
             "changeBy": -2700,
