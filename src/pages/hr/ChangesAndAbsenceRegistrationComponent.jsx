@@ -27,6 +27,8 @@ import Layout from '../../components/Layout';
 import styles from './styles.scss';
 
 const ChangesAndAbsenceRegistrationComponent = (props) => {
+  const { fetchConfig } = props;
+
   const [dateFrom, setDateFrom] = useState(toDayMonthYearFormat(localizedMoment().subtract(1, 'month')));
   const [dateTo, setDateTo] = useState(toDayMonthYearFormat(localizedMoment()));
 
@@ -34,8 +36,8 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
   const [dateToError, setDateToError] = useState(null);
 
   useEffect(() => {
-    props.fetchConfig();
-  }, [props.fetchConfig]);
+    fetchConfig();
+  }, [fetchConfig]);
 
   return (
     <Layout loading={!props.config}>

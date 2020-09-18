@@ -461,11 +461,11 @@ WorkLogDetailModal.defaultProps = {
 
 WorkLogDetailModal.propTypes = {
   banWorkLog: PropTypes.shape({
-    date: PropTypes.object.isRequired,
+    date: PropTypes.shape().isRequired,
     workTimeLimit: PropTypes.number.isRequired,
   }),
   businessTripWorkLog: PropTypes.shape({
-    date: PropTypes.object.isRequired,
+    date: PropTypes.shape().isRequired,
     destination: PropTypes.string.isRequired,
     expectedArrival: PropTypes.string.isRequired,
     expectedDeparture: PropTypes.string.isRequired,
@@ -493,12 +493,12 @@ WorkLogDetailModal.propTypes = {
   isInSupervisorMode: PropTypes.bool.isRequired,
   isPosting: PropTypes.bool.isRequired,
   maternityProtectionWorkLog: PropTypes.shape({
-    date: PropTypes.object.isRequired,
+    date: PropTypes.shape().isRequired,
   }),
   onClose: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
   overtimeWorkLog: PropTypes.shape({
-    date: PropTypes.object.isRequired,
+    date: PropTypes.shape().isRequired,
     reason: PropTypes.string,
     rejectionMessage: PropTypes.string,
     status: PropTypes.oneOf([
@@ -508,19 +508,19 @@ WorkLogDetailModal.propTypes = {
     ]).isRequired,
   }),
   parentalLeaveWorkLog: PropTypes.shape({
-    date: PropTypes.object.isRequired,
+    date: PropTypes.shape().isRequired,
   }),
   sickDayUnpaidWorkLog: PropTypes.shape({
-    date: PropTypes.object.isRequired,
+    date: PropTypes.shape().isRequired,
   }),
   sickDayWorkLog: PropTypes.shape({
-    childDateOfBirth: PropTypes.object,
+    childDateOfBirth: PropTypes.shape(),
     childName: PropTypes.string,
-    date: PropTypes.object.isRequired,
+    date: PropTypes.shape().isRequired,
     variant: PropTypes.string.isRequired,
   }),
   specialLeaveWorkLog: PropTypes.shape({
-    date: PropTypes.object.isRequired,
+    date: PropTypes.shape().isRequired,
     id: PropTypes.number.isRequired,
     rejectionMessage: PropTypes.string,
     status: PropTypes.oneOf([
@@ -532,7 +532,7 @@ WorkLogDetailModal.propTypes = {
   t: PropTypes.func.isRequired,
   timeOffWorkLog: PropTypes.shape({
     comment: PropTypes.string,
-    date: PropTypes.object.isRequired,
+    date: PropTypes.shape().isRequired,
     rejectionMessage: PropTypes.string,
     status: PropTypes.oneOf([
       STATUS_APPROVED,
@@ -543,7 +543,7 @@ WorkLogDetailModal.propTypes = {
   type: PropTypes.string.isRequired,
   uid: PropTypes.number.isRequired,
   vacationWorkLog: PropTypes.shape({
-    date: PropTypes.object.isRequired,
+    date: PropTypes.shape().isRequired,
     id: PropTypes.number.isRequired,
     rejectionMessage: PropTypes.string,
     status: PropTypes.oneOf([

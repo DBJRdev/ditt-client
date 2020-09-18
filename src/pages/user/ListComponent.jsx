@@ -1,5 +1,5 @@
 import moment from 'moment-timezone';
-import jwt from 'jsonwebtoken';
+import decode from 'jsonwebtoken/decode';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -101,7 +101,7 @@ class ListComponent extends React.Component {
     ];
 
     if (this.props.token) {
-      const decodedToken = jwt.decode(this.props.token);
+      const decodedToken = decode(this.props.token);
 
       if (decodedToken && decodedToken.roles.some((role) => ROLE_SUPER_ADMIN === role)) {
         columns.push({

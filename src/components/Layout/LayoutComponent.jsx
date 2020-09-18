@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import jwt from 'jsonwebtoken';
+import decode from 'jsonwebtoken/decode';
 import { withTranslation } from 'react-i18next';
 import {
   Button,
@@ -29,7 +29,7 @@ class LayoutComponent extends React.Component {
   componentDidMount() {
     this.jwtTokenTimer = setInterval(() => {
       if (this.props.token) {
-        const decodedToken = jwt.decode(this.props.token);
+        const decodedToken = decode(this.props.token);
 
         if (decodedToken && ((decodedToken.exp * 1000) - Date.now()) < 0) {
           this.props.setLogoutLocally();
@@ -45,7 +45,7 @@ class LayoutComponent extends React.Component {
 
   getIndexUrl() {
     if (this.props.token) {
-      const decodedToken = jwt.decode(this.props.token);
+      const decodedToken = decode(this.props.token);
 
       if (decodedToken) {
         const { roles } = decodedToken;
@@ -67,7 +67,7 @@ class LayoutComponent extends React.Component {
 
   getName() {
     if (this.props.token) {
-      const decodedToken = jwt.decode(this.props.token);
+      const decodedToken = decode(this.props.token);
 
       if (decodedToken) {
         return `${decodedToken.firstName} ${decodedToken.lastName}`;
@@ -79,7 +79,7 @@ class LayoutComponent extends React.Component {
 
   isAuthorized(roles) {
     if (this.props.token) {
-      const decodedToken = jwt.decode(this.props.token);
+      const decodedToken = decode(this.props.token);
 
       if (decodedToken) {
         return decodedToken.roles.some((role) => roles.includes(role));

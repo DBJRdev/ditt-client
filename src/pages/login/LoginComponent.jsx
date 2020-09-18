@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import jwt from 'jsonwebtoken';
+import decode from 'jsonwebtoken/decode';
 import { Link } from 'react-router-dom';
 import { withTranslation } from 'react-i18next';
 import { Login } from '@react-ui-org/react-ui';
@@ -26,7 +26,7 @@ class LoginComponent extends React.Component {
 
   componentDidMount() {
     if (this.props.token) {
-      const decodedToken = jwt.decode(this.props.token);
+      const decodedToken = decode(this.props.token);
 
       if (decodedToken) {
         const { roles } = decodedToken;

@@ -1,7 +1,7 @@
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
-import jwt from 'jsonwebtoken';
+import decode from 'jsonwebtoken/decode';
 import shortid from 'shortid';
 import {
   Button,
@@ -46,7 +46,7 @@ class ProfileComponent extends React.Component {
 
   componentDidMount() {
     if (this.props.token) {
-      const decodedToken = jwt.decode(this.props.token);
+      const decodedToken = decode(this.props.token);
 
       if (decodedToken) {
         const loggedUserId = decodedToken.uid;
@@ -188,7 +188,7 @@ class ProfileComponent extends React.Component {
     let loggedUserId = null;
 
     if (this.props.token) {
-      const decodedToken = jwt.decode(this.props.token);
+      const decodedToken = decode(this.props.token);
 
       if (decodedToken) {
         loggedUserId = decodedToken.uid;

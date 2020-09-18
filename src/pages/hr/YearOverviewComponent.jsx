@@ -16,10 +16,15 @@ import Layout from '../../components/Layout';
 import { collapseWorkLogs } from '../../services/workLogService';
 
 const OverviewComponent = (props) => {
+  const {
+    fetchConfig,
+    fetchYearOverview,
+  } = props;
+
   useEffect(() => {
-    props.fetchConfig();
-    props.fetchYearOverview();
-  }, [props.fetchConfig, props.fetchYearOverview]);
+    fetchConfig();
+    fetchYearOverview();
+  }, [fetchConfig, fetchYearOverview]);
 
   const sickDayFormat = (variant) => (rowData) => {
     const filteredSickDays = rowData.sickDays

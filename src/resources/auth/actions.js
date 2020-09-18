@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import decode from 'jsonwebtoken/decode';
 import { RSAA } from 'redux-api-middleware';
 import history from '../../routerHistory';
 import { API_URL } from '../../../config/envspecific';
@@ -28,7 +28,7 @@ export const login = (data) => (dispatch) => dispatch({
 }).then((response) => {
   if (response.type === types.LOGIN_SUCCESS) {
     if (response.payload.token) {
-      const decodedToken = jwt.decode(response.payload.token);
+      const decodedToken = decode(response.payload.token);
 
       if (decodedToken) {
         const { roles } = decodedToken;

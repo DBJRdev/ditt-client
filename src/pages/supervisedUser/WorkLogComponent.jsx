@@ -2,7 +2,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withTranslation } from 'react-i18next';
-import jwt from 'jsonwebtoken';
+import decode from 'jsonwebtoken/decode';
 import WorkLogCalendar from '../../components/WorkLogCalendar';
 import Layout from '../../components/Layout';
 import {
@@ -261,7 +261,7 @@ class WorkLogComponent extends React.Component {
     let userRoles = [];
 
     if (this.props.token) {
-      const decodedToken = jwt.decode(this.props.token);
+      const decodedToken = decode(this.props.token);
 
       if (decodedToken) {
         // eslint-disable-next-line prefer-destructuring

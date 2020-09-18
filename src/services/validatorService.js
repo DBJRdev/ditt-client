@@ -1,4 +1,6 @@
-import validator from 'validator';
+import isEmail from 'validator/lib/isEmail';
+import isEmpty from 'validator/lib/isEmpty';
+import isNumeric from 'validator/lib/isNumeric';
 import {
   BAN_WORK_LOG,
   BUSINESS_TRIP_WORK_LOG,
@@ -33,7 +35,7 @@ export const validateSupportedYear = (t, supportedYear, supportedYears, isNew) =
 
   if (
     supportedYear.year === null
-    || validator.isEmpty(supportedYear.year.toString())
+    || isEmpty(supportedYear.year.toString())
   ) {
     errors.elements.year = t('general:validation.required');
     errors.isValid = false;
@@ -58,7 +60,7 @@ export const validateSupportedYear = (t, supportedYear, supportedYears, isNew) =
     return errors;
   }
 
-  if (!validator.isNumeric(supportedYear.year.toString())) {
+  if (!isNumeric(supportedYear.year.toString())) {
     errors.elements.year = t('general:validation.invalidNumber');
     errors.isValid = false;
   }
@@ -107,7 +109,7 @@ export const validateUser = (t, user, userList, supportedWorkHours) => {
   emptyCheck.forEach((element) => {
     if (
       user[element] === null
-      || validator.isEmpty(user[element].toString())
+      || isEmpty(user[element].toString())
     ) {
       errors.elements[element] = t('general:validation.required');
       errors.isValid = false;
@@ -122,7 +124,7 @@ export const validateUser = (t, user, userList, supportedWorkHours) => {
 
     if (
       !user.vacations[year]
-        || !validator.isNumeric(user.vacations[year].vacationDays.toString())
+        || !isNumeric(user.vacations[year].vacationDays.toString())
         || user.vacations[year].vacationDays < 0
     ) {
       errors.elements.vacations[year].vacationDays = t('general:validation.invalidNumber');
@@ -131,7 +133,7 @@ export const validateUser = (t, user, userList, supportedWorkHours) => {
 
     if (
       !user.vacations[year]
-      || !validator.isNumeric(user.vacations[year].vacationDaysCorrection.toString())
+      || !isNumeric(user.vacations[year].vacationDaysCorrection.toString())
     ) {
       errors.elements.vacations[year].vacationDaysCorrection = t('general:validation.invalidNumber');
       errors.isValid = false;
@@ -143,7 +145,7 @@ export const validateUser = (t, user, userList, supportedWorkHours) => {
     }
   });
 
-  if (!errors.elements.email && !validator.isEmail(user.email)) {
+  if (!errors.elements.email && !isEmail(user.email)) {
     errors.elements.email = t('general:validation.invalidEmail');
     errors.isValid = false;
   }
@@ -264,7 +266,7 @@ export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay, ban
     emptyCheck.forEach((element) => {
       if (
         workLog[element] === null
-        || validator.isEmpty(workLog[element])
+        || isEmpty(workLog[element])
       ) {
         errors.elements[element] = t('general:validation.required');
         errors.isValid = false;
@@ -279,7 +281,7 @@ export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay, ban
   }
 
   if (workLog.type === OVERTIME_WORK_LOG) {
-    if (workLog.reason === null || validator.isEmpty(workLog.reason)) {
+    if (workLog.reason === null || isEmpty(workLog.reason)) {
       errors.elements.reason = t('general:validation.required');
       errors.isValid = false;
     }
@@ -288,12 +290,12 @@ export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay, ban
   }
 
   if (workLog.type === SICK_DAY_WORK_LOG && workLog.variant === VARIANT_SICK_CHILD) {
-    if (workLog.childName === null || validator.isEmpty(workLog.childName)) {
+    if (workLog.childName === null || isEmpty(workLog.childName)) {
       errors.elements.childName = t('general:validation.required');
       errors.isValid = false;
     }
 
-    if (workLog.childDateOfBirth === null || validator.isEmpty(workLog.childDateOfBirth)) {
+    if (workLog.childDateOfBirth === null || isEmpty(workLog.childDateOfBirth)) {
       errors.elements.childDateOfBirth = t('general:validation.required');
       errors.isValid = false;
     }
@@ -311,7 +313,7 @@ export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay, ban
   }
 
   if (workLog.type === SPECIAL_LEAVE_WORK_LOG) {
-    if (workLog.dateTo === null || validator.isEmpty(workLog.dateTo)) {
+    if (workLog.dateTo === null || isEmpty(workLog.dateTo)) {
       errors.elements.dateTo = t('general:validation.required');
       errors.isValid = false;
 
@@ -339,7 +341,7 @@ export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay, ban
   }
 
   if (workLog.type === VACATION_WORK_LOG) {
-    if (workLog.dateTo === null || validator.isEmpty(workLog.dateTo)) {
+    if (workLog.dateTo === null || isEmpty(workLog.dateTo)) {
       errors.elements.dateTo = t('general:validation.required');
       errors.isValid = false;
 
@@ -406,8 +408,8 @@ export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay, ban
   [...hourCheck, ...minuteCheck].forEach((element) => {
     if (
       workLog[element] === null
-      || validator.isEmpty(workLog[element].toString())
-      || !validator.isNumeric(workLog[element].toString())
+      || isEmpty(workLog[element].toString())
+      || !isNumeric(workLog[element].toString())
     ) {
       errors.elements[element] = t('general:validation.invalidNumber');
       errors.isValid = false;
@@ -532,14 +534,14 @@ export const validateSupervisorWorkLog = (t, workLogAttr) => {
   let dateFrom = null;
   let dateTo = null;
 
-  if (workLog.date === null || validator.isEmpty(workLog.date)) {
+  if (workLog.date === null || isEmpty(workLog.date)) {
     errors.elements.date = t('general:validation.required');
     errors.isValid = false;
 
     return errors;
   }
 
-  if (workLog.dateTo === null || validator.isEmpty(workLog.dateTo)) {
+  if (workLog.dateTo === null || isEmpty(workLog.dateTo)) {
     errors.elements.dateTo = t('general:validation.required');
     errors.isValid = false;
 
@@ -580,8 +582,8 @@ export const validateSupervisorWorkLog = (t, workLogAttr) => {
     requiredCheck.forEach((element) => {
       if (
         workLog[element] === null
-        || validator.isEmpty(workLog[element].toString())
-        || !validator.isNumeric(workLog[element].toString())
+        || isEmpty(workLog[element].toString())
+        || !isNumeric(workLog[element].toString())
       ) {
         errors.elements[element] = t('general:validation.invalidNumber');
         errors.isValid = false;
@@ -627,8 +629,8 @@ export const validateWorkTimeCorrection = (t, data) => {
   requiredCheck.forEach((element) => {
     if (
       cData[element] === null
-      || validator.isEmpty(cData[element].toString())
-      || !validator.isNumeric(cData[element].toString())
+      || isEmpty(cData[element].toString())
+      || !isNumeric(cData[element].toString())
     ) {
       errors.elements[element] = t('general:validation.invalidNumber');
       errors.isValid = false;
@@ -665,7 +667,7 @@ export const validateRejectWorkLog = (t, rejectWorkLog) => {
 
   if (
     rejectWorkLog.rejectionMessage === null
-    || validator.isEmpty(rejectWorkLog.rejectionMessage)
+    || isEmpty(rejectWorkLog.rejectionMessage)
   ) {
     errors.elements.rejectionMessage = t('general:validation.required');
     errors.isValid = false;

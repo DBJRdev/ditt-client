@@ -1,7 +1,7 @@
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
-import jwt from 'jsonwebtoken';
+import decode from 'jsonwebtoken/decode';
 import { withTranslation } from 'react-i18next';
 import {
   Button,
@@ -346,7 +346,7 @@ class EditComponent extends React.Component {
     let loggedUserId = null;
 
     if (this.props.token) {
-      const decodedToken = jwt.decode(this.props.token);
+      const decodedToken = decode(this.props.token);
 
       if (decodedToken) {
         loggedUserId = decodedToken.uid;

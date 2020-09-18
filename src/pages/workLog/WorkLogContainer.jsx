@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import jwt from 'jsonwebtoken';
+import decode from 'jsonwebtoken/decode';
 import { selectJwtToken } from '../../resources/auth';
 import {
   fetchBanWorkLog,
@@ -127,7 +127,7 @@ const mapStateToProps = (state) => {
   let decodedToken = null;
   const token = selectJwtToken(state);
   if (token !== null) {
-    decodedToken = jwt.decode(token);
+    decodedToken = decode(token);
   }
 
   return ({

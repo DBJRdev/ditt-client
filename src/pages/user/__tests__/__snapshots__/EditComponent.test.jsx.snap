@@ -8,7 +8,7 @@ exports[`rendering renders correctly 1`] = `
   <div
     className="actions"
   >
-    <ForwardRef(withForwardedRef(c))
+    <ForwardRef(withForwardedRef(Button))
       clickHandler={[Function]}
       label="user:action.deleteUser"
       loadingIcon={null}
@@ -18,12 +18,12 @@ exports[`rendering renders correctly 1`] = `
   <form
     className="detailPageWrapper"
   >
-    <n
+    <List
       align="left"
       autoWidth={false}
     >
-      <n>
-        <ForwardRef(withForwardedRef(c))
+      <ListItem>
+        <ForwardRef(withForwardedRef(TextField))
           changeHandler={[Function]}
           fullWidth={true}
           helperText={null}
@@ -33,9 +33,9 @@ exports[`rendering renders correctly 1`] = `
           validationState={null}
           value=""
         />
-      </n>
-      <n>
-        <ForwardRef(withForwardedRef(c))
+      </ListItem>
+      <ListItem>
+        <ForwardRef(withForwardedRef(TextField))
           changeHandler={[Function]}
           fullWidth={true}
           helperText={null}
@@ -45,9 +45,9 @@ exports[`rendering renders correctly 1`] = `
           validationState={null}
           value=""
         />
-      </n>
-      <n>
-        <ForwardRef(withForwardedRef(c))
+      </ListItem>
+      <ListItem>
+        <ForwardRef(withForwardedRef(SelectField))
           changeHandler={[Function]}
           fullWidth={true}
           helperText={null}
@@ -64,9 +64,9 @@ exports[`rendering renders correctly 1`] = `
           validationState={null}
           value=""
         />
-      </n>
-      <n>
-        <ForwardRef(withForwardedRef(c))
+      </ListItem>
+      <ListItem>
+        <ForwardRef(withForwardedRef(TextField))
           changeHandler={[Function]}
           fullWidth={true}
           helperText={null}
@@ -76,9 +76,9 @@ exports[`rendering renders correctly 1`] = `
           validationState={null}
           value=""
         />
-      </n>
-      <n>
-        <ForwardRef(withForwardedRef(c))
+      </ListItem>
+      <ListItem>
+        <ForwardRef(withForwardedRef(TextField))
           changeHandler={[Function]}
           fullWidth={true}
           helperText={null}
@@ -88,9 +88,9 @@ exports[`rendering renders correctly 1`] = `
           validationState={null}
           value=""
         />
-      </n>
-      <n>
-        <ForwardRef(withForwardedRef(c))
+      </ListItem>
+      <ListItem>
+        <ForwardRef(withForwardedRef(TextField))
           changeHandler={[Function]}
           fullWidth={true}
           id="plainPassword"
@@ -100,9 +100,9 @@ exports[`rendering renders correctly 1`] = `
           validationState={null}
           value=""
         />
-      </n>
-      <n>
-        <ForwardRef(withForwardedRef(c))
+      </ListItem>
+      <ListItem>
+        <ForwardRef(withForwardedRef(CheckboxField))
           changeHandler={[Function]}
           checked={false}
           error={null}
@@ -111,7 +111,7 @@ exports[`rendering renders correctly 1`] = `
           label="user:element.isActive"
           required={true}
         />
-      </n>
+      </ListItem>
       <h2
         className="detailSubheader"
       >
@@ -125,14 +125,14 @@ exports[`rendering renders correctly 1`] = `
       <p>
         user:text.averageWorkingHoursDescription
       </p>
-      <n>
-        <ForwardRef(withForwardedRef(c))
+      <ListItem>
+        <ForwardRef(withForwardedRef(Button))
           clickHandler={[Function]}
           label="general:action.save"
           loadingIcon={null}
         />
-      </n>
-    </n>
+      </ListItem>
+    </List>
   </form>
 </Connect(LayoutComponent)>
 `;

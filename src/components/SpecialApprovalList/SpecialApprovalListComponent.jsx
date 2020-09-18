@@ -2,7 +2,7 @@ import Immutable from 'immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
-import jwt from 'jsonwebtoken';
+import decode from 'jsonwebtoken/decode';
 import { withTranslation } from 'react-i18next';
 import {
   Button,
@@ -76,7 +76,7 @@ class SpecialApprovalListComponent extends React.Component {
     this.props.fetchConfig();
 
     if (this.props.token) {
-      const decodedToken = jwt.decode(this.props.token);
+      const decodedToken = decode(this.props.token);
 
       if (decodedToken) {
         this.props.fetchSpecialApprovalList(decodedToken.uid);
@@ -136,7 +136,7 @@ class SpecialApprovalListComponent extends React.Component {
 
   handleMarkApproved(id, type, isBulk) {
     if (this.props.token) {
-      const decodedToken = jwt.decode(this.props.token);
+      const decodedToken = decode(this.props.token);
 
       if (decodedToken) {
         let action = null;
@@ -199,7 +199,7 @@ class SpecialApprovalListComponent extends React.Component {
 
   handleMarkRejected(id, type, isBulk, rejectionMessage) {
     if (this.props.token) {
-      const decodedToken = jwt.decode(this.props.token);
+      const decodedToken = decode(this.props.token);
 
       if (decodedToken) {
         let action = null;
@@ -262,7 +262,7 @@ class SpecialApprovalListComponent extends React.Component {
 
   handleSupport(id, type, isBulk) {
     if (this.props.token) {
-      const decodedToken = jwt.decode(this.props.token);
+      const decodedToken = decode(this.props.token);
 
       if (decodedToken) {
         let action = null;
@@ -720,7 +720,7 @@ class SpecialApprovalListComponent extends React.Component {
     let uid = null;
 
     if (this.props.token) {
-      const decodedToken = jwt.decode(this.props.token);
+      const decodedToken = decode(this.props.token);
 
       if (decodedToken) {
         // eslint-disable-next-line prefer-destructuring

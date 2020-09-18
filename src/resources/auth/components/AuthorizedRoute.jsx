@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import jwt from 'jsonwebtoken';
+import decode from 'jsonwebtoken/decode';
 import {
   Route,
   Redirect,
@@ -12,7 +12,7 @@ import { selectJwtToken } from '..';
 class AuthorizedRoute extends Route {
   static isAuthorized(token, roles) {
     if (token) {
-      const decodedToken = jwt.decode(token);
+      const decodedToken = decode(token);
 
       if (decodedToken) {
         return decodedToken.roles.some((role) => roles.includes(role));

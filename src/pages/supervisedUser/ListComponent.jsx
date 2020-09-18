@@ -1,7 +1,7 @@
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
-import jwt from 'jsonwebtoken';
+import decode from 'jsonwebtoken/decode';
 import { Link } from 'react-router-dom';
 import { withTranslation } from 'react-i18next';
 import { Table } from '@react-ui-org/react-ui';
@@ -31,7 +31,7 @@ class ListComponent extends React.Component {
 
   componentDidMount() {
     if (this.props.token) {
-      const decodedToken = jwt.decode(this.props.token);
+      const decodedToken = decode(this.props.token);
 
       if (decodedToken) {
         this.props.fetchSupervisedUserList(
@@ -53,7 +53,7 @@ class ListComponent extends React.Component {
     let uid = null;
 
     if (this.props.token) {
-      const decodedToken = jwt.decode(this.props.token);
+      const decodedToken = decode(this.props.token);
 
       if (decodedToken) {
         // eslint-disable-next-line prefer-destructuring
@@ -143,7 +143,7 @@ class ListComponent extends React.Component {
               ascendingIcon: <Icon icon="arrow_upward" />,
               changeHandler: (column, direction) => {
                 if (this.props.token) {
-                  const decodedToken = jwt.decode(this.props.token);
+                  const decodedToken = decode(this.props.token);
 
                   if (decodedToken) {
                     const orderDirection = direction === 'asc' ? 'desc' : 'asc';

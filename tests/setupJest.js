@@ -1,4 +1,3 @@
-import 'whatwg-fetch';
 import fetchMock from 'fetch-mock';
 
 fetchMock.config.overwriteRoutes = true;

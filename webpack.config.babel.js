@@ -1,4 +1,7 @@
-const path = require('path');
+const Path = require('path');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
+const VisualizerPlugin = require('webpack-visualizer-plugin');
+const webpack = require('webpack');
 
 module.exports = (env, argv) => {
   const modeArgument = argv.mode;
@@ -11,18 +14,19 @@ module.exports = (env, argv) => {
       host: '0.0.0.0',
       inline: true,
     },
-    devtool: 'eval-cheap-module-source-map',
+    devtool: modeArgument === 'development'
+      ? 'eval-cheap-module-source-map'
+      : false,
     entry: {
       bundle: [
-        'core-js',
-        'whatwg-fetch',
-        path.join(__dirname, 'src/main.jsx'),
+        Path.join(__dirname, 'src/main.jsx'),
       ],
     },
     module: {
       rules: [
         {
-          include: path.join(__dirname, 'src'),
+          exclude: /node_modules/,
+          include: Path.join(__dirname, 'src'),
           test: /\.(js|jsx)$/,
           use: [{ loader: 'babel-loader' }],
         },
@@ -34,7 +38,9 @@ module.exports = (env, argv) => {
               loader: 'css-loader',
               options: {
                 modules: {
-                  localIdentName: '[name]__[local]__[hash:base64:5]',
+                  localIdentName: modeArgument === 'production'
+                    ? '[hash:base64:8]'
+                    : '[name]__[local]__[hash:base64:8]',
                 },
               },
             },
@@ -53,9 +59,19 @@ module.exports = (env, argv) => {
     },
     output: {
       filename: '[name].js',
-      path: path.join(__dirname, 'public/generated'),
+      path: Path.join(__dirname, 'public/generated'),
       publicPath: '/generated/',
     },
+    plugins: [
+      new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /de|en/),
+      new StyleLintPlugin({
+        configFile: 'stylelint.config.js',
+        syntax: 'scss',
+      }),
+      new VisualizerPlugin({
+        filename: '../../stats.html',
+      }),
+    ],
     resolve: {
       alias: {
         // Allow to run react-ui in development mode for easier development
@@ -65,8 +81,11 @@ module.exports = (env, argv) => {
 
         // Force react-ui to use the same react instance as the app when using `npm link`
         // See: https://github.com/react-ui-org/react-ui#package-linking
-        react: path.resolve('./node_modules/react'),
-        'react-dom': path.resolve('./node_modules/react-dom'),
+        react: Path.resolve('./node_modules/react'),
+        'react-dom': Path.resolve('./node_modules/react-dom'),
+
+        // Force usage of es module to allow strict CORS settings
+        'redux-api-middleware': 'redux-api-middleware/es',
       },
       extensions: ['.js', '.jsx', '.scss'],
       modules: ['src', 'node_modules'],

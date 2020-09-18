@@ -985,7 +985,7 @@ describe('functionality', () => {
     />);
     const expectedArgs = fakeMomentDateTime.clone().subtract(1, 'month');
 
-    tree.find('s').first().simulate('click');
+    tree.find('Button').first().simulate('click');
 
     expect(spy.calledOnce).toEqual(true);
     expect(spy.getCall(0).args[0]).toEqual(expectedArgs);
@@ -1127,7 +1127,7 @@ describe('functionality', () => {
     />);
     const expectedArgs = fakeMomentDateTime.clone().add(1, 'month');
 
-    tree.find('s').at(1).simulate('click');
+    tree.find('Button').at(1).simulate('click');
 
     expect(spy.calledOnce).toEqual(true);
     expect(spy.getCall(0).args[0]).toEqual(expectedArgs);
@@ -1267,7 +1267,7 @@ describe('functionality', () => {
         ])
       }
     />);
-    tree.find('s').last().simulate('click');
+    tree.find('Button').last().simulate('click');
 
     expect(spy.calledOnce).toEqual(true);
     expect(spy.getCall(0).args[0]).toEqual(2);
@@ -1408,7 +1408,7 @@ describe('functionality', () => {
         ])
       }
     />);
-    tree.find('s').at(1).simulate('click');
+    tree.find('Button').at(1).simulate('click');
 
     expect(spy.calledOnce).toEqual(true);
     expect(spy.getCall(0).args[0]).toEqual(2);

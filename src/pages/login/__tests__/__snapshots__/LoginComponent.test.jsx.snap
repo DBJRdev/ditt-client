@@ -12,15 +12,15 @@ exports[`rendering renders correctly 1`] = `
     width={302}
   />
   <div
-    className="_3b2rRaWo"
+    className="Login__root__3b2rRaWo"
   >
     <div
-      className="AI0MYeEO"
+      className="Login__title__AI0MYeEO"
     >
       layout:title
     </div>
     <div
-      className="_1Y7LObkb"
+      className="Login__box__1Y7LObkb"
     >
       <form
         onSubmit={[Function]}
@@ -28,149 +28,114 @@ exports[`rendering renders correctly 1`] = `
         <div
           className="mb-3"
         >
-          <ForwardRef(withForwardedRef(c))
-            autoComplete="username"
-            changeHandler={[Function]}
-            fullWidth={true}
-            id="usernameInput"
-            label="user:element.email"
-            required={true}
-            type="email"
+          <label
+            className="TextField__root__3yDmdJNi
+        TextField__isRootFullWidth__1hLzNevO
+        
+        TextField__rootLayoutVertical__3YCcUzUr
+        TextField__isRootRequired__FUf0CdvL
+        TextField__rootSizeMedium__3o17OJby
+        
+        
+        TextField__rootVariantOutline__1RuTCzuC"
+            htmlFor="usernameInput"
+            id="usernameInput__label"
+            style={Object {}}
           >
-            <label
-              className="_3yDmdJNi
-        _1hLzNevO
-        
-        _3YCcUzUr
-        FUf0CdvL
-        _3o17OJby
-        
-        
-        _1RuTCzuC"
-              htmlFor="usernameInput"
-              id="usernameInput__label"
-              style={Object {}}
+            <div
+              className="TextField__label__2bJzQO6p"
+              id="usernameInput__labelText"
+            >
+              user:element.email
+            </div>
+            <div
+              className="TextField__field__1Nm2afhb"
             >
               <div
-                className="_2bJzQO6p"
-                id="usernameInput__labelText"
+                className="TextField__inputContainer__3NDuxsmR"
               >
-                user:element.email
+                <input
+                  autoComplete="username"
+                  className="TextField__input__dZrOwzNX"
+                  disabled={false}
+                  id="usernameInput"
+                  onChange={[Function]}
+                  placeholder={null}
+                  required={true}
+                  size={null}
+                  type="email"
+                />
               </div>
-              <div
-                className="_1Nm2afhb"
-              >
-                <div
-                  className="_3NDuxsmR"
-                >
-                  <input
-                    autoComplete="username"
-                    className="dZrOwzNX"
-                    disabled={false}
-                    id="usernameInput"
-                    onChange={[Function]}
-                    placeholder={null}
-                    required={true}
-                    size={null}
-                    type="email"
-                  />
-                </div>
-              </div>
-            </label>
-          </ForwardRef(withForwardedRef(c))>
-          <ForwardRef(withForwardedRef(c))
-            autoComplete="current-password"
-            changeHandler={[Function]}
-            fullWidth={true}
-            id="passwordInput"
-            label="user:element.plainPassword"
-            required={true}
-            type="password"
+            </div>
+          </label>
+          <label
+            className="TextField__root__3yDmdJNi
+        TextField__isRootFullWidth__1hLzNevO
+        
+        TextField__rootLayoutVertical__3YCcUzUr
+        TextField__isRootRequired__FUf0CdvL
+        TextField__rootSizeMedium__3o17OJby
+        
+        
+        TextField__rootVariantOutline__1RuTCzuC"
+            htmlFor="passwordInput"
+            id="passwordInput__label"
+            style={Object {}}
           >
-            <label
-              className="_3yDmdJNi
-        _1hLzNevO
-        
-        _3YCcUzUr
-        FUf0CdvL
-        _3o17OJby
-        
-        
-        _1RuTCzuC"
-              htmlFor="passwordInput"
-              id="passwordInput__label"
-              style={Object {}}
+            <div
+              className="TextField__label__2bJzQO6p"
+              id="passwordInput__labelText"
+            >
+              user:element.plainPassword
+            </div>
+            <div
+              className="TextField__field__1Nm2afhb"
             >
               <div
-                className="_2bJzQO6p"
-                id="passwordInput__labelText"
+                className="TextField__inputContainer__3NDuxsmR"
               >
-                user:element.plainPassword
+                <input
+                  autoComplete="current-password"
+                  className="TextField__input__dZrOwzNX"
+                  disabled={false}
+                  id="passwordInput"
+                  onChange={[Function]}
+                  placeholder={null}
+                  required={true}
+                  size={null}
+                  type="password"
+                />
               </div>
-              <div
-                className="_1Nm2afhb"
-              >
-                <div
-                  className="_3NDuxsmR"
-                >
-                  <input
-                    autoComplete="current-password"
-                    className="dZrOwzNX"
-                    disabled={false}
-                    id="passwordInput"
-                    onChange={[Function]}
-                    placeholder={null}
-                    required={true}
-                    size={null}
-                    type="password"
-                  />
-                </div>
-              </div>
-            </label>
-          </ForwardRef(withForwardedRef(c))>
+            </div>
+          </label>
         </div>
-        <ForwardRef(withForwardedRef(c))
-          block={true}
-          label="login:action.signIn"
+        <button
+          className="Button__root__3zrxRSxl
+        Button__priorityDefault__hcWO8Peq
+        Button__sizeMedium__168V18-G
+        Button__variantPrimary__30PKnizS
+        Button__isRootBlock__dk3xheVK"
+          disabled={false}
+          onClick={null}
+          title={null}
           type="submit"
         >
-          <button
-            className="_3zrxRSxl
-        hcWO8Peq
-        _168V18-G
-        _30PKnizS
-        dk3xheVK"
-            disabled={false}
-            onClick={null}
-            title={null}
-            type="submit"
+          <span
+            className="Button__label__3YN6eZ6q"
           >
-            <span
-              className="_3YN6eZ6q"
-            >
-              login:action.signIn
-            </span>
-          </button>
-        </ForwardRef(withForwardedRef(c))>
+            login:action.signIn
+          </span>
+        </button>
       </form>
       <div
-        className="_67Uz6zIb"
+        className="Login__footer__67Uz6zIb"
       >
-        <Link
-          to="/forgot-password"
+        <a
+          href="/forgot-password"
+          onClick={[Function]}
         >
-          <LinkAnchor
-            href="/forgot-password"
-            navigate={[Function]}
-          >
-            <a
-              href="/forgot-password"
-              onClick={[Function]}
-            >
-              login:action.forgotPassword
-            </a>
-          </LinkAnchor>
-        </Link>
+          login:action.forgotPassword
+        </a>
       </div>
     </div>
   </div>

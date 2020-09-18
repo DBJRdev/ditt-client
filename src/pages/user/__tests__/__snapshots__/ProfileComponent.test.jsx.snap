@@ -91,7 +91,7 @@ exports[`rendering renders correctly 1`] = `
                 <div
                   className="mt-1"
                 >
-                  <ForwardRef(withForwardedRef(c))
+                  <ForwardRef(withForwardedRef(Button))
                     beforeLabel={
                       <Icon
                         icon="open_in_new"
@@ -106,7 +106,7 @@ exports[`rendering renders correctly 1`] = `
                 <div
                   className="mt-1 mb-1"
                 >
-                  <ForwardRef(withForwardedRef(c))
+                  <ForwardRef(withForwardedRef(Button))
                     beforeLabel={
                       <Icon
                         icon="autorenew"
@@ -122,7 +122,7 @@ exports[`rendering renders correctly 1`] = `
                 <div
                   className="mb-1"
                 >
-                  <ForwardRef(withForwardedRef(c))
+                  <ForwardRef(withForwardedRef(Button))
                     beforeLabel={
                       <Icon
                         icon="clear"
@@ -155,7 +155,7 @@ exports[`rendering renders correctly 1`] = `
                 <div
                   className="mb-1 mt-1"
                 >
-                  <ForwardRef(withForwardedRef(c))
+                  <ForwardRef(withForwardedRef(Button))
                     clickHandler={[Function]}
                     label="user:action.enableICal"
                     loadingIcon={null}
@@ -411,7 +411,7 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsCheckbox"
               >
-                <ForwardRef(withForwardedRef(c))
+                <ForwardRef(withForwardedRef(CheckboxField))
                   changeHandler={[Function]}
                   checked={false}
                   id="supervisorInfoMondayTime"
@@ -422,7 +422,7 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsInput"
               >
-                <ForwardRef(withForwardedRef(c))
+                <ForwardRef(withForwardedRef(TextField))
                   changeHandler={[Function]}
                   disabled={true}
                   id="supervisorInfoMondayTime"
@@ -443,7 +443,7 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsCheckbox"
               >
-                <ForwardRef(withForwardedRef(c))
+                <ForwardRef(withForwardedRef(CheckboxField))
                   changeHandler={[Function]}
                   checked={false}
                   id="supervisorInfoTuesdayTime"
@@ -454,7 +454,7 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsInput"
               >
-                <ForwardRef(withForwardedRef(c))
+                <ForwardRef(withForwardedRef(TextField))
                   changeHandler={[Function]}
                   disabled={true}
                   id="supervisorInfoTuesdayTime"
@@ -475,7 +475,7 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsCheckbox"
               >
-                <ForwardRef(withForwardedRef(c))
+                <ForwardRef(withForwardedRef(CheckboxField))
                   changeHandler={[Function]}
                   checked={false}
                   id="supervisorInfoWednesdayTime"
@@ -486,7 +486,7 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsInput"
               >
-                <ForwardRef(withForwardedRef(c))
+                <ForwardRef(withForwardedRef(TextField))
                   changeHandler={[Function]}
                   disabled={true}
                   id="supervisorInfoWednesdayTime"
@@ -507,7 +507,7 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsCheckbox"
               >
-                <ForwardRef(withForwardedRef(c))
+                <ForwardRef(withForwardedRef(CheckboxField))
                   changeHandler={[Function]}
                   checked={false}
                   id="supervisorInfoThursdayTime"
@@ -518,7 +518,7 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsInput"
               >
-                <ForwardRef(withForwardedRef(c))
+                <ForwardRef(withForwardedRef(TextField))
                   changeHandler={[Function]}
                   disabled={true}
                   id="supervisorInfoThursdayTime"
@@ -539,7 +539,7 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsCheckbox"
               >
-                <ForwardRef(withForwardedRef(c))
+                <ForwardRef(withForwardedRef(CheckboxField))
                   changeHandler={[Function]}
                   checked={false}
                   id="supervisorInfoFridayTime"
@@ -550,7 +550,7 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsInput"
               >
-                <ForwardRef(withForwardedRef(c))
+                <ForwardRef(withForwardedRef(TextField))
                   changeHandler={[Function]}
                   disabled={true}
                   id="supervisorInfoFridayTime"
@@ -571,7 +571,7 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsCheckbox"
               >
-                <ForwardRef(withForwardedRef(c))
+                <ForwardRef(withForwardedRef(CheckboxField))
                   changeHandler={[Function]}
                   checked={false}
                   id="supervisorInfoSaturdayTime"
@@ -582,7 +582,7 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsInput"
               >
-                <ForwardRef(withForwardedRef(c))
+                <ForwardRef(withForwardedRef(TextField))
                   changeHandler={[Function]}
                   disabled={true}
                   id="supervisorInfoSaturdayTime"
@@ -603,7 +603,7 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsCheckbox"
               >
-                <ForwardRef(withForwardedRef(c))
+                <ForwardRef(withForwardedRef(CheckboxField))
                   changeHandler={[Function]}
                   checked={false}
                   id="supervisorInfoSundayTime"
@@ -614,7 +614,7 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsInput"
               >
-                <ForwardRef(withForwardedRef(c))
+                <ForwardRef(withForwardedRef(TextField))
                   changeHandler={[Function]}
                   disabled={true}
                   id="supervisorInfoSundayTime"
@@ -640,7 +640,7 @@ exports[`rendering renders correctly 1`] = `
               <td
                 className="notificationSettingsCheckbox"
               >
-                <ForwardRef(withForwardedRef(c))
+                <ForwardRef(withForwardedRef(CheckboxField))
                   changeHandler={[Function]}
                   checked={false}
                   id="supervisorInfoSendOnHolidays"
@@ -658,7 +658,7 @@ exports[`rendering renders correctly 1`] = `
       <div
         className="saveButton"
       >
-        <ForwardRef(withForwardedRef(c))
+        <ForwardRef(withForwardedRef(Button))
           clickHandler={[Function]}
           disabled={true}
           label="general:action.save"

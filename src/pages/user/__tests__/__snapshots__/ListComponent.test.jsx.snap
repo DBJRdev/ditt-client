@@ -8,12 +8,12 @@ exports[`rendering renders correctly 1`] = `
   <div
     className="actions"
   >
-    <ForwardRef(withForwardedRef(c))
+    <ForwardRef(withForwardedRef(Button))
       clickHandler={[Function]}
       label="user:action.addUser"
     />
   </div>
-  <u
+  <Table
     columns={
       Array [
         Object {
