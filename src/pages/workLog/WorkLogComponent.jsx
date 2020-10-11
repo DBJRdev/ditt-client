@@ -10,6 +10,7 @@ import {
   STATUS_WAITING_FOR_APPROVAL,
 } from '../../resources/workMonth';
 import {
+  getAllDays,
   getWorkingDays,
   localizedMoment,
 } from '../../services/dateTimeService';
@@ -133,7 +134,7 @@ class WorkLogComponent extends React.Component {
   }
 
   addMultipleBusinessTripWorkLog(data) {
-    const workingDays = getWorkingDays(data.date, data.dateTo, this.props.config.get('supportedHolidays'));
+    const workingDays = getAllDays(data.date, data.dateTo);
     const workLogs = workingDays.map((workingDay) => ({
       ...data,
       date: workingDay,
@@ -149,7 +150,7 @@ class WorkLogComponent extends React.Component {
   }
 
   addMultipleHomeOfficeWorkLog(data) {
-    const workingDays = getWorkingDays(data.date, data.dateTo, this.props.config.get('supportedHolidays'));
+    const workingDays = getAllDays(data.date, data.dateTo);
     const workLogs = workingDays.map((workingDay) => ({
       ...data,
       date: workingDay,
