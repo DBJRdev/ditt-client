@@ -4,6 +4,7 @@ export {
   reset,
   resetLogoutLocally,
   resetPassword,
+  setLastRequestBrowserTime,
   setLogoutLocally,
   setNewPassword,
 } from './actions';
@@ -12,6 +13,7 @@ export {
   selectIsLoggedOutLocally,
   selectJwtToken,
   selectJwtMeta,
+  selectLastRequestBrowserTime,
   selectResetPasswordMeta,
   selectSetNewPasswordMeta,
 } from './selectors';

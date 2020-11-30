@@ -10,6 +10,13 @@ import {
 import routes from '../../routes';
 import * as types from './actionTypes';
 
+export const setLastRequestBrowserTime = (lastRequestBrowserTime) => (dispatch) => {
+  dispatch({
+    payload: lastRequestBrowserTime,
+    type: types.SET_LAST_REQUEST_BROWSER_TIME,
+  });
+};
+
 export const login = (data) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify({
@@ -45,6 +52,19 @@ export const login = (data) => (dispatch) => dispatch({
   }
 
   return response;
+});
+
+export const refreshToken = () => (dispatch) => dispatch({
+  [RSAA]: {
+    endpoint: `${API_URL}/refresh-token`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'POST',
+    types: [
+      types.REFRESH_TOKEN_REQUEST,
+      types.REFRESH_TOKEN_SUCCESS,
+      types.REFRESH_TOKEN_FAILURE,
+    ],
+  },
 });
 
 export const reset = () => (dispatch) => dispatch({ type: types.RESET });
