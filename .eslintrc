@@ -9,7 +9,7 @@
       "files": [
         "**/index.js",
         "src/resources/**/*.js",
-        "src/service/*.js"
+        "src/services/*.js"
       ],
       "rules": {
         "import/prefer-default-export": "off"

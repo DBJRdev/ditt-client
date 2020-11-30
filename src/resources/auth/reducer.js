@@ -21,6 +21,7 @@ export default (state, action) => {
     if (window.localStorage) {
       window.localStorage.setItem('jwt', payload.token);
     }
+
     return state
       .setIn(['jwt', 'isPosting'], false)
       .setIn(['jwt', 'isPostingFailure'], false)
@@ -48,13 +49,26 @@ export default (state, action) => {
     return state
       .setIn(['jwt', 'isFetching'], false)
       .setIn(['jwt', 'isFetchingFailure'], false)
-      .setIn(['jwt', 'token'], null);
+      .setIn(['jwt', 'token'], null)
+      .set('lastRequestBrowserTime', null);
   }
 
   if (type === actionTypes.LOGOUT_FAILURE) {
     return state
       .setIn(['jwt', 'isFetching'], false)
       .setIn(['jwt', 'isFetchingFailure'], true);
+  }
+
+  if (type === actionTypes.REFRESH_TOKEN_SUCCESS) {
+    if (window.localStorage) {
+      window.localStorage.setItem('jwt', payload.token);
+    }
+
+    return state.setIn(['jwt', 'token'], payload.token);
+  }
+
+  if (type === actionTypes.SET_LAST_REQUEST_BROWSER_TIME) {
+    return state.set('lastRequestBrowserTime', payload);
   }
 
   if (type === actionTypes.SET_LOGOUT_LOCALLY) {
@@ -66,7 +80,8 @@ export default (state, action) => {
       .setIn(['jwt', 'isFetching'], false)
       .setIn(['jwt', 'isFetchingFailure'], false)
       .setIn(['jwt', 'token'], null)
-      .set('isLoggedOutLocally', true);
+      .set('isLoggedOutLocally', true)
+      .set('lastRequestBrowserTime', null);
   }
 
   if (type === actionTypes.RESET_LOGOUT_LOCALLY) {
@@ -77,7 +92,8 @@ export default (state, action) => {
     return state
       .setIn(['jwt', 'isFetching'], false)
       .setIn(['jwt', 'isFetchingFailure'], false)
-      .setIn(['jwt', 'token'], null);
+      .setIn(['jwt', 'token'], null)
+      .set('lastRequestBrowserTime', null);
   }
 
   if (type === actionTypes.RESET_PASSWORD_REQUEST) {
