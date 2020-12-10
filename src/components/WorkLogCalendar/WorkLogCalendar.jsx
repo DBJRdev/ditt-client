@@ -1402,7 +1402,19 @@ class WorkLogCalendar extends React.Component {
                         </td>
                       )
                     }
-                    <td className={styles.tableCellRight}>
+                    <td
+                      className={
+                        day.workTime.isWorkTimeCorrected
+                          ? styles.tableCellRightWithCorrectedTime
+                          : styles.tableCellRight
+                      }
+                    >
+                      {
+                        day.workTime.isWorkTimeCorrected
+                          ? (
+                            <Icon icon="update" />
+                          ) : null
+                      }
                       {
                         areWorkTimesSame
                           ? (
