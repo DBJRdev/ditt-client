@@ -328,7 +328,7 @@
       "correction": "Korrektur",
       "openedWorkMonth": "Dieser Monat erscheint leer, weil der/die Arbeitnehmer*in ihn noch nicht übermittelt hat.",
       "workedAndRequiredHours": "{{ workedHours }} h von {{ requiredHours }} h",
-      "workedAndRequiredHoursDiffers": "{{ workedHours }} h von {{ requiredHours }} h (Daily totals hidden, showing only monthly totals using old calculation formula.)",
+      "workedAndRequiredHoursDiffers": "{{ workedHours }} h von {{ requiredHours }} h (Angezeigt wird nur die Monatsarbeitszeit nach alter Berechnungsgrundlage. Tagessummen sind ausgeblendet.)",
       "workedAndRequiredHoursPlusLeft": "{{ workedHours }} h von {{ requiredHours }} h ({{ requiredHoursWithoutLeft }} h + {{ requiredHoursLeft }} h aus den letzten Monaten)",
       "workedAndRequiredHoursMinusLeft": "{{ workedHours }} h von {{ requiredHours }} h ({{ requiredHoursWithoutLeft }} h - {{ requiredHoursLeft }} h aus den letzten Monaten)"
     },
