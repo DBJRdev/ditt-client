@@ -1,15 +1,25 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import {
+  Alert,
+  Button,
+  Card,
+  CardBody,
+  TextField,
+} from '@react-ui-org/react-ui';
 import { Link } from 'react-router-dom';
 import { withTranslation } from 'react-i18next';
-import { ForgotPassword } from '@react-ui-org/react-ui';
+import {
+  Icon,
+  LoadingIcon,
+} from '../../components/Icon';
 import {
   RESET_PASSWORD_FAILURE,
   RESET_PASSWORD_SUCCESS,
 } from '../../resources/auth/actionTypes';
 import routes from '../../routes';
-import styles from './Login.scss';
-import logoImage from './images/logo.svg';
+import LogoImage from './images/logo.svg';
+import styles from './ForgotPassword.scss';
 
 class ForgotPasswordComponent extends React.Component {
   constructor(props) {
@@ -22,13 +32,20 @@ class ForgotPasswordComponent extends React.Component {
     };
 
     this.onChangeHandler = this.onChangeHandler.bind(this);
+    this.onSubmitHandler = this.onSubmitHandler.bind(this);
     this.resetPasswordHandler = this.resetPasswordHandler.bind(this);
   }
 
-  onChangeHandler(field, value) {
+  onChangeHandler(e) {
     this.setState({
-      [field]: value,
+      [e.target.id]: e.target.value,
     });
+  }
+
+  onSubmitHandler(e) {
+    e.preventDefault();
+
+    this.resetPasswordHandler(e);
   }
 
   resetPasswordHandler() {
@@ -49,25 +66,29 @@ class ForgotPasswordComponent extends React.Component {
   }
 
   render() {
-    const { t } = this.props;
+    const {
+      isPosting,
+      t,
+    } = this.props;
+    const {
+      email,
+      error,
+      isSubmitted,
+    } = this.state;
+
     const layout = (children) => (
       <div className={styles.container}>
-        <img
-          src={logoImage}
-          width={302}
-          height={141}
-          className={styles.logo}
+        <LogoImage
           alt={t('layout:title')}
+          className={styles.logo}
+          height={141}
+          width={302}
         />
         {children}
       </div>
     );
 
-    if (this.props.isPosting) {
-      return layout(t('general:text.loading'));
-    }
-
-    if (this.state.isSubmitted) {
+    if (isSubmitted) {
       return layout((
         <p className={styles.message}>
           {t('login:text.passwordReset')}
@@ -76,23 +97,57 @@ class ForgotPasswordComponent extends React.Component {
     }
 
     return layout((
-      <ForgotPassword
-        error={this.state.error}
-        footer={(
-          // eslint-disable-next-line jsx-a11y/anchor-is-valid
-          <Link to={routes.login}>
-            {t('login:action.login')}
-          </Link>
+      <div className={styles.box}>
+        <div className={styles.title}>
+          {t('layout:title')}
+        </div>
+        {error && (
+          <div className="mb-5">
+            <Alert
+              icon={<Icon icon="error" />}
+              type="error"
+            >
+              <strong>
+                {t('general:text.error')}
+                {': '}
+              </strong>
+              {error}
+            </Alert>
+          </div>
         )}
-        submitHandler={this.resetPasswordHandler}
-        onChangeHandler={this.onChangeHandler}
-        title={t('layout:title')}
-        translations={{
-          email: t('user:element.email'),
-          resetPassword: t('login:action.resetPassword'),
-        }}
-        usernameType="email"
-      />
+        <Card variant="bordered">
+          <CardBody>
+            <form onSubmit={this.onSubmitHandler}>
+              <div className="mb-3">
+                <TextField
+                  autoComplete="username"
+                  changeHandler={this.onChangeHandler}
+                  fullWidth
+                  id="email"
+                  label={t('user:element.email')}
+                  type="email"
+                  required
+                  value={email ?? ''}
+                />
+              </div>
+              <Button
+                block
+                id="resetPasswordButton"
+                label={t('login:action.resetPassword')}
+                loadingIcon={isPosting && <LoadingIcon />}
+                type="submit"
+              />
+            </form>
+            <div
+              className={styles.footer}
+            >
+              <Link to={routes.login}>
+                {t('login:action.login')}
+              </Link>
+            </div>
+          </CardBody>
+        </Card>
+      </div>
     ));
   }
 }

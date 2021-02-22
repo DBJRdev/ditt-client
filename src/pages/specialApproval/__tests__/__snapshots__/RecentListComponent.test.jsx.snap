@@ -18,7 +18,6 @@ exports[`rendering renders correctly 1`] = `
     specialApproval:text.recentSpecialApprovalsClosingPart
   </div>
   <SpecialApprovalListComponent
-    businessTripWorkLog={null}
     config={
       Immutable.Map {
         "supportedHolidays": Immutable.List [
@@ -58,7 +57,6 @@ exports[`rendering renders correctly 1`] = `
     fetchSpecialLeaveWorkLog={[Function]}
     fetchTimeOffWorkLog={[Function]}
     fetchVacationWorkLog={[Function]}
-    homeOfficeWorkLog={null}
     isFetching={false}
     isPosting={false}
     markBusinessTripWorkLogApproved={[Function]}
@@ -77,7 +75,6 @@ exports[`rendering renders correctly 1`] = `
     markTimeOffWorkLogRejected={[Function]}
     markVacationWorkLogApproved={[Function]}
     markVacationWorkLogRejected={[Function]}
-    overtimeWorkLog={null}
     specialApprovalList={
       Immutable.Map {
         "businessTripWorkLogs": Immutable.List [],
@@ -88,7 +85,6 @@ exports[`rendering renders correctly 1`] = `
         "vacationWorkLogs": Immutable.List [],
       }
     }
-    specialLeaveWorkLog={null}
     supportBusinessTripWorkLog={[Function]}
     supportHomeOfficeWorkLog={[Function]}
     supportMultipleSpecialLeaveWorkLog={[Function]}
@@ -98,9 +94,7 @@ exports[`rendering renders correctly 1`] = `
     supportTimeOffWorkLog={[Function]}
     supportVacationWorkLog={[Function]}
     t={[Function]}
-    timeOffWorkLog={null}
-    token="token"
-    vacationWorkLog={null}
+    token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0IiwidWlkIjoxLCJmaXJzdE5hbWUiOiJKYW4iLCJsYXN0TmFtZSI6Ik5vdmFrIiwicm9sZXMiOlsiUk9MRV9TVVBFUl9BRE1JTiIsIlJPTEVfRU1QTE9ZRUUiXSwiaWF0IjoxNTc3ODM2ODAwMDAwLCJleHAiOjE1Nzc4MzY4MDAwMDB9.D0JsAR_gABmhJo6bf8AzKp7dazsvZdN0_5-YOW2dKgI"
   />
 </Connect(LayoutComponent)>
 `;

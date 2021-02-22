@@ -3,12 +3,10 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import ProfileComponent from '../ProfileComponent';
 import configMock from '../../../../tests/mocks/configMock';
+import token from '../../../../tests/mocks/token';
 
 describe('rendering', () => {
   it('renders correctly', () => {
-    // Ignore warning because of old ReactUI
-    console.error = () => {};
-
     const props = {
       config: configMock,
       editUser: () => new Promise(() => {}),
@@ -18,8 +16,10 @@ describe('rendering', () => {
       isFetching: false,
       isPosting: false,
       renewUserApiToken: () => new Promise(() => {}),
+      renewUserICalToken: () => new Promise(() => {}),
       resetUserApiToken: () => new Promise(() => {}),
-      token: 'token',
+      resetUserICalToken: () => new Promise(() => {}),
+      token,
       user: Immutable.fromJS({
         apiToken: 'apiToken',
         email: 'employee@example.com',

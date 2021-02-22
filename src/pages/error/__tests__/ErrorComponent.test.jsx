@@ -5,6 +5,7 @@ import ErrorComponent from '../ErrorComponent';
 describe('rendering', () => {
   it('renders correctly', () => {
     const tree = shallow(<ErrorComponent />);
+
     expect(tree).toMatchSnapshot();
   });
 });

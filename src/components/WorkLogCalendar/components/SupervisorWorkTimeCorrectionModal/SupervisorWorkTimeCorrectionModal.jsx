@@ -8,7 +8,7 @@ import {
   TextField,
 } from '@react-ui-org/react-ui';
 import { withTranslation } from 'react-i18next';
-import { Icon } from '../../../Icon';
+import { LoadingIcon } from '../../../Icon';
 import styles from '../../../WorkLogForm/WorkLogForm.scss';
 import { validateWorkTimeCorrection } from '../../../../services/validatorService';
 
@@ -122,12 +122,11 @@ class SupervisorWorkTimeCorrectionModal extends React.Component {
           {
             clickHandler: this.saveHandler,
             label: t('workMonth:actions.setWorkTimeCorrection'),
-            loadingIcon: isPosting ? <Icon icon="sync" /> : null,
+            loadingIcon: isPosting ? <LoadingIcon /> : null,
           },
         ]}
         closeHandler={onClose}
         title={t('workMonth:text.workTimeCorrection')}
-        translations={{ close: t('general:action.close') }}
       >
         <div className={styles.centeredLayout}>
           <List>
@@ -156,7 +155,7 @@ class SupervisorWorkTimeCorrectionModal extends React.Component {
                   <TextField
                     autoFocus
                     changeHandler={this.changeHandler}
-                    helperText={formValidity.elements.hour}
+                    validationText={formValidity.elements.hour}
                     id="hour"
                     inputSize={2}
                     isLabelVisible={false}
@@ -170,7 +169,7 @@ class SupervisorWorkTimeCorrectionModal extends React.Component {
                 <div className={styles.fieldDate}>
                   <TextField
                     changeHandler={this.changeHandler}
-                    helperText={formValidity.elements.minute}
+                    validationText={formValidity.elements.minute}
                     id="minute"
                     inputSize={2}
                     isLabelVisible={false}

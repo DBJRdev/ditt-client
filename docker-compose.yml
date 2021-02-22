@@ -1,4 +1,4 @@
 node:
     build: docker/Node
     volumes:
-            - .:/workspace
+        - .:/workspace

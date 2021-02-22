@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { StaticRouter } from 'react-router-dom';
+import token from '../../../../tests/mocks/token';
 import NewPasswordComponent from '../NewPasswordComponent';
 
 describe('rendering', () => {
@@ -10,7 +11,7 @@ describe('rendering', () => {
       isPostingFailure: false,
       match: {
         params: {
-          resetPasswordToken: 'token',
+          resetPasswordToken: token,
         },
       },
       setNewPassword: () => {},

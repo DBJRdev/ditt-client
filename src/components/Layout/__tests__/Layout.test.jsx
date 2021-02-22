@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import token from '../../../../tests/mocks/token';
 import LayoutComponent from '../LayoutComponent';
 
 describe('rendering', () => {
@@ -25,7 +26,7 @@ describe('rendering', () => {
         logout={() => {}}
         setLogoutLocally={() => {}}
         title="Title"
-        token="token"
+        token={token}
         roles={['ROLE_EMPLOYEE']}
       >
         Content

@@ -10,7 +10,7 @@ import {
   SelectField,
   TextField,
 } from '@react-ui-org/react-ui';
-import { Icon } from '../../components/Icon';
+import { LoadingIcon } from '../../components/Icon';
 import {
   ADD_USER_SUCCESS,
   ADD_USER_FAILURE,
@@ -250,7 +250,7 @@ class AddComponent extends React.Component {
               <TextField
                 changeHandler={this.changeHandler}
                 fullWidth
-                helperText={this.state.formValidity.elements.firstName}
+                validationText={this.state.formValidity.elements.firstName}
                 id="firstName"
                 label={t('user:element.firstName')}
                 required
@@ -262,7 +262,7 @@ class AddComponent extends React.Component {
               <TextField
                 changeHandler={this.changeHandler}
                 fullWidth
-                helperText={this.state.formValidity.elements.lastName}
+                validationText={this.state.formValidity.elements.lastName}
                 id="lastName"
                 label={t('user:element.lastName')}
                 required
@@ -274,7 +274,7 @@ class AddComponent extends React.Component {
               <SelectField
                 changeHandler={this.changeHandler}
                 fullWidth
-                helperText={this.state.formValidity.elements.supervisor}
+                validationText={this.state.formValidity.elements.supervisor}
                 id="supervisor"
                 label={t('user:element.supervisor')}
                 options={userList}
@@ -286,7 +286,7 @@ class AddComponent extends React.Component {
               <TextField
                 changeHandler={this.changeHandler}
                 fullWidth
-                helperText={this.state.formValidity.elements.email}
+                validationText={this.state.formValidity.elements.email}
                 id="email"
                 label={t('user:element.email')}
                 required
@@ -298,7 +298,7 @@ class AddComponent extends React.Component {
               <TextField
                 changeHandler={this.changeHandler}
                 fullWidth
-                helperText={this.state.formValidity.elements.employeeId}
+                validationText={this.state.formValidity.elements.employeeId}
                 id="employeeId"
                 label={t('user:element.employeeId')}
                 required
@@ -310,7 +310,7 @@ class AddComponent extends React.Component {
               <TextField
                 changeHandler={this.changeHandler}
                 fullWidth
-                helperText={this.state.formValidity.elements.plainPassword}
+                validationText={this.state.formValidity.elements.plainPassword}
                 id="plainPassword"
                 label={t('user:element.plainPassword')}
                 type="password"
@@ -345,7 +345,7 @@ class AddComponent extends React.Component {
                   <span>{year}</span>
                   <TextField
                     changeHandler={this.changeVacationDaysHandler}
-                    helperText={this.state.formValidity.elements.vacations[year].vacationDays}
+                    validationText={this.state.formValidity.elements.vacations[year].vacationDays}
                     id={`vacationDays_${year.toString()}`}
                     inputSize={6}
                     label={t('vacation:text.total')}
@@ -354,7 +354,7 @@ class AddComponent extends React.Component {
                   />
                   <TextField
                     changeHandler={this.changeVacationDaysCorrectionHandler}
-                    helperText={
+                    validationText={
                       this.state.formValidity.elements.vacations[year].vacationDaysCorrection
                     }
                     id={`vacationDaysCorrection_${year.toString()}`}
@@ -397,7 +397,7 @@ class AddComponent extends React.Component {
                   <TextField
                     changeHandler={this.changeWorkHourHandler}
                     fullWidth
-                    helperText={this.state.formValidity.elements.workHours[year]}
+                    validationText={this.state.formValidity.elements.workHours[year]}
                     id={year.toString()}
                     key={year}
                     label={year.toString()}
@@ -421,7 +421,7 @@ class AddComponent extends React.Component {
               <Button
                 clickHandler={this.saveHandler}
                 label={t('general:action.save')}
-                loadingIcon={this.props.isPosting ? <Icon icon="sync" /> : null}
+                loadingIcon={this.props.isPosting ? <LoadingIcon /> : null}
               />
             </ListItem>
           </List>

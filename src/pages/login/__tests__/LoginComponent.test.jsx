@@ -15,6 +15,7 @@ describe('rendering', () => {
       login: () => {},
       resetLogoutLocally: () => {},
     };
+
     const tree = mount((
       <StaticRouter context={{}} location="/path">
         <LoginComponent {...props} />

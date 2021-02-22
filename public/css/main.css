@@ -60,7 +60,8 @@ body {
   font-size: 1rem;
   line-height: 1.5;
   color: #000;
-  background-color: #f6f5f4;
+  /* stylelint-disable-next-line declaration-no-important */
+  background-color: #f6f5f4 !important;
 }
 
 h1,

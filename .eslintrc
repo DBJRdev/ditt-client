@@ -7,9 +7,12 @@
   "overrides": [
     {
       "files": [
+        "**/constants.js",
+        "**/helpers.js",
         "**/index.js",
-        "src/resources/**/*.js",
-        "src/services/*.js"
+        "src/constants/*",
+        "src/resources/**/*",
+        "src/services/**/*"
       ],
       "rules": {
         "import/prefer-default-export": "off"

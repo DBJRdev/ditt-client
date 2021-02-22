@@ -16,4 +16,4 @@ To run the dev server:
 
 1. Install local npm packages: `npm install`
 2. Create `config/envspecific.js` from `envspecific.example.js`
-3. Run the build `npm start`
+3. Run the server `npm start`

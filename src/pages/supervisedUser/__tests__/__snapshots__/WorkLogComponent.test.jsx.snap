@@ -24,8 +24,6 @@ exports[`rendering renders correctly 1`] = `
     addTimeOffWorkLog={[Function]}
     addVacationWorkLog={[Function]}
     addWorkLog={[Function]}
-    banWorkLog={null}
-    businessTripWorkLog={null}
     changeSelectedDate={[Function]}
     config={
       Immutable.Map {
@@ -94,27 +92,20 @@ exports[`rendering renders correctly 1`] = `
     fetchTimeOffWorkLog={[Function]}
     fetchVacationWorkLog={[Function]}
     fetchWorkLog={[Function]}
-    homeOfficeWorkLog={null}
     isPosting={false}
     markApproved={[Function]}
     markWaitingForApproval={[Function]}
-    maternityProtectionWorkLog={null}
-    overtimeWorkLog={null}
-    parentalLeaveWorkLog={null}
     selectedDate={"2018-01-01T00:00:00.000Z"}
     setWorkTimeCorrection={[Function]}
-    sickDayUnpaidWorkLog={null}
-    sickDayWorkLog={null}
-    specialLeaveWorkLog={null}
     supervisorView={true}
-    t={[Function]}
-    timeOffWorkLog={null}
-    uid={null}
-    userRoles={Array []}
-    vacationWorkLog={null}
+    uid={1}
+    userRoles={
+      Array [
+        "ROLE_SUPER_ADMIN",
+        "ROLE_EMPLOYEE",
+      ]
+    }
     workHoursList={Immutable.List []}
-    workLog={null}
-    workMonth={null}
     workMonthList={Immutable.List []}
   />
 </Connect(LayoutComponent)>

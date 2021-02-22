@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Modal } from '@react-ui-org/react-ui';
 import { withTranslation } from 'react-i18next';
-import { Icon } from '../../../Icon';
+import { LoadingIcon } from '../../../Icon';
 import {
   BAN_WORK_LOG,
   BUSINESS_TRIP_WORK_LOG,
@@ -426,7 +426,7 @@ const WorkLogDetailModal = (props) => {
     actions.push({
       clickHandler: onDelete,
       label: t('general:action.delete'),
-      loadingIcon: isPosting ? <Icon icon="sync" /> : null,
+      loadingIcon: isPosting ? <LoadingIcon /> : null,
       variant: 'danger',
     });
   }
@@ -436,7 +436,6 @@ const WorkLogDetailModal = (props) => {
       actions={actions}
       closeHandler={onClose}
       title={t('workLog:modal.detail.title')}
-      translations={{ close: t('general:action.close') }}
     >
       {content}
     </Modal>

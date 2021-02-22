@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import decode from 'jsonwebtoken/decode';
+import decode from 'jwt-decode';
 import { selectJwtToken } from '../../resources/auth';
 import {
   fetchBanWorkLog,

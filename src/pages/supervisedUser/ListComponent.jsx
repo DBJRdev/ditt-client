@@ -1,10 +1,13 @@
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
-import decode from 'jsonwebtoken/decode';
+import decode from 'jwt-decode';
 import { Link } from 'react-router-dom';
 import { withTranslation } from 'react-i18next';
-import { Table } from '@react-ui-org/react-ui';
+import {
+  ScrollView,
+  Table,
+} from '@react-ui-org/react-ui';
 import { Icon } from '../../components/Icon';
 import Layout from '../../components/Layout';
 import routes from '../../routes';
@@ -72,104 +75,106 @@ class ListComponent extends React.Component {
     return (
       <Layout title={t('supervisedUser:title.supervisedUsers')} loading={this.props.isFetching}>
         {this.props.supervisedUserList.count() > 0 ? (
-          <Table
-            columns={[
-              {
-                format: (row) => (
-                  <span className={lighterRow(row)}>
-                    {`${row.firstName} ${row.lastName}`}
-                  </span>
-                ),
-                isSortable: true,
-                label: t('user:element.name'),
-                name: 'lastName',
-              },
-              {
-                format: (row) => {
-                  const waitingForApproval = row.workMonths.filter((workMonth) => (
-                    workMonth.status === STATUS_WAITING_FOR_APPROVAL
-                  ));
-
-                  if (!waitingForApproval.length) {
-                    return (
-                      <span className={lighterRow(row)}>
-                        {t('general:action.no')}
-                      </span>
-                    );
-                  }
-
-                  const waitingForApprovalLinks = waitingForApproval.map((workMonth) => (
-                    /* eslint-disable-next-line jsx-a11y/anchor-is-valid */
-                    <Link
-                      className={styles.waitingForApprovalLink}
-                      key={workMonth.id}
-                      to={
-                        routes.supervisedUserWorkLogWithDate
-                          .replace(':id', row.id)
-                          .replace(':year', workMonth.year)
-                          .replace(':month', workMonth.month)
-                      }
-                    >
-                      {toMonthYearFormat(createDate(workMonth.year, workMonth.month - 1, 1))}
-                    </Link>
-                  ));
-
-                  return (
-                    <div className={lighterRow(row)}>
-                      {t('general:action.yes')}
-                      {' | '}
-                      {waitingForApprovalLinks}
-                    </div>
-                  );
+          <ScrollView direction="horizontal">
+            <Table
+              columns={[
+                {
+                  format: (row) => (
+                    <span className={lighterRow(row)}>
+                      {`${row.firstName} ${row.lastName}`}
+                    </span>
+                  ),
+                  isSortable: true,
+                  label: t('user:element.name'),
+                  name: 'lastName',
                 },
-                label: t('supervisedUser:element.needApproval'),
-                name: 'needApproval',
-              },
-              {
-                format: (row) => (
-                  <span className={lighterRow(row)}>
-                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                    <Link to={routes.supervisedUserWorkLog.replace(':id', row.id)}>
-                      {t('supervisedUser:element.showWorkLog')}
-                    </Link>
-                  </span>
-                ),
-                label: t('supervisedUser:element.showWorkLog'),
-                name: 'showWorkLog',
-              },
-            ]}
-            rows={this.props.supervisedUserList.toJS()}
-            sort={{
-              ascendingIcon: <Icon icon="arrow_upward" />,
-              changeHandler: (column, direction) => {
-                if (this.props.token) {
-                  const decodedToken = decode(this.props.token);
+                {
+                  format: (row) => {
+                    const waitingForApproval = row.workMonths.filter((workMonth) => (
+                      workMonth.status === STATUS_WAITING_FOR_APPROVAL
+                    ));
 
-                  if (decodedToken) {
-                    const orderDirection = direction === 'asc' ? 'desc' : 'asc';
+                    if (!waitingForApproval.length) {
+                      return (
+                        <span className={lighterRow(row)}>
+                          {t('general:action.no')}
+                        </span>
+                      );
+                    }
 
-                    this.props.fetchSupervisedUserList(
-                      decodedToken.uid,
-                      {
-                        order: {
-                          column,
-                          direction: orderDirection,
+                    const waitingForApprovalLinks = waitingForApproval.map((workMonth) => (
+                      /* eslint-disable-next-line jsx-a11y/anchor-is-valid */
+                      <Link
+                        className={styles.waitingForApprovalLink}
+                        key={workMonth.id}
+                        to={
+                          routes.supervisedUserWorkLogWithDate
+                            .replace(':id', row.id)
+                            .replace(':year', workMonth.year)
+                            .replace(':month', workMonth.month)
+                        }
+                      >
+                        {toMonthYearFormat(createDate(workMonth.year, workMonth.month - 1, 1))}
+                      </Link>
+                    ));
+
+                    return (
+                      <div className={lighterRow(row)}>
+                        {t('general:action.yes')}
+                        {' | '}
+                        {waitingForApprovalLinks}
+                      </div>
+                    );
+                  },
+                  label: t('supervisedUser:element.needApproval'),
+                  name: 'needApproval',
+                },
+                {
+                  format: (row) => (
+                    <span className={lighterRow(row)}>
+                      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                      <Link to={routes.supervisedUserWorkLog.replace(':id', row.id)}>
+                        {t('supervisedUser:element.showWorkLog')}
+                      </Link>
+                    </span>
+                  ),
+                  label: t('supervisedUser:element.showWorkLog'),
+                  name: 'showWorkLog',
+                },
+              ]}
+              rows={this.props.supervisedUserList.toJS()}
+              sort={{
+                ascendingIcon: <Icon icon="arrow_upward" />,
+                changeHandler: (column, direction) => {
+                  if (this.props.token) {
+                    const decodedToken = decode(this.props.token);
+
+                    if (decodedToken) {
+                      const orderDirection = direction === 'asc' ? 'desc' : 'asc';
+
+                      this.props.fetchSupervisedUserList(
+                        decodedToken.uid,
+                        {
+                          order: {
+                            column,
+                            direction: orderDirection,
+                          },
                         },
-                      },
-                    ).then(() => {
-                      this.setState({
-                        tableSortColumn: column,
-                        tableSortDirection: orderDirection,
+                      ).then(() => {
+                        this.setState({
+                          tableSortColumn: column,
+                          tableSortDirection: orderDirection,
+                        });
                       });
-                    });
+                    }
                   }
-                }
-              },
-              column: this.state.tableSortColumn,
-              descendingIcon: <Icon icon="arrow_downward" />,
-              direction: this.state.tableSortDirection,
-            }}
-          />
+                },
+                column: this.state.tableSortColumn,
+                descendingIcon: <Icon icon="arrow_downward" />,
+                direction: this.state.tableSortDirection,
+              }}
+            />
+          </ScrollView>
         ) : (
           <div>
             {t('supervisedUser:text.emptyList')}

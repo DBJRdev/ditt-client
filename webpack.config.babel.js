@@ -1,6 +1,6 @@
 const Path = require('path');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
-const VisualizerPlugin = require('webpack-visualizer-plugin');
+const VisualizerPlugin = require('webpack-visualizer-plugin2');
 const webpack = require('webpack');
 
 module.exports = (env, argv) => {
@@ -8,11 +8,9 @@ module.exports = (env, argv) => {
 
   return {
     devServer: {
-      contentBase: './public',
-      disableHostCheck: true,
       historyApiFallback: true,
       host: '0.0.0.0',
-      inline: true,
+      static: Path.join(__dirname, 'public'),
     },
     devtool: modeArgument === 'development'
       ? 'eval-cheap-module-source-map'
@@ -24,6 +22,12 @@ module.exports = (env, argv) => {
     },
     module: {
       rules: [
+        {
+          resolve: {
+            fullySpecified: false,
+          },
+          test: /\.m?js/,
+        },
         {
           exclude: /node_modules/,
           include: Path.join(__dirname, 'src'),
@@ -45,14 +49,25 @@ module.exports = (env, argv) => {
               },
             },
             { loader: 'postcss-loader' },
-            { loader: 'sass-loader' },
+            {
+              loader: 'sass-loader',
+              options: {
+                sassOptions: {
+                  includePaths: ['node_modules'],
+                },
+              },
+            },
           ],
         },
         {
           test: /\.svg$/,
           use: [
-            { loader: 'file-loader?hash=sha512&digest=hex&name=[hash].[ext]' },
-            { loader: 'image-webpack-loader?bypassOnDebug' },
+            {
+              loader: '@svgr/webpack',
+              options: {
+                titleProp: true,
+              },
+            },
           ],
         },
       ],
@@ -61,6 +76,11 @@ module.exports = (env, argv) => {
       filename: '[name].js',
       path: Path.join(__dirname, 'public/generated'),
       publicPath: '/generated/',
+    },
+    performance: {
+      hints: modeArgument === 'production' ? 'error' : false,
+      maxAssetSize: 1500000,
+      maxEntrypointSize: 1500000,
     },
     plugins: [
       new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /de|en/),

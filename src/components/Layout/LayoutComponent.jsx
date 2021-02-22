@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import decode from 'jsonwebtoken/decode';
+import decode from 'jwt-decode';
 import { withTranslation } from 'react-i18next';
 import {
   Button,
@@ -17,7 +17,7 @@ import {
 import history from '../../routerHistory';
 import routes from '../../routes';
 import styles from './Layout.scss';
-import logoImage from './images/logo.svg';
+import LogoImage from './images/logo.svg';
 
 class LayoutComponent extends React.Component {
   constructor(props) {
@@ -93,8 +93,7 @@ class LayoutComponent extends React.Component {
     const { t } = this.props;
 
     let logo = (
-      <img
-        src={logoImage}
+      <LogoImage
         width={183}
         height={85}
         className={styles.logo}

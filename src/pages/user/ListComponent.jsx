@@ -1,11 +1,12 @@
 import moment from 'moment-timezone';
-import decode from 'jsonwebtoken/decode';
+import decode from 'jwt-decode';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withTranslation } from 'react-i18next';
 import {
   Button,
+  ScrollView,
   Table,
 } from '@react-ui-org/react-ui';
 import { Link } from 'react-router-dom';
@@ -125,31 +126,33 @@ class ListComponent extends React.Component {
             label={t('user:action.addUser')}
           />
         </div>
-        <Table
-          columns={columns}
-          rows={this.props.userList.toJS()}
-          sort={{
-            ascendingIcon: <Icon icon="arrow_upward" />,
-            changeHandler: (column, direction) => {
-              const orderDirection = direction === 'asc' ? 'desc' : 'asc';
+        <ScrollView direction="horizontal">
+          <Table
+            columns={columns}
+            rows={this.props.userList.toJS()}
+            sort={{
+              ascendingIcon: <Icon icon="arrow_upward" />,
+              changeHandler: (column, direction) => {
+                const orderDirection = direction === 'asc' ? 'desc' : 'asc';
 
-              this.props.fetchUserList({
-                order: {
-                  column,
-                  direction: orderDirection,
-                },
-              }).then(() => {
-                this.setState({
-                  tableSortColumn: column,
-                  tableSortDirection: orderDirection,
+                this.props.fetchUserList({
+                  order: {
+                    column,
+                    direction: orderDirection,
+                  },
+                }).then(() => {
+                  this.setState({
+                    tableSortColumn: column,
+                    tableSortDirection: orderDirection,
+                  });
                 });
-              });
-            },
-            column: this.state.tableSortColumn,
-            descendingIcon: <Icon icon="arrow_downward" />,
-            direction: this.state.tableSortDirection,
-          }}
-        />
+              },
+              column: this.state.tableSortColumn,
+              descendingIcon: <Icon icon="arrow_downward" />,
+              direction: this.state.tableSortDirection,
+            }}
+          />
+        </ScrollView>
       </Layout>
     );
   }

@@ -1,9 +1,19 @@
-FROM            node:latest
+FROM        node:12
 
-RUN             mkdir /home/docker-container-user \
-                && mkdir /workspace \
-                && useradd -d /home/docker-container-user -s /bin/bash docker-container-user
+#######################
+# Configure workspace #
+#######################
 
-COPY            ./init-container.sh /root/init-container.sh
+RUN          mkdir /workspace
 
-WORKDIR         /workspace
+##############
+# Copy files #
+##############
+
+COPY        ./init-container.sh /root/init-container.sh
+
+###############################
+# Configure working directory #
+###############################
+
+WORKDIR     /workspace

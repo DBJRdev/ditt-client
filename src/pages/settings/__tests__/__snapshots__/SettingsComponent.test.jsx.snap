@@ -16,7 +16,7 @@ exports[`rendering renders correctly 1`] = `
     <div
       className="yearButtonsWrapper"
     >
-      <ForwardRef(withForwardedRef(Button))
+      <ForwardRef(withForwardedRef(WithProviderContextComponent))
         beforeLabel={
           <Icon
             icon="add"
@@ -45,7 +45,7 @@ exports[`rendering renders correctly 1`] = `
         <div
           className="yearEditButtonWrapper"
         >
-          <ForwardRef(withForwardedRef(Button))
+          <ForwardRef(withForwardedRef(WithProviderContextComponent))
             beforeLabel={
               <Icon
                 icon="edit"
@@ -58,7 +58,7 @@ exports[`rendering renders correctly 1`] = `
             priority="outline"
           />
         </div>
-        <ForwardRef(withForwardedRef(Button))
+        <ForwardRef(withForwardedRef(WithProviderContextComponent))
           beforeLabel={
             <Icon
               icon="expand_more"
@@ -66,6 +66,7 @@ exports[`rendering renders correctly 1`] = `
             />
           }
           clickHandler={[Function]}
+          label=""
           labelVisibility="none"
           priority="outline"
         />
@@ -89,7 +90,7 @@ exports[`rendering renders correctly 1`] = `
         <div
           className="yearEditButtonWrapper"
         >
-          <ForwardRef(withForwardedRef(Button))
+          <ForwardRef(withForwardedRef(WithProviderContextComponent))
             beforeLabel={
               <Icon
                 icon="edit"
@@ -102,7 +103,7 @@ exports[`rendering renders correctly 1`] = `
             priority="outline"
           />
         </div>
-        <ForwardRef(withForwardedRef(Button))
+        <ForwardRef(withForwardedRef(WithProviderContextComponent))
           beforeLabel={
             <Icon
               icon="expand_more"
@@ -110,6 +111,7 @@ exports[`rendering renders correctly 1`] = `
             />
           }
           clickHandler={[Function]}
+          label=""
           labelVisibility="none"
           priority="outline"
         />
@@ -133,7 +135,7 @@ exports[`rendering renders correctly 1`] = `
         <div
           className="yearEditButtonWrapper"
         >
-          <ForwardRef(withForwardedRef(Button))
+          <ForwardRef(withForwardedRef(WithProviderContextComponent))
             beforeLabel={
               <Icon
                 icon="edit"
@@ -146,7 +148,7 @@ exports[`rendering renders correctly 1`] = `
             priority="outline"
           />
         </div>
-        <ForwardRef(withForwardedRef(Button))
+        <ForwardRef(withForwardedRef(WithProviderContextComponent))
           beforeLabel={
             <Icon
               icon="expand_more"
@@ -154,6 +156,7 @@ exports[`rendering renders correctly 1`] = `
             />
           }
           clickHandler={[Function]}
+          label=""
           labelVisibility="none"
           priority="outline"
         />
@@ -177,7 +180,7 @@ exports[`rendering renders correctly 1`] = `
         <div
           className="yearEditButtonWrapper"
         >
-          <ForwardRef(withForwardedRef(Button))
+          <ForwardRef(withForwardedRef(WithProviderContextComponent))
             beforeLabel={
               <Icon
                 icon="edit"
@@ -190,7 +193,7 @@ exports[`rendering renders correctly 1`] = `
             priority="outline"
           />
         </div>
-        <ForwardRef(withForwardedRef(Button))
+        <ForwardRef(withForwardedRef(WithProviderContextComponent))
           beforeLabel={
             <Icon
               icon="expand_more"
@@ -198,6 +201,7 @@ exports[`rendering renders correctly 1`] = `
             />
           }
           clickHandler={[Function]}
+          label=""
           labelVisibility="none"
           priority="outline"
         />

@@ -6,10 +6,14 @@ import React from 'react';
 import { withTranslation } from 'react-i18next';
 import {
   Button,
+  ScrollView,
   Toolbar,
   ToolbarItem,
 } from '@react-ui-org/react-ui';
-import { Icon } from '../Icon';
+import {
+  Icon,
+  LoadingIcon,
+} from '../Icon';
 import WorkLogForm from '../WorkLogForm';
 import { transformBusinessTripWorkLog } from '../../resources/businessTripWorkLog';
 import { transformHomeOfficeWorkLog } from '../../resources/homeOfficeWorkLog';
@@ -1283,10 +1287,11 @@ class WorkLogCalendar extends React.Component {
             />
           </div>
         )}
-        <div className={styles.tableWrapper}>
-          <table className={styles.table}>
-            <tbody>
-              {workTimeCorrectionText && (
+        <ScrollView direction="horizontal">
+          <div className={styles.tableWrapper}>
+            <table className={styles.table}>
+              <tbody>
+                {workTimeCorrectionText && (
                 <tr>
                   <td
                     colSpan={(canAddWorkLog || canAddSupervisorWorkLog) ? 4 : 3}
@@ -1295,58 +1300,58 @@ class WorkLogCalendar extends React.Component {
                     {workTimeCorrectionText}
                   </td>
                 </tr>
-              )}
-              {daysOfSelectedMonth.map((day) => {
-                let rowClassName = (
-                  isWeekend(day.date)
-                || includesSameDate(day.date, this.props.config.get('supportedHolidays'))
-                ) ? styles.tableRowWeekend
-                  : styles.tableRow;
+                )}
+                {daysOfSelectedMonth.map((day) => {
+                  let rowClassName = (
+                    isWeekend(day.date)
+                  || includesSameDate(day.date, this.props.config.get('supportedHolidays'))
+                  ) ? styles.tableRowWeekend
+                    : styles.tableRow;
 
-                if (canAddWorkLog || canAddSupervisorWorkLog) {
-                  rowClassName = `${rowClassName} ${styles.tableRowAddWorkLog}`;
-                }
+                  if (canAddWorkLog || canAddSupervisorWorkLog) {
+                    rowClassName = `${rowClassName} ${styles.tableRowAddWorkLog}`;
+                  }
 
-                let onRowClick;
-                if (canAddWorkLog) {
-                  onRowClick = () => this.openWorkLogForm(day.date);
-                } else if (canAddSupervisorWorkLog) {
-                  onRowClick = () => this.openSupervisorWorkLogForm(day.date);
-                }
+                  let onRowClick;
+                  if (canAddWorkLog) {
+                    onRowClick = () => this.openWorkLogForm(day.date);
+                  } else if (canAddSupervisorWorkLog) {
+                    onRowClick = () => this.openSupervisorWorkLogForm(day.date);
+                  }
 
-                return (
-                  <tr
-                    className={rowClassName}
-                    key={day.date.date()}
-                    onClick={onRowClick}
-                  >
-                    <td className={styles.dateTableCell}>
-                      <div className={styles.date}>
-                        {toDayMonthYearFormat(day.date)}
-                      </div>
-                      <div className={styles.dayInWeek}>
-                        {toDayFormat(day.date)}
-                      </div>
-                    </td>
-                    <td className={styles.tableCell}>
-                      <Toolbar dense>
-                        {day.workLogList.map((workLog) => (
-                          <WorkLogDetailButton
-                            currentDate={day.date}
-                            daysOfCurrentMonth={daysOfSelectedMonth}
-                            isInSupervisorMode={
+                  return (
+                    <tr
+                      className={rowClassName}
+                      key={day.date.date()}
+                      onClick={onRowClick}
+                    >
+                      <td className={styles.dateTableCell}>
+                        <div className={styles.date}>
+                          {toDayMonthYearFormat(day.date)}
+                        </div>
+                        <div className={styles.dayInWeek}>
+                          {toDayFormat(day.date)}
+                        </div>
+                      </td>
+                      <td className={styles.tableCell}>
+                        <Toolbar dense>
+                          {day.workLogList.map((workLog) => (
+                            <WorkLogDetailButton
+                              currentDate={day.date}
+                              daysOfCurrentMonth={daysOfSelectedMonth}
+                              isInSupervisorMode={
                               this.props.supervisorView && userRoles.includes(ROLE_SUPER_ADMIN)
                             }
-                            key={`${workLog.type}_${workLog.id}`}
-                            onClick={this.openDeleteWorkLogDialog}
-                            onDuplicateClick={this.duplicateWorkLog}
-                            onEditClick={this.openEditWorkLogDialog}
-                            uid={this.props.uid}
-                            workLog={workLog}
-                            workMonth={this.props.workMonth.toJS()}
-                          />
-                        ))}
-                        {
+                              key={`${workLog.type}_${workLog.id}`}
+                              onClick={this.openDeleteWorkLogDialog}
+                              onDuplicateClick={this.duplicateWorkLog}
+                              onEditClick={this.openEditWorkLogDialog}
+                              uid={this.props.uid}
+                              workLog={workLog}
+                              workMonth={this.props.workMonth.toJS()}
+                            />
+                          ))}
+                          {
                           day.date.isSame(date, 'day')
                           && canAddWorkLog
                           && (
@@ -1370,9 +1375,9 @@ class WorkLogCalendar extends React.Component {
                             </ToolbarItem>
                           )
                         }
-                      </Toolbar>
-                    </td>
-                    {
+                        </Toolbar>
+                      </td>
+                      {
                       canAddWorkLog
                       && (
                         <td className={styles.tableCellRight}>
@@ -1387,7 +1392,7 @@ class WorkLogCalendar extends React.Component {
                         </td>
                       )
                     }
-                    {
+                      {
                       canAddSupervisorWorkLog
                       && (
                         <td className={styles.tableCellRight}>
@@ -1402,20 +1407,20 @@ class WorkLogCalendar extends React.Component {
                         </td>
                       )
                     }
-                    <td
-                      className={
+                      <td
+                        className={
                         day.workTime.isWorkTimeCorrected
                           ? styles.tableCellRightWithCorrectedTime
                           : styles.tableCellRight
                       }
-                    >
-                      {
+                      >
+                        {
                         day.workTime.isWorkTimeCorrected
                           ? (
                             <Icon icon="update" />
                           ) : null
                       }
-                      {
+                        {
                         areWorkTimesSame
                           ? (
                             <>
@@ -1427,13 +1432,14 @@ class WorkLogCalendar extends React.Component {
                           ) : '-:--'
                       }
                       &nbsp;h
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </ScrollView>
         {
           !this.props.supervisorView
           && status === STATUS_OPENED
@@ -1448,7 +1454,7 @@ class WorkLogCalendar extends React.Component {
                 }}
                 disabled={!this.props.workMonth || !!this.countWaitingForApprovalWorkLogs()}
                 label={t('workLog:action.sendWorkMonthForApproval')}
-                loadingIcon={this.props.isPosting ? <Icon icon="sync" /> : null}
+                loadingIcon={this.props.isPosting ? <LoadingIcon /> : null}
               />
             </div>
           )

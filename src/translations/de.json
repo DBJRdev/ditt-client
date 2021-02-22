@@ -36,6 +36,8 @@
       "approve": "Gewähren",
       "close": "Schließen",
       "edit": "Bearbeiten",
+      "next": "Nächster",
+      "previous": "Bisherige",
       "reject": "Ablehnen",
       "delete": "Löschen",
       "save": "Speichern",
@@ -53,6 +55,7 @@
       "Friday": "Freitag",
       "Saturday": "Samstag",
       "Sunday": "Sonntag",
+      "error": "Error",
       "loading": "Lade…"
     },
     "validation": {

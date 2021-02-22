@@ -1,4 +1,5 @@
 module.exports = {
+  globalSetup: '<rootDir>/tests/setupJestGlobal.js',
   moduleFileExtensions: [
     'js',
     'jsx',
@@ -13,7 +14,14 @@ module.exports = {
     '<rootDir>/tests/setupJest.js',
   ],
   setupFilesAfterEnv: [
+    '<rootDir>/tests/setupDate.js',
+    '<rootDir>/tests/setupDom.js',
     '<rootDir>/tests/setupEnzyme.js',
+    '<rootDir>/tests/setupFetch.js',
+    '<rootDir>/tests/setupReactI18Next.js',
+    '<rootDir>/tests/setupShortId.js',
+    '<rootDir>/tests/setupTimeout.js',
+    '<rootDir>/tests/setupWindow.js',
   ],
   snapshotSerializers: [
     'enzyme-to-json/serializer',
