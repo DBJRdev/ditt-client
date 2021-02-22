@@ -1,4 +1,4 @@
-import decode from 'jsonwebtoken/decode';
+import decode from 'jwt-decode';
 import { RSAA } from 'redux-api-middleware';
 import history from '../../routerHistory';
 import { API_URL } from '../../../config/envspecific';

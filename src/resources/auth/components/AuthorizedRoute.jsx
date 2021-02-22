@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import decode from 'jsonwebtoken/decode';
+import decode from 'jwt-decode';
 import {
   Route,
   Redirect,

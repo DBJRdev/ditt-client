@@ -1,6 +1,7 @@
 import Immutable from 'immutable';
 import React from 'react';
 import { shallow } from 'enzyme';
+import token from '../../../../tests/mocks/token';
 import ListComponent from '../ListComponent';
 
 describe('rendering', () => {
@@ -12,7 +13,7 @@ describe('rendering', () => {
       },
       isFetching: false,
       supervisedUserList: Immutable.List([]),
-      token: 'token',
+      token,
     };
     const tree = shallow(<ListComponent {...props} />);
 

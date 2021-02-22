@@ -10,7 +10,10 @@ import {
   TextField,
 } from '@react-ui-org/react-ui';
 import { withTranslation } from 'react-i18next';
-import { Icon } from '../../components/Icon';
+import {
+  Icon,
+  LoadingIcon,
+} from '../../components/Icon';
 import Layout from '../../components/Layout';
 import {
   createDate,
@@ -235,6 +238,7 @@ class SettingsComponent extends React.Component {
             <Button
               beforeLabel={isOpened ? <Icon icon="expand_less" /> : <Icon icon="expand_more" />}
               clickHandler={() => this.changeOpenedYearHandler(supportedYear)}
+              label=""
               labelVisibility="none"
               priority="outline"
             />
@@ -275,19 +279,18 @@ class SettingsComponent extends React.Component {
           {
             clickHandler: this.addHandler,
             label: t('general:action.save'),
-            loadingIcon: isPosting ? <Icon icon="sync" /> : null,
+            loadingIcon: isPosting ? <LoadingIcon /> : null,
           },
         ]}
         closeHandler={this.closeAddYearDialog}
         title={t('settings:title.addYear')}
-        translations={{ close: t('general:action.close') }}
       >
         <form className={styles.centeredLayout}>
           <List>
             <ListItem>
               <TextField
                 changeHandler={this.changeHandler}
-                helperText={this.state.formValidity.elements.year}
+                validationText={this.state.formValidity.elements.year}
                 id="year"
                 label={t('config:element.year')}
                 required
@@ -299,7 +302,7 @@ class SettingsComponent extends React.Component {
             <ListItem>
               <TextArea
                 changeHandler={this.changeHandler}
-                helperText={this.state.formValidity.elements.holidays}
+                validationText={this.state.formValidity.elements.holidays}
                 id="holidays"
                 label={t('config:element.holidays')}
                 required
@@ -330,12 +333,11 @@ class SettingsComponent extends React.Component {
           {
             clickHandler: this.editHandler,
             label: t('general:action.save'),
-            loadingIcon: isPosting ? <Icon icon="sync" /> : null,
+            loadingIcon: isPosting ? <LoadingIcon /> : null,
           },
         ]}
         closeHandler={this.closeEditYearDialog}
         title={t('settings:title.editYear')}
-        translations={{ close: t('general:action.close') }}
       >
         <form className={styles.centeredLayout}>
           <List>
@@ -343,7 +345,7 @@ class SettingsComponent extends React.Component {
               <TextField
                 changeHandler={this.changeHandler}
                 disabled
-                helperText={this.state.formValidity.elements.year}
+                validationText={this.state.formValidity.elements.year}
                 id="year"
                 label={t('config:element.year')}
                 required
@@ -355,7 +357,7 @@ class SettingsComponent extends React.Component {
             <ListItem>
               <TextArea
                 changeHandler={this.changeHandler}
-                helperText={this.state.formValidity.elements.holidays}
+                validationText={this.state.formValidity.elements.holidays}
                 id="holidays"
                 label={t('config:element.holidays')}
                 required

@@ -2,14 +2,24 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { withTranslation } from 'react-i18next';
-import { NewPassword } from '@react-ui-org/react-ui';
-import routes from '../../routes';
+import {
+  Alert,
+  Button,
+  Card,
+  CardBody,
+  TextField,
+} from '@react-ui-org/react-ui';
+import {
+  Icon,
+  LoadingIcon,
+} from '../../components/Icon';
 import {
   SET_NEW_PASSWORD_SUCCESS,
   SET_NEW_PASSWORD_FAILURE,
 } from '../../resources/auth/actionTypes';
-import styles from './Login.scss';
-import logoImage from './images/logo.svg';
+import routes from '../../routes';
+import LogoImage from './images/logo.svg';
+import styles from './NewPassword.scss';
 
 class NewPasswordComponent extends React.Component {
   constructor(props) {
@@ -23,13 +33,20 @@ class NewPasswordComponent extends React.Component {
     };
 
     this.onChangeHandler = this.onChangeHandler.bind(this);
+    this.onSubmitHandler = this.onSubmitHandler.bind(this);
     this.newPasswordHandler = this.newPasswordHandler.bind(this);
   }
 
-  onChangeHandler(field, value) {
+  onChangeHandler(e) {
     this.setState({
-      [field]: value,
+      [e.target.id]: e.target.value,
     });
+  }
+
+  onSubmitHandler(e) {
+    e.preventDefault();
+
+    this.newPasswordHandler(e);
   }
 
   newPasswordHandler(e) {
@@ -73,25 +90,30 @@ class NewPasswordComponent extends React.Component {
   }
 
   render() {
-    const { t } = this.props;
+    const {
+      isPosting,
+      t,
+    } = this.props;
+    const {
+      error,
+      newPassword,
+      newPasswordRepeat,
+      isSubmitted,
+    } = this.state;
+
     const layout = (children) => (
       <div className={styles.container}>
-        <img
-          src={logoImage}
-          width={302}
-          height={141}
-          className={styles.logo}
+        <LogoImage
           alt={t('layout:title')}
+          className={styles.logo}
+          height={141}
+          width={302}
         />
         {children}
       </div>
     );
 
-    if (this.props.isPosting) {
-      return layout(t('general:text.loading'));
-    }
-
-    if (this.state.isSubmitted) {
+    if (isSubmitted) {
       return layout((
         <p className={styles.message}>
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
@@ -103,24 +125,66 @@ class NewPasswordComponent extends React.Component {
     }
 
     return layout((
-      <NewPassword
-        error={this.state.error}
-        footer={(
-          // eslint-disable-next-line jsx-a11y/anchor-is-valid
-          <Link to={routes.login}>
-            {t('login:action.login')}
-          </Link>
+      <div className={styles.box}>
+        <div className={styles.title}>
+          {t('layout:title')}
+        </div>
+        {error && (
+          <div className="mb-5">
+            <Alert
+              icon={<Icon icon="error" />}
+              type="error"
+            >
+              <strong>
+                {t('general:text.error')}
+                {': '}
+              </strong>
+              {error}
+            </Alert>
+          </div>
         )}
-        submitHandler={this.newPasswordHandler}
-        onChangeHandler={this.onChangeHandler}
-        title={t('layout:title')}
-        translations={{
-          changePassword: t('login:action.changePassword'),
-          newPassword: t('login:element.newPassword'),
-          repeatNewPassword: t('login:element.repeatNewPassword'),
-        }}
-        usernameType="email"
-      />
+        <Card variant="bordered">
+          <CardBody>
+            <form
+              onSubmit={this.onSubmitHandler}
+            >
+              <div className="mb-3">
+                <TextField
+                  autoComplete="new-password"
+                  changeHandler={this.onChangeHandler}
+                  fullWidth
+                  id="newPassword"
+                  label={t('login:element.newPassword')}
+                  type="password"
+                  required
+                  value={newPassword ?? ''}
+                />
+                <TextField
+                  autoComplete="new-password"
+                  changeHandler={this.onChangeHandler}
+                  fullWidth
+                  id="newPasswordRepeat"
+                  label={t('login:element.repeatNewPassword')}
+                  type="password"
+                  required
+                  value={newPasswordRepeat ?? ''}
+                />
+              </div>
+              <Button
+                block
+                label={t('login:action.changePassword')}
+                loadingIcon={isPosting && <LoadingIcon />}
+                type="submit"
+              />
+            </form>
+            <div className={styles.footer}>
+              <Link to={routes.login}>
+                {t('login:action.login')}
+              </Link>
+            </div>
+          </CardBody>
+        </Card>
+      </div>
     ));
   }
 }

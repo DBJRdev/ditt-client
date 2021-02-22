@@ -1,4 +1,5 @@
 import Immutable from 'immutable';
+import { generate } from 'shortid';
 import { toMomentDateTime } from '../../services/dateTimeService';
 import initialState from './initialState';
 import * as actionTypes from './actionTypes';
@@ -14,6 +15,7 @@ export default (state, action) => {
   } = action;
 
   const filterChangesAndAbsenceRegistrations = (data) => ({
+    id: generate(),
     ...data,
     sickDays: data.sickDays.map((sickDay) => ({
       ...sickDay,

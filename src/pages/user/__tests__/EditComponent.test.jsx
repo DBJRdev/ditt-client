@@ -3,6 +3,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import EditComponent from '../EditComponent';
 import configMock from '../../../../tests/mocks/configMock';
+import token from '../../../../tests/mocks/token';
 
 describe('rendering', () => {
   it('renders correctly', () => {
@@ -25,7 +26,7 @@ describe('rendering', () => {
           id: '1',
         },
       },
-      token: 'token',
+      token,
       user: Immutable.Map({
         email: 'employee@example.com',
         firstName: 'First',

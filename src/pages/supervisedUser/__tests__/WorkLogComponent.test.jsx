@@ -4,6 +4,7 @@ import sinon from 'sinon';
 import { shallow } from 'enzyme';
 import WorkLogComponent from '../WorkLogComponent';
 import configMock from '../../../../tests/mocks/configMock';
+import token from '../../../../tests/mocks/token';
 
 let fakeTimestamp = null;
 
@@ -59,7 +60,7 @@ describe('rendering', () => {
         },
       },
       setWorkTimeCorrection: () => {},
-      token: 'token',
+      token,
       workHoursList: Immutable.List(),
       workMonth: null,
       workMonthList: Immutable.List(),

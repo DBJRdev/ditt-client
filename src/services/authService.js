@@ -1,4 +1,4 @@
-import decode from 'jsonwebtoken/decode';
+import decode from 'jwt-decode';
 import {
   selectJwtToken,
   selectLastRequestBrowserTime,
@@ -14,6 +14,11 @@ export const registerAuthRefreshTokenService = (store) => {
 
     const lastRequestBrowserTime = selectLastRequestBrowserTime(getState());
     const jwtToken = selectJwtToken(getState());
+
+    if (jwtToken === null) {
+      return;
+    }
+
     const jwtTokenPayload = decode(jwtToken);
 
     if (jwtTokenPayload === null) {

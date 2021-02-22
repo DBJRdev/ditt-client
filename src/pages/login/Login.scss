@@ -1,15 +1,21 @@
-.logo {
-  display: block;
-  margin: 15vh auto 0;
-}
+@import 'mixins';
 
 .container {
-  max-width: 30rem;
-  margin-right: auto;
-  margin-left: auto;
+  @include container();
 }
 
-.message {
-  margin: 5rem 0.5rem 0;
-  font-weight: bold;
+.logo {
+  @include logo();
+}
+
+.box {
+  @include login-root();
+}
+
+.title {
+  @include login-title();
+}
+
+.footer {
+  @include login-footer();
 }

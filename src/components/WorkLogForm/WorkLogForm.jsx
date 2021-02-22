@@ -11,7 +11,10 @@ import {
   SelectField,
   TextField,
 } from '@react-ui-org/react-ui';
-import { Icon } from '../Icon';
+import {
+  Icon,
+  LoadingIcon,
+} from '../Icon';
 import {
   VARIANT_WITH_NOTE,
   VARIANT_WITHOUT_NOTE,
@@ -316,7 +319,7 @@ class WorkLogForm extends React.Component {
         <ListItem>
           <TextField
             disabled={Boolean(data)}
-            helperText={this.state.formValidity.elements.dateTo}
+            validationText={this.state.formValidity.elements.dateTo}
             changeHandler={this.changeHandler}
             id="dateTo"
             label={t('workLog:element.dateTo')}
@@ -327,7 +330,7 @@ class WorkLogForm extends React.Component {
         <ListItem>
           <TextField
             changeHandler={this.changeHandler}
-            helperText={this.state.formValidity.elements.purpose}
+            validationText={this.state.formValidity.elements.purpose}
             id="purpose"
             label={t('businessTripWorkLog:element.purpose')}
             value={this.state.formData.purpose || ''}
@@ -337,7 +340,7 @@ class WorkLogForm extends React.Component {
         <ListItem>
           <TextField
             changeHandler={this.changeHandler}
-            helperText={this.state.formValidity.elements.destination}
+            validationText={this.state.formValidity.elements.destination}
             id="destination"
             label={t('businessTripWorkLog:element.destination')}
             value={this.state.formData.destination || ''}
@@ -347,7 +350,7 @@ class WorkLogForm extends React.Component {
         <ListItem>
           <TextField
             changeHandler={this.changeHandler}
-            helperText={this.state.formValidity.elements.transport}
+            validationText={this.state.formValidity.elements.transport}
             id="transport"
             label={t('businessTripWorkLog:element.transport')}
             value={this.state.formData.transport || ''}
@@ -357,7 +360,7 @@ class WorkLogForm extends React.Component {
         <ListItem>
           <TextField
             changeHandler={this.changeHandler}
-            helperText={this.state.formValidity.elements.expectedDeparture}
+            validationText={this.state.formValidity.elements.expectedDeparture}
             id="expectedDeparture"
             label={t('businessTripWorkLog:element.expectedDeparture')}
             value={this.state.formData.expectedDeparture || ''}
@@ -367,7 +370,7 @@ class WorkLogForm extends React.Component {
         <ListItem>
           <TextField
             changeHandler={this.changeHandler}
-            helperText={this.state.formValidity.elements.expectedArrival}
+            validationText={this.state.formValidity.elements.expectedArrival}
             id="expectedArrival"
             label={t('businessTripWorkLog:element.expectedArrival')}
             value={this.state.formData.expectedArrival || ''}
@@ -389,7 +392,7 @@ class WorkLogForm extends React.Component {
         <ListItem>
           <TextField
             disabled={Boolean(data)}
-            helperText={this.state.formValidity.elements.dateTo}
+            validationText={this.state.formValidity.elements.dateTo}
             changeHandler={this.changeHandler}
             id="dateTo"
             label={t('workLog:element.dateTo')}
@@ -400,7 +403,7 @@ class WorkLogForm extends React.Component {
         <ListItem>
           <TextField
             changeHandler={this.changeHandler}
-            helperText={this.state.formValidity.elements.comment}
+            validationText={this.state.formValidity.elements.comment}
             id="comment"
             label={t('homeOfficeWorkLog:element.comment')}
             value={this.state.formData.comment || ''}
@@ -418,7 +421,7 @@ class WorkLogForm extends React.Component {
       <ListItem>
         <TextField
           changeHandler={this.changeHandler}
-          helperText={this.state.formValidity.elements.reason}
+          validationText={this.state.formValidity.elements.reason}
           id="reason"
           label={t('overtimeWorkLog:element.reason')}
           value={this.state.formData.reason || ''}
@@ -439,7 +442,7 @@ class WorkLogForm extends React.Component {
         <ListItem>
           <TextField
             disabled={Boolean(data)}
-            helperText={this.state.formValidity.elements.dateTo}
+            validationText={this.state.formValidity.elements.dateTo}
             changeHandler={this.changeHandler}
             id="dateTo"
             label={t('workLog:element.dateTo')}
@@ -450,7 +453,7 @@ class WorkLogForm extends React.Component {
         <ListItem>
           <SelectField
             changeHandler={this.changeHandler}
-            helperText={this.state.formValidity.elements.variant}
+            validationText={this.state.formValidity.elements.variant}
             id="variant"
             label={t('sickDayWorkLog:element.variant')}
             options={[
@@ -483,7 +486,7 @@ class WorkLogForm extends React.Component {
         <ListItem>
           <TextField
             changeHandler={this.changeHandler}
-            helperText={this.state.formValidity.elements.childName}
+            validationText={this.state.formValidity.elements.childName}
             id="childName"
             label={t('sickDayWorkLog:element.childName')}
             value={this.state.formData.childName || ''}
@@ -493,7 +496,7 @@ class WorkLogForm extends React.Component {
         <ListItem>
           <TextField
             changeHandler={this.changeHandler}
-            helperText={this.state.formValidity.elements.childDateOfBirth}
+            validationText={this.state.formValidity.elements.childDateOfBirth}
             id="childDateOfBirth"
             label={t('sickDayWorkLog:element.childDateOfBirth')}
             value={this.state.formData.childDateOfBirth || ''}
@@ -514,7 +517,7 @@ class WorkLogForm extends React.Component {
       <ListItem>
         <TextField
           disabled={Boolean(data)}
-          helperText={this.state.formValidity.elements.dateTo}
+          validationText={this.state.formValidity.elements.dateTo}
           changeHandler={this.changeHandler}
           id="dateTo"
           label={t('workLog:element.dateTo')}
@@ -536,7 +539,7 @@ class WorkLogForm extends React.Component {
         <ListItem>
           <TextField
             disabled={Boolean(data)}
-            helperText={this.state.formValidity.elements.dateTo}
+            validationText={this.state.formValidity.elements.dateTo}
             changeHandler={this.changeHandler}
             id="dateTo"
             label={t('workLog:element.dateTo')}
@@ -547,7 +550,7 @@ class WorkLogForm extends React.Component {
         <ListItem>
           <TextField
             changeHandler={this.changeHandler}
-            helperText={this.state.formValidity.elements.comment}
+            validationText={this.state.formValidity.elements.comment}
             id="comment"
             label={t('timeOffWorkLog:element.comment')}
             value={this.state.formData.comment || ''}
@@ -568,7 +571,7 @@ class WorkLogForm extends React.Component {
       <ListItem>
         <TextField
           disabled={Boolean(data)}
-          helperText={this.state.formValidity.elements.dateTo}
+          validationText={this.state.formValidity.elements.dateTo}
           changeHandler={this.changeHandler}
           id="dateTo"
           label={t('workLog:element.dateTo')}
@@ -597,7 +600,7 @@ class WorkLogForm extends React.Component {
               <TextField
                 autoFocus
                 changeHandler={this.changeHandler}
-                helperText={formValidity.elements.startHour}
+                validationText={formValidity.elements.startHour}
                 id="startHour"
                 inputSize={2}
                 isLabelVisible={false}
@@ -610,7 +613,7 @@ class WorkLogForm extends React.Component {
             <div className={styles.fieldDate}>
               <TextField
                 changeHandler={this.changeHandler}
-                helperText={formValidity.elements.startMinute}
+                validationText={formValidity.elements.startMinute}
                 id="startMinute"
                 inputSize={2}
                 isLabelVisible={false}
@@ -630,7 +633,7 @@ class WorkLogForm extends React.Component {
             <div className={styles.fieldDate}>
               <TextField
                 changeHandler={this.changeHandler}
-                helperText={formValidity.elements.endHour}
+                validationText={formValidity.elements.endHour}
                 id="endHour"
                 inputSize={2}
                 isLabelVisible={false}
@@ -643,7 +646,7 @@ class WorkLogForm extends React.Component {
             <div className={styles.fieldDate}>
               <TextField
                 changeHandler={this.changeHandler}
-                helperText={formValidity.elements.endMinute}
+                validationText={formValidity.elements.endMinute}
                 id="endMinute"
                 inputSize={2}
                 isLabelVisible={false}
@@ -678,16 +681,17 @@ class WorkLogForm extends React.Component {
           {
             clickHandler: this.saveHandler,
             label: t('general:action.save'),
-            loadingIcon: this.props.isPosting ? <Icon icon="sync" /> : null,
+            loadingIcon: this.props.isPosting ? <LoadingIcon /> : null,
           },
         ]}
         closeHandler={this.props.closeHandler}
         title={data ? t('workLog:modal.edit.title') : t('workLog:modal.add.title')}
-        translations={{ close: t('general:action.close') }}
       >
-        <p className={styles.formErrorText}>
-          {formValidity.elements.form}
-        </p>
+        {formValidity.elements.form && (
+          <p className={styles.formErrorText}>
+            {formValidity.elements.form}
+          </p>
+        )}
         <form>
           <div className={styles.centeredLayout}>
             <List>
@@ -745,7 +749,7 @@ class WorkLogForm extends React.Component {
                 <SelectField
                   changeHandler={this.changeHandler}
                   disabled={Boolean(data) || (showWorkLogTimer && workLogTimer)}
-                  helperText={formValidity.elements.type}
+                  validationText={formValidity.elements.type}
                   id="type"
                   label={t('workLog:element.type')}
                   options={[

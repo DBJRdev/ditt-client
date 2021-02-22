@@ -9,7 +9,7 @@ import {
   TextField,
 } from '@react-ui-org/react-ui';
 import { withTranslation } from 'react-i18next';
-import { Icon } from '../../../Icon';
+import { LoadingIcon } from '../../../Icon';
 import {
   BAN_WORK_LOG,
   MATERNITY_PROTECTION_WORK_LOG,
@@ -124,13 +124,12 @@ class AddSupervisorWorkLogModal extends React.Component {
             clickHandler: this.saveHandler,
             label: t('general:action.save'),
             loadingIcon: isPosting
-              ? <Icon icon="sync" />
+              ? <LoadingIcon />
               : null,
           },
         ]}
         closeHandler={onClose}
         title={data ? t('workLog:modal.edit.title') : t('workLog:modal.add.title')}
-        translations={{ close: t('general:action.close') }}
       >
         {formValidity.elements.form && (
           <p className={styles.formErrorText}>
@@ -144,7 +143,7 @@ class AddSupervisorWorkLogModal extends React.Component {
                 <SelectField
                   changeHandler={this.changeHandler}
                   disabled={Boolean(data)}
-                  helperText={formValidity.elements.type}
+                  validationText={formValidity.elements.type}
                   id="type"
                   label={t('workLog:element.type')}
                   options={[
@@ -173,7 +172,7 @@ class AddSupervisorWorkLogModal extends React.Component {
                 <TextField
                   changeHandler={this.changeHandler}
                   disabled
-                  helperText={formValidity.elements.dateTo}
+                  validationText={formValidity.elements.dateTo}
                   id="date"
                   label={t('workLog:element.dateFrom')}
                   value={formData.date || ''}
@@ -184,7 +183,7 @@ class AddSupervisorWorkLogModal extends React.Component {
                 <TextField
                   changeHandler={this.changeHandler}
                   disabled={Boolean(data)}
-                  helperText={formValidity.elements.dateTo}
+                  validationText={formValidity.elements.dateTo}
                   id="dateTo"
                   label={t('workLog:element.dateTo')}
                   value={formData.dateTo || ''}
@@ -201,7 +200,7 @@ class AddSupervisorWorkLogModal extends React.Component {
                       <TextField
                         autoFocus
                         changeHandler={this.changeHandler}
-                        helperText={formValidity.elements.hour}
+                        validationText={formValidity.elements.hour}
                         id="hour"
                         inputSize={2}
                         isLabelVisible={false}
@@ -215,7 +214,7 @@ class AddSupervisorWorkLogModal extends React.Component {
                     <div className={styles.fieldDate}>
                       <TextField
                         changeHandler={this.changeHandler}
-                        helperText={formValidity.elements.minute}
+                        validationText={formValidity.elements.minute}
                         id="minute"
                         inputSize={2}
                         isLabelVisible={false}

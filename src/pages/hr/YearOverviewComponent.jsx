@@ -3,6 +3,7 @@ import { generate } from 'shortid';
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import {
+  ScrollView,
   Table,
 } from '@react-ui-org/react-ui';
 import { withTranslation } from 'react-i18next';
@@ -57,65 +58,67 @@ const OverviewComponent = (props) => {
 
   return (
     <Layout title={props.t('hr:title.yearOverview')} loading={props.isFetching}>
-      <Table
-        columns={[
-          {
-            format: (rowData) => rowData.user.employeeId,
-            label: props.t('hr:element.employeeId'),
-            name: 'employeeId',
-          },
-          {
-            format: (rowData) => rowData.user.firstName,
-            label: props.t('hr:element.firstName'),
-            name: 'firstName',
-          },
-          {
-            format: (rowData) => rowData.user.lastName,
-            label: props.t('hr:element.lastName'),
-            name: 'lastName',
-          },
-          {
-            format: sickDayFormat(VARIANT_SICK_CHILD),
-            label: props.t('hr:element.sickDaySickChild'),
-            name: 'sickDaySickChild',
-          },
-          {
-            format: sickDayFormat(VARIANT_WITH_NOTE),
-            label: props.t('hr:element.sickDayWithNote'),
-            name: 'sickDayWithNote',
-          },
-          {
-            format: sickDayFormat(VARIANT_WITHOUT_NOTE),
-            label: props.t('hr:element.sickDayWithoutNote'),
-            name: 'sickDayWithoutNote',
-          },
-          {
-            format: (rowData) => rowData.sickDays
-              .filter((sickDay) => sickDay.variant === VARIANT_SICK_CHILD).length,
-            label: (
-              <>
-                {props.t('hr:element.sickChildTotal')}
-                <br />
-                {props.t('hr:element.last365Days')}
-              </>
-            ),
-            name: 'totalSickChild',
-          },
-          {
-            format: (rowData) => rowData.sickDays
-              .filter((sickDay) => sickDay.variant !== VARIANT_SICK_CHILD).length,
-            label: (
-              <>
-                {props.t('hr:element.sickDayTotal')}
-                <br />
-                {props.t('hr:element.last365Days')}
-              </>
-            ),
-            name: 'totalSick',
-          },
-        ]}
-        rows={props.yearOverview || []}
-      />
+      <ScrollView direction="horizontal">
+        <Table
+          columns={[
+            {
+              format: (rowData) => rowData.user.employeeId,
+              label: props.t('hr:element.employeeId'),
+              name: 'employeeId',
+            },
+            {
+              format: (rowData) => rowData.user.firstName,
+              label: props.t('hr:element.firstName'),
+              name: 'firstName',
+            },
+            {
+              format: (rowData) => rowData.user.lastName,
+              label: props.t('hr:element.lastName'),
+              name: 'lastName',
+            },
+            {
+              format: sickDayFormat(VARIANT_SICK_CHILD),
+              label: props.t('hr:element.sickDaySickChild'),
+              name: 'sickDaySickChild',
+            },
+            {
+              format: sickDayFormat(VARIANT_WITH_NOTE),
+              label: props.t('hr:element.sickDayWithNote'),
+              name: 'sickDayWithNote',
+            },
+            {
+              format: sickDayFormat(VARIANT_WITHOUT_NOTE),
+              label: props.t('hr:element.sickDayWithoutNote'),
+              name: 'sickDayWithoutNote',
+            },
+            {
+              format: (rowData) => rowData.sickDays
+                .filter((sickDay) => sickDay.variant === VARIANT_SICK_CHILD).length,
+              label: (
+                <>
+                  {props.t('hr:element.sickChildTotal')}
+                  <br />
+                  {props.t('hr:element.last365Days')}
+                </>
+              ),
+              name: 'totalSickChild',
+            },
+            {
+              format: (rowData) => rowData.sickDays
+                .filter((sickDay) => sickDay.variant !== VARIANT_SICK_CHILD).length,
+              label: (
+                <>
+                  {props.t('hr:element.sickDayTotal')}
+                  <br />
+                  {props.t('hr:element.last365Days')}
+                </>
+              ),
+              name: 'totalSick',
+            },
+          ]}
+          rows={props.yearOverview || []}
+        />
+      </ScrollView>
     </Layout>
   );
 };

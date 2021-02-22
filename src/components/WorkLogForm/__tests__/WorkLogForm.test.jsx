@@ -20,7 +20,6 @@ afterEach(() => {
 describe('rendering', () => {
   it('renders correctly with mandatory props', () => {
     const tree = mount(<WorkLogForm
-
       banWorkLogsOfDay={Immutable.List([])}
       config={Immutable.Map()}
       closeHandler={() => {}}

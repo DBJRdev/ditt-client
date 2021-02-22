@@ -8,56 +8,65 @@ exports[`rendering renders correctly 1`] = `
   <div
     className="actions"
   >
-    <ForwardRef(withForwardedRef(Button))
+    <ForwardRef(withForwardedRef(WithProviderContextComponent))
       clickHandler={[Function]}
       label="user:action.addUser"
     />
   </div>
-  <Table
-    columns={
-      Array [
-        Object {
-          "format": [Function],
-          "isSortable": true,
-          "label": "user:element.name",
-          "name": "lastName",
-        },
-        Object {
-          "format": [Function],
-          "isSortable": true,
-          "label": "user:element.supervisor",
-          "name": "supervisor.lastName",
-        },
-        Object {
-          "format": [Function],
-          "isSortable": false,
-          "label": "user:element.workedAndRequiredHours",
-          "name": "requiredWorkedHours",
-        },
-        Object {
-          "format": [Function],
-          "isSortable": false,
-          "label": "user:element.vacationDaysUsed",
-          "name": "vacationDaysUsed",
-        },
-      ]
-    }
-    rows={Array []}
-    sort={
-      Object {
-        "ascendingIcon": <Icon
-          icon="arrow_upward"
-          size="medium"
-        />,
-        "changeHandler": [Function],
-        "column": "lastName",
-        "descendingIcon": <Icon
-          icon="arrow_downward"
-          size="medium"
-        />,
-        "direction": "asc",
+  <WithProviderContextComponent
+    direction="horizontal"
+  >
+    <WithProviderContextComponent
+      columns={
+        Array [
+          Object {
+            "format": [Function],
+            "isSortable": true,
+            "label": "user:element.name",
+            "name": "lastName",
+          },
+          Object {
+            "format": [Function],
+            "isSortable": true,
+            "label": "user:element.supervisor",
+            "name": "supervisor.lastName",
+          },
+          Object {
+            "format": [Function],
+            "isSortable": false,
+            "label": "user:element.workedAndRequiredHours",
+            "name": "requiredWorkedHours",
+          },
+          Object {
+            "format": [Function],
+            "isSortable": false,
+            "label": "user:element.vacationDaysUsed",
+            "name": "vacationDaysUsed",
+          },
+          Object {
+            "format": [Function],
+            "label": "user:action.showWorkLog",
+            "name": "showWorkLog",
+          },
+        ]
       }
-    }
-  />
+      rows={Array []}
+      sort={
+        Object {
+          "ascendingIcon": <Icon
+            icon="arrow_upward"
+            size="medium"
+          />,
+          "changeHandler": [Function],
+          "column": "lastName",
+          "descendingIcon": <Icon
+            icon="arrow_downward"
+            size="medium"
+          />,
+          "direction": "asc",
+        }
+      }
+    />
+  </WithProviderContextComponent>
 </Connect(LayoutComponent)>
 `;

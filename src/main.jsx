@@ -14,9 +14,6 @@ import '@react-ui-org/react-ui/src/lib/helpers.scss';
 // App and theme CSS
 import './styles/main.scss';
 
-// React UI utility classes
-import '@react-ui-org/react-ui/src/lib/utilities.scss';
-
 // Load Material Design icons
 loadMaterialDesignIcons();
 

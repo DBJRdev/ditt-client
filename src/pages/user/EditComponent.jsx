@@ -1,7 +1,7 @@
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
-import decode from 'jsonwebtoken/decode';
+import decode from 'jwt-decode';
 import { withTranslation } from 'react-i18next';
 import {
   Button,
@@ -12,7 +12,7 @@ import {
   SelectField,
   TextField,
 } from '@react-ui-org/react-ui';
-import { Icon } from '../../components/Icon';
+import { LoadingIcon } from '../../components/Icon';
 import {
   DELETE_USER_SUCCESS,
   DELETE_USER_FAILURE,
@@ -329,12 +329,11 @@ class EditComponent extends React.Component {
           {
             clickHandler: this.deleteHandler,
             label: t('general:action.delete'),
-            loadingIcon: this.props.isPosting ? <Icon icon="sync" /> : null,
+            loadingIcon: this.props.isPosting ? <LoadingIcon /> : null,
           },
         ]}
         closeHandler={this.closeDeleteUserDialog}
         title={t('user:modal.delete.title')}
-        translations={{ close: t('general:action.close') }}
       >
         {t('user:modal.delete.description')}
       </Modal>
@@ -372,7 +371,7 @@ class EditComponent extends React.Component {
           <Button
             clickHandler={this.openDeleteUserDialog}
             label={t('user:action.deleteUser')}
-            loadingIcon={this.props.isPosting ? <Icon icon="sync" /> : null}
+            loadingIcon={this.props.isPosting ? <LoadingIcon /> : null}
             variant="danger"
           />
         </div>
@@ -387,7 +386,7 @@ class EditComponent extends React.Component {
               <TextField
                 changeHandler={this.changeHandler}
                 fullWidth
-                helperText={this.state.formValidity.elements.firstName}
+                validationText={this.state.formValidity.elements.firstName}
                 id="firstName"
                 label={t('user:element.firstName')}
                 required
@@ -399,7 +398,7 @@ class EditComponent extends React.Component {
               <TextField
                 changeHandler={this.changeHandler}
                 fullWidth
-                helperText={this.state.formValidity.elements.lastName}
+                validationText={this.state.formValidity.elements.lastName}
                 id="lastName"
                 label={t('user:element.lastName')}
                 required
@@ -411,7 +410,7 @@ class EditComponent extends React.Component {
               <SelectField
                 changeHandler={this.changeHandler}
                 fullWidth
-                helperText={this.state.formValidity.elements.supervisor}
+                validationText={this.state.formValidity.elements.supervisor}
                 id="supervisor"
                 label={t('user:element.supervisor')}
                 options={userList}
@@ -423,7 +422,7 @@ class EditComponent extends React.Component {
               <TextField
                 changeHandler={this.changeHandler}
                 fullWidth
-                helperText={this.state.formValidity.elements.email}
+                validationText={this.state.formValidity.elements.email}
                 id="email"
                 label={t('user:element.email')}
                 required
@@ -435,7 +434,7 @@ class EditComponent extends React.Component {
               <TextField
                 changeHandler={this.changeHandler}
                 fullWidth
-                helperText={this.state.formValidity.elements.employeeId}
+                validationText={this.state.formValidity.elements.employeeId}
                 id="employeeId"
                 label={t('user:element.employeeId')}
                 required
@@ -447,7 +446,7 @@ class EditComponent extends React.Component {
               <TextField
                 changeHandler={this.changeHandler}
                 fullWidth
-                helperText={this.state.formValidity.elements.plainPassword}
+                validationText={this.state.formValidity.elements.plainPassword}
                 id="plainPassword"
                 label={t('user:element.plainPassword')}
                 type="password"
@@ -459,7 +458,6 @@ class EditComponent extends React.Component {
             <ListItem>
               <CheckboxField
                 changeHandler={this.changeHandler}
-                fullWidth
                 checked={this.state.formData.isActive}
                 error={this.state.formValidity.elements.isActive}
                 id="isActive"
@@ -483,7 +481,7 @@ class EditComponent extends React.Component {
                   <span>{year}</span>
                   <TextField
                     changeHandler={this.changeVacationDaysHandler}
-                    helperText={this.state.formValidity.elements.vacations[year].vacationDays}
+                    validationText={this.state.formValidity.elements.vacations[year].vacationDays}
                     id={`vacationDays_${year.toString()}`}
                     inputSize={6}
                     label={t('vacation:text.total')}
@@ -494,7 +492,7 @@ class EditComponent extends React.Component {
                   />
                   <TextField
                     changeHandler={this.changeVacationDaysCorrectionHandler}
-                    helperText={
+                    validationText={
                       this.state.formValidity.elements.vacations[year].vacationDaysCorrection
                     }
                     id={`vacationDaysCorrection_${year.toString()}`}
@@ -534,13 +532,12 @@ class EditComponent extends React.Component {
               }
 
               return (
-                <ListItem>
+                <ListItem key={year}>
                   <TextField
                     changeHandler={this.changeWorkHourHandler}
                     error={this.state.formValidity.elements.workHours[year]}
                     fullWidth
                     id={`workHours_${year.toString()}`}
-                    key={year}
                     label={year.toString()}
                     value={this.getRequiredHours(year)}
                   />
@@ -551,7 +548,7 @@ class EditComponent extends React.Component {
               <Button
                 clickHandler={this.saveHandler}
                 label={t('general:action.save')}
-                loadingIcon={this.props.isPosting ? <Icon icon="sync" /> : null}
+                loadingIcon={this.props.isPosting ? <LoadingIcon /> : null}
               />
             </ListItem>
           </List>

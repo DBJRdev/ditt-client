@@ -8,39 +8,35 @@ exports[`rendering renders correctly 1`] = `
   <form
     className="detailPageWrapper"
   >
-    <List
-      align="left"
-      autoWidth={false}
-    >
-      <ListItem>
-        <ForwardRef(withForwardedRef(TextField))
+    <WithProviderContextComponent>
+      <WithProviderContextComponent>
+        <ForwardRef(withForwardedRef(WithProviderContextComponent))
           changeHandler={[Function]}
           fullWidth={true}
-          helperText={null}
           id="firstName"
           label="user:element.firstName"
           required={true}
           validationState={null}
+          validationText={null}
           value=""
         />
-      </ListItem>
-      <ListItem>
-        <ForwardRef(withForwardedRef(TextField))
+      </WithProviderContextComponent>
+      <WithProviderContextComponent>
+        <ForwardRef(withForwardedRef(WithProviderContextComponent))
           changeHandler={[Function]}
           fullWidth={true}
-          helperText={null}
           id="lastName"
           label="user:element.lastName"
           required={true}
           validationState={null}
+          validationText={null}
           value=""
         />
-      </ListItem>
-      <ListItem>
-        <ForwardRef(withForwardedRef(SelectField))
+      </WithProviderContextComponent>
+      <WithProviderContextComponent>
+        <ForwardRef(withForwardedRef(WithProviderContextComponent))
           changeHandler={[Function]}
           fullWidth={true}
-          helperText={null}
           id="supervisor"
           label="user:element.supervisor"
           options={
@@ -52,48 +48,49 @@ exports[`rendering renders correctly 1`] = `
             ]
           }
           validationState={null}
+          validationText={null}
           value=""
         />
-      </ListItem>
-      <ListItem>
-        <ForwardRef(withForwardedRef(TextField))
+      </WithProviderContextComponent>
+      <WithProviderContextComponent>
+        <ForwardRef(withForwardedRef(WithProviderContextComponent))
           changeHandler={[Function]}
           fullWidth={true}
-          helperText={null}
           id="email"
           label="user:element.email"
           required={true}
           validationState={null}
+          validationText={null}
           value=""
         />
-      </ListItem>
-      <ListItem>
-        <ForwardRef(withForwardedRef(TextField))
+      </WithProviderContextComponent>
+      <WithProviderContextComponent>
+        <ForwardRef(withForwardedRef(WithProviderContextComponent))
           changeHandler={[Function]}
           fullWidth={true}
-          helperText={null}
           id="employeeId"
           label="user:element.employeeId"
           required={true}
           validationState={null}
+          validationText={null}
           value=""
         />
-      </ListItem>
-      <ListItem>
-        <ForwardRef(withForwardedRef(TextField))
+      </WithProviderContextComponent>
+      <WithProviderContextComponent>
+        <ForwardRef(withForwardedRef(WithProviderContextComponent))
           changeHandler={[Function]}
           fullWidth={true}
-          helperText={null}
           id="plainPassword"
           label="user:element.plainPassword"
           required={true}
           type="password"
           validationState={null}
+          validationText={null}
           value=""
         />
-      </ListItem>
-      <ListItem>
-        <ForwardRef(withForwardedRef(CheckboxField))
+      </WithProviderContextComponent>
+      <WithProviderContextComponent>
+        <ForwardRef(withForwardedRef(WithProviderContextComponent))
           changeHandler={[Function]}
           checked={false}
           error={null}
@@ -101,7 +98,7 @@ exports[`rendering renders correctly 1`] = `
           label="user:element.isActive"
           required={true}
         />
-      </ListItem>
+      </WithProviderContextComponent>
       <h2
         className="detailSubheader"
       >
@@ -115,14 +112,14 @@ exports[`rendering renders correctly 1`] = `
       <p>
         user:text.averageWorkingHoursDescription
       </p>
-      <ListItem>
-        <ForwardRef(withForwardedRef(Button))
+      <WithProviderContextComponent>
+        <ForwardRef(withForwardedRef(WithProviderContextComponent))
           clickHandler={[Function]}
           label="general:action.save"
           loadingIcon={null}
         />
-      </ListItem>
-    </List>
+      </WithProviderContextComponent>
+    </WithProviderContextComponent>
   </form>
 </Connect(LayoutComponent)>
 `;

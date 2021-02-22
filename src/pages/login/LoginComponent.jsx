@@ -1,9 +1,19 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import decode from 'jsonwebtoken/decode';
+import decode from 'jwt-decode';
 import { Link } from 'react-router-dom';
 import { withTranslation } from 'react-i18next';
-import { Login } from '@react-ui-org/react-ui';
+import {
+  Button,
+  Card,
+  CardBody,
+  Alert,
+  TextField,
+} from '@react-ui-org/react-ui';
+import {
+  Icon,
+  LoadingIcon,
+} from '../../components/Icon';
 import {
   ROLE_ADMIN,
   ROLE_EMPLOYEE,
@@ -11,17 +21,19 @@ import {
 } from '../../resources/user';
 import routes from '../../routes';
 import styles from './Login.scss';
-import logoImage from './images/logo.svg';
+import LogoImage from './images/logo.svg';
 
 class LoginComponent extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       password: null,
       username: null,
     };
 
     this.onChangeHandler = this.onChangeHandler.bind(this);
+    this.onSubmitHandler = this.onSubmitHandler.bind(this);
   }
 
   componentDidMount() {
@@ -40,59 +52,116 @@ class LoginComponent extends React.Component {
     }
   }
 
-  onChangeHandler(field, value) {
+  onChangeHandler(e) {
     this.setState({
-      [field]: value,
+      [e.target.id]: e.target.value,
+    });
+  }
+
+  onSubmitHandler(e) {
+    const {
+      login,
+      resetLogoutLocally,
+    } = this.props;
+    const {
+      password,
+      username,
+    } = this.state;
+
+    e.preventDefault();
+
+    resetLogoutLocally();
+    login({
+      password,
+      username,
     });
   }
 
   render() {
-    const { t } = this.props;
+    const {
+      isPosting,
+      isPostingFailure,
+      isLoggedOutLocally,
+      t,
+    } = this.props;
+    const {
+      password,
+      username,
+    } = this.state;
 
     return (
       <div className={styles.container}>
-        <img
-          src={logoImage}
-          width={302}
-          height={141}
-          className={styles.logo}
+        <LogoImage
           alt={t('layout:title')}
+          className={styles.logo}
+          height={141}
+          width={302}
         />
-        {
-          this.props.isPosting
-            ? t('general:text.loading')
-            : (
-              <Login
-                footer={(
-                  // eslint-disable-next-line jsx-a11y/anchor-is-valid
-                  <Link to={routes.forgotPassword}>
-                    {t('login:action.forgotPassword')}
-                  </Link>
-                )}
-                hasError={this.props.isPostingFailure || this.props.isLoggedOutLocally}
-                submitHandler={() => {
-                  this.props.resetLogoutLocally();
-                  this.props.login({
-                    password: this.state.password,
-                    username: this.state.username,
-                  });
-
-                  return false;
-                }}
-                onChangeHandler={this.onChangeHandler}
-                title={t('layout:title')}
-                translations={{
-                  email: t('user:element.email'),
-                  invalidUsernameOrPassword: this.props.isLoggedOutLocally
+        <div className={styles.box}>
+          <div className={styles.title}>
+            {t('layout:title')}
+          </div>
+          {(isPostingFailure || isLoggedOutLocally) && (
+            <div className="mb-5">
+              <Alert
+                icon={<Icon icon="error" />}
+                type="error"
+              >
+                <strong>
+                  {t('general:text.error')}
+                  {': '}
+                </strong>
+                {
+                  isLoggedOutLocally
                     ? t('login:text.loggedOutAutomatically')
-                    : t('login:validation.invalidUsernameOrPassword'),
-                  password: t('user:element.plainPassword'),
-                  signIn: t('login:action.signIn'),
-                }}
-                usernameType="email"
-              />
-            )
-        }
+                    : t('login:validation.invalidUsernameOrPassword')
+                }
+              </Alert>
+            </div>
+          )}
+          <Card variant="bordered">
+            <CardBody>
+              <form
+                onSubmit={this.onSubmitHandler}
+              >
+                <div className="mb-3">
+                  <TextField
+                    autoComplete="username"
+                    changeHandler={this.onChangeHandler}
+                    fullWidth
+                    id="username"
+                    label={t('user:element.email')}
+                    type="email"
+                    required
+                    value={username ?? ''}
+                  />
+                  <TextField
+                    autoComplete="current-password"
+                    changeHandler={this.onChangeHandler}
+                    fullWidth
+                    id="password"
+                    label={t('user:element.plainPassword')}
+                    type="password"
+                    required
+                    value={password ?? ''}
+                  />
+                </div>
+                <Button
+                  block
+                  id="signInButton"
+                  label={t('login:action.signIn')}
+                  loadingIcon={isPosting && <LoadingIcon />}
+                  type="submit"
+                />
+              </form>
+              <div className={styles.footer}>
+                <Link to={routes.forgotPassword}>
+                  {t('login:action.forgotPassword')}
+                </Link>
+              </div>
+            </CardBody>
+          </Card>
+        </div>
       </div>
     );
   }

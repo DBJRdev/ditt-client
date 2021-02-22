@@ -3,6 +3,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import ListComponent from '../ListComponent';
 import configMock from '../../../../tests/mocks/configMock';
+import token from '../../../../tests/mocks/token';
 
 describe('rendering', () => {
   it('renders correctly', () => {
@@ -50,7 +51,7 @@ describe('rendering', () => {
       supportSpecialLeaveWorkLog: () => {},
       supportTimeOffWorkLog: () => {},
       supportVacationWorkLog: () => {},
-      token: 'token',
+      token,
     };
     const tree = shallow(<ListComponent {...props} />);
 

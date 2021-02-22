@@ -1,7 +1,7 @@
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
-import decode from 'jsonwebtoken/decode';
+import decode from 'jwt-decode';
 import shortid from 'shortid';
 import {
   Button,
@@ -11,7 +11,10 @@ import {
 } from '@react-ui-org/react-ui';
 import { withTranslation } from 'react-i18next';
 import { API_URL } from '../../../config/envspecific';
-import { Icon } from '../../components/Icon';
+import {
+  Icon,
+  LoadingIcon,
+} from '../../components/Icon';
 import { ROLE_EMPLOYEE } from '../../resources/user';
 import { getWorkHoursString } from '../../services/workHoursService';
 import Layout from '../../components/Layout';
@@ -84,31 +87,6 @@ class ProfileComponent extends React.Component {
     }
   }
 
-  getICalUrl(useWebcalProtocol = true) {
-    const { user } = this.props;
-    let iCalUrl = API_URL;
-
-    if (useWebcalProtocol) {
-      iCalUrl = iCalUrl.replace('https', 'webcal')
-        .replace('http', 'webcal');
-    }
-
-    return `${iCalUrl}/ical/${user.get('iCalToken')}/ditt.ics`;
-  }
-
-  getRequiredHours(year) {
-    const { workHours } = this.props;
-    const selectedWorkHours = [];
-
-    workHours.forEach((workHoursItem) => {
-      if (workHoursItem.get('year') === year) {
-        selectedWorkHours[workHoursItem.get('month') - 1] = getWorkHoursString(workHoursItem.get('requiredHours'));
-      }
-    });
-
-    return selectedWorkHours;
-  }
-
   handleCheckboxChange(e) {
     const {
       id,
@@ -165,6 +143,31 @@ class ProfileComponent extends React.Component {
       ...user.toJS(),
       notifications,
     });
+  }
+
+  getICalUrl(useWebcalProtocol = true) {
+    const { user } = this.props;
+    let iCalUrl = API_URL;
+
+    if (useWebcalProtocol) {
+      iCalUrl = iCalUrl.replace('https', 'webcal')
+        .replace('http', 'webcal');
+    }
+
+    return `${iCalUrl}/ical/${user.get('iCalToken')}/ditt.ics`;
+  }
+
+  getRequiredHours(year) {
+    const { workHours } = this.props;
+    const selectedWorkHours = [];
+
+    workHours.forEach((workHoursItem) => {
+      if (workHoursItem.get('year') === year) {
+        selectedWorkHours[workHoursItem.get('month') - 1] = getWorkHoursString(workHoursItem.get('requiredHours'));
+      }
+    });
+
+    return selectedWorkHours;
   }
 
   render() {
@@ -273,7 +276,7 @@ class ProfileComponent extends React.Component {
                               beforeLabel={<Icon icon="autorenew" />}
                               clickHandler={() => renewUserApiToken(user.get('id'))}
                               label={t('user:action.renewApiToken')}
-                              loadingIcon={isPosting ? <Icon icon="sync" /> : null}
+                              loadingIcon={isPosting ? <LoadingIcon /> : null}
                               size="small"
                             />
                           </div>
@@ -283,7 +286,7 @@ class ProfileComponent extends React.Component {
                                 beforeLabel={<Icon icon="clear" />}
                                 clickHandler={() => resetUserApiToken(user.get('id'))}
                                 label={t('user:action.resetApiToken')}
-                                loadingIcon={isPosting ? <Icon icon="sync" /> : null}
+                                loadingIcon={isPosting ? <LoadingIcon /> : null}
                                 size="small"
                                 variant="danger"
                               />
@@ -319,7 +322,7 @@ class ProfileComponent extends React.Component {
                               <Button
                                 clickHandler={() => renewUserICalToken(user.get('id'))}
                                 label={t('user:action.enableICal')}
-                                loadingIcon={isPosting ? <Icon icon="sync" /> : null}
+                                loadingIcon={isPosting ? <LoadingIcon /> : null}
                                 size="small"
                               />
                             </div>
@@ -347,7 +350,7 @@ class ProfileComponent extends React.Component {
                                 <Button
                                   clickHandler={() => resetUserICalToken(user.get('id'))}
                                   label={t('user:action.disableICal')}
-                                  loadingIcon={isPosting ? <Icon icon="sync" /> : null}
+                                  loadingIcon={isPosting ? <LoadingIcon /> : null}
                                   size="small"
                                   variant="danger"
                                 />
@@ -485,7 +488,7 @@ class ProfileComponent extends React.Component {
                     clickHandler={this.handleSave}
                     disabled={loggedUserId === null}
                     label={t('general:action.save')}
-                    loadingIcon={isPosting ? <Icon icon="sync" /> : null}
+                    loadingIcon={isPosting ? <LoadingIcon /> : null}
                   />
                 </div>
               </div>
@@ -494,9 +497,6 @@ class ProfileComponent extends React.Component {
                 <Modal
                   closeHandler={() => this.setState({ apiTokenDialogOpened: false })}
                   title={t('user:element.apiToken')}
-                  translations={{
-                    close: t('general:action.close'),
-                  }}
                 >
                   {user.get('apiToken')}
                 </Modal>
@@ -506,9 +506,6 @@ class ProfileComponent extends React.Component {
                 <Modal
                   closeHandler={() => this.setState({ iCalDialogOpened: false })}
                   title={t('user:element.iCalUrl')}
-                  translations={{
-                    close: t('general:action.close'),
-                  }}
                 >
                   {this.getICalUrl()}
                 </Modal>
