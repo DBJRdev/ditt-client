@@ -121,6 +121,40 @@ export const markBusinessTripWorkLogRejected = (id, data) => (dispatch) => dispa
   },
 });
 
+export const markMultipleBusinessTripWorkLogApproved = (workLogIds) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify({ workLogIds }),
+    endpoint: `${API_URL}/business_trip_work_logs/bulk/mark_approved`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.MARK_MULTIPLE_BUSINESS_TRIP_WORK_LOG_APPROVED_REQUEST,
+      types.MARK_MULTIPLE_BUSINESS_TRIP_WORK_LOG_APPROVED_SUCCESS,
+      types.MARK_MULTIPLE_BUSINESS_TRIP_WORK_LOG_APPROVED_FAILURE,
+    ],
+  },
+});
+
+export const markMultipleBusinessTripWorkLogRejected = (
+  workLogIds,
+  data,
+) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify({
+      rejectionMessage: data.rejectionMessage,
+      workLogIds,
+    }),
+    endpoint: `${API_URL}/business_trip_work_logs/bulk/mark_rejected`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.MARK_MULTIPLE_BUSINESS_TRIP_WORK_LOG_REJECTED_REQUEST,
+      types.MARK_MULTIPLE_BUSINESS_TRIP_WORK_LOG_REJECTED_SUCCESS,
+      types.MARK_MULTIPLE_BUSINESS_TRIP_WORK_LOG_REJECTED_FAILURE,
+    ],
+  },
+});
+
 export const supportBusinessTripWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify({
@@ -136,3 +170,18 @@ export const supportBusinessTripWorkLog = (id) => (dispatch) => dispatch({
     ],
   },
 });
+
+export const supportMultipleBusinessTripWorkLog = (ids) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify(ids.map((id) => ({ workLog: `/business_trip_work_logs/${id}` }))),
+    endpoint: `${API_URL}/business_trip_work_log_supports/bulk`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'POST',
+    types: [
+      types.SUPPORT_BUSINESS_TRIP_WORK_LOG_REQUEST,
+      types.SUPPORT_BUSINESS_TRIP_WORK_LOG_SUCCESS,
+      types.SUPPORT_BUSINESS_TRIP_WORK_LOG_FAILURE,
+    ],
+  },
+});
+

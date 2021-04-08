@@ -136,6 +136,46 @@ export default (state, action) => {
       .setIn(['businessTripWorkLog', 'isPostingFailure'], false);
   }
 
+  if (type === actionTypes.MARK_MULTIPLE_BUSINESS_TRIP_WORK_LOG_APPROVED_REQUEST) {
+    return state
+      .setIn(['businessTripWorkLog', 'isPosting'], true)
+      .setIn(['businessTripWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.MARK_MULTIPLE_BUSINESS_TRIP_WORK_LOG_APPROVED_SUCCESS) {
+    // Fetch is required to reload business trip work log list with marked work logs
+    return state
+      .setIn(['businessTripWorkLog', 'isPosting'], false)
+      .setIn(['businessTripWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.MARK_MULTIPLE_BUSINESS_TRIP_WORK_LOG_APPROVED_FAILURE) {
+    return state
+      .setIn(['businessTripWorkLog', 'data'], null)
+      .setIn(['businessTripWorkLog', 'isPosting'], false)
+      .setIn(['businessTripWorkLog', 'isPostingFailure'], true);
+  }
+
+  if (type === actionTypes.MARK_MULTIPLE_BUSINESS_TRIP_WORK_LOG_REJECTED_REQUEST) {
+    return state
+      .setIn(['businessTripWorkLog', 'isPosting'], true)
+      .setIn(['businessTripWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.MARK_MULTIPLE_BUSINESS_TRIP_WORK_LOG_REJECTED_SUCCESS) {
+    // Fetch is required to reload business trip work log list with marked work logs
+    return state
+      .setIn(['businessTripWorkLog', 'isPosting'], false)
+      .setIn(['businessTripWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.MARK_MULTIPLE_BUSINESS_TRIP_WORK_LOG_REJECTED_FAILURE) {
+    return state
+      .setIn(['businessTripWorkLog', 'data'], null)
+      .setIn(['businessTripWorkLog', 'isPosting'], false)
+      .setIn(['businessTripWorkLog', 'isPostingFailure'], true);
+  }
+
   if (type === actionTypes.MARK_BUSINESS_TRIP_WORK_LOG_REJECTED_FAILURE) {
     return state
       .setIn(['businessTripWorkLog', 'data'], null)

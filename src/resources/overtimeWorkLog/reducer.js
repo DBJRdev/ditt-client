@@ -13,13 +13,19 @@ export default (state, action) => {
     type,
   } = action;
 
-  if (type === actionTypes.ADD_OVERTIME_WORK_LOG_REQUEST) {
+  if (
+    type === actionTypes.ADD_OVERTIME_WORK_LOG_REQUEST
+    || type === actionTypes.ADD_MULTIPLE_OVERTIME_WORK_LOG_REQUEST
+  ) {
     return state
       .setIn(['overtimeWorkLog', 'isPosting'], true)
       .setIn(['overtimeWorkLog', 'isPostingFailure'], false);
   }
 
-  if (type === actionTypes.ADD_OVERTIME_WORK_LOG_SUCCESS) {
+  if (
+    type === actionTypes.ADD_OVERTIME_WORK_LOG_SUCCESS
+    || type === actionTypes.ADD_MULTIPLE_OVERTIME_WORK_LOG_SUCCESS
+  ) {
     // Fetch is required to reload overtime work log list with added work log
     return state
       .setIn(['overtimeWorkLog', 'data'], Immutable.fromJS(transformOvertimeWorkLog(payload)))
@@ -27,7 +33,10 @@ export default (state, action) => {
       .setIn(['overtimeWorkLog', 'isPostingFailure'], false);
   }
 
-  if (type === actionTypes.ADD_OVERTIME_WORK_LOG_FAILURE) {
+  if (
+    type === actionTypes.ADD_OVERTIME_WORK_LOG_FAILURE
+    || type === actionTypes.ADD_MULTIPLE_OVERTIME_WORK_LOG_FAILURE
+  ) {
     return state
       .setIn(['overtimeWorkLog', 'data'], null)
       .setIn(['overtimeWorkLog', 'isPosting'], false)
@@ -92,6 +101,46 @@ export default (state, action) => {
       .setIn(['overtimeWorkLog', 'data'], null)
       .setIn(['overtimeWorkLog', 'isFetching'], false)
       .setIn(['overtimeWorkLog', 'isFetchingFailure'], true);
+  }
+
+  if (type === actionTypes.MARK_MULTIPLE_OVERTIME_WORK_LOG_APPROVED_REQUEST) {
+    return state
+      .setIn(['overtimeWorkLog', 'isPosting'], true)
+      .setIn(['overtimeWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.MARK_MULTIPLE_OVERTIME_WORK_LOG_APPROVED_SUCCESS) {
+    // Fetch is required to reload overtime work log list with marked work logs
+    return state
+      .setIn(['overtimeWorkLog', 'isPosting'], false)
+      .setIn(['overtimeWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.MARK_MULTIPLE_OVERTIME_WORK_LOG_APPROVED_FAILURE) {
+    return state
+      .setIn(['overtimeWorkLog', 'data'], null)
+      .setIn(['overtimeWorkLog', 'isPosting'], false)
+      .setIn(['overtimeWorkLog', 'isPostingFailure'], true);
+  }
+
+  if (type === actionTypes.MARK_MULTIPLE_OVERTIME_WORK_LOG_REJECTED_REQUEST) {
+    return state
+      .setIn(['overtimeWorkLog', 'isPosting'], true)
+      .setIn(['overtimeWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.MARK_MULTIPLE_OVERTIME_WORK_LOG_REJECTED_SUCCESS) {
+    // Fetch is required to reload overtime work log list with marked work logs
+    return state
+      .setIn(['overtimeWorkLog', 'isPosting'], false)
+      .setIn(['overtimeWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.MARK_MULTIPLE_OVERTIME_WORK_LOG_REJECTED_FAILURE) {
+    return state
+      .setIn(['overtimeWorkLog', 'data'], null)
+      .setIn(['overtimeWorkLog', 'isPosting'], false)
+      .setIn(['overtimeWorkLog', 'isPostingFailure'], true);
   }
 
   if (type === actionTypes.MARK_OVERTIME_WORK_LOG_APPROVED_REQUEST) {

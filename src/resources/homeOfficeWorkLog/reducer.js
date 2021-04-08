@@ -143,6 +143,46 @@ export default (state, action) => {
       .setIn(['homeOfficeWorkLog', 'isPostingFailure'], true);
   }
 
+  if (type === actionTypes.MARK_MULTIPLE_HOME_OFFICE_WORK_LOG_APPROVED_REQUEST) {
+    return state
+      .setIn(['homeOfficeWorkLog', 'isPosting'], true)
+      .setIn(['homeOfficeWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.MARK_MULTIPLE_HOME_OFFICE_WORK_LOG_APPROVED_SUCCESS) {
+    // Fetch is required to reload home office work log list with marked work logs
+    return state
+      .setIn(['homeOfficeWorkLog', 'isPosting'], false)
+      .setIn(['homeOfficeWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.MARK_MULTIPLE_HOME_OFFICE_WORK_LOG_APPROVED_FAILURE) {
+    return state
+      .setIn(['homeOfficeWorkLog', 'data'], null)
+      .setIn(['homeOfficeWorkLog', 'isPosting'], false)
+      .setIn(['homeOfficeWorkLog', 'isPostingFailure'], true);
+  }
+
+  if (type === actionTypes.MARK_MULTIPLE_HOME_OFFICE_WORK_LOG_REJECTED_REQUEST) {
+    return state
+      .setIn(['homeOfficeWorkLog', 'isPosting'], true)
+      .setIn(['homeOfficeWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.MARK_MULTIPLE_HOME_OFFICE_WORK_LOG_REJECTED_SUCCESS) {
+    // Fetch is required to reload home office work log list with marked work logs
+    return state
+      .setIn(['homeOfficeWorkLog', 'isPosting'], false)
+      .setIn(['homeOfficeWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.MARK_MULTIPLE_HOME_OFFICE_WORK_LOG_REJECTED_FAILURE) {
+    return state
+      .setIn(['homeOfficeWorkLog', 'data'], null)
+      .setIn(['homeOfficeWorkLog', 'isPosting'], false)
+      .setIn(['homeOfficeWorkLog', 'isPostingFailure'], true);
+  }
+
   if (type === actionTypes.SUPPORT_HOME_OFFICE_WORK_LOG_REQUEST) {
     return state
       .setIn(['homeOfficeWorkLogSupport', 'isPosting'], true)

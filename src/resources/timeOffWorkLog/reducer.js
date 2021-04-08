@@ -101,6 +101,46 @@ export default (state, action) => {
       .setIn(['timeOffWorkLog', 'isFetchingFailure'], true);
   }
 
+  if (type === actionTypes.MARK_MULTIPLE_TIME_OFF_WORK_LOG_APPROVED_REQUEST) {
+    return state
+      .setIn(['timeOffWorkLog', 'isPosting'], true)
+      .setIn(['timeOffWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.MARK_MULTIPLE_TIME_OFF_WORK_LOG_APPROVED_SUCCESS) {
+    // Fetch is required to reload time off work log list with marked work logs
+    return state
+      .setIn(['timeOffWorkLog', 'isPosting'], false)
+      .setIn(['timeOffWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.MARK_MULTIPLE_TIME_OFF_WORK_LOG_APPROVED_FAILURE) {
+    return state
+      .setIn(['timeOffWorkLog', 'data'], null)
+      .setIn(['timeOffWorkLog', 'isPosting'], false)
+      .setIn(['timeOffWorkLog', 'isPostingFailure'], true);
+  }
+
+  if (type === actionTypes.MARK_MULTIPLE_TIME_OFF_WORK_LOG_REJECTED_REQUEST) {
+    return state
+      .setIn(['timeOffWorkLog', 'isPosting'], true)
+      .setIn(['timeOffWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.MARK_MULTIPLE_TIME_OFF_WORK_LOG_REJECTED_SUCCESS) {
+    // Fetch is required to reload time off work log list with marked work logs
+    return state
+      .setIn(['timeOffWorkLog', 'isPosting'], false)
+      .setIn(['timeOffWorkLog', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.MARK_MULTIPLE_TIME_OFF_WORK_LOG_REJECTED_FAILURE) {
+    return state
+      .setIn(['timeOffWorkLog', 'data'], null)
+      .setIn(['timeOffWorkLog', 'isPosting'], false)
+      .setIn(['timeOffWorkLog', 'isPostingFailure'], true);
+  }
+
   if (type === actionTypes.MARK_TIME_OFF_WORK_LOG_APPROVED_REQUEST) {
     return state
       .setIn(['timeOffWorkLog', 'isPosting'], true)

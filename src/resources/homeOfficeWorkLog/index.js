@@ -6,7 +6,10 @@ export {
   fetchHomeOfficeWorkLog,
   markHomeOfficeWorkLogApproved,
   markHomeOfficeWorkLogRejected,
+  markMultipleHomeOfficeWorkLogApproved,
+  markMultipleHomeOfficeWorkLogRejected,
   supportHomeOfficeWorkLog,
+  supportMultipleHomeOfficeWorkLog,
 } from './actions';
 
 export { transformHomeOfficeWorkLog } from './dataTransformers';
