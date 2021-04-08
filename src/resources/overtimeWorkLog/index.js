@@ -1,11 +1,15 @@
 export {
+  addMultipleOvertimeWorkLog,
   addOvertimeWorkLog,
   deleteOvertimeWorkLog,
   editOvertimeWorkLog,
   fetchOvertimeWorkLog,
+  markMultipleOvertimeWorkLogApproved,
+  markMultipleOvertimeWorkLogRejected,
   markOvertimeWorkLogApproved,
   markOvertimeWorkLogRejected,
   supportOvertimeWorkLog,
+  supportMultipleOvertimeWorkLog,
 } from './actions';
 
 export { transformOvertimeWorkLog } from './dataTransformers';

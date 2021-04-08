@@ -4,9 +4,12 @@ export {
   deleteTimeOffWorkLog,
   editTimeOffWorkLog,
   fetchTimeOffWorkLog,
+  markMultipleTimeOffWorkLogApproved,
+  markMultipleTimeOffWorkLogRejected,
   markTimeOffWorkLogApproved,
   markTimeOffWorkLogRejected,
   supportTimeOffWorkLog,
+  supportMultipleTimeOffWorkLog,
 } from './actions';
 
 export { transformTimeOffWorkLog } from './dataTransformers';

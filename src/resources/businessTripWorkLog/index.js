@@ -6,7 +6,10 @@ export {
   fetchBusinessTripWorkLog,
   markBusinessTripWorkLogApproved,
   markBusinessTripWorkLogRejected,
+  markMultipleBusinessTripWorkLogApproved,
+  markMultipleBusinessTripWorkLogRejected,
   supportBusinessTripWorkLog,
+  supportMultipleBusinessTripWorkLog,
 } from './actions';
 
 export { transformBusinessTripWorkLog } from './dataTransformers';

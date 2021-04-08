@@ -20,6 +20,23 @@ export const addOvertimeWorkLog = (data) => (dispatch) => dispatch({
   },
 });
 
+export const addMultipleOvertimeWorkLog = (data) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify(data.map((workLog) => ({
+      date: toJson(workLog.date),
+      reason: workLog.reason,
+    }))),
+    endpoint: `${API_URL}/overtime_work_logs/bulk`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'POST',
+    types: [
+      types.ADD_MULTIPLE_OVERTIME_WORK_LOG_REQUEST,
+      types.ADD_MULTIPLE_OVERTIME_WORK_LOG_SUCCESS,
+      types.ADD_MULTIPLE_OVERTIME_WORK_LOG_FAILURE,
+    ],
+  },
+});
+
 export const deleteOvertimeWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/overtime_work_logs/${id}`,
@@ -92,6 +109,54 @@ export const markOvertimeWorkLogRejected = (id, data) => (dispatch) => dispatch(
   },
 });
 
+export const markMultipleOvertimeWorkLogApproved = (workLogIds) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify({ workLogIds }),
+    endpoint: `${API_URL}/overtime_work_logs/bulk/mark_approved`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.MARK_MULTIPLE_OVERTIME_WORK_LOG_APPROVED_REQUEST,
+      types.MARK_MULTIPLE_OVERTIME_WORK_LOG_APPROVED_SUCCESS,
+      types.MARK_MULTIPLE_OVERTIME_WORK_LOG_APPROVED_FAILURE,
+    ],
+  },
+});
+
+export const markMultipleOvertimeWorkLogRejected = (
+  workLogIds,
+  data,
+) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify({
+      rejectionMessage: data.rejectionMessage,
+      workLogIds,
+    }),
+    endpoint: `${API_URL}/overtime_work_logs/bulk/mark_rejected`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.MARK_MULTIPLE_OVERTIME_WORK_LOG_REJECTED_REQUEST,
+      types.MARK_MULTIPLE_OVERTIME_WORK_LOG_REJECTED_SUCCESS,
+      types.MARK_MULTIPLE_OVERTIME_WORK_LOG_REJECTED_FAILURE,
+    ],
+  },
+});
+
+export const supportMultipleOvertimeWorkLog = (ids) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify(ids.map((id) => ({ workLog: `/overtime_work_logs/${id}` }))),
+    endpoint: `${API_URL}/overtime_work_log_supports/bulk`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'POST',
+    types: [
+      types.SUPPORT_OVERTIME_WORK_LOG_REQUEST,
+      types.SUPPORT_OVERTIME_WORK_LOG_SUCCESS,
+      types.SUPPORT_OVERTIME_WORK_LOG_FAILURE,
+    ],
+  },
+});
+
 export const supportOvertimeWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify({
@@ -107,4 +172,3 @@ export const supportOvertimeWorkLog = (id) => (dispatch) => dispatch({
     ],
   },
 });
-

@@ -288,6 +288,63 @@ export const getWorkMonthByMonth = (date, workMonthList) => workMonthList.find((
   && date.year() === workMonth.year
 ));
 
+export const areWorkLogsSame = (a, b) => {
+  if (
+    a.get('type') !== b.get('type')
+    || a.getIn(['workMonth', 'user', 'id']) !== b.getIn(['workMonth', 'user', 'id'])
+    || a.get('rejectionMessage') !== b.get('rejectionMessage')
+  ) {
+    return false;
+  }
+
+  if (
+    a.get('type') === BUSINESS_TRIP_WORK_LOG
+    && (
+      a.get('destination') !== b.get('destination')
+      || a.get('expectedArrival') !== b.get('expectedArrival')
+      || a.get('expectedDeparture') !== b.get('expectedDeparture')
+      || a.get('purpose') !== b.get('purpose')
+      || a.get('transport') !== b.get('transport')
+    )
+  ) {
+    return false;
+  }
+
+  if (
+    a.get('type') === HOME_OFFICE_WORK_LOG
+    && a.get('comment') !== b.get('comment')
+  ) {
+    return false;
+  }
+
+  if (
+    a.get('type') === OVERTIME_WORK_LOG
+    && a.get('reason') !== b.get('reason')
+  ) {
+    return false;
+  }
+
+  if (
+    a.get('type') === SICK_DAY_WORK_LOG
+    && (
+      a.get('childDateOfBirth') !== b.get('childDateOfBirth')
+      || a.get('childName') !== b.get('childName')
+      || a.get('variant') !== b.get('variant')
+    )
+  ) {
+    return false;
+  }
+
+  if (
+    a.get('type') === TIME_OFF_WORK_LOG
+    && a.get('comment') !== b.get('comment')
+  ) {
+    return false;
+  }
+
+  return true;
+};
+
 export const collapseWorkLogs = (originalWorkLogs, supportedHolidays) => {
   let workLogs = [];
   const workLogsByStatus = {};
@@ -324,7 +381,10 @@ export const collapseWorkLogs = (originalWorkLogs, supportedHolidays) => {
 
         firstWorkLog = workLog;
         collapsedWorkLog.push(workLog);
-      } else if (workLog.get('date').isSame(nextWorkingDay, 'day')) {
+      } else if (
+        workLog.get('date').isSame(nextWorkingDay, 'day')
+        && areWorkLogsSame(workLog, firstWorkLog)
+      ) {
         // Add work log into array of collapsed work log
         // if current work log follows up on previous work log
 

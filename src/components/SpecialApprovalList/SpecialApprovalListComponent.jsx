@@ -99,8 +99,20 @@ class SpecialApprovalListComponent extends React.Component {
 
         if (isBulk) {
           switch (type) {
+            case BUSINESS_TRIP_WORK_LOG:
+              action = this.props.markMultipleBusinessTripWorkLogApproved;
+              break;
+            case HOME_OFFICE_WORK_LOG:
+              action = this.props.markMultipleHomeOfficeWorkLogApproved;
+              break;
+            case OVERTIME_WORK_LOG:
+              action = this.props.markMultipleOvertimeWorkLogApproved;
+              break;
             case SPECIAL_LEAVE_WORK_LOG:
               action = this.props.markMultipleSpecialLeaveWorkLogApproved;
+              break;
+            case TIME_OFF_WORK_LOG:
+              action = this.props.markMultipleTimeOffWorkLogApproved;
               break;
             case VACATION_WORK_LOG:
               action = this.props.markMultipleVacationWorkLogApproved;
@@ -162,8 +174,20 @@ class SpecialApprovalListComponent extends React.Component {
 
         if (isBulk) {
           switch (type) {
+            case BUSINESS_TRIP_WORK_LOG:
+              action = this.props.markMultipleBusinessTripWorkLogRejected;
+              break;
+            case HOME_OFFICE_WORK_LOG:
+              action = this.props.markMultipleHomeOfficeWorkLogRejected;
+              break;
+            case OVERTIME_WORK_LOG:
+              action = this.props.markMultipleOvertimeWorkLogRejected;
+              break;
             case SPECIAL_LEAVE_WORK_LOG:
               action = this.props.markMultipleSpecialLeaveWorkLogRejected;
+              break;
+            case TIME_OFF_WORK_LOG:
+              action = this.props.markMultipleTimeOffWorkLogRejected;
               break;
             case VACATION_WORK_LOG:
               action = this.props.markMultipleVacationWorkLogRejected;
@@ -225,8 +249,20 @@ class SpecialApprovalListComponent extends React.Component {
 
         if (isBulk) {
           switch (type) {
+            case BUSINESS_TRIP_WORK_LOG:
+              action = this.props.supportMultipleBusinessTripWorkLog;
+              break;
+            case HOME_OFFICE_WORK_LOG:
+              action = this.props.supportMultipleHomeOfficeWorkLog;
+              break;
+            case OVERTIME_WORK_LOG:
+              action = this.props.supportMultipleOvertimeWorkLog;
+              break;
             case SPECIAL_LEAVE_WORK_LOG:
               action = this.props.supportMultipleSpecialLeaveWorkLog;
+              break;
+            case TIME_OFF_WORK_LOG:
+              action = this.props.supportMultipleTimeOffWorkLog;
               break;
             case VACATION_WORK_LOG:
               action = this.props.supportMultipleVacationWorkLog;
@@ -290,41 +326,21 @@ class SpecialApprovalListComponent extends React.Component {
       'businessTripWorkLogs',
       'homeOfficeWorkLogs',
       'overtimeWorkLogs',
+      'specialLeaveWorkLogs',
       'timeOffWorkLogs',
+      'vacationWorkLogs',
     ].forEach((key) => {
       specialApprovalList = specialApprovalList.concat((
-        this.props.specialApprovalList.get(key).map((
+        collapseWorkLogs(
+          this.props.specialApprovalList.get(key),
+          this.props.config.get('supportedHolidays'),
+        ).map(
           (workLog) => workLog
             .set('rawId', workLog.get('id'))
-            .set('id', `${workLog.get('type')}-${workLog.get('id')}`)
-            .set('isBulk', false)
-        ))
+            .set('id', `${workLog.get('type')}-${workLog.get('id')}`),
+        )
       ));
     });
-
-    const specialLeaveWorkLogs = collapseWorkLogs(
-      this.props.specialApprovalList.get('specialLeaveWorkLogs'),
-      this.props.config.get('supportedHolidays'),
-    );
-    const vacationWorkLogs = collapseWorkLogs(
-      this.props.specialApprovalList.get('vacationWorkLogs'),
-      this.props.config.get('supportedHolidays'),
-    );
-
-    specialApprovalList = specialApprovalList.concat((
-      specialLeaveWorkLogs.map((
-        (workLog) => workLog
-          .set('rawId', workLog.get('id'))
-          .set('id', `${workLog.get('type')}-${workLog.get('id')}`)
-      ))
-    ));
-    specialApprovalList = specialApprovalList.concat((
-      vacationWorkLogs.map((
-        (workLog) => workLog
-          .set('rawId', workLog.get('id'))
-          .set('id', `${workLog.get('type')}-${workLog.get('id')}`)
-      ))
-    ));
 
     return specialApprovalList.sortBy((workLog) => -workLog.get('date'));
   }
@@ -471,10 +487,19 @@ class SpecialApprovalListComponent extends React.Component {
     if (BUSINESS_TRIP_WORK_LOG === type && this.props.businessTripWorkLog) {
       content = (
         <p>
-          {t('workLog:element.date')}
+          {isBulk ? t('workLog:element.dateFrom') : t('workLog:element.date')}
           {': '}
           {toDayDayMonthYearFormat(this.props.businessTripWorkLog.get('date'))}
           <br />
+
+          {isBulk ? (
+            <>
+              {t('workLog:element.dateTo')}
+              {': '}
+              {toDayDayMonthYearFormat(dateTo)}
+              <br />
+            </>
+          ) : null}
 
           {t('workLog:element.status')}
           {': '}
@@ -518,10 +543,19 @@ class SpecialApprovalListComponent extends React.Component {
     } else if (HOME_OFFICE_WORK_LOG === type && this.props.homeOfficeWorkLog) {
       content = (
         <p>
-          {t('workLog:element.date')}
+          {isBulk ? t('workLog:element.dateFrom') : t('workLog:element.date')}
           {': '}
           {toDayDayMonthYearFormat(this.props.homeOfficeWorkLog.get('date'))}
           <br />
+
+          {isBulk ? (
+            <>
+              {t('workLog:element.dateTo')}
+              {': '}
+              {toDayDayMonthYearFormat(dateTo)}
+              <br />
+            </>
+          ) : null}
 
           {t('homeOfficeWorkLog:element.comment')}
           {': '}
@@ -546,10 +580,19 @@ class SpecialApprovalListComponent extends React.Component {
     } else if (OVERTIME_WORK_LOG === type && this.props.overtimeWorkLog) {
       content = (
         <p>
-          {t('workLog:element.date')}
+          {isBulk ? t('workLog:element.dateFrom') : t('workLog:element.date')}
           {': '}
           {toDayDayMonthYearFormat(this.props.overtimeWorkLog.get('date'))}
           <br />
+
+          {isBulk ? (
+            <>
+              {t('workLog:element.dateTo')}
+              {': '}
+              {toDayDayMonthYearFormat(dateTo)}
+              <br />
+            </>
+          ) : null}
 
           {t('workLog:element.status')}
           {': '}
@@ -573,10 +616,19 @@ class SpecialApprovalListComponent extends React.Component {
     } else if (TIME_OFF_WORK_LOG === type && this.props.timeOffWorkLog) {
       content = (
         <p>
-          {t('workLog:element.date')}
+          {isBulk ? t('workLog:element.dateFrom') : t('workLog:element.date')}
           {': '}
           {toDayDayMonthYearFormat(this.props.timeOffWorkLog.get('date'))}
           <br />
+
+          {isBulk ? (
+            <>
+              {t('workLog:element.dateTo')}
+              {': '}
+              {toDayDayMonthYearFormat(dateTo)}
+              <br />
+            </>
+          ) : null}
 
           {t('timeOffWorkLog:element.comment')}
           {': '}
@@ -599,111 +651,69 @@ class SpecialApprovalListComponent extends React.Component {
         </p>
       );
     } else if (SPECIAL_LEAVE_WORK_LOG === type && this.props.specialLeaveWorkLog) {
-      if (isBulk) {
-        content = (
-          <p>
-            {t('workLog:element.dateFrom')}
-            {': '}
-            {toDayDayMonthYearFormat(this.props.specialLeaveWorkLog.get('date'))}
-            <br />
+      content = (
+        <p>
+          {isBulk ? t('workLog:element.dateFrom') : t('workLog:element.date')}
+          {': '}
+          {toDayDayMonthYearFormat(this.props.specialLeaveWorkLog.get('date'))}
+          <br />
 
-            {t('workLog:element.dateTo')}
-            {': '}
-            {toDayDayMonthYearFormat(dateTo)}
-            <br />
+          {isBulk ? (
+            <>
+              {t('workLog:element.dateTo')}
+              {': '}
+              {toDayDayMonthYearFormat(dateTo)}
+              <br />
+            </>
+          ) : null}
 
-            {t('workLog:element.status')}
-            {': '}
-            {getStatusLabel(t, this.props.specialLeaveWorkLog.get('status'))}
-            <br />
+          {t('workLog:element.status')}
+          {': '}
+          {getStatusLabel(t, this.props.specialLeaveWorkLog.get('status'))}
+          <br />
 
-            {STATUS_REJECTED === this.props.specialLeaveWorkLog.get('status') && (
-              <>
-                {t('workLog:element.rejectionMessage')}
-                {': '}
-                {this.props.specialLeaveWorkLog.get('rejectionMessage')}
-                <br />
-              </>
-            )}
-          </p>
-        );
-      } else {
-        content = (
-          <p>
-            {t('workLog:element.date')}
-            {': '}
-            {toDayDayMonthYearFormat(this.props.specialLeaveWorkLog.get('date'))}
-            <br />
-
-            {t('workLog:element.status')}
-            {': '}
-            {getStatusLabel(t, this.props.specialLeaveWorkLog.get('status'))}
-            <br />
-
-            {STATUS_REJECTED === this.props.specialLeaveWorkLog.get('status') && (
-              <>
-                {t('workLog:element.rejectionMessage')}
-                {': '}
-                {this.props.specialLeaveWorkLog.get('rejectionMessage')}
-                <br />
-              </>
-            )}
-          </p>
-        );
-      }
+          {STATUS_REJECTED === this.props.specialLeaveWorkLog.get('status') && (
+            <>
+              {t('workLog:element.rejectionMessage')}
+              {': '}
+              {this.props.specialLeaveWorkLog.get('rejectionMessage')}
+              <br />
+            </>
+          )}
+        </p>
+      );
     } else if (VACATION_WORK_LOG === type && this.props.vacationWorkLog) {
-      if (isBulk) {
-        content = (
-          <p>
-            {t('workLog:element.dateFrom')}
-            {': '}
-            {toDayDayMonthYearFormat(this.props.vacationWorkLog.get('date'))}
-            <br />
+      content = (
+        <p>
+          {isBulk ? t('workLog:element.dateFrom') : t('workLog:element.date')}
+          {': '}
+          {toDayDayMonthYearFormat(this.props.vacationWorkLog.get('date'))}
+          <br />
 
-            {t('workLog:element.dateTo')}
-            {': '}
-            {toDayDayMonthYearFormat(dateTo)}
-            <br />
+          {isBulk ? (
+            <>
+              {t('workLog:element.dateTo')}
+              {': '}
+              {toDayDayMonthYearFormat(dateTo)}
+              <br />
+            </>
+          ) : null}
 
-            {t('workLog:element.status')}
-            {': '}
-            {getStatusLabel(t, this.props.vacationWorkLog.get('status'))}
-            <br />
+          {t('workLog:element.status')}
+          {': '}
+          {getStatusLabel(t, this.props.vacationWorkLog.get('status'))}
+          <br />
 
-            {STATUS_REJECTED === this.props.vacationWorkLog.get('status') && (
-              <>
-                {t('workLog:element.rejectionMessage')}
-                {': '}
-                {this.props.vacationWorkLog.get('rejectionMessage')}
-                <br />
-              </>
-            )}
-          </p>
-        );
-      } else {
-        content = (
-          <p>
-            {t('workLog:element.date')}
-            {': '}
-            {toDayDayMonthYearFormat(this.props.vacationWorkLog.get('date'))}
-            <br />
-
-            {t('workLog:element.status')}
-            {': '}
-            {getStatusLabel(t, this.props.vacationWorkLog.get('status'))}
-            <br />
-
-            {STATUS_REJECTED === this.props.vacationWorkLog.get('status') && (
-              <>
-                {t('workLog:element.rejectionMessage')}
-                {': '}
-                {this.props.vacationWorkLog.get('rejectionMessage')}
-                <br />
-              </>
-            )}
-          </p>
-        );
-      }
+          {STATUS_REJECTED === this.props.vacationWorkLog.get('status') && (
+            <>
+              {t('workLog:element.rejectionMessage')}
+              {': '}
+              {this.props.vacationWorkLog.get('rejectionMessage')}
+              <br />
+            </>
+          )}
+        </p>
+      );
     }
 
     return (
@@ -1000,8 +1010,16 @@ SpecialApprovalListComponent.propTypes = {
   markBusinessTripWorkLogRejected: PropTypes.func.isRequired,
   markHomeOfficeWorkLogApproved: PropTypes.func.isRequired,
   markHomeOfficeWorkLogRejected: PropTypes.func.isRequired,
+  markMultipleBusinessTripWorkLogApproved: PropTypes.func.isRequired,
+  markMultipleBusinessTripWorkLogRejected: PropTypes.func.isRequired,
+  markMultipleHomeOfficeWorkLogApproved: PropTypes.func.isRequired,
+  markMultipleHomeOfficeWorkLogRejected: PropTypes.func.isRequired,
+  markMultipleOvertimeWorkLogApproved: PropTypes.func.isRequired,
+  markMultipleOvertimeWorkLogRejected: PropTypes.func.isRequired,
   markMultipleSpecialLeaveWorkLogApproved: PropTypes.func.isRequired,
   markMultipleSpecialLeaveWorkLogRejected: PropTypes.func.isRequired,
+  markMultipleTimeOffWorkLogApproved: PropTypes.func.isRequired,
+  markMultipleTimeOffWorkLogRejected: PropTypes.func.isRequired,
   markMultipleVacationWorkLogApproved: PropTypes.func.isRequired,
   markMultipleVacationWorkLogRejected: PropTypes.func.isRequired,
   markOvertimeWorkLogApproved: PropTypes.func.isRequired,
@@ -1095,7 +1113,11 @@ SpecialApprovalListComponent.propTypes = {
   }),
   supportBusinessTripWorkLog: PropTypes.func.isRequired,
   supportHomeOfficeWorkLog: PropTypes.func.isRequired,
+  supportMultipleBusinessTripWorkLog: PropTypes.func.isRequired,
+  supportMultipleHomeOfficeWorkLog: PropTypes.func.isRequired,
+  supportMultipleOvertimeWorkLog: PropTypes.func.isRequired,
   supportMultipleSpecialLeaveWorkLog: PropTypes.func.isRequired,
+  supportMultipleTimeOffWorkLog: PropTypes.func.isRequired,
   supportMultipleVacationWorkLog: PropTypes.func.isRequired,
   supportOvertimeWorkLog: PropTypes.func.isRequired,
   supportSpecialLeaveWorkLog: PropTypes.func.isRequired,

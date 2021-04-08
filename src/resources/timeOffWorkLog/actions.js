@@ -109,6 +109,54 @@ export const markTimeOffWorkLogRejected = (id, data) => (dispatch) => dispatch({
   },
 });
 
+export const markMultipleTimeOffWorkLogApproved = (workLogIds) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify({ workLogIds }),
+    endpoint: `${API_URL}/time_off_work_logs/bulk/mark_approved`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.MARK_MULTIPLE_TIME_OFF_WORK_LOG_APPROVED_REQUEST,
+      types.MARK_MULTIPLE_TIME_OFF_WORK_LOG_APPROVED_SUCCESS,
+      types.MARK_MULTIPLE_TIME_OFF_WORK_LOG_APPROVED_FAILURE,
+    ],
+  },
+});
+
+export const markMultipleTimeOffWorkLogRejected = (
+  workLogIds,
+  data,
+) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify({
+      rejectionMessage: data.rejectionMessage,
+      workLogIds,
+    }),
+    endpoint: `${API_URL}/time_off_work_logs/bulk/mark_rejected`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.MARK_MULTIPLE_TIME_OFF_WORK_LOG_REJECTED_REQUEST,
+      types.MARK_MULTIPLE_TIME_OFF_WORK_LOG_REJECTED_SUCCESS,
+      types.MARK_MULTIPLE_TIME_OFF_WORK_LOG_REJECTED_FAILURE,
+    ],
+  },
+});
+
+export const supportMultipleTimeOffWorkLog = (ids) => (dispatch) => dispatch({
+  [RSAA]: {
+    body: JSON.stringify(ids.map((id) => ({ workLog: `/time_off_work_logs/${id}` }))),
+    endpoint: `${API_URL}/time_off_work_log_supports/bulk`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'POST',
+    types: [
+      types.SUPPORT_TIME_OFF_WORK_LOG_REQUEST,
+      types.SUPPORT_TIME_OFF_WORK_LOG_SUCCESS,
+      types.SUPPORT_TIME_OFF_WORK_LOG_FAILURE,
+    ],
+  },
+});
+
 export const supportTimeOffWorkLog = (id) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify({
@@ -124,3 +172,4 @@ export const supportTimeOffWorkLog = (id) => (dispatch) => dispatch({
     ],
   },
 });
+

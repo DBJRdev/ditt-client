@@ -181,6 +181,7 @@ export default (state, action) => {
 
   const filterSpecialApprovals = (data) => ({
     businessTripWorkLogs: data.businessTripWorkLogs.map((businessTripWorkLogsData) => ({
+      ...businessTripWorkLogsData,
       date: toMomentDateTime(businessTripWorkLogsData.date),
       id: parseInt(businessTripWorkLogsData.id, 10),
       status: resolveWorkLogStatus(businessTripWorkLogsData),
@@ -195,6 +196,7 @@ export default (state, action) => {
       },
     })),
     homeOfficeWorkLogs: data.homeOfficeWorkLogs.map((homeOfficeWorkLogsData) => ({
+      ...homeOfficeWorkLogsData,
       comment: homeOfficeWorkLogsData.comment,
       date: toMomentDateTime(homeOfficeWorkLogsData.date),
       id: parseInt(homeOfficeWorkLogsData.id, 10),
@@ -210,6 +212,7 @@ export default (state, action) => {
       },
     })),
     overtimeWorkLogs: data.overtimeWorkLogs.map((overtimeWorkLogsData) => ({
+      ...overtimeWorkLogsData,
       date: toMomentDateTime(overtimeWorkLogsData.date),
       id: parseInt(overtimeWorkLogsData.id, 10),
       status: resolveWorkLogStatus(overtimeWorkLogsData),
@@ -224,6 +227,7 @@ export default (state, action) => {
       },
     })),
     specialLeaveWorkLogs: data.specialLeaveWorkLogs.map((specialLeaveWorkLogsData) => ({
+      ...specialLeaveWorkLogsData,
       date: toMomentDateTime(specialLeaveWorkLogsData.date),
       id: parseInt(specialLeaveWorkLogsData.id, 10),
       rejectionMessage: specialLeaveWorkLogsData.rejectionMessage,
@@ -239,6 +243,7 @@ export default (state, action) => {
       },
     })),
     timeOffWorkLogs: data.timeOffWorkLogs.map((timeOffWorkLogsData) => ({
+      ...timeOffWorkLogsData,
       comment: timeOffWorkLogsData.comment,
       date: toMomentDateTime(timeOffWorkLogsData.date),
       id: parseInt(timeOffWorkLogsData.id, 10),
@@ -254,6 +259,7 @@ export default (state, action) => {
       },
     })),
     vacationWorkLogs: data.vacationWorkLogs.map((vacationWorkLogsData) => ({
+      ...vacationWorkLogsData,
       date: toMomentDateTime(vacationWorkLogsData.date),
       id: parseInt(vacationWorkLogsData.id, 10),
       rejectionMessage: vacationWorkLogsData.rejectionMessage,
