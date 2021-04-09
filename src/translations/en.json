@@ -174,9 +174,12 @@
     }
   },
   "supervisedUser": {
+    "action": {
+      "show": "Show"
+    },
     "element": {
       "needApproval": "Need approval",
-      "showWorkLog": "Show monthly logs"
+      "monthlyLogs": "Monthly logs"
     },
     "title": {
       "supervisedUsers": "Supervised users"

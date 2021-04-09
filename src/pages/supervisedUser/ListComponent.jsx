@@ -8,6 +8,7 @@ import {
   ScrollView,
   Table,
 } from '@react-ui-org/react-ui';
+import moment from 'moment-timezone';
 import { Icon } from '../../components/Icon';
 import Layout from '../../components/Layout';
 import routes from '../../routes';
@@ -17,7 +18,7 @@ import {
   STATUS_WAITING_FOR_APPROVAL,
 } from '../../resources/workMonth';
 import {
-  createDate,
+  createDate, toHourMinuteFormatFromInt,
   toMonthYearFormat,
 } from '../../services/dateTimeService';
 import styles from './supervisedUser.scss';
@@ -54,6 +55,7 @@ class ListComponent extends React.Component {
     const { t } = this.props;
 
     let uid = null;
+    const year = moment().year();
 
     if (this.props.token) {
       const decodedToken = decode(this.props.token);
@@ -130,15 +132,31 @@ class ListComponent extends React.Component {
                   name: 'needApproval',
                 },
                 {
+                  format: (row) => {
+                    if (row.yearStats) {
+                      const userYearStats = row.yearStats.filter((stats) => stats.year === year)[0];
+
+                      if (userYearStats) {
+                        return `${toHourMinuteFormatFromInt(userYearStats.workedHours)}/${toHourMinuteFormatFromInt(userYearStats.requiredHours)}`;
+                      }
+                    }
+
+                    return '0:00/0:00';
+                  },
+                  isSortable: false,
+                  label: t('user:element.workedAndRequiredHours'),
+                  name: 'requiredWorkedHours',
+                },
+                {
                   format: (row) => (
                     <span className={lighterRow(row)}>
                       {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                       <Link to={routes.supervisedUserWorkLog.replace(':id', row.id)}>
-                        {t('supervisedUser:element.showWorkLog')}
+                        {t('supervisedUser:action.show')}
                       </Link>
                     </span>
                   ),
-                  label: t('supervisedUser:element.showWorkLog'),
+                  label: t('supervisedUser:element.monthlyLogs'),
                   name: 'showWorkLog',
                 },
               ]}

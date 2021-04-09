@@ -173,9 +173,12 @@
     }
   },
   "supervisedUser": {
+    "action": {
+      "show": "Zeigen"
+    },
     "element": {
       "needApproval": "Freigabe erforderlich",
-      "showWorkLog": "Monatsübersicht anzeigen"
+      "monthlyLogs": "Monatsübersicht"
     },
     "title": {
       "supervisedUsers": "Mitarbeiter*innen"
