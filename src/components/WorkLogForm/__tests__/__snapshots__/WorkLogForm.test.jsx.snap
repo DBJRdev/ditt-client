@@ -238,12 +238,13 @@ exports[`rendering renders correctly with all props 1`] = `
                                     className="TextField__input__2lIhECsc"
                                     disabled={false}
                                     id="startHour"
-                                    max={null}
+                                    max={23}
+                                    min={0}
                                     onChange={[Function]}
                                     placeholder={null}
                                     required={false}
-                                    size={2}
-                                    type="text"
+                                    size={null}
+                                    type="number"
                                     value="00"
                                   />
                                 </div>
@@ -284,12 +285,13 @@ exports[`rendering renders correctly with all props 1`] = `
                                     className="TextField__input__2lIhECsc"
                                     disabled={false}
                                     id="startMinute"
-                                    max={null}
+                                    max={59}
+                                    min={0}
                                     onChange={[Function]}
                                     placeholder={null}
                                     required={false}
-                                    size={2}
-                                    type="text"
+                                    size={null}
+                                    type="number"
                                     value="57"
                                   />
                                 </div>
@@ -337,12 +339,13 @@ exports[`rendering renders correctly with all props 1`] = `
                                     className="TextField__input__2lIhECsc"
                                     disabled={false}
                                     id="endHour"
-                                    max={null}
+                                    max={23}
+                                    min={0}
                                     onChange={[Function]}
                                     placeholder={null}
                                     required={false}
-                                    size={2}
-                                    type="text"
+                                    size={null}
+                                    type="number"
                                     value="01"
                                   />
                                 </div>
@@ -383,12 +386,13 @@ exports[`rendering renders correctly with all props 1`] = `
                                     className="TextField__input__2lIhECsc"
                                     disabled={false}
                                     id="endMinute"
-                                    max={null}
+                                    max={59}
+                                    min={0}
                                     onChange={[Function]}
                                     placeholder={null}
                                     required={false}
-                                    size={2}
-                                    type="text"
+                                    size={null}
+                                    type="number"
                                     value="03"
                                   />
                                 </div>
@@ -690,12 +694,13 @@ exports[`rendering renders correctly with mandatory props 1`] = `
                                     className="TextField__input__2lIhECsc"
                                     disabled={false}
                                     id="startHour"
-                                    max={null}
+                                    max={23}
+                                    min={0}
                                     onChange={[Function]}
                                     placeholder={null}
                                     required={false}
-                                    size={2}
-                                    type="text"
+                                    size={null}
+                                    type="number"
                                     value="00"
                                   />
                                 </div>
@@ -736,12 +741,13 @@ exports[`rendering renders correctly with mandatory props 1`] = `
                                     className="TextField__input__2lIhECsc"
                                     disabled={false}
                                     id="startMinute"
-                                    max={null}
+                                    max={59}
+                                    min={0}
                                     onChange={[Function]}
                                     placeholder={null}
                                     required={false}
-                                    size={2}
-                                    type="text"
+                                    size={null}
+                                    type="number"
                                     value="57"
                                   />
                                 </div>
@@ -789,12 +795,13 @@ exports[`rendering renders correctly with mandatory props 1`] = `
                                     className="TextField__input__2lIhECsc"
                                     disabled={false}
                                     id="endHour"
-                                    max={null}
+                                    max={23}
+                                    min={0}
                                     onChange={[Function]}
                                     placeholder={null}
                                     required={false}
-                                    size={2}
-                                    type="text"
+                                    size={null}
+                                    type="number"
                                     value="01"
                                   />
                                 </div>
@@ -835,12 +842,13 @@ exports[`rendering renders correctly with mandatory props 1`] = `
                                     className="TextField__input__2lIhECsc"
                                     disabled={false}
                                     id="endMinute"
-                                    max={null}
+                                    max={59}
+                                    min={0}
                                     onChange={[Function]}
                                     placeholder={null}
                                     required={false}
-                                    size={2}
-                                    type="text"
+                                    size={null}
+                                    type="number"
                                     value="03"
                                   />
                                 </div>

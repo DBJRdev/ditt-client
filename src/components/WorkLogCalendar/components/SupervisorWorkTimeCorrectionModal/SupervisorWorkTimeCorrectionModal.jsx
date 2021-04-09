@@ -64,6 +64,30 @@ class SupervisorWorkTimeCorrectionModal extends React.Component {
   changeHandler(e) {
     const eventTarget = e.target;
 
+    if (
+      eventTarget.id === 'hour'
+      && eventTarget.value
+      && (
+        eventTarget.value.length > 3
+        || Number.isNaN(eventTarget.value)
+        || parseInt(eventTarget.value, 10) > 999
+      )
+    ) {
+      return;
+    }
+
+    if (
+      eventTarget.id === 'minute'
+      && eventTarget.value
+      && (
+        eventTarget.value.length > 2
+        || Number.isNaN(eventTarget.value)
+        || parseInt(eventTarget.value, 10) > 59
+      )
+    ) {
+      return;
+    }
+
     this.setState((prevState) => ({
       formData: {
         ...prevState.formData,
@@ -160,7 +184,10 @@ class SupervisorWorkTimeCorrectionModal extends React.Component {
                     inputSize={2}
                     isLabelVisible={false}
                     label={t('workMonth:element.hours')}
+                    max={999}
+                    min={0}
                     required
+                    type="number"
                     value={formData.hour || ''}
                     validationState={formValidity.elements.hour ? 'invalid' : null}
                   />
@@ -174,7 +201,10 @@ class SupervisorWorkTimeCorrectionModal extends React.Component {
                     inputSize={2}
                     isLabelVisible={false}
                     label={t('workMonth:element.minutes')}
+                    max={59}
+                    min={0}
                     required
+                    type="number"
                     value={formData.minute || ''}
                     validationState={formValidity.elements.minute ? 'invalid' : null}
                   />

@@ -134,6 +134,23 @@ class WorkLogForm extends React.Component {
   changeHandler(e) {
     const eventTarget = e.target;
 
+    if (['startHour', 'startMinute', 'endHour', 'endMinute'].includes(eventTarget.id)) {
+      if (
+        eventTarget.value
+        && (eventTarget.value.length > 2 || Number.isNaN(eventTarget.value))
+      ) {
+        return;
+      }
+
+      const numericValue = parseInt(eventTarget.value, 10);
+      if (
+        (['startHour', 'endHour'].includes(eventTarget.id) && numericValue > 23)
+        || (['startMinute', 'endMinute'].includes(eventTarget.id) && numericValue > 59)
+      ) {
+        return;
+      }
+    }
+
     this.setState((prevState) => {
       const formData = { ...prevState.formData };
       formData[eventTarget.id] = eventTarget.value;
@@ -605,6 +622,9 @@ class WorkLogForm extends React.Component {
                 inputSize={2}
                 isLabelVisible={false}
                 label={t('workLog:element.startHour')}
+                max={23}
+                min={0}
+                type="number"
                 value={formData.startHour || ''}
                 validationState={this.state.formValidity.elements.startHour ? 'invalid' : null}
               />
@@ -618,6 +638,9 @@ class WorkLogForm extends React.Component {
                 inputSize={2}
                 isLabelVisible={false}
                 label={t('workLog:element.startMinute')}
+                max={59}
+                min={0}
+                type="number"
                 value={formData.startMinute || ''}
                 validationState={this.state.formValidity.elements.startMinute ? 'invalid' : null}
               />
@@ -638,6 +661,9 @@ class WorkLogForm extends React.Component {
                 inputSize={2}
                 isLabelVisible={false}
                 label={t('workLog:element.endHour')}
+                max={23}
+                min={0}
+                type="number"
                 value={formData.endHour || ''}
                 validationState={this.state.formValidity.elements.endHour ? 'invalid' : null}
               />
@@ -651,6 +677,9 @@ class WorkLogForm extends React.Component {
                 inputSize={2}
                 isLabelVisible={false}
                 label={t('workLog:element.endMinute')}
+                max={59}
+                min={0}
+                type="number"
                 value={formData.endMinute || ''}
                 validationState={this.state.formValidity.elements.endMinute ? 'invalid' : null}
               />
