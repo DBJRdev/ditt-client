@@ -288,6 +288,13 @@ class EditComponent extends React.Component {
     const eventTarget = e.target;
     const eventTargetId = eventTarget.id.replace('workHours_', '');
 
+    if (
+      eventTarget.value
+      && eventTarget.value.split(',').length > 12
+    ) {
+      return;
+    }
+
     this.setState((prevState) => {
       const formData = { ...prevState.formData };
       formData.workHours[eventTargetId] = eventTarget.value.split(',');
@@ -541,6 +548,7 @@ class EditComponent extends React.Component {
                     fullWidth
                     id={`workHours_${year.toString()}`}
                     label={year.toString()}
+                    pattern="((2[0-3]|1[0-9]|[0-9]):([0-5][0-9]|[0-9]|),){11}(2[0-3]|1[0-9]|[0-9]):([0-5][0-9]|[0-9])"
                     value={this.getRequiredHours(year)}
                   />
                 </ListItem>
