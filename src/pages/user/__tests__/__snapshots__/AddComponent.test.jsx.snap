@@ -54,6 +54,7 @@ exports[`rendering renders correctly 1`] = `
       </WithProviderContextComponent>
       <WithProviderContextComponent>
         <ForwardRef(withForwardedRef(WithProviderContextComponent))
+          autoComplete="off"
           changeHandler={[Function]}
           fullWidth={true}
           id="email"
@@ -78,6 +79,7 @@ exports[`rendering renders correctly 1`] = `
       </WithProviderContextComponent>
       <WithProviderContextComponent>
         <ForwardRef(withForwardedRef(WithProviderContextComponent))
+          autoComplete="new-password"
           changeHandler={[Function]}
           fullWidth={true}
           id="plainPassword"

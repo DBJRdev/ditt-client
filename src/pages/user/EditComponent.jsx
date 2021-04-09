@@ -420,6 +420,7 @@ class EditComponent extends React.Component {
             </ListItem>
             <ListItem>
               <TextField
+                autoComplete="off"
                 changeHandler={this.changeHandler}
                 fullWidth
                 validationText={this.state.formValidity.elements.email}
@@ -444,6 +445,7 @@ class EditComponent extends React.Component {
             </ListItem>
             <ListItem>
               <TextField
+                autoComplete="new-password"
                 changeHandler={this.changeHandler}
                 fullWidth
                 validationText={this.state.formValidity.elements.plainPassword}

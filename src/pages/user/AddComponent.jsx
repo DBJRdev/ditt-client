@@ -284,6 +284,7 @@ class AddComponent extends React.Component {
             </ListItem>
             <ListItem>
               <TextField
+                autoComplete="off"
                 changeHandler={this.changeHandler}
                 fullWidth
                 validationText={this.state.formValidity.elements.email}
@@ -308,6 +309,7 @@ class AddComponent extends React.Component {
             </ListItem>
             <ListItem>
               <TextField
+                autoComplete="new-password"
                 changeHandler={this.changeHandler}
                 fullWidth
                 validationText={this.state.formValidity.elements.plainPassword}
@@ -393,13 +395,12 @@ class AddComponent extends React.Component {
               }
 
               return (
-                <ListItem>
+                <ListItem key={year}>
                   <TextField
                     changeHandler={this.changeWorkHourHandler}
                     fullWidth
                     validationText={this.state.formValidity.elements.workHours[year]}
                     id={year.toString()}
-                    key={year}
                     label={year.toString()}
                     value={
                       this.state.formData.workHours[year]
