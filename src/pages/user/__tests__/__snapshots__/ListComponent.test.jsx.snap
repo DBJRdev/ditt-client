@@ -34,8 +34,8 @@ exports[`rendering renders correctly 1`] = `
           Object {
             "format": [Function],
             "isSortable": false,
-            "label": "user:element.workedAndRequiredHours",
-            "name": "requiredWorkedHours",
+            "label": "user:element.endMonthStatus",
+            "name": "endMonth",
           },
           Object {
             "format": [Function],

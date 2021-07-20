@@ -3,7 +3,10 @@ import decode from 'jwt-decode';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withTranslation } from 'react-i18next';
+import {
+  Trans,
+  withTranslation,
+} from 'react-i18next';
 import {
   Button,
   ScrollView,
@@ -14,7 +17,11 @@ import routes from '../../routes';
 import { Icon } from '../../components/Icon';
 import Layout from '../../components/Layout';
 import { ROLE_SUPER_ADMIN } from '../../resources/user';
-import { toAbsoluteHourMinuteFormatFromInt } from '../../services/dateTimeService';
+import {
+  createDate,
+  toHourMinuteFormatFromInt,
+  toMonthFormat,
+} from '../../services/dateTimeService';
 import styles from './user.scss';
 
 class ListComponent extends React.Component {
@@ -67,19 +74,41 @@ class ListComponent extends React.Component {
       },
       {
         format: (row) => {
-          if (row.yearStats) {
-            const userYearStats = row.yearStats.filter((stats) => stats.year === year)[0];
-
-            if (userYearStats) {
-              return `${toAbsoluteHourMinuteFormatFromInt(userYearStats.workedHours)}/${toAbsoluteHourMinuteFormatFromInt(userYearStats.requiredHours)}`;
-            }
+          if (row.lastApprovedWorkMonth == null) {
+            return '-';
           }
 
-          return '0:00/0:00';
+          return (
+            <Trans
+              components={[
+                <Link
+                  to={
+                    routes.supervisedUserWorkLogWithDate
+                      .replace(':id', row.id)
+                      .replace(':year', row.lastApprovedWorkMonth.year.year)
+                      .replace(':month', row.lastApprovedWorkMonth.month)
+                  }
+                />,
+              ]}
+              i18nKey="user:element.endMonth"
+              t={t}
+              values={{
+                month: toMonthFormat(createDate(
+                  row.lastApprovedWorkMonth.year.year,
+                  row.lastApprovedWorkMonth.month - 1,
+                  1,
+                )),
+                time: toHourMinuteFormatFromInt(
+                  row.lastApprovedWorkMonth.workedTime
+                  - row.lastApprovedWorkMonth.requiredTime,
+                ),
+              }}
+            />
+          );
         },
         isSortable: false,
-        label: t('user:element.workedAndRequiredHours'),
-        name: 'requiredWorkedHours',
+        label: t('user:element.endMonthStatus'),
+        name: 'endMonth',
       },
       {
         format: (row) => {
@@ -169,6 +198,14 @@ ListComponent.propTypes = {
   userList: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
     firstName: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
+    lastApprovedWorkMonth: PropTypes.shape({
+      month: PropTypes.number.isRequired,
+      requiredTime: PropTypes.number.isRequired,
+      workedTime: PropTypes.number.isRequired,
+      year: PropTypes.shape({
+        year: PropTypes.number.isRequired,
+      }).isRequired,
+    }),
     lastName: PropTypes.string.isRequired,
     supervisor: ImmutablePropTypes.mapContains({
       firstName: PropTypes.string.isRequired,

@@ -241,6 +241,8 @@
       "apiToken": "API-Token",
       "email": "E-Mail",
       "employeeId": "Mitarbeiter-ID",
+      "endMonth": "{{ time }} (<0>End {{ month }}</0>)",
+      "endMonthStatus": "End of month status",
       "firstName": "Vorname",
       "iCal": "iCalendar",
       "iCalUrl": "iCalendar URL",

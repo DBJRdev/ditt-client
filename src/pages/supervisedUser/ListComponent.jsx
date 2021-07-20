@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import decode from 'jwt-decode';
 import { Link } from 'react-router-dom';
-import { withTranslation } from 'react-i18next';
+import {
+  Trans,
+  withTranslation,
+} from 'react-i18next';
 import {
   ScrollView,
   Table,
 } from '@react-ui-org/react-ui';
-import moment from 'moment-timezone';
 import { Icon } from '../../components/Icon';
 import Layout from '../../components/Layout';
 import routes from '../../routes';
@@ -19,7 +21,8 @@ import {
 } from '../../resources/workMonth';
 import {
   createDate,
-  toAbsoluteHourMinuteFormatFromInt,
+  toHourMinuteFormatFromInt,
+  toMonthFormat,
   toMonthYearFormat,
 } from '../../services/dateTimeService';
 import styles from './supervisedUser.scss';
@@ -56,7 +59,6 @@ class ListComponent extends React.Component {
     const { t } = this.props;
 
     let uid = null;
-    const year = moment().year();
 
     if (this.props.token) {
       const decodedToken = decode(this.props.token);
@@ -134,19 +136,47 @@ class ListComponent extends React.Component {
                 },
                 {
                   format: (row) => {
-                    if (row.yearStats) {
-                      const userYearStats = row.yearStats.filter((stats) => stats.year === year)[0];
-
-                      if (userYearStats) {
-                        return `${toAbsoluteHourMinuteFormatFromInt(userYearStats.workedHours)}/${toAbsoluteHourMinuteFormatFromInt(userYearStats.requiredHours)}`;
-                      }
+                    if (row.lastApprovedWorkMonth == null) {
+                      return (
+                        <span className={lighterRow(row)}>
+                          -
+                        </span>
+                      );
                     }
 
-                    return '0:00/0:00';
+                    return (
+                      <span className={lighterRow(row)}>
+                        <Trans
+                          components={[
+                            <Link
+                              to={
+                                routes.supervisedUserWorkLogWithDate
+                                  .replace(':id', row.id)
+                                  .replace(':year', row.lastApprovedWorkMonth.year.year)
+                                  .replace(':month', row.lastApprovedWorkMonth.month)
+                              }
+                            />,
+                          ]}
+                          i18nKey="user:element.endMonth"
+                          t={t}
+                          values={{
+                            month: toMonthFormat(createDate(
+                              row.lastApprovedWorkMonth.year.year,
+                              row.lastApprovedWorkMonth.month - 1,
+                              1,
+                            )),
+                            time: toHourMinuteFormatFromInt(
+                              row.lastApprovedWorkMonth.workedTime
+                              - row.lastApprovedWorkMonth.requiredTime,
+                            ),
+                          }}
+                        />
+                      </span>
+                    );
                   },
                   isSortable: false,
-                  label: t('user:element.workedAndRequiredHours'),
-                  name: 'requiredWorkedHours',
+                  label: t('user:element.endMonthStatus'),
+                  name: 'endMonth',
                 },
                 {
                   format: (row) => (
@@ -210,6 +240,14 @@ ListComponent.propTypes = {
   supervisedUserList: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
     firstName: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
+    lastApprovedWorkMonth: PropTypes.shape({
+      month: PropTypes.number.isRequired,
+      requiredTime: PropTypes.number.isRequired,
+      workedTime: PropTypes.number.isRequired,
+      year: PropTypes.shape({
+        year: PropTypes.number.isRequired,
+      }).isRequired,
+    }),
     lastName: PropTypes.string.isRequired,
     supervisor: ImmutablePropTypes.mapContains({
       firstName: PropTypes.string.isRequired,

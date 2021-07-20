@@ -102,10 +102,17 @@ export const toHourMinuteFormat = (momentDateTime) => {
 };
 
 export const toHourMinuteFormatFromInt = (rawSeconds) => {
-  const hours = Math.floor(rawSeconds / 3600);
-  const minutes = Math.floor((rawSeconds - (hours * 3600)) / 60);
+  const toBeCorrected = rawSeconds < 0;
+  let rawSecondsCorrected = rawSeconds;
 
-  return `${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
+  if (toBeCorrected) {
+    rawSecondsCorrected *= -1;
+  }
+
+  const hours = Math.floor(rawSecondsCorrected / 3600);
+  const minutes = Math.floor((rawSecondsCorrected - (hours * 3600)) / 60);
+
+  return `${toBeCorrected ? '-' : ''}${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
 };
 
 export const toAbsoluteHourMinuteFormatFromInt = (rawSeconds) => {
@@ -119,6 +126,14 @@ export const toAbsoluteHourMinuteFormatFromInt = (rawSeconds) => {
   const minutes = Math.floor((rawSecondsCorrected - (hours * 3600)) / 60);
 
   return `${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
+};
+
+export const toMonthFormat = (momentDateTime) => {
+  if (isMomentValid(momentDateTime)) {
+    return momentDateTime.format('MMMM');
+  }
+
+  throw new Error('Invalid datetime');
 };
 
 export const toMonthYearFormat = (momentDateTime) => {
