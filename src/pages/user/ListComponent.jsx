@@ -14,7 +14,7 @@ import routes from '../../routes';
 import { Icon } from '../../components/Icon';
 import Layout from '../../components/Layout';
 import { ROLE_SUPER_ADMIN } from '../../resources/user';
-import { toHourMinuteFormatFromInt } from '../../services/dateTimeService';
+import { toAbsoluteHourMinuteFormatFromInt } from '../../services/dateTimeService';
 import styles from './user.scss';
 
 class ListComponent extends React.Component {
@@ -71,7 +71,7 @@ class ListComponent extends React.Component {
             const userYearStats = row.yearStats.filter((stats) => stats.year === year)[0];
 
             if (userYearStats) {
-              return `${toHourMinuteFormatFromInt(userYearStats.workedHours)}/${toHourMinuteFormatFromInt(userYearStats.requiredHours)}`;
+              return `${toAbsoluteHourMinuteFormatFromInt(userYearStats.workedHours)}/${toAbsoluteHourMinuteFormatFromInt(userYearStats.requiredHours)}`;
             }
           }
 

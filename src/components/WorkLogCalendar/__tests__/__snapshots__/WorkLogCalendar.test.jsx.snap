@@ -98,13 +98,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -132,13 +134,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -166,13 +170,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -200,13 +206,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -234,13 +242,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -268,13 +278,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -302,13 +314,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -336,13 +350,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -370,13 +386,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -404,13 +422,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -438,13 +458,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -472,13 +494,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -506,13 +530,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -540,13 +566,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -574,13 +602,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -608,13 +638,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -642,13 +674,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -676,13 +710,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -710,13 +746,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -744,13 +782,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -778,13 +818,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -812,13 +854,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -846,13 +890,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -880,13 +926,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -914,13 +962,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -948,13 +998,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -982,13 +1034,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -1016,13 +1070,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -1050,13 +1106,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -1084,13 +1142,15 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -1118,19 +1178,26 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
   </WithProviderContextComponent>
+  <p
+    className="statusAtEndOfMonth"
+  >
+    workLog:text.statusAtEndOfMonth
+  </p>
 </div>
 `;
 
@@ -1232,13 +1299,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -1266,13 +1335,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -1300,13 +1371,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -1334,13 +1407,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -1368,13 +1443,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -1402,13 +1479,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -1436,13 +1515,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -1470,13 +1551,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -1504,13 +1587,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -1538,13 +1623,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -1572,13 +1659,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -1606,13 +1695,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -1640,13 +1731,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -1674,13 +1767,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -1708,13 +1803,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -1742,13 +1839,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -1776,13 +1875,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -1810,13 +1911,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -1844,13 +1947,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -1878,13 +1983,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -1912,13 +2019,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -1946,13 +2055,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -1980,13 +2091,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -2014,13 +2127,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -2048,13 +2163,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -2082,13 +2199,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -2116,13 +2235,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -2150,13 +2271,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -2184,13 +2307,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -2218,13 +2343,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -2252,13 +2379,15 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
         </tbody>
@@ -2372,13 +2501,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -2406,13 +2537,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -2440,13 +2573,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -2474,13 +2609,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -2508,13 +2645,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -2542,13 +2681,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -2576,13 +2717,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -2610,13 +2753,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -2644,13 +2789,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -2678,13 +2825,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -2712,13 +2861,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -2746,13 +2897,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -2780,13 +2933,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -2814,13 +2969,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -2848,13 +3005,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -2882,13 +3041,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -2916,13 +3077,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -2950,13 +3113,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -2984,13 +3149,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -3018,13 +3185,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -3052,13 +3221,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -3086,13 +3257,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -3120,13 +3293,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -3154,13 +3329,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -3188,13 +3365,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -3222,13 +3401,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -3256,13 +3437,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -3290,13 +3473,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -3324,13 +3509,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -3358,13 +3545,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -3392,13 +3581,15 @@ exports[`rendering renders correctly supervisor view with work month waiting for
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
         </tbody>
@@ -3506,13 +3697,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -3540,13 +3733,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -3574,13 +3769,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -3608,13 +3805,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -3642,13 +3841,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -3676,13 +3877,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -3710,13 +3913,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -3744,13 +3949,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -3778,13 +3985,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -3812,13 +4021,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -3846,13 +4057,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -3880,13 +4093,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -3914,13 +4129,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -3948,13 +4165,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -3982,13 +4201,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -4016,13 +4237,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -4050,13 +4273,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -4084,13 +4309,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -4118,13 +4345,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -4152,13 +4381,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -4186,13 +4417,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -4220,13 +4453,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -4254,13 +4489,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -4288,13 +4525,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -4322,13 +4561,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -4356,13 +4597,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -4390,13 +4633,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -4424,13 +4669,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -4458,13 +4705,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -4492,13 +4741,15 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -4526,19 +4777,26 @@ exports[`rendering renders correctly with closed work month 1`] = `
               />
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
   </WithProviderContextComponent>
+  <p
+    className="statusAtEndOfMonth"
+  >
+    workLog:text.statusAtEndOfMonth
+  </p>
 </div>
 `;
 
@@ -4670,13 +4928,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -4724,13 +4984,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -4778,13 +5040,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -4832,13 +5096,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -4886,13 +5152,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -4940,13 +5208,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -4994,13 +5264,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -5048,13 +5320,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -5102,13 +5376,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -5156,13 +5432,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -5210,13 +5488,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -5264,13 +5544,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -5318,13 +5600,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -5372,13 +5656,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -5426,13 +5712,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -5480,13 +5768,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -5534,13 +5824,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -5588,13 +5880,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -5642,13 +5936,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -5696,13 +5992,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -5750,13 +6048,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -5804,13 +6104,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -5858,13 +6160,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -5912,13 +6216,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -5966,13 +6272,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -6020,13 +6328,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -6074,13 +6384,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -6128,13 +6440,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -6182,13 +6496,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -6236,13 +6552,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -6290,13 +6608,15 @@ exports[`rendering renders correctly with opened work month 1`] = `
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
         </tbody>
@@ -6453,13 +6773,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -6507,13 +6829,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -6561,13 +6885,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -6615,13 +6941,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -6669,13 +6997,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -6723,13 +7053,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -6777,13 +7109,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -6831,13 +7165,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -6885,13 +7221,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -6939,13 +7277,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -6993,13 +7333,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -7047,13 +7389,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -7101,13 +7445,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -7155,13 +7501,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -7209,13 +7557,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -7263,13 +7613,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -7317,13 +7669,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -7371,13 +7725,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -7425,13 +7781,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -7479,13 +7837,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -7533,13 +7893,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -7587,13 +7949,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -7641,13 +8005,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -7695,13 +8061,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -7749,13 +8117,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -7803,13 +8173,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -7857,13 +8229,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -7911,13 +8285,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -7965,13 +8341,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -8019,13 +8397,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
           <tr
@@ -8073,13 +8453,15 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
               </div>
             </td>
             <td
-              className="tableCellRight"
+              className="tableCellRight  "
             >
-              0
-              :
-              0
-              0
-               h
+              <div>
+                0
+                :
+                0
+                0
+                 h
+              </div>
             </td>
           </tr>
         </tbody>

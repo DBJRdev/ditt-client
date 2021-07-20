@@ -102,6 +102,13 @@ export const toHourMinuteFormat = (momentDateTime) => {
 };
 
 export const toHourMinuteFormatFromInt = (rawSeconds) => {
+  const hours = Math.floor(rawSeconds / 3600);
+  const minutes = Math.floor((rawSeconds - (hours * 3600)) / 60);
+
+  return `${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
+};
+
+export const toAbsoluteHourMinuteFormatFromInt = (rawSeconds) => {
   let rawSecondsCorrected = rawSeconds;
 
   if (rawSecondsCorrected < 0) {

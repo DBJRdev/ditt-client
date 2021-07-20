@@ -331,12 +331,14 @@
       }
     },
     "text": {
-      "correction": "Korrektur",
+      "correction": "Correction by HR",
+      "differenceFromPreviousMonth": "Difference from previous months: {{ hours }} h",
       "openedWorkMonth": "Dieser Monat erscheint leer, weil der/die Arbeitnehmer*in ihn noch nicht übermittelt hat.",
+      "statusAtEndOfMonth": "Status at the end of the month after approval: {{ hours }} h",
+      "workedHoursLeft": "({{ workedHours }} h left)",
+      "workedHoursOvertime": "({{ workedHours }} h overtime)",
       "workedAndRequiredHours": "{{ workedHours }} h von {{ requiredHours }} h",
-      "workedAndRequiredHoursDiffers": "{{ workedHours }} h von {{ requiredHours }} h (Angezeigt wird nur die Monatsarbeitszeit nach alter Berechnungsgrundlage. Tagessummen sind ausgeblendet.)",
-      "workedAndRequiredHoursPlusLeft": "{{ workedHours }} h von {{ requiredHours }} h ({{ requiredHoursWithoutLeft }} h + {{ requiredHoursLeft }} h aus den letzten Monaten)",
-      "workedAndRequiredHoursMinusLeft": "{{ workedHours }} h von {{ requiredHours }} h ({{ requiredHoursWithoutLeft }} h - {{ requiredHoursLeft }} h aus den letzten Monaten)"
+      "workedAndRequiredHoursDiffers": "{{ workedHours }} h von {{ requiredHours }} h (Angezeigt wird nur die Monatsarbeitszeit nach alter Berechnungsgrundlage. Tagessummen sind ausgeblendet.)"
     },
     "title": {
       "supervisedUserWorkLogs": "Monatsübersicht für {{ name }}",

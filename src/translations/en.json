@@ -332,12 +332,14 @@
       }
     },
     "text": {
-      "correction": "Correction",
+      "correction": "Correction by HR",
+      "differenceFromPreviousMonth": "Difference from previous months: {{ hours }} h",
       "openedWorkMonth": "This month appears empty, because the employee has not submitted it yet.",
+      "statusAtEndOfMonth": "Status at the end of the month after approval: {{ hours }} h",
+      "workedHoursLeft": "({{ workedHours }} h left)",
+      "workedHoursOvertime": "({{ workedHours }} h overtime)",
       "workedAndRequiredHours": "{{ workedHours }} h out of {{ requiredHours }} h",
-      "workedAndRequiredHoursDiffers": "{{ workedHours }} h out of {{ requiredHours }} h (Daily totals hidden, showing only monthly totals using old calculation formula)",
-      "workedAndRequiredHoursPlusLeft": "{{ workedHours }} h out of {{ requiredHours }} h ({{ requiredHoursWithoutLeft }} h + {{ requiredHoursLeft }} h from previous months)",
-      "workedAndRequiredHoursMinusLeft": "{{ workedHours }} h out of {{ requiredHours }} h ({{ requiredHoursWithoutLeft }} h - {{ requiredHoursLeft }} h from previous months)"
+      "workedAndRequiredHoursDiffers": "{{ workedHours }} h out of {{ requiredHours }} h (Daily totals hidden, showing only monthly totals using old calculation formula)"
     },
     "title": {
       "supervisedUserWorkLogs": "Monthly logs for {{ name }}",

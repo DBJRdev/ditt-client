@@ -18,7 +18,8 @@ import {
   STATUS_WAITING_FOR_APPROVAL,
 } from '../../resources/workMonth';
 import {
-  createDate, toHourMinuteFormatFromInt,
+  createDate,
+  toAbsoluteHourMinuteFormatFromInt,
   toMonthYearFormat,
 } from '../../services/dateTimeService';
 import styles from './supervisedUser.scss';
@@ -137,7 +138,7 @@ class ListComponent extends React.Component {
                       const userYearStats = row.yearStats.filter((stats) => stats.year === year)[0];
 
                       if (userYearStats) {
-                        return `${toHourMinuteFormatFromInt(userYearStats.workedHours)}/${toHourMinuteFormatFromInt(userYearStats.requiredHours)}`;
+                        return `${toAbsoluteHourMinuteFormatFromInt(userYearStats.workedHours)}/${toAbsoluteHourMinuteFormatFromInt(userYearStats.requiredHours)}`;
                       }
                     }
 

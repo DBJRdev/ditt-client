@@ -19,7 +19,7 @@ import { LoadingIcon } from '../../components/Icon';
 import { VARIANT_SICK_CHILD } from '../../resources/sickDayWorkLog';
 import {
   localizedMoment,
-  toHourMinuteFormatFromInt,
+  toAbsoluteHourMinuteFormatFromInt,
   toDayMonthYearFormat, toMomentDateTimeFromDayMonthYear,
 } from '../../services/dateTimeService';
 import {
@@ -167,7 +167,7 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
                       'hr:text.reductionText',
                       {
                         month: rowData.workHours[i].month.toString().padStart(2, '0'),
-                        time: toHourMinuteFormatFromInt(rowData.workHours[i].requiredHours),
+                        time: toAbsoluteHourMinuteFormatFromInt(rowData.workHours[i].requiredHours),
                       },
                     ));
                   } else if (currentWorkHour.requiredHours < rowData.workHours[i].requiredHours) {
@@ -175,7 +175,7 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
                       'hr:text.increaseText',
                       {
                         month: rowData.workHours[i].month.toString().padStart(2, '0'),
-                        time: toHourMinuteFormatFromInt(rowData.workHours[i].requiredHours),
+                        time: toAbsoluteHourMinuteFormatFromInt(rowData.workHours[i].requiredHours),
                       },
                     ));
                   }

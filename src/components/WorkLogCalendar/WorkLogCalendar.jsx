@@ -56,6 +56,7 @@ import {
   includesSameDate,
   isWeekend,
   localizedMoment,
+  toAbsoluteHourMinuteFormatFromInt,
   toDayFormat,
   toDayMonthYearFormat,
   toHourMinuteFormatFromInt,
@@ -192,8 +193,10 @@ class WorkLogCalendar extends React.Component {
       workHoursList,
     } = this.props;
     let requiredHours = 0;
+    let requiredHoursSoFar = 0;
     let requiredHoursLeft = 0;
     const workedTime = moment.duration();
+    const workedTimeSoFar = moment.duration();
 
     const workHours = workHoursList.find((item) => (
       item.get('year') === selectedDate.year()
@@ -213,7 +216,13 @@ class WorkLogCalendar extends React.Component {
       selectedDate.clone().endOf('month'),
       this.props.config.get('supportedHolidays'),
     );
+    const workingDaysSoFar = getNumberOfWorkingDays(
+      selectedDate.clone().startOf('month'),
+      selectedDate.clone().endOf('day'),
+      this.props.config.get('supportedHolidays'),
+    );
     requiredHours = workHours.get('requiredHours') * workingDays;
+    requiredHoursSoFar = workHours.get('requiredHours') * workingDaysSoFar;
 
     daysOfSelectedMonth.forEach((day) => {
       const isParentalLeavePresent = !!day.workLogList.find(
@@ -222,12 +231,19 @@ class WorkLogCalendar extends React.Component {
 
       if (isParentalLeavePresent) {
         requiredHours -= workHours.get('requiredHours');
+        if (selectedDate.isSameOrAfter(day.date)) {
+          requiredHoursSoFar -= workHours.get('requiredHours');
+        }
       }
 
       workedTime.add(day.workTime.workTime);
+      if (selectedDate.isSameOrAfter(day.date)) {
+        workedTimeSoFar.add(day.workTime.workTime);
+      }
     });
 
     workedTime.add(this.props.workMonth.get('workTimeCorrection'), 'seconds');
+    workedTimeSoFar.add(this.props.workMonth.get('workTimeCorrection'), 'seconds');
 
     if (workMonth.get('status') === STATUS_APPROVED) {
       const apiRequiredHours = workMonth.get('requiredTime');
@@ -240,8 +256,10 @@ class WorkLogCalendar extends React.Component {
       return {
         areWorkTimesSame,
         requiredHours: apiRequiredHours,
-        requiredHoursLeft: 0,
-        requiredHoursWithoutLeft: 0,
+        // eslint-disable-next-line no-underscore-dangle
+        requiredHoursLeft: apiRequiredHours - (apiWorkedTime._milliseconds / 1000),
+        requiredHoursWithoutLeft: apiRequiredHours,
+        toWork: 0,
         workedTime,
       };
     }
@@ -264,6 +282,8 @@ class WorkLogCalendar extends React.Component {
         requiredHours: Math.max(0, requiredHours + requiredHoursLeft),
         requiredHoursLeft,
         requiredHoursWithoutLeft: requiredHours,
+        // eslint-disable-next-line no-underscore-dangle
+        toWork: requiredHoursSoFar - (workedTimeSoFar._milliseconds / 1000) + requiredHoursLeft,
         workedTime,
       };
     }
@@ -272,7 +292,9 @@ class WorkLogCalendar extends React.Component {
       areWorkTimesSame: true,
       requiredHours,
       requiredHoursLeft: 0,
-      requiredHoursWithoutLeft: 0,
+      requiredHoursWithoutLeft: requiredHours,
+      // eslint-disable-next-line no-underscore-dangle
+      toWork: requiredHoursSoFar - (workedTimeSoFar._milliseconds / 1000) + requiredHoursLeft,
       workedTime,
     };
   }
@@ -911,115 +933,6 @@ class WorkLogCalendar extends React.Component {
     }
   }
 
-  renderWorkHoursInfo(daysOfSelectedMonth) {
-    const {
-      selectedDate,
-      t,
-      workMonth,
-      workHoursList,
-    } = this.props;
-    let requiredHours = 0;
-    let requiredHoursLeft = 0;
-    const workedTime = moment.duration();
-
-    const workHours = workHoursList.find((item) => (
-      item.get('year') === selectedDate.year()
-      && item.get('month') === selectedDate.month() + 1
-    ));
-
-    if (workHours) {
-      const workingDays = getNumberOfWorkingDays(
-        selectedDate.clone().startOf('month'),
-        selectedDate.clone().endOf('month'),
-        this.props.config.get('supportedHolidays'),
-      );
-      requiredHours = workHours.get('requiredHours') * workingDays;
-    }
-
-    daysOfSelectedMonth.forEach((day) => {
-      const isParentalLeavePresent = !!day.workLogList.find(
-        (workLog) => workLog.type === PARENTAL_LEAVE_WORK_LOG,
-      );
-
-      if (isParentalLeavePresent) {
-        requiredHours -= workHours.get('requiredHours');
-      }
-
-      workedTime.add(day.workTime.workTime);
-    });
-
-    if (workMonth) {
-      workedTime.add(this.props.workMonth.get('workTimeCorrection'), 'seconds');
-    }
-
-    if (workMonth && workMonth.get('status') === STATUS_APPROVED) {
-      const apiRequiredHours = workMonth.get('requiredTime');
-      const apiWorkedTime = moment.duration();
-      apiWorkedTime.add(workMonth.get('workedTime') * 1000);
-
-      // eslint-disable-next-line no-underscore-dangle
-      const areWorkTimesSame = workedTime._milliseconds === apiWorkedTime._milliseconds;
-
-      return t(
-        areWorkTimesSame ? 'workLog:text.workedAndRequiredHours' : 'workLog:text.workedAndRequiredHoursDiffers',
-        {
-          requiredHours: toHourMinuteFormatFromInt(apiRequiredHours),
-          workedHours: `${apiWorkedTime.hours() + (apiWorkedTime.days() * 24)}:${(apiWorkedTime.minutes()) < 10 ? '0' : ''}${apiWorkedTime.minutes()}`,
-        },
-      );
-    }
-
-    if (workMonth && workMonth.get('status') !== STATUS_APPROVED) {
-      const userYearStats = workMonth.getIn(['user', 'yearStats']).toJS();
-      const requiredHoursTotal = userYearStats.reduce(
-        (total, userYearStat) => total + userYearStat.requiredHours,
-        0,
-      );
-      const workedHoursTotal = userYearStats.reduce(
-        (total, userYearStat) => total + userYearStat.workedHours,
-        0,
-      );
-
-      requiredHoursLeft = requiredHoursTotal - workedHoursTotal;
-
-      if (requiredHoursLeft > 0) {
-        return t(
-          'workLog:text.workedAndRequiredHoursPlusLeft',
-          {
-            requiredHours: toHourMinuteFormatFromInt(
-              Math.max(0, requiredHours + requiredHoursLeft),
-            ),
-            requiredHoursLeft: toHourMinuteFormatFromInt(requiredHoursLeft),
-            requiredHoursWithoutLeft: toHourMinuteFormatFromInt(requiredHours),
-            workedHours: `${workedTime.hours() + (workedTime.days() * 24)}:${(workedTime.minutes()) < 10 ? '0' : ''}${workedTime.minutes()}`,
-          },
-        );
-      }
-
-      if (requiredHoursLeft < 0) {
-        return t(
-          'workLog:text.workedAndRequiredHoursMinusLeft',
-          {
-            requiredHours: toHourMinuteFormatFromInt(
-              Math.max(0, requiredHours + requiredHoursLeft),
-            ),
-            requiredHoursLeft: toHourMinuteFormatFromInt(requiredHoursLeft),
-            requiredHoursWithoutLeft: toHourMinuteFormatFromInt(requiredHours),
-            workedHours: `${workedTime.hours() + (workedTime.days() * 24)}:${(workedTime.minutes()) < 10 ? '0' : ''}${workedTime.minutes()}`,
-          },
-        );
-      }
-    }
-
-    return t(
-      'workLog:text.workedAndRequiredHours',
-      {
-        requiredHours: toHourMinuteFormatFromInt(requiredHours),
-        workedHours: `${workedTime.hours() + (workedTime.days() * 24)}:${(workedTime.minutes()) < 10 ? '0' : ''}${workedTime.minutes()}`,
-      },
-    );
-  }
-
   renderWorkLogForm() {
     const {
       config,
@@ -1179,7 +1092,7 @@ class WorkLogCalendar extends React.Component {
 
     let workTimeCorrectionText = null;
 
-    let areWorkTimesSame = true;
+    let workHoursInfo = null;
     if (this.props.workMonth) {
       const workTimeCorrection = Math.abs(this.props.workMonth.get('workTimeCorrection'));
       if (workTimeCorrection !== 0) {
@@ -1200,7 +1113,7 @@ class WorkLogCalendar extends React.Component {
         }
       }
 
-      areWorkTimesSame = this.getWorkHoursInfo(daysOfSelectedMonth).areWorkTimesSame;
+      workHoursInfo = this.getWorkHoursInfo(daysOfSelectedMonth);
     }
 
     return (
@@ -1225,7 +1138,15 @@ class WorkLogCalendar extends React.Component {
                 {toMonthYearFormat(this.props.selectedDate)}
               </h2>
               <span className={styles.navigationSubtitle}>
-                {this.renderWorkHoursInfo(daysOfSelectedMonth)}
+                {workHoursInfo && t(
+                  workHoursInfo.areWorkTimesSame
+                    ? 'workLog:text.workedAndRequiredHours'
+                    : 'workLog:text.workedAndRequiredHoursDiffers',
+                  {
+                    requiredHours: toHourMinuteFormatFromInt(workHoursInfo.requiredHoursWithoutLeft),
+                    workedHours: `${workHoursInfo.workedTime.hours() + (workHoursInfo.workedTime.days() * 24)}:${(workHoursInfo.workedTime.minutes()) < 10 ? '0' : ''}${workHoursInfo.workedTime.minutes()}`,
+                  },
+                )}
               </span>
             </div>
             {
@@ -1291,15 +1212,28 @@ class WorkLogCalendar extends React.Component {
           <div className={styles.tableWrapper}>
             <table className={styles.table}>
               <tbody>
+                {status !== STATUS_APPROVED && workHoursInfo && workHoursInfo.requiredHoursLeft !== 0 && (
+                  <tr>
+                    <td
+                      colSpan={(canAddWorkLog || canAddSupervisorWorkLog) ? 4 : 3}
+                      className={styles.tableCellRight}
+                    >
+                      {t(
+                        'workLog:text.differenceFromPreviousMonth',
+                        { hours: toHourMinuteFormatFromInt(workHoursInfo.requiredHoursLeft) },
+                      )}
+                    </td>
+                  </tr>
+                )}
                 {workTimeCorrectionText && (
-                <tr>
-                  <td
-                    colSpan={(canAddWorkLog || canAddSupervisorWorkLog) ? 4 : 3}
-                    className={styles.tableCellRight}
-                  >
-                    {workTimeCorrectionText}
-                  </td>
-                </tr>
+                  <tr>
+                    <td
+                      colSpan={(canAddWorkLog || canAddSupervisorWorkLog) ? 4 : 3}
+                      className={styles.tableCellRight}
+                    >
+                      {workTimeCorrectionText}
+                    </td>
+                  </tr>
                 )}
                 {daysOfSelectedMonth.map((day) => {
                   let rowClassName = (
@@ -1409,29 +1343,52 @@ class WorkLogCalendar extends React.Component {
                     }
                       <td
                         className={
-                        day.workTime.isWorkTimeCorrected
-                          ? styles.tableCellRightWithCorrectedTime
-                          : styles.tableCellRight
-                      }
+                          [
+                            day.workTime.isWorkTimeCorrected
+                              ? styles.tableCellRightWithCorrectedTime
+                              : styles.tableCellRight,
+                            workHoursInfo.toWork > 0 ? styles.tableCellRightWithWorkedHoursLeft : '',
+                            workHoursInfo.toWork < 0 ? styles.tableCellRightWithWorkedHoursOvertime : '',
+                          ].join(' ')
+                        }
                       >
+                        <div>
+                          {
+                            day.workTime.isWorkTimeCorrected
+                              ? (
+                                <Icon icon="update" />
+                              ) : null
+                          }
+                          {
+                            (workHoursInfo && workHoursInfo.areWorkTimesSame)
+                              ? (
+                                <>
+                                  {day.workTime.workTime.hours()}
+                                  :
+                                  {day.workTime.workTime.minutes() < 10 && '0'}
+                                  {day.workTime.workTime.minutes()}
+                                </>
+                              ) : '-:--'
+                          }
+                          &nbsp;h
+                        </div>
                         {
-                        day.workTime.isWorkTimeCorrected
-                          ? (
-                            <Icon icon="update" />
-                          ) : null
-                      }
-                        {
-                        areWorkTimesSame
-                          ? (
-                            <>
-                              {day.workTime.workTime.hours()}
-                              :
-                              {day.workTime.workTime.minutes() < 10 && '0'}
-                              {day.workTime.workTime.minutes()}
-                            </>
-                          ) : '-:--'
-                      }
-                      &nbsp;h
+                          day.date.isSame(date, 'day')
+                          && canAddWorkLog
+                          && workHoursInfo
+                          && workHoursInfo.toWork !== 0 && (
+                            <div className={styles.dailyStatusOfWorkedHours}>
+                              {
+                                t(
+                                  workHoursInfo.toWork > 0
+                                    ? 'workLog:text.workedHoursLeft'
+                                    : 'workLog:text.workedHoursOvertime',
+                                  { workedHours: toAbsoluteHourMinuteFormatFromInt(workHoursInfo.toWork) },
+                                )
+                              }
+                            </div>
+                          )
+                        }
                       </td>
                     </tr>
                   );
@@ -1440,6 +1397,14 @@ class WorkLogCalendar extends React.Component {
             </table>
           </div>
         </ScrollView>
+        {status === STATUS_APPROVED && workHoursInfo && (
+          <p className={styles.statusAtEndOfMonth}>
+            {t(
+              'workLog:text.statusAtEndOfMonth',
+              { hours: toHourMinuteFormatFromInt(-workHoursInfo.requiredHoursLeft) },
+            )}
+          </p>
+        )}
         {
           !this.props.supervisorView
           && status === STATUS_OPENED
@@ -1586,6 +1551,7 @@ WorkLogCalendar.propTypes = {
   }),
   selectedDate: PropTypes.shape({
     clone: PropTypes.func.isRequired,
+    isSameOrAfter: PropTypes.func.isRequired,
     month: PropTypes.func,
     year: PropTypes.func,
   }).isRequired,

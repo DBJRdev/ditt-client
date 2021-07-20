@@ -107,6 +107,14 @@ $_table-cell-padding-y: 0.25rem;
   text-align: right;
 }
 
+.tableCellRightWithWorkedHoursLeft {
+  width: 6em;
+}
+
+.tableCellRightWithWorkedHoursOvertime {
+  width: 7.5em;
+}
+
 .tableCellRightWithCorrectedTime {
   composes: tableCellRight;
   width: 6em;
@@ -136,6 +144,11 @@ $_table-cell-padding-y: 0.25rem;
   float: right;
 }
 
+.dailyStatusOfWorkedHours {
+  font-size: 0.75em;
+  color: #666;
+}
+
 .sendForApprovalButtonWrapper {
   margin-top: 1rem;
   margin-right: -$_table-cell-padding-x;
@@ -149,4 +162,9 @@ $_table-cell-padding-y: 0.25rem;
   border: 1px solid #ccc;
   background-color: #f6f5f4;
   transform: translateX(-0.5rem);
+}
+
+.statusAtEndOfMonth {
+  margin-bottom: 0;
+  color: #666;
 }
