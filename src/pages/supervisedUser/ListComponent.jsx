@@ -168,6 +168,7 @@ class ListComponent extends React.Component {
                             time: toHourMinuteFormatFromInt(
                               row.lastApprovedWorkMonth.workedTime
                               - row.lastApprovedWorkMonth.requiredTime,
+                              true,
                             ),
                           }}
                         />

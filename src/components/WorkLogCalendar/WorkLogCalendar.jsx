@@ -1220,7 +1220,7 @@ class WorkLogCalendar extends React.Component {
                     >
                       {t(
                         'workLog:text.differenceFromPreviousMonth',
-                        { hours: toHourMinuteFormatFromInt(workHoursInfo.requiredHoursLeft) },
+                        { hours: toHourMinuteFormatFromInt(-workHoursInfo.requiredHoursLeft, true) },
                       )}
                     </td>
                   </tr>
@@ -1401,7 +1401,7 @@ class WorkLogCalendar extends React.Component {
           <p className={styles.statusAtEndOfMonth}>
             {t(
               'workLog:text.statusAtEndOfMonth',
-              { hours: toHourMinuteFormatFromInt(-workHoursInfo.requiredHoursLeft) },
+              { hours: toHourMinuteFormatFromInt(-workHoursInfo.requiredHoursLeft, true) },
             )}
           </p>
         )}

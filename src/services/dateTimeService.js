@@ -101,7 +101,7 @@ export const toHourMinuteFormat = (momentDateTime) => {
   throw new Error('Invalid datetime');
 };
 
-export const toHourMinuteFormatFromInt = (rawSeconds) => {
+export const toHourMinuteFormatFromInt = (rawSeconds, isPlusDisplayed = false) => {
   const toBeCorrected = rawSeconds < 0;
   let rawSecondsCorrected = rawSeconds;
 
@@ -109,10 +109,11 @@ export const toHourMinuteFormatFromInt = (rawSeconds) => {
     rawSecondsCorrected *= -1;
   }
 
+  const plusSymbol = isPlusDisplayed ? '+' : '';
   const hours = Math.floor(rawSecondsCorrected / 3600);
   const minutes = Math.floor((rawSecondsCorrected - (hours * 3600)) / 60);
 
-  return `${toBeCorrected ? '-' : ''}${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
+  return `${toBeCorrected ? '-' : plusSymbol}${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
 };
 
 export const toAbsoluteHourMinuteFormatFromInt = (rawSeconds) => {
