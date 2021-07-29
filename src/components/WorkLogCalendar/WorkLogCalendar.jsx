@@ -1377,6 +1377,7 @@ class WorkLogCalendar extends React.Component {
                           && workHoursInfo
                           && workHoursInfo.toWork !== 0 && (
                             <div className={styles.dailyStatusOfWorkedHours}>
+                              {-workHoursInfo.toWork > 0 ? '+' : ''}
                               {toHourMinuteFormatFromInt(-workHoursInfo.toWork)}
                               &nbsp;h
                             </div>
