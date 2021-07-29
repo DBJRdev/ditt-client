@@ -241,8 +241,8 @@
       "apiToken": "API-Token",
       "email": "E-Mail",
       "employeeId": "Mitarbeiter-ID",
-      "endMonth": "{{ time }} (<0>End {{ month }}</0>)",
-      "endMonthStatus": "End of month status",
+      "endMonth": "{{ time }} (<0>Ende {{ month }}</0>)",
+      "endMonthStatus": "Stand Arbeitzeitkonto",
       "firstName": "Vorname",
       "iCal": "iCalendar",
       "iCalUrl": "iCalendar URL",
@@ -333,11 +333,10 @@
       }
     },
     "text": {
-      "correction": "Correction by HR",
-      "differenceFromPreviousMonth": "Difference from previous months: {{ hours }} h",
+      "correction": "Korrektur durch Personalbereic",
+      "differenceFromPreviousMonth": "Übertrag aus Vormonat: {{ hours }} h",
       "openedWorkMonth": "Dieser Monat erscheint leer, weil der/die Arbeitnehmer*in ihn noch nicht übermittelt hat.",
-      "statusAtEndOfMonth": "Status at the end of the month after approval: {{ hours }} h",
-
+      "statusAtEndOfMonth": "Stundenstand nach Freigabe: {{ hours }} h",
       "workedAndRequiredHours": "{{ workedHours }} h von {{ requiredHours }} h",
       "workedAndRequiredHoursDiffers": "{{ workedHours }} h von {{ requiredHours }} h (Angezeigt wird nur die Monatsarbeitszeit nach alter Berechnungsgrundlage. Tagessummen sind ausgeblendet.)"
     },
