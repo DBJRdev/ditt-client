@@ -56,7 +56,6 @@ import {
   includesSameDate,
   isWeekend,
   localizedMoment,
-  toAbsoluteHourMinuteFormatFromInt,
   toDayFormat,
   toDayMonthYearFormat,
   toHourMinuteFormatFromInt,
@@ -1378,14 +1377,8 @@ class WorkLogCalendar extends React.Component {
                           && workHoursInfo
                           && workHoursInfo.toWork !== 0 && (
                             <div className={styles.dailyStatusOfWorkedHours}>
-                              {
-                                t(
-                                  workHoursInfo.toWork > 0
-                                    ? 'workLog:text.workedHoursLeft'
-                                    : 'workLog:text.workedHoursOvertime',
-                                  { workedHours: toAbsoluteHourMinuteFormatFromInt(workHoursInfo.toWork) },
-                                )
-                              }
+                              {toHourMinuteFormatFromInt(-workHoursInfo.toWork)}
+                              &nbsp;h
                             </div>
                           )
                         }
