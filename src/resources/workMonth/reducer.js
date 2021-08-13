@@ -82,8 +82,10 @@ export default (state, action) => {
   const filterWorkMonth = (data) => ({
     id: data.id,
     month: parseInt(data.month, 10),
+    requiredTime: data.requiredTime != null ? parseInt(data.requiredTime, 10) : null,
     status: data.status,
     user: filterUser(data.user),
+    workedTime: data.workedTime != null ? parseInt(data.workedTime, 10) : null,
     year: parseInt(data.year.year, 10),
   });
 

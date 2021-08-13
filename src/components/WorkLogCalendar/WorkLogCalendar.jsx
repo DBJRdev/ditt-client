@@ -190,6 +190,7 @@ class WorkLogCalendar extends React.Component {
       selectedDate,
       workMonth,
       workHoursList,
+      workMonthList,
     } = this.props;
     let requiredHours = 0;
     let requiredHoursSoFar = 0;
@@ -249,6 +250,24 @@ class WorkLogCalendar extends React.Component {
       const apiWorkedTime = moment.duration();
       apiWorkedTime.add(workMonth.get('workedTime') * 1000);
 
+      let time = 0;
+      workMonthList.toJS().forEach((iWorkMonth) => {
+        if (
+          iWorkMonth.status === STATUS_APPROVED
+          && (
+            iWorkMonth.year < workMonth.get('year')
+            || (
+              iWorkMonth.year === workMonth.get('year')
+              && iWorkMonth.month <= workMonth.get('month')
+            )
+          )
+          && iWorkMonth.requiredTime != null
+          && iWorkMonth.workedTime != null
+        ) {
+          time += (iWorkMonth.requiredTime - iWorkMonth.workedTime);
+        }
+      });
+
       // eslint-disable-next-line no-underscore-dangle
       const areWorkTimesSame = workedTime._milliseconds === apiWorkedTime._milliseconds;
 
@@ -256,7 +275,7 @@ class WorkLogCalendar extends React.Component {
         areWorkTimesSame,
         requiredHours: apiRequiredHours,
         // eslint-disable-next-line no-underscore-dangle
-        requiredHoursLeft: apiRequiredHours - (apiWorkedTime._milliseconds / 1000),
+        requiredHoursLeft: time,
         requiredHoursWithoutLeft: apiRequiredHours,
         toWork: 0,
         workedTime,

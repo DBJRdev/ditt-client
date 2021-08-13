@@ -78,6 +78,19 @@ class ListComponent extends React.Component {
             return '-';
           }
 
+          let time = null;
+          if (row.yearStats) {
+            const requiredHoursTotal = row.yearStats.reduce(
+              (total, userYearStat) => total + userYearStat.requiredHours,
+              0,
+            );
+            const workedHoursTotal = row.yearStats.reduce(
+              (total, userYearStat) => total + userYearStat.workedHours,
+              0,
+            );
+            time = (requiredHoursTotal - workedHoursTotal) * -1;
+          }
+
           return (
             <Trans
               components={[
@@ -98,11 +111,7 @@ class ListComponent extends React.Component {
                   row.lastApprovedWorkMonth.month - 1,
                   1,
                 )),
-                time: toHourMinuteFormatFromInt(
-                  row.lastApprovedWorkMonth.workedTime
-                  - row.lastApprovedWorkMonth.requiredTime,
-                  true,
-                ),
+                time: time ? toHourMinuteFormatFromInt(time, true) : '-',
               }}
             />
           );
