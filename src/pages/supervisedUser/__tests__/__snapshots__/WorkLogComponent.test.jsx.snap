@@ -92,6 +92,7 @@ exports[`rendering renders correctly 1`] = `
     fetchTimeOffWorkLog={[Function]}
     fetchVacationWorkLog={[Function]}
     fetchWorkLog={[Function]}
+    fetchWorkMonthList={[Function]}
     isPosting={false}
     markApproved={[Function]}
     markWaitingForApproval={[Function]}

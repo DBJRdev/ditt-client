@@ -1331,10 +1331,11 @@ describe('functionality', () => {
       fetchSpecialLeaveWorkLog={() => {}}
       fetchVacationWorkLog={() => {}}
       fetchWorkLog={() => {}}
+      fetchWorkMonthList={() => {}}
       isFetching={false}
       isPosting={false}
       changeSelectedDate={() => {}}
-      markApproved={spy}
+      markApproved={() => new Promise(spy)}
       markWaitingForApproval={() => {}}
       selectedDate={fakeMomentDateTime}
       supervisorView
@@ -1410,7 +1411,6 @@ describe('functionality', () => {
     />);
     tree.find('Button').at(1).simulate('click');
 
-    expect(spy.calledOnce).toEqual(true);
-    expect(spy.getCall(0).args[0]).toEqual(2);
+    expect(spy.called).toEqual(true);
   });
 });

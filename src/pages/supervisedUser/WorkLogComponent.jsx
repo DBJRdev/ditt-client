@@ -332,6 +332,7 @@ class WorkLogComponent extends React.Component {
             fetchTimeOffWorkLog={this.props.fetchTimeOffWorkLog}
             fetchVacationWorkLog={this.props.fetchVacationWorkLog}
             fetchWorkLog={this.props.fetchWorkLog}
+            fetchWorkMonthList={() => this.props.fetchWorkMonthList(this.props.match.params.id)}
             homeOfficeWorkLog={this.props.homeOfficeWorkLog}
             isPosting={this.props.isPosting}
             markApproved={this.props.markApproved}

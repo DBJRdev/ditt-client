@@ -1175,7 +1175,9 @@ class WorkLogCalendar extends React.Component {
                   <Button
                     clickHandler={() => {
                       if (this.props.workMonth) {
-                        this.props.markApproved(this.props.workMonth.get('id'));
+                        this.props.markApproved(this.props.workMonth.get('id')).then(() => {
+                          this.props.fetchWorkMonthList();
+                        });
                       }
                     }}
                     label={t('workLog:action.approveMonth')}
@@ -1454,6 +1456,7 @@ WorkLogCalendar.defaultProps = {
   banWorkLog: null,
   businessTripWorkLog: null,
   config: {},
+  fetchWorkMonthList: null,
   homeOfficeWorkLog: null,
   maternityProtectionWorkLog: null,
   overtimeWorkLog: null,
@@ -1542,6 +1545,7 @@ WorkLogCalendar.propTypes = {
   fetchTimeOffWorkLog: PropTypes.func.isRequired,
   fetchVacationWorkLog: PropTypes.func.isRequired,
   fetchWorkLog: PropTypes.func.isRequired,
+  fetchWorkMonthList: PropTypes.func,
   homeOfficeWorkLog: ImmutablePropTypes.mapContains({
     date: PropTypes.object.isRequired,
     rejectionMessage: PropTypes.string,
