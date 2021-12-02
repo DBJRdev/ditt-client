@@ -1,38 +1,38 @@
 @font-face {
-  font-display: swap;
   font-style: normal;
   font-weight: bold;
   font-family: 'Fira Sans';
+  font-display: swap;
   src:
     url(../fonts/FiraSans-Bold.woff2) format('woff2'),
     url(../fonts/FiraSans-Bold.woff) format('woff');
 }
 
 @font-face {
-  font-display: swap;
   font-style: normal;
   font-weight: 500;
   font-family: 'Fira Sans';
+  font-display: swap;
   src:
     url(../fonts/FiraSans-Medium.woff2) format('woff2'),
     url(../fonts/FiraSans-Medium.woff) format('woff');
 }
 
 @font-face {
-  font-display: swap;
   font-style: normal;
   font-weight: normal;
   font-family: 'Fira Sans';
+  font-display: swap;
   src:
     url(../fonts/FiraSans-Regular.woff2) format('woff2'),
     url(../fonts/FiraSans-Regular.woff) format('woff');
 }
 
 @font-face {
-  font-display: swap;
   font-style: normal;
   font-weight: 300;
   font-family: 'Fira Sans';
+  font-display: swap;
   src:
     url(../fonts/FiraSans-Light.woff2) format('woff2'),
     url(../fonts/FiraSans-Light.woff) format('woff');

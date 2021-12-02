@@ -67,10 +67,10 @@ class SpecialApprovalListComponent extends React.Component {
       showWorkLogDetailDialogType: null,
     };
 
-    this.changeRejectWorkLogFormHandler = this.changeRejectWorkLogFormHandler.bind(this);
     this.closeDeleteWorkLogForm = this.closeDeleteWorkLogForm.bind(this);
-    this.rejectWorkLogHandler = this.rejectWorkLogHandler.bind(this);
     this.closeWorkLogDetail = this.closeWorkLogDetail.bind(this);
+    this.onChangeRejectWorkLogForm = this.onChangeRejectWorkLogForm.bind(this);
+    this.onRejectWorkLog = this.onRejectWorkLog.bind(this);
 
     this.formErrorStyle = {
       color: '#a32100',
@@ -88,6 +88,36 @@ class SpecialApprovalListComponent extends React.Component {
         this.props.fetchSpecialApprovalList(decodedToken.uid);
       }
     }
+  }
+
+  getFilteredSpecialApprovals() {
+    let specialApprovalList = Immutable.List();
+
+    if (!this.props.config) {
+      return specialApprovalList;
+    }
+
+    [
+      'businessTripWorkLogs',
+      'homeOfficeWorkLogs',
+      'overtimeWorkLogs',
+      'specialLeaveWorkLogs',
+      'timeOffWorkLogs',
+      'vacationWorkLogs',
+    ].forEach((key) => {
+      specialApprovalList = specialApprovalList.concat((
+        collapseWorkLogs(
+          this.props.specialApprovalList.get(key),
+          this.props.config.get('supportedHolidays'),
+        ).map(
+          (workLog) => workLog
+            .set('rawId', workLog.get('id'))
+            .set('id', `${workLog.get('type')}-${workLog.get('id')}`),
+        )
+      ));
+    });
+
+    return specialApprovalList.sortBy((workLog) => -workLog.get('date'));
   }
 
   handleMarkApproved(id, type, isBulk) {
@@ -315,36 +345,6 @@ class SpecialApprovalListComponent extends React.Component {
     return null;
   }
 
-  getFilteredSpecialApprovals() {
-    let specialApprovalList = Immutable.List();
-
-    if (!this.props.config) {
-      return specialApprovalList;
-    }
-
-    [
-      'businessTripWorkLogs',
-      'homeOfficeWorkLogs',
-      'overtimeWorkLogs',
-      'specialLeaveWorkLogs',
-      'timeOffWorkLogs',
-      'vacationWorkLogs',
-    ].forEach((key) => {
-      specialApprovalList = specialApprovalList.concat((
-        collapseWorkLogs(
-          this.props.specialApprovalList.get(key),
-          this.props.config.get('supportedHolidays'),
-        ).map(
-          (workLog) => workLog
-            .set('rawId', workLog.get('id'))
-            .set('id', `${workLog.get('type')}-${workLog.get('id')}`),
-        )
-      ));
-    });
-
-    return specialApprovalList.sortBy((workLog) => -workLog.get('date'));
-  }
-
   openRejectWorkLogForm(id, type, isBulk) {
     this.setState({
       showRejectWorkLogForm: true,
@@ -366,7 +366,8 @@ class SpecialApprovalListComponent extends React.Component {
     });
   }
 
-  changeRejectWorkLogFormHandler(e) {
+  // eslint-disable-next-line react/sort-comp
+  onChangeRejectWorkLogForm(e) {
     const eventTarget = e.target;
 
     this.setState((prevState) => {
@@ -409,7 +410,7 @@ class SpecialApprovalListComponent extends React.Component {
     });
   }
 
-  rejectWorkLogHandler() {
+  onRejectWorkLog() {
     const {
       rejectWorkLogForm,
       showRejectWorkLogFormId,
@@ -446,12 +447,12 @@ class SpecialApprovalListComponent extends React.Component {
       <Modal
         actions={[
           {
-            clickHandler: this.rejectWorkLogHandler,
+            feedbackIcon: this.props.isPosting ? <LoadingIcon /> : null,
             label: t('general:action.reject'),
-            loadingIcon: this.props.isPosting ? <LoadingIcon /> : null,
+            onClick: this.onRejectWorkLog,
           },
         ]}
-        closeHandler={this.closeDeleteWorkLogForm}
+        onClose={this.closeDeleteWorkLogForm}
         title={t('specialApproval:modal.reject.title')}
       >
         <form>
@@ -460,10 +461,10 @@ class SpecialApprovalListComponent extends React.Component {
           </p>
           <p>{t('specialApproval:modal.reject.description')}</p>
           <TextField
-            changeHandler={this.changeRejectWorkLogFormHandler}
             validationText={this.state.rejectWorkLogFormValidity.elements.rejectionMessage}
             id="rejectionMessage"
             label={t('workLog:element.rejectionMessage')}
+            onChange={this.onChangeRejectWorkLogForm}
             validationState={
               this.state.rejectWorkLogFormValidity.elements.rejectionMessage !== null
                 ? 'invalid'
@@ -719,7 +720,7 @@ class SpecialApprovalListComponent extends React.Component {
     return (
       <Modal
         actions={[]}
-        closeHandler={this.closeWorkLogDetail}
+        onClose={this.closeWorkLogDetail}
         title={getTypeLabel(t, this.state.showWorkLogDetailDialogType)}
       >
         {content}
@@ -827,13 +828,13 @@ class SpecialApprovalListComponent extends React.Component {
                       <Toolbar dense>
                         <ToolbarItem>
                           <Button
-                            clickHandler={() => this.openWorkLogDetail(
+                            label={t('specialApproval:action.workLogDetail')}
+                            onClick={() => this.openWorkLogDetail(
                               row.rawId,
                               row.type,
                               row.isBulk,
                               row.dateTo,
                             )}
-                            label={t('specialApproval:action.workLogDetail')}
                             priority="outline"
                           />
                         </ToolbarItem>
@@ -847,7 +848,17 @@ class SpecialApprovalListComponent extends React.Component {
                             <>
                               <ToolbarItem>
                                 <Button
-                                  clickHandler={() => {
+                                  color="success"
+                                  feedbackIcon={
+                                    (
+                                      this.props.isPosting
+                                      && isSameIdApproved
+                                      && this.state.lastApprovedWorkLogType === row.type
+                                    ) ? <LoadingIcon />
+                                      : null
+                                  }
+                                  label={t('specialApproval:action.approveWorkLog')}
+                                  onClick={() => {
                                     if (row.isBulk) {
                                       return this.handleMarkApproved(
                                         row.bulkIds,
@@ -858,22 +869,22 @@ class SpecialApprovalListComponent extends React.Component {
 
                                     return this.handleMarkApproved(row.rawId, row.type, row.isBulk);
                                   }}
-                                  label={t('specialApproval:action.approveWorkLog')}
-                                  loadingIcon={
-                                    (
-                                      this.props.isPosting
-                                      && isSameIdApproved
-                                      && this.state.lastApprovedWorkLogType === row.type
-                                    ) ? <LoadingIcon />
-                                      : null
-                                  }
                                   priority="outline"
-                                  variant="success"
                                 />
                               </ToolbarItem>
                               <ToolbarItem>
                                 <Button
-                                  clickHandler={() => {
+                                  color="danger"
+                                  feedbackIcon={
+                                    (
+                                      this.props.isPosting
+                                      && isSameIdRejected
+                                      && this.state.lastRejectedWorkLogType === row.type
+                                    ) ? <LoadingIcon />
+                                      : null
+                                  }
+                                  label={t('specialApproval:action.rejectWorkLog')}
+                                  onClick={() => {
                                     if (row.isBulk) {
                                       return this.openRejectWorkLogForm(
                                         row.bulkIds,
@@ -888,22 +899,27 @@ class SpecialApprovalListComponent extends React.Component {
                                       row.isBulk,
                                     );
                                   }}
-                                  label={t('specialApproval:action.rejectWorkLog')}
-                                  loadingIcon={
-                                    (
-                                      this.props.isPosting
-                                      && isSameIdRejected
-                                      && this.state.lastRejectedWorkLogType === row.type
-                                    ) ? <LoadingIcon />
-                                      : null
-                                  }
                                   priority="outline"
-                                  variant="danger"
                                 />
                               </ToolbarItem>
                               <ToolbarItem>
                                 <Button
-                                  clickHandler={() => {
+                                  color="warning"
+                                  disabled={isAcknowledgedByMe}
+                                  feedbackIcon={
+                                    (
+                                      this.props.isPosting
+                                      && isSameIdSupported
+                                      && this.state.lastSupportedWorkLogType === row.type
+                                    ) ? <LoadingIcon />
+                                      : null
+                                  }
+                                  label={
+                                    isAcknowledgedByMe
+                                      ? t('specialApproval:action.acknowledged')
+                                      : t('specialApproval:action.acknowledge')
+                                  }
+                                  onClick={() => {
                                     if (row.isBulk) {
                                       return this.handleSupport(
                                         row.bulkIds,
@@ -914,22 +930,7 @@ class SpecialApprovalListComponent extends React.Component {
 
                                     return this.handleSupport(row.rawId, row.type, row.isBulk);
                                   }}
-                                  disabled={isAcknowledgedByMe}
-                                  label={
-                                    isAcknowledgedByMe
-                                      ? t('specialApproval:action.acknowledged')
-                                      : t('specialApproval:action.acknowledge')
-                                  }
-                                  loadingIcon={
-                                    (
-                                      this.props.isPosting
-                                      && isSameIdSupported
-                                      && this.state.lastSupportedWorkLogType === row.type
-                                    ) ? <LoadingIcon />
-                                      : null
-                                  }
                                   priority="outline"
-                                  variant="warning"
                                 />
                               </ToolbarItem>
                               {

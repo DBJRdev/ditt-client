@@ -62,12 +62,12 @@ class EditComponent extends React.Component {
       showDeleteUserDialog: false,
     };
 
-    this.changeHandler = this.changeHandler.bind(this);
-    this.changeVacationDaysHandler = this.changeVacationDaysHandler.bind(this);
-    this.changeVacationDaysCorrectionHandler = this.changeVacationDaysCorrectionHandler.bind(this);
-    this.changeWorkHourHandler = this.changeWorkHourHandler.bind(this);
-    this.deleteHandler = this.deleteHandler.bind(this);
-    this.saveHandler = this.saveHandler.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onChangeVacationDays = this.onChangeVacationDays.bind(this);
+    this.onChangeVacationDaysCorrection = this.onChangeVacationDaysCorrection.bind(this);
+    this.onChangeWorkHour = this.onChangeWorkHour.bind(this);
+    this.onDelete = this.onDelete.bind(this);
+    this.onSave = this.onSave.bind(this);
 
     this.openDeleteUserDialog = this.openDeleteUserDialog.bind(this);
     this.closeDeleteUserDialog = this.closeDeleteUserDialog.bind(this);
@@ -160,21 +160,7 @@ class EditComponent extends React.Component {
     });
   }
 
-  getRequiredHours(year) {
-    if (this.state.formData.workHours[year]) {
-      return this.state.formData.workHours[year].reduce((accValue, requiredHours) => {
-        if (!accValue) {
-          return requiredHours.toString();
-        }
-
-        return `${accValue},${requiredHours}`;
-      }, null);
-    }
-
-    return '';
-  }
-
-  saveHandler() {
+  onSave() {
     const formValidity = validateUser(
       this.props.t,
       this.state.formData,
@@ -230,7 +216,7 @@ class EditComponent extends React.Component {
     }
   }
 
-  deleteHandler() {
+  onDelete() {
     const { formValidity } = this.state;
 
     this.props.deleteUser(this.props.match.params.id)
@@ -245,7 +231,7 @@ class EditComponent extends React.Component {
       });
   }
 
-  changeVacationDaysHandler(e) {
+  onChangeVacationDays(e) {
     const eventTarget = e.target;
     const eventTargetId = eventTarget.id.replace('vacationDays_', '');
 
@@ -265,7 +251,7 @@ class EditComponent extends React.Component {
     });
   }
 
-  changeVacationDaysCorrectionHandler(e) {
+  onChangeVacationDaysCorrection(e) {
     const eventTarget = e.target;
     const eventTargetId = eventTarget.id.replace('vacationDaysCorrection_', '');
 
@@ -284,7 +270,7 @@ class EditComponent extends React.Component {
     });
   }
 
-  changeWorkHourHandler(e) {
+  onChangeWorkHour(e) {
     const eventTarget = e.target;
     const eventTargetId = eventTarget.id.replace('workHours_', '');
 
@@ -303,7 +289,7 @@ class EditComponent extends React.Component {
     });
   }
 
-  changeHandler(e) {
+  onChange(e) {
     const eventTarget = e.target;
 
     this.setState((prevState) => {
@@ -317,6 +303,20 @@ class EditComponent extends React.Component {
 
       return { formData };
     });
+  }
+
+  getRequiredHours(year) {
+    if (this.state.formData.workHours[year]) {
+      return this.state.formData.workHours[year].reduce((accValue, requiredHours) => {
+        if (!accValue) {
+          return requiredHours.toString();
+        }
+
+        return `${accValue},${requiredHours}`;
+      }, null);
+    }
+
+    return '';
   }
 
   openDeleteUserDialog() {
@@ -334,12 +334,12 @@ class EditComponent extends React.Component {
       <Modal
         actions={[
           {
-            clickHandler: this.deleteHandler,
+            feedbackIcon: this.props.isPosting ? <LoadingIcon /> : null,
             label: t('general:action.delete'),
-            loadingIcon: this.props.isPosting ? <LoadingIcon /> : null,
+            onClick: this.onDelete,
           },
         ]}
-        closeHandler={this.closeDeleteUserDialog}
+        onClose={this.closeDeleteUserDialog}
         title={t('user:modal.delete.title')}
       >
         {t('user:modal.delete.description')}
@@ -376,10 +376,10 @@ class EditComponent extends React.Component {
       <Layout title={t('user:title.editUser')} loading={this.props.isFetching}>
         <div className={styles.actions}>
           <Button
-            clickHandler={this.openDeleteUserDialog}
+            color="danger"
+            feedbackIcon={this.props.isPosting ? <LoadingIcon /> : null}
             label={t('user:action.deleteUser')}
-            loadingIcon={this.props.isPosting ? <LoadingIcon /> : null}
-            variant="danger"
+            onClick={this.openDeleteUserDialog}
           />
         </div>
         <form className={styles.detailPageWrapper}>
@@ -391,11 +391,11 @@ class EditComponent extends React.Component {
           <List>
             <ListItem>
               <TextField
-                changeHandler={this.changeHandler}
                 fullWidth
                 validationText={this.state.formValidity.elements.firstName}
                 id="firstName"
                 label={t('user:element.firstName')}
+                onChange={this.onChange}
                 required
                 value={this.state.formData.firstName || ''}
                 validationState={this.state.formValidity.elements.firstName ? 'invalid' : null}
@@ -403,11 +403,11 @@ class EditComponent extends React.Component {
             </ListItem>
             <ListItem>
               <TextField
-                changeHandler={this.changeHandler}
                 fullWidth
                 validationText={this.state.formValidity.elements.lastName}
                 id="lastName"
                 label={t('user:element.lastName')}
+                onChange={this.onChange}
                 required
                 value={this.state.formData.lastName || ''}
                 validationState={this.state.formValidity.elements.lastName ? 'invalid' : null}
@@ -415,11 +415,11 @@ class EditComponent extends React.Component {
             </ListItem>
             <ListItem>
               <SelectField
-                changeHandler={this.changeHandler}
                 fullWidth
                 validationText={this.state.formValidity.elements.supervisor}
                 id="supervisor"
                 label={t('user:element.supervisor')}
+                onChange={this.onChange}
                 options={userList}
                 value={this.state.formData.supervisor || ''}
                 validationState={this.state.formValidity.elements.supervisor ? 'invalid' : null}
@@ -428,11 +428,11 @@ class EditComponent extends React.Component {
             <ListItem>
               <TextField
                 autoComplete="off"
-                changeHandler={this.changeHandler}
                 fullWidth
                 validationText={this.state.formValidity.elements.email}
                 id="email"
                 label={t('user:element.email')}
+                onChange={this.onChange}
                 required
                 value={this.state.formData.email || ''}
                 validationState={this.state.formValidity.elements.email ? 'invalid' : null}
@@ -440,11 +440,11 @@ class EditComponent extends React.Component {
             </ListItem>
             <ListItem>
               <TextField
-                changeHandler={this.changeHandler}
                 fullWidth
                 validationText={this.state.formValidity.elements.employeeId}
                 id="employeeId"
                 label={t('user:element.employeeId')}
+                onChange={this.onChange}
                 required
                 value={this.state.formData.employeeId || ''}
                 validationState={this.state.formValidity.elements.employeeId ? 'invalid' : null}
@@ -453,12 +453,12 @@ class EditComponent extends React.Component {
             <ListItem>
               <TextField
                 autoComplete="new-password"
-                changeHandler={this.changeHandler}
                 fullWidth
                 validationText={this.state.formValidity.elements.plainPassword}
                 id="plainPassword"
                 label={t('user:element.plainPassword')}
                 type="password"
+                onChange={this.onChange}
                 required
                 value={this.state.formData.plainPassword || ''}
                 validationState={this.state.formValidity.elements.plainPassword ? 'invalid' : null}
@@ -466,12 +466,13 @@ class EditComponent extends React.Component {
             </ListItem>
             <ListItem>
               <CheckboxField
-                changeHandler={this.changeHandler}
                 checked={this.state.formData.isActive}
-                error={this.state.formValidity.elements.isActive}
                 id="isActive"
                 label={t('user:element.isActive')}
+                onChange={this.onChange}
                 required
+                validationState={this.state.formValidity.elements.isActive ? 'invalid' : null}
+                validationText={this.state.formValidity.elements.isActive}
               />
             </ListItem>
             <h2 className={styles.detailSubheader}>
@@ -489,7 +490,7 @@ class EditComponent extends React.Component {
                 >
                   <span>{year}</span>
                   <TextField
-                    changeHandler={this.changeVacationDaysHandler}
+                    onChange={this.onChangeVacationDays}
                     validationText={this.state.formValidity.elements.vacations[year].vacationDays}
                     id={`vacationDays_${year.toString()}`}
                     inputSize={6}
@@ -500,32 +501,32 @@ class EditComponent extends React.Component {
                     }
                   />
                   <TextField
-                    changeHandler={this.changeVacationDaysCorrectionHandler}
                     validationText={
                       this.state.formValidity.elements.vacations[year].vacationDaysCorrection
                     }
                     id={`vacationDaysCorrection_${year.toString()}`}
                     inputSize={6}
                     label={t('vacation:text.correction')}
+                    onChange={this.onChangeVacationDaysCorrection}
                     value={this.state.formData.vacations[year].vacationDaysCorrection || ''}
                     validationState={
                       this.state.formValidity.elements.vacations[year].vacationDaysCorrection ? 'invalid' : null
                     }
                   />
                   <TextField
-                    changeHandler={() => {}}
                     disabled
                     id={`vacationDaysUsed_${year.toString()}`}
                     inputSize={6}
                     label={t('vacation:text.used')}
+                    onChange={() => {}}
                     value={this.state.formData.vacations[year].vacationDaysUsed || ''}
                   />
                   <TextField
-                    changeHandler={() => {}}
                     disabled
                     id={`remainingVacationDays_${year.toString()}`}
                     inputSize={6}
                     label={t('vacation:text.remaining')}
+                    onChange={() => {}}
                     value={this.state.formData.vacations[year].remainingVacationDays || ''}
                   />
                 </div>
@@ -543,11 +544,11 @@ class EditComponent extends React.Component {
               return (
                 <ListItem key={year}>
                   <TextField
-                    changeHandler={this.changeWorkHourHandler}
                     error={this.state.formValidity.elements.workHours[year]}
                     fullWidth
                     id={`workHours_${year.toString()}`}
                     label={year.toString()}
+                    onChange={this.onChangeWorkHour}
                     pattern="((2[0-3]|1[0-9]|[0-9]):([0-5][0-9]|[0-9]|),){11}(2[0-3]|1[0-9]|[0-9]):([0-5][0-9]|[0-9])"
                     value={this.getRequiredHours(year)}
                   />
@@ -556,9 +557,9 @@ class EditComponent extends React.Component {
             })}
             <ListItem>
               <Button
-                clickHandler={this.saveHandler}
+                feedbackIcon={this.props.isPosting ? <LoadingIcon /> : null}
                 label={t('general:action.save')}
-                loadingIcon={this.props.isPosting ? <LoadingIcon /> : null}
+                onClick={this.onSave}
               />
             </ListItem>
           </List>

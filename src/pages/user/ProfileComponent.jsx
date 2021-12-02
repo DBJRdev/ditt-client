@@ -265,8 +265,8 @@ class ProfileComponent extends React.Component {
                             <div className="mt-1">
                               <Button
                                 beforeLabel={<Icon icon="open_in_new" />}
-                                clickHandler={() => this.setState({ apiTokenDialogOpened: true })}
                                 label={t('user:action.showApiToken')}
+                                onClick={() => this.setState({ apiTokenDialogOpened: true })}
                                 size="small"
                               />
                             </div>
@@ -274,9 +274,9 @@ class ProfileComponent extends React.Component {
                           <div className="mt-1 mb-1">
                             <Button
                               beforeLabel={<Icon icon="autorenew" />}
-                              clickHandler={() => renewUserApiToken(user.get('id'))}
+                              feedbackIcon={isPosting ? <LoadingIcon /> : null}
                               label={t('user:action.renewApiToken')}
-                              loadingIcon={isPosting ? <LoadingIcon /> : null}
+                              onClick={() => renewUserApiToken(user.get('id'))}
                               size="small"
                             />
                           </div>
@@ -284,11 +284,11 @@ class ProfileComponent extends React.Component {
                             <div className="mb-1">
                               <Button
                                 beforeLabel={<Icon icon="clear" />}
-                                clickHandler={() => resetUserApiToken(user.get('id'))}
+                                color="danger"
+                                feedbackIcon={isPosting ? <LoadingIcon /> : null}
                                 label={t('user:action.resetApiToken')}
-                                loadingIcon={isPosting ? <LoadingIcon /> : null}
+                                onClick={() => resetUserApiToken(user.get('id'))}
                                 size="small"
-                                variant="danger"
                               />
                             </div>
                           )}
@@ -320,9 +320,9 @@ class ProfileComponent extends React.Component {
                           {!user.get('iCalToken') && (
                             <div className="mb-1 mt-1">
                               <Button
-                                clickHandler={() => renewUserICalToken(user.get('id'))}
+                                feedbackIcon={isPosting ? <LoadingIcon /> : null}
                                 label={t('user:action.enableICal')}
-                                loadingIcon={isPosting ? <LoadingIcon /> : null}
+                                onClick={() => renewUserICalToken(user.get('id'))}
                                 size="small"
                               />
                             </div>
@@ -332,27 +332,27 @@ class ProfileComponent extends React.Component {
                               <div className="mt-1 mb-1">
                                 <Button
                                   beforeLabel={<Icon icon="open_in_new" />}
-                                  clickHandler={() => this.setState({ iCalDialogOpened: true })}
                                   label={t('user:action.showICalUrl')}
+                                  onClick={() => this.setState({ iCalDialogOpened: true })}
                                   size="small"
                                 />
                               </div>
                               <div className="mb-1 mt-1">
                                 <Button
-                                  clickHandler={() => {
+                                  label={t('user:action.downloadICal')}
+                                  onClick={() => {
                                     window.location = this.getICalUrl();
                                   }}
-                                  label={t('user:action.downloadICal')}
                                   size="small"
                                 />
                               </div>
                               <div className="mb-1">
                                 <Button
-                                  clickHandler={() => resetUserICalToken(user.get('id'))}
+                                  color="danger"
+                                  feedbackIcon={isPosting ? <LoadingIcon /> : null}
                                   label={t('user:action.disableICal')}
-                                  loadingIcon={isPosting ? <LoadingIcon /> : null}
+                                  onClick={() => resetUserICalToken(user.get('id'))}
                                   size="small"
-                                  variant="danger"
                                 />
                               </div>
                             </>
@@ -440,21 +440,21 @@ class ProfileComponent extends React.Component {
                           </td>
                           <td className={styles.notificationSettingsCheckbox}>
                             <CheckboxField
-                              changeHandler={this.handleCheckboxWithInputChange}
+                              checked={notifications[`supervisorInfo${day}Time`] !== null}
+                              id={`supervisorInfo${day}Time`}
                               isLabelVisible={false}
                               label=""
-                              id={`supervisorInfo${day}Time`}
-                              checked={notifications[`supervisorInfo${day}Time`] !== null}
+                              onChange={this.handleCheckboxWithInputChange}
                             />
                           </td>
                           <td className={styles.notificationSettingsInput}>
                             <TextField
-                              changeHandler={this.handleInputChange}
                               disabled={notifications[`supervisorInfo${day}Time`] === null}
                               id={`supervisorInfo${day}Time`}
                               inputSize={9}
                               isLabelVisible={false}
                               label=""
+                              onChange={this.handleInputChange}
                               type="time"
                               value={notifications[`supervisorInfo${day}Time`] || ''}
                             />
@@ -470,11 +470,11 @@ class ProfileComponent extends React.Component {
                         </td>
                         <td className={styles.notificationSettingsCheckbox}>
                           <CheckboxField
-                            changeHandler={this.handleCheckboxChange}
+                            checked={notifications.supervisorInfoSendOnHolidays}
+                            id="supervisorInfoSendOnHolidays"
                             isLabelVisible={false}
                             label=""
-                            id="supervisorInfoSendOnHolidays"
-                            checked={notifications.supervisorInfoSendOnHolidays}
+                            onChange={this.handleCheckboxChange}
                           />
                         </td>
                         <td className={styles.notificationSettingsInput} />
@@ -485,17 +485,17 @@ class ProfileComponent extends React.Component {
 
                 <div className={styles.saveButton}>
                   <Button
-                    clickHandler={this.handleSave}
+                    feedbackIcon={isPosting ? <LoadingIcon /> : null}
                     disabled={loggedUserId === null}
                     label={t('general:action.save')}
-                    loadingIcon={isPosting ? <LoadingIcon /> : null}
+                    onClick={this.handleSave}
                   />
                 </div>
               </div>
 
               {apiTokenDialogOpened && user.get('apiToken') && (
                 <Modal
-                  closeHandler={() => this.setState({ apiTokenDialogOpened: false })}
+                  onClose={() => this.setState({ apiTokenDialogOpened: false })}
                   title={t('user:element.apiToken')}
                 >
                   {user.get('apiToken')}
@@ -504,7 +504,7 @@ class ProfileComponent extends React.Component {
 
               {iCalDialogOpened && user.get('iCalToken') && (
                 <Modal
-                  closeHandler={() => this.setState({ iCalDialogOpened: false })}
+                  onClose={() => this.setState({ iCalDialogOpened: false })}
                   title={t('user:element.iCalUrl')}
                 >
                   {this.getICalUrl()}

@@ -11,10 +11,10 @@ exports[`rendering renders correctly 1`] = `
     <WithProviderContextComponent>
       <WithProviderContextComponent>
         <ForwardRef(withForwardedRef(WithProviderContextComponent))
-          changeHandler={[Function]}
           fullWidth={true}
           id="firstName"
           label="user:element.firstName"
+          onChange={[Function]}
           required={true}
           validationState={null}
           validationText={null}
@@ -23,10 +23,10 @@ exports[`rendering renders correctly 1`] = `
       </WithProviderContextComponent>
       <WithProviderContextComponent>
         <ForwardRef(withForwardedRef(WithProviderContextComponent))
-          changeHandler={[Function]}
           fullWidth={true}
           id="lastName"
           label="user:element.lastName"
+          onChange={[Function]}
           required={true}
           validationState={null}
           validationText={null}
@@ -35,10 +35,10 @@ exports[`rendering renders correctly 1`] = `
       </WithProviderContextComponent>
       <WithProviderContextComponent>
         <ForwardRef(withForwardedRef(WithProviderContextComponent))
-          changeHandler={[Function]}
           fullWidth={true}
           id="supervisor"
           label="user:element.supervisor"
+          onChange={[Function]}
           options={
             Array [
               Object {
@@ -55,10 +55,10 @@ exports[`rendering renders correctly 1`] = `
       <WithProviderContextComponent>
         <ForwardRef(withForwardedRef(WithProviderContextComponent))
           autoComplete="off"
-          changeHandler={[Function]}
           fullWidth={true}
           id="email"
           label="user:element.email"
+          onChange={[Function]}
           required={true}
           validationState={null}
           validationText={null}
@@ -67,10 +67,10 @@ exports[`rendering renders correctly 1`] = `
       </WithProviderContextComponent>
       <WithProviderContextComponent>
         <ForwardRef(withForwardedRef(WithProviderContextComponent))
-          changeHandler={[Function]}
           fullWidth={true}
           id="employeeId"
           label="user:element.employeeId"
+          onChange={[Function]}
           required={true}
           validationState={null}
           validationText={null}
@@ -80,10 +80,10 @@ exports[`rendering renders correctly 1`] = `
       <WithProviderContextComponent>
         <ForwardRef(withForwardedRef(WithProviderContextComponent))
           autoComplete="new-password"
-          changeHandler={[Function]}
           fullWidth={true}
           id="plainPassword"
           label="user:element.plainPassword"
+          onChange={[Function]}
           required={true}
           type="password"
           validationState={null}
@@ -93,12 +93,13 @@ exports[`rendering renders correctly 1`] = `
       </WithProviderContextComponent>
       <WithProviderContextComponent>
         <ForwardRef(withForwardedRef(WithProviderContextComponent))
-          changeHandler={[Function]}
           checked={false}
-          error={null}
           id="isActive"
           label="user:element.isActive"
+          onChange={[Function]}
           required={true}
+          validationState={null}
+          validationText={null}
         />
       </WithProviderContextComponent>
       <h2
@@ -116,9 +117,9 @@ exports[`rendering renders correctly 1`] = `
       </p>
       <WithProviderContextComponent>
         <ForwardRef(withForwardedRef(WithProviderContextComponent))
-          clickHandler={[Function]}
+          feedbackIcon={null}
           label="general:action.save"
-          loadingIcon={null}
+          onClick={[Function]}
         />
       </WithProviderContextComponent>
     </WithProviderContextComponent>

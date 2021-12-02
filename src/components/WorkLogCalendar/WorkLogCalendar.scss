@@ -39,7 +39,8 @@ $_table-cell-padding-y: 0.25rem;
 
 .navigationTitle {
   margin-top: 0;
-  margin-bottom: 0;
+  // stylelint-disable-next-line declaration-no-important
+  margin-bottom: 0 !important;
   font-weight: 500;
   font-size: 1.25rem;
 }
@@ -103,6 +104,7 @@ $_table-cell-padding-y: 0.25rem;
 
 .tableCellRight {
   width: 5em;
+  // stylelint-disable-next-line value-keyword-case
   composes: tableCell;
   text-align: right;
 }
@@ -116,6 +118,7 @@ $_table-cell-padding-y: 0.25rem;
 }
 
 .tableCellRightWithCorrectedTime {
+  // stylelint-disable-next-line value-keyword-case
   composes: tableCellRight;
   width: 6em;
   padding: $_table-cell-padding-y $_table-cell-padding-x $_table-cell-padding-y 0;

@@ -15,9 +15,9 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             size="medium"
           />
         }
-        clickHandler={[Function]}
         disabled={false}
         label="workLog:action.previousMonth"
+        onClick={[Function]}
       />
     </div>
     <div>
@@ -49,9 +49,9 @@ exports[`rendering renders correctly supervisor view with closed work month 1`] 
             size="medium"
           />
         }
-        clickHandler={[Function]}
         disabled={false}
         label="workLog:action.nextMonth"
+        onClick={[Function]}
       />
     </div>
   </nav>
@@ -1216,9 +1216,9 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
             size="medium"
           />
         }
-        clickHandler={[Function]}
         disabled={false}
         label="workLog:action.previousMonth"
+        onClick={[Function]}
       />
     </div>
     <div>
@@ -1247,9 +1247,9 @@ exports[`rendering renders correctly supervisor view with opened work month 1`] 
             size="medium"
           />
         }
-        clickHandler={[Function]}
         disabled={false}
         label="workLog:action.nextMonth"
+        onClick={[Function]}
       />
     </div>
   </nav>
@@ -2412,9 +2412,9 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             size="medium"
           />
         }
-        clickHandler={[Function]}
         disabled={false}
         label="workLog:action.previousMonth"
+        onClick={[Function]}
       />
     </div>
     <div>
@@ -2436,9 +2436,9 @@ exports[`rendering renders correctly supervisor view with work month waiting for
         className="mt-2"
       >
         <ForwardRef(withForwardedRef(WithProviderContextComponent))
-          clickHandler={[Function]}
+          color="success"
           label="workLog:action.approveMonth"
-          variant="success"
+          onClick={[Function]}
         />
       </div>
     </div>
@@ -2452,9 +2452,9 @@ exports[`rendering renders correctly supervisor view with work month waiting for
             size="medium"
           />
         }
-        clickHandler={[Function]}
         disabled={false}
         label="workLog:action.nextMonth"
+        onClick={[Function]}
       />
     </div>
   </nav>
@@ -3614,9 +3614,9 @@ exports[`rendering renders correctly with closed work month 1`] = `
             size="medium"
           />
         }
-        clickHandler={[Function]}
         disabled={false}
         label="workLog:action.previousMonth"
+        onClick={[Function]}
       />
     </div>
     <div>
@@ -3648,9 +3648,9 @@ exports[`rendering renders correctly with closed work month 1`] = `
             size="medium"
           />
         }
-        clickHandler={[Function]}
         disabled={false}
         label="workLog:action.nextMonth"
+        onClick={[Function]}
       />
     </div>
   </nav>
@@ -4815,9 +4815,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
             size="medium"
           />
         }
-        clickHandler={[Function]}
         disabled={false}
         label="workLog:action.previousMonth"
+        onClick={[Function]}
       />
     </div>
     <div>
@@ -4846,9 +4846,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
             size="medium"
           />
         }
-        clickHandler={[Function]}
         disabled={false}
         label="workLog:action.nextMonth"
+        onClick={[Function]}
       />
     </div>
   </nav>
@@ -4902,8 +4902,8 @@ exports[`rendering renders correctly with opened work month 1`] = `
                         size="medium"
                       />
                     }
-                    clickHandler={[Function]}
                     label="workLog:action.startWork"
+                    onClick={[Function]}
                   />
                 </WithProviderContextComponent>
               </WithProviderContextComponent>
@@ -4921,9 +4921,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -4977,9 +4977,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -5033,9 +5033,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -5089,9 +5089,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -5145,9 +5145,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -5201,9 +5201,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -5257,9 +5257,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -5313,9 +5313,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -5369,9 +5369,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -5425,9 +5425,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -5481,9 +5481,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -5537,9 +5537,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -5593,9 +5593,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -5649,9 +5649,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -5705,9 +5705,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -5761,9 +5761,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -5817,9 +5817,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -5873,9 +5873,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -5929,9 +5929,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -5985,9 +5985,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -6041,9 +6041,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -6097,9 +6097,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -6153,9 +6153,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -6209,9 +6209,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -6265,9 +6265,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -6321,9 +6321,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -6377,9 +6377,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -6433,9 +6433,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -6489,9 +6489,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -6545,9 +6545,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -6601,9 +6601,9 @@ exports[`rendering renders correctly with opened work month 1`] = `
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -6633,10 +6633,10 @@ exports[`rendering renders correctly with opened work month 1`] = `
           size="medium"
         />
       }
-      clickHandler={[Function]}
       disabled={false}
+      feedbackIcon={null}
       label="workLog:action.sendWorkMonthForApproval"
-      loadingIcon={null}
+      onClick={[Function]}
     />
   </div>
 </div>
@@ -6657,9 +6657,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             size="medium"
           />
         }
-        clickHandler={[Function]}
         disabled={false}
         label="workLog:action.previousMonth"
+        onClick={[Function]}
       />
     </div>
     <div>
@@ -6691,9 +6691,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
             size="medium"
           />
         }
-        clickHandler={[Function]}
         disabled={false}
         label="workLog:action.nextMonth"
+        onClick={[Function]}
       />
     </div>
   </nav>
@@ -6747,8 +6747,8 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                         size="medium"
                       />
                     }
-                    clickHandler={[Function]}
                     label="workLog:action.startWork"
+                    onClick={[Function]}
                   />
                 </WithProviderContextComponent>
               </WithProviderContextComponent>
@@ -6766,9 +6766,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -6822,9 +6822,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -6878,9 +6878,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -6934,9 +6934,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -6990,9 +6990,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -7046,9 +7046,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -7102,9 +7102,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -7158,9 +7158,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -7214,9 +7214,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -7270,9 +7270,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -7326,9 +7326,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -7382,9 +7382,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -7438,9 +7438,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -7494,9 +7494,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -7550,9 +7550,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -7606,9 +7606,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -7662,9 +7662,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -7718,9 +7718,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -7774,9 +7774,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -7830,9 +7830,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -7886,9 +7886,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -7942,9 +7942,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -7998,9 +7998,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -8054,9 +8054,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -8110,9 +8110,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -8166,9 +8166,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -8222,9 +8222,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -8278,9 +8278,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -8334,9 +8334,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -8390,9 +8390,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>
@@ -8446,9 +8446,9 @@ exports[`rendering renders correctly with work month waiting for approval 1`] = 
                       size="medium"
                     />
                   }
-                  clickHandler={[Function]}
                   label="workLog:action.addWorkLog"
                   labelVisibility="none"
+                  onClick={[Function]}
                 />
               </div>
             </td>

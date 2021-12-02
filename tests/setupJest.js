@@ -3,7 +3,7 @@ console.error = (error) => {
   // However we can not use console.error(), as that would just loop.
   console.warn(error);
 
-  fail(error);
+  throw new Error(error);
 };
 
 process.on('unhandledRejection', (err) => {

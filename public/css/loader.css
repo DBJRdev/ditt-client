@@ -17,11 +17,11 @@
 }
 
 .loader__circle {
-  fill: none;
   stroke: rgba(150, 150, 150, 0.85);
   stroke-dasharray: 120, 200;
   stroke-miterlimit: 50;
   stroke-width: 10px;
+  fill: none;
 }
 
 /* stylelint-disable property-no-vendor-prefix */

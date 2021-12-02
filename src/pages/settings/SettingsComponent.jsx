@@ -44,12 +44,12 @@ class SettingsComponent extends React.Component {
       showEditYearDialog: false,
     };
 
-    this.changeHandler = this.changeHandler.bind(this);
-    this.openAddYearDialog = this.openAddYearDialog.bind(this);
     this.closeAddYearDialog = this.closeAddYearDialog.bind(this);
     this.closeEditYearDialog = this.closeEditYearDialog.bind(this);
-    this.addHandler = this.addHandler.bind(this);
-    this.editHandler = this.editHandler.bind(this);
+    this.onAdd = this.onAdd.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onEdit = this.onEdit.bind(this);
+    this.openAddYearDialog = this.openAddYearDialog.bind(this);
     this.renderYearsAndHolidaysBox = this.renderYearsAndHolidaysBox.bind(this);
   }
 
@@ -57,7 +57,7 @@ class SettingsComponent extends React.Component {
     this.props.fetchConfig();
   }
 
-  changeHandler(e) {
+  onChange(e) {
     const eventTarget = e.target;
 
     this.setState((prevState) => {
@@ -68,7 +68,7 @@ class SettingsComponent extends React.Component {
     });
   }
 
-  changeOpenedYearHandler(supportedYear) {
+  onChangeOpenedYear(supportedYear) {
     const { openedYears } = this.state;
     const changedOpenedYears = [...openedYears];
 
@@ -83,7 +83,7 @@ class SettingsComponent extends React.Component {
     this.setState({ openedYears: changedOpenedYears });
   }
 
-  addHandler() {
+  onAdd() {
     const {
       config,
       saveConfig,
@@ -120,7 +120,7 @@ class SettingsComponent extends React.Component {
     }
   }
 
-  editHandler() {
+  onEdit() {
     const {
       config,
       saveConfig,
@@ -229,17 +229,17 @@ class SettingsComponent extends React.Component {
             <div className={styles.yearEditButtonWrapper}>
               <Button
                 beforeLabel={<Icon icon="edit" />}
-                clickHandler={() => this.openEditYearDialog(supportedYear)}
                 label={t('settings:action.editYear')}
                 labelVisibility="none"
+                onClick={() => this.openEditYearDialog(supportedYear)}
                 priority="outline"
               />
             </div>
             <Button
               beforeLabel={isOpened ? <Icon icon="expand_less" /> : <Icon icon="expand_more" />}
-              clickHandler={() => this.changeOpenedYearHandler(supportedYear)}
               label=""
               labelVisibility="none"
+              onClick={() => this.onChangeOpenedYear(supportedYear)}
               priority="outline"
             />
           </div>
@@ -277,22 +277,22 @@ class SettingsComponent extends React.Component {
       <Modal
         actions={[
           {
-            clickHandler: this.addHandler,
+            feedbackIcon: isPosting ? <LoadingIcon /> : null,
             label: t('general:action.save'),
-            loadingIcon: isPosting ? <LoadingIcon /> : null,
+            onClick: this.onAdd,
           },
         ]}
-        closeHandler={this.closeAddYearDialog}
+        onClose={this.closeAddYearDialog}
         title={t('settings:title.addYear')}
       >
         <form className={styles.centeredLayout}>
           <List>
             <ListItem>
               <TextField
-                changeHandler={this.changeHandler}
                 validationText={this.state.formValidity.elements.year}
                 id="year"
                 label={t('config:element.year')}
+                onChange={this.onChange}
                 required
                 type="number"
                 value={this.state.formData.year || ''}
@@ -301,10 +301,10 @@ class SettingsComponent extends React.Component {
             </ListItem>
             <ListItem>
               <TextArea
-                changeHandler={this.changeHandler}
                 validationText={this.state.formValidity.elements.holidays}
                 id="holidays"
                 label={t('config:element.holidays')}
+                onChange={this.onChange}
                 required
                 value={this.state.formData.holidays || ''}
                 validationState={this.state.formValidity.elements.holidays ? 'invalid' : null}
@@ -331,23 +331,23 @@ class SettingsComponent extends React.Component {
       <Modal
         actions={[
           {
-            clickHandler: this.editHandler,
+            feedbackIcon: isPosting ? <LoadingIcon /> : null,
             label: t('general:action.save'),
-            loadingIcon: isPosting ? <LoadingIcon /> : null,
+            onClick: this.onEdit,
           },
         ]}
-        closeHandler={this.closeEditYearDialog}
+        onClose={this.closeEditYearDialog}
         title={t('settings:title.editYear')}
       >
         <form className={styles.centeredLayout}>
           <List>
             <ListItem>
               <TextField
-                changeHandler={this.changeHandler}
                 disabled
                 validationText={this.state.formValidity.elements.year}
                 id="year"
                 label={t('config:element.year')}
+                onChange={this.onChange}
                 required
                 type="number"
                 value={this.state.formData.year || ''}
@@ -356,10 +356,10 @@ class SettingsComponent extends React.Component {
             </ListItem>
             <ListItem>
               <TextArea
-                changeHandler={this.changeHandler}
                 validationText={this.state.formValidity.elements.holidays}
                 id="holidays"
                 label={t('config:element.holidays')}
+                onChange={this.onChange}
                 required
                 value={this.state.formData.holidays || ''}
                 validationState={this.state.formValidity.elements.holidays ? 'invalid' : null}
@@ -399,8 +399,8 @@ class SettingsComponent extends React.Component {
           <div className={styles.yearButtonsWrapper}>
             <Button
               beforeLabel={<Icon icon="add" />}
-              clickHandler={this.openAddYearDialog}
               label={t('settings:action.addYear')}
+              onClick={this.openAddYearDialog}
             />
           </div>
         </div>

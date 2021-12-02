@@ -59,11 +59,11 @@ class AddSupervisorWorkLogModal extends React.Component {
       },
     };
 
-    this.changeHandler = this.changeHandler.bind(this);
-    this.saveHandler = this.saveHandler.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onSave = this.onSave.bind(this);
   }
 
-  changeHandler(e) {
+  onChange(e) {
     const eventTarget = e.target;
 
     if (
@@ -98,7 +98,7 @@ class AddSupervisorWorkLogModal extends React.Component {
     }));
   }
 
-  saveHandler() {
+  onSave() {
     const {
       onSave,
       t,
@@ -145,14 +145,14 @@ class AddSupervisorWorkLogModal extends React.Component {
       <Modal
         actions={[
           {
-            clickHandler: this.saveHandler,
-            label: t('general:action.save'),
-            loadingIcon: isPosting
+            feedbackIcon: isPosting
               ? <LoadingIcon />
               : null,
+            label: t('general:action.save'),
+            onClick: this.onSave,
           },
         ]}
-        closeHandler={onClose}
+        onClose={onClose}
         title={data ? t('workLog:modal.edit.title') : t('workLog:modal.add.title')}
       >
         {formValidity.elements.form && (
@@ -165,11 +165,11 @@ class AddSupervisorWorkLogModal extends React.Component {
             <List>
               <ListItem>
                 <SelectField
-                  changeHandler={this.changeHandler}
                   disabled={Boolean(data)}
                   validationText={formValidity.elements.type}
                   id="type"
                   label={t('workLog:element.type')}
+                  onChange={this.onChange}
                   options={[
                     {
                       label: t('workMonth:constant.type.banWorkLog'),
@@ -194,22 +194,22 @@ class AddSupervisorWorkLogModal extends React.Component {
               </ListItem>
               <ListItem>
                 <TextField
-                  changeHandler={this.changeHandler}
                   disabled
                   validationText={formValidity.elements.dateTo}
                   id="date"
                   label={t('workLog:element.dateFrom')}
+                  onChange={this.onChange}
                   value={formData.date || ''}
                   validationState={formValidity.elements.date ? 'invalid' : null}
                 />
               </ListItem>
               <ListItem>
                 <TextField
-                  changeHandler={this.changeHandler}
                   disabled={Boolean(data)}
                   validationText={formValidity.elements.dateTo}
                   id="dateTo"
                   label={t('workLog:element.dateTo')}
+                  onChange={this.onChange}
                   value={formData.dateTo || ''}
                   validationState={formValidity.elements.dateTo ? 'invalid' : null}
                 />
@@ -223,7 +223,6 @@ class AddSupervisorWorkLogModal extends React.Component {
                     <div className={styles.fieldDate}>
                       <TextField
                         autoFocus
-                        changeHandler={this.changeHandler}
                         validationText={formValidity.elements.hour}
                         id="hour"
                         inputSize={2}
@@ -231,6 +230,7 @@ class AddSupervisorWorkLogModal extends React.Component {
                         label={t('workMonth:element.hours')}
                         max={23}
                         min={0}
+                        onChange={this.onChange}
                         required
                         type="number"
                         value={formData.hour || ''}
@@ -240,7 +240,6 @@ class AddSupervisorWorkLogModal extends React.Component {
                     <span className={styles.colon}>:</span>
                     <div className={styles.fieldDate}>
                       <TextField
-                        changeHandler={this.changeHandler}
                         validationText={formValidity.elements.minute}
                         id="minute"
                         inputSize={2}
@@ -248,6 +247,7 @@ class AddSupervisorWorkLogModal extends React.Component {
                         label={t('workMonth:element.minutes')}
                         max={59}
                         min={0}
+                        onChange={this.onChange}
                         required
                         type="number"
                         value={formData.minute || ''}

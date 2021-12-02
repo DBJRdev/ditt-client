@@ -57,11 +57,11 @@ class SupervisorWorkTimeCorrectionModal extends React.Component {
       },
     };
 
-    this.changeHandler = this.changeHandler.bind(this);
-    this.saveHandler = this.saveHandler.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onSave = this.onSave.bind(this);
   }
 
-  changeHandler(e) {
+  onChange(e) {
     const eventTarget = e.target;
 
     if (
@@ -96,7 +96,7 @@ class SupervisorWorkTimeCorrectionModal extends React.Component {
     }));
   }
 
-  saveHandler() {
+  onSave() {
     const {
       onClose,
       onSetWorkTimeCorrection,
@@ -144,20 +144,20 @@ class SupervisorWorkTimeCorrectionModal extends React.Component {
       <Modal
         actions={[
           {
-            clickHandler: this.saveHandler,
+            feedbackIcon: isPosting ? <LoadingIcon /> : null,
             label: t('workMonth:actions.setWorkTimeCorrection'),
-            loadingIcon: isPosting ? <LoadingIcon /> : null,
+            onClick: this.onSave,
           },
         ]}
-        closeHandler={onClose}
+        onClose={onClose}
         title={t('workMonth:text.workTimeCorrection')}
       >
         <div className={styles.centeredLayout}>
           <List>
             <SelectField
-              changeHandler={this.changeHandler}
               id="mode"
               label={t('workMonth:element.variant')}
+              onChange={this.onChange}
               options={[
                 {
                   label: t('workMonth:text.modeAdd'),
@@ -178,7 +178,6 @@ class SupervisorWorkTimeCorrectionModal extends React.Component {
                 <div className={styles.fieldDate}>
                   <TextField
                     autoFocus
-                    changeHandler={this.changeHandler}
                     validationText={formValidity.elements.hour}
                     id="hour"
                     inputSize={2}
@@ -186,6 +185,7 @@ class SupervisorWorkTimeCorrectionModal extends React.Component {
                     label={t('workMonth:element.hours')}
                     max={999}
                     min={0}
+                    onChange={this.onChange}
                     required
                     type="number"
                     value={formData.hour || ''}
@@ -195,7 +195,6 @@ class SupervisorWorkTimeCorrectionModal extends React.Component {
                 <span className={styles.colon}>:</span>
                 <div className={styles.fieldDate}>
                   <TextField
-                    changeHandler={this.changeHandler}
                     validationText={formValidity.elements.minute}
                     id="minute"
                     inputSize={2}
@@ -203,6 +202,7 @@ class SupervisorWorkTimeCorrectionModal extends React.Component {
                     label={t('workMonth:element.minutes')}
                     max={59}
                     min={0}
+                    onChange={this.onChange}
                     required
                     type="number"
                     value={formData.minute || ''}

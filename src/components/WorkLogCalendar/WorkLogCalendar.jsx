@@ -969,12 +969,12 @@ class WorkLogCalendar extends React.Component {
             ? getWorkLogsByDay(showWorkLogFormDate, workMonth.get('banWorkLogs'))
             : []
         }
-        closeHandler={this.closeWorkLogForm}
         config={config}
         data={showWorkLogFormData}
         date={showWorkLogFormDate}
         isPosting={isPosting}
-        saveHandler={this.saveWorkLogForm}
+        onClose={this.closeWorkLogForm}
+        onSave={this.saveWorkLogForm}
         user={workMonth.get('user')}
         workLogsOfDay={
           workMonth
@@ -1140,7 +1140,6 @@ class WorkLogCalendar extends React.Component {
           <div className={styles.navigationPrevious}>
             <Button
               beforeLabel={<Icon icon="keyboard_arrow_left" />}
-              clickHandler={this.selectPreviousMonth}
               disabled={
                 !getWorkMonthByMonth(
                   this.props.selectedDate.clone().subtract(1, 'month'),
@@ -1148,6 +1147,7 @@ class WorkLogCalendar extends React.Component {
                 )
               }
               label={t('workLog:action.previousMonth')}
+              onClick={this.selectPreviousMonth}
             />
           </div>
           <div>
@@ -1173,15 +1173,15 @@ class WorkLogCalendar extends React.Component {
               && (
                 <div className="mt-2">
                   <Button
-                    clickHandler={() => {
+                    color="success"
+                    label={t('workLog:action.approveMonth')}
+                    onClick={() => {
                       if (this.props.workMonth) {
                         this.props.markApproved(this.props.workMonth.get('id')).then(() => {
                           this.props.fetchWorkMonthList();
                         });
                       }
                     }}
-                    label={t('workLog:action.approveMonth')}
-                    variant="success"
                   />
                 </div>
               )
@@ -1199,7 +1199,6 @@ class WorkLogCalendar extends React.Component {
           <div className={styles.navigationNext}>
             <Button
               afterLabel={<Icon icon="keyboard_arrow_right" />}
-              clickHandler={this.selectNextMonth}
               disabled={
                 !getWorkMonthByMonth(
                   this.props.selectedDate.clone().add(1, 'month'),
@@ -1207,6 +1206,7 @@ class WorkLogCalendar extends React.Component {
                 )
               }
               label={t('workLog:action.nextMonth')}
+              onClick={this.selectNextMonth}
             />
           </div>
         </nav>
@@ -1223,8 +1223,8 @@ class WorkLogCalendar extends React.Component {
         ) && (
           <div className={styles.tableToolbar}>
             <Button
-              clickHandler={this.openSupervisorWorkTimeCorrectionModal}
               label={t('workMonth:actions.setWorkTimeCorrection')}
+              onClick={this.openSupervisorWorkTimeCorrectionModal}
             />
           </div>
         )}
@@ -1315,14 +1315,14 @@ class WorkLogCalendar extends React.Component {
                                   ? (
                                     <Button
                                       beforeLabel={<Icon icon="stop" />}
-                                      clickHandler={this.stopWorkLogTimer}
                                       label={`${t('workLog:action.endWork')} | ${this.state.workLogTimerInterval}`}
+                                      onClick={this.stopWorkLogTimer}
                                     />
                                   ) : (
                                     <Button
                                       beforeLabel={<Icon icon="play_arrow" />}
-                                      clickHandler={this.initAndStartWorkLogTimer}
                                       label={t('workLog:action.startWork')}
+                                      onClick={this.initAndStartWorkLogTimer}
                                     />
                                   )
                               }
@@ -1337,7 +1337,7 @@ class WorkLogCalendar extends React.Component {
                         <td className={styles.tableCellRight}>
                           <div className={styles.addWorkLogButtonWrapper}>
                             <Button
-                              clickHandler={() => this.openWorkLogForm(day.date)}
+                              onClick={() => this.openWorkLogForm(day.date)}
                               beforeLabel={<Icon icon="add" />}
                               label={t('workLog:action.addWorkLog')}
                               labelVisibility="none"
@@ -1352,10 +1352,10 @@ class WorkLogCalendar extends React.Component {
                         <td className={styles.tableCellRight}>
                           <div className={styles.addWorkLogButtonWrapper}>
                             <Button
-                              clickHandler={() => this.openSupervisorWorkLogForm(day.date)}
                               beforeLabel={<Icon icon="add" />}
                               label={t('workLog:action.addWorkLog')}
                               labelVisibility="none"
+                              onClick={() => this.openSupervisorWorkLogForm(day.date)}
                             />
                           </div>
                         </td>
@@ -1427,14 +1427,14 @@ class WorkLogCalendar extends React.Component {
             <div className={styles.sendForApprovalButtonWrapper}>
               <Button
                 beforeLabel={<Icon icon="send" />}
-                clickHandler={() => {
+                disabled={!this.props.workMonth || !!this.countWaitingForApprovalWorkLogs()}
+                feedbackIcon={this.props.isPosting ? <LoadingIcon /> : null}
+                label={t('workLog:action.sendWorkMonthForApproval')}
+                onClick={() => {
                   if (this.props.workMonth) {
                     this.props.markWaitingForApproval(this.props.workMonth.get('id'));
                   }
                 }}
-                disabled={!this.props.workMonth || !!this.countWaitingForApprovalWorkLogs()}
-                label={t('workLog:action.sendWorkMonthForApproval')}
-                loadingIcon={this.props.isPosting ? <LoadingIcon /> : null}
               />
             </div>
           )

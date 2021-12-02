@@ -62,12 +62,12 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
                 </ToolbarItem>
                 <ToolbarItem>
                   <TextField
-                    changeHandler={(e) => setDateFrom(e.target.value)}
                     id="dateFrom"
                     inputSize={10}
                     isLabelVisible={false}
                     label={props.t('hr:element.dateFrom')}
                     layout="horizontal"
+                    onChange={(e) => setDateFrom(e.target.value)}
                     value={dateFrom || ''}
                     validationState={dateFromError ? 'invalid' : null}
                     validationText={dateFromError}
@@ -82,12 +82,12 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
                 </ToolbarItem>
                 <ToolbarItem>
                   <TextField
-                    changeHandler={(e) => setDateTo(e.target.value)}
                     id="dateTo"
                     inputSize={10}
                     isLabelVisible={false}
                     label={props.t('hr:element.dateTo')}
                     layout="horizontal"
+                    onChange={(e) => setDateTo(e.target.value)}
                     value={dateTo || ''}
                     validationState={dateToError ? 'invalid' : null}
                     validationText={dateToError}
@@ -97,7 +97,9 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
             </ToolbarGroup>
             <ToolbarItem>
               <Button
-                clickHandler={() => {
+                feedbackIcon={props.isFetching && <LoadingIcon />}
+                label={props.t('hr:action.refresh')}
+                onClick={() => {
                   let hasError = false;
                   let dateFromObj;
                   let dateToObj;
@@ -131,8 +133,6 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
                     });
                   }
                 }}
-                label={props.t('hr:action.refresh')}
-                loadingIcon={props.isFetching && <LoadingIcon />}
               />
             </ToolbarItem>
           </ToolbarGroup>

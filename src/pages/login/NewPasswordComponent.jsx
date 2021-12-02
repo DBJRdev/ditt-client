@@ -7,6 +7,7 @@ import {
   Button,
   Card,
   CardBody,
+  FormLayout,
   TextField,
 } from '@react-ui-org/react-ui';
 import {
@@ -32,24 +33,24 @@ class NewPasswordComponent extends React.Component {
       newPasswordRepeat: null,
     };
 
-    this.onChangeHandler = this.onChangeHandler.bind(this);
-    this.onSubmitHandler = this.onSubmitHandler.bind(this);
-    this.newPasswordHandler = this.newPasswordHandler.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onNewPassword = this.onNewPassword.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onChangeHandler(e) {
+  onChange(e) {
     this.setState({
       [e.target.id]: e.target.value,
     });
   }
 
-  onSubmitHandler(e) {
+  onSubmit(e) {
     e.preventDefault();
 
-    this.newPasswordHandler(e);
+    this.onNewPassword(e);
   }
 
-  newPasswordHandler(e) {
+  onNewPassword(e) {
     if (this.state.newPassword !== this.state.newPasswordRepeat) {
       e.preventDefault();
       this.setState({ error: this.props.t('login:validation.passwordsNotSame') });
@@ -132,8 +133,8 @@ class NewPasswordComponent extends React.Component {
         {error && (
           <div className="mb-5">
             <Alert
+              color="danger"
               icon={<Icon icon="error" />}
-              type="error"
             >
               <strong>
                 {t('general:text.error')}
@@ -143,39 +144,39 @@ class NewPasswordComponent extends React.Component {
             </Alert>
           </div>
         )}
-        <Card variant="bordered">
+        <Card raised>
           <CardBody>
             <form
-              onSubmit={this.onSubmitHandler}
+              onSubmit={this.onSubmit}
             >
-              <div className="mb-3">
+              <FormLayout>
                 <TextField
                   autoComplete="new-password"
-                  changeHandler={this.onChangeHandler}
                   fullWidth
                   id="newPassword"
                   label={t('login:element.newPassword')}
-                  type="password"
+                  onChange={this.onChange}
                   required
+                  type="password"
                   value={newPassword ?? ''}
                 />
                 <TextField
                   autoComplete="new-password"
-                  changeHandler={this.onChangeHandler}
                   fullWidth
                   id="newPasswordRepeat"
                   label={t('login:element.repeatNewPassword')}
-                  type="password"
+                  onChange={this.onChange}
                   required
+                  type="password"
                   value={newPasswordRepeat ?? ''}
                 />
-              </div>
-              <Button
-                block
-                label={t('login:action.changePassword')}
-                loadingIcon={isPosting && <LoadingIcon />}
-                type="submit"
-              />
+                <Button
+                  block
+                  feedbackIcon={isPosting && <LoadingIcon />}
+                  label={t('login:action.changePassword')}
+                  type="submit"
+                />
+              </FormLayout>
             </form>
             <div className={styles.footer}>
               <Link to={routes.login}>

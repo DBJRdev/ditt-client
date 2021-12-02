@@ -9,8 +9,8 @@ exports[`rendering renders correctly 1`] = `
     className="actions"
   >
     <ForwardRef(withForwardedRef(WithProviderContextComponent))
-      clickHandler={[Function]}
       label="user:action.addUser"
+      onClick={[Function]}
     />
   </div>
   <WithProviderContextComponent
@@ -57,13 +57,13 @@ exports[`rendering renders correctly 1`] = `
             icon="arrow_upward"
             size="medium"
           />,
-          "changeHandler": [Function],
           "column": "lastName",
           "descendingIcon": <Icon
             icon="arrow_downward"
             size="medium"
           />,
           "direction": "asc",
+          "onClick": [Function],
         }
       }
     />

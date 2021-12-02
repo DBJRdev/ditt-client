@@ -190,13 +190,11 @@ class FastAccessAddWorkLogComponent extends React.Component {
     return (
       <WorkLogForm
         banWorkLogsOfDay={workMonth ? getWorkLogsByDay(selectedDate, workMonth.get('banWorkLogs')) : []}
-        closeHandler={() => {
-          this.setState({ isClosed: true });
-        }}
         config={config}
         date={selectedDate}
         isPosting={isPosting}
-        saveHandler={this.saveWorkLogForm}
+        onClose={() => this.setState({ isClosed: true })}
+        onSave={this.saveWorkLogForm}
         showWorkLogTimer
         user={workMonth.get('user')}
         workLogsOfDay={workMonth ? getWorkLogsByDay(selectedDate, workMonth.get('workLogs')) : []}

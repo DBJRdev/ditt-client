@@ -1,3 +1,5 @@
+@use "sass:math";
+
 $_layout-spacer-y: 2rem;
 
 .centeredLayout {
@@ -9,7 +11,7 @@ $_layout-spacer-y: 2rem;
 
 .yearsAndHolidaysTitle {
   display: inline-block;
-  margin-top: $_layout-spacer-y / 4;
+  margin-top: math.div($_layout-spacer-y, 4);
   margin-bottom: $_layout-spacer-y;
   font-weight: 500;
   font-size: 1.5rem;
@@ -26,8 +28,8 @@ $_layout-spacer-y: 2rem;
 
 .yearTitle {
   display: inline-block;
-  margin-top: $_layout-spacer-y / 2;
-  margin-bottom: $_layout-spacer-y / 2;
+  margin-top: math.div($_layout-spacer-y, 2);
+  margin-bottom: math.div($_layout-spacer-y, 2);
   font-weight: 500;
   font-size: 1.25rem;
 }
@@ -45,7 +47,7 @@ $_layout-spacer-y: 2rem;
 
 .yearsAndHolidaysContentBox {
   width: 100%;
-  margin-top: $_layout-spacer-y / 2;
+  margin-top: math.div($_layout-spacer-y, 2);
   margin-bottom: $_layout-spacer-y;
 }
 

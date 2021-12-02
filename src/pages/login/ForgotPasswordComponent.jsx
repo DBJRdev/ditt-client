@@ -5,6 +5,7 @@ import {
   Button,
   Card,
   CardBody,
+  FormLayout,
   TextField,
 } from '@react-ui-org/react-ui';
 import { Link } from 'react-router-dom';
@@ -31,24 +32,24 @@ class ForgotPasswordComponent extends React.Component {
       isSubmitted: false,
     };
 
-    this.onChangeHandler = this.onChangeHandler.bind(this);
-    this.onSubmitHandler = this.onSubmitHandler.bind(this);
-    this.resetPasswordHandler = this.resetPasswordHandler.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onResetPassword = this.onResetPassword.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onChangeHandler(e) {
+  onChange(e) {
     this.setState({
       [e.target.id]: e.target.value,
     });
   }
 
-  onSubmitHandler(e) {
+  onSubmit(e) {
     e.preventDefault();
 
-    this.resetPasswordHandler(e);
+    this.onResetPassword(e);
   }
 
-  resetPasswordHandler() {
+  onResetPassword() {
     this.props.resetPassword({
       email: this.state.email,
     }).then((response) => {
@@ -105,7 +106,7 @@ class ForgotPasswordComponent extends React.Component {
           <div className="mb-5">
             <Alert
               icon={<Icon icon="error" />}
-              type="error"
+              color="danger"
             >
               <strong>
                 {t('general:text.error')}
@@ -115,28 +116,28 @@ class ForgotPasswordComponent extends React.Component {
             </Alert>
           </div>
         )}
-        <Card variant="bordered">
+        <Card raised>
           <CardBody>
-            <form onSubmit={this.onSubmitHandler}>
-              <div className="mb-3">
+            <form onSubmit={this.onSubmit}>
+              <FormLayout>
                 <TextField
                   autoComplete="username"
-                  changeHandler={this.onChangeHandler}
                   fullWidth
                   id="email"
                   label={t('user:element.email')}
-                  type="email"
+                  onChange={this.onChange}
                   required
+                  type="email"
                   value={email ?? ''}
                 />
-              </div>
-              <Button
-                block
-                id="resetPasswordButton"
-                label={t('login:action.resetPassword')}
-                loadingIcon={isPosting && <LoadingIcon />}
-                type="submit"
-              />
+                <Button
+                  block
+                  feedbackIcon={isPosting && <LoadingIcon />}
+                  id="resetPasswordButton"
+                  label={t('login:action.resetPassword')}
+                  type="submit"
+                />
+              </FormLayout>
             </form>
             <div
               className={styles.footer}

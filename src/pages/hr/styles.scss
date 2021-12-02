@@ -1,7 +1,9 @@
+@use "sass:math";
+
 $_layout-spacer-y: 2rem;
 
 .bodyTitle {
-  margin-top: $_layout-spacer-y / 4;
+  margin-top: math.div($_layout-spacer-y, 4);
   margin-bottom: $_layout-spacer-y;
   font-weight: 500;
   font-size: 1.75rem;

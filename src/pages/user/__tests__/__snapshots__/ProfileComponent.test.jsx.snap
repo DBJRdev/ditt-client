@@ -98,8 +98,8 @@ exports[`rendering renders correctly 1`] = `
                         size="medium"
                       />
                     }
-                    clickHandler={[Function]}
                     label="user:action.showApiToken"
+                    onClick={[Function]}
                     size="small"
                   />
                 </div>
@@ -113,9 +113,9 @@ exports[`rendering renders correctly 1`] = `
                         size="medium"
                       />
                     }
-                    clickHandler={[Function]}
+                    feedbackIcon={null}
                     label="user:action.renewApiToken"
-                    loadingIcon={null}
+                    onClick={[Function]}
                     size="small"
                   />
                 </div>
@@ -129,11 +129,11 @@ exports[`rendering renders correctly 1`] = `
                         size="medium"
                       />
                     }
-                    clickHandler={[Function]}
+                    color="danger"
+                    feedbackIcon={null}
                     label="user:action.resetApiToken"
-                    loadingIcon={null}
+                    onClick={[Function]}
                     size="small"
-                    variant="danger"
                   />
                 </div>
               </td>
@@ -156,9 +156,9 @@ exports[`rendering renders correctly 1`] = `
                   className="mb-1 mt-1"
                 >
                   <ForwardRef(withForwardedRef(WithProviderContextComponent))
-                    clickHandler={[Function]}
+                    feedbackIcon={null}
                     label="user:action.enableICal"
-                    loadingIcon={null}
+                    onClick={[Function]}
                     size="small"
                   />
                 </div>
@@ -412,23 +412,23 @@ exports[`rendering renders correctly 1`] = `
                 className="notificationSettingsCheckbox"
               >
                 <ForwardRef(withForwardedRef(WithProviderContextComponent))
-                  changeHandler={[Function]}
                   checked={false}
                   id="supervisorInfoMondayTime"
                   isLabelVisible={false}
                   label=""
+                  onChange={[Function]}
                 />
               </td>
               <td
                 className="notificationSettingsInput"
               >
                 <ForwardRef(withForwardedRef(WithProviderContextComponent))
-                  changeHandler={[Function]}
                   disabled={true}
                   id="supervisorInfoMondayTime"
                   inputSize={9}
                   isLabelVisible={false}
                   label=""
+                  onChange={[Function]}
                   type="time"
                   value=""
                 />
@@ -444,23 +444,23 @@ exports[`rendering renders correctly 1`] = `
                 className="notificationSettingsCheckbox"
               >
                 <ForwardRef(withForwardedRef(WithProviderContextComponent))
-                  changeHandler={[Function]}
                   checked={false}
                   id="supervisorInfoTuesdayTime"
                   isLabelVisible={false}
                   label=""
+                  onChange={[Function]}
                 />
               </td>
               <td
                 className="notificationSettingsInput"
               >
                 <ForwardRef(withForwardedRef(WithProviderContextComponent))
-                  changeHandler={[Function]}
                   disabled={true}
                   id="supervisorInfoTuesdayTime"
                   inputSize={9}
                   isLabelVisible={false}
                   label=""
+                  onChange={[Function]}
                   type="time"
                   value=""
                 />
@@ -476,23 +476,23 @@ exports[`rendering renders correctly 1`] = `
                 className="notificationSettingsCheckbox"
               >
                 <ForwardRef(withForwardedRef(WithProviderContextComponent))
-                  changeHandler={[Function]}
                   checked={false}
                   id="supervisorInfoWednesdayTime"
                   isLabelVisible={false}
                   label=""
+                  onChange={[Function]}
                 />
               </td>
               <td
                 className="notificationSettingsInput"
               >
                 <ForwardRef(withForwardedRef(WithProviderContextComponent))
-                  changeHandler={[Function]}
                   disabled={true}
                   id="supervisorInfoWednesdayTime"
                   inputSize={9}
                   isLabelVisible={false}
                   label=""
+                  onChange={[Function]}
                   type="time"
                   value=""
                 />
@@ -508,23 +508,23 @@ exports[`rendering renders correctly 1`] = `
                 className="notificationSettingsCheckbox"
               >
                 <ForwardRef(withForwardedRef(WithProviderContextComponent))
-                  changeHandler={[Function]}
                   checked={false}
                   id="supervisorInfoThursdayTime"
                   isLabelVisible={false}
                   label=""
+                  onChange={[Function]}
                 />
               </td>
               <td
                 className="notificationSettingsInput"
               >
                 <ForwardRef(withForwardedRef(WithProviderContextComponent))
-                  changeHandler={[Function]}
                   disabled={true}
                   id="supervisorInfoThursdayTime"
                   inputSize={9}
                   isLabelVisible={false}
                   label=""
+                  onChange={[Function]}
                   type="time"
                   value=""
                 />
@@ -540,23 +540,23 @@ exports[`rendering renders correctly 1`] = `
                 className="notificationSettingsCheckbox"
               >
                 <ForwardRef(withForwardedRef(WithProviderContextComponent))
-                  changeHandler={[Function]}
                   checked={false}
                   id="supervisorInfoFridayTime"
                   isLabelVisible={false}
                   label=""
+                  onChange={[Function]}
                 />
               </td>
               <td
                 className="notificationSettingsInput"
               >
                 <ForwardRef(withForwardedRef(WithProviderContextComponent))
-                  changeHandler={[Function]}
                   disabled={true}
                   id="supervisorInfoFridayTime"
                   inputSize={9}
                   isLabelVisible={false}
                   label=""
+                  onChange={[Function]}
                   type="time"
                   value=""
                 />
@@ -572,23 +572,23 @@ exports[`rendering renders correctly 1`] = `
                 className="notificationSettingsCheckbox"
               >
                 <ForwardRef(withForwardedRef(WithProviderContextComponent))
-                  changeHandler={[Function]}
                   checked={false}
                   id="supervisorInfoSaturdayTime"
                   isLabelVisible={false}
                   label=""
+                  onChange={[Function]}
                 />
               </td>
               <td
                 className="notificationSettingsInput"
               >
                 <ForwardRef(withForwardedRef(WithProviderContextComponent))
-                  changeHandler={[Function]}
                   disabled={true}
                   id="supervisorInfoSaturdayTime"
                   inputSize={9}
                   isLabelVisible={false}
                   label=""
+                  onChange={[Function]}
                   type="time"
                   value=""
                 />
@@ -604,23 +604,23 @@ exports[`rendering renders correctly 1`] = `
                 className="notificationSettingsCheckbox"
               >
                 <ForwardRef(withForwardedRef(WithProviderContextComponent))
-                  changeHandler={[Function]}
                   checked={false}
                   id="supervisorInfoSundayTime"
                   isLabelVisible={false}
                   label=""
+                  onChange={[Function]}
                 />
               </td>
               <td
                 className="notificationSettingsInput"
               >
                 <ForwardRef(withForwardedRef(WithProviderContextComponent))
-                  changeHandler={[Function]}
                   disabled={true}
                   id="supervisorInfoSundayTime"
                   inputSize={9}
                   isLabelVisible={false}
                   label=""
+                  onChange={[Function]}
                   type="time"
                   value=""
                 />
@@ -641,11 +641,11 @@ exports[`rendering renders correctly 1`] = `
                 className="notificationSettingsCheckbox"
               >
                 <ForwardRef(withForwardedRef(WithProviderContextComponent))
-                  changeHandler={[Function]}
                   checked={false}
                   id="supervisorInfoSendOnHolidays"
                   isLabelVisible={false}
                   label=""
+                  onChange={[Function]}
                 />
               </td>
               <td
@@ -659,10 +659,10 @@ exports[`rendering renders correctly 1`] = `
         className="saveButton"
       >
         <ForwardRef(withForwardedRef(WithProviderContextComponent))
-          clickHandler={[Function]}
           disabled={false}
+          feedbackIcon={null}
           label="general:action.save"
-          loadingIcon={null}
+          onClick={[Function]}
         />
       </div>
     </div>

@@ -22,10 +22,10 @@ describe('rendering', () => {
     const tree = mount(<WorkLogForm
       banWorkLogsOfDay={Immutable.List([])}
       config={Immutable.Map()}
-      closeHandler={() => {}}
       date={fakeMomentDateTime}
       isPosting={false}
-      saveHandler={() => {}}
+      onClose={() => {}}
+      onSave={() => {}}
       user={Immutable.fromJS({
         vacations: [
           {
@@ -48,10 +48,10 @@ describe('rendering', () => {
     const tree = mount(<WorkLogForm
       banWorkLogsOfDay={Immutable.List([])}
       config={Immutable.Map()}
-      closeHandler={() => {}}
       date={fakeMomentDateTime}
       isPosting={false}
-      saveHandler={() => {}}
+      onClose={() => {}}
+      onSave={() => {}}
       showInfoText
       user={Immutable.fromJS({
         vacations: [
@@ -73,15 +73,15 @@ describe('rendering', () => {
 });
 
 describe('functionality', () => {
-  it('calls closeHandler() date when previous month button is clicked', () => {
+  it('calls onClose() date when previous month button is clicked', () => {
     const spy = sinon.spy();
     const tree = mount(<WorkLogForm
       banWorkLogsOfDay={Immutable.List([])}
       config={Immutable.Map()}
-      closeHandler={spy}
       date={fakeMomentDateTime}
       isPosting={false}
-      saveHandler={() => {}}
+      onClose={spy}
+      onSave={() => {}}
       user={Immutable.fromJS({
         vacations: [
           {

@@ -161,8 +161,8 @@ class ListComponent extends React.Component {
       <Layout title={t('user:title.users')} loading={this.props.isFetching}>
         <div className={styles.actions}>
           <Button
-            clickHandler={() => this.props.history.push(routes.addUser)}
             label={t('user:action.addUser')}
+            onClick={() => this.props.history.push(routes.addUser)}
           />
         </div>
         <ScrollView direction="horizontal">
@@ -171,7 +171,10 @@ class ListComponent extends React.Component {
             rows={this.props.userList.toJS()}
             sort={{
               ascendingIcon: <Icon icon="arrow_upward" />,
-              changeHandler: (column, direction) => {
+              column: this.state.tableSortColumn,
+              descendingIcon: <Icon icon="arrow_downward" />,
+              direction: this.state.tableSortDirection,
+              onClick: (column, direction) => {
                 const orderDirection = direction === 'asc' ? 'desc' : 'asc';
 
                 this.props.fetchUserList({
@@ -186,9 +189,6 @@ class ListComponent extends React.Component {
                   });
                 });
               },
-              column: this.state.tableSortColumn,
-              descendingIcon: <Icon icon="arrow_downward" />,
-              direction: this.state.tableSortDirection,
             }}
           />
         </ScrollView>

@@ -152,7 +152,9 @@ const WorkLogDetailButton = (props) => {
       >
         <Button
           beforeLabel={<Icon icon={icon} />}
-          clickHandler={
+          feedbackIcon={isGetReqPending ? <LoadingIcon /> : null}
+          label={label}
+          onClick={
             async (e) => {
               setGetReqPending(true);
               await onClick(
@@ -163,8 +165,6 @@ const WorkLogDetailButton = (props) => {
               setGetReqPending(false);
             }
           }
-          label={label}
-          loadingIcon={isGetReqPending ? <LoadingIcon /> : null}
         />
         {isEnabled ? (
           <Button
@@ -173,7 +173,9 @@ const WorkLogDetailButton = (props) => {
                 ? <LoadingIcon />
                 : <Icon icon="edit" />
             }
-            clickHandler={
+            label=""
+            labelVisibility="none"
+            onClick={
               async (e) => {
                 setEditReqPending(true);
                 await onEditClick(
@@ -184,8 +186,6 @@ const WorkLogDetailButton = (props) => {
                 setEditReqPending(false);
               }
             }
-            label=""
-            labelVisibility="none"
           />
         ) : null}
         {isEnabled && !isDuplicateActionDisabled && supportsDuplicate.includes(type) ? (
@@ -195,7 +195,9 @@ const WorkLogDetailButton = (props) => {
                 ? <LoadingIcon />
                 : <Icon icon="content_copy" />
             }
-            clickHandler={
+            label=""
+            labelVisibility="none"
+            onClick={
               (e) => {
                 setDuplicateReqPending(true);
 
@@ -210,8 +212,6 @@ const WorkLogDetailButton = (props) => {
                 });
               }
             }
-            label=""
-            labelVisibility="none"
           />
         ) : null}
       </ButtonGroup>

@@ -123,14 +123,14 @@ class LayoutComponent extends React.Component {
                   {this.isAuthorized([ROLE_EMPLOYEE]) && (
                     <ToolbarItem>
                       <Button
-                        clickHandler={() => {
+                        label={t('layout:menu.workLogs')}
+                        onClick={() => {
                           if (history.location.pathname === routes.index) {
                             window.location.reload();
                           } else {
                             history.push(routes.index);
                           }
                         }}
-                        label={t('layout:menu.workLogs')}
                         priority="outline"
                       />
                     </ToolbarItem>
@@ -138,8 +138,8 @@ class LayoutComponent extends React.Component {
                   {this.isAuthorized([ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]) && (
                     <ToolbarItem>
                       <Button
-                        clickHandler={() => history.push(routes.specialApprovalList)}
                         label={t('layout:menu.specialApprovals')}
+                        onClick={() => history.push(routes.specialApprovalList)}
                         priority="outline"
                       />
                     </ToolbarItem>
@@ -147,8 +147,8 @@ class LayoutComponent extends React.Component {
                   {this.isAuthorized([ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]) && (
                     <ToolbarItem>
                       <Button
-                        clickHandler={() => history.push(routes.supervisedUserList)}
                         label={t('layout:menu.supervisedUsers')}
+                        onClick={() => history.push(routes.supervisedUserList)}
                         priority="outline"
                       />
                     </ToolbarItem>
@@ -156,8 +156,8 @@ class LayoutComponent extends React.Component {
                   {this.isAuthorized([ROLE_ADMIN, ROLE_SUPER_ADMIN]) && (
                     <ToolbarItem>
                       <Button
-                        clickHandler={() => history.push(routes.userList)}
                         label={t('layout:menu.users')}
+                        onClick={() => history.push(routes.userList)}
                         priority="outline"
                       />
                     </ToolbarItem>
@@ -165,8 +165,8 @@ class LayoutComponent extends React.Component {
                   {this.isAuthorized([ROLE_SUPER_ADMIN]) && (
                     <ToolbarItem>
                       <Button
-                        clickHandler={() => history.push(routes.hrChangesAndAbsenceRegistration)}
                         label={t('layout:menu.hrChangesAndAbsenceRegistration')}
+                        onClick={() => history.push(routes.hrChangesAndAbsenceRegistration)}
                         priority="outline"
                       />
                     </ToolbarItem>
@@ -174,8 +174,8 @@ class LayoutComponent extends React.Component {
                   {this.isAuthorized([ROLE_SUPER_ADMIN]) && (
                     <ToolbarItem>
                       <Button
-                        clickHandler={() => history.push(routes.hrYearOverview)}
                         label={t('layout:menu.hrYearOverview')}
+                        onClick={() => history.push(routes.hrYearOverview)}
                         priority="outline"
                       />
                     </ToolbarItem>
@@ -183,8 +183,8 @@ class LayoutComponent extends React.Component {
                   {this.isAuthorized([ROLE_SUPER_ADMIN]) && (
                     <ToolbarItem>
                       <Button
-                        clickHandler={() => history.push(routes.settings)}
                         label={t('layout:menu.settings')}
+                        onClick={() => history.push(routes.settings)}
                         priority="outline"
                       />
                     </ToolbarItem>
@@ -193,16 +193,16 @@ class LayoutComponent extends React.Component {
                 <ToolbarGroup>
                   <ToolbarItem>
                     <Button
-                      clickHandler={() => history.push(routes.profile)}
                       label={this.getName()}
-                      priority="link"
+                      onClick={() => history.push(routes.profile)}
+                      priority="flat"
                     />
                   </ToolbarItem>
                   <ToolbarItem>
                     <Button
-                      clickHandler={this.props.logout}
                       label={t('layout:menu.logout')}
-                      priority="link"
+                      onClick={this.props.logout}
+                      priority="flat"
                     />
                   </ToolbarItem>
                 </ToolbarGroup>

@@ -424,17 +424,17 @@ const WorkLogDetailModal = (props) => {
     )
   ) {
     actions.push({
-      clickHandler: onDelete,
+      color: 'danger',
+      feedbackIcon: isPosting ? <LoadingIcon /> : null,
       label: t('general:action.delete'),
-      loadingIcon: isPosting ? <LoadingIcon /> : null,
-      variant: 'danger',
+      onClick: onDelete,
     });
   }
 
   return (
     <Modal
       actions={actions}
-      closeHandler={onClose}
+      onClose={onClose}
       title={t('workLog:modal.detail.title')}
     >
       {content}

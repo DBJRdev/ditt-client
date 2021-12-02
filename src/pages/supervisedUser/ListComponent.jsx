@@ -204,7 +204,10 @@ class ListComponent extends React.Component {
               rows={this.props.supervisedUserList.toJS()}
               sort={{
                 ascendingIcon: <Icon icon="arrow_upward" />,
-                changeHandler: (column, direction) => {
+                column: this.state.tableSortColumn,
+                descendingIcon: <Icon icon="arrow_downward" />,
+                direction: this.state.tableSortDirection,
+                onClick: (column, direction) => {
                   if (this.props.token) {
                     const decodedToken = decode(this.props.token);
 
@@ -228,9 +231,6 @@ class ListComponent extends React.Component {
                     }
                   }
                 },
-                column: this.state.tableSortColumn,
-                descendingIcon: <Icon icon="arrow_downward" />,
-                direction: this.state.tableSortDirection,
               }}
             />
           </ScrollView>

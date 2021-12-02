@@ -4,10 +4,11 @@ import decode from 'jwt-decode';
 import { Link } from 'react-router-dom';
 import { withTranslation } from 'react-i18next';
 import {
+  Alert,
   Button,
   Card,
   CardBody,
-  Alert,
+  FormLayout,
   TextField,
 } from '@react-ui-org/react-ui';
 import {
@@ -32,8 +33,8 @@ class LoginComponent extends React.Component {
       username: null,
     };
 
-    this.onChangeHandler = this.onChangeHandler.bind(this);
-    this.onSubmitHandler = this.onSubmitHandler.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -52,13 +53,13 @@ class LoginComponent extends React.Component {
     }
   }
 
-  onChangeHandler(e) {
+  onChange(e) {
     this.setState({
       [e.target.id]: e.target.value,
     });
   }
 
-  onSubmitHandler(e) {
+  onSubmit(e) {
     const {
       login,
       resetLogoutLocally,
@@ -105,7 +106,7 @@ class LoginComponent extends React.Component {
             <div className="mb-5">
               <Alert
                 icon={<Icon icon="error" />}
-                type="error"
+                color="danger"
               >
                 <strong>
                   {t('general:text.error')}
@@ -119,40 +120,38 @@ class LoginComponent extends React.Component {
               </Alert>
             </div>
           )}
-          <Card variant="bordered">
+          <Card raised>
             <CardBody>
-              <form
-                onSubmit={this.onSubmitHandler}
-              >
-                <div className="mb-3">
+              <form onSubmit={this.onSubmit}>
+                <FormLayout>
                   <TextField
                     autoComplete="username"
-                    changeHandler={this.onChangeHandler}
                     fullWidth
                     id="username"
                     label={t('user:element.email')}
-                    type="email"
+                    onChange={this.onChange}
                     required
+                    type="email"
                     value={username ?? ''}
                   />
                   <TextField
                     autoComplete="current-password"
-                    changeHandler={this.onChangeHandler}
                     fullWidth
                     id="password"
                     label={t('user:element.plainPassword')}
-                    type="password"
+                    onChange={this.onChange}
                     required
+                    type="password"
                     value={password ?? ''}
                   />
-                </div>
-                <Button
-                  block
-                  id="signInButton"
-                  label={t('login:action.signIn')}
-                  loadingIcon={isPosting && <LoadingIcon />}
-                  type="submit"
-                />
+                  <Button
+                    block
+                    feedbackIcon={isPosting && <LoadingIcon />}
+                    id="signInButton"
+                    label={t('login:action.signIn')}
+                    type="submit"
+                  />
+                </FormLayout>
               </form>
               <div className={styles.footer}>
                 <Link to={routes.forgotPassword}>

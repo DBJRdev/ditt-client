@@ -36,50 +36,50 @@ exports[`rendering renders correctly with all props 1`] = `
         >
           <WithProviderContextComponent>
             <ForwardRef(withForwardedRef(WithProviderContextComponent))
-              clickHandler={[Function]}
               label="layout:menu.workLogs"
+              onClick={[Function]}
               priority="outline"
             />
           </WithProviderContextComponent>
           <WithProviderContextComponent>
             <ForwardRef(withForwardedRef(WithProviderContextComponent))
-              clickHandler={[Function]}
               label="layout:menu.specialApprovals"
+              onClick={[Function]}
               priority="outline"
             />
           </WithProviderContextComponent>
           <WithProviderContextComponent>
             <ForwardRef(withForwardedRef(WithProviderContextComponent))
-              clickHandler={[Function]}
               label="layout:menu.supervisedUsers"
+              onClick={[Function]}
               priority="outline"
             />
           </WithProviderContextComponent>
           <WithProviderContextComponent>
             <ForwardRef(withForwardedRef(WithProviderContextComponent))
-              clickHandler={[Function]}
               label="layout:menu.users"
+              onClick={[Function]}
               priority="outline"
             />
           </WithProviderContextComponent>
           <WithProviderContextComponent>
             <ForwardRef(withForwardedRef(WithProviderContextComponent))
-              clickHandler={[Function]}
               label="layout:menu.hrChangesAndAbsenceRegistration"
+              onClick={[Function]}
               priority="outline"
             />
           </WithProviderContextComponent>
           <WithProviderContextComponent>
             <ForwardRef(withForwardedRef(WithProviderContextComponent))
-              clickHandler={[Function]}
               label="layout:menu.hrYearOverview"
+              onClick={[Function]}
               priority="outline"
             />
           </WithProviderContextComponent>
           <WithProviderContextComponent>
             <ForwardRef(withForwardedRef(WithProviderContextComponent))
-              clickHandler={[Function]}
               label="layout:menu.settings"
+              onClick={[Function]}
               priority="outline"
             />
           </WithProviderContextComponent>
@@ -87,16 +87,16 @@ exports[`rendering renders correctly with all props 1`] = `
         <WithProviderContextComponent>
           <WithProviderContextComponent>
             <ForwardRef(withForwardedRef(WithProviderContextComponent))
-              clickHandler={[Function]}
               label="Jan Novak"
-              priority="link"
+              onClick={[Function]}
+              priority="flat"
             />
           </WithProviderContextComponent>
           <WithProviderContextComponent>
             <ForwardRef(withForwardedRef(WithProviderContextComponent))
-              clickHandler={[Function]}
               label="layout:menu.logout"
-              priority="link"
+              onClick={[Function]}
+              priority="flat"
             />
           </WithProviderContextComponent>
         </WithProviderContextComponent>

@@ -20,11 +20,16 @@ module.exports = {
     '<rootDir>/tests/setupFetch.js',
     '<rootDir>/tests/setupReactI18Next.js',
     '<rootDir>/tests/setupShortId.js',
+    '<rootDir>/tests/setupTestingLibrary.js',
     '<rootDir>/tests/setupTimeout.js',
     '<rootDir>/tests/setupWindow.js',
   ],
   snapshotSerializers: [
     'enzyme-to-json/serializer',
   ],
+  testEnvironment: 'jsdom',
   verbose: true,
+  transformIgnorePatterns: [
+    'node_modules'
+  ],
 };
