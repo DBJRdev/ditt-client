@@ -10,6 +10,7 @@
         "**/constants.js",
         "**/helpers.js",
         "**/index.js",
+        "src/**/helpers/**/*",
         "src/constants/*",
         "src/resources/**/*",
         "src/services/**/*"

@@ -1,17 +1,39 @@
+import decode from 'jwt-decode';
 import { connect } from 'react-redux';
 import {
-  logout,
   setLogoutLocally,
   selectJwtToken,
 } from '../../resources/auth';
 import LayoutComponent from './LayoutComponent';
 
-const mapStateToProps = (state) => ({
-  token: selectJwtToken(state),
-});
+const mapStateToProps = (state) => {
+  const token = selectJwtToken(state);
+  const tokenData = token ? decode(token) : null;
+
+  if (token != null && tokenData != null) {
+    const {
+      exp,
+      iat,
+      ...user
+    } = tokenData;
+
+    return ({
+      token: {
+        exp,
+        iat,
+        token,
+      },
+      user,
+    });
+  }
+
+  return ({
+    token: null,
+    user: null,
+  });
+};
 
 const mapDispatchToProps = (dispatch) => ({
-  logout: () => dispatch(logout()),
   setLogoutLocally: () => dispatch(setLogoutLocally()),
 });
 

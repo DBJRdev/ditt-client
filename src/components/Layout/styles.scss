@@ -1,0 +1,32 @@
+@use "sass:math";
+
+$_layout-spacer-x: 2rem;
+$_layout-spacer-y: 2rem;
+$_layout-padding-x: 4vw;
+
+.main {
+  padding: $_layout-spacer-y $_layout-padding-x $_layout-spacer-y $_layout-padding-x;
+  background-color: #f6f5f4;
+}
+
+.body {
+  padding: $_layout-spacer-y $_layout-spacer-x;
+  background-color: #fff;
+  box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.05);
+}
+
+.bodyTitle {
+  margin-top: math.div($_layout-spacer-y, 4);
+  margin-bottom: $_layout-spacer-y;
+  overflow-x: auto;
+  font-weight: 500;
+  font-size: 1.75rem;
+}
+
+.footer {
+  padding-bottom: $_layout-spacer-y;
+  font-weight: lighter;
+  font-size: 0.75rem;
+  text-align: center;
+  color: #717171;
+}

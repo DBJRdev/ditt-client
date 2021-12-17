@@ -1,0 +1,15 @@
+@use "sass:math";
+
+$_breakpoint: 70em;
+$_layout-spacer-x: 2rem;
+
+.logo {
+  display: block;
+  width: 10rem;
+  height: auto;
+  margin-bottom: math.div($_layout-spacer-x, 2);
+
+  @media screen and (min-width: $_breakpoint) {
+    margin-bottom: 0;
+  }
+}

@@ -1,108 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering renders correctly with all props 1`] = `
+exports[`rendering renders correctly in loading state 1`] = `
 <div>
-  <header
-    className="header"
-  >
-    <div
-      className="brand"
-    >
-      <Link
-        to="/"
-      >
-        <SvgrMock
-          alt="layout:title"
-          className="logo"
-          height={85}
-          width={183}
-        />
-      </Link>
-      <span
-        className="title"
-      >
-        layout:title
-      </span>
-    </div>
-    <div
-      className="navigation"
-    >
-      <WithProviderContextComponent
-        align="baseline"
-        justify="space-between"
-      >
-        <WithProviderContextComponent
-          dense={true}
-        >
-          <WithProviderContextComponent>
-            <ForwardRef(withForwardedRef(WithProviderContextComponent))
-              label="layout:menu.workLogs"
-              onClick={[Function]}
-              priority="outline"
-            />
-          </WithProviderContextComponent>
-          <WithProviderContextComponent>
-            <ForwardRef(withForwardedRef(WithProviderContextComponent))
-              label="layout:menu.specialApprovals"
-              onClick={[Function]}
-              priority="outline"
-            />
-          </WithProviderContextComponent>
-          <WithProviderContextComponent>
-            <ForwardRef(withForwardedRef(WithProviderContextComponent))
-              label="layout:menu.supervisedUsers"
-              onClick={[Function]}
-              priority="outline"
-            />
-          </WithProviderContextComponent>
-          <WithProviderContextComponent>
-            <ForwardRef(withForwardedRef(WithProviderContextComponent))
-              label="layout:menu.users"
-              onClick={[Function]}
-              priority="outline"
-            />
-          </WithProviderContextComponent>
-          <WithProviderContextComponent>
-            <ForwardRef(withForwardedRef(WithProviderContextComponent))
-              label="layout:menu.hrChangesAndAbsenceRegistration"
-              onClick={[Function]}
-              priority="outline"
-            />
-          </WithProviderContextComponent>
-          <WithProviderContextComponent>
-            <ForwardRef(withForwardedRef(WithProviderContextComponent))
-              label="layout:menu.hrYearOverview"
-              onClick={[Function]}
-              priority="outline"
-            />
-          </WithProviderContextComponent>
-          <WithProviderContextComponent>
-            <ForwardRef(withForwardedRef(WithProviderContextComponent))
-              label="layout:menu.settings"
-              onClick={[Function]}
-              priority="outline"
-            />
-          </WithProviderContextComponent>
-        </WithProviderContextComponent>
-        <WithProviderContextComponent>
-          <WithProviderContextComponent>
-            <ForwardRef(withForwardedRef(WithProviderContextComponent))
-              label="Jan Novak"
-              onClick={[Function]}
-              priority="flat"
-            />
-          </WithProviderContextComponent>
-          <WithProviderContextComponent>
-            <ForwardRef(withForwardedRef(WithProviderContextComponent))
-              label="layout:menu.logout"
-              onClick={[Function]}
-              priority="flat"
-            />
-          </WithProviderContextComponent>
-        </WithProviderContextComponent>
-      </WithProviderContextComponent>
-    </div>
-  </header>
+  <Connect(HeaderComponent)
+    user={
+      Object {
+        "firstName": "Jan",
+        "lastName": "Novak",
+        "roles": Array [
+          "ROLE_SUPER_ADMIN",
+          "ROLE_EMPLOYEE",
+        ],
+      }
+    }
+  />
   <main
     className="main"
   >
@@ -114,21 +25,54 @@ exports[`rendering renders correctly with all props 1`] = `
       >
         Title
       </h1>
-      Content
+      general:text.loading
     </div>
   </main>
-  <footer
-    className="footer"
-  >
-    <p>
-      layout:title
-    </p>
-  </footer>
+  <LayoutComponent />
 </div>
 `;
 
 exports[`rendering renders correctly with mandatory props only 1`] = `
 <div>
+  <Connect(HeaderComponent)
+    user={
+      Object {
+        "firstName": "Jan",
+        "lastName": "Novak",
+        "roles": Array [
+          "ROLE_SUPER_ADMIN",
+          "ROLE_EMPLOYEE",
+        ],
+      }
+    }
+  />
+  <main
+    className="main"
+  >
+    <div
+      className="body"
+    >
+      Content
+    </div>
+  </main>
+  <LayoutComponent />
+</div>
+`;
+
+exports[`rendering renders correctly with title 1`] = `
+<div>
+  <Connect(HeaderComponent)
+    user={
+      Object {
+        "firstName": "Jan",
+        "lastName": "Novak",
+        "roles": Array [
+          "ROLE_SUPER_ADMIN",
+          "ROLE_EMPLOYEE",
+        ],
+      }
+    }
+  />
   <main
     className="main"
   >
@@ -143,12 +87,6 @@ exports[`rendering renders correctly with mandatory props only 1`] = `
       Content
     </div>
   </main>
-  <footer
-    className="footer"
-  >
-    <p>
-      layout:title
-    </p>
-  </footer>
+  <LayoutComponent />
 </div>
 `;
