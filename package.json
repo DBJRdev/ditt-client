@@ -61,7 +61,7 @@
     "identity-obj-proxy": "^3.0.0",
     "image-webpack-loader": "^6.0.0",
     "jest": "^25.1.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "postcss-flexbugs-fixes": "^4.2.0",
     "postcss-loader": "^3.0.0",
     "redux-mock-store": "^1.5.4",
