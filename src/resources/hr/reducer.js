@@ -23,8 +23,13 @@ export default (state, action) => {
         ? toMomentDateTime(sickDay.childDateOfBirth)
         : null,
       date: toMomentDateTime(sickDay.date),
+      workMonth: {
+        user: data.user,
+        ...sickDay.workMonth,
+      },
     })),
   });
+  const sortFunc = (a, b) => (a.user.lastName > b.user.lastName ? 1 : -1);
 
   const filterYearOverview = filterChangesAndAbsenceRegistrations;
 
@@ -38,7 +43,7 @@ export default (state, action) => {
     return state
       .setIn(
         ['changesAndAbsenceRegistrations', 'data'],
-        Immutable.fromJS(payload.map(filterChangesAndAbsenceRegistrations)),
+        Immutable.fromJS(payload.map(filterChangesAndAbsenceRegistrations).sort(sortFunc)),
       )
       .setIn(['changesAndAbsenceRegistrations', 'isFetching'], false)
       .setIn(['changesAndAbsenceRegistrations', 'isFetchingFailure'], false);
@@ -60,7 +65,7 @@ export default (state, action) => {
     return state
       .setIn(
         ['yearOverview', 'data'],
-        Immutable.fromJS(payload.map(filterYearOverview)),
+        Immutable.fromJS(payload.map(filterYearOverview).sort(sortFunc)),
       )
       .setIn(['yearOverview', 'isFetching'], false)
       .setIn(['yearOverview', 'isFetchingFailure'], false);

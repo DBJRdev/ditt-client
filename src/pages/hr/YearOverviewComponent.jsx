@@ -1,4 +1,3 @@
-import { fromJS } from 'immutable';
 import { generate } from 'shortid';
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
@@ -31,23 +30,23 @@ const OverviewComponent = (props) => {
     const filteredSickDays = rowData.sickDays
       .filter((sickDay) => sickDay.variant === variant);
     const collapsedSickDays = collapseWorkLogs(
-      fromJS(filteredSickDays),
-      props.config.get('supportedHolidays'),
+      filteredSickDays,
+      props.config.supportedHolidays,
     );
 
     return collapsedSickDays.map((sickDay, index, arr) => {
-      const count = sickDay.get('bulkIds') ? sickDay.get('bulkIds').size : 0;
+      const count = sickDay.bulkIds ? sickDay.bulkIds.length : 0;
 
       return (
         <div
           className={(arr.length === index + 1) ? undefined : 'mb-2'}
           key={generate()}
         >
-          {toDayMonthYearFormat(sickDay.get('date'))}
-          {sickDay.get('isBulk') && (
+          {toDayMonthYearFormat(sickDay.date)}
+          {sickDay.isBulk && (
             <>
               {' – '}
-              {toDayMonthYearFormat(sickDay.get('dateTo'))}
+              {toDayMonthYearFormat(sickDay.dateTo)}
               {count > 0 ? ` (${count})` : null}
             </>
           )}
@@ -130,7 +129,7 @@ OverviewComponent.defaultProps = {
 
 OverviewComponent.propTypes = {
   config: PropTypes.shape({
-    get: PropTypes.func.isRequired,
+    supportedHolidays: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   }),
   fetchConfig: PropTypes.func.isRequired,
   fetchYearOverview: PropTypes.func.isRequired,

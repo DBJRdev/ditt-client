@@ -1,1 +1,1 @@
-export { default as SupervisorWorkTimeCorrectionModal } from './SupervisorWorkTimeCorrectionModal';
+export { default as SupervisorWorkTimeCorrectionModal } from './SupervisorWorkTimeCorrectionModalContainer';

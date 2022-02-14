@@ -1,1 +1,1 @@
-export { default as WorkLogDetailModal } from './WorkLogDetailModal';
+export { default as WorkLogDetailModal } from './WorkLogDetailModalContainer';

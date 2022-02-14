@@ -1,31 +1,18 @@
-import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withTranslation } from 'react-i18next';
 import { Icon } from '../../components/Icon';
-import WorkLogForm from '../../components/WorkLogForm';
+import { WorkLogFormModal } from '../../components/WorkLogFormModal';
 import { ROLE_EMPLOYEE } from '../../resources/user';
 import {
-  BUSINESS_TRIP_WORK_LOG,
-  HOME_OFFICE_WORK_LOG,
-  OVERTIME_WORK_LOG,
-  SICK_DAY_WORK_LOG,
-  SPECIAL_LEAVE_WORK_LOG,
   STATUS_APPROVED,
   STATUS_OPENED,
   STATUS_WAITING_FOR_APPROVAL,
-  TIME_OFF_WORK_LOG,
-  VACATION_WORK_LOG,
-  WORK_LOG,
 } from '../../resources/workMonth';
 import {
-  getWorkingDays,
   localizedMoment,
 } from '../../services/dateTimeService';
-import {
-  getWorkLogsByDay,
-  getWorkMonthByMonth,
-} from '../../services/workLogService';
+import { getWorkMonthByMonth } from '../../services/workLogService';
+import { Loader } from '../../components/Loader';
 import styles from './workLog.scss';
 
 class FastAccessAddWorkLogComponent extends React.Component {
@@ -37,9 +24,6 @@ class FastAccessAddWorkLogComponent extends React.Component {
       isSaved: false,
       selectedDate: localizedMoment(),
     };
-
-    this.handleSaveWorkLog = this.handleSaveWorkLog.bind(this);
-    this.saveWorkLogForm = this.saveWorkLogForm.bind(this);
   }
 
   componentDidMount() {
@@ -78,82 +62,10 @@ class FastAccessAddWorkLogComponent extends React.Component {
     });
   }
 
-  handleSaveWorkLog() {
-    this.setState({ isSaved: true });
-  }
-
-  saveWorkLogForm(data) {
-    if (BUSINESS_TRIP_WORK_LOG === data.type) {
-      return this.props.addBusinessTripWorkLog({
-        date: data.date,
-        destination: data.destination,
-        expectedArrival: data.expectedArrival,
-        expectedDeparture: data.expectedDeparture,
-        purpose: data.purpose,
-        transport: data.transport,
-      }).then(this.handleSaveWorkLog);
-    }
-
-    if (HOME_OFFICE_WORK_LOG === data.type) {
-      return this.props.addHomeOfficeWorkLog({
-        comment: data.comment,
-        date: data.date,
-      }).then(this.handleSaveWorkLog);
-    }
-
-    if (OVERTIME_WORK_LOG === data.type) {
-      return this.props.addOvertimeWorkLog({
-        date: data.date,
-        reason: data.reason,
-      }).then(this.handleSaveWorkLog);
-    }
-
-    if (SICK_DAY_WORK_LOG === data.type) {
-      return this.props.addSickDayWorkLog({
-        childDateOfBirth: data.childDateOfBirth,
-        childName: data.childName,
-        date: data.date,
-        variant: data.variant,
-      }).then(this.handleSaveWorkLog);
-    }
-
-    if (SPECIAL_LEAVE_WORK_LOG === data.type) {
-      const workingDays = getWorkingDays(data.date, data.dateTo, this.props.config.get('supportedHolidays'));
-      const workLogs = workingDays.map((workingDay) => ({ date: workingDay }));
-
-      return this.props.addMultipleSpecialLeaveWorkLog(workLogs).then(this.handleSaveWorkLog);
-    }
-
-    if (TIME_OFF_WORK_LOG === data.type) {
-      return this.props.addTimeOffWorkLog({
-        comment: data.comment,
-        date: data.date,
-      }).then(this.handleSaveWorkLog);
-    }
-
-    if (VACATION_WORK_LOG === data.type) {
-      const workingDays = getWorkingDays(data.date, data.dateTo, this.props.config.get('supportedHolidays'));
-      const workLogs = workingDays.map((workingDay) => ({ date: workingDay }));
-
-      return this.props.addMultipleVacationWorkLog(workLogs).then(this.handleSaveWorkLog);
-    }
-
-    if (WORK_LOG === data.type) {
-      return this.props.addWorkLog({
-        endTime: data.endTime,
-        startTime: data.startTime,
-      }).then(this.handleSaveWorkLog);
-    }
-
-    throw new Error(`Unknown type ${data.type}`);
-  }
-
   render() {
     const {
       config,
       isFetching,
-      isPosting,
-      t,
       workMonth,
       workMonthList,
     } = this.props;
@@ -166,7 +78,7 @@ class FastAccessAddWorkLogComponent extends React.Component {
     if (!config || !workMonthList || !workMonth || isFetching) {
       return (
         <div className={styles.centeredText}>
-          {t('general:text.loading')}
+          <Loader />
         </div>
       );
     }
@@ -188,17 +100,11 @@ class FastAccessAddWorkLogComponent extends React.Component {
     }
 
     return (
-      <WorkLogForm
-        banWorkLogsOfDay={workMonth ? getWorkLogsByDay(selectedDate, workMonth.get('banWorkLogs')) : []}
-        config={config}
+      <WorkLogFormModal
         date={selectedDate}
-        isPosting={isPosting}
         onClose={() => this.setState({ isClosed: true })}
-        onSave={this.saveWorkLogForm}
-        showWorkLogTimer
-        user={workMonth.get('user')}
-        workLogsOfDay={workMonth ? getWorkLogsByDay(selectedDate, workMonth.get('workLogs')) : []}
-        showInfoText={false}
+        onAfterSave={() => this.setState({ isSaved: true })}
+        isWorkLogTimerDisplayed
       />
     );
   }
@@ -211,28 +117,18 @@ FastAccessAddWorkLogComponent.defaultProps = {
 };
 
 FastAccessAddWorkLogComponent.propTypes = {
-  addBusinessTripWorkLog: PropTypes.func.isRequired,
-  addHomeOfficeWorkLog: PropTypes.func.isRequired,
-  addMultipleSpecialLeaveWorkLog: PropTypes.func.isRequired,
-  addMultipleVacationWorkLog: PropTypes.func.isRequired,
-  addOvertimeWorkLog: PropTypes.func.isRequired,
-  addSickDayWorkLog: PropTypes.func.isRequired,
-  addTimeOffWorkLog: PropTypes.func.isRequired,
-  addWorkLog: PropTypes.func.isRequired,
-  config: ImmutablePropTypes.mapContains({}),
+  config: PropTypes.shape({}),
   fetchConfig: PropTypes.func.isRequired,
   fetchUserByApiToken: PropTypes.func.isRequired,
   fetchWorkMonth: PropTypes.func.isRequired,
   fetchWorkMonthList: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  isPosting: PropTypes.bool.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       apiToken: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-  t: PropTypes.func.isRequired,
-  workMonth: ImmutablePropTypes.mapContains({
+  workMonth: PropTypes.shape({
     id: PropTypes.number.isRequired,
     month: PropTypes.shape.isRequired,
     status: PropTypes.oneOf([
@@ -240,18 +136,18 @@ FastAccessAddWorkLogComponent.propTypes = {
       STATUS_OPENED,
       STATUS_WAITING_FOR_APPROVAL,
     ]).isRequired,
-    workLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+    workLogs: PropTypes.arrayOf(PropTypes.shape({
       endTime: PropTypes.shape.isRequired,
       id: PropTypes.number.isRequired,
       startTime: PropTypes.shape.isRequired,
     })).isRequired,
     year: PropTypes.number,
   }),
-  workMonthList: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+  workMonthList: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     month: PropTypes.shape.isRequired,
     year: PropTypes.number.isRequired,
   })),
 };
 
-export default withTranslation()(FastAccessAddWorkLogComponent);
+export default FastAccessAddWorkLogComponent;

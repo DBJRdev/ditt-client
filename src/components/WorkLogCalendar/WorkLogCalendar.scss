@@ -58,6 +58,7 @@ $_table-cell-padding-y: 0.25rem;
 .tableWrapper {
   display: block;
   width: 100%;
+  min-width: 35em;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;

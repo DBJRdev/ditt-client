@@ -32,15 +32,18 @@ import {
   toDayMonthYearFormat,
   toHourMinuteFormat,
 } from '../../../../services/dateTimeService';
+import { Loader } from '../../../Loader';
 
 const WorkLogDetailModal = (props) => {
   const {
     banWorkLog,
     businessTripWorkLog,
     homeOfficeWorkLog,
+    id,
     isInSupervisorMode,
     isPosting,
     maternityProtectionWorkLog,
+    onAfterDelete,
     onClose,
     onDelete,
     overtimeWorkLog,
@@ -57,7 +60,7 @@ const WorkLogDetailModal = (props) => {
     workMonth,
   } = props;
 
-  let content = t('general:text.loading');
+  let content = <Loader />;
 
   if (BAN_WORK_LOG === type && banWorkLog) {
     const { workTimeLimit } = banWorkLog;
@@ -427,7 +430,7 @@ const WorkLogDetailModal = (props) => {
       color: 'danger',
       feedbackIcon: isPosting ? <LoadingIcon /> : null,
       label: t('general:action.delete'),
-      onClick: onDelete,
+      onClick: () => onDelete(id, type).then(() => onAfterDelete()),
     });
   }
 
@@ -494,6 +497,7 @@ WorkLogDetailModal.propTypes = {
   maternityProtectionWorkLog: PropTypes.shape({
     date: PropTypes.shape().isRequired,
   }),
+  onAfterDelete: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
   overtimeWorkLog: PropTypes.shape({

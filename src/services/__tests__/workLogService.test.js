@@ -1,4 +1,3 @@
-import Immutable from 'immutable';
 import { toMomentDateTime } from '../dateTimeService';
 import {
   collapseWorkLogs,
@@ -5184,30 +5183,39 @@ describe('getWorkedTime', () => {
 describe('collapseWorkLogs', () => {
   it('test collapse no work logs', () => {
     expect(collapseWorkLogs(
-      Immutable.List([]),
-      configMock.get('supportedHolidays'),
+      [],
+      configMock.get('supportedHolidays').toJS(),
     ).length).toEqual(0);
   });
 
   it('test collapse work logs', () => {
+    const workMonth = {
+      user: {
+        firstName: 'firstName',
+        lastName: 'lastName',
+      },
+    };
     const workLogs = [
       {
         date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
         id: 1,
         status: 'APPROVED',
         type: 'VACATION_WORK_LOG',
+        workMonth,
       },
       {
         date: toMomentDateTime('2018-01-03T12:00:00.000Z'),
         id: 2,
         status: 'APPROVED',
         type: 'VACATION_WORK_LOG',
+        workMonth,
       },
       {
         date: toMomentDateTime('2018-01-04T12:00:00.000Z'),
         id: 3,
         status: 'APPROVED',
         type: 'VACATION_WORK_LOG',
+        workMonth,
       },
       {
         date: toMomentDateTime('2018-01-09T12:00:00.000Z'),
@@ -5215,6 +5223,7 @@ describe('collapseWorkLogs', () => {
         rejectionMessage: 'Message 1',
         status: 'REJECTED',
         type: 'VACATION_WORK_LOG',
+        workMonth,
       },
       {
         date: toMomentDateTime('2018-01-10T12:00:00.000Z'),
@@ -5222,6 +5231,7 @@ describe('collapseWorkLogs', () => {
         rejectionMessage: 'Message 1',
         status: 'REJECTED',
         type: 'VACATION_WORK_LOG',
+        workMonth,
       },
       {
         date: toMomentDateTime('2018-01-11T12:00:00.000Z'),
@@ -5229,28 +5239,31 @@ describe('collapseWorkLogs', () => {
         rejectionMessage: 'Message 2',
         status: 'REJECTED',
         type: 'VACATION_WORK_LOG',
+        workMonth,
       },
       {
         date: toMomentDateTime('2018-12-23T12:00:00.000Z'),
         id: 7,
         status: 'APPROVED',
         type: 'VACATION_WORK_LOG',
+        workMonth,
       },
       {
         date: toMomentDateTime('2018-12-27T12:00:00.000Z'),
         id: 8,
         status: 'APPROVED',
         type: 'VACATION_WORK_LOG',
+        workMonth,
       },
     ];
 
     const collapsedWorkLogs = collapseWorkLogs(
-      Immutable.fromJS(workLogs),
-      configMock.get('supportedHolidays'),
+      workLogs,
+      configMock.get('supportedHolidays').toJS(),
     );
 
     expect(collapsedWorkLogs.length).toEqual(4);
-    expect(collapsedWorkLogs[0]).toEqual(Immutable.fromJS({
+    expect(collapsedWorkLogs[0]).toEqual({
       bulkIds: [1, 2, 3],
       date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
       dateTo: toMomentDateTime('2018-01-04T12:00:00.000Z'),
@@ -5258,8 +5271,9 @@ describe('collapseWorkLogs', () => {
       isBulk: true,
       status: 'APPROVED',
       type: 'VACATION_WORK_LOG',
-    }));
-    expect(collapsedWorkLogs[1]).toEqual(Immutable.fromJS({
+      workMonth,
+    });
+    expect(collapsedWorkLogs[1]).toEqual({
       bulkIds: [7, 8],
       date: toMomentDateTime('2018-12-23T12:00:00.000Z'),
       dateTo: toMomentDateTime('2018-12-27T12:00:00.000Z'),
@@ -5267,8 +5281,9 @@ describe('collapseWorkLogs', () => {
       isBulk: true,
       status: 'APPROVED',
       type: 'VACATION_WORK_LOG',
-    }));
-    expect(collapsedWorkLogs[2]).toEqual(Immutable.fromJS({
+      workMonth,
+    });
+    expect(collapsedWorkLogs[2]).toEqual({
       bulkIds: [4, 5],
       date: toMomentDateTime('2018-01-09T12:00:00.000Z'),
       dateTo: toMomentDateTime('2018-01-10T12:00:00.000Z'),
@@ -5277,14 +5292,16 @@ describe('collapseWorkLogs', () => {
       rejectionMessage: 'Message 1',
       status: 'REJECTED',
       type: 'VACATION_WORK_LOG',
-    }));
-    expect(collapsedWorkLogs[3]).toEqual(Immutable.fromJS({
+      workMonth,
+    });
+    expect(collapsedWorkLogs[3]).toEqual({
       date: toMomentDateTime('2018-01-11T12:00:00.000Z'),
       id: 6,
       isBulk: false,
       rejectionMessage: 'Message 2',
       status: 'REJECTED',
       type: 'VACATION_WORK_LOG',
-    }));
+      workMonth,
+    });
   });
 });

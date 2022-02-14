@@ -1,5 +1,4 @@
-import Immutable from 'immutable';
-import ImmutablePropTypes from 'react-immutable-proptypes';
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 import decode from 'jwt-decode';
@@ -91,7 +90,7 @@ class SpecialApprovalListComponent extends React.Component {
   }
 
   getFilteredSpecialApprovals() {
-    let specialApprovalList = Immutable.List();
+    let specialApprovalList = [];
 
     if (!this.props.config) {
       return specialApprovalList;
@@ -105,19 +104,25 @@ class SpecialApprovalListComponent extends React.Component {
       'timeOffWorkLogs',
       'vacationWorkLogs',
     ].forEach((key) => {
-      specialApprovalList = specialApprovalList.concat((
-        collapseWorkLogs(
-          this.props.specialApprovalList.get(key),
-          this.props.config.get('supportedHolidays'),
+      specialApprovalList = [
+        ...specialApprovalList,
+        ...collapseWorkLogs(
+          this.props.specialApprovalList[key],
+          this.props.config.supportedHolidays,
         ).map(
-          (workLog) => workLog
-            .set('rawId', workLog.get('id'))
-            .set('id', `${workLog.get('type')}-${workLog.get('id')}`),
-        )
-      ));
+          (workLog) => ({
+            ...workLog,
+            id: `${workLog.type}-${workLog.id}`,
+            rawId: workLog.id,
+          }),
+        ),
+      ];
     });
 
-    return specialApprovalList.sortBy((workLog) => -workLog.get('date'));
+    return specialApprovalList
+      .sort((workLogA, workLogB) => (workLogA.workMonth.user.firstName > workLogB.workMonth.user.firstName ? 1 : -1))
+      .sort((workLogA, workLogB) => (workLogA.workMonth.user.lastName > workLogB.workMonth.user.lastName ? 1 : -1))
+      .sort((workLogA, workLogB) => (workLogA.date.unix() > workLogB.date.unix() ? 1 : -1));
   }
 
   handleMarkApproved(id, type, isBulk) {
@@ -410,7 +415,9 @@ class SpecialApprovalListComponent extends React.Component {
     });
   }
 
-  onRejectWorkLog() {
+  onRejectWorkLog(e) {
+    e.preventDefault();
+
     const {
       rejectWorkLogForm,
       showRejectWorkLogFormId,
@@ -450,6 +457,7 @@ class SpecialApprovalListComponent extends React.Component {
             feedbackIcon: this.props.isPosting ? <LoadingIcon /> : null,
             label: t('general:action.reject'),
             onClick: this.onRejectWorkLog,
+            type: 'submit',
           },
         ]}
         onClose={this.closeDeleteWorkLogForm}
@@ -490,7 +498,7 @@ class SpecialApprovalListComponent extends React.Component {
         <p>
           {isBulk ? t('workLog:element.dateFrom') : t('workLog:element.date')}
           {': '}
-          {toDayDayMonthYearFormat(this.props.businessTripWorkLog.get('date'))}
+          {toDayDayMonthYearFormat(this.props.businessTripWorkLog.date)}
           <br />
 
           {isBulk ? (
@@ -504,41 +512,41 @@ class SpecialApprovalListComponent extends React.Component {
 
           {t('workLog:element.status')}
           {': '}
-          {getStatusLabel(t, this.props.businessTripWorkLog.get('status'))}
+          {getStatusLabel(t, this.props.businessTripWorkLog.status)}
           <br />
 
-          {STATUS_REJECTED === this.props.businessTripWorkLog.get('status') && (
+          {STATUS_REJECTED === this.props.businessTripWorkLog.status && (
             <>
               {t('workLog:element.rejectionMessage')}
               {': '}
-              {this.props.businessTripWorkLog.get('rejectionMessage')}
+              {this.props.businessTripWorkLog.rejectionMessage}
               <br />
             </>
           )}
 
           {t('businessTripWorkLog:element.purpose')}
           {': '}
-          {this.props.businessTripWorkLog.get('purpose')}
+          {this.props.businessTripWorkLog.purpose}
           <br />
 
           {t('businessTripWorkLog:element.destination')}
           {': '}
-          {this.props.businessTripWorkLog.get('destination')}
+          {this.props.businessTripWorkLog.destination}
           <br />
 
           {t('businessTripWorkLog:element.transport')}
           {': '}
-          {this.props.businessTripWorkLog.get('transport')}
+          {this.props.businessTripWorkLog.transport}
           <br />
 
           {t('businessTripWorkLog:element.expectedDeparture')}
           {': '}
-          {this.props.businessTripWorkLog.get('expectedDeparture')}
+          {this.props.businessTripWorkLog.expectedDeparture}
           <br />
 
           {t('businessTripWorkLog:element.expectedArrival')}
           {': '}
-          {this.props.businessTripWorkLog.get('expectedArrival')}
+          {this.props.businessTripWorkLog.expectedArrival}
         </p>
       );
     } else if (HOME_OFFICE_WORK_LOG === type && this.props.homeOfficeWorkLog) {
@@ -546,7 +554,7 @@ class SpecialApprovalListComponent extends React.Component {
         <p>
           {isBulk ? t('workLog:element.dateFrom') : t('workLog:element.date')}
           {': '}
-          {toDayDayMonthYearFormat(this.props.homeOfficeWorkLog.get('date'))}
+          {toDayDayMonthYearFormat(this.props.homeOfficeWorkLog.date)}
           <br />
 
           {isBulk ? (
@@ -560,19 +568,19 @@ class SpecialApprovalListComponent extends React.Component {
 
           {t('homeOfficeWorkLog:element.comment')}
           {': '}
-          {this.props.homeOfficeWorkLog.get('comment') || '-'}
+          {this.props.homeOfficeWorkLog.comment || '-'}
           <br />
 
           {t('workLog:element.status')}
           {': '}
-          {getStatusLabel(t, this.props.homeOfficeWorkLog.get('status'))}
+          {getStatusLabel(t, this.props.homeOfficeWorkLog.status)}
           <br />
 
-          {STATUS_REJECTED === this.props.homeOfficeWorkLog.get('status') && (
+          {STATUS_REJECTED === this.props.homeOfficeWorkLog.status && (
             <>
               {t('workLog:element.rejectionMessage')}
               {': '}
-              {this.props.homeOfficeWorkLog.get('rejectionMessage')}
+              {this.props.homeOfficeWorkLog.rejectionMessage}
               <br />
             </>
           )}
@@ -583,7 +591,7 @@ class SpecialApprovalListComponent extends React.Component {
         <p>
           {isBulk ? t('workLog:element.dateFrom') : t('workLog:element.date')}
           {': '}
-          {toDayDayMonthYearFormat(this.props.overtimeWorkLog.get('date'))}
+          {toDayDayMonthYearFormat(this.props.overtimeWorkLog.date)}
           <br />
 
           {isBulk ? (
@@ -597,21 +605,21 @@ class SpecialApprovalListComponent extends React.Component {
 
           {t('workLog:element.status')}
           {': '}
-          {getStatusLabel(t, this.props.overtimeWorkLog.get('status'))}
+          {getStatusLabel(t, this.props.overtimeWorkLog.status)}
           <br />
 
-          {STATUS_REJECTED === this.props.overtimeWorkLog.get('status') && (
+          {STATUS_REJECTED === this.props.overtimeWorkLog.status && (
             <>
               {t('workLog:element.rejectionMessage')}
               {': '}
-              {this.props.overtimeWorkLog.get('rejectionMessage')}
+              {this.props.overtimeWorkLog.rejectionMessage}
               <br />
             </>
           )}
 
           {t('overtimeWorkLog:element.reason')}
           {': '}
-          {this.props.overtimeWorkLog.get('reason')}
+          {this.props.overtimeWorkLog.reason}
         </p>
       );
     } else if (TIME_OFF_WORK_LOG === type && this.props.timeOffWorkLog) {
@@ -619,7 +627,7 @@ class SpecialApprovalListComponent extends React.Component {
         <p>
           {isBulk ? t('workLog:element.dateFrom') : t('workLog:element.date')}
           {': '}
-          {toDayDayMonthYearFormat(this.props.timeOffWorkLog.get('date'))}
+          {toDayDayMonthYearFormat(this.props.timeOffWorkLog.date)}
           <br />
 
           {isBulk ? (
@@ -633,19 +641,19 @@ class SpecialApprovalListComponent extends React.Component {
 
           {t('timeOffWorkLog:element.comment')}
           {': '}
-          {this.props.timeOffWorkLog.get('comment') || '-'}
+          {this.props.timeOffWorkLog.comment || '-'}
           <br />
 
           {t('workLog:element.status')}
           {': '}
-          {getStatusLabel(t, this.props.timeOffWorkLog.get('status'))}
+          {getStatusLabel(t, this.props.timeOffWorkLog.status)}
           <br />
 
-          {STATUS_REJECTED === this.props.timeOffWorkLog.get('status') && (
+          {STATUS_REJECTED === this.props.timeOffWorkLog.status && (
             <>
               {t('workLog:element.rejectionMessage')}
               {': '}
-              {this.props.timeOffWorkLog.get('rejectionMessage')}
+              {this.props.timeOffWorkLog.rejectionMessage}
               <br />
             </>
           )}
@@ -656,7 +664,7 @@ class SpecialApprovalListComponent extends React.Component {
         <p>
           {isBulk ? t('workLog:element.dateFrom') : t('workLog:element.date')}
           {': '}
-          {toDayDayMonthYearFormat(this.props.specialLeaveWorkLog.get('date'))}
+          {toDayDayMonthYearFormat(this.props.specialLeaveWorkLog.date)}
           <br />
 
           {isBulk ? (
@@ -670,14 +678,14 @@ class SpecialApprovalListComponent extends React.Component {
 
           {t('workLog:element.status')}
           {': '}
-          {getStatusLabel(t, this.props.specialLeaveWorkLog.get('status'))}
+          {getStatusLabel(t, this.props.specialLeaveWorkLog.status)}
           <br />
 
-          {STATUS_REJECTED === this.props.specialLeaveWorkLog.get('status') && (
+          {STATUS_REJECTED === this.props.specialLeaveWorkLog.status && (
             <>
               {t('workLog:element.rejectionMessage')}
               {': '}
-              {this.props.specialLeaveWorkLog.get('rejectionMessage')}
+              {this.props.specialLeaveWorkLog.rejectionMessage}
               <br />
             </>
           )}
@@ -688,7 +696,7 @@ class SpecialApprovalListComponent extends React.Component {
         <p>
           {isBulk ? t('workLog:element.dateFrom') : t('workLog:element.date')}
           {': '}
-          {toDayDayMonthYearFormat(this.props.vacationWorkLog.get('date'))}
+          {toDayDayMonthYearFormat(this.props.vacationWorkLog.date)}
           <br />
 
           {isBulk ? (
@@ -702,14 +710,14 @@ class SpecialApprovalListComponent extends React.Component {
 
           {t('workLog:element.status')}
           {': '}
-          {getStatusLabel(t, this.props.vacationWorkLog.get('status'))}
+          {getStatusLabel(t, this.props.vacationWorkLog.status)}
           <br />
 
-          {STATUS_REJECTED === this.props.vacationWorkLog.get('status') && (
+          {STATUS_REJECTED === this.props.vacationWorkLog.status && (
             <>
               {t('workLog:element.rejectionMessage')}
               {': '}
-              {this.props.vacationWorkLog.get('rejectionMessage')}
+              {this.props.vacationWorkLog.rejectionMessage}
               <br />
             </>
           )}
@@ -753,7 +761,7 @@ class SpecialApprovalListComponent extends React.Component {
 
     return (
       <div>
-        {specialApprovals.count() > 0 ? (
+        {specialApprovals.length > 0 ? (
           <ScrollView direction="horizontal">
             <Table
               columns={[
@@ -956,7 +964,7 @@ class SpecialApprovalListComponent extends React.Component {
                   name: 'actions',
                 },
               ]}
-              rows={specialApprovals.toJS()}
+              rows={specialApprovals}
             />
           </ScrollView>
         ) : (
@@ -982,8 +990,8 @@ SpecialApprovalListComponent.defaultProps = {
 };
 
 SpecialApprovalListComponent.propTypes = {
-  businessTripWorkLog: ImmutablePropTypes.mapContains({
-    date: PropTypes.object.isRequired,
+  businessTripWorkLog: PropTypes.shape({
+    date: PropTypes.instanceOf(moment).isRequired,
     destination: PropTypes.string.isRequired,
     expectedArrival: PropTypes.string.isRequired,
     expectedDeparture: PropTypes.string.isRequired,
@@ -992,7 +1000,9 @@ SpecialApprovalListComponent.propTypes = {
     status: PropTypes.string.isRequired,
     transport: PropTypes.string.isRequired,
   }),
-  config: ImmutablePropTypes.mapContains({}),
+  config: PropTypes.shape({
+    supportedHolidays: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  }),
   fetchBusinessTripWorkLog: PropTypes.func.isRequired,
   fetchConfig: PropTypes.func.isRequired,
   fetchHomeOfficeWorkLog: PropTypes.func.isRequired,
@@ -1001,8 +1011,9 @@ SpecialApprovalListComponent.propTypes = {
   fetchSpecialLeaveWorkLog: PropTypes.func.isRequired,
   fetchTimeOffWorkLog: PropTypes.func.isRequired,
   fetchVacationWorkLog: PropTypes.func.isRequired,
-  homeOfficeWorkLog: ImmutablePropTypes.mapContains({
-    date: PropTypes.object.isRequired,
+  homeOfficeWorkLog: PropTypes.shape({
+    comment: PropTypes.string,
+    date: PropTypes.instanceOf(moment).isRequired,
     rejectionMessage: PropTypes.string,
     status: PropTypes.string.isRequired,
   }),
@@ -1031,84 +1042,84 @@ SpecialApprovalListComponent.propTypes = {
   markTimeOffWorkLogRejected: PropTypes.func.isRequired,
   markVacationWorkLogApproved: PropTypes.func.isRequired,
   markVacationWorkLogRejected: PropTypes.func.isRequired,
-  overtimeWorkLog: ImmutablePropTypes.mapContains({
-    date: PropTypes.object.isRequired,
+  overtimeWorkLog: PropTypes.shape({
+    date: PropTypes.instanceOf(moment).isRequired,
     reason: PropTypes.string,
     rejectionMessage: PropTypes.string,
     status: PropTypes.string.isRequired,
   }),
-  specialApprovalList: ImmutablePropTypes.mapContains({
-    businessTripWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+  specialApprovalList: PropTypes.shape({
+    businessTripWorkLogs: PropTypes.arrayOf(PropTypes.shape({
       date: PropTypes.shape.isRequired,
       id: PropTypes.number.isRequired,
       type: PropTypes.oneOf([BUSINESS_TRIP_WORK_LOG]).isRequired,
-      workMonth: ImmutablePropTypes.mapContains({
-        user: ImmutablePropTypes.mapContains({
+      workMonth: PropTypes.shape({
+        user: PropTypes.shape({
           firstName: PropTypes.string.isRequired,
           lastName: PropTypes.string.isRequired,
         }).isRequired,
       }).isRequired,
     })).isRequired,
-    homeOfficeWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+    homeOfficeWorkLogs: PropTypes.arrayOf(PropTypes.shape({
       comment: PropTypes.string,
       date: PropTypes.shape.isRequired,
       id: PropTypes.number.isRequired,
       type: PropTypes.oneOf([HOME_OFFICE_WORK_LOG]).isRequired,
-      workMonth: ImmutablePropTypes.mapContains({
-        user: ImmutablePropTypes.mapContains({
+      workMonth: PropTypes.shape({
+        user: PropTypes.shape({
           firstName: PropTypes.string.isRequired,
           lastName: PropTypes.string.isRequired,
         }).isRequired,
       }).isRequired,
     })).isRequired,
-    overtimeWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+    overtimeWorkLogs: PropTypes.arrayOf(PropTypes.shape({
       date: PropTypes.shape.isRequired,
       id: PropTypes.number.isRequired,
       type: PropTypes.oneOf([OVERTIME_WORK_LOG]).isRequired,
-      workMonth: ImmutablePropTypes.mapContains({
-        user: ImmutablePropTypes.mapContains({
+      workMonth: PropTypes.shape({
+        user: PropTypes.shape({
           firstName: PropTypes.string.isRequired,
           lastName: PropTypes.string.isRequired,
         }).isRequired,
       }).isRequired,
     })).isRequired,
-    specialLeaveWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+    specialLeaveWorkLogs: PropTypes.arrayOf(PropTypes.shape({
       date: PropTypes.shape.isRequired,
       id: PropTypes.number.isRequired,
       type: PropTypes.oneOf([SPECIAL_LEAVE_WORK_LOG]).isRequired,
-      workMonth: ImmutablePropTypes.mapContains({
-        user: ImmutablePropTypes.mapContains({
+      workMonth: PropTypes.shape({
+        user: PropTypes.shape({
           firstName: PropTypes.string.isRequired,
           lastName: PropTypes.string.isRequired,
         }).isRequired,
       }).isRequired,
     })).isRequired,
-    timeOffWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+    timeOffWorkLogs: PropTypes.arrayOf(PropTypes.shape({
       comment: PropTypes.string,
       date: PropTypes.shape.isRequired,
       id: PropTypes.number.isRequired,
       type: PropTypes.oneOf([TIME_OFF_WORK_LOG]).isRequired,
-      workMonth: ImmutablePropTypes.mapContains({
-        user: ImmutablePropTypes.mapContains({
+      workMonth: PropTypes.shape({
+        user: PropTypes.shape({
           firstName: PropTypes.string.isRequired,
           lastName: PropTypes.string.isRequired,
         }).isRequired,
       }).isRequired,
     })).isRequired,
-    vacationWorkLogs: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+    vacationWorkLogs: PropTypes.arrayOf(PropTypes.shape({
       date: PropTypes.shape.isRequired,
       id: PropTypes.number.isRequired,
       type: PropTypes.oneOf([VACATION_WORK_LOG]).isRequired,
-      workMonth: ImmutablePropTypes.mapContains({
-        user: ImmutablePropTypes.mapContains({
+      workMonth: PropTypes.shape({
+        user: PropTypes.shape({
           firstName: PropTypes.string.isRequired,
           lastName: PropTypes.string.isRequired,
         }).isRequired,
       }).isRequired,
     })).isRequired,
   }).isRequired,
-  specialLeaveWorkLog: ImmutablePropTypes.mapContains({
-    date: PropTypes.object.isRequired,
+  specialLeaveWorkLog: PropTypes.shape({
+    date: PropTypes.instanceOf(moment).isRequired,
     rejectionMessage: PropTypes.string,
     status: PropTypes.string.isRequired,
   }),
@@ -1125,14 +1136,15 @@ SpecialApprovalListComponent.propTypes = {
   supportTimeOffWorkLog: PropTypes.func.isRequired,
   supportVacationWorkLog: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
-  timeOffWorkLog: ImmutablePropTypes.mapContains({
-    date: PropTypes.object.isRequired,
+  timeOffWorkLog: PropTypes.shape({
+    comment: PropTypes.string,
+    date: PropTypes.instanceOf(moment).isRequired,
     rejectionMessage: PropTypes.string,
     status: PropTypes.string.isRequired,
   }),
   token: PropTypes.string.isRequired,
-  vacationWorkLog: ImmutablePropTypes.mapContains({
-    date: PropTypes.object.isRequired,
+  vacationWorkLog: PropTypes.shape({
+    date: PropTypes.instanceOf(moment).isRequired,
     rejectionMessage: PropTypes.string,
     status: PropTypes.string.isRequired,
   }),

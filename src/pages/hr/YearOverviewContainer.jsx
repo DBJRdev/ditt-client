@@ -17,7 +17,7 @@ const mapStateToProps = (state) => {
   const yearOverviewMeta = selectYearOverviewsMeta(state);
 
   return ({
-    config: selectConfig(state),
+    config: selectConfig(state)?.toJS(),
     isFetching: configMeta.isFetching || yearOverviewMeta.isFetching,
     token: selectJwtToken(state),
     yearOverview: selectYearOverview(state),

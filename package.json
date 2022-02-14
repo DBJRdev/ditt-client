@@ -9,7 +9,7 @@
   },
   "main": "src/main.jsx",
   "dependencies": {
-    "@react-ui-org/react-ui": "~0.44.0",
+    "@react-ui-org/react-ui": "^0.45.0",
     "history": "^4.10.1",
     "i18next": "^21.5.4",
     "immutable": "^4.0.0",

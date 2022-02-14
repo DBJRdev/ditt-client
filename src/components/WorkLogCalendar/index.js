@@ -1,3 +1,1 @@
-import WorkLogCalendar from './WorkLogCalendar';
-
-export default WorkLogCalendar;
+export { default as WorkLogCalendar } from './WorkLogCalendarContainer';

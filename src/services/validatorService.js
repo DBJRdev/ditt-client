@@ -369,20 +369,20 @@ export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay, ban
     const workingDays = getWorkingDays(
       toMomentDateTimeFromDayMonthYear(workLog.date),
       toMomentDateTimeFromDayMonthYear(workLog.dateTo),
-      config.get('supportedHolidays'),
+      config.supportedHolidays,
     );
 
-    config.get('supportedYears').forEach((supportedYear) => {
+    config.supportedYears.forEach((supportedYear) => {
       vacationDaysByYear[supportedYear] = 0;
     });
     workingDays.forEach((workingDay) => {
       vacationDaysByYear[workingDay.year()] += 1;
     });
 
-    config.get('supportedYears').forEach((supportedYear) => {
-      const vacation = user.get('vacations').find((vacationItem) => vacationItem.get('year') === supportedYear);
+    config.supportedYears.forEach((supportedYear) => {
+      const vacation = user.vacations.find((vacationItem) => vacationItem.year === supportedYear);
 
-      if (vacationDaysByYear[supportedYear] > vacation.get('remainingVacationDays')) {
+      if (vacationDaysByYear[supportedYear] > vacation.remainingVacationDays) {
         errors.elements.form = t('workLog:validation.vacationDaysExceeded');
         errors.isValid = false;
       }

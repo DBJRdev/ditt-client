@@ -162,7 +162,7 @@ export const toDayDayMonthYearFormat = (momentDateTime) => {
 };
 
 export const getWorkingDays = (firstDay, lastDay, holidays) => {
-  const currentDay = firstDay;
+  const currentDay = firstDay.clone();
   const workingDays = [];
 
   while (currentDay.isSameOrBefore(lastDay, 'day')) {
@@ -177,7 +177,7 @@ export const getWorkingDays = (firstDay, lastDay, holidays) => {
 };
 
 export const getAllDays = (firstDay, lastDay) => {
-  const currentDay = firstDay;
+  const currentDay = firstDay.clone();
   const workingDays = [];
 
   while (currentDay.isSameOrBefore(lastDay, 'day')) {
@@ -189,7 +189,7 @@ export const getAllDays = (firstDay, lastDay) => {
 };
 
 export const getNumberOfWorkingDays = (firstDay, lastDay, holidays) => {
-  const currentDay = firstDay;
+  const currentDay = firstDay.clone();
   let workingDays = 0;
 
   while (currentDay.isSameOrBefore(lastDay, 'day')) {

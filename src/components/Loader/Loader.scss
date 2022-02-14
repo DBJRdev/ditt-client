@@ -1,0 +1,41 @@
+.loaderContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 5em;
+}
+
+.loader {
+  flex-shrink: 0;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.loaderCircle {
+  stroke: rgba(150, 150, 150, 0.85);
+  stroke-dasharray: 120, 200;
+  stroke-miterlimit: 50;
+  stroke-width: 10px;
+  fill: none;
+}
+
+/* stylelint-disable property-no-vendor-prefix */
+.loaderRotate {
+  -webkit-animation: spin 1s infinite linear;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+/* stylelint-enable */

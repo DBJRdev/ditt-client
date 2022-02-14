@@ -9,7 +9,7 @@ export const addMultipleBanWorkLogs = (data) => (dispatch) => dispatch({
       user: data.user,
       workLogs: data.workLogs.map((workLog) => ({
         date: toJson(workLog.date),
-        workTimeLimit: workLog.workTimeLimit,
+        workTimeLimit: data.workTimeLimit,
       })),
     }),
     endpoint: `${API_URL}/ban_work_logs/bulk`,

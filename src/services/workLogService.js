@@ -1,4 +1,3 @@
-import Immutable from 'immutable';
 import moment from 'moment';
 import {
   BAN_WORK_LOG,
@@ -268,11 +267,11 @@ export const getWorkedTime = (
 };
 
 export const getWorkLogsByDay = (date, workLogList) => workLogList.filter((workLog) => {
-  if (workLog.get('type') === WORK_LOG) {
-    return date.isSame(workLog.get('startTime'), 'day');
+  if (workLog.type === WORK_LOG) {
+    return date.isSame(workLog.startTime, 'day');
   }
 
-  return date.isSame(workLog.get('date'), 'day');
+  return date.isSame(workLog.date, 'day');
 });
 
 export const getWorkLogsByMonth = (date, workLogList) => workLogList.filter((workLog) => {
@@ -290,54 +289,54 @@ export const getWorkMonthByMonth = (date, workMonthList) => workMonthList.find((
 
 export const areWorkLogsSame = (a, b) => {
   if (
-    a.get('type') !== b.get('type')
-    || a.getIn(['workMonth', 'user', 'id']) !== b.getIn(['workMonth', 'user', 'id'])
-    || a.get('rejectionMessage') !== b.get('rejectionMessage')
+    a.type !== b.type
+    || a.workMonth.user.id !== b.workMonth.user.id
+    || a.rejectionMessage !== b.rejectionMessage
   ) {
     return false;
   }
 
   if (
-    a.get('type') === BUSINESS_TRIP_WORK_LOG
+    a.type === BUSINESS_TRIP_WORK_LOG
     && (
-      a.get('destination') !== b.get('destination')
-      || a.get('expectedArrival') !== b.get('expectedArrival')
-      || a.get('expectedDeparture') !== b.get('expectedDeparture')
-      || a.get('purpose') !== b.get('purpose')
-      || a.get('transport') !== b.get('transport')
+      a.destination !== b.destination
+      || a.expectedArrival !== b.expectedArrival
+      || a.expectedDeparture !== b.expectedDeparture
+      || a.purpose !== b.purpose
+      || a.transport !== b.transport
     )
   ) {
     return false;
   }
 
   if (
-    a.get('type') === HOME_OFFICE_WORK_LOG
-    && a.get('comment') !== b.get('comment')
+    a.type === HOME_OFFICE_WORK_LOG
+    && a.comment !== b.comment
   ) {
     return false;
   }
 
   if (
-    a.get('type') === OVERTIME_WORK_LOG
-    && a.get('reason') !== b.get('reason')
+    a.type === OVERTIME_WORK_LOG
+    && a.reason !== b.reason
   ) {
     return false;
   }
 
   if (
-    a.get('type') === SICK_DAY_WORK_LOG
+    a.type === SICK_DAY_WORK_LOG
     && (
-      a.get('childDateOfBirth') !== b.get('childDateOfBirth')
-      || a.get('childName') !== b.get('childName')
-      || a.get('variant') !== b.get('variant')
+      a.childDateOfBirth !== b.childDateOfBirth
+      || a.childName !== b.childName
+      || a.variant !== b.variant
     )
   ) {
     return false;
   }
 
   if (
-    a.get('type') === TIME_OFF_WORK_LOG
-    && a.get('comment') !== b.get('comment')
+    a.type === TIME_OFF_WORK_LOG
+    && a.comment !== b.comment
   ) {
     return false;
   }
@@ -352,14 +351,14 @@ export const collapseWorkLogs = (originalWorkLogs, supportedHolidays) => {
   // Group work logs by status and sort them by date
 
   originalWorkLogs
-    .sortBy((workLog) => workLog.get('date'))
-    .sortBy((workLog) => workLog.getIn(['workMonth', 'user', 'firstName']))
-    .sortBy((workLog) => workLog.getIn(['workMonth', 'user', 'lastName']))
+    .sort((workLogA, workLogB) => (workLogA.date.unix() > workLogB.date.unix() ? 1 : -1))
+    .sort((workLogA, workLogB) => (workLogA.workMonth.user.firstName > workLogB.workMonth.user.firstName ? 1 : -1))
+    .sort((workLogA, workLogB) => (workLogA.workMonth.user.lastName > workLogB.workMonth.user.lastName ? 1 : -1))
     .forEach((workLog) => {
-      let status = workLog.get('status');
+      let { status } = workLog;
 
       if (status === STATUS_REJECTED) {
-        status += `-${workLog.get('rejectionMessage')}`;
+        status += `-${workLog.rejectionMessage}`;
       }
 
       if (!workLogsByStatus[status]) {
@@ -382,7 +381,7 @@ export const collapseWorkLogs = (originalWorkLogs, supportedHolidays) => {
         firstWorkLog = workLog;
         collapsedWorkLog.push(workLog);
       } else if (
-        workLog.get('date').isSame(nextWorkingDay, 'day')
+        workLog.date.isSame(nextWorkingDay, 'day')
         && areWorkLogsSame(workLog, firstWorkLog)
       ) {
         // Add work log into array of collapsed work log
@@ -401,7 +400,7 @@ export const collapseWorkLogs = (originalWorkLogs, supportedHolidays) => {
 
       // Find next working day (to check whether next work log follows up on current work log)
 
-      nextWorkingDay = workLog.get('date').clone().add(1, 'day');
+      nextWorkingDay = workLog.date.clone().add(1, 'day');
 
       while (isWeekend(nextWorkingDay) || includesSameDate(nextWorkingDay, supportedHolidays)) {
         nextWorkingDay = nextWorkingDay.add(1, 'day');
@@ -417,14 +416,18 @@ export const collapseWorkLogs = (originalWorkLogs, supportedHolidays) => {
   // than one work logs (= is collapsed work log)
 
   workLogs = workLogs.map((collapsedWorkLog) => {
-    if (collapsedWorkLog.length === 1) {
-      return collapsedWorkLog[0].set('isBulk', false);
+    const collapsedWorkLogCopy = [...collapsedWorkLog];
+
+    if (collapsedWorkLogCopy.length === 1) {
+      collapsedWorkLogCopy[0].isBulk = false;
+
+      return collapsedWorkLogCopy[0];
     }
 
-    let bulkWorkLog = collapsedWorkLog[0];
-    bulkWorkLog = bulkWorkLog.set('dateTo', collapsedWorkLog[collapsedWorkLog.length - 1].get('date'));
-    bulkWorkLog = bulkWorkLog.set('bulkIds', Immutable.List(collapsedWorkLog.map((workLog) => workLog.get('id'))));
-    bulkWorkLog = bulkWorkLog.set('isBulk', true);
+    const bulkWorkLog = collapsedWorkLogCopy[0];
+    bulkWorkLog.dateTo = collapsedWorkLogCopy[collapsedWorkLogCopy.length - 1].date;
+    bulkWorkLog.bulkIds = collapsedWorkLogCopy.map((workLog) => workLog.id);
+    bulkWorkLog.isBulk = true;
 
     return bulkWorkLog;
   });

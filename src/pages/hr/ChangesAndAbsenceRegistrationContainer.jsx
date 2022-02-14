@@ -18,7 +18,7 @@ const mapStateToProps = (state) => {
 
   return ({
     changesAndAbsenceRegistrations: selectChangesAndAbsenceRegistrations(state),
-    config: selectConfig(state),
+    config: selectConfig(state)?.toJS(),
     isFetching: configMeta.isFetching || changesAndAbsenceRegistrationsMeta.isFetching,
     token: selectJwtToken(state),
   });

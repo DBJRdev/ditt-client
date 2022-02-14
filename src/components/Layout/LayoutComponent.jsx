@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
-import { withTranslation } from 'react-i18next';
-import { Header } from '../Header';
 import { Footer } from '../Footer';
+import { Header } from '../Header';
+import { Loader } from '../Loader';
+import GlobalProvider from '../../providers/global/GlobalProvider';
 import styles from './styles.scss';
 
 const LayoutComponent = ({
   children,
   loading,
   setLogoutLocally,
-  t,
   title,
   token,
   user,
@@ -32,10 +32,16 @@ const LayoutComponent = ({
       <Header user={user} />
       <main className={styles.main}>
         <div className={styles.body}>
-          {title && (
-            <h1 className={styles.bodyTitle}>{title}</h1>
-          )}
-          {loading ? t('general:text.loading') : children}
+          <GlobalProvider user={user}>
+            {title && (
+              <h1 className={styles.bodyTitle}>{title}</h1>
+            )}
+            {
+              loading
+                ? <Loader />
+                : children
+            }
+          </GlobalProvider>
         </div>
       </main>
       <Footer />
@@ -56,7 +62,6 @@ LayoutComponent.propTypes = {
   ]),
   loading: PropTypes.bool,
   setLogoutLocally: PropTypes.func.isRequired,
-  t: PropTypes.func.isRequired,
   title: PropTypes.string,
   token: PropTypes.shape({
     exp: PropTypes.number.isRequired,
@@ -68,4 +73,4 @@ LayoutComponent.propTypes = {
   }).isRequired,
 };
 
-export default withTranslation()(LayoutComponent);
+export default LayoutComponent;

@@ -101,9 +101,9 @@ const mapStateToProps = (state) => {
   const specialApprovalListMeta = selectSpecialApprovalListMeta(state);
 
   return ({
-    businessTripWorkLog: selectBusinessTripWorkLog(state),
-    config: selectConfig(state),
-    homeOfficeWorkLog: selectHomeOfficeWorkLog(state),
+    businessTripWorkLog: selectBusinessTripWorkLog(state)?.toJS(),
+    config: selectConfig(state)?.toJS(),
+    homeOfficeWorkLog: selectHomeOfficeWorkLog(state)?.toJS(),
     isFetching: configMeta.isFetching
       || specialApprovalListMeta.isFetching,
     isPosting: businessTripWorkLogMeta.isPosting
@@ -118,12 +118,12 @@ const mapStateToProps = (state) => {
       || timeOffWorkLogSupportMeta.isPosting
       || vacationWorkLogMeta.isPosting
       || vacationWorkLogSupportMeta.isPosting,
-    overtimeWorkLog: selectOvertimeWorkLog(state),
-    specialApprovalList: selectSpecialApprovalList(state),
-    specialLeaveWorkLog: selectSpecialLeaveWorkLog(state),
-    timeOffWorkLog: selectTimeOffWorkLog(state),
+    overtimeWorkLog: selectOvertimeWorkLog(state)?.toJS(),
+    specialApprovalList: selectSpecialApprovalList(state)?.toJS(),
+    specialLeaveWorkLog: selectSpecialLeaveWorkLog(state)?.toJS(),
+    timeOffWorkLog: selectTimeOffWorkLog(state)?.toJS(),
     token: selectJwtToken(state),
-    vacationWorkLog: selectVacationWorkLog(state),
+    vacationWorkLog: selectVacationWorkLog(state)?.toJS(),
   });
 };
 

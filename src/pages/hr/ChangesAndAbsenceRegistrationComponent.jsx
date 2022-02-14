@@ -1,4 +1,3 @@
-import { fromJS } from 'immutable';
 import { generate } from 'shortid';
 import PropTypes from 'prop-types';
 import React, {
@@ -197,27 +196,27 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
             },
             {
               format: (rowData) => collapseWorkLogs(
-                fromJS(rowData.sickDays.filter((sickDay) => sickDay.variant === VARIANT_SICK_CHILD)),
-                props.config.get('supportedHolidays'),
+                rowData.sickDays.filter((sickDay) => sickDay.variant === VARIANT_SICK_CHILD),
+                props.config.supportedHolidays,
               )
                 .map((sickDay, index, arr) => (
                   <div
                     className={(arr.length === index + 1) ? undefined : 'mb-2'}
                     key={generate()}
                   >
-                    {toDayMonthYearFormat(sickDay.get('date'))}
-                    {sickDay.get('isBulk') && (
+                    {toDayMonthYearFormat(sickDay.date)}
+                    {sickDay.isBulk && (
                       <>
                         {' – '}
-                        {toDayMonthYearFormat(sickDay.get('dateTo'))}
+                        {toDayMonthYearFormat(sickDay.dateTo)}
                       </>
                     )}
                     <br />
                     <span>
-                      {sickDay.get('childName')}
+                      {sickDay.childName}
                       {' '}
                       (*
-                      {toDayMonthYearFormat(sickDay.get('childDateOfBirth'))}
+                      {toDayMonthYearFormat(sickDay.childDateOfBirth)}
                       )
                     </span>
                   </div>
@@ -227,19 +226,19 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
             },
             {
               format: (rowData) => collapseWorkLogs(
-                fromJS(rowData.sickDays.filter((sickDay) => sickDay.variant !== VARIANT_SICK_CHILD)),
-                props.config.get('supportedHolidays'),
+                rowData.sickDays.filter((sickDay) => sickDay.variant !== VARIANT_SICK_CHILD),
+                props.config.supportedHolidays,
               )
                 .map((sickDay, index, arr) => (
                   <div
                     className={(arr.length === index + 1) ? undefined : 'mb-2'}
                     key={generate()}
                   >
-                    {toDayMonthYearFormat(sickDay.get('date'))}
-                    {sickDay.get('isBulk') && (
+                    {toDayMonthYearFormat(sickDay.date)}
+                    {sickDay.isBulk && (
                       <>
                         {' – '}
-                        {toDayMonthYearFormat(sickDay.get('dateTo'))}
+                        {toDayMonthYearFormat(sickDay.dateTo)}
                       </>
                     )}
                     <br />
@@ -264,7 +263,7 @@ ChangesAndAbsenceRegistrationComponent.defaultProps = {
 ChangesAndAbsenceRegistrationComponent.propTypes = {
   changesAndAbsenceRegistrations: PropTypes.arrayOf(PropTypes.shape),
   config: PropTypes.shape({
-    get: PropTypes.func.isRequired,
+    supportedHolidays: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   }),
   fetchChangesAndAbsenceRegistrations: PropTypes.func.isRequired,
   fetchConfig: PropTypes.func.isRequired,

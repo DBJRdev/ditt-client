@@ -1,1 +1,1 @@
-export { default as WorkLogDetailButton } from './WorkLogDetailButton';
+export { default as WorkLogDetailButton } from './WorkLogDetailButtonContainer';
