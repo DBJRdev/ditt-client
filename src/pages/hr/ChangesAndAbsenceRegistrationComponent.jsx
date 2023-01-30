@@ -15,7 +15,11 @@ import {
 } from '@react-ui-org/react-ui';
 import { withTranslation } from 'react-i18next';
 import { LoadingIcon } from '../../components/Icon';
-import { VARIANT_SICK_CHILD } from '../../resources/sickDayWorkLog';
+import {
+  VARIANT_SICK_CHILD,
+  VARIANT_WITH_NOTE,
+  VARIANT_WITHOUT_NOTE,
+} from '../../resources/sickDayWorkLog';
 import {
   localizedMoment,
   toAbsoluteHourMinuteFormatFromInt,
@@ -226,7 +230,7 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
             },
             {
               format: (rowData) => collapseWorkLogs(
-                rowData.sickDays.filter((sickDay) => sickDay.variant !== VARIANT_SICK_CHILD),
+                rowData.sickDays.filter((sickDay) => sickDay.variant === VARIANT_WITH_NOTE),
                 props.config.supportedHolidays,
               )
                 .map((sickDay, index, arr) => (
@@ -244,7 +248,30 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
                     <br />
                   </div>
                 )),
-              label: props.t('hr:element.employeeSickDays'),
+              label: props.t('hr:element.employeeSickDaysWithNote'),
+              name: 'employeeSickDays',
+            },
+            {
+              format: (rowData) => collapseWorkLogs(
+                rowData.sickDays.filter((sickDay) => sickDay.variant === VARIANT_WITHOUT_NOTE),
+                props.config.supportedHolidays,
+              )
+                .map((sickDay, index, arr) => (
+                  <div
+                    className={(arr.length === index + 1) ? undefined : 'mb-2'}
+                    key={generate()}
+                  >
+                    {toDayMonthYearFormat(sickDay.date)}
+                    {sickDay.isBulk && (
+                      <>
+                        {' – '}
+                        {toDayMonthYearFormat(sickDay.dateTo)}
+                      </>
+                    )}
+                    <br />
+                  </div>
+                )),
+              label: props.t('hr:element.employeeSickDaysWithoutNote'),
               name: 'employeeSickDays',
             },
           ]}
