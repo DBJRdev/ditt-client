@@ -180,7 +180,10 @@
     },
     "element": {
       "needApproval": "Need approval",
-      "monthlyLogs": "Monthly logs"
+      "monthlyLogs": "Monthly logs",
+      "sickChildTotal": "Sick child",
+      "sickDayTotal": "Sickness",
+      "last365Days": "Last 365 days"
     },
     "title": {
       "supervisedUsers": "Supervised users"

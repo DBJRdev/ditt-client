@@ -179,7 +179,10 @@
     },
     "element": {
       "needApproval": "Freigabe erforderlich",
-      "monthlyLogs": "Monatsübersicht"
+      "monthlyLogs": "Monatsübersicht",
+      "sickChildTotal": "Kind krank",
+      "sickDayTotal": "Krankheit",
+      "last365Days": "Letzte 365 Tage"
     },
     "title": {
       "supervisedUsers": "Mitarbeiter*innen"

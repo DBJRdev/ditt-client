@@ -25,6 +25,11 @@ import {
   toMonthFormat,
   toMonthYearFormat,
 } from '../../services/dateTimeService';
+import {
+  VARIANT_SICK_CHILD,
+  VARIANT_WITH_NOTE,
+  VARIANT_WITHOUT_NOTE,
+} from '../../resources/sickDayWorkLog';
 import styles from './supervisedUser.scss';
 
 class ListComponent extends React.Component {
@@ -85,8 +90,8 @@ class ListComponent extends React.Component {
               columns={[
                 {
                   format: (row) => (
-                    <span className={lighterRow(row)}>
-                      {`${row.firstName} ${row.lastName}`}
+                    <span className={lighterRow(row.user)}>
+                      {`${row.user.firstName} ${row.user.lastName}`}
                     </span>
                   ),
                   isSortable: true,
@@ -95,13 +100,13 @@ class ListComponent extends React.Component {
                 },
                 {
                   format: (row) => {
-                    const waitingForApproval = row.workMonths.filter((workMonth) => (
+                    const waitingForApproval = row.user.workMonths.filter((workMonth) => (
                       workMonth.status === STATUS_WAITING_FOR_APPROVAL
                     ));
 
                     if (!waitingForApproval.length) {
                       return (
-                        <span className={lighterRow(row)}>
+                        <span className={lighterRow(row.user)}>
                           {t('general:action.no')}
                         </span>
                       );
@@ -114,7 +119,7 @@ class ListComponent extends React.Component {
                         key={workMonth.id}
                         to={
                           routes.supervisedUserWorkLogWithDate
-                            .replace(':id', row.id)
+                            .replace(':id', row.user.id)
                             .replace(':year', workMonth.year)
                             .replace(':month', workMonth.month)
                         }
@@ -124,7 +129,7 @@ class ListComponent extends React.Component {
                     ));
 
                     return (
-                      <div className={lighterRow(row)}>
+                      <div className={lighterRow(row.user)}>
                         {t('general:action.yes')}
                         {' | '}
                         {waitingForApprovalLinks}
@@ -135,22 +140,46 @@ class ListComponent extends React.Component {
                   name: 'needApproval',
                 },
                 {
+                  format: (rowData) => rowData.sickDays
+                    .filter((sickDay) => sickDay.variant === VARIANT_SICK_CHILD).length,
+                  label: (
+                    <>
+                      {t('supervisedUser:element.sickChildTotal')}
+                      <br />
+                      {t('supervisedUser:element.last365Days')}
+                    </>
+                  ),
+                  name: 'totalSickChild',
+                },
+                {
+                  format: (rowData) => rowData.sickDays
+                    .filter((sickDay) => sickDay.variant !== VARIANT_SICK_CHILD).length,
+                  label: (
+                    <>
+                      {t('supervisedUser:element.sickDayTotal')}
+                      <br />
+                      {t('supervisedUser:element.last365Days')}
+                    </>
+                  ),
+                  name: 'totalSick',
+                },
+                {
                   format: (row) => {
-                    if (row.lastApprovedWorkMonth == null) {
+                    if (row.user.lastApprovedWorkMonth == null) {
                       return (
-                        <span className={lighterRow(row)}>
+                        <span className={lighterRow(row.user)}>
                           -
                         </span>
                       );
                     }
 
                     let time = null;
-                    if (row.yearStats) {
-                      const requiredHoursTotal = row.yearStats.reduce(
+                    if (row.user.yearStats) {
+                      const requiredHoursTotal = row.user.yearStats.reduce(
                         (total, userYearStat) => total + userYearStat.requiredHours,
                         0,
                       );
-                      const workedHoursTotal = row.yearStats.reduce(
+                      const workedHoursTotal = row.user.yearStats.reduce(
                         (total, userYearStat) => total + userYearStat.workedHours,
                         0,
                       );
@@ -158,15 +187,15 @@ class ListComponent extends React.Component {
                     }
 
                     return (
-                      <span className={lighterRow(row)}>
+                      <span className={lighterRow(row.user)}>
                         <Trans
                           components={[
                             <Link
                               to={
                                 routes.supervisedUserWorkLogWithDate
-                                  .replace(':id', row.id)
-                                  .replace(':year', row.lastApprovedWorkMonth.year.year)
-                                  .replace(':month', row.lastApprovedWorkMonth.month)
+                                  .replace(':id', row.user.id)
+                                  .replace(':year', row.user.lastApprovedWorkMonth.year.year)
+                                  .replace(':month', row.user.lastApprovedWorkMonth.month)
                               }
                             />,
                           ]}
@@ -174,8 +203,8 @@ class ListComponent extends React.Component {
                           t={t}
                           values={{
                             month: toMonthFormat(createDate(
-                              row.lastApprovedWorkMonth.year.year,
-                              row.lastApprovedWorkMonth.month - 1,
+                              row.user.lastApprovedWorkMonth.year.year,
+                              row.user.lastApprovedWorkMonth.month - 1,
                               1,
                             )),
                             time: time ? toHourMinuteFormatFromInt(time, true) : '-',
@@ -190,9 +219,9 @@ class ListComponent extends React.Component {
                 },
                 {
                   format: (row) => (
-                    <span className={lighterRow(row)}>
+                    <span className={lighterRow(row.user)}>
                       {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                      <Link to={routes.supervisedUserWorkLog.replace(':id', row.id)}>
+                      <Link to={routes.supervisedUserWorkLog.replace(':id', row.user.id)}>
                         {t('supervisedUser:action.show')}
                       </Link>
                     </span>
@@ -248,29 +277,38 @@ ListComponent.propTypes = {
   fetchSupervisedUserList: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
   supervisedUserList: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
-    firstName: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    lastApprovedWorkMonth: PropTypes.shape({
-      month: PropTypes.number.isRequired,
-      requiredTime: PropTypes.number.isRequired,
-      workedTime: PropTypes.number.isRequired,
-      year: PropTypes.shape({
-        year: PropTypes.number.isRequired,
-      }).isRequired,
-    }),
-    lastName: PropTypes.string.isRequired,
-    supervisor: ImmutablePropTypes.mapContains({
+    sickDays: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+      variant: PropTypes.oneOf([
+        VARIANT_SICK_CHILD,
+        VARIANT_WITH_NOTE,
+        VARIANT_WITHOUT_NOTE,
+      ]).isRequired,
+    })),
+    user: ImmutablePropTypes.mapContains({
       firstName: PropTypes.string.isRequired,
       id: PropTypes.number.isRequired,
+      lastApprovedWorkMonth: PropTypes.shape({
+        month: PropTypes.number.isRequired,
+        requiredTime: PropTypes.number.isRequired,
+        workedTime: PropTypes.number.isRequired,
+        year: PropTypes.shape({
+          year: PropTypes.number.isRequired,
+        }).isRequired,
+      }),
       lastName: PropTypes.string.isRequired,
+      supervisor: ImmutablePropTypes.mapContains({
+        firstName: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
+        lastName: PropTypes.string.isRequired,
+      }),
+      workMonths: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+        status: PropTypes.oneOf([
+          STATUS_APPROVED,
+          STATUS_OPENED,
+          STATUS_WAITING_FOR_APPROVAL,
+        ]).isRequired,
+      })).isRequired,
     }),
-    workMonths: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
-      status: PropTypes.oneOf([
-        STATUS_APPROVED,
-        STATUS_OPENED,
-        STATUS_WAITING_FOR_APPROVAL,
-      ]).isRequired,
-    })).isRequired,
   })).isRequired,
   t: PropTypes.func.isRequired,
   token: PropTypes.string.isRequired,
