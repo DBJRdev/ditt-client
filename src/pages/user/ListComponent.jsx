@@ -148,10 +148,10 @@ class ListComponent extends React.Component {
           format: (row) => (
             /* eslint-disable-next-line jsx-a11y/anchor-is-valid */
             <Link to={routes.supervisedUserWorkLog.replace(':id', row.id)}>
-              {t('user:action.showWorkLog')}
+              {t('user:action.show')}
             </Link>
           ),
-          label: t('user:action.showWorkLog'),
+          label: t('user:element.monthlyLogs'),
           name: 'showWorkLog',
         });
       }

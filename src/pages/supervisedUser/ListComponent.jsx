@@ -2,6 +2,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
 import decode from 'jwt-decode';
+import moment from 'moment-timezone';
 import { Link } from 'react-router-dom';
 import {
   Trans,
@@ -64,6 +65,7 @@ class ListComponent extends React.Component {
     const { t } = this.props;
 
     let uid = null;
+    const year = moment().year();
 
     if (this.props.token) {
       const decodedToken = decode(this.props.token);
@@ -216,6 +218,24 @@ class ListComponent extends React.Component {
                   isSortable: false,
                   label: t('user:element.endMonthStatus'),
                   name: 'endMonth',
+                },
+                {
+                  format: (row) => {
+                    const vacation = row.user.vacations.filter((vacationItem) => vacationItem.year.year === year)[0];
+
+                    if (row.yearStats) {
+                      const userYearStats = row.user.yearStats.filter((stats) => stats.year.year === year)[0];
+
+                      if (userYearStats && vacation) {
+                        return `${userYearStats.vacationDaysUsed}/${vacation.vacationDays + vacation.vacationDaysCorrection}`;
+                      }
+                    }
+
+                    return `0/${vacation.vacationDays}`;
+                  },
+                  isSortable: false,
+                  label: t('supervisedUser:element.vacationDaysUsed'),
+                  name: 'vacationDaysUsed',
                 },
                 {
                   format: (row) => (

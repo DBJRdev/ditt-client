@@ -45,7 +45,7 @@ exports[`rendering renders correctly 1`] = `
           },
           Object {
             "format": [Function],
-            "label": "user:action.showWorkLog",
+            "label": "user:element.monthlyLogs",
             "name": "showWorkLog",
           },
         ]

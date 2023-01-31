@@ -179,11 +179,12 @@
       "show": "Show"
     },
     "element": {
-      "needApproval": "Need approval",
+      "last365Days": "Last 365 days",
       "monthlyLogs": "Monthly logs",
+      "needApproval": "Need approval",
       "sickChildTotal": "Sick child",
       "sickDayTotal": "Sickness",
-      "last365Days": "Last 365 days"
+      "vacationDaysUsed": "Planned vacation days"
     },
     "title": {
       "supervisedUsers": "Supervised users"
@@ -238,9 +239,9 @@
       "enableICal": "Enable iCalendar",
       "resetApiToken": "Reset API token",
       "renewApiToken": "Renew API token",
+      "show": "Show",
       "showApiToken": "Show API token",
-      "showICalUrl": "Show iCalendar URL",
-      "showWorkLog": "Show work log"
+      "showICalUrl": "Show iCalendar URL"
     },
     "element": {
       "apiToken": "API token",
@@ -253,6 +254,7 @@
       "iCalUrl": "iCalendar URL",
       "isActive": "Active",
       "lastName": "Last name",
+      "monthlyLogs": "Monthly logs",
       "name": "Name",
       "plainPassword": "Password",
       "remainingVacationDays": "Remaining vacation days",

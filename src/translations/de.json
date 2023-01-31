@@ -178,11 +178,12 @@
       "show": "Zeigen"
     },
     "element": {
-      "needApproval": "Freigabe erforderlich",
+      "last365Days": "Letzte 365 Tage",
       "monthlyLogs": "Monatsübersicht",
+      "needApproval": "Freigabe erforderlich",
       "sickChildTotal": "Kind krank",
       "sickDayTotal": "Krankheit",
-      "last365Days": "Letzte 365 Tage"
+      "vacationDaysUsed": "Verplante Urlaubstage"
     },
     "title": {
       "supervisedUsers": "Mitarbeiter*innen"
@@ -237,9 +238,9 @@
       "enableICal": "iCalendar aktivieren",
       "resetApiToken": "Lösche API-Token",
       "renewApiToken": "Erneuere API-Token",
+      "show": "Zeigen",
       "showApiToken": "Zeige API-Token",
-      "showICalUrl": "iCalendar URL anzeigen",
-      "showWorkLog": "Zeige Einträge"
+      "showICalUrl": "iCalendar URL anzeigen"
     },
     "element": {
       "apiToken": "API-Token",
@@ -252,6 +253,7 @@
       "iCalUrl": "iCalendar URL",
       "isActive": "Aktiv",
       "lastName": "Familiennname",
+      "monthlyLogs": "Monatsübersicht",
       "name": "Name",
       "plainPassword": "Passwort",
       "remainingVacationDays": "Restliche Urlaubstage",
