@@ -64,6 +64,8 @@ class SpecialApprovalListComponent extends React.Component {
       showWorkLogDetailDialogDateTo: null,
       showWorkLogDetailDialogIsBulk: false,
       showWorkLogDetailDialogType: null,
+      tableSortColumn: 'lastName',
+      tableSortDirection: 'asc',
     };
 
     this.closeDeleteWorkLogForm = this.closeDeleteWorkLogForm.bind(this);
@@ -90,6 +92,11 @@ class SpecialApprovalListComponent extends React.Component {
   }
 
   getFilteredSpecialApprovals() {
+    const {
+      tableSortColumn,
+      tableSortDirection,
+    } = this.state;
+
     let specialApprovalList = [];
 
     if (!this.props.config) {
@@ -119,10 +126,29 @@ class SpecialApprovalListComponent extends React.Component {
       ];
     });
 
-    return specialApprovalList
-      .sort((workLogA, workLogB) => (workLogA.workMonth.user.firstName > workLogB.workMonth.user.firstName ? 1 : -1))
-      .sort((workLogA, workLogB) => (workLogA.workMonth.user.lastName > workLogB.workMonth.user.lastName ? 1 : -1))
-      .sort((workLogA, workLogB) => (workLogA.date.unix() > workLogB.date.unix() ? 1 : -1));
+    const d = tableSortDirection === 'asc' ? 1 : -1;
+
+    if (tableSortColumn === 'date') {
+      specialApprovalList
+        .sort((workLogA, workLogB) => (workLogA.date.unix() > workLogB.date.unix() ? d : -d));
+    }
+
+    if (tableSortColumn === 'lastName') {
+      specialApprovalList
+        .sort((workLogA, workLogB) => (workLogA.date.unix() > workLogB.date.unix() ? 1 : -1))
+        .sort((workLogA, workLogB) => (workLogA.workMonth.user.firstName > workLogB.workMonth.user.firstName ? 1 : -1))
+        .sort((workLogA, workLogB) => (workLogA.workMonth.user.lastName > workLogB.workMonth.user.lastName ? d : -d));
+    }
+
+    if (tableSortColumn === 'type') {
+      specialApprovalList
+        .sort((workLogA, workLogB) => (workLogA.date.unix() > workLogB.date.unix() ? 1 : -1))
+        .sort((workLogA, workLogB) => (workLogA.workMonth.user.firstName > workLogB.workMonth.user.firstName ? 1 : -1))
+        .sort((workLogA, workLogB) => (workLogA.workMonth.user.lastName > workLogB.workMonth.user.lastName ? 1 : -1))
+        .sort((workLogA, workLogB) => (workLogA.type > workLogB.type ? d : -d));
+    }
+
+    return specialApprovalList;
   }
 
   handleMarkApproved(id, type, isBulk) {
@@ -771,6 +797,7 @@ class SpecialApprovalListComponent extends React.Component {
                       {`${row.workMonth.user.firstName} ${row.workMonth.user.lastName}`}
                     </span>
                   ),
+                  isSortable: true,
                   label: t('user:element.name'),
                   name: 'lastName',
                 },
@@ -790,6 +817,7 @@ class SpecialApprovalListComponent extends React.Component {
                       </span>
                     );
                   },
+                  isSortable: true,
                   label: t('workLog:element.date'),
                   name: 'date',
                 },
@@ -799,6 +827,7 @@ class SpecialApprovalListComponent extends React.Component {
                       {getTypeLabel(t, row.type)}
                     </span>
                   ),
+                  isSortable: true,
                   label: t('workLog:element.type'),
                   name: 'type',
                 },
@@ -965,6 +994,20 @@ class SpecialApprovalListComponent extends React.Component {
                 },
               ]}
               rows={specialApprovals}
+              sort={{
+                ascendingIcon: <Icon icon="arrow_upward" />,
+                column: this.state.tableSortColumn,
+                descendingIcon: <Icon icon="arrow_downward" />,
+                direction: this.state.tableSortDirection,
+                onClick: (column, direction) => {
+                  const orderDirection = direction === 'asc' ? 'desc' : 'asc';
+
+                  this.setState({
+                    tableSortColumn: column,
+                    tableSortDirection: orderDirection,
+                  });
+                },
+              }}
             />
           </ScrollView>
         ) : (
