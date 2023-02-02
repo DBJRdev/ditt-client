@@ -107,12 +107,9 @@ export const getWorkedTime = (
 ) => {
   const banWorkLogs = [];
   const standardWorkLogs = [];
-  const businessTripWorkLogs = [];
-  const homeOfficeWorkLogs = [];
   const maternityProtectionWorkLogs = [];
   const sickDayWorkLogs = [];
   const specialLeaveWorkLogs = [];
-  const trainingWorkLogs = [];
   const vacationWorkLogs = [];
 
   let workTime = 0;
@@ -149,18 +146,12 @@ export const getWorkedTime = (
       }
     } else if (workLog.type === BAN_WORK_LOG) {
       banWorkLogs.push(workLog);
-    } else if (workLog.type === BUSINESS_TRIP_WORK_LOG && workLog.status === STATUS_APPROVED) {
-      businessTripWorkLogs.push(workLog);
-    } else if (workLog.type === HOME_OFFICE_WORK_LOG && workLog.status === STATUS_APPROVED) {
-      homeOfficeWorkLogs.push(workLog);
     } else if (workLog.type === MATERNITY_PROTECTION_WORK_LOG) {
       maternityProtectionWorkLogs.push(workLog);
     } else if (workLog.type === SICK_DAY_WORK_LOG) {
       sickDayWorkLogs.push(workLog);
     } else if (workLog.type === SPECIAL_LEAVE_WORK_LOG && workLog.status === STATUS_APPROVED) {
       specialLeaveWorkLogs.push(workLog);
-    } else if (workLog.type === TRAINING_WORK_LOG && workLog.status === STATUS_APPROVED) {
-      trainingWorkLogs.push(workLog);
     } else if (workLog.type === VACATION_WORK_LOG && workLog.status === STATUS_APPROVED) {
       vacationWorkLogs.push(workLog);
     }
@@ -240,12 +231,7 @@ export const getWorkedTime = (
   if (
     (
       standardWorkLogs.length === 0
-      && (
-        businessTripWorkLogs.length > 0
-        || homeOfficeWorkLogs.length > 0
-        || trainingWorkLogs.length > 0
-        || sickDayWorkLogs.length > 0
-      )
+      && sickDayWorkLogs.length > 0
     ) || maternityProtectionWorkLogs.length > 0
       || specialLeaveWorkLogs.length > 0
       || vacationWorkLogs.length > 0

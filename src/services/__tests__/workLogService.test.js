@@ -1548,7 +1548,7 @@ describe('getWorkedTime', () => {
 
     expect(result.breakTime.asSeconds()).toEqual(0);
     expect(result.isWorkTimeCorrected).toEqual(false);
-    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+    expect(result.workTime.asSeconds()).toEqual(0);
   });
 
   it('test calculate unapproved business trip work logs without work logs', () => {
@@ -2072,7 +2072,7 @@ describe('getWorkedTime', () => {
 
     expect(result.breakTime.asSeconds()).toEqual(0);
     expect(result.isWorkTimeCorrected).toEqual(false);
-    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+    expect(result.workTime.asSeconds()).toEqual(0);
   });
 
   it('test calculate unapproved home office work logs without work logs', () => {
@@ -4656,6 +4656,530 @@ describe('getWorkedTime', () => {
         date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
         status: 'APPROVED',
         type: 'TIME_OFF_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T18:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T14:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T21:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T19:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(3 * 3600);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(10 * 3600);
+  });
+
+  // Training work logs
+
+  it('test calculate approved training work logs without work logs', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'TRAINING_WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(0);
+  });
+
+  it('test calculate unapproved training work logs without work logs', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'WAITING_FOR_APPROVAL',
+        type: 'TRAINING_WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(0);
+  });
+
+  it('test calculate approved training work logs without break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'TRAINING_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T10:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T14:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(4 * 3600);
+  });
+
+  it('test calculate approved training work logs without break during public holidays', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'TRAINING_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T10:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T14:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T12:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      publicHolidayDate,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(true);
+    expect(result.workTime.asSeconds()).toEqual(4 * 3600 * 1.35);
+  });
+
+  it('test calculate approved training work logs without break during sunday', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-07T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'TRAINING_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-07T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-07T10:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-07T14:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-07T12:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      sundayDate,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(true);
+    expect(result.workTime.asSeconds()).toEqual(4 * 3600 * 1.25);
+  });
+
+  it('test calculate approved training work logs with long break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'TRAINING_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T10:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T15:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T14:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T17:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T16:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(3 * 3600);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(4 * 3600);
+  });
+
+  it('test calculate approved training work logs with one standard work log more than 6 hours long', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'TRAINING_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T18:20:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(1800);
+    expect(result.isWorkTimeCorrected).toEqual(true);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600 - 600);
+  });
+
+  it('test calculate approved training work logs above lower limit without break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'TRAINING_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T14:20:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(900);
+    expect(result.isWorkTimeCorrected).toEqual(true);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
+  });
+
+  it('test calculate approved training work logs above lower limit with short break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'TRAINING_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T11:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T11:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T14:35:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T12:20:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(900);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6.25 * 3600);
+  });
+
+  it('test calculate approved training work logs above lower limit with long break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'TRAINING_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T16:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T14:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T17:15:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T17:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(3 * 3600);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(6.25 * 3600);
+  });
+
+  it('test calculate approved training work logs above medium limit without break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'TRAINING_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T15:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(1800);
+    expect(result.isWorkTimeCorrected).toEqual(true);
+    expect(result.workTime.asSeconds()).toEqual(6.5 * 3600);
+  });
+
+  it('test calculate approved training work logs above medium limit with short break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'TRAINING_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T11:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T11:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T15:20:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T12:20:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(1800);
+    expect(result.isWorkTimeCorrected).toEqual(true);
+    expect(result.workTime.asSeconds()).toEqual(6.75 * 3600);
+  });
+
+  it('test calculate approved training work logs above medium limit with long break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'TRAINING_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T16:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T14:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T18:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T17:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(3 * 3600);
+    expect(result.isWorkTimeCorrected).toEqual(false);
+    expect(result.workTime.asSeconds()).toEqual(7 * 3600);
+  });
+
+  it('test calculate approved training work logs above upper limit without break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'TRAINING_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T18:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0.75 * 3600);
+    expect(result.isWorkTimeCorrected).toEqual(true);
+    expect(result.workTime.asSeconds()).toEqual(9.25 * 3600);
+  });
+
+  it('test calculate approved training work logs above upper limit with short break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'TRAINING_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T11:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T08:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T12:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T11:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-02T18:20:00.000Z'),
+        startTime: toMomentDateTime('2018-01-02T12:20:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      date,
+      workLogs,
+      workHours,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0.75 * 3600);
+    expect(result.isWorkTimeCorrected).toEqual(true);
+    expect(result.workTime.asSeconds()).toEqual(9.5 * 3600);
+  });
+
+  it('test calculate approved training work logs above upper limit with long break', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-02T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'TRAINING_WORK_LOG',
       },
       {
         endTime: toMomentDateTime('2018-01-02T12:00:00.000Z'),
