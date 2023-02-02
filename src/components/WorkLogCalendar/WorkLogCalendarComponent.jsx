@@ -512,6 +512,7 @@ WorkLogCalendarComponent.propTypes = {
   }),
   specialLeaveWorkLog: PropTypes.shape({
     date: PropTypes.instanceOf(moment).isRequired,
+    reason: PropTypes.string,
     rejectionMessage: PropTypes.string,
     status: PropTypes.string.isRequired,
   }),

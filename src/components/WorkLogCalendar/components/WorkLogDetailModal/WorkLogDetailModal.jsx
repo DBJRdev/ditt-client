@@ -312,6 +312,10 @@ const WorkLogDetailModal = (props) => {
             <br />
           </>
         )}
+
+        {t('specialLeaveWorkLog:element.reason')}
+        {': '}
+        {specialLeaveWorkLog.reason || '–'}
       </p>
     );
   } else if (TIME_OFF_WORK_LOG === type && timeOffWorkLog) {
@@ -566,6 +570,7 @@ WorkLogDetailModal.propTypes = {
   specialLeaveWorkLog: PropTypes.shape({
     date: PropTypes.shape().isRequired,
     id: PropTypes.number.isRequired,
+    reason: PropTypes.string,
     rejectionMessage: PropTypes.string,
     status: PropTypes.oneOf([
       STATUS_APPROVED,

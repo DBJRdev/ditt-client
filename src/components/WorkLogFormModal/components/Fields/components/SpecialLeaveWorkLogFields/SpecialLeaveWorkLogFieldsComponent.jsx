@@ -10,24 +10,36 @@ const SpecialLeaveWorkLogFieldsComponent = ({
   onFormDataChange,
   t,
 }) => (
-  <TextField
-    disabled={isInEditState}
-    id="dateTo"
-    onChange={onFormDataChange}
-    label={t('workLog:element.dateTo')}
-    validationState={formValidity.elements.dateTo ? 'invalid' : null}
-    validationText={formValidity.elements.dateTo}
-    value={formData.dateTo || ''}
-  />
+  <>
+    <TextField
+      disabled={isInEditState}
+      id="dateTo"
+      onChange={onFormDataChange}
+      label={t('workLog:element.dateTo')}
+      validationState={formValidity.elements.dateTo ? 'invalid' : null}
+      validationText={formValidity.elements.dateTo}
+      value={formData.dateTo || ''}
+    />
+    <TextField
+      id="reason"
+      label={t('specialLeaveWorkLog:element.reason')}
+      onChange={onFormDataChange}
+      validationState={formValidity.elements.reason ? 'invalid' : null}
+      validationText={formValidity.elements.reason}
+      value={formData.reason || ''}
+    />
+  </>
 );
 
 SpecialLeaveWorkLogFieldsComponent.propTypes = {
   formData: PropTypes.shape({
     dateTo: PropTypes.string,
+    reason: PropTypes.string,
   }).isRequired,
   formValidity: PropTypes.shape({
     elements: PropTypes.shape({
       dateTo: PropTypes.string,
+      reason: PropTypes.string,
     }).isRequired,
   }).isRequired,
   isInEditState: PropTypes.bool.isRequired,

@@ -174,6 +174,11 @@
       "childDateOfBirth": "Child's date of birth"
     }
   },
+  "specialLeaveWorkLog": {
+    "element": {
+      "reason": "Reason of special leave"
+    }
+  },
   "supervisedUser": {
     "action": {
       "show": "Show"

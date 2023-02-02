@@ -5,7 +5,10 @@ import * as types from './actionTypes';
 
 export const addSpecialLeaveWorkLog = (data) => (dispatch) => dispatch({
   [RSAA]: {
-    body: JSON.stringify({ date: toJson(data.date) }),
+    body: JSON.stringify({
+      date: toJson(data.date),
+      reason: data.reason,
+    }),
     endpoint: `${API_URL}/special_leave_work_logs`,
     headers: { 'Content-Type': 'application/json' },
     method: 'POST',
@@ -19,7 +22,10 @@ export const addSpecialLeaveWorkLog = (data) => (dispatch) => dispatch({
 
 export const addMultipleSpecialLeaveWorkLog = (data) => (dispatch) => dispatch({
   [RSAA]: {
-    body: JSON.stringify(data.map((workLog) => ({ date: toJson(workLog.date) }))),
+    body: JSON.stringify(data.map((workLog) => ({
+      date: toJson(workLog.date),
+      reason: workLog.reason,
+    }))),
     endpoint: `${API_URL}/special_leave_work_logs/bulk`,
     headers: { 'Content-Type': 'application/json' },
     method: 'POST',
@@ -48,6 +54,7 @@ export const editSpecialLeaveWorkLog = (id, data) => (dispatch) => dispatch({
     body: JSON.stringify({
       date: toJson(data.date),
       id,
+      reason: data.reason,
     }),
     endpoint: `${API_URL}/special_leave_work_logs/${id}`,
     headers: { 'Content-Type': 'application/json' },

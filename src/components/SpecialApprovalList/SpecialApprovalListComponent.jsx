@@ -737,6 +737,10 @@ class SpecialApprovalListComponent extends React.Component {
               <br />
             </>
           )}
+
+          {t('specialLeaveWorkLog:element.reason')}
+          {': '}
+          {this.props.specialLeaveWorkLog.reason}
         </p>
       );
     } if (TRAINING_WORK_LOG === type && this.props.trainingWorkLog) {
@@ -1243,6 +1247,7 @@ SpecialApprovalListComponent.propTypes = {
   }).isRequired,
   specialLeaveWorkLog: PropTypes.shape({
     date: PropTypes.instanceOf(moment).isRequired,
+    reason: PropTypes.string,
     rejectionMessage: PropTypes.string,
     status: PropTypes.string.isRequired,
   }),

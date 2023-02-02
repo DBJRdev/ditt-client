@@ -56,7 +56,7 @@ export const getStateToSave = (formData, date) => ({
   purpose: formData.type === BUSINESS_TRIP_WORK_LOG
     ? formData.purpose
     : null,
-  reason: formData.type === OVERTIME_WORK_LOG
+  reason: (formData.type === OVERTIME_WORK_LOG || formData.type === SPECIAL_LEAVE_WORK_LOG)
     ? formData.reason
     : null,
   startTime: formData.type === WORK_LOG

@@ -173,6 +173,11 @@
       "childDateOfBirth": "Geburtstag des Kindes"
     }
   },
+  "specialLeaveWorkLog": {
+    "element": {
+      "reason": "Grund für Sonderurlaub"
+    }
+  },
   "supervisedUser": {
     "action": {
       "show": "Zeigen"

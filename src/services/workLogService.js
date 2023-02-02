@@ -342,6 +342,13 @@ export const areWorkLogsSame = (a, b) => {
   }
 
   if (
+    a.type === SPECIAL_LEAVE_WORK_LOG
+    && a.reason !== b.reason
+  ) {
+    return false;
+  }
+
+  if (
     a.type === TIME_OFF_WORK_LOG
     && a.comment !== b.comment
   ) {

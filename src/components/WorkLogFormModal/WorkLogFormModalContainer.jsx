@@ -169,6 +169,7 @@ const mapDispatchToProps = (dispatch) => ({
       const requestData = {
         date: workLog.date,
         dateTo: workLog.dateTo,
+        reason: workLog.reason,
       };
 
       if (workLog.id) {
