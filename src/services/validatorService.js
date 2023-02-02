@@ -227,6 +227,10 @@ export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay, ban
       expectedArrival: null,
       expectedDeparture: null,
       form: null,
+      plannedEndHour: null,
+      plannedEndMinute: null,
+      plannedStartHour: null,
+      plannedStartMinute: null,
       purpose: null,
       startHour: null,
       startMinute: null,
@@ -275,10 +279,92 @@ export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay, ban
       }
     });
 
+    const hourCheck = [
+      'plannedEndHour',
+      'plannedStartHour',
+    ];
+
+    const minuteCheck = [
+      'plannedEndMinute',
+      'plannedStartMinute',
+    ];
+
+    [...hourCheck, ...minuteCheck].forEach((element) => {
+      if (
+        workLog[element] === null
+        || isEmpty(workLog[element].toString())
+        || !isNumeric(workLog[element].toString())
+      ) {
+        errors.elements[element] = t('general:validation.invalidNumber');
+        errors.isValid = false;
+      }
+
+      workLog[element] = parseInt(workLog[element], 10);
+    });
+
+    if (!errors.isValid) {
+      return errors;
+    }
+
+    hourCheck.forEach((element) => {
+      if (workLog[element] < 0 || workLog[element] > 23) {
+        errors.elements[element] = t('workLog:validation.invalidHour');
+        errors.isValid = false;
+      }
+    });
+
+    minuteCheck.forEach((element) => {
+      if (workLog[element] < 0 || workLog[element] > 59) {
+        errors.elements[element] = t('workLog:validation.invalidMinute');
+        errors.isValid = false;
+      }
+    });
+
     return errors;
   }
 
   if (workLog.type === HOME_OFFICE_WORK_LOG) {
+    const hourCheck = [
+      'plannedEndHour',
+      'plannedStartHour',
+    ];
+
+    const minuteCheck = [
+      'plannedEndMinute',
+      'plannedStartMinute',
+    ];
+
+    [...hourCheck, ...minuteCheck].forEach((element) => {
+      if (
+        workLog[element] === null
+        || isEmpty(workLog[element].toString())
+        || !isNumeric(workLog[element].toString())
+      ) {
+        errors.elements[element] = t('general:validation.invalidNumber');
+        errors.isValid = false;
+      }
+
+      workLog[element] = parseInt(workLog[element], 10);
+    });
+
+    if (!errors.isValid) {
+      return errors;
+    }
+
+    hourCheck.forEach((element) => {
+      if (workLog[element] < 0 || workLog[element] > 23) {
+        errors.elements[element] = t('workLog:validation.invalidHour');
+        errors.isValid = false;
+      }
+    });
+
+    minuteCheck.forEach((element) => {
+      if (workLog[element] < 0 || workLog[element] > 59) {
+        errors.elements[element] = t('workLog:validation.invalidMinute');
+        errors.isValid = false;
+      }
+    });
+
     return errors;
   }
 

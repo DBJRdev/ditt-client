@@ -572,6 +572,20 @@ class SpecialApprovalListComponent extends React.Component {
             </>
           )}
 
+          {t('businessTripWorkLog:element.plannedStart')}
+          {': '}
+          {this.props.businessTripWorkLog.plannedStartHour.padStart(2, '0')}
+          :
+          {this.props.businessTripWorkLog.plannedStartMinute.padStart(2, '0')}
+          <br />
+
+          {t('businessTripWorkLog:element.plannedEnd')}
+          {': '}
+          {this.props.businessTripWorkLog.plannedEndHour.padStart(2, '0')}
+          :
+          {this.props.businessTripWorkLog.plannedEndMinute.padStart(2, '0')}
+          <br />
+
           {t('businessTripWorkLog:element.purpose')}
           {': '}
           {this.props.businessTripWorkLog.purpose}
@@ -632,6 +646,19 @@ class SpecialApprovalListComponent extends React.Component {
               <br />
             </>
           )}
+
+          {t('homeOfficeWorkLog:element.plannedStart')}
+          {': '}
+          {this.props.homeOfficeWorkLog.plannedStartHour.padStart(2, '0')}
+          :
+          {this.props.homeOfficeWorkLog.plannedStartMinute.padStart(2, '0')}
+          <br />
+
+          {t('homeOfficeWorkLog:element.plannedEnd')}
+          {': '}
+          {this.props.homeOfficeWorkLog.plannedEndHour.padStart(2, '0')}
+          :
+          {this.props.homeOfficeWorkLog.plannedEndMinute.padStart(2, '0')}
         </p>
       );
     } else if (OVERTIME_WORK_LOG === type && this.props.overtimeWorkLog) {
@@ -1106,6 +1133,10 @@ SpecialApprovalListComponent.propTypes = {
     destination: PropTypes.string.isRequired,
     expectedArrival: PropTypes.string.isRequired,
     expectedDeparture: PropTypes.string.isRequired,
+    plannedEndHour: PropTypes.string.isRequired,
+    plannedEndMinute: PropTypes.string.isRequired,
+    plannedStartHour: PropTypes.string.isRequired,
+    plannedStartMinute: PropTypes.string.isRequired,
     purpose: PropTypes.string.isRequired,
     rejectionMessage: PropTypes.string,
     status: PropTypes.string.isRequired,
@@ -1126,6 +1157,10 @@ SpecialApprovalListComponent.propTypes = {
   homeOfficeWorkLog: PropTypes.shape({
     comment: PropTypes.string,
     date: PropTypes.instanceOf(moment).isRequired,
+    plannedEndHour: PropTypes.string.isRequired,
+    plannedEndMinute: PropTypes.string.isRequired,
+    plannedStartHour: PropTypes.string.isRequired,
+    plannedStartMinute: PropTypes.string.isRequired,
     rejectionMessage: PropTypes.string,
     status: PropTypes.string.isRequired,
   }),

@@ -10,7 +10,13 @@
       "destination": "Ziel",
       "transport": "Verkehrsmittel",
       "expectedDeparture": "Voraussichtliche Abreise",
-      "expectedArrival": "Voraussichtliche Rückkehr"
+      "expectedArrival": "Voraussichtliche Rückkehr",
+      "plannedEnd": "Geplantes Ende",
+      "plannedEndHour": "Geplante Endstunde",
+      "plannedEndMinute": "Geplante Endminute",
+      "plannedStart": "Geplanter Beginn",
+      "plannedStartHour": "Geplante Startstunde",
+      "plannedStartMinute": "Geplante Startminute"
     }
   },
   "config": {
@@ -28,7 +34,13 @@
   },
   "homeOfficeWorkLog": {
     "element": {
-      "comment": "Kommentar"
+      "comment": "Kommentar",
+      "plannedEnd": "Geplantes Ende",
+      "plannedEndHour": "Geplante Endstunde",
+      "plannedEndMinute": "Geplante Endminute",
+      "plannedStart": "Geplanter Beginn",
+      "plannedStartHour": "Geplante Startstunde",
+      "plannedStartMinute": "Geplante Startminute"
     }
   },
   "general": {

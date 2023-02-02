@@ -311,6 +311,10 @@ export const areWorkLogsSame = (a, b) => {
       || a.expectedDeparture !== b.expectedDeparture
       || a.purpose !== b.purpose
       || a.transport !== b.transport
+      || a.plannedEndHour !== b.plannedEndHour
+      || a.plannedEndMinute !== b.plannedEndMinute
+      || a.plannedStartHour !== b.plannedStartHour
+      || a.plannedStartMinute !== b.plannedStartMinute
     )
   ) {
     return false;
@@ -318,7 +322,13 @@ export const areWorkLogsSame = (a, b) => {
 
   if (
     a.type === HOME_OFFICE_WORK_LOG
-    && a.comment !== b.comment
+    && (
+      a.comment !== b.comment
+      || a.plannedEndHour !== b.plannedEndHour
+      || a.plannedEndMinute !== b.plannedEndMinute
+      || a.plannedStartHour !== b.plannedStartHour
+      || a.plannedStartMinute !== b.plannedStartMinute
+    )
   ) {
     return false;
   }

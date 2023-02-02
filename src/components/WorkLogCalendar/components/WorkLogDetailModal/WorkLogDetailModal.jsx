@@ -126,6 +126,20 @@ const WorkLogDetailModal = (props) => {
           </>
         )}
 
+        {t('businessTripWorkLog:element.plannedStart')}
+        {': '}
+        {businessTripWorkLog.plannedStartHour.padStart(2, '0')}
+        :
+        {businessTripWorkLog.plannedStartMinute.padStart(2, '0')}
+        <br />
+
+        {t('businessTripWorkLog:element.plannedEnd')}
+        {': '}
+        {businessTripWorkLog.plannedEndHour.padStart(2, '0')}
+        :
+        {businessTripWorkLog.plannedEndMinute.padStart(2, '0')}
+        <br />
+
         {t('businessTripWorkLog:element.purpose')}
         {': '}
         {businessTripWorkLog.purpose}
@@ -182,6 +196,19 @@ const WorkLogDetailModal = (props) => {
             <br />
           </>
         )}
+
+        {t('homeOfficeWorkLog:element.plannedStart')}
+        {': '}
+        {homeOfficeWorkLog.plannedStartHour.padStart(2, '0')}
+        :
+        {homeOfficeWorkLog.plannedStartMinute.padStart(2, '0')}
+        <br />
+
+        {t('homeOfficeWorkLog:element.plannedEnd')}
+        {': '}
+        {homeOfficeWorkLog.plannedEndHour.padStart(2, '0')}
+        :
+        {homeOfficeWorkLog.plannedEndMinute.padStart(2, '0')}
       </p>
     );
   } else if (MATERNITY_PROTECTION_WORK_LOG === type && maternityProtectionWorkLog) {
@@ -516,6 +543,10 @@ WorkLogDetailModal.propTypes = {
     destination: PropTypes.string.isRequired,
     expectedArrival: PropTypes.string.isRequired,
     expectedDeparture: PropTypes.string.isRequired,
+    plannedEndHour: PropTypes.string.isRequired,
+    plannedEndMinute: PropTypes.string.isRequired,
+    plannedStartHour: PropTypes.string.isRequired,
+    plannedStartMinute: PropTypes.string.isRequired,
     purpose: PropTypes.string.isRequired,
     rejectionMessage: PropTypes.string,
     status: PropTypes.oneOf([
@@ -529,6 +560,10 @@ WorkLogDetailModal.propTypes = {
     comment: PropTypes.string,
     date: PropTypes.shape.isRequired,
     id: PropTypes.number.isRequired,
+    plannedEndHour: PropTypes.string.isRequired,
+    plannedEndMinute: PropTypes.string.isRequired,
+    plannedStartHour: PropTypes.string.isRequired,
+    plannedStartMinute: PropTypes.string.isRequired,
     rejectionMessage: PropTypes.string,
     status: PropTypes.oneOf([
       STATUS_APPROVED,

@@ -110,6 +110,10 @@ const mapDispatchToProps = (dispatch) => ({
         destination: workLog.destination,
         expectedArrival: workLog.expectedArrival,
         expectedDeparture: workLog.expectedDeparture,
+        plannedEndHour: workLog.plannedEndHour,
+        plannedEndMinute: workLog.plannedEndMinute,
+        plannedStartHour: workLog.plannedStartHour,
+        plannedStartMinute: workLog.plannedStartMinute,
         purpose: workLog.purpose,
         transport: workLog.transport,
       };
@@ -127,6 +131,10 @@ const mapDispatchToProps = (dispatch) => ({
         comment: workLog.comment,
         date: workLog.date,
         dateTo: workLog.dateTo,
+        plannedEndHour: workLog.plannedEndHour,
+        plannedEndMinute: workLog.plannedEndMinute,
+        plannedStartHour: workLog.plannedStartHour,
+        plannedStartMinute: workLog.plannedStartMinute,
       };
 
       if (workLog.id) {
