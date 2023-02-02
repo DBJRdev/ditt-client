@@ -10,6 +10,7 @@ import {
   SICK_DAY_WORK_LOG,
   SPECIAL_LEAVE_WORK_LOG,
   TIME_OFF_WORK_LOG,
+  TRAINING_WORK_LOG,
   VACATION_WORK_LOG,
   WORK_LOG,
   selectWorkMonth,
@@ -65,6 +66,11 @@ import {
   selectTimeOffWorkLogMeta,
 } from '../../../../resources/timeOffWorkLog';
 import {
+  deleteTrainingWorkLog,
+  selectTrainingWorkLog,
+  selectTrainingWorkLogMeta,
+} from '../../../../resources/trainingWorkLog';
+import {
   deleteVacationWorkLog,
   selectVacationWorkLog,
   selectVacationWorkLogMeta,
@@ -90,6 +96,7 @@ const mapStateToProps = (state) => ({
       || selectSickDayWorkLogMeta(state)?.isPosting
       || selectSpecialLeaveWorkLogMeta(state)?.isPosting
       || selectTimeOffWorkLogMeta(state)?.isPosting
+      || selectTrainingWorkLogMeta(state)?.isPosting
       || selectVacationWorkLogMeta(state)?.isPosting
       || selectDeleteWorkLogMeta(state)?.isPosting
       || false,
@@ -100,6 +107,7 @@ const mapStateToProps = (state) => ({
   sickDayWorkLog: selectSickDayWorkLog(state)?.toJS(),
   specialLeaveWorkLog: selectSpecialLeaveWorkLog(state)?.toJS(),
   timeOffWorkLog: selectTimeOffWorkLog(state)?.toJS(),
+  trainingWorkLog: selectTrainingWorkLog(state)?.toJS(),
   vacationWorkLog: selectVacationWorkLog(state)?.toJS(),
   workLog: selectWorkLog(state)?.toJS(),
   workMonth: selectWorkMonth(state)?.toJS(),
@@ -127,6 +135,8 @@ const mapDispatchToProps = (dispatch) => ({
       return dispatch(deleteSpecialLeaveWorkLog(id));
     } if (TIME_OFF_WORK_LOG === type) {
       return dispatch(deleteTimeOffWorkLog(id));
+    } if (TRAINING_WORK_LOG === type) {
+      return dispatch(deleteTrainingWorkLog(id));
     } if (VACATION_WORK_LOG === type) {
       return dispatch(deleteVacationWorkLog(id));
     } if (WORK_LOG === type) {

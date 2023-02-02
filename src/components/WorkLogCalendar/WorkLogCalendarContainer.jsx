@@ -31,6 +31,7 @@ import {
   SICK_DAY_WORK_LOG,
   SPECIAL_LEAVE_WORK_LOG,
   TIME_OFF_WORK_LOG,
+  TRAINING_WORK_LOG,
   VACATION_WORK_LOG,
   WORK_LOG,
 } from '../../resources/workMonth';
@@ -43,6 +44,10 @@ import {
 import {
   fetchTimeOffWorkLog, selectTimeOffWorkLog,
 } from '../../resources/timeOffWorkLog';
+import {
+  fetchTrainingWorkLog,
+  selectTrainingWorkLog,
+} from '../../resources/trainingWorkLog';
 import {
   fetchVacationWorkLog, selectVacationWorkLog,
 } from '../../resources/vacationWorkLog';
@@ -62,6 +67,7 @@ const mapStateToProps = (state) => ({
   sickDayWorkLog: selectSickDayWorkLog(state)?.toJS(),
   specialLeaveWorkLog: selectSpecialLeaveWorkLog(state)?.toJS(),
   timeOffWorkLog: selectTimeOffWorkLog(state)?.toJS(),
+  trainingWorkLog: selectTrainingWorkLog(state)?.toJS(),
   vacationWorkLog: selectVacationWorkLog(state)?.toJS(),
   workLog: selectWorkLog(state)?.toJS(),
 });
@@ -106,6 +112,10 @@ const mapDispatchToProps = (dispatch) => ({
 
     if (TIME_OFF_WORK_LOG === type) {
       return dispatch(fetchTimeOffWorkLog(id));
+    }
+
+    if (TRAINING_WORK_LOG === type) {
+      return dispatch(fetchTrainingWorkLog(id));
     }
 
     if (VACATION_WORK_LOG === type) {

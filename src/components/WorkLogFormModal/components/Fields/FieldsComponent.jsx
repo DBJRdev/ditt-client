@@ -7,6 +7,7 @@ import {
   SICK_DAY_WORK_LOG,
   SPECIAL_LEAVE_WORK_LOG,
   TIME_OFF_WORK_LOG,
+  TRAINING_WORK_LOG,
   VACATION_WORK_LOG,
   WORK_LOG,
 } from '../../../../resources/workMonth';
@@ -17,6 +18,7 @@ import { OvertimeWorkLogFields } from './components/OvertimeWorkLogFields';
 import { SickDayWorkLogFields } from './components/SickDayWorkLogFields';
 import { SpecialLeaveWorkLogFields } from './components/SpecialLeaveWorkLogFields';
 import { TimeOffWorkLogFields } from './components/TimeOffWorkLogFields';
+import { TrainingWorkLogFields } from './components/TrainingWorkLogFields';
 import { VacationWorkLogFields } from './components/VacationWorkLogFields';
 import { WorkLogFields } from './components/WorkLogFields';
 
@@ -42,6 +44,8 @@ export const FieldsComponent = ({
     TypeBasedForm = SpecialLeaveWorkLogFields;
   } else if (type === TIME_OFF_WORK_LOG) {
     TypeBasedForm = TimeOffWorkLogFields;
+  } else if (type === TRAINING_WORK_LOG) {
+    TypeBasedForm = TrainingWorkLogFields;
   } else if (type === VACATION_WORK_LOG) {
     TypeBasedForm = VacationWorkLogFields;
   } else if (type === WORK_LOG) {
@@ -77,6 +81,7 @@ FieldsComponent.propTypes = {
       SICK_DAY_WORK_LOG,
       SPECIAL_LEAVE_WORK_LOG,
       TIME_OFF_WORK_LOG,
+      TRAINING_WORK_LOG,
       VACATION_WORK_LOG,
       WORK_LOG,
     ]).isRequired,

@@ -18,6 +18,7 @@ import {
   STATUS_REJECTED,
   STATUS_WAITING_FOR_APPROVAL,
   TIME_OFF_WORK_LOG,
+  TRAINING_WORK_LOG,
   VACATION_WORK_LOG,
   WORK_LOG,
 } from '../../../../resources/workMonth';
@@ -54,6 +55,7 @@ const WorkLogDetailModal = (props) => {
     t,
     type,
     timeOffWorkLog,
+    trainingWorkLog,
     uid,
     vacationWorkLog,
     workLog,
@@ -345,6 +347,43 @@ const WorkLogDetailModal = (props) => {
         )}
       </p>
     );
+  } else if (TRAINING_WORK_LOG === type && trainingWorkLog) {
+    content = (
+      <p>
+        {t('workLog:element.type')}
+        {': '}
+        {getTypeLabel(t, type)}
+        <br />
+
+        {t('workLog:element.date')}
+        {': '}
+        {toDayDayMonthYearFormat(trainingWorkLog.date)}
+        <br />
+
+        {t('workLog:element.status')}
+        {': '}
+        {getStatusLabel(t, trainingWorkLog.status)}
+        <br />
+
+        {STATUS_REJECTED === trainingWorkLog.status && (
+          <>
+            {t('workLog:element.rejectionMessage')}
+            :
+            {trainingWorkLog.rejectionMessage}
+            <br />
+          </>
+        )}
+
+        {t('trainingWorkLog:element.title')}
+        {': '}
+        {trainingWorkLog.title}
+        <br />
+
+        {t('trainingWorkLog:element.comment')}
+        {': '}
+        {trainingWorkLog.comment || '-'}
+      </p>
+    );
   } else if (VACATION_WORK_LOG === type && vacationWorkLog) {
     content = (
       <p>
@@ -409,6 +448,7 @@ const WorkLogDetailModal = (props) => {
         SICK_DAY_WORK_LOG,
         SPECIAL_LEAVE_WORK_LOG,
         TIME_OFF_WORK_LOG,
+        TRAINING_WORK_LOG,
         VACATION_WORK_LOG,
         WORK_LOG,
       ].includes(type)
@@ -456,6 +496,7 @@ WorkLogDetailModal.defaultProps = {
   sickDayWorkLog: null,
   specialLeaveWorkLog: null,
   timeOffWorkLog: null,
+  trainingWorkLog: null,
   vacationWorkLog: null,
   workLog: null,
   workMonth: null,
@@ -542,6 +583,17 @@ WorkLogDetailModal.propTypes = {
       STATUS_REJECTED,
       STATUS_WAITING_FOR_APPROVAL,
     ]).isRequired,
+  }),
+  trainingWorkLog: PropTypes.shape({
+    comment: PropTypes.string,
+    date: PropTypes.shape().isRequired,
+    rejectionMessage: PropTypes.string,
+    status: PropTypes.oneOf([
+      STATUS_APPROVED,
+      STATUS_REJECTED,
+      STATUS_WAITING_FOR_APPROVAL,
+    ]).isRequired,
+    title: PropTypes.string.isRequired,
   }),
   type: PropTypes.string.isRequired,
   uid: PropTypes.number.isRequired,

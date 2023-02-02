@@ -25,6 +25,7 @@ import {
   STATUS_REJECTED,
   STATUS_WAITING_FOR_APPROVAL,
   TIME_OFF_WORK_LOG,
+  TRAINING_WORK_LOG,
   VACATION_WORK_LOG,
   WORK_LOG,
 } from '../../../../resources/workMonth';
@@ -69,7 +70,8 @@ const WorkLogDetailButtonComponent = (props) => {
   };
 
   const supportsDuplicate = [BUSINESS_TRIP_WORK_LOG, HOME_OFFICE_WORK_LOG, OVERTIME_WORK_LOG,
-    SICK_DAY_WORK_LOG, SPECIAL_LEAVE_WORK_LOG, TIME_OFF_WORK_LOG, VACATION_WORK_LOG, WORK_LOG];
+    SICK_DAY_WORK_LOG, SPECIAL_LEAVE_WORK_LOG, TIME_OFF_WORK_LOG, TRAINING_WORK_LOG,
+    VACATION_WORK_LOG, WORK_LOG];
 
   let isDuplicateActionDisabled = localizedMoment()
     .endOf('month')
@@ -94,6 +96,7 @@ const WorkLogDetailButtonComponent = (props) => {
         SICK_DAY_WORK_LOG,
         SPECIAL_LEAVE_WORK_LOG,
         TIME_OFF_WORK_LOG,
+        TRAINING_WORK_LOG,
         VACATION_WORK_LOG,
         WORK_LOG,
       ].includes(workLog.type)
@@ -129,6 +132,10 @@ const WorkLogDetailButtonComponent = (props) => {
       && workLog.status === STATUS_WAITING_FOR_APPROVAL
     ) || (
       workLog.type === TIME_OFF_WORK_LOG
+      && workLog
+      && workLog.status === STATUS_WAITING_FOR_APPROVAL
+    ) || (
+      workLog.type === TRAINING_WORK_LOG
       && workLog
       && workLog.status === STATUS_WAITING_FOR_APPROVAL
     ) || (
@@ -296,6 +303,10 @@ const WorkLogDetailButtonComponent = (props) => {
 
   if (workLog.type === TIME_OFF_WORK_LOG) {
     return createDetailButton(workLog, 'phonelink_off');
+  }
+
+  if (workLog.type === TRAINING_WORK_LOG) {
+    return createDetailButton(workLog, 'school');
   }
 
   if (workLog.type === VACATION_WORK_LOG) {

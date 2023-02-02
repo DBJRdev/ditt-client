@@ -6,6 +6,7 @@ import {
   SICK_DAY_WORK_LOG,
   SPECIAL_LEAVE_WORK_LOG,
   TIME_OFF_WORK_LOG,
+  TRAINING_WORK_LOG,
   VACATION_WORK_LOG,
   WORK_LOG,
 } from '../../../../resources/workMonth';
@@ -39,6 +40,11 @@ import {
   fetchTimeOffWorkLog,
   transformTimeOffWorkLog,
 } from '../../../../resources/timeOffWorkLog';
+import {
+  addTrainingWorkLog,
+  fetchTrainingWorkLog,
+  transformTrainingWorkLog,
+} from '../../../../resources/trainingWorkLog';
 import {
   addVacationWorkLog,
   fetchVacationWorkLog,
@@ -108,6 +114,14 @@ const mapDispatchToProps = (dispatch) => ({
         addTimeOffWorkLog,
         fetchTimeOffWorkLog,
         transformTimeOffWorkLog,
+      );
+    }
+
+    if (TRAINING_WORK_LOG === type) {
+      return getDupliciteWorkLogFunction(
+        addTrainingWorkLog,
+        fetchTrainingWorkLog,
+        transformTrainingWorkLog,
       );
     }
 

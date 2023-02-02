@@ -23,6 +23,7 @@ import {
   STATUS_REJECTED,
   STATUS_WAITING_FOR_APPROVAL,
   TIME_OFF_WORK_LOG,
+  TRAINING_WORK_LOG,
   VACATION_WORK_LOG,
   WORK_LOG,
 } from '../../resources/workMonth';
@@ -127,6 +128,7 @@ class WorkLogCalendarComponent extends React.Component {
       sickDayWorkLog,
       specialLeaveWorkLog,
       timeOffWorkLog,
+      trainingWorkLog,
       vacationWorkLog,
       workLog,
     } = this.props;
@@ -146,6 +148,8 @@ class WorkLogCalendarComponent extends React.Component {
       showWorkLogFormModalData = specialLeaveWorkLog;
     } else if (type === TIME_OFF_WORK_LOG) {
       showWorkLogFormModalData = timeOffWorkLog;
+    } else if (type === TRAINING_WORK_LOG) {
+      showWorkLogFormModalData = trainingWorkLog;
     } else if (type === VACATION_WORK_LOG) {
       showWorkLogFormModalData = vacationWorkLog;
     } else if (type === WORK_LOG) {
@@ -288,6 +292,7 @@ class WorkLogCalendarComponent extends React.Component {
         'overtimeWorkLogs',
         'specialLeaveWorkLogs',
         'timeOffWorkLogs',
+        'trainingWorkLogs',
         'vacationWorkLogs',
       ].forEach((key) => {
         workMonth[key].forEach((workLog) => {
@@ -447,6 +452,7 @@ WorkLogCalendarComponent.defaultProps = {
   specialLeaveWorkLog: null,
   supervisorView: false,
   timeOffWorkLog: null,
+  trainingWorkLog: null,
   vacationWorkLog: null,
   workLog: null,
   workMonth: null,
@@ -518,6 +524,13 @@ WorkLogCalendarComponent.propTypes = {
   token: PropTypes.shape({
     exp: PropTypes.number.isRequired,
   }).isRequired,
+  trainingWorkLog: PropTypes.shape({
+    comment: PropTypes.string,
+    date: PropTypes.instanceOf(moment).isRequired,
+    rejectionMessage: PropTypes.string,
+    status: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  }),
   user: PropTypes.shape({
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
@@ -609,6 +622,15 @@ WorkLogCalendarComponent.propTypes = {
       STATUS_WAITING_FOR_APPROVAL,
     ]).isRequired,
     timeOffWorkLogs: PropTypes.arrayOf(PropTypes.shape({
+      date: PropTypes.shape.isRequired,
+      id: PropTypes.number.isRequired,
+      status: PropTypes.oneOf([
+        STATUS_APPROVED,
+        STATUS_REJECTED,
+        STATUS_WAITING_FOR_APPROVAL,
+      ]).isRequired,
+    })).isRequired,
+    trainingWorkLogs: PropTypes.arrayOf(PropTypes.shape({
       date: PropTypes.shape.isRequired,
       id: PropTypes.number.isRequired,
       status: PropTypes.oneOf([

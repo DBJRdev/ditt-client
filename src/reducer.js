@@ -12,6 +12,7 @@ import { reducer as sickDayUnpaidWorkLogReducer } from './resources/sickDayUnpai
 import { reducer as sickDayWorkLogReducer } from './resources/sickDayWorkLog';
 import { reducer as specialLeaveWorkLogReducer } from './resources/specialLeaveWorkLog';
 import { reducer as timeOffWorkLogReducer } from './resources/timeOffWorkLog';
+import { reducer as trainingWorkLogReducer } from './resources/trainingWorkLog';
 import { reducer as userReducer } from './resources/user';
 import { reducer as vacationReducer } from './resources/vacation';
 import { reducer as vacationWorkLogReducer } from './resources/vacationWorkLog';
@@ -33,6 +34,7 @@ const appReducers = combineReducers({
   sickDayWorkLog: sickDayWorkLogReducer,
   specialLeaveWorkLog: specialLeaveWorkLogReducer,
   timeOffWorkLog: timeOffWorkLogReducer,
+  trainingWorkLog: trainingWorkLogReducer,
   user: userReducer,
   vacation: vacationReducer,
   vacationWorkLog: vacationWorkLogReducer,

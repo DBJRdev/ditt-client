@@ -229,6 +229,12 @@
       "comment": "Kommentar"
     }
   },
+  "trainingWorkLog": {
+    "element": {
+      "comment": "Kommentar",
+      "title": "Titel"
+    }
+  },
   "user": {
     "action": {
       "addUser": "Nutzer*in hinzufügen",
@@ -382,6 +388,7 @@
         "sickDayWorkLog": "Kranktag",
         "specialLeaveWorkLog": "Sonderurlaub",
         "timeOffWorkLog": "Freizeitausgleich",
+        "trainingWorkLog": "Fortbildung",
         "vacationWorkLog": "Urlaub",
         "workLog": "Arbeitszeit"
       }

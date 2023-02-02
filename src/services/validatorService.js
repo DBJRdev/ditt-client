@@ -12,6 +12,7 @@ import {
   SICK_DAY_WORK_LOG,
   SPECIAL_LEAVE_WORK_LOG,
   TIME_OFF_WORK_LOG,
+  TRAINING_WORK_LOG,
   VACATION_WORK_LOG,
   WORK_LOG,
 } from '../resources/workMonth';
@@ -245,6 +246,7 @@ export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay, ban
     SICK_DAY_WORK_LOG,
     SPECIAL_LEAVE_WORK_LOG,
     TIME_OFF_WORK_LOG,
+    TRAINING_WORK_LOG,
     VACATION_WORK_LOG,
     WORK_LOG,
   ].indexOf(workLog.type) === -1) {
@@ -336,6 +338,24 @@ export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay, ban
       errors.elements.dateTo = t('general:validation.invalidDate');
       errors.isValid = false;
     }
+
+    return errors;
+  }
+
+  if (workLog.type === TRAINING_WORK_LOG) {
+    const emptyCheck = [
+      'title',
+    ];
+
+    emptyCheck.forEach((element) => {
+      if (
+        workLog[element] === null
+        || isEmpty(workLog[element])
+      ) {
+        errors.elements[element] = t('general:validation.required');
+        errors.isValid = false;
+      }
+    });
 
     return errors;
   }

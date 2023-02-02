@@ -230,6 +230,12 @@
       "comment": "Comment"
     }
   },
+  "trainingWorkLog": {
+    "element": {
+      "comment": "Comment",
+      "title": "Title"
+    }
+  },
   "user": {
     "action": {
       "addUser": "Add user",
@@ -384,6 +390,7 @@
         "sickDayWorkLog": "Sick day",
         "specialLeaveWorkLog": "Special leave",
         "timeOffWorkLog": "Time off",
+        "trainingWorkLog": "Training",
         "vacationWorkLog": "Vacation",
         "workLog": "Work"
       }

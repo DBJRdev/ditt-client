@@ -30,6 +30,7 @@ export const getDaysOfSelectedMonth = (
         'sickDayUnpaidWorkLogs',
         'specialLeaveWorkLogs',
         'timeOffWorkLogs',
+        'trainingWorkLogs',
         'vacationWorkLogs',
       ].forEach((key) => {
         workLogListForRenderingDay = [

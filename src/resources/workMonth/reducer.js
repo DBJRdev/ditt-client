@@ -14,6 +14,7 @@ import {
   STATUS_REJECTED,
   STATUS_WAITING_FOR_APPROVAL,
   TIME_OFF_WORK_LOG,
+  TRAINING_WORK_LOG,
   VACATION_WORK_LOG,
   WORK_LOG,
 } from './constants';
@@ -162,6 +163,13 @@ export default (state, action) => {
       status: resolveWorkLogStatus(timeOffWorkLogsData),
       type: TIME_OFF_WORK_LOG,
     })),
+    trainingWorkLogs: data.trainingWorkLogs.map((trainingWorkLogsData) => ({
+      date: toMomentDateTime(trainingWorkLogsData.date),
+      id: parseInt(trainingWorkLogsData.id, 10),
+      rejectionMessage: trainingWorkLogsData.rejectionMessage,
+      status: resolveWorkLogStatus(trainingWorkLogsData),
+      type: TRAINING_WORK_LOG,
+    })),
     user: filterUser(data.user),
     vacationWorkLogs: data.vacationWorkLogs.map((vacationWorkLogsData) => ({
       date: toMomentDateTime(vacationWorkLogsData.date),
@@ -258,6 +266,21 @@ export default (state, action) => {
         status: timeOffWorkLogsData.workMonth.status,
         user: filterUser(timeOffWorkLogsData.workMonth.user),
         year: parseInt(timeOffWorkLogsData.workMonth.year.year, 10),
+      },
+    })),
+    trainingWorkLogs: data.trainingWorkLogs.map((trainingWorkLogsData) => ({
+      ...trainingWorkLogsData,
+      date: toMomentDateTime(trainingWorkLogsData.date),
+      id: parseInt(trainingWorkLogsData.id, 10),
+      status: resolveWorkLogStatus(trainingWorkLogsData),
+      support: trainingWorkLogsData.support.map(filterSupport),
+      type: TRAINING_WORK_LOG,
+      workMonth: {
+        id: parseInt(trainingWorkLogsData.workMonth.id, 10),
+        month: parseInt(trainingWorkLogsData.workMonth.month, 10),
+        status: trainingWorkLogsData.workMonth.status,
+        user: filterUser(trainingWorkLogsData.workMonth.user),
+        year: parseInt(trainingWorkLogsData.workMonth.year.year, 10),
       },
     })),
     vacationWorkLogs: data.vacationWorkLogs.map((vacationWorkLogsData) => ({

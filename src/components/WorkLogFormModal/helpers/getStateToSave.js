@@ -1,8 +1,12 @@
 import {
   BUSINESS_TRIP_WORK_LOG,
-  HOME_OFFICE_WORK_LOG, OVERTIME_WORK_LOG,
-  SICK_DAY_WORK_LOG, SPECIAL_LEAVE_WORK_LOG,
-  TIME_OFF_WORK_LOG, VACATION_WORK_LOG, WORK_LOG,
+  HOME_OFFICE_WORK_LOG,
+  OVERTIME_WORK_LOG,
+  SICK_DAY_WORK_LOG,
+  SPECIAL_LEAVE_WORK_LOG,
+  TIME_OFF_WORK_LOG,
+  TRAINING_WORK_LOG,
+  VACATION_WORK_LOG, WORK_LOG,
 } from '../../../resources/workMonth';
 import { VARIANT_SICK_CHILD } from '../../../resources/sickDayWorkLog';
 import { toMomentDateTimeFromDayMonthYear } from '../../../services/dateTimeService';
@@ -15,7 +19,11 @@ export const getStateToSave = (formData, date) => ({
   childName: (formData.type === SICK_DAY_WORK_LOG && formData.variant === VARIANT_SICK_CHILD)
     ? formData.childName
     : null,
-  comment: (formData.type === HOME_OFFICE_WORK_LOG || formData.type === TIME_OFF_WORK_LOG)
+  comment: (
+    formData.type === HOME_OFFICE_WORK_LOG
+    || formData.type === TIME_OFF_WORK_LOG
+    || formData.type === TRAINING_WORK_LOG
+  )
     ? formData.comment
     : null,
   date: formData.type !== WORK_LOG
@@ -27,6 +35,7 @@ export const getStateToSave = (formData, date) => ({
     || formData.type === SICK_DAY_WORK_LOG
     || formData.type === SPECIAL_LEAVE_WORK_LOG
     || formData.type === TIME_OFF_WORK_LOG
+    || formData.type === TRAINING_WORK_LOG
     || formData.type === VACATION_WORK_LOG
   )
     ? toMomentDateTimeFromDayMonthYear(formData.dateTo)
@@ -52,6 +61,9 @@ export const getStateToSave = (formData, date) => ({
     : null,
   startTime: formData.type === WORK_LOG
     ? date.clone().hour(formData.startHour).minute(formData.startMinute).second(0)
+    : null,
+  title: formData.type === TRAINING_WORK_LOG
+    ? formData.title
     : null,
   transport: formData.type === BUSINESS_TRIP_WORK_LOG
     ? formData.transport

@@ -66,6 +66,18 @@ import {
   supportTimeOffWorkLog,
 } from '../../resources/timeOffWorkLog';
 import {
+  fetchTrainingWorkLog,
+  markTrainingWorkLogApproved,
+  markTrainingWorkLogRejected,
+  markMultipleTrainingWorkLogApproved,
+  markMultipleTrainingWorkLogRejected,
+  selectTrainingWorkLog,
+  selectTrainingWorkLogMeta,
+  selectTrainingWorkLogSupportMeta,
+  supportTrainingWorkLog,
+  supportMultipleTrainingWorkLog,
+} from '../../resources/trainingWorkLog';
+import {
   fetchVacationWorkLog,
   markMultipleVacationWorkLogApproved,
   markMultipleVacationWorkLogRejected,
@@ -96,6 +108,8 @@ const mapStateToProps = (state) => {
   const specialLeaveWorkLogSupportMeta = selectSpecialLeaveWorkLogSupportMeta(state);
   const timeOffWorkLogMeta = selectTimeOffWorkLogMeta(state);
   const timeOffWorkLogSupportMeta = selectTimeOffWorkLogSupportMeta(state);
+  const trainingWorkLogMeta = selectTrainingWorkLogMeta(state);
+  const trainingWorkLogSupportMeta = selectTrainingWorkLogSupportMeta(state);
   const vacationWorkLogMeta = selectVacationWorkLogMeta(state);
   const vacationWorkLogSupportMeta = selectVacationWorkLogSupportMeta(state);
   const specialApprovalListMeta = selectRecentSpecialApprovalListMeta(state);
@@ -116,6 +130,8 @@ const mapStateToProps = (state) => {
       || specialLeaveWorkLogSupportMeta.isPosting
       || timeOffWorkLogMeta.isPosting
       || timeOffWorkLogSupportMeta.isPosting
+      || trainingWorkLogMeta.isPosting
+      || trainingWorkLogSupportMeta.isPosting
       || vacationWorkLogMeta.isPosting
       || vacationWorkLogSupportMeta.isPosting,
     overtimeWorkLog: selectOvertimeWorkLog(state)?.toJS(),
@@ -123,6 +139,7 @@ const mapStateToProps = (state) => {
     specialLeaveWorkLog: selectSpecialLeaveWorkLog(state)?.toJS(),
     timeOffWorkLog: selectTimeOffWorkLog(state)?.toJS(),
     token: selectJwtToken(state),
+    trainingWorkLog: selectTrainingWorkLog(state)?.toJS(),
     vacationWorkLog: selectVacationWorkLog(state)?.toJS(),
   });
 };
@@ -135,6 +152,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchSpecialApprovalList: (uid) => dispatch(fetchRecentSpecialApprovalList(uid)),
   fetchSpecialLeaveWorkLog: (id) => dispatch(fetchSpecialLeaveWorkLog(id)),
   fetchTimeOffWorkLog: (id) => dispatch(fetchTimeOffWorkLog(id)),
+  fetchTrainingWorkLog: (id) => dispatch(fetchTrainingWorkLog(id)),
   fetchVacationWorkLog: (id) => dispatch(fetchVacationWorkLog(id)),
   markBusinessTripWorkLogApproved: (id) => dispatch(markBusinessTripWorkLogApproved(id)),
   markBusinessTripWorkLogRejected: (id, data) => dispatch(
@@ -172,6 +190,12 @@ const mapDispatchToProps = (dispatch) => ({
   markMultipleTimeOffWorkLogRejected: (ids, data) => dispatch(
     markMultipleTimeOffWorkLogRejected(ids, data),
   ),
+  markMultipleTrainingWorkLogApproved: (ids) => dispatch(
+    markMultipleTrainingWorkLogApproved(ids),
+  ),
+  markMultipleTrainingWorkLogRejected: (ids, data) => dispatch(
+    markMultipleTrainingWorkLogRejected(ids, data),
+  ),
   markMultipleVacationWorkLogApproved: (ids) => dispatch(markMultipleVacationWorkLogApproved(ids)),
   markMultipleVacationWorkLogRejected: (ids, data) => dispatch(
     markMultipleVacationWorkLogRejected(ids, data),
@@ -184,6 +208,10 @@ const mapDispatchToProps = (dispatch) => ({
   ),
   markTimeOffWorkLogApproved: (id) => dispatch(markTimeOffWorkLogApproved(id)),
   markTimeOffWorkLogRejected: (id, data) => dispatch(markTimeOffWorkLogRejected(id, data)),
+  markTrainingWorkLogApproved: (id) => dispatch(markTrainingWorkLogApproved(id)),
+  markTrainingWorkLogRejected: (id, data) => dispatch(
+    markTrainingWorkLogRejected(id, data),
+  ),
   markVacationWorkLogApproved: (id) => dispatch(markVacationWorkLogApproved(id)),
   markVacationWorkLogRejected: (id, data) => dispatch(markVacationWorkLogRejected(id, data)),
   supportBusinessTripWorkLog: (id) => dispatch(supportBusinessTripWorkLog(id)),
@@ -193,10 +221,12 @@ const mapDispatchToProps = (dispatch) => ({
   supportMultipleOvertimeWorkLog: (id) => dispatch(supportMultipleOvertimeWorkLog(id)),
   supportMultipleSpecialLeaveWorkLog: (id) => dispatch(supportMultipleSpecialLeaveWorkLog(id)),
   supportMultipleTimeOffWorkLog: (id) => dispatch(supportMultipleTimeOffWorkLog(id)),
+  supportMultipleTrainingWorkLog: (id) => dispatch(supportMultipleTrainingWorkLog(id)),
   supportMultipleVacationWorkLog: (id) => dispatch(supportMultipleVacationWorkLog(id)),
   supportOvertimeWorkLog: (id) => dispatch(supportOvertimeWorkLog(id)),
   supportSpecialLeaveWorkLog: (id) => dispatch(supportSpecialLeaveWorkLog(id)),
   supportTimeOffWorkLog: (id) => dispatch(supportTimeOffWorkLog(id)),
+  supportTrainingWorkLog: (id) => dispatch(supportTrainingWorkLog(id)),
   supportVacationWorkLog: (id) => dispatch(supportVacationWorkLog(id)),
 });
 

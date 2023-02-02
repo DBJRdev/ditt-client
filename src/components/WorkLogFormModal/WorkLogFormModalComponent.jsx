@@ -25,6 +25,7 @@ import {
   STATUS_OPENED,
   STATUS_WAITING_FOR_APPROVAL,
   TIME_OFF_WORK_LOG,
+  TRAINING_WORK_LOG,
   VACATION_WORK_LOG,
   WORK_LOG,
 } from '../../resources/workMonth';
@@ -221,6 +222,7 @@ WorkLogFormModalComponent.propTypes = {
       SICK_DAY_WORK_LOG,
       SPECIAL_LEAVE_WORK_LOG,
       TIME_OFF_WORK_LOG,
+      TRAINING_WORK_LOG,
       VACATION_WORK_LOG,
       WORK_LOG,
     ]).isRequired,

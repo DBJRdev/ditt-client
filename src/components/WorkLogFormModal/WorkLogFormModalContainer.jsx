@@ -35,6 +35,12 @@ import {
   selectTimeOffWorkLogMeta,
 } from '../../resources/timeOffWorkLog';
 import {
+  addTrainingWorkLog,
+  addMultipleTrainingWorkLog,
+  editTrainingWorkLog,
+  selectTrainingWorkLogMeta,
+} from '../../resources/trainingWorkLog';
+import {
   addMultipleVacationWorkLog,
   addVacationWorkLog,
   editVacationWorkLog,
@@ -51,6 +57,7 @@ import {
   SICK_DAY_WORK_LOG,
   SPECIAL_LEAVE_WORK_LOG,
   TIME_OFF_WORK_LOG,
+  TRAINING_WORK_LOG,
   VACATION_WORK_LOG,
   WORK_LOG,
   OVERTIME_WORK_LOG,
@@ -71,6 +78,7 @@ const mapStateToProps = (state) => ({
     || selectSickDayWorkLogMeta(state).isPosting
     || selectSpecialLeaveWorkLogMeta(state).isPosting
     || selectTimeOffWorkLogMeta(state).isPosting
+    || selectTrainingWorkLogMeta(state).isPosting
     || selectVacationWorkLogMeta(state).isPosting
     || selectAddWorkLogMeta(state).isPosting,
   workMonth: selectWorkMonth(state)?.toJS(),
@@ -186,6 +194,22 @@ const mapDispatchToProps = (dispatch) => ({
       return multipleRequestData.length > 1
         ? dispatch(addMultipleTimeOffWorkLog(multipleRequestData))
         : dispatch(addTimeOffWorkLog(requestData));
+    } if (workLog.type === TRAINING_WORK_LOG) {
+      const requestData = {
+        comment: workLog.comment,
+        date: workLog.date,
+        dateTo: workLog.dateTo,
+        title: workLog.title,
+      };
+
+      if (workLog.id) {
+        return dispatch(editTrainingWorkLog(workLog.id, requestData));
+      }
+
+      const multipleRequestData = processMultipleWorkLogs(requestData);
+      return multipleRequestData.length > 1
+        ? dispatch(addMultipleTrainingWorkLog(multipleRequestData))
+        : dispatch(addTrainingWorkLog(requestData));
     } if (workLog.type === VACATION_WORK_LOG) {
       const requestData = {
         date: workLog.date,

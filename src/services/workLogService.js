@@ -14,6 +14,7 @@ import {
   STATUS_REJECTED,
   STATUS_WAITING_FOR_APPROVAL,
   TIME_OFF_WORK_LOG,
+  TRAINING_WORK_LOG,
   VACATION_WORK_LOG,
   WORK_LOG,
 } from '../resources/workMonth';
@@ -84,6 +85,8 @@ export const getTypeLabel = (t, type) => {
     typeLabel = t('workMonth:constant.type.specialLeaveWorkLog');
   } else if (TIME_OFF_WORK_LOG === type) {
     typeLabel = t('workMonth:constant.type.timeOffWorkLog');
+  } else if (TRAINING_WORK_LOG === type) {
+    typeLabel = t('workMonth:constant.type.trainingWorkLog');
   } else if (VACATION_WORK_LOG === type) {
     typeLabel = t('workMonth:constant.type.vacationWorkLog');
   } else if (WORK_LOG === type) {
@@ -109,6 +112,7 @@ export const getWorkedTime = (
   const maternityProtectionWorkLogs = [];
   const sickDayWorkLogs = [];
   const specialLeaveWorkLogs = [];
+  const trainingWorkLogs = [];
   const vacationWorkLogs = [];
 
   let workTime = 0;
@@ -155,6 +159,8 @@ export const getWorkedTime = (
       sickDayWorkLogs.push(workLog);
     } else if (workLog.type === SPECIAL_LEAVE_WORK_LOG && workLog.status === STATUS_APPROVED) {
       specialLeaveWorkLogs.push(workLog);
+    } else if (workLog.type === TRAINING_WORK_LOG && workLog.status === STATUS_APPROVED) {
+      trainingWorkLogs.push(workLog);
     } else if (workLog.type === VACATION_WORK_LOG && workLog.status === STATUS_APPROVED) {
       vacationWorkLogs.push(workLog);
     }
@@ -237,6 +243,7 @@ export const getWorkedTime = (
       && (
         businessTripWorkLogs.length > 0
         || homeOfficeWorkLogs.length > 0
+        || trainingWorkLogs.length > 0
         || sickDayWorkLogs.length > 0
       )
     ) || maternityProtectionWorkLogs.length > 0
@@ -337,6 +344,16 @@ export const areWorkLogsSame = (a, b) => {
   if (
     a.type === TIME_OFF_WORK_LOG
     && a.comment !== b.comment
+  ) {
+    return false;
+  }
+
+  if (
+    a.type === TRAINING_WORK_LOG
+    && (
+      a.title !== b.title
+      || a.comment !== b.comment
+    )
   ) {
     return false;
   }

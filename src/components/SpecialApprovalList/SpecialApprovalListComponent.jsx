@@ -24,6 +24,7 @@ import {
   STATUS_WAITING_FOR_APPROVAL,
   SPECIAL_LEAVE_WORK_LOG,
   TIME_OFF_WORK_LOG,
+  TRAINING_WORK_LOG,
   VACATION_WORK_LOG,
 } from '../../resources/workMonth';
 import { toDayDayMonthYearFormat } from '../../services/dateTimeService';
@@ -109,6 +110,7 @@ class SpecialApprovalListComponent extends React.Component {
       'overtimeWorkLogs',
       'specialLeaveWorkLogs',
       'timeOffWorkLogs',
+      'trainingWorkLogs',
       'vacationWorkLogs',
     ].forEach((key) => {
       specialApprovalList = [
@@ -175,6 +177,9 @@ class SpecialApprovalListComponent extends React.Component {
             case TIME_OFF_WORK_LOG:
               action = this.props.markMultipleTimeOffWorkLogApproved;
               break;
+            case TRAINING_WORK_LOG:
+              action = this.props.markMultipleTrainingWorkLogApproved;
+              break;
             case VACATION_WORK_LOG:
               action = this.props.markMultipleVacationWorkLogApproved;
               break;
@@ -197,6 +202,9 @@ class SpecialApprovalListComponent extends React.Component {
               break;
             case TIME_OFF_WORK_LOG:
               action = this.props.markTimeOffWorkLogApproved;
+              break;
+            case TRAINING_WORK_LOG:
+              action = this.props.markTrainingWorkLogApproved;
               break;
             case VACATION_WORK_LOG:
               action = this.props.markVacationWorkLogApproved;
@@ -250,6 +258,9 @@ class SpecialApprovalListComponent extends React.Component {
             case TIME_OFF_WORK_LOG:
               action = this.props.markMultipleTimeOffWorkLogRejected;
               break;
+            case TRAINING_WORK_LOG:
+              action = this.props.markMultipleTrainingWorkLogRejected;
+              break;
             case VACATION_WORK_LOG:
               action = this.props.markMultipleVacationWorkLogRejected;
               break;
@@ -272,6 +283,9 @@ class SpecialApprovalListComponent extends React.Component {
               break;
             case TIME_OFF_WORK_LOG:
               action = this.props.markTimeOffWorkLogRejected;
+              break;
+            case TRAINING_WORK_LOG:
+              action = this.props.markTrainingWorkLogRejected;
               break;
             case VACATION_WORK_LOG:
               action = this.props.markVacationWorkLogRejected;
@@ -325,6 +339,9 @@ class SpecialApprovalListComponent extends React.Component {
             case TIME_OFF_WORK_LOG:
               action = this.props.supportMultipleTimeOffWorkLog;
               break;
+            case TRAINING_WORK_LOG:
+              action = this.props.supportMultipleTrainingWorkLog;
+              break;
             case VACATION_WORK_LOG:
               action = this.props.supportMultipleVacationWorkLog;
               break;
@@ -347,6 +364,9 @@ class SpecialApprovalListComponent extends React.Component {
               break;
             case TIME_OFF_WORK_LOG:
               action = this.props.supportTimeOffWorkLog;
+              break;
+            case TRAINING_WORK_LOG:
+              action = this.props.supportTrainingWorkLog;
               break;
             case VACATION_WORK_LOG:
               action = this.props.supportVacationWorkLog;
@@ -420,6 +440,8 @@ class SpecialApprovalListComponent extends React.Component {
       this.props.fetchSpecialLeaveWorkLog(id);
     } else if (TIME_OFF_WORK_LOG === type) {
       this.props.fetchTimeOffWorkLog(id);
+    } else if (TRAINING_WORK_LOG === type) {
+      this.props.fetchTrainingWorkLog(id);
     } else if (VACATION_WORK_LOG === type) {
       this.props.fetchVacationWorkLog(id);
     }
@@ -715,6 +737,47 @@ class SpecialApprovalListComponent extends React.Component {
               <br />
             </>
           )}
+        </p>
+      );
+    } if (TRAINING_WORK_LOG === type && this.props.trainingWorkLog) {
+      content = (
+        <p>
+          {isBulk ? t('workLog:element.dateFrom') : t('workLog:element.date')}
+          {': '}
+          {toDayDayMonthYearFormat(this.props.trainingWorkLog.date)}
+          <br />
+
+          {isBulk ? (
+            <>
+              {t('workLog:element.dateTo')}
+              {': '}
+              {toDayDayMonthYearFormat(dateTo)}
+              <br />
+            </>
+          ) : null}
+
+          {t('workLog:element.status')}
+          {': '}
+          {getStatusLabel(t, this.props.trainingWorkLog.status)}
+          <br />
+
+          {STATUS_REJECTED === this.props.trainingWorkLog.status && (
+            <>
+              {t('workLog:element.rejectionMessage')}
+              {': '}
+              {this.props.trainingWorkLog.rejectionMessage}
+              <br />
+            </>
+          )}
+
+          {t('trainingWorkLog:element.title')}
+          {': '}
+          {this.props.trainingWorkLog.title}
+          <br />
+
+          {t('trainingWorkLog:element.comment')}
+          {': '}
+          {this.props.trainingWorkLog.comment || '-'}
         </p>
       );
     } else if (VACATION_WORK_LOG === type && this.props.vacationWorkLog) {
@@ -1029,6 +1092,7 @@ SpecialApprovalListComponent.defaultProps = {
   overtimeWorkLog: null,
   specialLeaveWorkLog: null,
   timeOffWorkLog: null,
+  trainingWorkLog: null,
   vacationWorkLog: null,
 };
 
@@ -1053,6 +1117,7 @@ SpecialApprovalListComponent.propTypes = {
   fetchSpecialApprovalList: PropTypes.func.isRequired,
   fetchSpecialLeaveWorkLog: PropTypes.func.isRequired,
   fetchTimeOffWorkLog: PropTypes.func.isRequired,
+  fetchTrainingWorkLog: PropTypes.func.isRequired,
   fetchVacationWorkLog: PropTypes.func.isRequired,
   homeOfficeWorkLog: PropTypes.shape({
     comment: PropTypes.string,
@@ -1075,6 +1140,8 @@ SpecialApprovalListComponent.propTypes = {
   markMultipleSpecialLeaveWorkLogRejected: PropTypes.func.isRequired,
   markMultipleTimeOffWorkLogApproved: PropTypes.func.isRequired,
   markMultipleTimeOffWorkLogRejected: PropTypes.func.isRequired,
+  markMultipleTrainingWorkLogApproved: PropTypes.func.isRequired,
+  markMultipleTrainingWorkLogRejected: PropTypes.func.isRequired,
   markMultipleVacationWorkLogApproved: PropTypes.func.isRequired,
   markMultipleVacationWorkLogRejected: PropTypes.func.isRequired,
   markOvertimeWorkLogApproved: PropTypes.func.isRequired,
@@ -1083,6 +1150,8 @@ SpecialApprovalListComponent.propTypes = {
   markSpecialLeaveWorkLogRejected: PropTypes.func.isRequired,
   markTimeOffWorkLogApproved: PropTypes.func.isRequired,
   markTimeOffWorkLogRejected: PropTypes.func.isRequired,
+  markTrainingWorkLogApproved: PropTypes.func.isRequired,
+  markTrainingWorkLogRejected: PropTypes.func.isRequired,
   markVacationWorkLogApproved: PropTypes.func.isRequired,
   markVacationWorkLogRejected: PropTypes.func.isRequired,
   overtimeWorkLog: PropTypes.shape({
@@ -1149,6 +1218,17 @@ SpecialApprovalListComponent.propTypes = {
         }).isRequired,
       }).isRequired,
     })).isRequired,
+    trainingWorkLogs: PropTypes.arrayOf(PropTypes.shape({
+      date: PropTypes.shape.isRequired,
+      id: PropTypes.number.isRequired,
+      type: PropTypes.oneOf([TRAINING_WORK_LOG]).isRequired,
+      workMonth: PropTypes.shape({
+        user: PropTypes.shape({
+          firstName: PropTypes.string.isRequired,
+          lastName: PropTypes.string.isRequired,
+        }).isRequired,
+      }).isRequired,
+    })).isRequired,
     vacationWorkLogs: PropTypes.arrayOf(PropTypes.shape({
       date: PropTypes.shape.isRequired,
       id: PropTypes.number.isRequired,
@@ -1173,10 +1253,12 @@ SpecialApprovalListComponent.propTypes = {
   supportMultipleOvertimeWorkLog: PropTypes.func.isRequired,
   supportMultipleSpecialLeaveWorkLog: PropTypes.func.isRequired,
   supportMultipleTimeOffWorkLog: PropTypes.func.isRequired,
+  supportMultipleTrainingWorkLog: PropTypes.func.isRequired,
   supportMultipleVacationWorkLog: PropTypes.func.isRequired,
   supportOvertimeWorkLog: PropTypes.func.isRequired,
   supportSpecialLeaveWorkLog: PropTypes.func.isRequired,
   supportTimeOffWorkLog: PropTypes.func.isRequired,
+  supportTrainingWorkLog: PropTypes.func.isRequired,
   supportVacationWorkLog: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
   timeOffWorkLog: PropTypes.shape({
@@ -1186,6 +1268,13 @@ SpecialApprovalListComponent.propTypes = {
     status: PropTypes.string.isRequired,
   }),
   token: PropTypes.string.isRequired,
+  trainingWorkLog: PropTypes.shape({
+    comment: PropTypes.string,
+    date: PropTypes.instanceOf(moment).isRequired,
+    rejectionMessage: PropTypes.string,
+    status: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+  }),
   vacationWorkLog: PropTypes.shape({
     date: PropTypes.instanceOf(moment).isRequired,
     rejectionMessage: PropTypes.string,
