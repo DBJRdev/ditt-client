@@ -1,6 +1,6 @@
 import moment from 'moment-timezone';
 
-const TIMEZONE = 'Europe/Prague';
+export const TIMEZONE = 'Europe/Prague';
 
 export const localizedMoment = () => moment().tz(TIMEZONE);
 

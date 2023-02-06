@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { withTranslation } from 'react-i18next';
 import moment from 'moment';
 import { WorkLogFormModal } from '../WorkLogFormModal';
 import {
@@ -33,6 +34,7 @@ import { SupervisorWorkTimeCorrectionModal } from './components/SupervisorWorkTi
 import { WorkLogDetailModal } from './components/WorkLogDetailModal';
 import { canAddWorkLog } from './helpers/canAddWorkLog';
 import { canAddSupervisorWorkLog } from './helpers/canAddSupervisorWorkLog';
+import { exportData } from './helpers/exportData';
 import { getDaysOfSelectedMonth } from './helpers/getDaysOfSelectedMonth';
 import { getWorkHoursInfo } from './helpers/getWorkHoursInfo';
 import { WorkLogCalendarContent } from './parts/WorkLogCalendarContent';
@@ -76,6 +78,8 @@ class WorkLogCalendarComponent extends React.Component {
 
     this.openSupervisorWorkTimeCorrectionModal = this.openSupervisorWorkTimeCorrectionModal.bind(this);
     this.closeSupervisorWorkTimeCorrectionModal = this.closeSupervisorWorkTimeCorrectionModal.bind(this);
+
+    this.exportData = this.exportData.bind(this);
   }
 
   selectNextMonth() {
@@ -280,6 +284,15 @@ class WorkLogCalendarComponent extends React.Component {
     this.setState({ showSupervisorWorkTimeCorrectionModal: false });
   }
 
+  exportData() {
+    const {
+      t,
+      workMonth,
+    } = this.props;
+
+    exportData(workMonth, t);
+  }
+
   countWaitingForApprovalWorkLogs() {
     const { workMonth } = this.props;
 
@@ -373,6 +386,7 @@ class WorkLogCalendarComponent extends React.Component {
           status={workMonth.status}
         />
         <WorkLogCalendarUpperToolbar
+          exportData={this.exportData}
           openSupervisorWorkTimeCorrectionModal={this.openSupervisorWorkTimeCorrectionModal}
           supervisorView={supervisorView}
           user={user}
@@ -525,6 +539,7 @@ WorkLogCalendarComponent.propTypes = {
     status: PropTypes.string.isRequired,
   }),
   supervisorView: PropTypes.bool,
+  t: PropTypes.func.isRequired,
   timeOffWorkLog: PropTypes.shape({
     date: PropTypes.instanceOf(moment).isRequired,
     rejectionMessage: PropTypes.string,
@@ -677,4 +692,4 @@ WorkLogCalendarComponent.propTypes = {
   })).isRequired,
 };
 
-export default WorkLogCalendarComponent;
+export default withTranslation()(WorkLogCalendarComponent);

@@ -28,6 +28,30 @@
       "notUniqueYear": "This year already exists."
     }
   },
+  "csv": {
+    "exportWorkMonth": {
+      "type": "Type",
+      "id": "ID",
+      "startTime": "Start time",
+      "endTime": "End time",
+      "status": "Status",
+      "timeApproved": "Time approved",
+      "timeRejected": "Time rejected",
+      "rejectionMessage": "Rejection message",
+      "comment": "Comment / Reason / Purpose",
+      "plannedStart": "Planned start",
+      "plannedEnd": "Planned end",
+      "expectedDeparture": "Expected departure",
+      "expectedArrival": "Expected arrival",
+      "destination": "Destination",
+      "transport": "Transport",
+      "variant": "Variant",
+      "childName": "Child's name",
+      "childDateOfBirth": "Child's date of birth",
+      "title": "Title",
+      "workTimeLimit": "Work time limit"
+    }
+  },
   "error": {
     "description": "Error",
     "title": "Page not found"
@@ -386,6 +410,7 @@
   },
   "workMonth": {
     "actions": {
+      "export": "Exportieren",
       "setWorkTimeCorrection": "Set work time correction"
     },
     "constant": {

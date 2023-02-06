@@ -4,12 +4,12 @@ import React from 'react';
 import { withTranslation } from 'react-i18next';
 import styles from '../../WorkLogCalendar.scss';
 import {
-  STATUS_OPENED,
-  STATUS_WAITING_FOR_APPROVAL,
+  STATUS_APPROVED,
 } from '../../../../resources/workMonth';
 import { ROLE_SUPER_ADMIN } from '../../../../resources/user';
 
 const WorkLogCalendarUpperToolbarComponent = ({
+  exportData,
   openSupervisorWorkTimeCorrectionModal,
   supervisorView,
   t,
@@ -21,10 +21,20 @@ const WorkLogCalendarUpperToolbarComponent = ({
       supervisorView
       && user.roles.includes(ROLE_SUPER_ADMIN)
       && (user.uid !== workMonth.user.id)
-      && (workMonth.status === STATUS_OPENED || workMonth.status === STATUS_WAITING_FOR_APPROVAL)
     )
   ) {
     return null;
+  }
+
+  if (workMonth.status === STATUS_APPROVED) {
+    return (
+      <div className={styles.tableToolbar}>
+        <Button
+          label={t('workMonth:actions.export')}
+          onClick={exportData}
+        />
+      </div>
+    );
   }
 
   return (
@@ -38,6 +48,7 @@ const WorkLogCalendarUpperToolbarComponent = ({
 };
 
 WorkLogCalendarUpperToolbarComponent.propTypes = {
+  exportData: PropTypes.func.isRequired,
   openSupervisorWorkTimeCorrectionModal: PropTypes.func.isRequired,
   supervisorView: PropTypes.bool.isRequired,
   t: PropTypes.func.isRequired,
