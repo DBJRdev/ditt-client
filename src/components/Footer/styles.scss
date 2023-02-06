@@ -6,4 +6,8 @@ $_layout-spacer-y: 2rem;
   font-size: 0.75rem;
   text-align: center;
   color: #717171;
+
+  @media print {
+    display: none;
+  }
 }

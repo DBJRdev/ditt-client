@@ -1,4 +1,7 @@
-import { Button } from '@react-ui-org/react-ui';
+import {
+  Button,
+  classNames,
+} from '@react-ui-org/react-ui';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withTranslation } from 'react-i18next';
@@ -64,7 +67,12 @@ const WorkLogCalendarNavigationComponent = ({
         supervisorView
         && workMonth.status === STATUS_WAITING_FOR_APPROVAL
         && (
-          <div className="mt-2">
+          <div
+            className={classNames(
+              'mt-2',
+              styles.tableCellHideOnPrint,
+            )}
+          >
             <Button
               color="success"
               feedbackIcon={isPosting ? <LoadingIcon /> : null}

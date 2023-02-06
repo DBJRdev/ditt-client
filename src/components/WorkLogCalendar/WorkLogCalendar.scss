@@ -20,6 +20,10 @@ $_table-cell-padding-y: 0.25rem;
   @media screen and (min-width: $_breakpoint) {
     flex-direction: row;
   }
+
+  @media print {
+    margin-bottom: 0;
+  }
 }
 
 .navigationWrap {
@@ -34,6 +38,10 @@ $_table-cell-padding-y: 0.25rem;
 .navigationPrevious {
   @media screen and (min-width: $_breakpoint) {
     padding-right: 1rem;
+  }
+
+  @media print {
+    display: none;
   }
 }
 
@@ -52,6 +60,10 @@ $_table-cell-padding-y: 0.25rem;
 .navigationNext {
   @media screen and (min-width: $_breakpoint) {
     padding-left: 1rem;
+  }
+
+  @media print {
+    display: none;
   }
 }
 
@@ -110,6 +122,12 @@ $_table-cell-padding-y: 0.25rem;
   text-align: right;
 }
 
+.tableCellHideOnPrint {
+  @media print {
+    display: none;
+  }
+}
+
 .tableCellRightWithWorkedHoursLeft {
   width: 6em;
 }
@@ -153,10 +171,21 @@ $_table-cell-padding-y: 0.25rem;
   color: #666;
 }
 
+// stylelint-disable-next-line
+.scrollViewWrapper > div:first-child > div:first-child > div:first-child {
+  @media print {
+    display: block;
+  }
+}
+
 .sendForApprovalButtonWrapper {
   margin-top: 1rem;
   margin-right: -$_table-cell-padding-x;
   margin-left: -$_table-cell-padding-x;
+
+  @media print {
+    display: none;
+  }
 }
 
 .tableToolbar {

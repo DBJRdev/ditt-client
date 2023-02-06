@@ -7,12 +7,22 @@ $_layout-padding-x: 4vw;
 .main {
   padding: $_layout-spacer-y $_layout-padding-x $_layout-spacer-y $_layout-padding-x;
   background-color: #f6f5f4;
+
+  @media print {
+    padding: 0;
+    background-color: #fff;
+  }
 }
 
 .body {
   padding: $_layout-spacer-y $_layout-spacer-x;
   background-color: #fff;
   box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.05);
+
+  @media print {
+    padding: 0;
+    box-shadow: none;
+  }
 }
 
 .bodyTitle {
@@ -21,6 +31,10 @@ $_layout-padding-x: 4vw;
   overflow-x: auto;
   font-weight: 500;
   font-size: 1.75rem;
+
+  @media print {
+    display: none;
+  }
 }
 
 .footer {

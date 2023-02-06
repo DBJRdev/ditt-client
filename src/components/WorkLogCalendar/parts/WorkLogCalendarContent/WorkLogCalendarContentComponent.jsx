@@ -1,5 +1,9 @@
 import {
-  Button, ScrollView, Toolbar, ToolbarItem,
+  Button,
+  ScrollView,
+  Toolbar,
+  ToolbarItem,
+  classNames,
 } from '@react-ui-org/react-ui';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -59,175 +63,184 @@ const WorkLogCalendarContentComponent = ({
   }
 
   return (
-    <ScrollView direction="horizontal">
-      <div className={styles.tableWrapper}>
-        <table className={styles.table}>
-          <tbody>
-            {workMonth.status !== STATUS_APPROVED && workHoursInfo && workHoursInfo.requiredHoursLeft !== 0 && (
-            <tr>
-              <td
-                colSpan={(canAddWorkLog || canAddSupervisorWorkLog) ? 4 : 3}
-                className={styles.tableCellRight}
-              >
-                {t(
-                  'workLog:text.differenceFromPreviousMonth',
-                  { hours: toHourMinuteFormatFromInt(-workHoursInfo.requiredHoursLeft, true) },
-                )}
-              </td>
-            </tr>
-            )}
-            {workTimeCorrectionText && (
-            <tr>
-              <td
-                colSpan={(canAddWorkLog || canAddSupervisorWorkLog) ? 4 : 3}
-                className={styles.tableCellRight}
-              >
-                {workTimeCorrectionText}
-              </td>
-            </tr>
-            )}
-            {daysOfSelectedMonth.map((day) => {
-              let rowClassName = (
-                isWeekend(day.date)
-              || includesSameDate(day.date, config.supportedHolidays)
-              ) ? styles.tableRowWeekend
-                : styles.tableRow;
-
-              if (canAddWorkLog || canAddSupervisorWorkLog) {
-                rowClassName = `${rowClassName} ${styles.tableRowAddWorkLog}`;
-              }
-
-              let onRowClick;
-              if (canAddWorkLog) {
-                onRowClick = () => openWorkLogFormModal(day.date);
-              } else if (canAddSupervisorWorkLog) {
-                onRowClick = () => openSupervisorWorkLogFormModal(day.date);
-              }
-
-              return (
-                <tr
-                  className={rowClassName}
-                  key={day.date.date()}
-                  onClick={onRowClick}
+    <div className={styles.scrollViewWrapper}>
+      <ScrollView direction="horizontal">
+        <div className={styles.tableWrapper}>
+          <table className={styles.table}>
+            <tbody>
+              {workMonth.status !== STATUS_APPROVED && workHoursInfo && workHoursInfo.requiredHoursLeft !== 0 && (
+              <tr>
+                <td
+                  colSpan={(canAddWorkLog || canAddSupervisorWorkLog) ? 4 : 3}
+                  className={styles.tableCellRight}
                 >
-                  <td className={styles.dateTableCell}>
-                    <div className={styles.date}>
-                      {toDayMonthYearFormat(day.date)}
-                    </div>
-                    <div className={styles.dayInWeek}>
-                      {toDayFormat(day.date)}
-                    </div>
-                  </td>
-                  <td className={styles.tableCell}>
-                    <Toolbar dense>
-                      {day.workLogList.map((workLog) => (
-                        <WorkLogDetailButton
-                          currentDate={day.date}
-                          daysOfCurrentMonth={daysOfSelectedMonth}
-                          fetchWorkMonth={fetchWorkMonth}
-                          isInSupervisorMode={
-                          supervisorView && user.roles.includes(ROLE_SUPER_ADMIN)
-                        }
-                          key={`${workLog.type}_${workLog.id}`}
-                          onClick={openWorkLogDetailModal}
-                          onEditClick={openEditWorkLogFormModal}
-                          uid={user.uid}
-                          workLog={workLog}
-                          workMonth={workMonth}
-                        />
-                      ))}
+                  {t(
+                    'workLog:text.differenceFromPreviousMonth',
+                    { hours: toHourMinuteFormatFromInt(-workHoursInfo.requiredHoursLeft, true) },
+                  )}
+                </td>
+              </tr>
+              )}
+              {workTimeCorrectionText && (
+              <tr>
+                <td
+                  colSpan={(canAddWorkLog || canAddSupervisorWorkLog) ? 4 : 3}
+                  className={styles.tableCellRight}
+                >
+                  {workTimeCorrectionText}
+                </td>
+              </tr>
+              )}
+              {daysOfSelectedMonth.map((day) => {
+                let rowClassName = (
+                  isWeekend(day.date)
+                || includesSameDate(day.date, config.supportedHolidays)
+                ) ? styles.tableRowWeekend
+                  : styles.tableRow;
+
+                if (canAddWorkLog || canAddSupervisorWorkLog) {
+                  rowClassName = `${rowClassName} ${styles.tableRowAddWorkLog}`;
+                }
+
+                let onRowClick;
+                if (canAddWorkLog) {
+                  onRowClick = () => openWorkLogFormModal(day.date);
+                } else if (canAddSupervisorWorkLog) {
+                  onRowClick = () => openSupervisorWorkLogFormModal(day.date);
+                }
+
+                return (
+                  <tr
+                    className={rowClassName}
+                    key={day.date.date()}
+                    onClick={onRowClick}
+                  >
+                    <td className={styles.dateTableCell}>
+                      <div className={styles.date}>
+                        {toDayMonthYearFormat(day.date)}
+                      </div>
+                      <div className={styles.dayInWeek}>
+                        {toDayFormat(day.date)}
+                      </div>
+                    </td>
+                    <td
+                      className={styles.tableCell}
+                    >
+                      <Toolbar dense>
+                        {day.workLogList.map((workLog) => (
+                          <WorkLogDetailButton
+                            currentDate={day.date}
+                            daysOfCurrentMonth={daysOfSelectedMonth}
+                            fetchWorkMonth={fetchWorkMonth}
+                            isInSupervisorMode={
+                            supervisorView && user.roles.includes(ROLE_SUPER_ADMIN)
+                          }
+                            key={`${workLog.type}_${workLog.id}`}
+                            onClick={openWorkLogDetailModal}
+                            onEditClick={openEditWorkLogFormModal}
+                            uid={user.uid}
+                            workLog={workLog}
+                            workMonth={workMonth}
+                          />
+                        ))}
+                        {
+                        day.date.isSame(date, 'day')
+                        && canAddWorkLog
+                        && (
+                          <ToolbarItem>
+                            <WorkLogTimerButton onAfterSave={fetchWorkMonth} />
+                          </ToolbarItem>
+                        )
+                      }
+                      </Toolbar>
+                    </td>
+                    {
+                    canAddWorkLog
+                    && (
+                      <td
+                        className={classNames(
+                          styles.tableCellRight,
+                          styles.tableCellHideOnPrint,
+                        )}
+                      >
+                        <div className={styles.addWorkLogButtonWrapper}>
+                          <Button
+                            onClick={() => openWorkLogFormModal(day.date)}
+                            beforeLabel={<Icon icon="add" />}
+                            label={t('workLog:action.addWorkLog')}
+                            labelVisibility="none"
+                          />
+                        </div>
+                      </td>
+                    )
+                  }
+                    {
+                    canAddSupervisorWorkLog
+                    && (
+                      <td className={styles.tableCellRight}>
+                        <div className={styles.addWorkLogButtonWrapper}>
+                          <Button
+                            beforeLabel={<Icon icon="add" />}
+                            label={t('workLog:action.addWorkLog')}
+                            labelVisibility="none"
+                            onClick={() => openSupervisorWorkLogFormModal(day.date)}
+                          />
+                        </div>
+                      </td>
+                    )
+                  }
+                    <td
+                      className={
+                      [
+                        day.workTime.isWorkTimeCorrected
+                          ? styles.tableCellRightWithCorrectedTime
+                          : styles.tableCellRight,
+                        workHoursInfo.toWork > 0 ? styles.tableCellRightWithWorkedHoursLeft : '',
+                        workHoursInfo.toWork < 0 ? styles.tableCellRightWithWorkedHoursOvertime : '',
+                      ].join(' ')
+                    }
+                    >
+                      <div>
+                        {
+                        day.workTime.isWorkTimeCorrected
+                          ? (
+                            <Icon icon="update" />
+                          ) : null
+                      }
+                        {
+                        (workHoursInfo && workHoursInfo.areWorkTimesSame)
+                          ? (
+                            <>
+                              {day.workTime.workTime.hours()}
+                              :
+                              {day.workTime.workTime.minutes() < 10 && '0'}
+                              {day.workTime.workTime.minutes()}
+                            </>
+                          ) : '-:--'
+                      }
+                      &nbsp;h
+                      </div>
                       {
                       day.date.isSame(date, 'day')
                       && canAddWorkLog
-                      && (
-                        <ToolbarItem>
-                          <WorkLogTimerButton onAfterSave={fetchWorkMonth} />
-                        </ToolbarItem>
+                      && workHoursInfo
+                      && workHoursInfo.toWork !== 0 && (
+                        <div className={styles.dailyStatusOfWorkedHours}>
+                          {-workHoursInfo.toWork > 0 ? '+' : ''}
+                          {toHourMinuteFormatFromInt(-workHoursInfo.toWork)}
+                          &nbsp;h
+                        </div>
                       )
                     }
-                    </Toolbar>
-                  </td>
-                  {
-                  canAddWorkLog
-                  && (
-                    <td className={styles.tableCellRight}>
-                      <div className={styles.addWorkLogButtonWrapper}>
-                        <Button
-                          onClick={() => openWorkLogFormModal(day.date)}
-                          beforeLabel={<Icon icon="add" />}
-                          label={t('workLog:action.addWorkLog')}
-                          labelVisibility="none"
-                        />
-                      </div>
                     </td>
-                  )
-                }
-                  {
-                  canAddSupervisorWorkLog
-                  && (
-                    <td className={styles.tableCellRight}>
-                      <div className={styles.addWorkLogButtonWrapper}>
-                        <Button
-                          beforeLabel={<Icon icon="add" />}
-                          label={t('workLog:action.addWorkLog')}
-                          labelVisibility="none"
-                          onClick={() => openSupervisorWorkLogFormModal(day.date)}
-                        />
-                      </div>
-                    </td>
-                  )
-                }
-                  <td
-                    className={
-                    [
-                      day.workTime.isWorkTimeCorrected
-                        ? styles.tableCellRightWithCorrectedTime
-                        : styles.tableCellRight,
-                      workHoursInfo.toWork > 0 ? styles.tableCellRightWithWorkedHoursLeft : '',
-                      workHoursInfo.toWork < 0 ? styles.tableCellRightWithWorkedHoursOvertime : '',
-                    ].join(' ')
-                  }
-                  >
-                    <div>
-                      {
-                      day.workTime.isWorkTimeCorrected
-                        ? (
-                          <Icon icon="update" />
-                        ) : null
-                    }
-                      {
-                      (workHoursInfo && workHoursInfo.areWorkTimesSame)
-                        ? (
-                          <>
-                            {day.workTime.workTime.hours()}
-                            :
-                            {day.workTime.workTime.minutes() < 10 && '0'}
-                            {day.workTime.workTime.minutes()}
-                          </>
-                        ) : '-:--'
-                    }
-                    &nbsp;h
-                    </div>
-                    {
-                    day.date.isSame(date, 'day')
-                    && canAddWorkLog
-                    && workHoursInfo
-                    && workHoursInfo.toWork !== 0 && (
-                      <div className={styles.dailyStatusOfWorkedHours}>
-                        {-workHoursInfo.toWork > 0 ? '+' : ''}
-                        {toHourMinuteFormatFromInt(-workHoursInfo.toWork)}
-                        &nbsp;h
-                      </div>
-                    )
-                  }
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-    </ScrollView>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </ScrollView>
+    </div>
   );
 };
 
