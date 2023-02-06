@@ -5,6 +5,8 @@ export {
   fetchParentalLeaveWorkLog,
 } from './actions';
 
+export { transformParentalProtectionWorkLog } from './dataTransformers';
+
 export {
   selectParentalLeaveWorkLog,
   selectParentalLeaveWorkLogMeta,

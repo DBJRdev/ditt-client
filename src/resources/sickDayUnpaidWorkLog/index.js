@@ -5,6 +5,8 @@ export {
   fetchSickDayUnpaidWorkLog,
 } from './actions';
 
+export { transformSickDayUnpaidWorkLog } from './dataTransformers';
+
 export {
   selectSickDayUnpaidWorkLog,
   selectSickDayUnpaidWorkLogMeta,

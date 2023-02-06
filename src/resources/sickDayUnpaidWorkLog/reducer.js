@@ -1,7 +1,7 @@
 import Immutable from 'immutable';
-import { toMomentDateTime } from '../../services/dateTimeService';
 import initialState from './initialState';
 import * as actionTypes from './actionTypes';
+import { transformSickDayUnpaidWorkLog } from './dataTransformers';
 
 export default (state, action) => {
   if (typeof state === 'undefined') {
@@ -12,11 +12,6 @@ export default (state, action) => {
     payload,
     type,
   } = action;
-
-  const filterWorkLog = (data) => ({
-    date: toMomentDateTime(data.date),
-    id: parseInt(data.id, 10),
-  });
 
   if (type === actionTypes.ADD_MULTIPLE_SICK_DAY_UNPAID_WORK_LOG_REQUEST) {
     return state
@@ -85,7 +80,7 @@ export default (state, action) => {
 
   if (type === actionTypes.FETCH_SICK_DAY_UNPAID_WORK_LOG_SUCCESS) {
     return state
-      .setIn(['sickDayUnpaidWorkLog', 'data'], Immutable.fromJS(filterWorkLog(payload)))
+      .setIn(['sickDayUnpaidWorkLog', 'data'], Immutable.fromJS(transformSickDayUnpaidWorkLog(payload)))
       .setIn(['sickDayUnpaidWorkLog', 'isFetching'], false)
       .setIn(['sickDayUnpaidWorkLog', 'isFetchingFailure'], false);
   }

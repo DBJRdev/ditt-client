@@ -5,6 +5,8 @@ export {
   fetchMaternityProtectionWorkLog,
 } from './actions';
 
+export { transformMaternityProtectionWorkLog } from './dataTransformers';
+
 export {
   selectMaternityProtectionWorkLog,
   selectMaternityProtectionWorkLogMeta,

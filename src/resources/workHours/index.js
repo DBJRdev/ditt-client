@@ -1,5 +1,7 @@
 export { default as fetchWorkHoursList } from './actions';
 
+export { transformWorkHours } from './dataTransformers';
+
 export {
   selectWorkHoursList,
   selectWorkHoursListMeta,

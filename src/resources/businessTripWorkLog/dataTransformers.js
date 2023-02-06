@@ -21,6 +21,7 @@ export const transformBusinessTripWorkLog = (data) => ({
   date: toMomentDateTime(data.date),
   destination: data.destination,
   expectedArrival: data.expectedArrival,
+  expectedDeparture: data.expectedDeparture,
   id: parseInt(data.id, 10),
   plannedEndHour: data.plannedEndHour.toString(),
   plannedEndMinute: data.plannedEndMinute.toString(),

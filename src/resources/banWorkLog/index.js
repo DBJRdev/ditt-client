@@ -5,6 +5,8 @@ export {
   fetchBanWorkLog,
 } from './actions';
 
+export { transformBanWorkLog } from './dataTransformers';
+
 export {
   selectBanWorkLog,
   selectBanWorkLogMeta,
