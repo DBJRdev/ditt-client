@@ -23,7 +23,6 @@ import {
 import {
   createDate,
   toHourMinuteFormatFromInt,
-  toMonthFormat,
   toMonthYearFormat,
 } from '../../services/dateTimeService';
 import {
@@ -204,12 +203,9 @@ class ListComponent extends React.Component {
                           i18nKey="user:element.endMonth"
                           t={t}
                           values={{
-                            month: toMonthFormat(createDate(
-                              row.user.lastApprovedWorkMonth.year.year,
-                              row.user.lastApprovedWorkMonth.month - 1,
-                              1,
-                            )),
+                            month: row.user.lastApprovedWorkMonth.month,
                             time: time ? toHourMinuteFormatFromInt(time, true) : '-',
+                            year: row.user.lastApprovedWorkMonth.year.year,
                           }}
                         />
                       </span>

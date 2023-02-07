@@ -114,12 +114,11 @@
       "dateFrom": "Datum von",
       "dateTo": "Datum bis",
       "employeeId": "Mitarbeiter-ID",
-      "firstName": "Familienname",
-      "lastName": "Vorname",
       "contractChanges": "Stellenveränderungen",
       "childSickDays": "Kind-krank-Tage",
       "employeeSickDaysWithNote": "Eigene Krankmeldungen (Mit Krankenschein)",
       "employeeSickDaysWithoutNote": "Eigene Krankmeldungen (Ohne Krankenschein)",
+      "name": "Familienname, Vorname",
       "sickDaySickChild": "Kind krank",
       "sickDayWithoutNote": "Ohne Krankenschein",
       "sickDayWithNote": "Mit Krankenschein",
@@ -224,7 +223,7 @@
       "needApproval": "Freigabe erforderlich",
       "sickChildTotal": "Kind krank",
       "sickDayTotal": "Krankheit",
-      "vacationDaysUsed": "Verplante Urlaubstage"
+      "vacationDaysUsed": "Urlaubskonto"
     },
     "title": {
       "supervisedUsers": "Mitarbeiter*innen"
@@ -293,21 +292,21 @@
       "apiToken": "API-Token",
       "email": "E-Mail",
       "employeeId": "Mitarbeiter-ID",
-      "endMonth": "{{ time }} (<0>Ende {{ month }}</0>)",
-      "endMonthStatus": "Stand Arbeitzeitkonto",
+      "endMonth": "{{ time }} (<0>{{ month }}/{{ year }}</0>)",
+      "endMonthStatus": "Arbeitzeitkonto",
       "firstName": "Vorname",
       "iCal": "iCalendar",
       "iCalUrl": "iCalendar URL",
       "isActive": "Aktiv",
       "lastName": "Familiennname",
       "monthlyLogs": "Monatsübersicht",
-      "name": "Name",
+      "name": "Familiennname, Vorname",
       "plainPassword": "Passwort",
       "remainingVacationDays": "Restliche Urlaubstage",
       "supervisor": "Vorgesetzte*r",
       "supervisorInfoSendOnHolidays": "Benachrichtigung auch an Feiertagen",
-      "vacationDays": "Urlaubstage",
-      "vacationDaysUsed": "Verplante Urlaubstage",
+      "vacationDays": "Urlaubskonto",
+      "vacationDaysUsed": "Urlaubskonto",
       "workedAndRequiredHours": "Gearbeitete / Benötigte Stunden"
     },
     "modal": {
@@ -323,7 +322,7 @@
       "fastAccess": "Schneller Zugang",
       "notificationSettings": "Benachrichtigungseinstellungen",
       "supervisorInfo": "Versand Erinnerungsmails",
-      "vacationDays": "Urlaubstage",
+      "vacationDays": "Urlaubskonto",
       "vacationDaysLeft": "{{ remainingDays }} von {{ vacationDays }} Tagen nicht verplant"
     },
     "title": {
@@ -401,7 +400,7 @@
       "invalidType": "Ungültiger Typ.",
       "invalidHour": "Ungültige Stundenangabe.",
       "invalidMinute": "Ungültige Minutenangabe.",
-      "vacationDaysExceeded": "Eingestellte Dauer überschreitet die Anzahl der Urlaubstage im laufenden Jahr.",
+      "vacationDaysExceeded": "Eingestellte Dauer überschreitet die Anzahl der Urlaubskonto im laufenden Jahr.",
       "workLogExceededLimit": "Singestellte Dauer überschreitet das Arbeitszeitlimit für diesen Tag.",
       "workLogOverlaps": "Eintrag überschneidet sich mit bereits existierendem."
     }

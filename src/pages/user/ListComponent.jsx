@@ -17,11 +17,7 @@ import routes from '../../routes';
 import { Icon } from '../../components/Icon';
 import Layout from '../../components/Layout';
 import { ROLE_SUPER_ADMIN } from '../../resources/user';
-import {
-  createDate,
-  toHourMinuteFormatFromInt,
-  toMonthFormat,
-} from '../../services/dateTimeService';
+import { toHourMinuteFormatFromInt } from '../../services/dateTimeService';
 import styles from './user.scss';
 
 class ListComponent extends React.Component {
@@ -106,12 +102,9 @@ class ListComponent extends React.Component {
               i18nKey="user:element.endMonth"
               t={t}
               values={{
-                month: toMonthFormat(createDate(
-                  row.lastApprovedWorkMonth.year.year,
-                  row.lastApprovedWorkMonth.month - 1,
-                  1,
-                )),
+                month: row.lastApprovedWorkMonth.month,
                 time: time ? toHourMinuteFormatFromInt(time, true) : '-',
+                year: row.lastApprovedWorkMonth.year.year,
               }}
             />
           );

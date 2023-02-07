@@ -150,14 +150,9 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
               name: 'employeeId',
             },
             {
-              format: (rowData) => rowData.user.firstName,
-              label: props.t('hr:element.firstName'),
-              name: 'firstName',
-            },
-            {
-              format: (rowData) => rowData.user.lastName,
-              label: props.t('hr:element.lastName'),
-              name: 'lastName',
+              format: (rowData) => `${rowData.user.lastName} ${rowData.user.firstName}`,
+              label: props.t('hr:element.name'),
+              name: 'name',
             },
             {
               format: (rowData) => {
