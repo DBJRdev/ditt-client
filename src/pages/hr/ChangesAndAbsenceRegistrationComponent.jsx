@@ -14,7 +14,10 @@ import {
   ToolbarItem,
 } from '@react-ui-org/react-ui';
 import { withTranslation } from 'react-i18next';
-import { LoadingIcon } from '../../components/Icon';
+import {
+  Icon,
+  LoadingIcon,
+} from '../../components/Icon';
 import {
   VARIANT_SICK_CHILD,
   VARIANT_WITH_NOTE,
@@ -30,6 +33,7 @@ import {
 } from '../../services/workLogService';
 import Layout from '../../components/Layout';
 import styles from './styles.scss';
+import { orderTableRows } from './_helpers/orderTableRows';
 
 const ChangesAndAbsenceRegistrationComponent = (props) => {
   const { fetchConfig } = props;
@@ -39,6 +43,11 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
 
   const [dateFromError, setDateFromError] = useState(null);
   const [dateToError, setDateToError] = useState(null);
+
+  const [tableOrder, tableOrderSet] = useState({
+    column: 'lastName',
+    direction: 'asc',
+  });
 
   useEffect(() => {
     fetchConfig();
@@ -146,11 +155,13 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
           columns={[
             {
               format: (rowData) => rowData.user.employeeId,
+              isSortable: true,
               label: props.t('hr:element.employeeId'),
               name: 'employeeId',
             },
             {
               format: (rowData) => `${rowData.user.lastName} ${rowData.user.firstName}`,
+              isSortable: true,
               label: props.t('hr:element.name'),
               name: 'name',
             },
@@ -270,7 +281,19 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
               name: 'employeeSickDays',
             },
           ]}
-          rows={props.changesAndAbsenceRegistrations || []}
+          rows={orderTableRows(props.changesAndAbsenceRegistrations || [], tableOrder)}
+          sort={{
+            ascendingIcon: <Icon icon="arrow_upward" />,
+            column: tableOrder.column,
+            descendingIcon: <Icon icon="arrow_downward" />,
+            direction: tableOrder.direction,
+            onClick: (column, direction) => {
+              tableOrderSet({
+                column,
+                direction: direction === 'asc' ? 'desc' : 'asc',
+              });
+            },
+          }}
         />
       </ScrollView>
     </Layout>

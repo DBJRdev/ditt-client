@@ -18,7 +18,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchSupervisedUserList: (uid, options) => dispatch(fetchSupervisedUserList(uid, options)),
+  fetchSupervisedUserList: (uid) => dispatch(fetchSupervisedUserList(uid)),
 });
 
 export default connect(

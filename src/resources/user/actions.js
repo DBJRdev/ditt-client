@@ -85,11 +85,9 @@ export const editUser = (data) => (dispatch) => dispatch({
   },
 });
 
-export const fetchSupervisedUserList = (uid, options) => (dispatch) => dispatch({
+export const fetchSupervisedUserList = (uid) => (dispatch) => dispatch({
   [RSAA]: {
-    endpoint: (options && options.order)
-      ? `${API_URL}/users/${uid}/supervised_users?isActive=true&order[${options.order.column}]=${options.order.direction}`
-      : `${API_URL}/users/${uid}/supervised_users?isActive=true`,
+    endpoint: `${API_URL}/users/${uid}/supervised_users?isActive=true`,
     headers: { 'Content-Type': 'application/json' },
     method: 'GET',
     types: [
@@ -126,11 +124,9 @@ export const fetchUserByApiToken = (apiToken) => (dispatch) => dispatch({
   },
 });
 
-export const fetchUserList = (options) => (dispatch) => dispatch({
+export const fetchUserList = () => (dispatch) => dispatch({
   [RSAA]: {
-    endpoint: (options && options.order)
-      ? `${API_URL}/users?order[${options.order.column}]=${options.order.direction}`
-      : `${API_URL}/users`,
+    endpoint: `${API_URL}/users`,
     headers: { 'Content-Type': 'application/json' },
     method: 'GET',
     types: [

@@ -23,13 +23,13 @@ exports[`rendering renders correctly 1`] = `
             "format": [Function],
             "isSortable": true,
             "label": "user:element.name",
-            "name": "lastName",
+            "name": "name",
           },
           Object {
             "format": [Function],
             "isSortable": true,
             "label": "user:element.supervisor",
-            "name": "supervisor.lastName",
+            "name": "supervisorName",
           },
           Object {
             "format": [Function],
@@ -57,7 +57,7 @@ exports[`rendering renders correctly 1`] = `
             icon="arrow_upward"
             size="medium"
           />,
-          "column": "lastName",
+          "column": "name",
           "descendingIcon": <Icon
             icon="arrow_downward"
             size="medium"

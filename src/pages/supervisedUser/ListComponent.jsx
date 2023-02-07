@@ -30,6 +30,7 @@ import {
   VARIANT_WITH_NOTE,
   VARIANT_WITHOUT_NOTE,
 } from '../../resources/sickDayWorkLog';
+import { orderTableRows } from './_helpers/orderTableRows';
 import styles from './supervisedUser.scss';
 
 class ListComponent extends React.Component {
@@ -37,7 +38,7 @@ class ListComponent extends React.Component {
     super(props);
 
     this.state = {
-      tableSortColumn: 'lastName',
+      tableSortColumn: 'name',
       tableSortDirection: 'asc',
     };
   }
@@ -47,15 +48,7 @@ class ListComponent extends React.Component {
       const decodedToken = decode(this.props.token);
 
       if (decodedToken) {
-        this.props.fetchSupervisedUserList(
-          decodedToken.uid,
-          {
-            order: {
-              column: this.state.tableSortColumn,
-              direction: this.state.tableSortDirection,
-            },
-          },
-        );
+        this.props.fetchSupervisedUserList(decodedToken.uid);
       }
     }
   }
@@ -92,12 +85,12 @@ class ListComponent extends React.Component {
                 {
                   format: (row) => (
                     <span className={lighterRow(row.user)}>
-                      {`${row.user.firstName} ${row.user.lastName}`}
+                      {`${row.user.lastName} ${row.user.firstName}`}
                     </span>
                   ),
                   isSortable: true,
                   label: t('user:element.name'),
-                  name: 'lastName',
+                  name: 'name',
                 },
                 {
                   format: (row) => {
@@ -246,35 +239,25 @@ class ListComponent extends React.Component {
                   name: 'showWorkLog',
                 },
               ]}
-              rows={this.props.supervisedUserList.toJS()}
+              rows={orderTableRows(
+                this.props.supervisedUserList.toJS(),
+                {
+                  column: this.state.tableSortColumn,
+                  direction: this.state.tableSortDirection,
+                },
+              )}
               sort={{
                 ascendingIcon: <Icon icon="arrow_upward" />,
                 column: this.state.tableSortColumn,
                 descendingIcon: <Icon icon="arrow_downward" />,
                 direction: this.state.tableSortDirection,
                 onClick: (column, direction) => {
-                  if (this.props.token) {
-                    const decodedToken = decode(this.props.token);
+                  const orderDirection = direction === 'asc' ? 'desc' : 'asc';
 
-                    if (decodedToken) {
-                      const orderDirection = direction === 'asc' ? 'desc' : 'asc';
-
-                      this.props.fetchSupervisedUserList(
-                        decodedToken.uid,
-                        {
-                          order: {
-                            column,
-                            direction: orderDirection,
-                          },
-                        },
-                      ).then(() => {
-                        this.setState({
-                          tableSortColumn: column,
-                          tableSortDirection: orderDirection,
-                        });
-                      });
-                    }
-                  }
+                  this.setState({
+                    tableSortColumn: column,
+                    tableSortDirection: orderDirection,
+                  });
                 },
               }}
             />

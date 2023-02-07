@@ -19,24 +19,20 @@ import Layout from '../../components/Layout';
 import { ROLE_SUPER_ADMIN } from '../../resources/user';
 import { toHourMinuteFormatFromInt } from '../../services/dateTimeService';
 import styles from './user.scss';
+import { orderTableRows } from './_helpers/orderTableRows';
 
 class ListComponent extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      tableSortColumn: 'lastName',
+      tableSortColumn: 'name',
       tableSortDirection: 'asc',
     };
   }
 
   componentDidMount() {
-    this.props.fetchUserList({
-      order: {
-        column: this.state.tableSortColumn,
-        direction: this.state.tableSortDirection,
-      },
-    });
+    this.props.fetchUserList();
   }
 
   render() {
@@ -47,26 +43,26 @@ class ListComponent extends React.Component {
         format: (row) => (
           /* eslint-disable-next-line jsx-a11y/anchor-is-valid */
           <Link to={routes.editUser.replace(':id', row.id)}>
-            {row.firstName}
-            {' '}
             {row.lastName}
+            {' '}
+            {row.firstName}
           </Link>
         ),
         isSortable: true,
         label: t('user:element.name'),
-        name: 'lastName',
+        name: 'name',
       },
       {
         format: (row) => {
           if (row.supervisor) {
-            return `${row.supervisor.firstName} ${row.supervisor.lastName}`;
+            return `${row.supervisor.lastName} ${row.supervisor.firstName}`;
           }
 
           return '-';
         },
         isSortable: true,
         label: t('user:element.supervisor'),
-        name: 'supervisor.lastName',
+        name: 'supervisorName',
       },
       {
         format: (row) => {
@@ -161,7 +157,13 @@ class ListComponent extends React.Component {
         <ScrollView direction="horizontal">
           <Table
             columns={columns}
-            rows={this.props.userList.toJS()}
+            rows={orderTableRows(
+              this.props.userList.toJS(),
+              {
+                column: this.state.tableSortColumn,
+                direction: this.state.tableSortDirection,
+              },
+            )}
             sort={{
               ascendingIcon: <Icon icon="arrow_upward" />,
               column: this.state.tableSortColumn,
@@ -170,16 +172,9 @@ class ListComponent extends React.Component {
               onClick: (column, direction) => {
                 const orderDirection = direction === 'asc' ? 'desc' : 'asc';
 
-                this.props.fetchUserList({
-                  order: {
-                    column,
-                    direction: orderDirection,
-                  },
-                }).then(() => {
-                  this.setState({
-                    tableSortColumn: column,
-                    tableSortDirection: orderDirection,
-                  });
+                this.setState({
+                  tableSortColumn: column,
+                  tableSortDirection: orderDirection,
                 });
               },
             }}

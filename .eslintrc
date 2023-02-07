@@ -9,6 +9,7 @@
       "files": [
         "**/constants.js",
         "**/helpers.js",
+        "**/_helpers/**/*",
         "**/index.js",
         "src/**/helpers/**/*",
         "src/constants/*",

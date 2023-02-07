@@ -1,6 +1,9 @@
 import { generate } from 'shortid';
 import PropTypes from 'prop-types';
-import React, { useEffect } from 'react';
+import React, {
+  useEffect,
+  useState,
+} from 'react';
 import {
   ScrollView,
   Table,
@@ -14,12 +17,19 @@ import {
 import { toDayMonthYearFormat } from '../../services/dateTimeService';
 import Layout from '../../components/Layout';
 import { collapseWorkLogs } from '../../services/workLogService';
+import { Icon } from '../../components/Icon';
+import { orderTableRows } from './_helpers/orderTableRows';
 
 const OverviewComponent = (props) => {
   const {
     fetchConfig,
     fetchYearOverview,
   } = props;
+
+  const [tableOrder, tableOrderSet] = useState({
+    column: 'lastName',
+    direction: 'asc',
+  });
 
   useEffect(() => {
     fetchConfig();
@@ -62,11 +72,13 @@ const OverviewComponent = (props) => {
           columns={[
             {
               format: (rowData) => rowData.user.employeeId,
+              isSortable: true,
               label: props.t('hr:element.employeeId'),
               name: 'employeeId',
             },
             {
               format: (rowData) => `${rowData.user.lastName} ${rowData.user.firstName}`,
+              isSortable: true,
               label: props.t('hr:element.name'),
               name: 'name',
             },
@@ -110,7 +122,19 @@ const OverviewComponent = (props) => {
               name: 'totalSick',
             },
           ]}
-          rows={props.yearOverview || []}
+          rows={orderTableRows(props.yearOverview || [], tableOrder)}
+          sort={{
+            ascendingIcon: <Icon icon="arrow_upward" />,
+            column: tableOrder.column,
+            descendingIcon: <Icon icon="arrow_downward" />,
+            direction: tableOrder.direction,
+            onClick: (column, direction) => {
+              tableOrderSet({
+                column,
+                direction: direction === 'asc' ? 'desc' : 'asc',
+              });
+            },
+          }}
         />
       </ScrollView>
     </Layout>

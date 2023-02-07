@@ -93,6 +93,7 @@ class SpecialApprovalListComponent extends React.Component {
   }
 
   getFilteredSpecialApprovals() {
+    const { t } = this.props;
     const {
       tableSortColumn,
       tableSortDirection,
@@ -147,7 +148,7 @@ class SpecialApprovalListComponent extends React.Component {
         .sort((workLogA, workLogB) => (workLogA.date.unix() > workLogB.date.unix() ? 1 : -1))
         .sort((workLogA, workLogB) => (workLogA.workMonth.user.firstName > workLogB.workMonth.user.firstName ? 1 : -1))
         .sort((workLogA, workLogB) => (workLogA.workMonth.user.lastName > workLogB.workMonth.user.lastName ? 1 : -1))
-        .sort((workLogA, workLogB) => (workLogA.type > workLogB.type ? d : -d));
+        .sort((workLogA, workLogB) => (getTypeLabel(t, workLogA.type) > getTypeLabel(t, workLogB.type) ? d : -d));
     }
 
     return specialApprovalList;
