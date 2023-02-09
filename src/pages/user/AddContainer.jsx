@@ -6,30 +6,30 @@ import {
 } from '../../resources/config';
 import {
   addUser,
-  fetchUserList,
+  fetchUserOptions,
   selectAddUserMeta,
-  selectUserList,
-  selectUserListMeta,
+  selectUserOptions,
+  selectUserOptionsMeta,
 } from '../../resources/user';
 import AddComponent from './AddComponent';
 
 const mapStateToProps = (state) => {
   const addUserMeta = selectAddUserMeta(state);
   const configMeta = selectConfigMeta(state);
-  const userListMeta = selectUserListMeta(state);
+  const userOptionsMeta = selectUserOptionsMeta(state);
 
   return ({
     config: selectConfig(state),
-    isFetching: userListMeta.isFetching || configMeta.isFetching,
+    isFetching: userOptionsMeta.isFetching || configMeta.isFetching,
     isPosting: addUserMeta.isPosting,
-    userList: selectUserList(state),
+    userOptions: selectUserOptions(state),
   });
 };
 
 const mapDispatchToProps = (dispatch) => ({
   addUser: (data) => dispatch(addUser(data)),
   fetchConfig: () => dispatch(fetchConfig()),
-  fetchUserList: () => dispatch(fetchUserList()),
+  fetchUserOptions: () => dispatch(fetchUserOptions()),
 });
 
 export default connect(

@@ -224,6 +224,26 @@ export default (state, action) => {
       .setIn(['userList', 'isFetchingFailure'], true);
   }
 
+  if (type === actionTypes.FETCH_USER_OPTIONS_REQUEST) {
+    return state
+      .setIn(['userOptions', 'isFetching'], true)
+      .setIn(['userOptions', 'isFetchingFailure'], false);
+  }
+
+  if (type === actionTypes.FETCH_USER_OPTIONS_SUCCESS) {
+    return state
+      .setIn(['userOptions', 'data'], Immutable.fromJS(payload))
+      .setIn(['userOptions', 'isFetching'], false)
+      .setIn(['userOptions', 'isFetchingFailure'], false);
+  }
+
+  if (type === actionTypes.FETCH_USER_OPTIONS_FAILURE) {
+    return state
+      .setIn(['userOptions', 'data'], Immutable.fromJS([]))
+      .setIn(['userOptions', 'isFetching'], false)
+      .setIn(['userOptions', 'isFetchingFailure'], true);
+  }
+
   if (type === actionTypes.RENEW_USER_API_TOKEN_REQUEST) {
     return state
       .setIn(['user', 'isPosting'], true)

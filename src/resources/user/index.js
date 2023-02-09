@@ -6,6 +6,7 @@ export {
   fetchUser,
   fetchUserByApiToken,
   fetchUserList,
+  fetchUserOptions,
   renewUserApiToken,
   renewUserICalToken,
   resetUserApiToken,
@@ -28,6 +29,8 @@ export {
   selectSupervisedUserListMeta,
   selectUser,
   selectUserMeta,
+  selectUserOptions,
+  selectUserOptionsMeta,
   selectUserList,
   selectUserListMeta,
 } from './selectors';

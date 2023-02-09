@@ -137,6 +137,19 @@ export const fetchUserList = () => (dispatch) => dispatch({
   },
 });
 
+export const fetchUserOptions = () => (dispatch) => dispatch({
+  [RSAA]: {
+    endpoint: `${API_URL}/users_options`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'GET',
+    types: [
+      types.FETCH_USER_OPTIONS_REQUEST,
+      types.FETCH_USER_OPTIONS_SUCCESS,
+      types.FETCH_USER_OPTIONS_FAILURE,
+    ],
+  },
+});
+
 export const renewUserApiToken = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/users/${id}/api_token/renew`,

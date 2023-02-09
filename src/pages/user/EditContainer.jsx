@@ -9,13 +9,13 @@ import {
   editUser,
   deleteUser,
   fetchUser,
-  fetchUserList,
+  fetchUserOptions,
   selectDeleteUserMeta,
   selectEditUserMeta,
   selectUser,
   selectUserMeta,
-  selectUserList,
-  selectUserListMeta,
+  selectUserOptions,
+  selectUserOptionsMeta,
 } from '../../resources/user';
 import {
   fetchVacationList,
@@ -34,7 +34,7 @@ const mapStateToProps = (state) => {
   const editUserMeta = selectEditUserMeta(state);
   const deleteUserMeta = selectDeleteUserMeta(state);
   const userMeta = selectUserMeta(state);
-  const userListMeta = selectUserListMeta(state);
+  const userOptionsMeta = selectUserOptionsMeta(state);
   const vacationListMeta = selectVacationListMeta(state);
   const workHoursListMeta = selectWorkHoursListMeta(state);
 
@@ -42,13 +42,13 @@ const mapStateToProps = (state) => {
     config: selectConfig(state),
     isFetching: configMeta.isFetching
       || userMeta.isFetching
-      || userListMeta.isFetching
+      || userOptionsMeta.isFetching
       || vacationListMeta.isFetching
       || workHoursListMeta.isFetching,
     isPosting: editUserMeta.isPosting || deleteUserMeta.isPosting,
     token: selectJwtToken(state),
     user: selectUser(state),
-    userList: selectUserList(state),
+    userOptions: selectUserOptions(state),
     vacations: selectVacationList(state),
     workHours: selectWorkHoursList(state),
   });
@@ -59,7 +59,7 @@ const mapDispatchToProps = (dispatch) => ({
   editUser: (data) => dispatch(editUser(data)),
   fetchConfig: () => dispatch(fetchConfig()),
   fetchUser: (id) => dispatch(fetchUser(id)),
-  fetchUserList: () => dispatch(fetchUserList()),
+  fetchUserOptions: () => dispatch(fetchUserOptions()),
   fetchVacationList: (id) => dispatch(fetchVacationList(id)),
   fetchWorkHoursList: (id) => dispatch(fetchWorkHoursList(id)),
 });

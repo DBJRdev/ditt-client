@@ -13,7 +13,7 @@ describe('rendering', () => {
       editUser: () => {},
       fetchConfig: () => new Promise(() => {}),
       fetchUser: () => new Promise(() => {}),
-      fetchUserList: () => {},
+      fetchUserOptions: () => {},
       fetchVacationList: () => {},
       fetchWorkHoursList: () => {},
       history: {
@@ -36,7 +36,7 @@ describe('rendering', () => {
         supervisor: null,
         vacationDays: 10,
       }),
-      userList: Immutable.List([]),
+      userOptions: Immutable.List([]),
       vacations: Immutable.fromJS([
         {
           vacationDays: 20,

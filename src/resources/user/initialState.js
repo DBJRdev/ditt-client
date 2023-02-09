@@ -32,4 +32,9 @@ export default Immutable.fromJS({
     isFetching: false,
     isFetchingFailure: false,
   },
+  userOptions: {
+    data: [],
+    isFetching: false,
+    isFetchingFailure: false,
+  },
 });
