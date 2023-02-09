@@ -6,7 +6,7 @@ const getEditUser = (state) => state.getIn(['user', 'editUser']);
 const getSupervisedUserList = (state) => state.getIn(['user', 'supervisedUserList']);
 const getUser = (state) => state.getIn(['user', 'user']);
 const geUserList = (state) => state.getIn(['user', 'userList']);
-const geUserOptions = (state) => state.getIn(['user', 'userOptions']);
+const geUserListPartial = (state) => state.getIn(['user', 'userListPartial']);
 
 export const selectAddUser = createSelector([getAddUser], (data) => data.get('data'));
 export const selectAddUserMeta = createSelector([getAddUser], (data) => ({
@@ -45,8 +45,8 @@ export const selectUserListMeta = createSelector([geUserList], (data) => ({
   isFetchingFailure: data.get('isFetchingFailure'),
 }));
 
-export const selectUserOptions = createSelector([geUserOptions], (data) => data.get('data'));
-export const selectUserOptionsMeta = createSelector([geUserOptions], (data) => ({
+export const selectUserListPartial = createSelector([geUserListPartial], (data) => data.get('data'));
+export const selectUserListPartialMeta = createSelector([geUserListPartial], (data) => ({
   isFetching: data.get('isFetching'),
   isFetchingFailure: data.get('isFetchingFailure'),
 }));

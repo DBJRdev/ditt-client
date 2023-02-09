@@ -155,7 +155,7 @@ class EditComponent extends React.Component {
           });
         });
 
-        this.props.fetchUserOptions();
+        this.props.fetchUserListPartial();
       });
     });
   }
@@ -164,7 +164,7 @@ class EditComponent extends React.Component {
     const formValidity = validateUser(
       this.props.t,
       this.state.formData,
-      this.props.userOptions.toJS(),
+      this.props.userListPartial.toJS(),
       this.props.config.get('supportedYears'),
     );
 
@@ -359,7 +359,7 @@ class EditComponent extends React.Component {
       }
     }
 
-    let userList = this.props.userOptions.toJS();
+    let userList = this.props.userListPartial.toJS();
     userList = userList
       .filter((user) => user.id !== loggedUserId)
       .map((user) => ({
@@ -581,7 +581,7 @@ EditComponent.propTypes = {
   editUser: PropTypes.func.isRequired,
   fetchConfig: PropTypes.func.isRequired,
   fetchUser: PropTypes.func.isRequired,
-  fetchUserOptions: PropTypes.func.isRequired,
+  fetchUserListPartial: PropTypes.func.isRequired,
   fetchVacationList: PropTypes.func.isRequired,
   fetchWorkHoursList: PropTypes.func.isRequired,
   history: PropTypes.shape({
@@ -608,7 +608,7 @@ EditComponent.propTypes = {
       lastName: PropTypes.string.isRequired,
     }),
   }),
-  userOptions: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+  userListPartial: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
     firstName: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     lastName: PropTypes.string.isRequired,

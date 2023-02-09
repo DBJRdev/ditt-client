@@ -224,24 +224,24 @@ export default (state, action) => {
       .setIn(['userList', 'isFetchingFailure'], true);
   }
 
-  if (type === actionTypes.FETCH_USER_OPTIONS_REQUEST) {
+  if (type === actionTypes.FETCH_USER_LIST_PARTIAL_REQUEST) {
     return state
-      .setIn(['userOptions', 'isFetching'], true)
-      .setIn(['userOptions', 'isFetchingFailure'], false);
+      .setIn(['userListPartial', 'isFetching'], true)
+      .setIn(['userListPartial', 'isFetchingFailure'], false);
   }
 
-  if (type === actionTypes.FETCH_USER_OPTIONS_SUCCESS) {
+  if (type === actionTypes.FETCH_USER_LIST_PARTIAL_SUCCESS) {
     return state
-      .setIn(['userOptions', 'data'], Immutable.fromJS(payload))
-      .setIn(['userOptions', 'isFetching'], false)
-      .setIn(['userOptions', 'isFetchingFailure'], false);
+      .setIn(['userListPartial', 'data'], Immutable.fromJS(payload))
+      .setIn(['userListPartial', 'isFetching'], false)
+      .setIn(['userListPartial', 'isFetchingFailure'], false);
   }
 
-  if (type === actionTypes.FETCH_USER_OPTIONS_FAILURE) {
+  if (type === actionTypes.FETCH_USER_LIST_PARTIAL_FAILURE) {
     return state
-      .setIn(['userOptions', 'data'], Immutable.fromJS([]))
-      .setIn(['userOptions', 'isFetching'], false)
-      .setIn(['userOptions', 'isFetchingFailure'], true);
+      .setIn(['userListPartial', 'data'], Immutable.fromJS([]))
+      .setIn(['userListPartial', 'isFetching'], false)
+      .setIn(['userListPartial', 'isFetchingFailure'], true);
   }
 
   if (type === actionTypes.RENEW_USER_API_TOKEN_REQUEST) {

@@ -137,15 +137,15 @@ export const fetchUserList = () => (dispatch) => dispatch({
   },
 });
 
-export const fetchUserOptions = () => (dispatch) => dispatch({
+export const fetchUserListPartial = () => (dispatch) => dispatch({
   [RSAA]: {
-    endpoint: `${API_URL}/users_options`,
+    endpoint: `${API_URL}/users?properties[]=id&properties[]=firstName&properties[]=lastName&properties[supervisor][]=firstName&properties[supervisor][]=lastName`,
     headers: { 'Content-Type': 'application/json' },
     method: 'GET',
     types: [
-      types.FETCH_USER_OPTIONS_REQUEST,
-      types.FETCH_USER_OPTIONS_SUCCESS,
-      types.FETCH_USER_OPTIONS_FAILURE,
+      types.FETCH_USER_LIST_PARTIAL_REQUEST,
+      types.FETCH_USER_LIST_PARTIAL_SUCCESS,
+      types.FETCH_USER_LIST_PARTIAL_FAILURE,
     ],
   },
 });

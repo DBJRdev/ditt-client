@@ -96,7 +96,7 @@ class AddComponent extends React.Component {
         formValidity,
       });
     });
-    this.props.fetchUserOptions();
+    this.props.fetchUserListPartial();
   }
 
   onChange(e) {
@@ -177,7 +177,7 @@ class AddComponent extends React.Component {
     const formValidity = validateUser(
       this.props.t,
       this.state.formData,
-      this.props.userOptions.toJS(),
+      this.props.userListPartial.toJS(),
       this.props.config.get('supportedYears'),
     );
 
@@ -234,7 +234,7 @@ class AddComponent extends React.Component {
   render() {
     const { t } = this.props;
 
-    const userList = this.props.userOptions.toJS().map((user) => ({
+    const userList = this.props.userListPartial.toJS().map((user) => ({
       label: `${user.firstName} ${user.lastName}`,
       value: user.id,
     }));
@@ -450,14 +450,14 @@ AddComponent.propTypes = {
   addUser: PropTypes.func.isRequired,
   config: ImmutablePropTypes.mapContains({}),
   fetchConfig: PropTypes.func.isRequired,
-  fetchUserOptions: PropTypes.func.isRequired,
+  fetchUserListPartial: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
   isFetching: PropTypes.bool.isRequired,
   isPosting: PropTypes.bool.isRequired,
   t: PropTypes.func.isRequired,
-  userOptions: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+  userListPartial: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
     firstName: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
     lastName: PropTypes.string.isRequired,

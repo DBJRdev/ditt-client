@@ -32,7 +32,7 @@ export default Immutable.fromJS({
     isFetching: false,
     isFetchingFailure: false,
   },
-  userOptions: {
+  userListPartial: {
     data: [],
     isFetching: false,
     isFetchingFailure: false,

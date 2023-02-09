@@ -10,13 +10,13 @@ describe('rendering', () => {
       addUser: () => {},
       config: configMock,
       fetchConfig: () => new Promise(() => {}),
-      fetchUserOptions: () => {},
+      fetchUserListPartial: () => {},
       history: {
         push: () => {},
       },
       isFetching: false,
       isPosting: false,
-      userOptions: Immutable.List([]),
+      userListPartial: Immutable.List([]),
     };
     const tree = shallow(<AddComponent {...props} />);
 

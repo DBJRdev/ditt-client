@@ -6,7 +6,7 @@ export {
   fetchUser,
   fetchUserByApiToken,
   fetchUserList,
-  fetchUserOptions,
+  fetchUserListPartial,
   renewUserApiToken,
   renewUserICalToken,
   resetUserApiToken,
@@ -29,10 +29,10 @@ export {
   selectSupervisedUserListMeta,
   selectUser,
   selectUserMeta,
-  selectUserOptions,
-  selectUserOptionsMeta,
   selectUserList,
   selectUserListMeta,
+  selectUserListPartial,
+  selectUserListPartialMeta,
 } from './selectors';
 
 export { default as reducer } from './reducer';

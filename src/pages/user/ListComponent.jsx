@@ -14,7 +14,9 @@ import {
 } from '@react-ui-org/react-ui';
 import { Link } from 'react-router-dom';
 import routes from '../../routes';
-import { Icon } from '../../components/Icon';
+import {
+  Icon, LoadingIcon,
+} from '../../components/Icon';
 import Layout from '../../components/Layout';
 import { ROLE_SUPER_ADMIN } from '../../resources/user';
 import { toHourMinuteFormatFromInt } from '../../services/dateTimeService';
@@ -33,10 +35,14 @@ class ListComponent extends React.Component {
 
   componentDidMount() {
     this.props.fetchUserList();
+    this.props.fetchUserListPartial();
   }
 
   render() {
-    const { t } = this.props;
+    const {
+      isFetching,
+      t,
+    } = this.props;
     const year = moment().year();
     const columns = [
       {
@@ -66,6 +72,10 @@ class ListComponent extends React.Component {
       },
       {
         format: (row) => {
+          if (isFetching) {
+            return <LoadingIcon />;
+          }
+
           if (row.lastApprovedWorkMonth == null) {
             return '-';
           }
@@ -111,6 +121,10 @@ class ListComponent extends React.Component {
       },
       {
         format: (row) => {
+          if (isFetching) {
+            return <LoadingIcon />;
+          }
+
           const vacation = row.vacations.filter((vacationItem) => vacationItem.year === year)[0];
 
           if (row.yearStats) {
@@ -147,7 +161,7 @@ class ListComponent extends React.Component {
     }
 
     return (
-      <Layout title={t('user:title.users')} loading={this.props.isFetching}>
+      <Layout title={t('user:title.users')} loading={this.props.isFetchingPartial}>
         <div className={styles.actions}>
           <Button
             label={t('user:action.addUser')}
@@ -158,7 +172,7 @@ class ListComponent extends React.Component {
           <Table
             columns={columns}
             rows={orderTableRows(
-              this.props.userList.toJS(),
+              isFetching ? this.props.userListPartial.toJS() : this.props.userList.toJS(),
               {
                 column: this.state.tableSortColumn,
                 direction: this.state.tableSortDirection,
@@ -187,10 +201,12 @@ class ListComponent extends React.Component {
 
 ListComponent.propTypes = {
   fetchUserList: PropTypes.func.isRequired,
+  fetchUserListPartial: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
   isFetching: PropTypes.bool.isRequired,
+  isFetchingPartial: PropTypes.bool.isRequired,
   t: PropTypes.func.isRequired,
   token: PropTypes.string.isRequired,
   userList: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
@@ -204,6 +220,16 @@ ListComponent.propTypes = {
         year: PropTypes.number.isRequired,
       }).isRequired,
     }),
+    lastName: PropTypes.string.isRequired,
+    supervisor: ImmutablePropTypes.mapContains({
+      firstName: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
+      lastName: PropTypes.string.isRequired,
+    }),
+  })).isRequired,
+  userListPartial: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+    firstName: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     lastName: PropTypes.string.isRequired,
     supervisor: ImmutablePropTypes.mapContains({
       firstName: PropTypes.string.isRequired,

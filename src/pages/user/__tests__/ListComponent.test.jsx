@@ -8,12 +8,15 @@ describe('rendering', () => {
   it('renders correctly', () => {
     const props = {
       fetchUserList: () => {},
+      fetchUserListPartial: () => {},
       history: {
         push: () => {},
       },
       isFetching: false,
+      isFetchingPartial: false,
       token,
       userList: Immutable.List([]),
+      userListPartial: Immutable.List([]),
     };
     const tree = shallow(<ListComponent {...props} />);
 
