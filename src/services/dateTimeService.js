@@ -1,4 +1,5 @@
 import moment from 'moment-timezone';
+import { getContractInfoOfSpecificDate } from './contractService/getContractInfoOfSpecificDate';
 
 export const TIMEZONE = 'Europe/Prague';
 
@@ -161,12 +162,18 @@ export const toDayDayMonthYearFormat = (momentDateTime) => {
   throw new Error('Invalid datetime');
 };
 
-export const getWorkingDays = (firstDay, lastDay, holidays) => {
+export const getWorkingDays = (firstDay, lastDay, supportedHolidays, contracts) => {
   const currentDay = firstDay.clone();
   const workingDays = [];
 
   while (currentDay.isSameOrBefore(lastDay, 'day')) {
-    if (!isWeekend(currentDay) && !includesSameDate(currentDay, holidays)) {
+    const contractInfo = getContractInfoOfSpecificDate(
+      currentDay,
+      contracts,
+      supportedHolidays,
+    );
+
+    if (contractInfo.isDayWorking) {
       workingDays.push(currentDay.clone());
     }
 

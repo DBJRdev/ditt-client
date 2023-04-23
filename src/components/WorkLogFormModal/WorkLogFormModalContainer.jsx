@@ -85,7 +85,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onSave: (workLog, config) => {
+  onSave: (workLog, config, contracts) => {
     const processMultipleWorkLogs = (data) => {
       const workingDays = getAllDays(data.date, data.dateTo);
       return workingDays.map((workingDay) => ({
@@ -95,7 +95,7 @@ const mapDispatchToProps = (dispatch) => ({
       }));
     };
     const processMultipleWorkLogsIncludingHolidays = (data) => {
-      const workingDays = getWorkingDays(data.date, data.dateTo, config.supportedHolidays);
+      const workingDays = getWorkingDays(data.date, data.dateTo, config.supportedHolidays, contracts);
       return workingDays.map((workingDay) => ({
         ...data,
         date: workingDay,

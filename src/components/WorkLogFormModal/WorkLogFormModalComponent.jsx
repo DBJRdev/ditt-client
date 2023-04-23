@@ -83,6 +83,7 @@ class WorkLogFormModalComponent extends React.Component {
   onSave() {
     const {
       config,
+      contracts,
       date,
       onAfterSave,
       onSave,
@@ -106,6 +107,7 @@ class WorkLogFormModalComponent extends React.Component {
       workMonth.user,
       workLogsOfDay,
       banWorkLogsOfDay,
+      contracts,
     );
 
     this.setState({ formValidity });
@@ -116,7 +118,7 @@ class WorkLogFormModalComponent extends React.Component {
         removeWorkLogTimer();
       }
 
-      onSave(getStateToSave(formData, date), config)
+      onSave(getStateToSave(formData, date), config, contracts)
         .then((response) => {
           if (response.type.endsWith('WORK_LOG_SUCCESS')) {
             onAfterSave();
@@ -201,6 +203,19 @@ WorkLogFormModalComponent.defaultProps = {
 
 WorkLogFormModalComponent.propTypes = {
   config: PropTypes.shape({}).isRequired,
+  contracts: PropTypes.arrayOf(PropTypes.shape({
+    endDateTime: PropTypes.shape(),
+    id: PropTypes.number,
+    isDayBased: PropTypes.bool.isRequired,
+    isFridayIncluded: PropTypes.bool.isRequired,
+    isMondayIncluded: PropTypes.bool.isRequired,
+    isThursdayIncluded: PropTypes.bool.isRequired,
+    isTuesdayIncluded: PropTypes.bool.isRequired,
+    isWednesdayIncluded: PropTypes.bool.isRequired,
+    startDateTime: PropTypes.shape().isRequired,
+    weeklyWorkingDays: PropTypes.number.isRequired,
+    weeklyWorkingHours: PropTypes.number.isRequired,
+  })).isRequired,
   data: PropTypes.shape({
     childDateOfBirth: PropTypes.instanceOf(moment),
     childName: PropTypes.string,

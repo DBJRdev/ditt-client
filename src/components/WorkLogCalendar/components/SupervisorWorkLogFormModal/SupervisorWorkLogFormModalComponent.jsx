@@ -75,6 +75,7 @@ class SupervisorWorkLogFormModalComponent extends React.Component {
   onSave() {
     const {
       config,
+      contracts,
       onAfterSave,
       onSave,
       t,
@@ -86,7 +87,7 @@ class SupervisorWorkLogFormModalComponent extends React.Component {
     this.setState({ formValidity });
 
     if (formValidity.isValid) {
-      onSave(getStateToSave(formData, workMonth), config)
+      onSave(getStateToSave(formData, workMonth), config, contracts)
         .then((response) => {
           if (response.type.endsWith('WORK_LOG_SUCCESS')) {
             onAfterSave();
@@ -228,6 +229,19 @@ SupervisorWorkLogFormModalComponent.defaultProps = {
 
 SupervisorWorkLogFormModalComponent.propTypes = {
   config: PropTypes.shape({}).isRequired,
+  contracts: PropTypes.arrayOf(PropTypes.shape({
+    endDateTime: PropTypes.shape(),
+    id: PropTypes.number,
+    isDayBased: PropTypes.bool.isRequired,
+    isFridayIncluded: PropTypes.bool.isRequired,
+    isMondayIncluded: PropTypes.bool.isRequired,
+    isThursdayIncluded: PropTypes.bool.isRequired,
+    isTuesdayIncluded: PropTypes.bool.isRequired,
+    isWednesdayIncluded: PropTypes.bool.isRequired,
+    startDateTime: PropTypes.shape().isRequired,
+    weeklyWorkingDays: PropTypes.number.isRequired,
+    weeklyWorkingHours: PropTypes.number.isRequired,
+  })).isRequired,
   data: PropTypes.shape({
     date: PropTypes.instanceOf(moment).isRequired,
     id: PropTypes.number.isRequired,
