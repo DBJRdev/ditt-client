@@ -1,10 +1,19 @@
 import { RSAA } from 'redux-api-middleware';
 import { API_URL } from '../../../config/envspecific';
+import { toJson } from '../../services/dateTimeService';
 import * as types from './actionTypes';
 
 export const addUser = (data) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify({
+      contracts: data.contracts.map(({
+        _id,
+        ...contract
+      }) => ({
+        ...contract,
+        endDateTime: contract.endDateTime ? toJson(contract.endDateTime) : null,
+        startDateTime: toJson(contract.startDateTime),
+      })),
       email: data.email,
       employeeId: data.employeeId,
       firstName: data.firstName,
@@ -16,11 +25,6 @@ export const addUser = (data) => (dispatch) => dispatch({
         .map((vacation) => ({
           ...vacation,
           year: `/supported_years/${vacation.year}`,
-        })),
-      workHours: data.workHours
-        .map((workHours) => ({
-          ...workHours,
-          year: `/supported_years/${workHours.year}`,
         })),
     }),
     endpoint: `${API_URL}/users`,
@@ -52,6 +56,14 @@ export const deleteUser = (id) => (dispatch) => dispatch({
 export const editUser = (data) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify({
+      contracts: data.contracts.map(({
+        _id,
+        ...contract
+      }) => ({
+        ...contract,
+        endDateTime: contract.endDateTime ? toJson(contract.endDateTime) : null,
+        startDateTime: toJson(contract.startDateTime),
+      })),
       email: data.email,
       employeeId: data.employeeId,
       firstName: data.firstName,
@@ -64,11 +76,6 @@ export const editUser = (data) => (dispatch) => dispatch({
         .map((vacation) => ({
           ...vacation,
           year: `/supported_years/${vacation.year}`,
-        })),
-      workHours: data.workHours
-        .map((workHours) => ({
-          ...workHours,
-          year: `/supported_years/${workHours.year}`,
         })),
     }),
     endpoint: `${API_URL}/users/${data.id}`,

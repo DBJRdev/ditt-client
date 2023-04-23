@@ -518,7 +518,6 @@ class SpecialApprovalListComponent extends React.Component {
           </p>
           <p>{t('specialApproval:modal.reject.description')}</p>
           <TextField
-            validationText={this.state.rejectWorkLogFormValidity.elements.rejectionMessage}
             id="rejectionMessage"
             label={t('workLog:element.rejectionMessage')}
             onChange={this.onChangeRejectWorkLogForm}
@@ -527,6 +526,7 @@ class SpecialApprovalListComponent extends React.Component {
                 ? 'invalid'
                 : null
             }
+            validationText={this.state.rejectWorkLogFormValidity.elements.rejectionMessage}
             value={this.state.rejectWorkLogForm.rejectionMessage || ''}
           />
         </form>

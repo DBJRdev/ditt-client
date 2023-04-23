@@ -40,14 +40,14 @@ class WorkLogComponent extends React.Component {
   componentDidMount() {
     const {
       fetchConfig,
-      fetchWorkHoursList,
+      fetchContractList,
       fetchWorkMonthList,
       match,
     } = this.props;
     const { selectedDate } = this.state;
 
     fetchConfig();
-    fetchWorkHoursList(match.params.id);
+    fetchContractList(match.params.id);
     fetchWorkMonthList(match.params.id).then(() => {
       this.fetchWorkMonth(selectedDate);
     });
@@ -75,13 +75,13 @@ class WorkLogComponent extends React.Component {
   render() {
     const {
       config,
+      contracts,
       fetchWorkMonthList,
       isFetching,
       match,
       t,
       token,
       user,
-      workHoursList,
       workMonth,
       workMonthList,
     } = this.props;
@@ -96,11 +96,12 @@ class WorkLogComponent extends React.Component {
     }
 
     return (
-      <Layout title={title} loading={isFetching}>
+      <Layout loading={isFetching} title={title}>
         {config && (
           <WorkLogCalendar
             changeSelectedDate={this.changeSelectedDate}
             config={config}
+            contracts={contracts}
             fetchWorkMonth={() => this.fetchWorkMonth(selectedDate)}
             fetchWorkMonthList={() => fetchWorkMonthList(match.params.id).then(() => {
               this.fetchWorkMonth(selectedDate);
@@ -109,7 +110,6 @@ class WorkLogComponent extends React.Component {
             supervisorView
             token={token}
             user={user}
-            workHoursList={workHoursList}
             workMonth={workMonth}
             workMonthList={workMonthList}
           />
@@ -121,13 +121,27 @@ class WorkLogComponent extends React.Component {
 
 WorkLogComponent.defaultProps = {
   config: {},
+  contracts: [],
   workMonth: null,
 };
 
 WorkLogComponent.propTypes = {
   config: PropTypes.shape({}),
+  contracts: PropTypes.arrayOf(PropTypes.shape({
+    endDateTime: PropTypes.shape(),
+    id: PropTypes.number,
+    isDayBased: PropTypes.bool.isRequired,
+    isFridayIncluded: PropTypes.bool.isRequired,
+    isMondayIncluded: PropTypes.bool.isRequired,
+    isThursdayIncluded: PropTypes.bool.isRequired,
+    isTuesdayIncluded: PropTypes.bool.isRequired,
+    isWednesdayIncluded: PropTypes.bool.isRequired,
+    startDateTime: PropTypes.shape().isRequired,
+    weeklyWorkingDays: PropTypes.number.isRequired,
+    weeklyWorkingHours: PropTypes.number.isRequired,
+  })),
   fetchConfig: PropTypes.func.isRequired,
-  fetchWorkHoursList: PropTypes.func.isRequired,
+  fetchContractList: PropTypes.func.isRequired,
   fetchWorkMonth: PropTypes.func.isRequired,
   fetchWorkMonthList: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
@@ -148,11 +162,6 @@ WorkLogComponent.propTypes = {
     roles: PropTypes.arrayOf(PropTypes.string).isRequired,
     uid: PropTypes.number.isRequired,
   }).isRequired,
-  workHoursList: PropTypes.arrayOf(PropTypes.shape({
-    month: PropTypes.number.isRequired,
-    requiredHours: PropTypes.number.isRequired,
-    year: PropTypes.number.isRequired,
-  })).isRequired,
   workMonth: PropTypes.shape({
     id: PropTypes.number.isRequired,
     month: PropTypes.shape.isRequired,

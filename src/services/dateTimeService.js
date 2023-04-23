@@ -188,17 +188,4 @@ export const getAllDays = (firstDay, lastDay) => {
   return workingDays;
 };
 
-export const getNumberOfWorkingDays = (firstDay, lastDay, holidays) => {
-  const currentDay = firstDay.clone();
-  let workingDays = 0;
-
-  while (currentDay.isSameOrBefore(lastDay, 'day')) {
-    if (!isWeekend(currentDay) && !includesSameDate(currentDay, holidays)) {
-      workingDays += 1;
-    }
-
-    currentDay.add(1, 'day');
-  }
-
-  return workingDays;
-};
+export const isWorkingDay = (date, holidays) => !isWeekend(date) && !includesSameDate(date, holidays);

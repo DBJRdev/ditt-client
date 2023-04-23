@@ -22,8 +22,8 @@ const SickDayWorkLogFieldsComponent = ({
     <TextField
       disabled={isInEditState}
       id="dateTo"
-      onChange={onFormDataChange}
       label={t('workLog:element.dateTo')}
+      onChange={onFormDataChange}
       validationState={formValidity.elements.dateTo ? 'invalid' : null}
       validationText={formValidity.elements.dateTo}
       value={formData.dateTo || ''}
@@ -54,16 +54,16 @@ const SickDayWorkLogFieldsComponent = ({
       <>
         <TextField
           id="childName"
-          onChange={onFormDataChange}
           label={t('sickDayWorkLog:element.childName')}
+          onChange={onFormDataChange}
           validationState={formValidity.elements.childName ? 'invalid' : null}
           validationText={formValidity.elements.childName}
           value={formData.childName || ''}
         />
         <TextField
           id="childDateOfBirth"
-          onChange={onFormDataChange}
           label={t('sickDayWorkLog:element.childDateOfBirth')}
+          onChange={onFormDataChange}
           validationState={formValidity.elements.childDateOfBirth ? 'invalid' : null}
           validationText={formValidity.elements.childDateOfBirth}
           value={formData.childDateOfBirth || ''}

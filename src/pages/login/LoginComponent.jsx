@@ -105,8 +105,8 @@ class LoginComponent extends React.Component {
           {(isPostingFailure || isLoggedOutLocally) && (
             <div className="mb-5">
               <Alert
-                icon={<Icon icon="error" />}
                 color="danger"
+                icon={<Icon icon="error" />}
               >
                 <strong>
                   {t('general:text.error')}

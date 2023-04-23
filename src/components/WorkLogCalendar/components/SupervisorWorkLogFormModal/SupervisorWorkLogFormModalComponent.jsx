@@ -188,10 +188,10 @@ class SupervisorWorkLogFormModalComponent extends React.Component {
                   id="hour"
                   inputSize={2}
                   isLabelVisible={false}
+                  label={t('workMonth:element.hours')}
                   max={23}
                   min={0}
                   onChange={this.onChange}
-                  label={t('workMonth:element.hours')}
                   type="number"
                   validationState={formValidity.elements.hour ? 'invalid' : null}
                   validationText={formValidity.elements.hour}
@@ -202,10 +202,10 @@ class SupervisorWorkLogFormModalComponent extends React.Component {
                   id="minute"
                   inputSize={2}
                   isLabelVisible={false}
+                  label={t('workMonth:element.minutes')}
                   max={59}
                   min={0}
                   onChange={this.onChange}
-                  label={t('workMonth:element.minutes')}
                   type="number"
                   validationState={formValidity.elements.minute ? 'invalid' : null}
                   validationText={formValidity.elements.minute}

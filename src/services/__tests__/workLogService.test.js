@@ -9,11 +9,19 @@ describe('getWorkedTime', () => {
   const date = toMomentDateTime('2018-01-02T00:00:00.000Z');
   const publicHolidayDate = toMomentDateTime('2018-01-01T00:00:00.000Z');
   const sundayDate = toMomentDateTime('2018-01-07T00:00:00.000Z');
-  const workHours = {
-    month: 1,
-    requiredHours: 21600,
-    year: 2018,
-  };
+  const contracts = [{
+    endDateTime: null,
+    isDayBased: false,
+    isFridayIncluded: true,
+    isMondayIncluded: true,
+    isThursdayIncluded: true,
+    isTuesdayIncluded: true,
+    isWednesdayIncluded: true,
+    startDateTime: toMomentDateTime('2018-01-01T00:00:00.000Z'),
+    weeklyWorkingDays: 5,
+    weeklyWorkingHours: 30,
+  }];
+
   const workedHoursLimits = {
     lowerLimit: {
       changeBy: -900,
@@ -40,7 +48,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       [],
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -67,7 +75,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -99,7 +107,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -121,7 +129,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -148,7 +156,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -180,7 +188,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -212,7 +220,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -239,7 +247,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -271,7 +279,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -303,7 +311,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -330,7 +338,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -362,7 +370,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -394,7 +402,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -423,7 +431,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       publicHolidayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -455,7 +463,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       publicHolidayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -477,7 +485,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       publicHolidayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -504,7 +512,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       publicHolidayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -536,7 +544,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       publicHolidayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -568,7 +576,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       publicHolidayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -595,7 +603,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       publicHolidayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -627,7 +635,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       publicHolidayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -659,7 +667,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       publicHolidayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -686,7 +694,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       publicHolidayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -718,7 +726,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       publicHolidayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -750,7 +758,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       publicHolidayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -779,7 +787,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       sundayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -811,7 +819,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       sundayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -833,7 +841,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       sundayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -860,7 +868,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       sundayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -892,7 +900,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       sundayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -924,7 +932,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       sundayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -951,7 +959,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       sundayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -983,7 +991,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       sundayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1015,7 +1023,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       sundayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1042,7 +1050,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       sundayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1074,7 +1082,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       sundayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1106,7 +1114,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       sundayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1140,7 +1148,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1177,7 +1185,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1204,7 +1212,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1236,7 +1244,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1273,7 +1281,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1310,7 +1318,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1342,7 +1350,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1379,7 +1387,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1416,7 +1424,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1448,7 +1456,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1480,7 +1488,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1517,7 +1525,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1541,7 +1549,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1563,7 +1571,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1595,7 +1603,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1627,7 +1635,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       publicHolidayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1659,7 +1667,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       sundayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1696,7 +1704,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1723,7 +1731,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1755,7 +1763,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1792,7 +1800,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1829,7 +1837,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1861,7 +1869,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1898,7 +1906,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1935,7 +1943,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -1967,7 +1975,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2004,7 +2012,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2041,7 +2049,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2065,7 +2073,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2087,7 +2095,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2119,7 +2127,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2151,7 +2159,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       publicHolidayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2183,7 +2191,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       sundayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2220,7 +2228,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2247,7 +2255,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2279,7 +2287,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2316,7 +2324,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2353,7 +2361,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2385,7 +2393,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2422,7 +2430,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2459,7 +2467,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2491,7 +2499,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2528,7 +2536,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2565,7 +2573,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2588,7 +2596,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2619,7 +2627,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2650,7 +2658,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       publicHolidayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2681,7 +2689,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       sundayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2717,7 +2725,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2743,7 +2751,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2774,7 +2782,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2810,7 +2818,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2846,7 +2854,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2877,7 +2885,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2913,7 +2921,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2949,7 +2957,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -2980,7 +2988,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3016,7 +3024,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3052,7 +3060,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3075,7 +3083,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3106,7 +3114,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3137,7 +3145,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       publicHolidayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3168,7 +3176,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       sundayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3204,7 +3212,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3230,7 +3238,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3261,7 +3269,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3297,7 +3305,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3333,7 +3341,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3364,7 +3372,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3400,7 +3408,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3436,7 +3444,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3467,7 +3475,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3503,7 +3511,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3539,7 +3547,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3562,7 +3570,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3593,7 +3601,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3629,7 +3637,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3653,7 +3661,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3675,7 +3683,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3707,7 +3715,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3739,7 +3747,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       publicHolidayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3771,7 +3779,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       sundayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3808,7 +3816,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3835,7 +3843,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3867,7 +3875,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3904,7 +3912,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3941,7 +3949,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -3973,7 +3981,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4010,7 +4018,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4047,7 +4055,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4079,7 +4087,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4116,7 +4124,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4153,7 +4161,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4177,7 +4185,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4199,7 +4207,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4231,7 +4239,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4263,7 +4271,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       publicHolidayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4295,7 +4303,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       sundayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4332,7 +4340,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4359,7 +4367,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4391,7 +4399,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4428,7 +4436,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4465,7 +4473,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4497,7 +4505,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4534,7 +4542,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4571,7 +4579,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4603,7 +4611,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4640,7 +4648,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4677,7 +4685,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4701,7 +4709,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4723,7 +4731,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4755,7 +4763,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4787,7 +4795,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       publicHolidayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4819,7 +4827,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       sundayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4856,7 +4864,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4883,7 +4891,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4915,7 +4923,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4952,7 +4960,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -4989,7 +4997,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -5021,7 +5029,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -5058,7 +5066,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -5095,7 +5103,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -5127,7 +5135,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -5164,7 +5172,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -5201,7 +5209,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -5225,7 +5233,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -5247,7 +5255,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -5279,7 +5287,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       publicHolidayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -5311,7 +5319,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       sundayDate,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -5348,7 +5356,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -5375,7 +5383,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -5407,7 +5415,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -5444,7 +5452,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -5481,7 +5489,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -5513,7 +5521,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -5550,7 +5558,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -5587,7 +5595,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -5619,7 +5627,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -5656,7 +5664,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );
@@ -5693,7 +5701,7 @@ describe('getWorkedTime', () => {
     const result = getWorkedTime(
       date,
       workLogs,
-      workHours,
+      contracts,
       workedHoursLimits,
       supportedHolidays,
     );

@@ -20,12 +20,15 @@ import {
   EDIT_USER_FAILURE,
 } from '../../resources/user/actionTypes';
 import { validateUser } from '../../services/validatorService';
-import {
-  getWorkHoursString,
-  getWorkHoursValue,
-} from '../../services/workHoursService';
 import Layout from '../../components/Layout';
 import routes from '../../routes';
+import {
+  STATUS_APPROVED,
+  STATUS_OPENED,
+  STATUS_WAITING_FOR_APPROVAL,
+} from '../../resources/workMonth';
+import { TERMINATE_CONTRACT_SUCCESS } from '../../resources/contract/actionTypes';
+import { Contracts } from './_components/Contracts';
 import styles from './user.scss';
 
 class EditComponent extends React.Component {
@@ -34,6 +37,7 @@ class EditComponent extends React.Component {
 
     this.state = {
       formData: {
+        contracts: [],
         email: null,
         employeeId: null,
         firstName: null,
@@ -43,10 +47,10 @@ class EditComponent extends React.Component {
         plainPassword: null,
         supervisor: null,
         vacations: {},
-        workHours: {},
       },
       formValidity: {
         elements: {
+          contracts: null,
           email: null,
           employeeId: null,
           firstName: null,
@@ -55,7 +59,6 @@ class EditComponent extends React.Component {
           lastName: null,
           supervisor: null,
           vacations: {},
-          workHours: {},
         },
         isValid: false,
       },
@@ -65,7 +68,6 @@ class EditComponent extends React.Component {
     this.onChange = this.onChange.bind(this);
     this.onChangeVacationDays = this.onChangeVacationDays.bind(this);
     this.onChangeVacationDaysCorrection = this.onChangeVacationDaysCorrection.bind(this);
-    this.onChangeWorkHour = this.onChangeWorkHour.bind(this);
     this.onDelete = this.onDelete.bind(this);
     this.onSave = this.onSave.bind(this);
 
@@ -84,13 +86,6 @@ class EditComponent extends React.Component {
       const formValidity = { ...this.state.formValidity };
 
       this.props.config.get('supportedYears').forEach((year) => {
-        this.state.formData.workHours[year] = [];
-
-        for (let month = 0; month < 12; month += 1) {
-          formData.workHours[year][month] = '0:00';
-          formValidity.elements.workHours[year] = null;
-        }
-
         formData.vacations[year] = {
           remainingVacationDays: '0',
           vacationDays: '0',
@@ -109,15 +104,15 @@ class EditComponent extends React.Component {
       });
 
       this.props.fetchUser(this.props.match.params.id).then(() => {
-        this.props.fetchVacationList(this.props.match.params.id).then(() => {
-          this.props.fetchWorkHoursList(this.props.match.params.id).then(() => {
+        this.props.fetchContractList(this.props.match.params.id).then(() => {
+          this.props.fetchWorkMonthList(this.props.match.params.id);
+          this.props.fetchVacationList(this.props.match.params.id).then(() => {
             const {
+              contracts,
               user,
               vacations,
-              workHours,
             } = this.props;
             const mergedVacations = this.state.formData.vacations;
-            const mergedWorkHours = this.state.formData.workHours;
 
             vacations.forEach((vacationItem) => {
               const vacationDaysUsed = user.get('yearStats')
@@ -135,12 +130,9 @@ class EditComponent extends React.Component {
               };
             });
 
-            workHours.forEach((workHoursItem) => {
-              mergedWorkHours[workHoursItem.get('year')][workHoursItem.get('month') - 1] = getWorkHoursString(workHoursItem.get('requiredHours'));
-            });
-
             this.setState({
               formData: {
+                contracts: contracts.toJS(),
                 email: user.get('email'),
                 employeeId: user.get('employeeId'),
                 firstName: user.get('firstName'),
@@ -149,12 +141,10 @@ class EditComponent extends React.Component {
                 lastName: user.get('lastName'),
                 supervisor: user.getIn(['supervisor', 'id']) ? user.getIn(['supervisor', 'id']) : null,
                 vacations: mergedVacations,
-                workHours: mergedWorkHours,
               },
             });
           });
         });
-
         this.props.fetchUserListPartial();
       });
     });
@@ -173,7 +163,6 @@ class EditComponent extends React.Component {
     if (formValidity.isValid) {
       const formData = { ...this.state.formData };
       const vacations = [];
-      const workHours = [];
 
       Object.keys(formData.vacations).forEach((year) => {
         vacations.push({
@@ -184,18 +173,6 @@ class EditComponent extends React.Component {
       });
 
       formData.vacations = vacations;
-
-      Object.keys(formData.workHours).forEach((year) => {
-        formData.workHours[year].forEach((requiredHours, monthIndex) => {
-          workHours.push({
-            month: monthIndex + 1,
-            requiredHours: getWorkHoursValue(requiredHours),
-            year: parseInt(year, 10),
-          });
-        });
-      });
-
-      formData.workHours = workHours;
 
       if (formData.supervisor === '' || formData.supervisor == null) {
         formData.supervisor = null;
@@ -270,25 +247,6 @@ class EditComponent extends React.Component {
     });
   }
 
-  onChangeWorkHour(e) {
-    const eventTarget = e.target;
-    const eventTargetId = eventTarget.id.replace('workHours_', '');
-
-    if (
-      eventTarget.value
-      && eventTarget.value.split(',').length > 12
-    ) {
-      return;
-    }
-
-    this.setState((prevState) => {
-      const formData = { ...prevState.formData };
-      formData.workHours[eventTargetId] = eventTarget.value.split(',');
-
-      return { formData };
-    });
-  }
-
   onChange(e) {
     const eventTarget = e.target;
 
@@ -303,20 +261,6 @@ class EditComponent extends React.Component {
 
       return { formData };
     });
-  }
-
-  getRequiredHours(year) {
-    if (this.state.formData.workHours[year]) {
-      return this.state.formData.workHours[year].reduce((accValue, requiredHours) => {
-        if (!accValue) {
-          return requiredHours.toString();
-        }
-
-        return `${accValue},${requiredHours}`;
-      }, null);
-    }
-
-    return '';
   }
 
   openDeleteUserDialog() {
@@ -348,7 +292,10 @@ class EditComponent extends React.Component {
   }
 
   render() {
-    const { t } = this.props;
+    const {
+      t,
+      terminateContract,
+    } = this.props;
     let loggedUserId = null;
 
     if (this.props.token) {
@@ -373,7 +320,7 @@ class EditComponent extends React.Component {
     });
 
     return (
-      <Layout title={t('user:title.editUser')} loading={this.props.isFetching}>
+      <Layout loading={this.props.isFetching} title={t('user:title.editUser')}>
         <div className={styles.actions}>
           <Button
             color="danger"
@@ -392,76 +339,76 @@ class EditComponent extends React.Component {
             <ListItem>
               <TextField
                 fullWidth
-                validationText={this.state.formValidity.elements.firstName}
                 id="firstName"
                 label={t('user:element.firstName')}
                 onChange={this.onChange}
                 required
-                value={this.state.formData.firstName || ''}
                 validationState={this.state.formValidity.elements.firstName ? 'invalid' : null}
+                validationText={this.state.formValidity.elements.firstName}
+                value={this.state.formData.firstName || ''}
               />
             </ListItem>
             <ListItem>
               <TextField
                 fullWidth
-                validationText={this.state.formValidity.elements.lastName}
                 id="lastName"
                 label={t('user:element.lastName')}
                 onChange={this.onChange}
                 required
-                value={this.state.formData.lastName || ''}
                 validationState={this.state.formValidity.elements.lastName ? 'invalid' : null}
+                validationText={this.state.formValidity.elements.lastName}
+                value={this.state.formData.lastName || ''}
               />
             </ListItem>
             <ListItem>
               <SelectField
                 fullWidth
-                validationText={this.state.formValidity.elements.supervisor}
                 id="supervisor"
                 label={t('user:element.supervisor')}
                 onChange={this.onChange}
                 options={userList}
-                value={this.state.formData.supervisor || ''}
                 validationState={this.state.formValidity.elements.supervisor ? 'invalid' : null}
+                validationText={this.state.formValidity.elements.supervisor}
+                value={this.state.formData.supervisor || ''}
               />
             </ListItem>
             <ListItem>
               <TextField
                 autoComplete="off"
                 fullWidth
-                validationText={this.state.formValidity.elements.email}
                 id="email"
                 label={t('user:element.email')}
                 onChange={this.onChange}
                 required
-                value={this.state.formData.email || ''}
                 validationState={this.state.formValidity.elements.email ? 'invalid' : null}
+                validationText={this.state.formValidity.elements.email}
+                value={this.state.formData.email || ''}
               />
             </ListItem>
             <ListItem>
               <TextField
                 fullWidth
-                validationText={this.state.formValidity.elements.employeeId}
                 id="employeeId"
                 label={t('user:element.employeeId')}
                 onChange={this.onChange}
                 required
-                value={this.state.formData.employeeId || ''}
                 validationState={this.state.formValidity.elements.employeeId ? 'invalid' : null}
+                validationText={this.state.formValidity.elements.employeeId}
+                value={this.state.formData.employeeId || ''}
               />
             </ListItem>
             <ListItem>
               <TextField
                 autoComplete="new-password"
                 fullWidth
-                validationText={this.state.formValidity.elements.plainPassword}
                 id="plainPassword"
                 label={t('user:element.plainPassword')}
-                type="password"
                 onChange={this.onChange}
                 required
-                value={this.state.formData.plainPassword || ''}
+                type="password"
                 validationState={this.state.formValidity.elements.plainPassword ? 'invalid' : null}
+                validationText={this.state.formValidity.elements.plainPassword}
+                value={this.state.formData.plainPassword || ''}
               />
             </ListItem>
             <ListItem>
@@ -475,6 +422,55 @@ class EditComponent extends React.Component {
                 validationText={this.state.formValidity.elements.isActive}
               />
             </ListItem>
+            <Contracts
+              contracts={this.state.formData.contracts}
+              onContractAdd={(contract) => {
+                this.setState((prevState) => ({
+                  formData: {
+                    ...prevState.formData,
+                    contracts: [
+                      ...prevState.formData.contracts,
+                      contract,
+                    ],
+                  },
+                }));
+              }}
+              onContractRemove={(contract) => {
+                this.setState((prevState) => ({
+                  formData: {
+                    ...prevState.formData,
+                    // eslint-disable-next-line no-underscore-dangle
+                    contracts: prevState.formData.contracts.filter((c) => c._id !== contract._id),
+                  },
+                }));
+              }}
+              onContractSave={(contract) => {
+                this.setState((prevState) => ({
+                  formData: {
+                    ...prevState.formData,
+                    contracts: prevState.formData.contracts.map((c) => {
+                      // eslint-disable-next-line no-underscore-dangle
+                      if (c._id === contract._id) {
+                        return contract;
+                      }
+
+                      return c;
+                    }),
+                  },
+                }));
+              }}
+              onContractTerminate={async (id, data) => {
+                const response = await terminateContract(id, data);
+
+                if (response.type === TERMINATE_CONTRACT_SUCCESS) {
+                  this.props.fetchContractList(this.props.match.params.id);
+                }
+
+                return response;
+              }}
+              validationMessage={this.state.formValidity.elements.contracts}
+              workMonths={this.props.workMonths.toJS()}
+            />
             <h2 className={styles.detailSubheader}>
               {t('user:text.vacationDays')}
             </h2>
@@ -490,28 +486,28 @@ class EditComponent extends React.Component {
                 >
                   <span>{year}</span>
                   <TextField
-                    onChange={this.onChangeVacationDays}
-                    validationText={this.state.formValidity.elements.vacations[year].vacationDays}
                     id={`vacationDays_${year.toString()}`}
                     inputSize={6}
                     label={t('vacation:text.total')}
-                    value={this.state.formData.vacations[year].vacationDays || ''}
+                    onChange={this.onChangeVacationDays}
                     validationState={
                       this.state.formValidity.elements.vacations[year].vacationDays ? 'invalid' : null
                     }
+                    validationText={this.state.formValidity.elements.vacations[year].vacationDays}
+                    value={this.state.formData.vacations[year].vacationDays || ''}
                   />
                   <TextField
-                    validationText={
-                      this.state.formValidity.elements.vacations[year].vacationDaysCorrection
-                    }
                     id={`vacationDaysCorrection_${year.toString()}`}
                     inputSize={6}
                     label={t('vacation:text.correction')}
                     onChange={this.onChangeVacationDaysCorrection}
-                    value={this.state.formData.vacations[year].vacationDaysCorrection || ''}
                     validationState={
                       this.state.formValidity.elements.vacations[year].vacationDaysCorrection ? 'invalid' : null
                     }
+                    validationText={
+                      this.state.formValidity.elements.vacations[year].vacationDaysCorrection
+                    }
+                    value={this.state.formData.vacations[year].vacationDaysCorrection || ''}
                   />
                   <TextField
                     disabled
@@ -532,29 +528,6 @@ class EditComponent extends React.Component {
                 </div>
               );
             })}
-            <h2 className={styles.detailSubheader}>
-              {t('user:text.averageWorkingHoursTitle')}
-            </h2>
-            <p>{t('user:text.averageWorkingHoursDescription')}</p>
-            {this.props.config && this.props.config.get('supportedYears').map((year) => {
-              if (!this.state.formData.workHours[year]) {
-                return null;
-              }
-
-              return (
-                <ListItem key={year}>
-                  <TextField
-                    error={this.state.formValidity.elements.workHours[year]}
-                    fullWidth
-                    id={`workHours_${year.toString()}`}
-                    label={year.toString()}
-                    onChange={this.onChangeWorkHour}
-                    pattern="((2[0-3]|1[0-9]|[0-9]):([0-5][0-9]|[0-9]|),){11}(2[0-3]|1[0-9]|[0-9]):([0-5][0-9]|[0-9])"
-                    value={this.getRequiredHours(year)}
-                  />
-                </ListItem>
-              );
-            })}
             <ListItem>
               <Button
                 feedbackIcon={this.props.isPosting ? <LoadingIcon /> : null}
@@ -572,18 +545,34 @@ class EditComponent extends React.Component {
 
 EditComponent.defaultProps = {
   config: {},
+  contracts: [],
   user: null,
+  workMonths: [],
 };
 
 EditComponent.propTypes = {
   config: ImmutablePropTypes.mapContains({}),
+  contracts: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+    endDateTime: PropTypes.shape(),
+    id: PropTypes.number,
+    isDayBased: PropTypes.bool.isRequired,
+    isFridayIncluded: PropTypes.bool.isRequired,
+    isMondayIncluded: PropTypes.bool.isRequired,
+    isThursdayIncluded: PropTypes.bool.isRequired,
+    isTuesdayIncluded: PropTypes.bool.isRequired,
+    isWednesdayIncluded: PropTypes.bool.isRequired,
+    startDateTime: PropTypes.shape().isRequired,
+    weeklyWorkingDays: PropTypes.number.isRequired,
+    weeklyWorkingHours: PropTypes.number.isRequired,
+  })),
   deleteUser: PropTypes.func.isRequired,
   editUser: PropTypes.func.isRequired,
   fetchConfig: PropTypes.func.isRequired,
+  fetchContractList: PropTypes.func.isRequired,
   fetchUser: PropTypes.func.isRequired,
   fetchUserListPartial: PropTypes.func.isRequired,
   fetchVacationList: PropTypes.func.isRequired,
-  fetchWorkHoursList: PropTypes.func.isRequired,
+  fetchWorkMonthList: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
@@ -595,6 +584,7 @@ EditComponent.propTypes = {
     }).isRequired,
   }).isRequired,
   t: PropTypes.func.isRequired,
+  terminateContract: PropTypes.func.isRequired,
   token: PropTypes.string.isRequired,
   user: ImmutablePropTypes.mapContains({
     email: PropTypes.string.isRequired,
@@ -618,11 +608,15 @@ EditComponent.propTypes = {
     vacationDaysCorrection: PropTypes.number.isRequired,
     year: PropTypes.number.isRequired,
   })).isRequired,
-  workHours: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+  workMonths: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
     month: PropTypes.number.isRequired,
-    requiredHours: PropTypes.number.isRequired,
+    status: PropTypes.oneOf([
+      STATUS_APPROVED,
+      STATUS_OPENED,
+      STATUS_WAITING_FOR_APPROVAL,
+    ]).isRequired,
     year: PropTypes.number.isRequired,
-  })).isRequired,
+  })),
 };
 
 export default withTranslation()(EditComponent);

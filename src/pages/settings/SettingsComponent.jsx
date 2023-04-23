@@ -289,25 +289,25 @@ class SettingsComponent extends React.Component {
           <List>
             <ListItem>
               <TextField
-                validationText={this.state.formValidity.elements.year}
                 id="year"
                 label={t('config:element.year')}
                 onChange={this.onChange}
                 required
                 type="number"
-                value={this.state.formData.year || ''}
                 validationState={this.state.formValidity.elements.year ? 'invalid' : null}
+                validationText={this.state.formValidity.elements.year}
+                value={this.state.formData.year || ''}
               />
             </ListItem>
             <ListItem>
               <TextArea
-                validationText={this.state.formValidity.elements.holidays}
                 id="holidays"
                 label={t('config:element.holidays')}
                 onChange={this.onChange}
                 required
-                value={this.state.formData.holidays || ''}
                 validationState={this.state.formValidity.elements.holidays ? 'invalid' : null}
+                validationText={this.state.formValidity.elements.holidays}
+                value={this.state.formData.holidays || ''}
               />
             </ListItem>
             <ListItem>
@@ -344,25 +344,25 @@ class SettingsComponent extends React.Component {
             <ListItem>
               <TextField
                 disabled
-                validationText={this.state.formValidity.elements.year}
                 id="year"
                 label={t('config:element.year')}
                 onChange={this.onChange}
                 required
                 type="number"
-                value={this.state.formData.year || ''}
                 validationState={this.state.formValidity.elements.year ? 'invalid' : null}
+                validationText={this.state.formValidity.elements.year}
+                value={this.state.formData.year || ''}
               />
             </ListItem>
             <ListItem>
               <TextArea
-                validationText={this.state.formValidity.elements.holidays}
                 id="holidays"
                 label={t('config:element.holidays')}
                 onChange={this.onChange}
                 required
-                value={this.state.formData.holidays || ''}
                 validationState={this.state.formValidity.elements.holidays ? 'invalid' : null}
+                validationText={this.state.formValidity.elements.holidays}
+                value={this.state.formData.holidays || ''}
               />
             </ListItem>
             <ListItem>

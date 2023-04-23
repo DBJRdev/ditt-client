@@ -50,12 +50,6 @@ export default (state, action) => {
     year: parseInt(data.year.year, 10),
   });
 
-  const filterWorkHour = (data) => ({
-    month: parseInt(data.month, 10),
-    requiredHours: data.requiredHours,
-    year: parseInt(data.year.year, 10),
-  });
-
   const filterWorkMonth = (data) => ({
     id: data.id,
     month: parseInt(data.month, 10),
@@ -73,9 +67,6 @@ export default (state, action) => {
       : null,
     vacations: data.vacations
       ? data.vacations.map(filterVacation).sort((a, b) => a.year - b.year)
-      : [],
-    workHours: data.workHours
-      ? data.workHours.map(filterWorkHour)
       : [],
     workMonths: data.workMonths
       ? data.workMonths.map(filterWorkMonth)

@@ -26,6 +26,7 @@ import { WorkLogTimerButton } from '../../../WorkLogTimerButton';
 
 const WorkLogCalendarContentComponent = ({
   config,
+  contractsOfSelectedMonth,
   canAddWorkLog,
   canAddSupervisorWorkLog,
   fetchWorkMonth,
@@ -71,8 +72,8 @@ const WorkLogCalendarContentComponent = ({
               {workMonth.status !== STATUS_APPROVED && workHoursInfo && workHoursInfo.requiredHoursLeft !== 0 && (
               <tr>
                 <td
-                  colSpan={(canAddWorkLog || canAddSupervisorWorkLog) ? 4 : 3}
                   className={styles.tableCellRight}
+                  colSpan={(canAddWorkLog || canAddSupervisorWorkLog) ? 4 : 3}
                 >
                   {t(
                     'workLog:text.differenceFromPreviousMonth',
@@ -84,28 +85,55 @@ const WorkLogCalendarContentComponent = ({
               {workTimeCorrectionText && (
               <tr>
                 <td
-                  colSpan={(canAddWorkLog || canAddSupervisorWorkLog) ? 4 : 3}
                   className={styles.tableCellRight}
+                  colSpan={(canAddWorkLog || canAddSupervisorWorkLog) ? 4 : 3}
                 >
                   {workTimeCorrectionText}
                 </td>
               </tr>
               )}
               {daysOfSelectedMonth.map((day) => {
+                const validContractThisDay = contractsOfSelectedMonth.find((contract) => {
+                  if (contract.endDateTime == null) {
+                    return contract.startDateTime.isSameOrBefore(day.date, 'day');
+                  }
+
+                  return contract.startDateTime.isSameOrBefore(day.date, 'day') && contract.endDateTime.isSameOrAfter(day.date, 'day');
+                });
+
+                const isWorkingDay = validContractThisDay
+                  && (
+                    (
+                      validContractThisDay.isDayBased
+                      && (
+                        (validContractThisDay.isMondayIncluded && day.date.day() === 1)
+                        || (validContractThisDay.isTuesdayIncluded && day.date.day() === 2)
+                        || (validContractThisDay.isWednesdayIncluded && day.date.day() === 3)
+                        || (validContractThisDay.isThursdayIncluded && day.date.day() === 4)
+                        || (validContractThisDay.isFridayIncluded && day.date.day() === 5)
+                      )
+                    ) || !validContractThisDay.isDayBased
+                  );
+
+                const canAddWorkLogAsUserThisDay = canAddWorkLog && validContractThisDay;
+                const canAddWorkLogAsSupervisorThisDay = canAddSupervisorWorkLog && validContractThisDay;
+                const canAddWorkLogThisDay = canAddWorkLogAsUserThisDay || canAddWorkLogAsSupervisorThisDay;
+
                 let rowClassName = (
                   isWeekend(day.date)
-                || includesSameDate(day.date, config.supportedHolidays)
+                    || includesSameDate(day.date, config.supportedHolidays)
+                    || !isWorkingDay
                 ) ? styles.tableRowWeekend
                   : styles.tableRow;
 
-                if (canAddWorkLog || canAddSupervisorWorkLog) {
+                if (canAddWorkLogThisDay) {
                   rowClassName = `${rowClassName} ${styles.tableRowAddWorkLog}`;
                 }
 
                 let onRowClick;
-                if (canAddWorkLog) {
+                if (canAddWorkLogAsUserThisDay) {
                   onRowClick = () => openWorkLogFormModal(day.date);
-                } else if (canAddSupervisorWorkLog) {
+                } else if (canAddWorkLogAsSupervisorThisDay) {
                   onRowClick = () => openSupervisorWorkLogFormModal(day.date);
                 }
 
@@ -145,7 +173,7 @@ const WorkLogCalendarContentComponent = ({
                         ))}
                         {
                         day.date.isSame(date, 'day')
-                        && canAddWorkLog
+                        && canAddWorkLogAsUserThisDay
                         && (
                           <ToolbarItem>
                             <WorkLogTimerButton onAfterSave={fetchWorkMonth} />
@@ -155,40 +183,51 @@ const WorkLogCalendarContentComponent = ({
                       </Toolbar>
                     </td>
                     {
-                    canAddWorkLog
-                    && (
-                      <td
-                        className={classNames(
-                          styles.tableCellRight,
-                          styles.tableCellHideOnPrint,
-                        )}
-                      >
-                        <div className={styles.addWorkLogButtonWrapper}>
-                          <Button
-                            onClick={() => openWorkLogFormModal(day.date)}
-                            beforeLabel={<Icon icon="add" />}
-                            label={t('workLog:action.addWorkLog')}
-                            labelVisibility="none"
-                          />
-                        </div>
-                      </td>
-                    )
-                  }
+                      !canAddWorkLogThisDay
+                      && (
+                        <td
+                          className={classNames(
+                            styles.tableCellRight,
+                            styles.tableCellHideOnPrint,
+                          )}
+                        />
+                      )
+                    }
                     {
-                    canAddSupervisorWorkLog
-                    && (
-                      <td className={styles.tableCellRight}>
-                        <div className={styles.addWorkLogButtonWrapper}>
-                          <Button
-                            beforeLabel={<Icon icon="add" />}
-                            label={t('workLog:action.addWorkLog')}
-                            labelVisibility="none"
-                            onClick={() => openSupervisorWorkLogFormModal(day.date)}
-                          />
-                        </div>
-                      </td>
-                    )
-                  }
+                      canAddWorkLogAsUserThisDay
+                      && (
+                        <td
+                          className={classNames(
+                            styles.tableCellRight,
+                            styles.tableCellHideOnPrint,
+                          )}
+                        >
+                          <div className={styles.addWorkLogButtonWrapper}>
+                            <Button
+                              beforeLabel={<Icon icon="add" />}
+                              label={t('workLog:action.addWorkLog')}
+                              labelVisibility="none"
+                              onClick={() => openWorkLogFormModal(day.date)}
+                            />
+                          </div>
+                        </td>
+                      )
+                    }
+                    {
+                      canAddWorkLogAsSupervisorThisDay
+                      && (
+                        <td className={styles.tableCellRight}>
+                          <div className={styles.addWorkLogButtonWrapper}>
+                            <Button
+                              beforeLabel={<Icon icon="add" />}
+                              label={t('workLog:action.addWorkLog')}
+                              labelVisibility="none"
+                              onClick={() => openSupervisorWorkLogFormModal(day.date)}
+                            />
+                          </div>
+                        </td>
+                      )
+                    }
                     <td
                       className={
                       [
@@ -250,8 +289,20 @@ WorkLogCalendarContentComponent.propTypes = {
   config: PropTypes.shape({
     supportedHolidays: PropTypes.arrayOf(PropTypes.shape).isRequired,
   }).isRequired,
+  contractsOfSelectedMonth: PropTypes.arrayOf(PropTypes.shape({
+    endDateTime: PropTypes.shape(),
+    id: PropTypes.number,
+    isDayBased: PropTypes.bool.isRequired,
+    isFridayIncluded: PropTypes.bool.isRequired,
+    isMondayIncluded: PropTypes.bool.isRequired,
+    isThursdayIncluded: PropTypes.bool.isRequired,
+    isTuesdayIncluded: PropTypes.bool.isRequired,
+    isWednesdayIncluded: PropTypes.bool.isRequired,
+    startDateTime: PropTypes.shape().isRequired,
+    weeklyWorkingDays: PropTypes.number.isRequired,
+    weeklyWorkingHours: PropTypes.number.isRequired,
+  })).isRequired,
   daysOfSelectedMonth: PropTypes.arrayOf(PropTypes.shape({
-
   })).isRequired,
   fetchWorkMonth: PropTypes.func.isRequired,
   openEditWorkLogFormModal: PropTypes.func.isRequired,

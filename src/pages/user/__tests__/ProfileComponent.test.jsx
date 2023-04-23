@@ -9,10 +9,11 @@ describe('rendering', () => {
   it('renders correctly', () => {
     const props = {
       config: configMock,
+      contracts: Immutable.List([]),
       editUser: () => new Promise(() => {}),
       fetchConfig: () => new Promise(() => {}),
+      fetchContractList: () => new Promise(() => {}),
       fetchUser: () => new Promise(() => {}),
-      fetchWorkHoursList: () => {},
       isFetching: false,
       isPosting: false,
       renewUserApiToken: () => new Promise(() => {}),
@@ -65,7 +66,6 @@ describe('rendering', () => {
           },
         ],
       }),
-      workHours: Immutable.List(),
     };
     const tree = shallow(<ProfileComponent {...props} />);
 

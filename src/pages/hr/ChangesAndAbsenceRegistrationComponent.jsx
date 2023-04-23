@@ -25,13 +25,14 @@ import {
 } from '../../resources/sickDayWorkLog';
 import {
   localizedMoment,
-  toAbsoluteHourMinuteFormatFromInt,
-  toDayMonthYearFormat, toMomentDateTimeFromDayMonthYear,
+  toDayMonthYearFormat,
+  toMomentDateTimeFromDayMonthYear,
 } from '../../services/dateTimeService';
 import {
   collapseWorkLogs,
 } from '../../services/workLogService';
 import Layout from '../../components/Layout';
+import { getWorkHoursString } from '../../services/workHoursService';
 import styles from './styles.scss';
 import { orderTableRows } from './_helpers/orderTableRows';
 
@@ -67,7 +68,7 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
           </ToolbarItem>
           <ToolbarGroup dense>
             <ToolbarGroup dense>
-              <ToolbarGroup dense align="middle">
+              <ToolbarGroup align="middle" dense>
                 <ToolbarItem>
                   {props.t('hr:element.period')}
                   :
@@ -80,13 +81,13 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
                     label={props.t('hr:element.dateFrom')}
                     layout="horizontal"
                     onChange={(e) => setDateFrom(e.target.value)}
-                    value={dateFrom || ''}
                     validationState={dateFromError ? 'invalid' : null}
                     validationText={dateFromError}
+                    value={dateFrom || ''}
                   />
                 </ToolbarItem>
               </ToolbarGroup>
-              <ToolbarGroup dense align="middle">
+              <ToolbarGroup align="middle" dense>
                 <ToolbarItem>
                   <span className="ml-1 mr-1">
                     –
@@ -100,9 +101,9 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
                     label={props.t('hr:element.dateTo')}
                     layout="horizontal"
                     onChange={(e) => setDateTo(e.target.value)}
-                    value={dateTo || ''}
                     validationState={dateToError ? 'invalid' : null}
                     validationText={dateToError}
+                    value={dateTo || ''}
                   />
                 </ToolbarItem>
               </ToolbarGroup>
@@ -167,42 +168,18 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
             },
             {
               format: (rowData) => {
-                const changes = [];
-
-                let currentWorkHour = rowData.workHours[0];
-                for (let i = 1; i < rowData.workHours.length; i += 1) {
-                  if (currentWorkHour.requiredHours > rowData.workHours[i].requiredHours) {
-                    changes.push(props.t(
-                      'hr:text.reductionText',
-                      {
-                        month: rowData.workHours[i].month.toString().padStart(2, '0'),
-                        time: toAbsoluteHourMinuteFormatFromInt(rowData.workHours[i].requiredHours),
-                      },
-                    ));
-                  } else if (currentWorkHour.requiredHours < rowData.workHours[i].requiredHours) {
-                    changes.push(props.t(
-                      'hr:text.increaseText',
-                      {
-                        month: rowData.workHours[i].month.toString().padStart(2, '0'),
-                        time: toAbsoluteHourMinuteFormatFromInt(rowData.workHours[i].requiredHours),
-                      },
-                    ));
-                  }
-
-                  currentWorkHour = rowData.workHours[i];
+                if (rowData.contracts.length < 1) {
+                  return '';
                 }
 
-                return changes.map((change, index, arr) => (
-                  <div
-                    className={(arr.length === index + 1) ? undefined : 'mb-2'}
-                    key={generate()}
-                  >
-                    {change}
-                  </div>
+                return rowData.contracts.map((contract) => (
+                  <p className="mt-0 mb-0">
+                    {`${toDayMonthYearFormat(contract.startDateTime)} – ${contract.endDateTime ? toDayMonthYearFormat(contract.endDateTime) : props.t('hr:text.current')} (${getWorkHoursString((contract.weeklyWorkingHours / contract.weeklyWorkingDays) * 3600)})`}
+                  </p>
                 ));
               },
-              label: props.t('hr:element.contractChanges'),
-              name: 'contractChanges',
+              label: props.t('hr:element.contracts'),
+              name: 'contracts',
             },
             {
               format: (rowData) => collapseWorkLogs(

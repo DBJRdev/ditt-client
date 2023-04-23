@@ -2,7 +2,6 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import PropTypes from 'prop-types';
 import React from 'react';
 import decode from 'jwt-decode';
-import shortid from 'shortid';
 import {
   Button,
   CheckboxField,
@@ -19,6 +18,9 @@ import { ROLE_EMPLOYEE } from '../../resources/user';
 import { getWorkHoursString } from '../../services/workHoursService';
 import Layout from '../../components/Layout';
 import routes from '../../routes';
+import {
+  toDayMonthYearFormat,
+} from '../../services/dateTimeService';
 import styles from './user.scss';
 
 class ProfileComponent extends React.Component {
@@ -56,7 +58,7 @@ class ProfileComponent extends React.Component {
 
         this.props.fetchConfig();
         this.props.fetchUser(loggedUserId);
-        this.props.fetchWorkHoursList(loggedUserId);
+        this.props.fetchContractList(loggedUserId);
       }
     }
   }
@@ -134,12 +136,14 @@ class ProfileComponent extends React.Component {
 
   handleSave() {
     const {
+      contracts,
       editUser,
       user,
     } = this.props;
     const { notifications } = this.state;
 
     editUser({
+      contracts: contracts.toJS(),
       ...user.toJS(),
       notifications,
     });
@@ -157,22 +161,10 @@ class ProfileComponent extends React.Component {
     return `${iCalUrl}/ical/${user.get('iCalToken')}/ditt.ics`;
   }
 
-  getRequiredHours(year) {
-    const { workHours } = this.props;
-    const selectedWorkHours = [];
-
-    workHours.forEach((workHoursItem) => {
-      if (workHoursItem.get('year') === year) {
-        selectedWorkHours[workHoursItem.get('month') - 1] = getWorkHoursString(workHoursItem.get('requiredHours'));
-      }
-    });
-
-    return selectedWorkHours;
-  }
-
   render() {
     const {
       config,
+      contracts,
       isPosting,
       renewUserApiToken,
       renewUserICalToken,
@@ -180,7 +172,6 @@ class ProfileComponent extends React.Component {
       resetUserICalToken,
       t,
       user,
-      workHours,
     } = this.props;
     const {
       apiTokenDialogOpened,
@@ -199,9 +190,9 @@ class ProfileComponent extends React.Component {
     }
 
     return (
-      <Layout title={t('user:title.profile')} loading={this.props.isFetching}>
+      <Layout loading={this.props.isFetching} title={t('user:title.profile')}>
         {
-          config && user && workHours
+          config && user && contracts
           && (
             <div>
               <div className={styles.centeredLayout}>
@@ -363,6 +354,72 @@ class ProfileComponent extends React.Component {
                   </table>
                 </div>
 
+                {contracts && contracts.size > 0 && (
+                  <>
+                    <h3 className={styles.h2}>{t('user:text.contracts')}</h3>
+                    <div className={styles.responsiveTable}>
+                      <table className={styles.table}>
+                        <thead>
+                          <tr>
+                            <th>{t('user:element.startDateTime')}</th>
+                            <th>{t('user:element.endDateTime')}</th>
+                            <th>{t('user:element.isDayBased')}</th>
+                            <th>{t('user:element.weeklyWorkingDays')}</th>
+                            <th>{t('user:element.weeklyWorkingHours')}</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {contracts?.map((contract) => {
+                            const daysIncluded = [
+                              contract.get('isDayBased') && contract.get('isMondayIncluded') && t('general:text.Mon'),
+                              contract.get('isDayBased') && contract.get('isTuesdayIncluded') && t('general:text.Tue'),
+                              contract.get('isDayBased') && contract.get('isWednesdayIncluded') && t('general:text.Wed'),
+                              contract.get('isDayBased') && contract.get('isThursdayIncluded') && t('general:text.Thu'),
+                              contract.get('isDayBased') && contract.get('isFridayIncluded') && t('general:text.Fri'),
+                            ].filter(Boolean).join(', ');
+
+                            return (
+                              <tr key={contract.get('id')}>
+                                <td className={styles.vacationTableFirstCell}>
+                                  {toDayMonthYearFormat(contract.get('startDateTime'))}
+                                </td>
+                                <td className={styles.vacationTableFirstCell}>
+                                  {
+                                    contract.get('endDateTime')
+                                      ? toDayMonthYearFormat(contract.get('endDateTime'))
+                                      : '–'
+                                  }
+                                </td>
+                                <td className={styles.vacationTableCell}>
+                                  {
+                                    contract.get('isDayBased')
+                                      ? t('user:element.dayBased')
+                                      : t('user:element.flexible')
+                                  }
+                                </td>
+                                <td className={styles.vacationTableCell}>
+                                  {contract.get('weeklyWorkingDays')}
+                                  {daysIncluded.length > 0 && (
+                                    <>
+                                      <br />
+                                      (
+                                      {daysIncluded}
+                                      )
+                                    </>
+                                  )}
+                                </td>
+                                <td className={styles.vacationTableCell}>
+                                  {getWorkHoursString(contract.get('weeklyWorkingHours') * 3600)}
+                                </td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                      </table>
+                    </div>
+                  </>
+                )}
+
                 <h3 className={styles.h2}>{t('user:text.vacationDays')}</h3>
                 <div className={styles.responsiveTable}>
                   <table className={styles.table}>
@@ -393,35 +450,6 @@ class ProfileComponent extends React.Component {
                           <td className={styles.vacationTableCell}>
                             {vacation.get('remainingVacationDays')}
                           </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-
-                <h3 className={styles.h2}>{t('user:text.averageWorkingHoursTitle')}</h3>
-                <div className={styles.responsiveTable}>
-                  <table className={styles.workHoursTable}>
-                    <thead>
-                      <tr>
-                        {/* eslint-disable-next-line jsx-a11y/control-has-associated-label  */}
-                        <th />
-                        {Array.from({ length: 12 }, (v, k) => k + 1).map(((month) => (
-                          <th key={month}>
-                            {month}
-                          </th>
-                        )))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {config && config.get('supportedYears').map((year) => (
-                        <tr key={year}>
-                          <td>{year}</td>
-                          {this.getRequiredHours(year).map((month) => (
-                            <td key={shortid.generate()}>
-                              {month}
-                            </td>
-                          ))}
                         </tr>
                       ))}
                     </tbody>
@@ -485,8 +513,8 @@ class ProfileComponent extends React.Component {
 
                 <div className={styles.saveButton}>
                   <Button
-                    feedbackIcon={isPosting ? <LoadingIcon /> : null}
                     disabled={loggedUserId === null}
+                    feedbackIcon={isPosting ? <LoadingIcon /> : null}
                     label={t('general:action.save')}
                     onClick={this.handleSave}
                   />
@@ -520,15 +548,29 @@ class ProfileComponent extends React.Component {
 
 ProfileComponent.defaultProps = {
   config: {},
+  contracts: [],
   user: null,
 };
 
 ProfileComponent.propTypes = {
   config: ImmutablePropTypes.mapContains({}),
+  contracts: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
+    endDateTime: PropTypes.shape(),
+    id: PropTypes.number,
+    isDayBased: PropTypes.bool.isRequired,
+    isFridayIncluded: PropTypes.bool.isRequired,
+    isMondayIncluded: PropTypes.bool.isRequired,
+    isThursdayIncluded: PropTypes.bool.isRequired,
+    isTuesdayIncluded: PropTypes.bool.isRequired,
+    isWednesdayIncluded: PropTypes.bool.isRequired,
+    startDateTime: PropTypes.shape().isRequired,
+    weeklyWorkingDays: PropTypes.number.isRequired,
+    weeklyWorkingHours: PropTypes.number.isRequired,
+  })),
   editUser: PropTypes.func.isRequired,
   fetchConfig: PropTypes.func.isRequired,
+  fetchContractList: PropTypes.func.isRequired,
   fetchUser: PropTypes.func.isRequired,
-  fetchWorkHoursList: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
   isPosting: PropTypes.bool.isRequired,
   renewUserApiToken: PropTypes.func.isRequired,
@@ -555,11 +597,6 @@ ProfileComponent.propTypes = {
       year: PropTypes.number.isRequired,
     })).isRequired,
   }),
-  workHours: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
-    month: PropTypes.number.isRequired,
-    requiredHours: PropTypes.number.isRequired,
-    year: PropTypes.number.isRequired,
-  })).isRequired,
 };
 
 export default withTranslation()(ProfileComponent);

@@ -13,8 +13,8 @@ const VacationWorkLogFieldsComponent = ({
   <TextField
     disabled={isInEditState}
     id="dateTo"
-    onChange={onFormDataChange}
     label={t('workLog:element.dateTo')}
+    onChange={onFormDataChange}
     validationState={formValidity.elements.dateTo ? 'invalid' : null}
     validationText={formValidity.elements.dateTo}
     value={formData.dateTo || ''}

@@ -43,6 +43,7 @@ import { WorkLogCalendarLowerToolbar } from './parts/WorkLogCalendarLowerToolbar
 import { WorkLogCalendarNavigation } from './parts/WorkLogCalendarNavigation';
 import { WorkLogCalendarUpperStatusBar } from './parts/WorkLogCalendarUpperStatusBar';
 import { WorkLogCalendarUpperToolbar } from './parts/WorkLogCalendarUpperToolbar';
+import { getContractsOfSelectedMonth } from './helpers/getContractsOfSelectedMonth';
 
 class WorkLogCalendarComponent extends React.Component {
   constructor(props) {
@@ -324,12 +325,12 @@ class WorkLogCalendarComponent extends React.Component {
   render() {
     const {
       config,
+      contracts,
       fetchWorkMonth,
       fetchWorkMonthList,
       selectedDate,
       supervisorView,
       user,
-      workHoursList,
       workMonth,
       workMonthList,
     } = this.props;
@@ -349,7 +350,7 @@ class WorkLogCalendarComponent extends React.Component {
     if (
       !workMonth
       || !workMonthList
-      || !workHoursList
+      || !contracts
     ) {
       return null;
     }
@@ -358,15 +359,19 @@ class WorkLogCalendarComponent extends React.Component {
       config,
       selectedDate,
       workMonth,
-      workHoursList,
+      contracts,
     );
     const workHoursInfo = getWorkHoursInfo(
       daysOfSelectedMonth,
       config,
       selectedDate,
       workMonth,
-      workHoursList,
+      contracts,
       workMonthList,
+    );
+    const contractsOfSelectedMonth = getContractsOfSelectedMonth(
+      contracts,
+      workMonth,
     );
 
     return (
@@ -374,48 +379,57 @@ class WorkLogCalendarComponent extends React.Component {
         <WorkLogCalendarNavigation
           fetchWorkMonthList={fetchWorkMonthList}
           selectedDate={selectedDate}
-          selectPreviousMonth={this.selectPreviousMonth}
           selectNextMonth={this.selectNextMonth}
+          selectPreviousMonth={this.selectPreviousMonth}
           supervisorView={supervisorView}
           workHoursInfo={workHoursInfo}
           workMonth={workMonth}
           workMonthList={workMonthList}
         />
-        <WorkLogCalendarUpperStatusBar
-          supervisorView={supervisorView}
-          status={workMonth.status}
-        />
-        <WorkLogCalendarUpperToolbar
-          exportData={this.exportData}
-          openSupervisorWorkTimeCorrectionModal={this.openSupervisorWorkTimeCorrectionModal}
-          supervisorView={supervisorView}
-          user={user}
-          workMonth={workMonth}
-        />
+        {contractsOfSelectedMonth.length > 0 && (
+          <>
+            <WorkLogCalendarUpperStatusBar
+              status={workMonth.status}
+              supervisorView={supervisorView}
+            />
+            <WorkLogCalendarUpperToolbar
+              exportData={this.exportData}
+              openSupervisorWorkTimeCorrectionModal={this.openSupervisorWorkTimeCorrectionModal}
+              supervisorView={supervisorView}
+              user={user}
+              workMonth={workMonth}
+            />
+          </>
+        )}
         <WorkLogCalendarContent
-          config={config}
           canAddSupervisorWorkLog={canAddSupervisorWorkLog(workMonth, supervisorView, user)}
           canAddWorkLog={canAddWorkLog(workMonth, supervisorView)}
+          config={config}
+          contractsOfSelectedMonth={contractsOfSelectedMonth}
           daysOfSelectedMonth={daysOfSelectedMonth}
           fetchWorkMonth={fetchWorkMonth}
-          openWorkLogDetailModal={this.openWorkLogDetailModal}
-          openSupervisorWorkLogFormModal={this.openSupervisorWorkLogFormModal}
-          openWorkLogFormModal={this.openWorkLogFormModal}
           openEditWorkLogFormModal={this.openEditWorkLogFormModal}
+          openSupervisorWorkLogFormModal={this.openSupervisorWorkLogFormModal}
+          openWorkLogDetailModal={this.openWorkLogDetailModal}
+          openWorkLogFormModal={this.openWorkLogFormModal}
           supervisorView={supervisorView}
           user={user}
           workHoursInfo={workHoursInfo}
           workMonth={workMonth}
         />
-        <WorkLogCalendarLowerStatusBar
-          status={workMonth.status}
-          workHoursInfo={workHoursInfo}
-        />
-        <WorkLogCalendarLowerToolbar
-          countWaitingForApprovalWorkLogs={this.countWaitingForApprovalWorkLogs}
-          supervisorView={supervisorView}
-          workMonth={workMonth}
-        />
+        {contractsOfSelectedMonth.length > 0 && (
+          <>
+            <WorkLogCalendarLowerStatusBar
+              status={workMonth.status}
+              workHoursInfo={workHoursInfo}
+            />
+            <WorkLogCalendarLowerToolbar
+              countWaitingForApprovalWorkLogs={this.countWaitingForApprovalWorkLogs}
+              supervisorView={supervisorView}
+              workMonth={workMonth}
+            />
+          </>
+        )}
         {showWorkLogDetailModal && (
           <WorkLogDetailModal
             id={showWorkLogDetailModalId}
@@ -493,6 +507,19 @@ WorkLogCalendarComponent.propTypes = {
   }),
   changeSelectedDate: PropTypes.func.isRequired,
   config: PropTypes.shape({}),
+  contracts: PropTypes.arrayOf(PropTypes.shape({
+    endDateTime: PropTypes.shape(),
+    id: PropTypes.number,
+    isDayBased: PropTypes.bool.isRequired,
+    isFridayIncluded: PropTypes.bool.isRequired,
+    isMondayIncluded: PropTypes.bool.isRequired,
+    isThursdayIncluded: PropTypes.bool.isRequired,
+    isTuesdayIncluded: PropTypes.bool.isRequired,
+    isWednesdayIncluded: PropTypes.bool.isRequired,
+    startDateTime: PropTypes.shape().isRequired,
+    weeklyWorkingDays: PropTypes.number.isRequired,
+    weeklyWorkingHours: PropTypes.number.isRequired,
+  })).isRequired,
   fetchWorkMonth: PropTypes.func,
   fetchWorkMonthList: PropTypes.func,
   homeOfficeWorkLog: PropTypes.shape({
@@ -566,11 +593,6 @@ WorkLogCalendarComponent.propTypes = {
     rejectionMessage: PropTypes.string,
     status: PropTypes.string.isRequired,
   }),
-  workHoursList: PropTypes.arrayOf(PropTypes.shape({
-    month: PropTypes.number.isRequired,
-    requiredHours: PropTypes.number.isRequired,
-    year: PropTypes.number.isRequired,
-  })).isRequired,
   workLog: PropTypes.shape({
     endTime: PropTypes.instanceOf(moment).isRequired,
     startTime: PropTypes.instanceOf(moment).isRequired,

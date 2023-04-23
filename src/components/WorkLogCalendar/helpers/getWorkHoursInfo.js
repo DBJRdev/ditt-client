@@ -1,64 +1,51 @@
 import moment from 'moment';
-import { getNumberOfWorkingDays } from '../../../services/dateTimeService';
 import {
   PARENTAL_LEAVE_WORK_LOG, STATUS_APPROVED,
 } from '../../../resources/workMonth';
+import {
+  getContractInfoOfSpecificDate,
+} from '../../../services/contractService/getContractInfoOfSpecificDate';
+import { getContractsOfSelectedMonth } from './getContractsOfSelectedMonth';
 
 export const getWorkHoursInfo = (
   daysOfSelectedMonth,
   config,
   selectedDate,
   workMonth,
-  workHoursList,
+  contracts,
   workMonthList,
 ) => {
+  if (!workMonth) {
+    throw new Error('Work month missing');
+  }
+
+  const workMonthContracts = getContractsOfSelectedMonth(contracts, workMonth);
+
   let requiredHours = 0;
   let requiredHoursSoFar = 0;
   let requiredHoursLeft = 0;
   const workedTime = moment.duration();
   const workedTimeSoFar = moment.duration();
 
-  const workHours = workHoursList.find((item) => (
-    item.year === selectedDate.year()
-    && item.month === selectedDate.month() + 1
-  ));
-
-  if (!workHours) {
-    throw new Error('Work hours missing');
-  }
-
-  if (!workMonth) {
-    throw new Error('Work month missing');
-  }
-
-  const workingDays = getNumberOfWorkingDays(
-    selectedDate.clone().startOf('month'),
-    selectedDate.clone().endOf('month'),
-    config.supportedHolidays,
-  );
-  const workingDaysSoFar = getNumberOfWorkingDays(
-    selectedDate.clone().startOf('month'),
-    selectedDate.clone().endOf('day'),
-    config.supportedHolidays,
-  );
-  requiredHours = workHours.requiredHours * workingDays;
-  requiredHoursSoFar = workHours.requiredHours * workingDaysSoFar;
-
   daysOfSelectedMonth.forEach((day) => {
+    workedTime.add(day.workTime.workTime);
+    if (selectedDate.isSameOrAfter(day.date)) {
+      workedTimeSoFar.add(day.workTime.workTime);
+    }
+
     const isParentalLeavePresent = !!day.workLogList.find(
       (workLog) => workLog.type === PARENTAL_LEAVE_WORK_LOG,
     );
 
+    const foundContract = getContractInfoOfSpecificDate(day.date, workMonthContracts, config.supportedHolidays);
+
     if (isParentalLeavePresent) {
-      requiredHours -= workHours.requiredHours;
-      if (selectedDate.isSameOrAfter(day.date)) {
-        requiredHoursSoFar -= workHours.requiredHours;
-      }
+      return;
     }
 
-    workedTime.add(day.workTime.workTime);
+    requiredHours += foundContract.dailyWorkingTime;
     if (selectedDate.isSameOrAfter(day.date)) {
-      workedTimeSoFar.add(day.workTime.workTime);
+      requiredHoursSoFar += foundContract.dailyWorkingTime;
     }
   });
 
