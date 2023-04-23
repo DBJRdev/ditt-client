@@ -27,6 +27,7 @@ import {
   includesSameDate,
   isWeekend,
 } from './dateTimeService';
+import { getContractInfoOfSpecificDate } from './contractService/getContractInfoOfSpecificDate';
 
 export const getSickDayVariantLabel = (t, sickDayVariant) => {
   let sickDayVariantLabel = '';
@@ -101,10 +102,12 @@ export const getTypeLabel = (t, type) => {
 export const getWorkedTime = (
   date,
   workLogList,
-  workHours,
+  contracts,
   workedHoursLimits,
   supportedHolidays,
 ) => {
+  const contract = getContractInfoOfSpecificDate(date, contracts, supportedHolidays);
+
   const banWorkLogs = [];
   const standardWorkLogs = [];
   const maternityProtectionWorkLogs = [];
@@ -236,11 +239,11 @@ export const getWorkedTime = (
       || specialLeaveWorkLogs.length > 0
       || vacationWorkLogs.length > 0
   ) {
-    workTime = workHours.requiredHours;
+    workTime = contract.dailyWorkingTime;
     workTimeWithoutCorrection = workTime;
     breakTime = 0;
   } else if (sickDayWorkLogs.length > 0 && standardWorkLogs.length !== 0) {
-    workTime = Math.min(workTimeWithoutCorrection, workHours.requiredHours);
+    workTime = Math.min(workTimeWithoutCorrection, contract.dailyWorkingTime);
     workTimeWithoutCorrection = workTime;
     breakTime = 0;
   }

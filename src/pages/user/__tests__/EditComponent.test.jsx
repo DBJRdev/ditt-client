@@ -9,13 +9,15 @@ describe('rendering', () => {
   it('renders correctly', () => {
     const props = {
       config: configMock,
+      contracts: Immutable.List([]),
       deleteUser: () => {},
       editUser: () => {},
       fetchConfig: () => new Promise(() => {}),
+      fetchContractList: () => new Promise(() => {}),
       fetchUser: () => new Promise(() => {}),
       fetchUserListPartial: () => {},
       fetchVacationList: () => {},
-      fetchWorkHoursList: () => {},
+      fetchWorkMonthList: () => {},
       history: {
         push: () => {},
       },
@@ -26,6 +28,7 @@ describe('rendering', () => {
           id: '1',
         },
       },
+      terminateContract: () => {},
       token,
       user: Immutable.Map({
         email: 'employee@example.com',
@@ -59,7 +62,7 @@ describe('rendering', () => {
           year: 2020,
         },
       ]),
-      workHours: Immutable.List([]),
+      workMonths: Immutable.List([]),
     };
     const tree = shallow(<EditComponent {...props} />);
 

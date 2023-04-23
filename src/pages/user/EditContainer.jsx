@@ -23,34 +23,43 @@ import {
   selectVacationListMeta,
 } from '../../resources/vacation';
 import {
-  fetchWorkHoursList,
-  selectWorkHoursList,
-  selectWorkHoursListMeta,
-} from '../../resources/workHours';
+  fetchWorkMonthList,
+  selectWorkMonthList,
+  selectWorkMonthListMeta,
+} from '../../resources/workMonth';
+import {
+  fetchContractList,
+  selectContractList,
+  selectContractListMeta,
+  terminateContract,
+} from '../../resources/contract';
 import EditComponent from './EditComponent';
 
 const mapStateToProps = (state) => {
   const configMeta = selectConfigMeta(state);
+  const contractListMeta = selectContractListMeta(state);
   const editUserMeta = selectEditUserMeta(state);
   const deleteUserMeta = selectDeleteUserMeta(state);
   const userMeta = selectUserMeta(state);
   const userListPartialMeta = selectUserListPartialMeta(state);
   const vacationListMeta = selectVacationListMeta(state);
-  const workHoursListMeta = selectWorkHoursListMeta(state);
+  const workMonthListMeta = selectWorkMonthListMeta(state);
 
   return ({
     config: selectConfig(state),
+    contracts: selectContractList(state),
     isFetching: configMeta.isFetching
+      || contractListMeta.isFetching
       || userMeta.isFetching
       || userListPartialMeta.isFetching
       || vacationListMeta.isFetching
-      || workHoursListMeta.isFetching,
+      || workMonthListMeta.isFetching,
     isPosting: editUserMeta.isPosting || deleteUserMeta.isPosting,
     token: selectJwtToken(state),
     user: selectUser(state),
     userListPartial: selectUserListPartial(state),
     vacations: selectVacationList(state),
-    workHours: selectWorkHoursList(state),
+    workMonths: selectWorkMonthList(state),
   });
 };
 
@@ -58,10 +67,12 @@ const mapDispatchToProps = (dispatch) => ({
   deleteUser: (id) => dispatch(deleteUser(id)),
   editUser: (data) => dispatch(editUser(data)),
   fetchConfig: () => dispatch(fetchConfig()),
+  fetchContractList: (id) => dispatch(fetchContractList(id)),
   fetchUser: (id) => dispatch(fetchUser(id)),
   fetchUserListPartial: () => dispatch(fetchUserListPartial()),
   fetchVacationList: (id) => dispatch(fetchVacationList(id)),
-  fetchWorkHoursList: (id) => dispatch(fetchWorkHoursList(id)),
+  fetchWorkMonthList: (id) => dispatch(fetchWorkMonthList(id)),
+  terminateContract: (id, data) => dispatch(terminateContract(id, data)),
 });
 
 export default connect(

@@ -114,7 +114,6 @@
       "dateFrom": "Datum von",
       "dateTo": "Datum bis",
       "employeeId": "Mitarbeiter-ID",
-      "contractChanges": "Stellenveränderungen",
       "childSickDays": "Kind-krank-Tage",
       "employeeSickDaysWithNote": "Eigene Krankmeldungen (Mit Krankenschein)",
       "employeeSickDaysWithoutNote": "Eigene Krankmeldungen (Ohne Krankenschein)",
@@ -317,8 +316,6 @@
     },
     "text": {
       "addWorkLog": "Link aufrufen",
-      "averageWorkingHoursDescription": "Tägliche Arbeitszeit mit Komma [\",\"] getrennt, mit Start ab Januar eintragen.",
-      "averageWorkingHoursTitle": "Tägliche Arbeitszeit",
       "fastAccess": "Schneller Zugang",
       "notificationSettings": "Benachrichtigungseinstellungen",
       "supervisorInfo": "Versand Erinnerungsmails",
@@ -334,9 +331,7 @@
     "validation": {
       "cannotAddUser": "Nutzer*in kann nicht hinzugefügt werden.",
       "cannotDeleteUser": "Nutzer*in kann nicht gelöscht werden.",
-      "cannotEditUser": "Nutzer*in kann nicht bearbeitet werden.",
-      "invalidWorkHours": "Dieses Feld benötigt 12 kommaseparierte Werte",
-      "invalidWorkHoursMonth": "Wert für {{ month }} ist keine Zahl."
+      "cannotEditUser": "Nutzer*in kann nicht bearbeitet werden."
     }
   },
   "vacation": {

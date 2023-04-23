@@ -8,8 +8,8 @@ const LogoComponent = ({ t }) => (
   <LogoSvg
     alt={t('layout:title')}
     className={styles.logo}
-    width={183}
     height={85}
+    width={183}
   />
 );
 

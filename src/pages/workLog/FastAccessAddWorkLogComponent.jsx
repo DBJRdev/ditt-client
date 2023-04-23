@@ -102,9 +102,9 @@ class FastAccessAddWorkLogComponent extends React.Component {
     return (
       <WorkLogFormModal
         date={selectedDate}
-        onClose={() => this.setState({ isClosed: true })}
-        onAfterSave={() => this.setState({ isSaved: true })}
         isWorkLogTimerDisplayed
+        onAfterSave={() => this.setState({ isSaved: true })}
+        onClose={() => this.setState({ isClosed: true })}
       />
     );
   }

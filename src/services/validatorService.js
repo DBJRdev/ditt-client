@@ -25,6 +25,181 @@ import {
   toMomentDateTimeFromDayMonthYear,
 } from './dateTimeService';
 
+export const validateContract = (t, dataAttr) => {
+  const data = { ...dataAttr };
+
+  const errors = {
+    elements: {
+      endDateTime: null,
+      startDateTime: null,
+      weeklyWorkingDays: null,
+      weeklyWorkingHours: null,
+    },
+    isValid: true,
+  };
+
+  let dateFrom = null;
+  let dateTo = null;
+  let weeklyWorkingDays = null;
+
+  if (data.startDateTime === null || isEmpty(data.startDateTime)) {
+    errors.elements.startDateTime = t('general:validation.required');
+    errors.isValid = false;
+  }
+
+  if (data.weeklyWorkingDays === null || isEmpty(data.weeklyWorkingDays.toString())) {
+    errors.elements.weeklyWorkingDays = t('general:validation.required');
+    errors.isValid = false;
+  } else if (!isNumeric(data.weeklyWorkingDays.toString())) {
+    errors.elements.weeklyWorkingDays = t('general:validation.invalidNumber');
+    errors.isValid = false;
+  } else {
+    weeklyWorkingDays = parseInt(data.weeklyWorkingDays, 10);
+  }
+
+  if (data.weeklyWorkingHours === null || isEmpty(data.weeklyWorkingHours)) {
+    errors.elements.weeklyWorkingHours = t('general:validation.required');
+    errors.isValid = false;
+  }
+
+  if (!errors.isValid) {
+    return errors;
+  }
+
+  try {
+    dateFrom = toMomentDateTimeFromDayMonthYear(data.startDateTime);
+  } catch (ex) {
+    errors.elements.startDateTime = t('general:validation.invalidDate');
+    errors.isValid = false;
+  }
+
+  if (data.endDateTime !== null && !isEmpty(data.endDateTime)) {
+    try {
+      dateTo = toMomentDateTimeFromDayMonthYear(data.endDateTime);
+    } catch (ex) {
+      errors.elements.endDateTime = t('general:validation.invalidDate');
+      errors.isValid = false;
+    }
+
+    if (!errors.isValid) {
+      return errors;
+    }
+
+    if (dateTo?.isBefore(dateFrom, 'day')) {
+      errors.elements.endDateTime = t('general:validation.invalidDate');
+      errors.isValid = false;
+    }
+  }
+
+  if (weeklyWorkingDays < 0 || weeklyWorkingDays > 5) {
+    errors.elements.weeklyWorkingDays = t('user:validation.weeklyWorkingDaysInvalid');
+    errors.isValid = false;
+  }
+
+  const timeRegex = /^([0-9]{1,3}):[0-5][0-9]$/;
+
+  if (
+    !timeRegex.test(data.weeklyWorkingHours)
+    || parseInt(data.weeklyWorkingHours.split(':')[0], 10) >= 168
+  ) {
+    errors.elements.weeklyWorkingHours = t('user:validation.weeklyWorkingHoursInvalid');
+    errors.isValid = false;
+  }
+
+  return errors;
+};
+
+export const validateContractTermination = (t, dataAttr, contract) => {
+  const data = { ...dataAttr };
+
+  const errors = {
+    elements: {
+      dateTime: null,
+    },
+    isValid: true,
+  };
+
+  let dateTime = null;
+
+  if (data.dateTime === null || isEmpty(data.dateTime)) {
+    errors.elements.dateTime = t('general:validation.required');
+    errors.isValid = false;
+    return errors;
+  }
+
+  try {
+    dateTime = toMomentDateTimeFromDayMonthYear(data.dateTime);
+  } catch (ex) {
+    errors.elements.dateTime = t('general:validation.invalidDate');
+    errors.isValid = false;
+    return errors;
+  }
+
+  if (dateTime.isBefore(localizedMoment(), 'day')) {
+    errors.elements.dateTime = t('user:validation.dateInPast');
+    errors.isValid = false;
+  }
+
+  if (
+    dateTime.isBefore(contract.startDateTime, 'day')
+    || (contract.endDateTime !== null && dateTime.isAfter(contract.endDateTime, 'day'))
+  ) {
+    errors.elements.dateTime = t('user:validation.outOfContractRange');
+    errors.isValid = false;
+  }
+
+  // TODO: Work months not opened
+
+  return errors;
+};
+
+export const validateContracts = (contracts) => {
+  if (contracts.length < 2) {
+    return true;
+  }
+
+  let contractsWithoutEndDate = 0;
+
+  for (let i = 0; i < contracts.length; i += 1) {
+    if (contracts[i].endDateTime === null) {
+      contractsWithoutEndDate += 1;
+    }
+  }
+
+  if (contractsWithoutEndDate > 1) {
+    return false;
+  }
+
+  for (let i = 0; i < contracts.length; i += 1) {
+    for (let j = 0; j < contracts.length; i += 1) {
+      if (i === j) {
+        // eslint-disable-next-line no-continue
+        continue;
+      }
+
+      if (contracts[i].endDateTime === null) {
+        if (contracts[j].endDateTime === null) {
+          return false;
+        }
+        if (contracts[j].endDateTime >= contracts[i].startDateTime) {
+          return false;
+        }
+      } else if (contracts[j].endDateTime === null) {
+        if (contracts[i].endDateTime >= contracts[j].startDateTime) {
+          return false;
+        }
+      } else if (
+        contracts[i].endDateTime >= contracts[j].startDateTime
+        && contracts[j].endDateTime >= contracts[i].startDateTime
+      ) {
+        return false;
+      }
+    }
+  }
+
+  return true;
+};
+
 export const validateSupportedYear = (t, supportedYear, supportedYears, isNew) => {
   const errors = {
     elements: {
@@ -78,9 +253,10 @@ export const validateSupportedYear = (t, supportedYear, supportedYears, isNew) =
   return errors;
 };
 
-export const validateUser = (t, user, userList, supportedWorkHours) => {
+export const validateUser = (t, user, userList, supportedYears) => {
   const errors = {
     elements: {
+      contracts: null,
       email: null,
       employeeId: null,
       firstName: null,
@@ -90,7 +266,6 @@ export const validateUser = (t, user, userList, supportedWorkHours) => {
       plainPassword: null,
       supervisor: null,
       vacations: {},
-      workHours: {},
     },
     isValid: true,
   };
@@ -117,7 +292,7 @@ export const validateUser = (t, user, userList, supportedWorkHours) => {
     }
   });
 
-  supportedWorkHours.forEach((year) => {
+  supportedYears.forEach((year) => {
     errors.elements.vacations[year] = {
       vacationDays: null,
       vacationDaysCorrection: null,
@@ -137,11 +312,6 @@ export const validateUser = (t, user, userList, supportedWorkHours) => {
       || !isNumeric(user.vacations[year].vacationDaysCorrection.toString())
     ) {
       errors.elements.vacations[year].vacationDaysCorrection = t('general:validation.invalidNumber');
-      errors.isValid = false;
-    }
-
-    if (!user.workHours[year] || user.workHours[year].length !== 12) {
-      errors.elements.workHours[year] = t('user:validation.invalidWorkHours');
       errors.isValid = false;
     }
   });
@@ -212,6 +382,11 @@ export const validateUser = (t, user, userList, supportedWorkHours) => {
       errors.elements.email = t('general:validation.notUniqueEmail');
       errors.isValid = false;
     }
+  }
+
+  if (!validateContracts(user.contracts)) {
+    errors.elements.contracts = t('user:validation.invalidContracts');
+    errors.isValid = false;
   }
 
   return errors;

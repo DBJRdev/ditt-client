@@ -14,8 +14,8 @@ const TrainingWorkLogFieldsComponent = ({
     <TextField
       disabled={isInEditState}
       id="dateTo"
+      nlabel={t('workLog:element.dateTo')}
       onChange={onFormDataChange}
-      label={t('workLog:element.dateTo')}
       validationState={formValidity.elements.dateTo ? 'invalid' : null}
       validationText={formValidity.elements.dateTo}
       value={formData.dateTo || ''}
@@ -24,16 +24,16 @@ const TrainingWorkLogFieldsComponent = ({
       id="title"
       label={t('trainingWorkLog:element.title')}
       onChange={onFormDataChange}
-      validationText={formValidity.elements.title}
       validationState={formValidity.elements.title ? 'invalid' : null}
+      validationText={formValidity.elements.title}
       value={formData.title || ''}
     />
     <TextField
       id="comment"
       label={t('trainingWorkLog:element.comment')}
       onChange={onFormDataChange}
-      validationText={formValidity.elements.comment}
       validationState={formValidity.elements.comment ? 'invalid' : null}
+      validationText={formValidity.elements.comment}
       value={formData.comment || ''}
     />
   </>

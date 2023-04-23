@@ -1,6 +1,7 @@
 import Immutable from 'immutable';
 import {
-  transformSpecialApprovals, transformWorkMonth,
+  transformSpecialApprovals,
+  transformWorkMonth,
   transformWorkMonthDetail,
 } from './dataTransformers';
 import initialState from './initialState';

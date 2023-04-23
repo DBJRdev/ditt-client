@@ -54,102 +54,102 @@ export default (store, history) => {
         <Router history={history} onUpdate={() => window.scrollTo(0, 0)}>
           <Switch>
             <AuthorizedRoute
+              component={WorkLogPage}
               exact
               path={routes.index}
               roles={[ROLE_EMPLOYEE]}
-              component={WorkLogPage}
             />
             <AuthorizedRoute
+              component={RecentSpecialApprovalListPage}
               exact
               path={routes.recentSpecialApprovalList}
               roles={[ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]}
-              component={RecentSpecialApprovalListPage}
             />
             <AuthorizedRoute
+              component={SpecialApprovalListPage}
               exact
               path={routes.specialApprovalList}
               roles={[ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]}
-              component={SpecialApprovalListPage}
             />
             <AuthorizedRoute
+              component={SupervisedUserWorkLogPage}
               exact
               path={routes.supervisedUserWorkLog}
               roles={[ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]}
-              component={SupervisedUserWorkLogPage}
             />
             <AuthorizedRoute
+              component={SupervisedUserWorkLogPage}
               exact
               path={routes.supervisedUserWorkLogWithDate}
               roles={[ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]}
-              component={SupervisedUserWorkLogPage}
             />
             <AuthorizedRoute
+              component={SupervisedUserListPage}
               exact
               path={routes.supervisedUserList}
               roles={[ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]}
-              component={SupervisedUserListPage}
             />
             <AuthorizedRoute
+              component={UserProfilePage}
               exact
               path={routes.profile}
               roles={[ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]}
-              component={UserProfilePage}
             />
             <AuthorizedRoute
+              component={AddUserPage}
               exact
               path={routes.addUser}
               roles={[ROLE_ADMIN, ROLE_SUPER_ADMIN]}
-              component={AddUserPage}
             />
             <AuthorizedRoute
+              component={EditUserPage}
               exact
               path={routes.editUser}
               roles={[ROLE_ADMIN, ROLE_SUPER_ADMIN]}
-              component={EditUserPage}
             />
             <AuthorizedRoute
+              component={UserListPage}
               exact
               path={routes.userList}
               roles={[ROLE_ADMIN, ROLE_SUPER_ADMIN]}
-              component={UserListPage}
             />
             <AuthorizedRoute
+              component={ChangesAndAbsenceRegistrationPage}
               exact
               path={routes.hrChangesAndAbsenceRegistration}
               roles={[ROLE_SUPER_ADMIN]}
-              component={ChangesAndAbsenceRegistrationPage}
             />
             <AuthorizedRoute
+              component={YearOverviewPage}
               exact
               path={routes.hrYearOverview}
               roles={[ROLE_SUPER_ADMIN]}
-              component={YearOverviewPage}
             />
             <AuthorizedRoute
+              component={SettingsPage}
               exact
               path={routes.settings}
               roles={[ROLE_SUPER_ADMIN]}
-              component={SettingsPage}
             />
             <Route
+              component={FastAccessAddWorkLogPage}
               exact
               path={routes.fastAccessAddWorkLog}
-              component={FastAccessAddWorkLogPage}
             />
             <Route
+              component={LoginPage}
               exact
               path={routes.login}
-              component={LoginPage}
             />
             <Route
+              component={ForgotPasswordPage}
               exact
               path={routes.forgotPassword}
-              component={ForgotPasswordPage}
             />
             <Route
+              component={NewPasswordPage}
               exact
               path={routes.newPassword}
-              component={NewPasswordPage}
             />
             <Route component={ErrorPage} />
           </Switch>

@@ -1,19 +1,18 @@
 import { toMomentDateTime } from '../../services/dateTimeService';
-import { transformVacation } from '../vacation';
-import { transformWorkHours } from '../workHours';
-import { transformBanWorkLog } from '../banWorkLog';
-import { transformHomeOfficeWorkLog } from '../homeOfficeWorkLog';
-import { transformMaternityProtectionWorkLog } from '../maternityProtectionWorkLog';
-import { transformOvertimeWorkLog } from '../overtimeWorkLog';
-import { transformParentalProtectionWorkLog } from '../parentalLeaveWorkLog';
-import { transformSickDayUnpaidWorkLog } from '../sickDayUnpaidWorkLog';
-import { transformSickDayWorkLog } from '../sickDayWorkLog';
-import { transformSpecialLeaveWorkLog } from '../specialLeaveWorkLog';
-import { transformTimeOffWorkLog } from '../timeOffWorkLog';
-import { transformTrainingWorkLog } from '../trainingWorkLog';
-import { transformWorkLog } from '../workLog';
-import { transformBusinessTripWorkLog } from '../businessTripWorkLog';
-import { transformVacationWorkLog } from '../vacationWorkLog';
+import { transformVacation } from '../vacation/dataTransformers';
+import { transformBanWorkLog } from '../banWorkLog/dataTransformers';
+import { transformHomeOfficeWorkLog } from '../homeOfficeWorkLog/dataTransformers';
+import { transformMaternityProtectionWorkLog } from '../maternityProtectionWorkLog/dataTransformers';
+import { transformOvertimeWorkLog } from '../overtimeWorkLog/dataTransformers';
+import { transformParentalProtectionWorkLog } from '../parentalLeaveWorkLog/dataTransformers';
+import { transformSickDayUnpaidWorkLog } from '../sickDayUnpaidWorkLog/dataTransformers';
+import { transformSickDayWorkLog } from '../sickDayWorkLog/dataTransformers';
+import { transformSpecialLeaveWorkLog } from '../specialLeaveWorkLog/dataTransformers';
+import { transformTimeOffWorkLog } from '../timeOffWorkLog/dataTransformers';
+import { transformTrainingWorkLog } from '../trainingWorkLog/dataTransformers';
+import { transformWorkLog } from '../workLog/dataTransformers';
+import { transformBusinessTripWorkLog } from '../businessTripWorkLog/dataTransformers';
+import { transformVacationWorkLog } from '../vacationWorkLog/dataTransformers';
 import {
   BAN_WORK_LOG,
   BUSINESS_TRIP_WORK_LOG,
@@ -45,9 +44,6 @@ const filterUser = (data) => ({
     : null,
   vacations: data.vacations
     ? data.vacations.map(transformVacation).sort((a, b) => a.year - b.year)
-    : [],
-  workHours: data.workHours
-    ? data.workHours.map(transformWorkHours)
     : [],
   yearStats: data.yearStats
     ? data.yearStats.map(filterUserYearStats)

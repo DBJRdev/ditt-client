@@ -7,7 +7,7 @@ export const getDaysOfSelectedMonth = (
   config,
   selectedDate,
   workMonth,
-  workHoursList,
+  contracts,
 ) => {
   const lastDayOfMonth = selectedDate.clone().endOf('month');
   const renderingDay = selectedDate.clone().startOf('month');
@@ -46,10 +46,7 @@ export const getDaysOfSelectedMonth = (
       workTime: getWorkedTime(
         renderingDay.clone(),
         workLogListForRenderingDay,
-        workHoursList.find((
-          (workHour) => workHour.month === (renderingDay.clone().month() + 1)
-            && workHour.year === renderingDay.clone().year()
-        )),
+        contracts,
         config.workedHoursLimits,
         config.supportedHolidays,
       ),

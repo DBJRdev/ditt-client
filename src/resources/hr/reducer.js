@@ -1,6 +1,7 @@
 import Immutable from 'immutable';
 import { generate } from 'shortid';
 import { toMomentDateTime } from '../../services/dateTimeService';
+import { transformContract } from '../contract';
 import initialState from './initialState';
 import * as actionTypes from './actionTypes';
 
@@ -17,6 +18,7 @@ export default (state, action) => {
   const filterChangesAndAbsenceRegistrations = (data) => ({
     id: generate(),
     ...data,
+    contracts: data.contracts.map(transformContract),
     sickDays: data.sickDays.map((sickDay) => ({
       ...sickDay,
       childDateOfBirth: sickDay.childDateOfBirth

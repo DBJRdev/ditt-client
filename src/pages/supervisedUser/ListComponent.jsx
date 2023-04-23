@@ -77,7 +77,7 @@ class ListComponent extends React.Component {
     };
 
     return (
-      <Layout title={t('supervisedUser:title.supervisedUsers')} loading={this.props.isFetching}>
+      <Layout loading={this.props.isFetching} title={t('supervisedUser:title.supervisedUsers')}>
         {this.props.supervisedUserList.count() > 0 ? (
           <ScrollView direction="horizontal">
             <Table
@@ -112,13 +112,13 @@ class ListComponent extends React.Component {
                         className={styles.waitingForApprovalLink}
                         key={workMonth.id}
                         to={
-                          routes.supervisedUserWorkLogWithDate
-                            .replace(':id', row.user.id)
-                            .replace(':year', workMonth.year)
-                            .replace(':month', workMonth.month)
-                        }
+                            routes.supervisedUserWorkLogWithDate
+                              .replace(':id', row.user.id)
+                              .replace(':year', workMonth.year.year)
+                              .replace(':month', workMonth.month)
+                          }
                       >
-                        {toMonthYearFormat(createDate(workMonth.year, workMonth.month - 1, 1))}
+                        {toMonthYearFormat(createDate(workMonth.year.year, workMonth.month - 1, 1))}
                       </Link>
                     ));
 

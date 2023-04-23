@@ -7,10 +7,10 @@ import {
   selectConfigMeta,
 } from '../../resources/config';
 import {
-  fetchWorkHoursList,
-  selectWorkHoursList,
-  selectWorkHoursListMeta,
-} from '../../resources/workHours';
+  fetchContractList,
+  selectContractList,
+  selectContractListMeta,
+} from '../../resources/contract';
 import {
   fetchWorkMonth,
   fetchWorkMonthList,
@@ -25,7 +25,7 @@ import WorkLogComponent from './WorkLogComponent';
 const mapStateToProps = (state) => {
   const addWorkLogMeta = selectAddWorkLogMeta(state);
   const configMeta = selectConfigMeta(state);
-  const workHourListMeta = selectWorkHoursListMeta(state);
+  const contractListMeta = selectContractListMeta(state);
   const workMonthListMeta = selectWorkMonthListMeta(state);
   const workMonthMeta = selectWorkMonthMeta(state);
 
@@ -34,12 +34,12 @@ const mapStateToProps = (state) => {
 
   const mappedProps = {
     config: selectConfig(state)?.toJS(),
+    contracts: selectContractList(state)?.toJS(),
     isFetching: configMeta.isFetching
-      || workHourListMeta.isFetching
+      || contractListMeta.isFetching
       || workMonthListMeta.isFetching
       || workMonthMeta.isFetching,
     isPosting: addWorkLogMeta.isPosting,
-    workHoursList: selectWorkHoursList(state)?.toJS(),
     workMonth: selectWorkMonth(state)?.toJS(),
     workMonthList: selectWorkMonthList(state)?.toJS(),
   };
@@ -71,7 +71,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   fetchConfig: () => dispatch(fetchConfig()),
-  fetchWorkHoursList: (uid) => dispatch(fetchWorkHoursList(uid)),
+  fetchContractList: (uid) => dispatch(fetchContractList(uid)),
   fetchWorkMonth: (id) => dispatch(fetchWorkMonth(id)),
   fetchWorkMonthList: (uid) => dispatch(fetchWorkMonthList(uid)),
 });

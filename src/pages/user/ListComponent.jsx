@@ -161,7 +161,10 @@ class ListComponent extends React.Component {
     }
 
     return (
-      <Layout title={t('user:title.users')} loading={this.props.isFetchingPartial}>
+      <Layout
+        loading={this.props.isFetchingPartial}
+        title={t('user:title.users')}
+      >
         <div className={styles.actions}>
           <Button
             label={t('user:action.addUser')}

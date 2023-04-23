@@ -6,6 +6,11 @@ import {
   selectConfigMeta,
 } from '../../resources/config';
 import {
+  fetchContractList,
+  selectContractList,
+  selectContractListMeta,
+} from '../../resources/contract';
+import {
   fetchUser,
   renewUserApiToken,
   renewUserICalToken,
@@ -16,36 +21,31 @@ import {
   selectUserMeta,
   selectEditUserMeta,
 } from '../../resources/user';
-import {
-  fetchWorkHoursList,
-  selectWorkHoursList,
-  selectWorkHoursListMeta,
-} from '../../resources/workHours';
 import ProfileComponent from './ProfileComponent';
 
 const mapStateToProps = (state) => {
   const configMeta = selectConfigMeta(state);
+  const contractListMeta = selectContractListMeta(state);
   const editUserMeta = selectEditUserMeta(state);
   const userMeta = selectUserMeta(state);
-  const workHoursListMeta = selectWorkHoursListMeta(state);
 
   return ({
     config: selectConfig(state),
+    contracts: selectContractList(state),
     isFetching: configMeta.isFetching
-      || userMeta.isFetching
-      || workHoursListMeta.isFetching,
+      || contractListMeta.isFetching
+      || userMeta.isFetching,
     isPosting: userMeta.isPosting || editUserMeta.isPosting,
     token: selectJwtToken(state),
     user: selectUser(state),
-    workHours: selectWorkHoursList(state),
   });
 };
 
 const mapDispatchToProps = (dispatch) => ({
   editUser: (data) => dispatch(editUser(data)),
   fetchConfig: () => dispatch(fetchConfig()),
+  fetchContractList: (id) => dispatch(fetchContractList(id)),
   fetchUser: (id) => dispatch(fetchUser(id)),
-  fetchWorkHoursList: (id) => dispatch(fetchWorkHoursList(id)),
   renewUserApiToken: (id) => dispatch(renewUserApiToken(id)),
   renewUserICalToken: (id) => dispatch(renewUserICalToken(id)),
   resetUserApiToken: (id) => dispatch(resetUserApiToken(id)),

@@ -26,9 +26,9 @@ class AuthorizedRoute extends Route {
     if (AuthorizedRoute.isAuthorized(this.props.token, this.props.roles)) {
       return (
         <Route
+          component={this.props.component}
           exact={this.props.exact}
           path={this.props.path}
-          component={this.props.component}
         />
       );
     }

@@ -66,7 +66,7 @@ const OverviewComponent = (props) => {
   };
 
   return (
-    <Layout title={props.t('hr:title.yearOverview')} loading={props.isFetching}>
+    <Layout loading={props.isFetching} title={props.t('hr:title.yearOverview')}>
       <ScrollView direction="horizontal">
         <Table
           columns={[

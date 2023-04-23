@@ -85,10 +85,15 @@
     },
     "text": {
       "Monday": "Monday",
+      "Mon": "Mo",
       "Tuesday": "Tuesday",
+      "Tue": "Tu",
       "Wednesday": "Wednesday",
+      "Wed": "We",
       "Thursday": "Thursday",
+      "Thu": "Th",
       "Friday": "Friday",
+      "Fri": "Fr",
       "Saturday": "Saturday",
       "Sunday": "Sunday",
       "error": "Error",
@@ -115,7 +120,7 @@
       "dateTo": "Date to",
       "employeeId": "Employee ID",
       "name": "Last name, First name",
-      "contractChanges": "Contract changes",
+      "contracts": "Contracts",
       "childSickDays": "Child sick days",
       "employeeSickDaysWithNote": "Employee sick days with note",
       "employeeSickDaysWithoutNote": "Employee sick days without note",
@@ -127,6 +132,7 @@
       "last365Days": "Last 365 days"
     },
     "text": {
+      "current": "Current",
       "reductionText": "01.{{ month }}. - Work time reduction to {{ time }}",
       "increaseText": "01.{{ month }}. - Work time increase to {{ time }}"
     },
@@ -278,36 +284,54 @@
   },
   "user": {
     "action": {
+      "addContract": "Add contract",
       "addUser": "Add user",
       "deleteUser": "Delete user",
       "disableICal": "Disable iCalendar",
       "downloadICal": "Download iCalendar",
+      "editContract": "Edit contract",
       "enableICal": "Enable iCalendar",
+      "removeContract": "Remove contract",
       "resetApiToken": "Reset API token",
       "renewApiToken": "Renew API token",
       "show": "Show",
       "showApiToken": "Show API token",
-      "showICalUrl": "Show iCalendar URL"
+      "showICalUrl": "Show iCalendar URL",
+      "terminateContract": "Terminate contract"
     },
     "element": {
       "apiToken": "API token",
+      "dateTime": "Date",
+      "dayBased": "Day-based",
+      "dailyWorkingHours": "Day working hours",
       "email": "E-mail",
       "employeeId": "Employee ID",
+      "endDateTime": "Date to (optional)",
       "endMonth": "{{ time }} (<0>{{ month }}/{{ year }}</0>)",
       "endMonthStatus": "End of month status",
       "firstName": "First name",
+      "flexible": "Flexible",
+      "isActive": "Active",
       "iCal": "iCalendar",
       "iCalUrl": "iCalendar URL",
-      "isActive": "Active",
+      "isDayBased": "Type",
+      "isFridayIncluded": "Friday",
+      "isMondayIncluded": "Monday",
+      "isThursdayIncluded": "Thursday",
+      "isTuesdayIncluded": "Tuesday",
+      "isWednesdayIncluded": "Wednesday",
       "lastName": "Last name",
       "monthlyLogs": "Monthly logs",
       "name": "Last name, First name",
       "plainPassword": "Password",
       "remainingVacationDays": "Remaining vacation days",
+      "startDateTime": "Date from",
       "supervisor": "Supervisor",
       "supervisorInfoSendOnHolidays": "Notify on public holidays",
       "vacationDays": "Vacation days",
       "vacationDaysUsed": "Planned vacation days",
+      "weeklyWorkingDays": "Weekly working days",
+      "weeklyWorkingHours": "Weekly working hours",
       "workedAndRequiredHours": "Worked / Required hours"
     },
     "modal": {
@@ -317,27 +341,36 @@
       }
     },
     "text": {
+      "addContract": "Add contract",
       "addWorkLog": "Add work log",
-      "averageWorkingHoursDescription": "Insert as amount of average working hours per day divided by \",\" starting with January.",
-      "averageWorkingHoursTitle": "Average working hours per day",
+      "contracts": "Contracts",
+      "editContract": "Edit contract",
       "fastAccess": "Fast access",
       "notificationSettings": "Notifications settings",
       "supervisorInfo": "Daily overview of the supervisor",
+      "terminateContract": "Terminate contract",
       "vacationDays": "Vacation days",
       "vacationDaysLeft": "{{ remainingDays }} of {{ vacationDays }} days not scheduled yet"
     },
     "title": {
+      "addContract": "Add contract",
       "addUser": "Add user",
       "editUser": "Edit user",
+      "editContract": "Edit contract",
       "profile": "Profile",
+      "removeContract": "Remove contract",
       "users": "Users"
     },
     "validation": {
       "cannotAddUser": "User cannot be added.",
       "cannotDeleteUser": "User cannot be deleted.",
       "cannotEditUser": "User cannot be edited.",
-      "invalidWorkHours": "This field requires 12 values separated by comma.",
-      "invalidWorkHoursMonth": "Value for {{ month }} is not a number."
+      "cannotTerminateContract": "Contract cannot be terminated. There are some work months after entered date that are not opened.",
+      "dateInPast": "Date cannot be in the past.",
+      "invalidContracts": "Contracts must not overlap.",
+      "outOfContractRange": "Date is out of contract range.",
+      "weeklyWorkingDaysInvalid": "Weekly working days must be between 0 and 5",
+      "weeklyWorkingHoursInvalid": "Weekly working hours must be between 0:00 and 168:00."
     }
   },
   "vacation": {
