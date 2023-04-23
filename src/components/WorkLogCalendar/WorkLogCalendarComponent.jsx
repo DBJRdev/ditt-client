@@ -443,6 +443,7 @@ class WorkLogCalendarComponent extends React.Component {
         )}
         {showWorkLogFormModal && (
           <WorkLogFormModal
+            contracts={contracts}
             data={showWorkLogFormModalData}
             date={showWorkLogFormModalDate}
             onAfterSave={fetchWorkMonth}
@@ -451,6 +452,7 @@ class WorkLogCalendarComponent extends React.Component {
         )}
         {showSupervisorWorkLogFormModal && (
           <SupervisorWorkLogFormModal
+            contracts={contracts}
             data={showSupervisorWorkLogFormModalData}
             date={showSupervisorWorkLogFormModalDate}
             onAfterSave={fetchWorkMonth}

@@ -39,11 +39,11 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onSave: (workLog, config) => {
+  onSave: (workLog, config, contracts) => {
     const requestData = { ...workLog };
 
     if (workLog.id == null) {
-      const workingDays = getWorkingDays(workLog.date, workLog.dateTo, config.supportedHolidays);
+      const workingDays = getWorkingDays(workLog.date, workLog.dateTo, config.supportedHolidays, contracts);
       requestData.workLogs = workingDays.map((workingDay) => ({ date: workingDay }));
     }
 

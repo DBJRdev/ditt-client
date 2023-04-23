@@ -392,7 +392,7 @@ export const validateUser = (t, user, userList, supportedYears) => {
   return errors;
 };
 
-export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay, banWorkLogsOfDay) => {
+export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay, banWorkLogsOfDay, contracts) => {
   const errors = {
     elements: {
       comment: null,
@@ -651,6 +651,7 @@ export const validateWorkLog = (t, workLogAttr, config, user, workLogsOfDay, ban
       toMomentDateTimeFromDayMonthYear(workLog.date),
       toMomentDateTimeFromDayMonthYear(workLog.dateTo),
       config.supportedHolidays,
+      contracts,
     );
 
     config.supportedYears.forEach((supportedYear) => {
