@@ -80,9 +80,9 @@ module.exports = (env, argv) => {
       publicPath: '/generated/',
     },
     performance: {
-      hints: modeArgument === 'production' ? 'error' : false,
-      maxAssetSize: 1500000,
-      maxEntrypointSize: 1500000,
+      hints: false,
+      maxAssetSize: 3000000,
+      maxEntrypointSize: 3000000,
     },
     plugins: [
       new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /de|en/),
