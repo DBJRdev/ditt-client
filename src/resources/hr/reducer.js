@@ -18,7 +18,7 @@ export default (state, action) => {
   const filterChangesAndAbsenceRegistrations = (data) => ({
     id: generate(),
     ...data,
-    contracts: data.contracts.map(transformContract),
+    contracts: data.contracts ? data.contracts.map(transformContract) : null,
     sickDays: data.sickDays.map((sickDay) => ({
       ...sickDay,
       childDateOfBirth: sickDay.childDateOfBirth

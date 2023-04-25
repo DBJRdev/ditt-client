@@ -1,7 +1,9 @@
 const Path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const VisualizerPlugin = require('webpack-visualizer-plugin2');
 const webpack = require('webpack');
+const { TITLE } = require('./config/envspecific');
 
 module.exports = (env, argv) => {
   const modeArgument = argv.mode;
@@ -73,7 +75,7 @@ module.exports = (env, argv) => {
       ],
     },
     output: {
-      filename: '[name].js',
+      filename: '[name].js?v=__ASSET_VERSION__',
       path: Path.join(__dirname, 'public/generated'),
       publicPath: '/generated/',
     },
@@ -90,6 +92,12 @@ module.exports = (env, argv) => {
       }),
       new VisualizerPlugin({
         filename: '../../stats.html',
+      }),
+      new HtmlWebpackPlugin({
+        filename: Path.join(__dirname, 'public/index.html'),
+        minify: false,
+        template: Path.join(__dirname, 'templates/index.html'),
+        title: TITLE,
       }),
     ],
     resolve: {

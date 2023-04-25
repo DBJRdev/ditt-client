@@ -15,14 +15,15 @@ import {
   Icon,
   LoadingIcon,
 } from '../../components/Icon';
+import LogoImage from '../../components/Logo/images/logo.svg';
 import {
   ROLE_ADMIN,
   ROLE_EMPLOYEE,
   ROLE_SUPER_ADMIN,
 } from '../../resources/user';
 import routes from '../../routes';
+import { TITLE } from '../../../config/envspecific';
 import styles from './Login.scss';
-import LogoImage from './images/logo.svg';
 
 class LoginComponent extends React.Component {
   constructor(props) {
@@ -93,14 +94,14 @@ class LoginComponent extends React.Component {
     return (
       <div className={styles.container}>
         <LogoImage
-          alt={t('layout:title')}
+          alt={TITLE}
           className={styles.logo}
           height={141}
           width={302}
         />
         <div className={styles.box}>
           <div className={styles.title}>
-            {t('layout:title')}
+            {TITLE}
           </div>
           {(isPostingFailure || isLoggedOutLocally) && (
             <div className="mb-5">

@@ -19,7 +19,8 @@ import {
   SET_NEW_PASSWORD_FAILURE,
 } from '../../resources/auth/actionTypes';
 import routes from '../../routes';
-import LogoImage from './images/logo.svg';
+import { TITLE } from '../../../config/envspecific';
+import LogoImage from '../../components/Logo/images/logo.svg';
 import styles from './NewPassword.scss';
 
 class NewPasswordComponent extends React.Component {
@@ -105,7 +106,7 @@ class NewPasswordComponent extends React.Component {
     const layout = (children) => (
       <div className={styles.container}>
         <LogoImage
-          alt={t('layout:title')}
+          alt={TITLE}
           className={styles.logo}
           height={141}
           width={302}
@@ -128,7 +129,7 @@ class NewPasswordComponent extends React.Component {
     return layout((
       <div className={styles.box}>
         <div className={styles.title}>
-          {t('layout:title')}
+          {TITLE}
         </div>
         {error && (
           <div className="mb-5">

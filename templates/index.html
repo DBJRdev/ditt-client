@@ -11,8 +11,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 
-    <title>DBJR Internal Time Tracking</title>
-    <meta name="description" content="DBJR Internal Time Tracking" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta name="description" content="<%= htmlWebpackPlugin.options.title %>" />
 
     <link rel="stylesheet" href="/css/main.css" />
     <link rel="stylesheet" href="/css/loader.css" />
@@ -30,9 +30,5 @@
   <div id="app-modal-portal">
   </div>
 
-  <script>
-    window.dittLastUpdate = '__LAST_UPDATE__';
-  </script>
-  <script src="/generated/bundle.js?v=__ASSET_VERSION__"></script>
   </body>
 </html>

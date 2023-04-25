@@ -1,6 +1,7 @@
 /config/envspecific.js
 /node_modules
 /public/generated
+/public/index.html
 .gitkeep
 npm-debug.log*
 stats.html
