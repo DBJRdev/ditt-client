@@ -155,8 +155,7 @@
     },
     "text": {
       "lastUpdate": "Last update: {{ date }}"
-    },
-    "title": "DBJR Internal Time Tracking"
+    }
   },
   "login": {
     "element": {

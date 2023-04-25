@@ -14,12 +14,13 @@ import {
   Icon,
   LoadingIcon,
 } from '../../components/Icon';
+import LogoImage from '../../components/Logo/images/logo.svg';
 import {
   RESET_PASSWORD_FAILURE,
   RESET_PASSWORD_SUCCESS,
 } from '../../resources/auth/actionTypes';
 import routes from '../../routes';
-import LogoImage from './images/logo.svg';
+import { TITLE } from '../../../config/envspecific';
 import styles from './ForgotPassword.scss';
 
 class ForgotPasswordComponent extends React.Component {
@@ -80,7 +81,7 @@ class ForgotPasswordComponent extends React.Component {
     const layout = (children) => (
       <div className={styles.container}>
         <LogoImage
-          alt={t('layout:title')}
+          alt={TITLE}
           className={styles.logo}
           height={141}
           width={302}
@@ -100,7 +101,7 @@ class ForgotPasswordComponent extends React.Component {
     return layout((
       <div className={styles.box}>
         <div className={styles.title}>
-          {t('layout:title')}
+          {TITLE}
         </div>
         {error && (
           <div className="mb-5">

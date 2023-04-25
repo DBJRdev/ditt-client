@@ -18,6 +18,7 @@ import {
 } from '../../resources/user';
 import routes from '../../routes';
 import { Logo } from '../Logo';
+import { TITLE } from '../../../config/envspecific';
 import { getLogoPath } from './helpers/getLogoPath';
 import styles from './styles.scss';
 
@@ -35,7 +36,7 @@ const HeaderComponent = ({
         <Link to={getLogoPath(user.roles)}>
           <Logo />
         </Link>
-        <span className={styles.title}>{t('layout:title')}</span>
+        <span className={styles.title}>{TITLE}</span>
       </div>
       {isAuthorized([ROLE_EMPLOYEE, ROLE_ADMIN, ROLE_SUPER_ADMIN]) && (
         <div className={styles.navigation}>

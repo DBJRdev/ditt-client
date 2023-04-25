@@ -1,20 +1,15 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-import { withTranslation } from 'react-i18next';
+import { TITLE } from '../../../config/envspecific';
 import LogoSvg from './images/logo.svg';
 import styles from './styles.scss';
 
-const LogoComponent = ({ t }) => (
+const LogoComponent = () => (
   <LogoSvg
-    alt={t('layout:title')}
+    alt={TITLE}
     className={styles.logo}
     height={85}
     width={183}
   />
 );
 
-LogoComponent.propTypes = {
-  t: PropTypes.func.isRequired,
-};
-
-export default withTranslation()(LogoComponent);
+export default LogoComponent;
