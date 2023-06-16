@@ -345,6 +345,7 @@ WorkLogDetailButtonComponent.propTypes = {
   workLog: PropTypes.shape({
     endTime: PropTypes.shape(),
     id: PropTypes.number.isRequired,
+    isHomeOffice: PropTypes.bool,
     startTime: PropTypes.shape(),
     type: PropTypes.string.isRequired,
     variant: PropTypes.string,

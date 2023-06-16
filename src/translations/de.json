@@ -396,6 +396,7 @@
       "date": "Datum",
       "dateFrom": "Datum von",
       "dateTo": "Datum bis",
+      "isHomeOffice": "Mobile Arbeit",
       "status": "Status",
       "rejectionMessage": "Grund",
       "startTime": "Beginn",

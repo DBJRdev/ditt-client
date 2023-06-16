@@ -396,6 +396,7 @@
       "date": "Date",
       "dateFrom": "Date from",
       "dateTo": "Date to",
+      "isHomeOffice": "Home office",
       "status": "Status",
       "rejectionMessage": "Reason",
       "startTime": "Start time",

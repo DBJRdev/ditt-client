@@ -139,6 +139,7 @@ FastAccessAddWorkLogComponent.propTypes = {
     workLogs: PropTypes.arrayOf(PropTypes.shape({
       endTime: PropTypes.shape.isRequired,
       id: PropTypes.number.isRequired,
+      isHomeOffice: PropTypes.bool.isRequired,
       startTime: PropTypes.shape.isRequired,
     })).isRequired,
     year: PropTypes.number,

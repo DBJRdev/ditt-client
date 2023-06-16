@@ -236,6 +236,7 @@ const mapDispatchToProps = (dispatch) => ({
     } if (workLog.type === WORK_LOG) {
       const requestData = {
         endTime: workLog.endTime,
+        isHomeOffice: workLog.isHomeOffice,
         startTime: workLog.startTime,
       };
 

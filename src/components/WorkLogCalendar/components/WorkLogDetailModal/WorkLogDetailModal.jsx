@@ -464,6 +464,11 @@ const WorkLogDetailModal = (props) => {
         {t('workLog:element.endTime')}
         {': '}
         {toHourMinuteFormat(workLog.endTime)}
+        <br />
+
+        {t('workLog:element.isHomeOffice')}
+        {': '}
+        {workLog.isHomeOffice ? t('general:action.yes') : t('general:action.no')}
       </p>
     );
   }
@@ -650,6 +655,7 @@ WorkLogDetailModal.propTypes = {
   workLog: PropTypes.shape({
     endTime: PropTypes.shape.isRequired,
     id: PropTypes.number.isRequired,
+    isHomeOffice: PropTypes.bool.isRequired,
     startTime: PropTypes.shape.isRequired,
   }),
   workMonth: PropTypes.shape({

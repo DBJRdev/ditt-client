@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {
   FormLayoutCustomField,
+  CheckboxField,
   TextField,
 } from '@react-ui-org/react-ui';
 import { withTranslation } from 'react-i18next';
@@ -74,6 +75,15 @@ const WorkLogFieldsComponent = ({
       />
       <span className="ml-2">h</span>
     </FormLayoutCustomField>
+    <CheckboxField
+      checked={formData.isHomeOffice ?? false}
+      id="isHomeOffice"
+      label={t('workLog:element.isHomeOffice')}
+      onChange={onFormDataChange}
+      type="number"
+      validationState={formValidity.elements.isHomeOffice ? 'invalid' : null}
+      validationText={formValidity.elements.isHomeOffice}
+    />
   </>
 );
 
@@ -81,6 +91,7 @@ WorkLogFieldsComponent.propTypes = {
   formData: PropTypes.shape({
     endHour: PropTypes.string,
     endMinute: PropTypes.string,
+    isHomeOffice: PropTypes.bool,
     startHour: PropTypes.string,
     startMinute: PropTypes.string,
   }).isRequired,
@@ -88,6 +99,7 @@ WorkLogFieldsComponent.propTypes = {
     elements: PropTypes.shape({
       endHour: PropTypes.string,
       endMinute: PropTypes.string,
+      isHomeOffice: PropTypes.string,
       startHour: PropTypes.string,
       startMinute: PropTypes.string,
     }).isRequired,

@@ -7,6 +7,7 @@ export const addWorkLog = (data) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify({
       endTime: toJson(data.endTime),
+      isHomeOffice: data.isHomeOffice,
       startTime: toJson(data.startTime),
     }),
     endpoint: `${API_URL}/work_logs`,
@@ -37,6 +38,7 @@ export const editWorkLog = (id, data) => (dispatch) => dispatch({
     body: JSON.stringify({
       endTime: toJson(data.endTime),
       id,
+      isHomeOffice: data.isHomeOffice,
       startTime: toJson(data.startTime),
     }),
     endpoint: `${API_URL}/work_logs/${id}`,

@@ -597,6 +597,7 @@ WorkLogCalendarComponent.propTypes = {
   }),
   workLog: PropTypes.shape({
     endTime: PropTypes.instanceOf(moment).isRequired,
+    isHomeOffice: PropTypes.bool.isRequired,
     startTime: PropTypes.instanceOf(moment).isRequired,
   }),
   workMonth: PropTypes.shape({
@@ -705,6 +706,7 @@ WorkLogCalendarComponent.propTypes = {
     workLogs: PropTypes.arrayOf(PropTypes.shape({
       endTime: PropTypes.shape.isRequired,
       id: PropTypes.number.isRequired,
+      isHomeOffice: PropTypes.bool.isRequired,
       startTime: PropTypes.shape.isRequired,
     })).isRequired,
     year: PropTypes.number,

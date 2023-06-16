@@ -53,6 +53,9 @@ export const getStateToSave = (formData, date) => ({
     ? formData.expectedDeparture || '00:00'
     : null,
   id: formData.id || null,
+  isHomeOffice: formData.type === WORK_LOG
+    ? formData.isHomeOffice
+    : null,
   plannedEndHour: (formData.type === BUSINESS_TRIP_WORK_LOG || formData.type === HOME_OFFICE_WORK_LOG)
     ? formData.plannedEndHour
     : null,

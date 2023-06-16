@@ -75,7 +75,9 @@ class WorkLogFormModalComponent extends React.Component {
     this.setState((prevState) => ({
       formData: {
         ...prevState.formData,
-        [eventTarget.id]: eventTarget.value,
+        [eventTarget.id]: eventTarget.id.startsWith('is')
+          ? eventTarget.checked
+          : eventTarget.value,
       },
     }));
   }
@@ -226,6 +228,7 @@ WorkLogFormModalComponent.propTypes = {
     expectedArrival: PropTypes.string,
     expectedDeparture: PropTypes.string,
     id: PropTypes.number.isRequired,
+    isHomeOffice: PropTypes.bool,
     purpose: PropTypes.string,
     reason: PropTypes.string,
     startTime: PropTypes.instanceOf(moment),
