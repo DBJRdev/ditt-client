@@ -134,20 +134,11 @@ class ListComponent extends React.Component {
                   name: 'needApproval',
                 },
                 {
-                  format: (rowData) => rowData.sickDays
-                    .filter((sickDay) => sickDay.variant === VARIANT_SICK_CHILD).length,
-                  label: (
-                    <>
-                      {t('supervisedUser:element.sickChildTotal')}
-                      <br />
-                      {t('supervisedUser:element.last365Days')}
-                    </>
-                  ),
-                  name: 'totalSickChild',
-                },
-                {
-                  format: (rowData) => rowData.sickDays
-                    .filter((sickDay) => sickDay.variant !== VARIANT_SICK_CHILD).length,
+                  format: (rowData) => {
+                    const count = rowData.sickDays.filter((sickDay) => sickDay.variant !== VARIANT_SICK_CHILD).length;
+
+                    return count > 30 ? count : '–';
+                  },
                   label: (
                     <>
                       {t('supervisedUser:element.sickDayTotal')}
