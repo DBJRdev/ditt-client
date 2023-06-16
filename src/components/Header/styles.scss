@@ -17,10 +17,6 @@ $_layout-padding-x: 4vw;
   @media screen and (min-width: $_breakpoint) {
     flex-direction: row;
   }
-
-  @media print {
-    display: none;
-  }
 }
 
 .brand {
@@ -62,4 +58,8 @@ $_layout-padding-x: 4vw;
 
 .navigation {
   width: 100%;
+
+  @media print {
+    display: none;
+  }
 }

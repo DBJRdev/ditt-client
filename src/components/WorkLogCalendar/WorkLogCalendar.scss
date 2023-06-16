@@ -195,6 +195,10 @@ $_table-cell-padding-y: 0.25rem;
   border: 1px solid #ccc;
   background-color: #f6f5f4;
   transform: translateX(-0.5rem);
+
+  @media print {
+    display: none;
+  }
 }
 
 .statusAtEndOfMonth {

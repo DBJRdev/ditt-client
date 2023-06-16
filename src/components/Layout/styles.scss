@@ -33,7 +33,7 @@ $_layout-padding-x: 4vw;
   font-size: 1.75rem;
 
   @media print {
-    display: none;
+    text-align: center;
   }
 }
 
