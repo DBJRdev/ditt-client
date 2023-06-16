@@ -110,6 +110,7 @@ export const getWorkedTime = (
 
   const banWorkLogs = [];
   const standardWorkLogs = [];
+  const businessTripWorkLogs = [];
   const maternityProtectionWorkLogs = [];
   const sickDayWorkLogs = [];
   const specialLeaveWorkLogs = [];
@@ -149,6 +150,8 @@ export const getWorkedTime = (
       }
     } else if (workLog.type === BAN_WORK_LOG) {
       banWorkLogs.push(workLog);
+    } else if (workLog.type === BUSINESS_TRIP_WORK_LOG && workLog.status === STATUS_APPROVED) {
+      businessTripWorkLogs.push(workLog);
     } else if (workLog.type === MATERNITY_PROTECTION_WORK_LOG) {
       maternityProtectionWorkLogs.push(workLog);
     } else if (workLog.type === SICK_DAY_WORK_LOG) {
@@ -234,7 +237,10 @@ export const getWorkedTime = (
   if (
     (
       standardWorkLogs.length === 0
-      && sickDayWorkLogs.length > 0
+      && (
+        businessTripWorkLogs.length > 0
+        || sickDayWorkLogs.length > 0
+      )
     ) || maternityProtectionWorkLogs.length > 0
       || specialLeaveWorkLogs.length > 0
       || vacationWorkLogs.length > 0
