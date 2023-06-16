@@ -5,7 +5,7 @@ exports[`rendering renders correctly 1`] = `
   className="container"
 >
   <svgr-mock
-    alt="layout:title"
+    alt="DITT Time Tracking"
     className="logo"
     height={141}
     width={302}
@@ -16,7 +16,7 @@ exports[`rendering renders correctly 1`] = `
     <div
       className="title"
     >
-      layout:title
+      DITT Time Tracking
     </div>
     <div
       className="Card__root__v9QuowQ2 Card__rootColorLight__5YoQ8fwa Card__rootRaised__pWtZp1IK"
