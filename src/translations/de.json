@@ -85,10 +85,15 @@
     },
     "text": {
       "Monday": "Montag",
+      "Mon": "Mo",
       "Tuesday": "Dienstag",
+      "Tue": "Di",
       "Wednesday": "Mittwoch",
+      "Wed": "Mi",
       "Thursday": "Donnerstag",
+      "Thu": "Do",
       "Friday": "Freitag",
+      "Fri": "Fr",
       "Saturday": "Samstag",
       "Sunday": "Sonntag",
       "error": "Error",
@@ -113,6 +118,7 @@
       "period": "Zeitraum",
       "dateFrom": "Datum von",
       "dateTo": "Datum bis",
+      "contracts": "Vertragliche Arbeitzeit",
       "employeeId": "Mitarbeiter-ID",
       "childSickDays": "Kind-krank-Tage",
       "employeeSickDaysWithNote": "Eigene Krankmeldungen (Mit Krankenschein)",
@@ -126,11 +132,13 @@
       "last365Days": "Letzte 365 Tage"
     },
     "text": {
+      "current": "Aktuell",
       "reductionText": "01.{{ month }}. - Verkürzung der Arbeitszeit auf {{ time }}",
       "increaseText": "01.{{ month }}. - Verlängerung der Arbeitszeit auf {{ time }}"
     },
     "title": {
       "changesAndAbsenceRegistration": "Veränderungen und Abwesenheitsmeldungen",
+      "overview": "HR-Übersicht",
       "yearOverview": "Jahresübersicht"
     }
   },
@@ -275,36 +283,54 @@
   },
   "user": {
     "action": {
+      "addContract": "Eintrag hinzufügen",
       "addUser": "Nutzer*in hinzufügen",
       "deleteUser": "Nutzer*in löschen",
       "disableICal": "iCalendar deaktivieren",
       "downloadICal": "iCalendar herunterladen",
+      "editContract": "Eintrag bearbeiten",
       "enableICal": "iCalendar aktivieren",
+      "removeContract": "Eintrag entfernen",
       "resetApiToken": "Lösche API-Token",
       "renewApiToken": "Erneuere API-Token",
       "show": "Zeigen",
       "showApiToken": "Zeige API-Token",
-      "showICalUrl": "iCalendar URL anzeigen"
+      "showICalUrl": "iCalendar URL anzeigen",
+      "terminateContract": "Eintrag beenden"
     },
     "element": {
       "apiToken": "API-Token",
+      "dateTime": "Datum",
+      "dayBased": "Tagesbasiert",
+      "dailyWorkingHours": "Tägliche Arbeitszeit",
       "email": "E-Mail",
       "employeeId": "Mitarbeiter-ID",
+      "endDateTime": "Datum bis (optional)",
       "endMonth": "{{ time }} (<0>{{ month }}/{{ year }}</0>)",
       "endMonthStatus": "Arbeitzeitkonto",
       "firstName": "Vorname",
+      "flexible": "Flexibel",
+      "isActive": "Aktiv",
       "iCal": "iCalendar",
       "iCalUrl": "iCalendar URL",
-      "isActive": "Aktiv",
+      "isDayBased": "Typ",
+      "isFridayIncluded": "Freitag",
+      "isMondayIncluded": "Montag",
+      "isThursdayIncluded": "Donnerstag",
+      "isTuesdayIncluded": "Dienstag",
+      "isWednesdayIncluded": "Mittwoch",
       "lastName": "Familiennname",
       "monthlyLogs": "Monatsübersicht",
       "name": "Familiennname, Vorname",
       "plainPassword": "Passwort",
       "remainingVacationDays": "Restliche Urlaubstage",
+      "startDateTime": "Datum von",
       "supervisor": "Vorgesetzte*r",
       "supervisorInfoSendOnHolidays": "Benachrichtigung auch an Feiertagen",
       "vacationDays": "Urlaubskonto",
       "vacationDaysUsed": "Verplante Urlaubstage",
+      "weeklyWorkingDays": "Arbeitstage pro Woche",
+      "weeklyWorkingHours": "Wöchentliche Arbeitszeit",
       "workedAndRequiredHours": "Gearbeitete / Benötigte Stunden"
     },
     "modal": {
@@ -314,23 +340,36 @@
       }
     },
     "text": {
+      "addContract": "Eintrag hinzufügen",
       "addWorkLog": "Link aufrufen",
+      "contracts": "Vertragliche Arbeitzeit",
+      "editContract": "Eintrag bearbeiten",
       "fastAccess": "Schneller Zugang",
       "notificationSettings": "Benachrichtigungseinstellungen",
       "supervisorInfo": "Versand Erinnerungsmails",
+      "terminateContract": "Eintrag beenden",
       "vacationDays": "Urlaubskonto",
       "vacationDaysLeft": "{{ remainingDays }} von {{ vacationDays }} Tagen nicht verplant"
     },
     "title": {
+      "addContract": "Eintrag hinzufügen",
       "addUser": "Nutzer*in hinzufügen",
       "editUser": "Nutzer*in bearbeiten",
+      "editContract": "Eintrag bearbeiten",
       "profile": "Profil",
+      "removeContract": "Eintrag entfernen",
       "users": "Nutzer*innen"
     },
     "validation": {
       "cannotAddUser": "Nutzer*in kann nicht hinzugefügt werden.",
       "cannotDeleteUser": "Nutzer*in kann nicht gelöscht werden.",
-      "cannotEditUser": "Nutzer*in kann nicht bearbeitet werden."
+      "cannotEditUser": "Nutzer*in kann nicht bearbeitet werden.",
+      "cannotTerminateContract": "Der Vertrag ist nicht kündbar. Es gibt einige Arbeitsmonate nach dem eingegebenen Datum, die nicht geöffnet sind.",
+      "dateInPast": "Das Datum darf nicht in der Vergangenheit liegen.",
+      "invalidContracts": "Arbeitszeiten dürfen sich nicht überschneiden.",
+      "outOfContractRange": "Das Datum liegt außerhalb des Vertragsbereichs.",
+      "weeklyWorkingDaysInvalid": "Die wöchentlichen Arbeitstage müssen zwischen 0 und 5 liegen",
+      "weeklyWorkingHoursInvalid": "Die wöchentliche Arbeitszeit muss zwischen 0:00 und 168:00 Uhr liegen."
     }
   },
   "vacation": {

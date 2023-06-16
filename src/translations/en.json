@@ -119,11 +119,11 @@
       "dateFrom": "Date from",
       "dateTo": "Date to",
       "employeeId": "Employee ID",
-      "name": "Last name, First name",
       "contracts": "Contracts",
       "childSickDays": "Child sick days",
       "employeeSickDaysWithNote": "Employee sick days with note",
       "employeeSickDaysWithoutNote": "Employee sick days without note",
+      "name": "Last name, First name",
       "sickDaySickChild": "Sick child",
       "sickDayWithoutNote": "Sick day without note",
       "sickDayWithNote": "Sick day with note",
@@ -422,7 +422,6 @@
       "differenceFromPreviousMonth": "Difference from previous months: {{ hours }} h",
       "openedWorkMonth": "This month appears empty, because the employee has not submitted it yet.",
       "statusAtEndOfMonth": "Status at the end of the month after approval: {{ hours }} h",
-
       "workedAndRequiredHours": "{{ workedHours }} h out of {{ requiredHours }} h",
       "workedAndRequiredHoursDiffers": "{{ workedHours }} h out of {{ requiredHours }} h (Daily totals hidden, showing only monthly totals using old calculation formula)"
     },
