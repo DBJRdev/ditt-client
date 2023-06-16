@@ -171,7 +171,7 @@ export const validateContracts = (contracts) => {
   }
 
   for (let i = 0; i < contracts.length; i += 1) {
-    for (let j = 0; j < contracts.length; i += 1) {
+    for (let j = 0; j < contracts.length; j += 1) {
       if (i === j) {
         // eslint-disable-next-line no-continue
         continue;
