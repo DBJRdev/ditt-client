@@ -221,7 +221,7 @@
       "needApproval": "Freigabe erforderlich",
       "sickChildTotal": "Kind krank",
       "sickDayTotal": "Krankheit",
-      "vacationDaysUsed": "Urlaubskonto"
+      "vacationDaysUsed": "Verplante Urlaubstage"
     },
     "title": {
       "supervisedUsers": "Mitarbeiter*innen"
@@ -304,7 +304,7 @@
       "supervisor": "Vorgesetzte*r",
       "supervisorInfoSendOnHolidays": "Benachrichtigung auch an Feiertagen",
       "vacationDays": "Urlaubskonto",
-      "vacationDaysUsed": "Urlaubskonto",
+      "vacationDaysUsed": "Verplante Urlaubstage",
       "workedAndRequiredHours": "Gearbeitete / Benötigte Stunden"
     },
     "modal": {
