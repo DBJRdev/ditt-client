@@ -17,6 +17,7 @@ import {
   toHourMinuteFormatFromInt,
 } from '../../../../services/dateTimeService';
 import { TERMINATE_CONTRACT_SUCCESS } from '../../../../resources/contract/actionTypes';
+import { getWorkHoursString } from '../../../../services/workHoursService';
 import { ContractModal } from '../ContractModal';
 import styles from '../../user.scss';
 import { canEditContract } from '../../_helpers/canEditContract';
@@ -91,6 +92,22 @@ const ContractsComponent = ({
           {
             label: t('user:element.weeklyWorkingDays'),
             name: 'weeklyWorkingDays',
+          },
+          {
+            format: (row) => {
+              let dailyWorkingHours;
+              try {
+                dailyWorkingHours = row.weeklyWorkingHours / row.weeklyWorkingDays;
+              } catch (e) {
+                dailyWorkingHours = null;
+              }
+
+              return Number.isFinite(dailyWorkingHours)
+                ? getWorkHoursString(dailyWorkingHours * 3600)
+                : '–';
+            },
+            label: t('user:element.dailyWorkingHours'),
+            name: 'dailyWorkingHours',
           },
           {
             format: (row) => toHourMinuteFormatFromInt(row.weeklyWorkingHours * 3600),

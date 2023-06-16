@@ -365,6 +365,7 @@ class ProfileComponent extends React.Component {
                             <th>{t('user:element.endDateTime')}</th>
                             <th>{t('user:element.isDayBased')}</th>
                             <th>{t('user:element.weeklyWorkingDays')}</th>
+                            <th>{t('user:element.dailyWorkingHours')}</th>
                             <th>{t('user:element.weeklyWorkingHours')}</th>
                           </tr>
                         </thead>
@@ -407,6 +408,9 @@ class ProfileComponent extends React.Component {
                                       )
                                     </>
                                   )}
+                                </td>
+                                <td className={styles.vacationTableCell}>
+                                  {getWorkHoursString((contract.get('weeklyWorkingHours') / contract.get('weeklyWorkingDays')) * 3600)}
                                 </td>
                                 <td className={styles.vacationTableCell}>
                                   {getWorkHoursString(contract.get('weeklyWorkingHours') * 3600)}
