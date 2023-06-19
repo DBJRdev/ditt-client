@@ -235,21 +235,13 @@ export const getWorkedTime = (
 
   // Special work log time calculations
   if (
-    (
-      standardWorkLogs.length === 0
-      && (
-        businessTripWorkLogs.length > 0
-        || sickDayWorkLogs.length > 0
-      )
-    ) || maternityProtectionWorkLogs.length > 0
+    (standardWorkLogs.length === 0 && businessTripWorkLogs.length > 0)
+      || maternityProtectionWorkLogs.length > 0
+      || sickDayWorkLogs.length > 0
       || specialLeaveWorkLogs.length > 0
       || vacationWorkLogs.length > 0
   ) {
     workTime = contract.dailyWorkingTime;
-    workTimeWithoutCorrection = workTime;
-    breakTime = 0;
-  } else if (sickDayWorkLogs.length > 0 && standardWorkLogs.length !== 0) {
-    workTime = Math.min(workTimeWithoutCorrection, contract.dailyWorkingTime);
     workTimeWithoutCorrection = workTime;
     breakTime = 0;
   }

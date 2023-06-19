@@ -3608,7 +3608,7 @@ describe('getWorkedTime', () => {
 
     expect(result.breakTime.asSeconds()).toEqual(0);
     expect(result.isWorkTimeCorrected).toEqual(false);
-    expect(result.workTime.asSeconds()).toEqual(4 * 3600);
+    expect(result.workTime.asSeconds()).toEqual(6 * 3600);
   });
 
   it('test calculate sick day work logs in sum greater that required hours per day', () => {
