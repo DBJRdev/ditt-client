@@ -5,103 +5,126 @@ exports[`rendering renders correctly 1`] = `
   loading={false}
   title="user:title.addUser"
 >
-  <form
-    className="detailPageWrapper"
+  <div
+    className="actions"
   >
-    <WithProviderContextComponent>
+    <ForwardRef(withForwardedRef(WithProviderContextComponent))
+      feedbackIcon={null}
+      label="general:action.save"
+      onClick={[Function]}
+    />
+  </div>
+  <form>
+    <div
+      className="editPageNarrowWrapper"
+    >
       <WithProviderContextComponent>
-        <ForwardRef(withForwardedRef(WithProviderContextComponent))
-          fullWidth={true}
-          id="firstName"
-          label="user:element.firstName"
-          onChange={[Function]}
-          required={true}
-          validationState={null}
-          validationText={null}
-          value=""
-        />
+        <WithProviderContextComponent>
+          <ForwardRef(withForwardedRef(WithProviderContextComponent))
+            fullWidth={true}
+            id="firstName"
+            label="user:element.firstName"
+            onChange={[Function]}
+            required={true}
+            validationState={null}
+            validationText={null}
+            value=""
+          />
+        </WithProviderContextComponent>
+        <WithProviderContextComponent>
+          <ForwardRef(withForwardedRef(WithProviderContextComponent))
+            fullWidth={true}
+            id="lastName"
+            label="user:element.lastName"
+            onChange={[Function]}
+            required={true}
+            validationState={null}
+            validationText={null}
+            value=""
+          />
+        </WithProviderContextComponent>
+        <WithProviderContextComponent>
+          <ForwardRef(withForwardedRef(WithProviderContextComponent))
+            fullWidth={true}
+            id="supervisor"
+            label="user:element.supervisor"
+            onChange={[Function]}
+            options={
+              Array [
+                Object {
+                  "label": "",
+                  "value": null,
+                },
+              ]
+            }
+            validationState={null}
+            validationText={null}
+            value=""
+          />
+        </WithProviderContextComponent>
+        <WithProviderContextComponent>
+          <ForwardRef(withForwardedRef(WithProviderContextComponent))
+            autoComplete="off"
+            fullWidth={true}
+            id="email"
+            label="user:element.email"
+            onChange={[Function]}
+            required={true}
+            validationState={null}
+            validationText={null}
+            value=""
+          />
+        </WithProviderContextComponent>
+        <WithProviderContextComponent>
+          <ForwardRef(withForwardedRef(WithProviderContextComponent))
+            fullWidth={true}
+            id="employeeId"
+            label="user:element.employeeId"
+            onChange={[Function]}
+            required={true}
+            validationState={null}
+            validationText={null}
+            value=""
+          />
+        </WithProviderContextComponent>
+        <WithProviderContextComponent>
+          <ForwardRef(withForwardedRef(WithProviderContextComponent))
+            autoComplete="new-password"
+            fullWidth={true}
+            id="plainPassword"
+            label="user:element.plainPassword"
+            onChange={[Function]}
+            required={true}
+            type="password"
+            validationState={null}
+            validationText={null}
+            value=""
+          />
+        </WithProviderContextComponent>
+        <WithProviderContextComponent>
+          <ForwardRef(withForwardedRef(WithProviderContextComponent))
+            checked={false}
+            id="isActive"
+            label="user:element.isActive"
+            onChange={[Function]}
+            required={true}
+            validationState={null}
+            validationText={null}
+          />
+        </WithProviderContextComponent>
+        <WithProviderContextComponent>
+          <h2
+            className="detailSubheader"
+          >
+            user:text.vacationDays
+          </h2>
+        </WithProviderContextComponent>
+        <WithProviderContextComponent />
       </WithProviderContextComponent>
-      <WithProviderContextComponent>
-        <ForwardRef(withForwardedRef(WithProviderContextComponent))
-          fullWidth={true}
-          id="lastName"
-          label="user:element.lastName"
-          onChange={[Function]}
-          required={true}
-          validationState={null}
-          validationText={null}
-          value=""
-        />
-      </WithProviderContextComponent>
-      <WithProviderContextComponent>
-        <ForwardRef(withForwardedRef(WithProviderContextComponent))
-          fullWidth={true}
-          id="supervisor"
-          label="user:element.supervisor"
-          onChange={[Function]}
-          options={
-            Array [
-              Object {
-                "label": "",
-                "value": null,
-              },
-            ]
-          }
-          validationState={null}
-          validationText={null}
-          value=""
-        />
-      </WithProviderContextComponent>
-      <WithProviderContextComponent>
-        <ForwardRef(withForwardedRef(WithProviderContextComponent))
-          autoComplete="off"
-          fullWidth={true}
-          id="email"
-          label="user:element.email"
-          onChange={[Function]}
-          required={true}
-          validationState={null}
-          validationText={null}
-          value=""
-        />
-      </WithProviderContextComponent>
-      <WithProviderContextComponent>
-        <ForwardRef(withForwardedRef(WithProviderContextComponent))
-          fullWidth={true}
-          id="employeeId"
-          label="user:element.employeeId"
-          onChange={[Function]}
-          required={true}
-          validationState={null}
-          validationText={null}
-          value=""
-        />
-      </WithProviderContextComponent>
-      <WithProviderContextComponent>
-        <ForwardRef(withForwardedRef(WithProviderContextComponent))
-          autoComplete="new-password"
-          fullWidth={true}
-          id="plainPassword"
-          label="user:element.plainPassword"
-          onChange={[Function]}
-          required={true}
-          type="password"
-          validationState={null}
-          validationText={null}
-          value=""
-        />
-      </WithProviderContextComponent>
-      <WithProviderContextComponent>
-        <ForwardRef(withForwardedRef(WithProviderContextComponent))
-          checked={false}
-          id="isActive"
-          label="user:element.isActive"
-          onChange={[Function]}
-          required={true}
-          validationState={null}
-          validationText={null}
-        />
-      </WithProviderContextComponent>
+    </div>
+    <div
+      className="editPageWideWrapper"
+    >
       <ContractsComponent
         contracts={Array []}
         onContractAdd={[Function]}
@@ -110,19 +133,7 @@ exports[`rendering renders correctly 1`] = `
         onContractTerminate={[Function]}
         workMonths={Array []}
       />
-      <h2
-        className="detailSubheader"
-      >
-        user:text.vacationDays
-      </h2>
-      <WithProviderContextComponent>
-        <ForwardRef(withForwardedRef(WithProviderContextComponent))
-          feedbackIcon={null}
-          label="general:action.save"
-          onClick={[Function]}
-        />
-      </WithProviderContextComponent>
-    </WithProviderContextComponent>
+    </div>
   </form>
 </Connect(LayoutComponent)>
 `;

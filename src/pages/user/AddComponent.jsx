@@ -206,99 +206,168 @@ class AddComponent extends React.Component {
 
     return (
       <Layout loading={this.props.isFetching} title={t('user:title.addUser')}>
-        <form className={styles.detailPageWrapper}>
-          {this.state.formValidity.elements.form && (
-            <p style={this.formErrorStyle}>
-              {this.state.formValidity.elements.form}
-            </p>
-          )}
-          <List>
-            <ListItem>
-              <TextField
-                fullWidth
-                id="firstName"
-                label={t('user:element.firstName')}
-                onChange={this.onChange}
-                required
-                validationState={this.state.formValidity.elements.firstName ? 'invalid' : null}
-                validationText={this.state.formValidity.elements.firstName}
-                value={this.state.formData.firstName || ''}
-              />
-            </ListItem>
-            <ListItem>
-              <TextField
-                fullWidth
-                id="lastName"
-                label={t('user:element.lastName')}
-                onChange={this.onChange}
-                required
-                validationState={this.state.formValidity.elements.lastName ? 'invalid' : null}
-                validationText={this.state.formValidity.elements.lastName}
-                value={this.state.formData.lastName || ''}
-              />
-            </ListItem>
-            <ListItem>
-              <SelectField
-                fullWidth
-                id="supervisor"
-                label={t('user:element.supervisor')}
-                onChange={this.onChange}
-                options={userList}
-                validationState={this.state.formValidity.elements.supervisor ? 'invalid' : null}
-                validationText={this.state.formValidity.elements.supervisor}
-                value={this.state.formData.supervisor || ''}
-              />
-            </ListItem>
-            <ListItem>
-              <TextField
-                autoComplete="off"
-                fullWidth
-                id="email"
-                label={t('user:element.email')}
-                onChange={this.onChange}
-                required
-                validationState={this.state.formValidity.elements.email ? 'invalid' : null}
-                validationText={this.state.formValidity.elements.email}
-                value={this.state.formData.email || ''}
-              />
-            </ListItem>
-            <ListItem>
-              <TextField
-                fullWidth
-                id="employeeId"
-                label={t('user:element.employeeId')}
-                onChange={this.onChange}
-                required
-                validationState={this.state.formValidity.elements.employeeId ? 'invalid' : null}
-                validationText={this.state.formValidity.elements.employeeId}
-                value={this.state.formData.employeeId || ''}
-              />
-            </ListItem>
-            <ListItem>
-              <TextField
-                autoComplete="new-password"
-                fullWidth
-                id="plainPassword"
-                label={t('user:element.plainPassword')}
-                onChange={this.onChange}
-                required
-                type="password"
-                validationState={this.state.formValidity.elements.plainPassword ? 'invalid' : null}
-                validationText={this.state.formValidity.elements.plainPassword}
-                value={this.state.formData.plainPassword || ''}
-              />
-            </ListItem>
-            <ListItem>
-              <CheckboxField
-                checked={this.state.formData.isActive}
-                id="isActive"
-                label={t('user:element.isActive')}
-                onChange={this.onChange}
-                required
-                validationState={this.state.formValidity.elements.isActive ? 'invalid' : null}
-                validationText={this.state.formValidity.elements.isActive}
-              />
-            </ListItem>
+        <div className={styles.actions}>
+          <Button
+            feedbackIcon={this.props.isPosting ? <LoadingIcon /> : null}
+            label={t('general:action.save')}
+            onClick={this.onSave}
+          />
+        </div>
+        <form>
+          <div className={styles.editPageNarrowWrapper}>
+            {this.state.formValidity.elements.form && (
+              <p style={this.formErrorStyle}>
+                {this.state.formValidity.elements.form}
+              </p>
+            )}
+            <List>
+              <ListItem>
+                <TextField
+                  fullWidth
+                  id="firstName"
+                  label={t('user:element.firstName')}
+                  onChange={this.onChange}
+                  required
+                  validationState={this.state.formValidity.elements.firstName ? 'invalid' : null}
+                  validationText={this.state.formValidity.elements.firstName}
+                  value={this.state.formData.firstName || ''}
+                />
+              </ListItem>
+              <ListItem>
+                <TextField
+                  fullWidth
+                  id="lastName"
+                  label={t('user:element.lastName')}
+                  onChange={this.onChange}
+                  required
+                  validationState={this.state.formValidity.elements.lastName ? 'invalid' : null}
+                  validationText={this.state.formValidity.elements.lastName}
+                  value={this.state.formData.lastName || ''}
+                />
+              </ListItem>
+              <ListItem>
+                <SelectField
+                  fullWidth
+                  id="supervisor"
+                  label={t('user:element.supervisor')}
+                  onChange={this.onChange}
+                  options={userList}
+                  validationState={this.state.formValidity.elements.supervisor ? 'invalid' : null}
+                  validationText={this.state.formValidity.elements.supervisor}
+                  value={this.state.formData.supervisor || ''}
+                />
+              </ListItem>
+              <ListItem>
+                <TextField
+                  autoComplete="off"
+                  fullWidth
+                  id="email"
+                  label={t('user:element.email')}
+                  onChange={this.onChange}
+                  required
+                  validationState={this.state.formValidity.elements.email ? 'invalid' : null}
+                  validationText={this.state.formValidity.elements.email}
+                  value={this.state.formData.email || ''}
+                />
+              </ListItem>
+              <ListItem>
+                <TextField
+                  fullWidth
+                  id="employeeId"
+                  label={t('user:element.employeeId')}
+                  onChange={this.onChange}
+                  required
+                  validationState={this.state.formValidity.elements.employeeId ? 'invalid' : null}
+                  validationText={this.state.formValidity.elements.employeeId}
+                  value={this.state.formData.employeeId || ''}
+                />
+              </ListItem>
+              <ListItem>
+                <TextField
+                  autoComplete="new-password"
+                  fullWidth
+                  id="plainPassword"
+                  label={t('user:element.plainPassword')}
+                  onChange={this.onChange}
+                  required
+                  type="password"
+                  validationState={this.state.formValidity.elements.plainPassword ? 'invalid' : null}
+                  validationText={this.state.formValidity.elements.plainPassword}
+                  value={this.state.formData.plainPassword || ''}
+                />
+              </ListItem>
+              <ListItem>
+                <CheckboxField
+                  checked={this.state.formData.isActive}
+                  id="isActive"
+                  label={t('user:element.isActive')}
+                  onChange={this.onChange}
+                  required
+                  validationState={this.state.formValidity.elements.isActive ? 'invalid' : null}
+                  validationText={this.state.formValidity.elements.isActive}
+                />
+              </ListItem>
+              <ListItem>
+                <h2 className={styles.detailSubheader}>
+                  {t('user:text.vacationDays')}
+                </h2>
+              </ListItem>
+              <ListItem>
+                {this.props.config && this.props.config.get('supportedYears').map((year) => {
+                  if (!this.state.formData.vacations[year]) {
+                    return null;
+                  }
+
+                  return (
+                    <div
+                      className={styles.vacationsRow}
+                      key={year}
+                    >
+                      <span>{year}</span>
+                      <TextField
+                        id={`vacationDays_${year.toString()}`}
+                        inputSize={6}
+                        label={t('vacation:text.total')}
+                        onChange={this.onChangeVacationDays}
+                        validationState={this.state.formValidity.elements.vacations[year].vacationDays ? 'invalid' : null}
+                        validationText={this.state.formValidity.elements.vacations[year].vacationDays}
+                        value={this.state.formData.vacations[year].vacationDays || ''}
+                      />
+                      <TextField
+                        id={`vacationDaysCorrection_${year.toString()}`}
+                        inputSize={6}
+                        label={t('vacation:text.correction')}
+                        onChange={this.onChangeVacationDaysCorrection}
+                        validationState={
+                          this.state.formValidity.elements.vacations[year].vacationDaysCorrection ? 'invalid' : null
+                        }
+                        validationText={
+                          this.state.formValidity.elements.vacations[year].vacationDaysCorrection
+                        }
+                        value={this.state.formData.vacations[year].vacationDaysCorrection || ''}
+                      />
+                      <TextField
+                        disabled
+                        id={`vacationDaysUsed_${year.toString()}`}
+                        inputSize={6}
+                        label={t('vacation:text.used')}
+                        onChange={() => {}}
+                        value={this.state.formData.vacations[year].vacationDaysUsed || ''}
+                      />
+                      <TextField
+                        disabled
+                        id={`remainingVacationDays_${year.toString()}`}
+                        inputSize={6}
+                        label={t('vacation:text.remaining')}
+                        onChange={() => {}}
+                      />
+                    </div>
+                  );
+                })}
+              </ListItem>
+            </List>
+          </div>
+          <div className={styles.editPageWideWrapper}>
             <Contracts
               contracts={this.state.formData.contracts}
               onContractAdd={(contract) => {
@@ -341,68 +410,7 @@ class AddComponent extends React.Component {
               validationMessage={this.state.formValidity.elements.contracts}
               workMonths={[]}
             />
-            <h2 className={styles.detailSubheader}>
-              {t('user:text.vacationDays')}
-            </h2>
-            {this.props.config && this.props.config.get('supportedYears').map((year) => {
-              if (!this.state.formData.vacations[year]) {
-                return null;
-              }
-
-              return (
-                <div
-                  className={styles.vacationsRow}
-                  key={year}
-                >
-                  <span>{year}</span>
-                  <TextField
-                    id={`vacationDays_${year.toString()}`}
-                    inputSize={6}
-                    label={t('vacation:text.total')}
-                    onChange={this.onChangeVacationDays}
-                    validationState={this.state.formValidity.elements.vacations[year].vacationDays ? 'invalid' : null}
-                    validationText={this.state.formValidity.elements.vacations[year].vacationDays}
-                    value={this.state.formData.vacations[year].vacationDays || ''}
-                  />
-                  <TextField
-                    id={`vacationDaysCorrection_${year.toString()}`}
-                    inputSize={6}
-                    label={t('vacation:text.correction')}
-                    onChange={this.onChangeVacationDaysCorrection}
-                    validationState={
-                      this.state.formValidity.elements.vacations[year].vacationDaysCorrection ? 'invalid' : null
-                    }
-                    validationText={
-                      this.state.formValidity.elements.vacations[year].vacationDaysCorrection
-                    }
-                    value={this.state.formData.vacations[year].vacationDaysCorrection || ''}
-                  />
-                  <TextField
-                    disabled
-                    id={`vacationDaysUsed_${year.toString()}`}
-                    inputSize={6}
-                    label={t('vacation:text.used')}
-                    onChange={() => {}}
-                    value={this.state.formData.vacations[year].vacationDaysUsed || ''}
-                  />
-                  <TextField
-                    disabled
-                    id={`remainingVacationDays_${year.toString()}`}
-                    inputSize={6}
-                    label={t('vacation:text.remaining')}
-                    onChange={() => {}}
-                  />
-                </div>
-              );
-            })}
-            <ListItem>
-              <Button
-                feedbackIcon={this.props.isPosting ? <LoadingIcon /> : null}
-                label={t('general:action.save')}
-                onClick={this.onSave}
-              />
-            </ListItem>
-          </List>
+          </div>
         </form>
       </Layout>
     );

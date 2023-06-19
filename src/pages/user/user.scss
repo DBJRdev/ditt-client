@@ -65,7 +65,21 @@ $_breakpoint: 55em;
 
 .detailPageWrapper {
   width: 100%;
-  max-width: 600px;
+  max-width: 480px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.editPageNarrowWrapper {
+  width: 100%;
+  max-width: 480px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.editPageWideWrapper {
+  width: 100%;
+  max-width: 840px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -85,6 +99,11 @@ $_breakpoint: 55em;
 
 .vacationsRow {
   display: flex;
+  gap: 5px;
+}
+
+.vacationsRow:not(:first-of-type) {
+  margin-top: 10px;
 }
 
 .vacationsRow > span {
@@ -92,25 +111,6 @@ $_breakpoint: 55em;
   margin-right: 1rem;
   font-weight: bold;
   transform: translateY(50%);
-}
-
-.vacationsRow > div {
-  flex: 23.75%;
-  margin-left: 1rem;
-}
-
-@media screen and (max-width: 879px) {
-  .vacationsRow {
-    display: block;
-  }
-
-  .vacationsRow > span {
-    transform: translateY(0%);
-  }
-
-  .vacationsRow > div {
-    margin-left: 0;
-  }
 }
 
 .notificationSettingsDay {
@@ -138,6 +138,8 @@ $_breakpoint: 55em;
 }
 
 .actions {
+  display: flex;
+  gap: 10px;
   margin-bottom: 2rem;
 
   @media screen and (min-width: $_breakpoint) {

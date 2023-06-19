@@ -4,6 +4,7 @@ import { withTranslation } from 'react-i18next';
 import {
   Alert,
   Button,
+  ScrollView,
   Table,
   Toolbar,
   ToolbarItem,
@@ -72,100 +73,102 @@ const ContractsComponent = ({
           </Alert>
         </div>
       )}
-      <Table
-        columns={[
-          {
-            format: (row) => toDayMonthYearFormat(row.startDateTime),
-            label: t('user:element.startDateTime'),
-            name: 'startDateTime',
-          },
-          {
-            format: (row) => (row.endDateTime ? toDayMonthYearFormat(row.endDateTime) : '–'),
-            label: t('user:element.endDateTime'),
-            name: 'endDateTime',
-          },
-          {
-            format: (row) => (row.isDayBased ? t('user:element.dayBased') : t('user:element.flexible')),
-            label: t('user:element.isDayBased'),
-            name: 'isDayBased',
-          },
-          {
-            label: t('user:element.weeklyWorkingDays'),
-            name: 'weeklyWorkingDays',
-          },
-          {
-            format: (row) => {
-              let dailyWorkingHours;
-              try {
-                dailyWorkingHours = row.weeklyWorkingHours / row.weeklyWorkingDays;
-              } catch (e) {
-                dailyWorkingHours = null;
-              }
-
-              return Number.isFinite(dailyWorkingHours)
-                ? getWorkHoursString(dailyWorkingHours * 3600)
-                : '–';
+      <ScrollView direction="horizontal">
+        <Table
+          columns={[
+            {
+              format: (row) => toDayMonthYearFormat(row.startDateTime),
+              label: t('user:element.startDateTime'),
+              name: 'startDateTime',
             },
-            label: t('user:element.dailyWorkingHours'),
-            name: 'dailyWorkingHours',
-          },
-          {
-            format: (row) => toHourMinuteFormatFromInt(row.weeklyWorkingHours * 3600),
-            label: t('user:element.weeklyWorkingHours'),
-            name: 'weeklyWorkingHours',
-          },
-          {
-            format: (row) => (
-              <Toolbar dense justify="end" nowrap>
-                {
-                  !canEditContract(row, workMonths)
-                  && (row.endDateTime == null || row.endDateTime.isAfter(localizedMoment(), 'day'))
-                  && (
-                    <ToolbarItem>
-                      <Button
-                        beforeLabel={<Icon icon="event_busy" />}
-                        color="danger"
-                        label={t('user:action.terminateContract')}
-                        labelVisibility="none"
-                        onClick={() => {
-                          terminateModalDataSet(row);
-                        }}
-                      />
-                    </ToolbarItem>
-                  )
+            {
+              format: (row) => (row.endDateTime ? toDayMonthYearFormat(row.endDateTime) : '–'),
+              label: t('user:element.endDateTime'),
+              name: 'endDateTime',
+            },
+            {
+              format: (row) => (row.isDayBased ? t('user:element.dayBased') : t('user:element.flexible')),
+              label: t('user:element.isDayBased'),
+              name: 'isDayBased',
+            },
+            {
+              label: t('user:element.weeklyWorkingDays'),
+              name: 'weeklyWorkingDays',
+            },
+            {
+              format: (row) => {
+                let dailyWorkingHours;
+                try {
+                  dailyWorkingHours = row.weeklyWorkingHours / row.weeklyWorkingDays;
+                } catch (e) {
+                  dailyWorkingHours = null;
                 }
-                <ToolbarItem>
-                  <Button
-                    beforeLabel={<Icon icon="delete" />}
-                    color="danger"
-                    disabled={!canEditContract(row, workMonths)}
-                    label={t('user:action.removeContract')}
-                    labelVisibility="none"
-                    onClick={() => {
-                      onContractRemove(row);
-                    }}
-                  />
-                </ToolbarItem>
-                <ToolbarItem>
-                  <Button
-                    beforeLabel={<Icon icon="edit" />}
-                    color="primary"
-                    disabled={!canEditContract(row, workMonths)}
-                    label={t('user:action.editContract')}
-                    labelVisibility="none"
-                    onClick={() => {
-                      editModalDataSet(row);
-                    }}
-                  />
-                </ToolbarItem>
-              </Toolbar>
-            ),
-            label: '',
-            name: 'actions',
-          },
-        ]}
-        rows={contracts}
-      />
+
+                return Number.isFinite(dailyWorkingHours)
+                  ? getWorkHoursString(dailyWorkingHours * 3600)
+                  : '–';
+              },
+              label: t('user:element.dailyWorkingHours'),
+              name: 'dailyWorkingHours',
+            },
+            {
+              format: (row) => toHourMinuteFormatFromInt(row.weeklyWorkingHours * 3600),
+              label: t('user:element.weeklyWorkingHours'),
+              name: 'weeklyWorkingHours',
+            },
+            {
+              format: (row) => (
+                <Toolbar dense justify="end" nowrap>
+                  {
+                    !canEditContract(row, workMonths)
+                    && (row.endDateTime == null || row.endDateTime.isAfter(localizedMoment(), 'day'))
+                    && (
+                      <ToolbarItem>
+                        <Button
+                          beforeLabel={<Icon icon="event_busy" />}
+                          color="danger"
+                          label={t('user:action.terminateContract')}
+                          labelVisibility="none"
+                          onClick={() => {
+                            terminateModalDataSet(row);
+                          }}
+                        />
+                      </ToolbarItem>
+                    )
+                  }
+                  <ToolbarItem>
+                    <Button
+                      beforeLabel={<Icon icon="delete" />}
+                      color="danger"
+                      disabled={!canEditContract(row, workMonths)}
+                      label={t('user:action.removeContract')}
+                      labelVisibility="none"
+                      onClick={() => {
+                        onContractRemove(row);
+                      }}
+                    />
+                  </ToolbarItem>
+                  <ToolbarItem>
+                    <Button
+                      beforeLabel={<Icon icon="edit" />}
+                      color="primary"
+                      disabled={!canEditContract(row, workMonths)}
+                      label={t('user:action.editContract')}
+                      labelVisibility="none"
+                      onClick={() => {
+                        editModalDataSet(row);
+                      }}
+                    />
+                  </ToolbarItem>
+                </Toolbar>
+              ),
+              label: '',
+              name: 'actions',
+            },
+          ]}
+          rows={contracts}
+        />
+      </ScrollView>
       {addModalShown && (
         <ContractModal
           contracts={contracts}
