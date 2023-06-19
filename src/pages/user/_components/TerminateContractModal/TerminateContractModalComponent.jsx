@@ -49,10 +49,11 @@ class TerminateContractModalComponent extends React.Component {
       contract,
       onTerminate,
       t,
+      workMonths,
     } = this.props;
     const { formData } = this.state;
 
-    const formValidity = validateContractTermination(t, formData, contract);
+    const formValidity = validateContractTermination(t, formData, contract, workMonths);
 
     this.setState({ formValidity });
 
@@ -139,6 +140,7 @@ TerminateContractModalComponent.propTypes = {
   onClose: PropTypes.func.isRequired,
   onTerminate: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
+  workMonths: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
 
 export default withTranslation()(TerminateContractModalComponent);

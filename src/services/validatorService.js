@@ -11,6 +11,7 @@ import {
   SICK_DAY_UNPAID_WORK_LOG,
   SICK_DAY_WORK_LOG,
   SPECIAL_LEAVE_WORK_LOG,
+  STATUS_OPENED,
   TIME_OFF_WORK_LOG,
   TRAINING_WORK_LOG,
   VACATION_WORK_LOG,
@@ -109,7 +110,7 @@ export const validateContract = (t, dataAttr) => {
   return errors;
 };
 
-export const validateContractTermination = (t, dataAttr, contract) => {
+export const validateContractTermination = (t, dataAttr, contract, workMonths) => {
   const data = { ...dataAttr };
 
   const errors = {
@@ -135,20 +136,52 @@ export const validateContractTermination = (t, dataAttr, contract) => {
     return errors;
   }
 
-  if (dateTime.isBefore(localizedMoment(), 'day')) {
-    errors.elements.dateTime = t('user:validation.dateInPast');
-    errors.isValid = false;
-  }
-
   if (
     dateTime.isBefore(contract.startDateTime, 'day')
     || (contract.endDateTime !== null && dateTime.isAfter(contract.endDateTime, 'day'))
   ) {
     errors.elements.dateTime = t('user:validation.outOfContractRange');
     errors.isValid = false;
+    return errors;
   }
 
-  // TODO: Work months not opened
+  const filteredWorkMonths = workMonths.filter((workMonth) => workMonth.status !== STATUS_OPENED);
+  const dateFrom = dateTime;
+  const dateTo = contract.endDateTime;
+
+  const yearFrom = dateFrom.year();
+  const monthFrom = dateFrom.month() + 1;
+
+  if (dateTo == null) {
+    const filteredWorkMonths2 = filteredWorkMonths.filter((workMonth) => (
+      (workMonth.year > yearFrom
+        || (workMonth.year === yearFrom && workMonth.month >= monthFrom))
+    ));
+
+    if (filteredWorkMonths2.length > 0) {
+      errors.elements.dateTime = t('user:validation.cannotTerminateContract');
+      errors.isValid = false;
+    }
+  } else {
+    const yearTo = dateTo.year();
+    const monthTo = dateTo.month() + 1;
+
+    const filteredWorkMonths3 = filteredWorkMonths.filter((workMonth) => (
+      (
+        (workMonth.year > yearFrom)
+        || (workMonth.year === yearFrom && workMonth.month >= monthFrom)
+      )
+      && (
+        (workMonth.year < yearTo)
+        || (workMonth.year === yearTo && workMonth.month <= monthTo)
+      )
+    ));
+
+    if (filteredWorkMonths3.length > 0) {
+      errors.elements.dateTime = t('user:validation.cannotTerminateContract');
+      errors.isValid = false;
+    }
+  }
 
   return errors;
 };

@@ -204,6 +204,7 @@ const ContractsComponent = ({
 
             return response;
           }}
+          workMonths={workMonths}
         />
       )}
     </div>
