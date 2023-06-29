@@ -9,7 +9,7 @@ import {
   TextField,
 } from '@react-ui-org/react-ui';
 import { validateContractTermination } from '../../../../services/validatorService';
-import { toMomentDateTimeFromDayMonthYear } from '../../../../services/dateTimeService';
+import { toMomentDateTimeFromStandardDayMonthYear } from '../../../../services/dateTimeService';
 import {
   Icon, LoadingIcon,
 } from '../../../../components/Icon';
@@ -59,7 +59,7 @@ class TerminateContractModalComponent extends React.Component {
 
     if (formValidity.isValid) {
       const response = await onTerminate(contract.id, {
-        dateTime: toMomentDateTimeFromDayMonthYear(formData.dateTime)
+        dateTime: toMomentDateTimeFromStandardDayMonthYear(formData.dateTime)
           .set('hour', 23)
           .set('minute', 59)
           .set('second', 59),
@@ -123,6 +123,7 @@ class TerminateContractModalComponent extends React.Component {
               id="dateTime"
               label={t('user:element.dateTime')}
               onChange={(e) => this.onChange('dateTime', e.target.value)}
+              type="date"
               validationState={formValidity.elements.dateTime ? 'invalid' : null}
               validationText={formValidity.elements.dateTime}
               value={formData.dateTime || ''}

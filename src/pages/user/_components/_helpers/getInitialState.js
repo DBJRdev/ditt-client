@@ -1,5 +1,5 @@
 import { generate } from 'shortid';
-import { toDayMonthYearFormat } from '../../../../services/dateTimeService';
+import { toStandardDayMonthYearFormat } from '../../../../services/dateTimeService';
 import { getWorkHoursString } from '../../../../services/workHoursService';
 
 export const getInitialState = (data) => ({
@@ -7,7 +7,7 @@ export const getInitialState = (data) => ({
     // eslint-disable-next-line no-underscore-dangle
     _id: (data && data._id) || generate(),
     endDateTime: (data && data.endDateTime)
-      ? toDayMonthYearFormat(data.endDateTime)
+      ? toStandardDayMonthYearFormat(data.endDateTime)
       : null,
     id: (data && data.id) || null,
     isDayBased: (data && data.isDayBased) ?? true,
@@ -17,7 +17,7 @@ export const getInitialState = (data) => ({
     isTuesdayIncluded: (data && data.isTuesdayIncluded) ?? true,
     isWednesdayIncluded: (data && data.isWednesdayIncluded) ?? true,
     startDateTime: (data && data.startDateTime)
-      ? toDayMonthYearFormat(data.startDateTime)
+      ? toStandardDayMonthYearFormat(data.startDateTime)
       : null,
     user: null,
     weeklyWorkingDays: (data && data.weeklyWorkingDays) ?? 5,

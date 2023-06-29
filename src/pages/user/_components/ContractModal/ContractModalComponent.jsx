@@ -18,7 +18,7 @@ import { getInitialState } from '../_helpers/getInitialState';
 import { getStateToSave } from '../_helpers/getStateToSave';
 import {
   localizedMoment,
-  toDayMonthYearFormat,
+  toStandardDayMonthYearFormat,
 } from '../../../../services/dateTimeService';
 
 class ContractModalComponent extends React.Component {
@@ -104,9 +104,9 @@ class ContractModalComponent extends React.Component {
     filteredContracts.sort((a, b) => b.startDateTime.unix() - a.startDateTime.unix());
 
     if (filteredContracts.length > 0 && filteredContracts[0].endDateTime != null) {
-      initialState.formData.startDateTime = toDayMonthYearFormat(filteredContracts[0].endDateTime.clone().add(1, 'day').startOf('day'));
+      initialState.formData.startDateTime = toStandardDayMonthYearFormat(filteredContracts[0].endDateTime.clone().add(1, 'day').startOf('day'));
     } else {
-      initialState.formData.startDateTime = toDayMonthYearFormat(localizedMoment().startOf('day'));
+      initialState.formData.startDateTime = toStandardDayMonthYearFormat(localizedMoment().startOf('day'));
     }
 
     return initialState;
@@ -152,6 +152,7 @@ class ContractModalComponent extends React.Component {
               id="startDateTime"
               label={t('user:element.startDateTime')}
               onChange={(e) => this.onChange('startDateTime', e.target.value)}
+              type="date"
               validationState={formValidity.elements.startDateTime ? 'invalid' : null}
               validationText={formValidity.elements.startDateTime}
               value={formData.startDateTime || ''}
@@ -160,6 +161,7 @@ class ContractModalComponent extends React.Component {
               id="endDateTime"
               label={t('user:element.endDateTime')}
               onChange={(e) => this.onChange('endDateTime', e.target.value)}
+              type="date"
               validationState={formValidity.elements.endDateTime ? 'invalid' : null}
               validationText={formValidity.elements.endDateTime}
               value={formData.endDateTime || ''}
@@ -230,6 +232,7 @@ class ContractModalComponent extends React.Component {
                 id="weeklyWorkingDays"
                 label={t('user:element.weeklyWorkingDays')}
                 onChange={(e) => this.onChange('weeklyWorkingDays', e.target.value)}
+                type="number"
                 validationState={formValidity.elements.weeklyWorkingDays ? 'invalid' : null}
                 validationText={formValidity.elements.weeklyWorkingDays}
                 value={formData.weeklyWorkingDays || ''}

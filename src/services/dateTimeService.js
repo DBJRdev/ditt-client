@@ -86,6 +86,16 @@ export const toMomentDateTimeFromDayMonthYear = (dateTimeString) => {
   throw new Error('Invalid datetime');
 };
 
+export const toMomentDateTimeFromStandardDayMonthYear = (dateTimeString) => {
+  const momentDateTime = moment(dateTimeString, 'YYYY-MM-DD').tz(TIMEZONE);
+
+  if (isMomentValid(momentDateTime)) {
+    return momentDateTime;
+  }
+
+  throw new Error('Invalid datetime');
+};
+
 export const toDayFormat = (momentDateTime) => {
   if (isMomentValid(momentDateTime)) {
     return momentDateTime.format('dddd');
@@ -149,6 +159,14 @@ export const toMonthYearFormat = (momentDateTime) => {
 export const toDayMonthYearFormat = (momentDateTime) => {
   if (isMomentValid(momentDateTime)) {
     return momentDateTime.format('DD.MM.YYYY');
+  }
+
+  throw new Error('Invalid datetime');
+};
+
+export const toStandardDayMonthYearFormat = (momentDateTime) => {
+  if (isMomentValid(momentDateTime)) {
+    return momentDateTime.format('YYYY-MM-DD');
   }
 
   throw new Error('Invalid datetime');

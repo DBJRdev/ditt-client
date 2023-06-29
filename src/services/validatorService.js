@@ -24,6 +24,7 @@ import {
   localizedMoment,
   toMomentDateTimeFromDayMonth,
   toMomentDateTimeFromDayMonthYear,
+  toMomentDateTimeFromStandardDayMonthYear,
 } from './dateTimeService';
 
 export const validateContract = (t, dataAttr) => {
@@ -68,7 +69,7 @@ export const validateContract = (t, dataAttr) => {
   }
 
   try {
-    dateFrom = toMomentDateTimeFromDayMonthYear(data.startDateTime);
+    dateFrom = toMomentDateTimeFromStandardDayMonthYear(data.startDateTime);
   } catch (ex) {
     errors.elements.startDateTime = t('general:validation.invalidDate');
     errors.isValid = false;
@@ -76,7 +77,7 @@ export const validateContract = (t, dataAttr) => {
 
   if (data.endDateTime !== null && !isEmpty(data.endDateTime)) {
     try {
-      dateTo = toMomentDateTimeFromDayMonthYear(data.endDateTime);
+      dateTo = toMomentDateTimeFromStandardDayMonthYear(data.endDateTime);
     } catch (ex) {
       errors.elements.endDateTime = t('general:validation.invalidDate');
       errors.isValid = false;
@@ -129,7 +130,8 @@ export const validateContractTermination = (t, dataAttr, contract, workMonths) =
   }
 
   try {
-    dateTime = toMomentDateTimeFromDayMonthYear(data.dateTime);
+    console.log(data.dateTime);
+    dateTime = toMomentDateTimeFromStandardDayMonthYear(data.dateTime);
   } catch (ex) {
     errors.elements.dateTime = t('general:validation.invalidDate');
     errors.isValid = false;
