@@ -511,7 +511,15 @@ class EditComponent extends React.Component {
                 const response = await makeContractPermanent(id);
 
                 if (response.type === TERMINATE_CONTRACT_SUCCESS) {
-                  this.props.fetchContractList(this.props.match.params.id);
+                  this.props.fetchContractList(this.props.match.params.id).then(() => {
+                    this.setState({
+                      ...this.state,
+                      formData: {
+                        ...this.state.formData,
+                        contracts: this.props.contracts.toJS(),
+                      },
+                    });
+                  });
                 }
 
                 return response;
@@ -544,7 +552,15 @@ class EditComponent extends React.Component {
                 const response = await terminateContract(id, data);
 
                 if (response.type === TERMINATE_CONTRACT_SUCCESS) {
-                  this.props.fetchContractList(this.props.match.params.id);
+                  this.props.fetchContractList(this.props.match.params.id).then(() => {
+                    this.setState({
+                      ...this.state,
+                      formData: {
+                        ...this.state.formData,
+                        contracts: this.props.contracts.toJS(),
+                      },
+                    });
+                  });
                 }
 
                 return response;
