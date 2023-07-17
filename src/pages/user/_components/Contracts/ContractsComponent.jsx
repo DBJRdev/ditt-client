@@ -11,6 +11,7 @@ import {
 } from '@react-ui-org/react-ui';
 import {
   Icon,
+  LoadingIcon,
 } from '../../../../components/Icon';
 import {
   localizedMoment,
@@ -26,7 +27,9 @@ import { TerminateContractModal } from '../TerminateContractModal';
 
 const ContractsComponent = ({
   contracts,
+  isPosting,
   onContractAdd,
+  onContractMakePermanent,
   onContractRemove,
   onContractSave,
   onContractTerminate,
@@ -127,10 +130,30 @@ const ContractsComponent = ({
                         <Button
                           beforeLabel={<Icon icon="event_busy" />}
                           color="danger"
+                          feedbackIcon={isPosting ? <LoadingIcon /> : null}
                           label={t('user:action.terminateContract')}
                           labelVisibility="none"
                           onClick={() => {
                             terminateModalDataSet(row);
+                          }}
+                        />
+                      </ToolbarItem>
+                    )
+                  }
+                  {
+                    row.endDateTime != null
+                    && row.id != null
+                    && row.id === contracts[contracts.length - 1].id
+                    && (
+                      <ToolbarItem>
+                        <Button
+                          beforeLabel={<Icon icon="autorenew" />}
+                          color="danger"
+                          feedbackIcon={isPosting ? <LoadingIcon /> : null}
+                          label={t('user:action.makeContractPermanent')}
+                          labelVisibility="none"
+                          onClick={() => {
+                            onContractMakePermanent(row.id);
                           }}
                         />
                       </ToolbarItem>
@@ -141,6 +164,7 @@ const ContractsComponent = ({
                       beforeLabel={<Icon icon="delete" />}
                       color="danger"
                       disabled={!canEditContract(row, workMonths)}
+                      feedbackIcon={isPosting ? <LoadingIcon /> : null}
                       label={t('user:action.removeContract')}
                       labelVisibility="none"
                       onClick={() => {
@@ -153,6 +177,7 @@ const ContractsComponent = ({
                       beforeLabel={<Icon icon="edit" />}
                       color="primary"
                       disabled={!canEditContract(row, workMonths)}
+                      feedbackIcon={isPosting ? <LoadingIcon /> : null}
                       label={t('user:action.editContract')}
                       labelVisibility="none"
                       onClick={() => {
@@ -228,7 +253,9 @@ ContractsComponent.propTypes = {
     weeklyWorkingDays: PropTypes.number.isRequired,
     weeklyWorkingHours: PropTypes.number.isRequired,
   })).isRequired,
+  isPosting: PropTypes.bool,
   onContractAdd: PropTypes.func.isRequired,
+  onContractMakePermanent: PropTypes.func.isRequired,
   onContractRemove: PropTypes.func.isRequired,
   onContractSave: PropTypes.func.isRequired,
   onContractTerminate: PropTypes.func.isRequired,
@@ -238,6 +265,7 @@ ContractsComponent.propTypes = {
 };
 
 ContractsComponent.defaultProps = {
+  isPosting: false,
   validationMessage: null,
 };
 

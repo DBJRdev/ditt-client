@@ -290,6 +290,7 @@
       "downloadICal": "Download iCalendar",
       "editContract": "Edit contract",
       "enableICal": "Enable iCalendar",
+      "makePermanent": "Make permanent",
       "removeContract": "Remove contract",
       "resetApiToken": "Reset API token",
       "renewApiToken": "Renew API token",

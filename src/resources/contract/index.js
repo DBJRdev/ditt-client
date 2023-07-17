@@ -1,5 +1,6 @@
 export {
   fetchContractList,
+  makeContractPermanent,
   terminateContract,
 } from './actions';
 

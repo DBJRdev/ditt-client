@@ -21,8 +21,10 @@ describe('rendering', () => {
       history: {
         push: () => {},
       },
+      isContractPosting: false,
       isFetching: false,
       isPosting: false,
+      makeContractPermanent: () => {},
       match: {
         params: {
           id: '1',

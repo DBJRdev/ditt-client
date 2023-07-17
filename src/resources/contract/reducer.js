@@ -33,6 +33,24 @@ export default (state, action) => {
       .setIn(['contractList', 'isFetchingFailure'], true);
   }
 
+  if (type === actionTypes.MAKE_CONTRACT_PERMANENT_REQUEST) {
+    return state
+      .setIn(['contract', 'isPosting'], true)
+      .setIn(['contract', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.MAKE_CONTRACT_PERMANENT_SUCCESS) {
+    return state
+      .setIn(['contract', 'isPosting'], false)
+      .setIn(['contract', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.MAKE_CONTRACT_PERMANENT_FAILURE) {
+    return state
+      .setIn(['contract', 'isPosting'], false)
+      .setIn(['contract', 'isPostingFailure'], true);
+  }
+
   if (type === actionTypes.TERMINATE_CONTRACT_REQUEST) {
     return state
       .setIn(['contract', 'isPosting'], true)

@@ -130,7 +130,6 @@ export const validateContractTermination = (t, dataAttr, contract, workMonths) =
   }
 
   try {
-    console.log(data.dateTime);
     dateTime = toMomentDateTimeFromStandardDayMonthYear(data.dateTime);
   } catch (ex) {
     errors.elements.dateTime = t('general:validation.invalidDate');

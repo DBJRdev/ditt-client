@@ -131,6 +131,7 @@ exports[`rendering renders correctly 1`] = `
         onContractRemove={[Function]}
         onContractSave={[Function]}
         onContractTerminate={[Function]}
+        onMakeContractPermanent={[Function]}
         workMonths={Array []}
       />
     </div>

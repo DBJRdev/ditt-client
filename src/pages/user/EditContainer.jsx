@@ -29,6 +29,8 @@ import {
 } from '../../resources/workMonth';
 import {
   fetchContractList,
+  makeContractPermanent,
+  selectContractMeta,
   selectContractList,
   selectContractListMeta,
   terminateContract,
@@ -37,6 +39,7 @@ import EditComponent from './EditComponent';
 
 const mapStateToProps = (state) => {
   const configMeta = selectConfigMeta(state);
+  const contractMeta = selectContractMeta(state);
   const contractListMeta = selectContractListMeta(state);
   const editUserMeta = selectEditUserMeta(state);
   const deleteUserMeta = selectDeleteUserMeta(state);
@@ -48,6 +51,7 @@ const mapStateToProps = (state) => {
   return ({
     config: selectConfig(state),
     contracts: selectContractList(state),
+    isContractPosting: contractMeta.isPosting,
     isFetching: configMeta.isFetching
       || contractListMeta.isFetching
       || userMeta.isFetching
@@ -72,6 +76,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchUserListPartial: () => dispatch(fetchUserListPartial()),
   fetchVacationList: (id) => dispatch(fetchVacationList(id)),
   fetchWorkMonthList: (id) => dispatch(fetchWorkMonthList(id)),
+  makeContractPermanent: (id) => dispatch(makeContractPermanent(id)),
   terminateContract: (id, data) => dispatch(terminateContract(id, data)),
 });
 

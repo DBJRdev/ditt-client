@@ -293,6 +293,7 @@ class EditComponent extends React.Component {
 
   render() {
     const {
+      makeContractPermanent,
       t,
       terminateContract,
     } = this.props;
@@ -494,6 +495,7 @@ class EditComponent extends React.Component {
           <div className={styles.editPageWideWrapper}>
             <Contracts
               contracts={this.state.formData.contracts}
+              isPosting={this.props.isContractPosting}
               onContractAdd={(contract) => {
                 this.setState((prevState) => ({
                   formData: {
@@ -504,6 +506,15 @@ class EditComponent extends React.Component {
                     ],
                   },
                 }));
+              }}
+              onContractMakePermanent={async (id) => {
+                const response = await makeContractPermanent(id);
+
+                if (response.type === TERMINATE_CONTRACT_SUCCESS) {
+                  this.props.fetchContractList(this.props.match.params.id);
+                }
+
+                return response;
               }}
               onContractRemove={(contract) => {
                 this.setState((prevState) => ({
@@ -582,8 +593,10 @@ EditComponent.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
+  isContractPosting: PropTypes.bool.isRequired,
   isFetching: PropTypes.bool.isRequired,
   isPosting: PropTypes.bool.isRequired,
+  makeContractPermanent: PropTypes.func.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string.isRequired,

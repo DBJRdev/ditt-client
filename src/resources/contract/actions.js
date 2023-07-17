@@ -16,6 +16,19 @@ export const fetchContractList = (id) => (dispatch) => dispatch({
   },
 });
 
+export const makeContractPermanent = (id) => (dispatch) => dispatch({
+  [RSAA]: {
+    endpoint: `${API_URL}/contracts/${id}/make_permanent`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.TERMINATE_CONTRACT_REQUEST,
+      types.TERMINATE_CONTRACT_SUCCESS,
+      types.TERMINATE_CONTRACT_FAILURE,
+    ],
+  },
+});
+
 export const terminateContract = (id, data) => (dispatch) => dispatch({
   [RSAA]: {
     body: JSON.stringify({

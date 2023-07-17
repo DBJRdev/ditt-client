@@ -290,6 +290,7 @@
       "downloadICal": "iCalendar herunterladen",
       "editContract": "Eintrag bearbeiten",
       "enableICal": "iCalendar aktivieren",
+      "makePermanent": "Dauerhaft machen",
       "removeContract": "Eintrag entfernen",
       "resetApiToken": "Lösche API-Token",
       "renewApiToken": "Erneuere API-Token",

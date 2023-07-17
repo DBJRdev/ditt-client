@@ -407,6 +407,7 @@ class AddComponent extends React.Component {
               }}
               onContractTerminate={() => {
               }}
+              onMakeContractPermanent={() => {}}
               validationMessage={this.state.formValidity.elements.contracts}
               workMonths={[]}
             />

@@ -14,6 +14,7 @@ describe('rendering', () => {
       history: {
         push: () => {},
       },
+      isContractPosting: false,
       isFetching: false,
       isPosting: false,
       userListPartial: Immutable.List([]),
