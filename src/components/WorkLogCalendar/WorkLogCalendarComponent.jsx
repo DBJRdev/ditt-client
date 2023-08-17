@@ -285,13 +285,13 @@ class WorkLogCalendarComponent extends React.Component {
     this.setState({ showSupervisorWorkTimeCorrectionModal: false });
   }
 
-  exportData() {
+  exportData(daysOfSelectedMonth) {
     const {
       t,
       workMonth,
     } = this.props;
 
-    exportData(workMonth, t);
+    exportData(workMonth, daysOfSelectedMonth, t);
   }
 
   countWaitingForApprovalWorkLogs() {
@@ -393,7 +393,7 @@ class WorkLogCalendarComponent extends React.Component {
               supervisorView={supervisorView}
             />
             <WorkLogCalendarUpperToolbar
-              exportData={this.exportData}
+              exportData={() => this.exportData(daysOfSelectedMonth)}
               openSupervisorWorkTimeCorrectionModal={this.openSupervisorWorkTimeCorrectionModal}
               supervisorView={supervisorView}
               user={user}
