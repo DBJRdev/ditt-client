@@ -12,12 +12,20 @@ import {
   SelectField,
   TextField,
 } from '@react-ui-org/react-ui';
-import { LoadingIcon } from '../../components/Icon';
+import moment from 'moment-timezone';
+import {
+  Icon,
+  LoadingIcon,
+} from '../../components/Icon';
 import {
   DELETE_USER_SUCCESS,
   DELETE_USER_FAILURE,
   EDIT_USER_SUCCESS,
   EDIT_USER_FAILURE,
+  ARCHIVE_USER_FAILURE,
+  ARCHIVE_USER_SUCCESS,
+  UNARCHIVE_USER_SUCCESS,
+  UNARCHIVE_USER_FAILURE,
 } from '../../resources/user/actionTypes';
 import { validateUser } from '../../services/validatorService';
 import Layout from '../../components/Layout';
@@ -28,6 +36,7 @@ import {
   STATUS_WAITING_FOR_APPROVAL,
 } from '../../resources/workMonth';
 import { TERMINATE_CONTRACT_SUCCESS } from '../../resources/contract/actionTypes';
+import { localizedMoment } from '../../services/dateTimeService';
 import { Contracts } from './_components/Contracts';
 import styles from './user.scss';
 
@@ -62,17 +71,27 @@ class EditComponent extends React.Component {
         },
         isValid: false,
       },
+      showArchiveUserDialog: false,
       showDeleteUserDialog: false,
+      showUnarchiveUserDialog: false,
     };
 
     this.onChange = this.onChange.bind(this);
     this.onChangeVacationDays = this.onChangeVacationDays.bind(this);
     this.onChangeVacationDaysCorrection = this.onChangeVacationDaysCorrection.bind(this);
+    this.onArchive = this.onArchive.bind(this);
     this.onDelete = this.onDelete.bind(this);
     this.onSave = this.onSave.bind(this);
+    this.onUnarchive = this.onUnarchive.bind(this);
+
+    this.openArchiveUserDialog = this.openArchiveUserDialog.bind(this);
+    this.closeArchiveUserDialog = this.closeArchiveUserDialog.bind(this);
 
     this.openDeleteUserDialog = this.openDeleteUserDialog.bind(this);
     this.closeDeleteUserDialog = this.closeDeleteUserDialog.bind(this);
+
+    this.openUnarchiveUserDialog = this.openUnarchiveUserDialog.bind(this);
+    this.closeUnarchiveUserDialog = this.closeUnarchiveUserDialog.bind(this);
 
     this.formErrorStyle = {
       color: '#a32100',
@@ -193,6 +212,36 @@ class EditComponent extends React.Component {
     }
   }
 
+  onArchive() {
+    const { formValidity } = this.state;
+
+    this.props.archiveUser(this.props.match.params.id)
+      .then((response) => {
+        if (response.type === ARCHIVE_USER_SUCCESS) {
+          this.closeArchiveUserDialog();
+        } else if (response.type === ARCHIVE_USER_FAILURE) {
+          formValidity.elements.form = this.props.t('user:validation.cannotArchiveUser');
+
+          this.setState({ formValidity });
+        }
+      });
+  }
+
+  onUnarchive() {
+    const { formValidity } = this.state;
+
+    this.props.unarchiveUser(this.props.match.params.id)
+      .then((response) => {
+        if (response.type === UNARCHIVE_USER_SUCCESS) {
+          this.closeUnarchiveUserDialog();
+        } else if (response.type === UNARCHIVE_USER_FAILURE) {
+          formValidity.elements.form = this.props.t('user:validation.cannotUnarchiveUser');
+
+          this.setState({ formValidity });
+        }
+      });
+  }
+
   onDelete() {
     const { formValidity } = this.state;
 
@@ -263,6 +312,14 @@ class EditComponent extends React.Component {
     });
   }
 
+  openArchiveUserDialog() {
+    this.setState({ showArchiveUserDialog: true });
+  }
+
+  closeArchiveUserDialog() {
+    this.setState({ showArchiveUserDialog: false });
+  }
+
   openDeleteUserDialog() {
     this.setState({ showDeleteUserDialog: true });
   }
@@ -271,7 +328,35 @@ class EditComponent extends React.Component {
     this.setState({ showDeleteUserDialog: false });
   }
 
-  renderDeleteWorkLogModal() {
+  openUnarchiveUserDialog() {
+    this.setState({ showUnarchiveUserDialog: true });
+  }
+
+  closeUnarchiveUserDialog() {
+    this.setState({ showUnarchiveUserDialog: false });
+  }
+
+  renderArchiveUserModal() {
+    const { t } = this.props;
+
+    return (
+      <Modal
+        actions={[
+          {
+            feedbackIcon: this.props.isPosting ? <LoadingIcon /> : null,
+            label: t('general:action.archive'),
+            onClick: this.onArchive,
+          },
+        ]}
+        onClose={this.closeArchiveUserDialog}
+        title={t('user:modal.archive.title')}
+      >
+        {t('user:modal.archive.description')}
+      </Modal>
+    );
+  }
+
+  renderDeleteUserModal() {
     const { t } = this.props;
 
     return (
@@ -291,8 +376,29 @@ class EditComponent extends React.Component {
     );
   }
 
+  renderUnarchiveUserModal() {
+    const { t } = this.props;
+
+    return (
+      <Modal
+        actions={[
+          {
+            feedbackIcon: this.props.isPosting ? <LoadingIcon /> : null,
+            label: t('general:action.unarchive'),
+            onClick: this.onUnarchive,
+          },
+        ]}
+        onClose={this.closeUnarchiveUserDialog}
+        title={t('user:modal.unarchive.title')}
+      >
+        {t('user:modal.unarchive.description')}
+      </Modal>
+    );
+  }
+
   render() {
     const {
+      contracts,
       makeContractPermanent,
       t,
       terminateContract,
@@ -320,6 +426,24 @@ class EditComponent extends React.Component {
       value: null,
     });
 
+    const isArchived = this.props.user?.get('isArchived') ?? false;
+    const isArchivationDisabled = contracts.toJS().filter((contract) => {
+      const now = localizedMoment();
+
+      if (
+        contract.startDateTime.isSameOrBefore(now, 'day')
+        && (contract.endDateTime == null || contract.endDateTime.isSameOrAfter(now, 'day'))
+      ) {
+        return true;
+      }
+
+      if (contract.startDateTime.isSameOrAfter(now, 'day')) {
+        return true;
+      }
+
+      return false;
+    }).length > 0;
+
     return (
       <Layout loading={this.props.isFetching} title={t('user:title.editUser')}>
         <div className={styles.actions}>
@@ -328,12 +452,36 @@ class EditComponent extends React.Component {
             label={t('general:action.save')}
             onClick={this.onSave}
           />
-          <Button
-            color="danger"
-            feedbackIcon={this.props.isPosting ? <LoadingIcon /> : null}
-            label={t('user:action.deleteUser')}
-            onClick={this.openDeleteUserDialog}
-          />
+          {
+            isArchived
+              ? (
+                <>
+                  <Button
+                    beforeLabel={<Icon icon="visibility" />}
+                    color="warning"
+                    feedbackIcon={this.props.isPosting ? <LoadingIcon /> : null}
+                    label={t('user:action.unarchiveUser')}
+                    onClick={this.openUnarchiveUserDialog}
+                  />
+                  <Button
+                    beforeLabel={<Icon icon="delete" />}
+                    color="danger"
+                    feedbackIcon={this.props.isPosting ? <LoadingIcon /> : null}
+                    label={t('user:action.deleteUser')}
+                    onClick={this.openDeleteUserDialog}
+                  />
+                </>
+              ) : (
+                <Button
+                  beforeLabel={<Icon icon="visibility_off" />}
+                  color="warning"
+                  disabled={isArchivationDisabled}
+                  feedbackIcon={this.props.isPosting ? <LoadingIcon /> : null}
+                  label={t('user:action.archiveUser')}
+                  onClick={this.openArchiveUserDialog}
+                />
+              )
+          }
         </div>
         <form>
           <div className={styles.editPageNarrowWrapper}>
@@ -570,7 +718,9 @@ class EditComponent extends React.Component {
             />
           </div>
         </form>
-        {this.state.showDeleteUserDialog ? this.renderDeleteWorkLogModal() : null}
+        {this.state.showArchiveUserDialog ? this.renderArchiveUserModal() : null}
+        {this.state.showDeleteUserDialog ? this.renderDeleteUserModal() : null}
+        {this.state.showUnarchiveUserDialog ? this.renderUnarchiveUserModal() : null}
       </Layout>
     );
   }
@@ -584,6 +734,7 @@ EditComponent.defaultProps = {
 };
 
 EditComponent.propTypes = {
+  archiveUser: PropTypes.func.isRequired,
   config: ImmutablePropTypes.mapContains({}),
   contracts: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
     endDateTime: PropTypes.shape(),
@@ -621,6 +772,7 @@ EditComponent.propTypes = {
   t: PropTypes.func.isRequired,
   terminateContract: PropTypes.func.isRequired,
   token: PropTypes.string.isRequired,
+  unarchiveUser: PropTypes.func.isRequired,
   user: ImmutablePropTypes.mapContains({
     email: PropTypes.string.isRequired,
     firstName: PropTypes.string.isRequired,

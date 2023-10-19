@@ -38,6 +38,19 @@ export const addUser = (data) => (dispatch) => dispatch({
   },
 });
 
+export const archiveUser = (id) => (dispatch) => dispatch({
+  [RSAA]: {
+    endpoint: `${API_URL}/users/${id}/archive`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.ARCHIVE_USER_REQUEST,
+      types.ARCHIVE_USER_SUCCESS,
+      types.ARCHIVE_USER_FAILURE,
+    ],
+  },
+});
+
 export const deleteUser = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/users/${id}`,
@@ -131,32 +144,39 @@ export const fetchUserByApiToken = (apiToken) => (dispatch) => dispatch({
   },
 });
 
-export const fetchUserList = () => (dispatch) => dispatch({
-  [RSAA]: {
-    endpoint: `${API_URL}/users`,
-    headers: { 'Content-Type': 'application/json' },
-    method: 'GET',
-    types: [
-      types.FETCH_USER_LIST_REQUEST,
-      types.FETCH_USER_LIST_SUCCESS,
-      types.FETCH_USER_LIST_FAILURE,
-    ],
-  },
-});
+export const fetchUserList = (isArchived = null) => (dispatch) => {
+  const filter = isArchived === null ? '' : `?isArchived=${isArchived}`;
 
-export const fetchUserListPartial = () => (dispatch) => dispatch({
-  [RSAA]: {
-    endpoint: `${API_URL}/users?properties[]=id&properties[]=firstName&properties[]=lastName&properties[supervisor][]=firstName&properties[supervisor][]=lastName`,
-    headers: { 'Content-Type': 'application/json' },
-    method: 'GET',
-    types: [
-      types.FETCH_USER_LIST_PARTIAL_REQUEST,
-      types.FETCH_USER_LIST_PARTIAL_SUCCESS,
-      types.FETCH_USER_LIST_PARTIAL_FAILURE,
-    ],
-  },
-});
+  return dispatch({
+    [RSAA]: {
+      endpoint: `${API_URL}/users${filter}`,
+      headers: { 'Content-Type': 'application/json' },
+      method: 'GET',
+      types: [
+        types.FETCH_USER_LIST_REQUEST,
+        types.FETCH_USER_LIST_SUCCESS,
+        types.FETCH_USER_LIST_FAILURE,
+      ],
+    },
+  });
+};
 
+export const fetchUserListPartial = (isArchived = null) => (dispatch) => {
+  const filter = isArchived === null ? '' : `?sArchived=${isArchived}&`;
+
+  return dispatch({
+    [RSAA]: {
+      endpoint: `${API_URL}/users?${filter}properties[]=id&properties[]=firstName&properties[]=lastName&properties[supervisor][]=firstName&properties[supervisor][]=lastName`,
+      headers: { 'Content-Type': 'application/json' },
+      method: 'GET',
+      types: [
+        types.FETCH_USER_LIST_PARTIAL_REQUEST,
+        types.FETCH_USER_LIST_PARTIAL_SUCCESS,
+        types.FETCH_USER_LIST_PARTIAL_FAILURE,
+      ],
+    },
+  });
+};
 export const renewUserApiToken = (id) => (dispatch) => dispatch({
   [RSAA]: {
     endpoint: `${API_URL}/users/${id}/api_token/renew`,
@@ -205,6 +225,19 @@ export const resetUserICalToken = (id) => (dispatch) => dispatch({
       types.RESET_USER_ICAL_TOKEN_REQUEST,
       types.RESET_USER_ICAL_TOKEN_SUCCESS,
       types.RESET_USER_ICAL_TOKEN_FAILURE,
+    ],
+  },
+});
+
+export const unarchiveUser = (id) => (dispatch) => dispatch({
+  [RSAA]: {
+    endpoint: `${API_URL}/users/${id}/unarchive`,
+    headers: { 'Content-Type': 'application/json' },
+    method: 'PUT',
+    types: [
+      types.UNARCHIVE_USER_REQUEST,
+      types.UNARCHIVE_USER_SUCCESS,
+      types.UNARCHIVE_USER_FAILURE,
     ],
   },
 });

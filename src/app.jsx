@@ -34,6 +34,7 @@ import {
 } from './resources/user';
 import {
   AddContainer as AddUserPage,
+  ArchiveListContainer as ArchiveUserPage,
   EditContainer as EditUserPage,
   ListContainer as UserListPage,
   ProfileContainer as UserProfilePage,
@@ -111,6 +112,12 @@ export default (store, history) => {
               component={UserListPage}
               exact
               path={routes.userList}
+              roles={[ROLE_ADMIN, ROLE_SUPER_ADMIN]}
+            />
+            <AuthorizedRoute
+              component={ArchiveUserPage}
+              exact
+              path={routes.userArchiveList}
               roles={[ROLE_ADMIN, ROLE_SUPER_ADMIN]}
             />
             <AuthorizedRoute

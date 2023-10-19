@@ -4,7 +4,7 @@ import * as types from './actionTypes';
 
 export const fetchChangesAndAbsenceRegistrations = (data) => (dispatch) => dispatch({
   [RSAA]: {
-    endpoint: `${API_URL}/hr/changes_and_absence_registrations?dateFrom=${data.dateFrom}&dateTo=${data.dateTo}`,
+    endpoint: `${API_URL}/hr/changes_and_absence_registrations?dateFrom=${data.dateFrom}&dateTo=${data.dateTo}&includeArchived=${data.includeArchived}`,
     headers: { 'Content-Type': 'application/json' },
     method: 'GET',
     types: [
@@ -15,9 +15,9 @@ export const fetchChangesAndAbsenceRegistrations = (data) => (dispatch) => dispa
   },
 });
 
-export const fetchYearOverview = () => (dispatch) => dispatch({
+export const fetchYearOverview = (data) => (dispatch) => dispatch({
   [RSAA]: {
-    endpoint: `${API_URL}/hr/year_overview`,
+    endpoint: `${API_URL}/hr/year_overview?includeArchived=${data.includeArchived}`,
     headers: { 'Content-Type': 'application/json' },
     method: 'GET',
     types: [

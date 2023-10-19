@@ -381,6 +381,7 @@ class AddComponent extends React.Component {
                   },
                 }));
               }}
+              onContractMakePermanent={() => {}}
               onContractRemove={(contract) => {
                 this.setState((prevState) => ({
                   formData: {
@@ -407,7 +408,6 @@ class AddComponent extends React.Component {
               }}
               onContractTerminate={() => {
               }}
-              onMakeContractPermanent={() => {}}
               validationMessage={this.state.formValidity.elements.contracts}
               workMonths={[]}
             />

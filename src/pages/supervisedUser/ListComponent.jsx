@@ -84,8 +84,9 @@ class ListComponent extends React.Component {
               columns={[
                 {
                   format: (row) => (
-                    <span className={lighterRow(row.user)}>
+                    <span className={`${lighterRow(row)} ${styles.textWithIcon}`}>
                       {`${row.user.lastName} ${row.user.firstName}`}
+                      {row.user.isArchived && <Icon icon="visibility_off" />}
                     </span>
                   ),
                   isSortable: true,

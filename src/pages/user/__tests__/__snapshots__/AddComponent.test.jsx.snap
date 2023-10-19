@@ -128,10 +128,10 @@ exports[`rendering renders correctly 1`] = `
       <ContractsComponent
         contracts={Array []}
         onContractAdd={[Function]}
+        onContractMakePermanent={[Function]}
         onContractRemove={[Function]}
         onContractSave={[Function]}
         onContractTerminate={[Function]}
-        onMakeContractPermanent={[Function]}
         workMonths={Array []}
       />
     </div>

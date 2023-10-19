@@ -1,5 +1,6 @@
 export {
   addUser,
+  archiveUser,
   deleteUser,
   editUser,
   fetchSupervisedUserList,
@@ -11,6 +12,7 @@ export {
   renewUserICalToken,
   resetUserApiToken,
   resetUserICalToken,
+  unarchiveUser,
 } from './actions';
 
 export {
@@ -22,11 +24,13 @@ export {
 export {
   selectAddUser,
   selectAddUserMeta,
+  selectArchiveUserMeta,
   selectDeleteUserMeta,
   selectEditUser,
   selectEditUserMeta,
   selectSupervisedUserList,
   selectSupervisedUserListMeta,
+  selectUnarchiveUserMeta,
   selectUser,
   selectUserMeta,
   selectUserList,

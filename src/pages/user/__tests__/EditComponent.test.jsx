@@ -8,6 +8,7 @@ import token from '../../../../tests/mocks/token';
 describe('rendering', () => {
   it('renders correctly', () => {
     const props = {
+      archiveUser: () => {},
       config: configMock,
       contracts: Immutable.List([]),
       deleteUser: () => {},
@@ -32,6 +33,7 @@ describe('rendering', () => {
       },
       terminateContract: () => {},
       token,
+      unarchiveUser: () => {},
       user: Immutable.Map({
         email: 'employee@example.com',
         firstName: 'First',

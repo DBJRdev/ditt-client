@@ -888,8 +888,9 @@ class SpecialApprovalListComponent extends React.Component {
               columns={[
                 {
                   format: (row) => (
-                    <span className={lighterRow(row)}>
+                    <span className={`${lighterRow(row)} ${styles.textWithIcon}`}>
                       {`${row.workMonth.user.firstName} ${row.workMonth.user.lastName}`}
+                      {row.workMonth.user.isArchived && <Icon icon="visibility_off" />}
                     </span>
                   ),
                   isSortable: true,

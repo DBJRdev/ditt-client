@@ -11,3 +11,9 @@
   padding-top: 5px;
   color: var(--rui-color-warning);
 }
+
+.textWithIcon {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+}

@@ -14,9 +14,16 @@ exports[`rendering renders correctly 1`] = `
       onClick={[Function]}
     />
     <ForwardRef(withForwardedRef(WithProviderContextComponent))
-      color="danger"
+      beforeLabel={
+        <Icon
+          icon="visibility_off"
+          size="medium"
+        />
+      }
+      color="warning"
+      disabled={false}
       feedbackIcon={null}
-      label="user:action.deleteUser"
+      label="user:action.archiveUser"
       onClick={[Function]}
     />
   </div>

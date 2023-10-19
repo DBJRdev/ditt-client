@@ -15,5 +15,6 @@ export default {
   supervisedUserList: '/supervised-users',
   supervisedUserWorkLog: '/supervised-users/:id/work-log',
   supervisedUserWorkLogWithDate: '/supervised-users/:id/work-log/:year/:month',
+  userArchiveList: '/users/archive',
   userList: '/users',
 };

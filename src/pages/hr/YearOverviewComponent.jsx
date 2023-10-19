@@ -5,8 +5,13 @@ import React, {
   useState,
 } from 'react';
 import {
+  Button,
+  CheckboxField,
   ScrollView,
   Table,
+  Toolbar,
+  ToolbarGroup,
+  ToolbarItem,
 } from '@react-ui-org/react-ui';
 import { withTranslation } from 'react-i18next';
 import {
@@ -17,14 +22,22 @@ import {
 import { toDayMonthYearFormat } from '../../services/dateTimeService';
 import Layout from '../../components/Layout';
 import { collapseWorkLogs } from '../../services/workLogService';
-import { Icon } from '../../components/Icon';
+import {
+  Icon,
+  LoadingIcon,
+} from '../../components/Icon';
 import { orderTableRows } from './_helpers/orderTableRows';
+import styles from './styles.scss';
+
+const lighterRow = (row) => (row.user.isArchived ? styles.lighterRow : '');
 
 const OverviewComponent = (props) => {
   const {
     fetchConfig,
     fetchYearOverview,
   } = props;
+
+  const [includeArchived, setIncludeArchived] = useState(false);
 
   const [tableOrder, tableOrderSet] = useState({
     column: 'lastName',
@@ -33,7 +46,7 @@ const OverviewComponent = (props) => {
 
   useEffect(() => {
     fetchConfig();
-    fetchYearOverview();
+    fetchYearOverview({});
   }, [fetchConfig, fetchYearOverview]);
 
   const sickDayFormat = (variant) => (rowData) => {
@@ -66,40 +79,96 @@ const OverviewComponent = (props) => {
   };
 
   return (
-    <Layout loading={props.isFetching} title={props.t('hr:title.yearOverview')}>
+    <Layout loading={props.isFetching}>
+      <div className="mb-5">
+        <Toolbar
+          align="baseline"
+          justify="space-between"
+        >
+          <ToolbarItem>
+            <h2 className={styles.bodyTitle}>
+              {props.t('hr:title.yearOverview')}
+            </h2>
+          </ToolbarItem>
+          <ToolbarGroup>
+            <ToolbarItem>
+              <CheckboxField
+                checked={includeArchived}
+                label="Include archived users"
+                onChange={() => {
+                  setIncludeArchived((v) => !v);
+                }}
+              />
+            </ToolbarItem>
+            <ToolbarItem>
+              <Button
+                feedbackIcon={props.isFetching && <LoadingIcon />}
+                label={props.t('hr:action.refresh')}
+                onClick={() => {
+                  fetchYearOverview({ includeArchived });
+                }}
+              />
+            </ToolbarItem>
+          </ToolbarGroup>
+        </Toolbar>
+      </div>
       <ScrollView direction="horizontal">
         <Table
           columns={[
             {
-              format: (rowData) => rowData.user.employeeId,
+              format: (rowData) => (
+                <span className={lighterRow(rowData)}>
+                  {rowData.user.employeeId}
+                </span>
+              ),
               isSortable: true,
               label: props.t('hr:element.employeeId'),
               name: 'employeeId',
             },
             {
-              format: (rowData) => `${rowData.user.lastName} ${rowData.user.firstName}`,
+              format: (rowData) => (
+                <span className={lighterRow(rowData)}>
+                  {`${rowData.user.lastName} ${rowData.user.firstName}`}
+                </span>
+              ),
               isSortable: true,
               label: props.t('hr:element.name'),
               name: 'name',
             },
             {
-              format: sickDayFormat(VARIANT_SICK_CHILD),
+              format: (rowData) => (
+                <span className={lighterRow(rowData)}>
+                  {sickDayFormat(VARIANT_SICK_CHILD)(rowData)}
+                </span>
+              ),
               label: props.t('hr:element.sickDaySickChild'),
               name: 'sickDaySickChild',
             },
             {
-              format: sickDayFormat(VARIANT_WITH_NOTE),
+              format: (rowData) => (
+                <span className={lighterRow(rowData)}>
+                  {sickDayFormat(VARIANT_WITH_NOTE)(rowData)}
+                </span>
+              ),
               label: props.t('hr:element.sickDayWithNote'),
               name: 'sickDayWithNote',
             },
             {
-              format: sickDayFormat(VARIANT_WITHOUT_NOTE),
+              format: (rowData) => (
+                <span className={lighterRow(rowData)}>
+                  {sickDayFormat(VARIANT_WITHOUT_NOTE)(rowData)}
+                </span>
+              ),
               label: props.t('hr:element.sickDayWithoutNote'),
               name: 'sickDayWithoutNote',
             },
             {
-              format: (rowData) => rowData.sickDays
-                .filter((sickDay) => sickDay.variant === VARIANT_SICK_CHILD).length,
+              format: (rowData) => (
+                <span className={lighterRow(rowData)}>
+                  {rowData.sickDays
+                    .filter((sickDay) => sickDay.variant === VARIANT_SICK_CHILD).length}
+                </span>
+              ),
               label: (
                 <>
                   {props.t('hr:element.sickChildTotal')}
@@ -110,8 +179,12 @@ const OverviewComponent = (props) => {
               name: 'totalSickChild',
             },
             {
-              format: (rowData) => rowData.sickDays
-                .filter((sickDay) => sickDay.variant !== VARIANT_SICK_CHILD).length,
+              format: (rowData) => (
+                <span className={lighterRow(rowData)}>
+                  {rowData.sickDays
+                    .filter((sickDay) => sickDay.variant !== VARIANT_SICK_CHILD).length}
+                </span>
+              ),
               label: (
                 <>
                   {props.t('hr:element.sickDayTotal')}

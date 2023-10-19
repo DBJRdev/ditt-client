@@ -26,7 +26,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
   fetchConfig: () => dispatch(fetchConfig()),
-  fetchYearOverview: () => dispatch(fetchYearOverview()),
+  fetchYearOverview: (data) => dispatch(fetchYearOverview(data)),
 });
 
 export default connect(

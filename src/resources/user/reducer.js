@@ -100,6 +100,36 @@ export default (state, action) => {
       .setIn(['addUser', 'isPostingFailure'], true);
   }
 
+  if (type === actionTypes.ARCHIVE_USER_REQUEST) {
+    return state
+      .setIn(['archiveUser', 'isPosting'], true)
+      .setIn(['archiveUser', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.ARCHIVE_USER_SUCCESS) {
+    let userList = state.getIn(['userList', 'data']);
+    userList = userList.map((user) => {
+      if (user.get('id') !== meta?.id) {
+        return user;
+      }
+
+      return Immutable.fromJS(filterUser(payload));
+    });
+
+    return state
+      .setIn(['user', 'data'], Immutable.fromJS(filterUser(payload)))
+      .setIn(['userList', 'data'], userList)
+      .setIn(['editUser', 'data'], Immutable.fromJS(filterUser(payload)))
+      .setIn(['archiveUser', 'isPosting'], false)
+      .setIn(['archiveUser', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.ARCHIVE_USER_FAILURE) {
+    return state
+      .setIn(['archiveUser', 'isPosting'], false)
+      .setIn(['archiveUser', 'isPostingFailure'], true);
+  }
+
   if (type === actionTypes.DELETE_USER_REQUEST) {
     return state
       .setIn(['deleteUser', 'isPosting'], true)
@@ -109,7 +139,7 @@ export default (state, action) => {
   if (type === actionTypes.DELETE_USER_SUCCESS) {
     let userList = state.getIn(['userList', 'data']);
     userList = userList.filter((user) => (
-      user.get('id') !== meta.id
+      user.get('id') !== meta?.id
     ));
 
     return state
@@ -313,6 +343,36 @@ export default (state, action) => {
       .setIn(['user', 'data'], null)
       .setIn(['user', 'isPosting'], false)
       .setIn(['user', 'isPostingFailure'], true);
+  }
+
+  if (type === actionTypes.UNARCHIVE_USER_REQUEST) {
+    return state
+      .setIn(['unarchiveUser', 'isPosting'], true)
+      .setIn(['unarchiveUser', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.UNARCHIVE_USER_SUCCESS) {
+    let userList = state.getIn(['userList', 'data']);
+    userList = userList.map((user) => {
+      if (user.get('id') !== meta?.id) {
+        return user;
+      }
+
+      return Immutable.fromJS(filterUser(payload));
+    });
+
+    return state
+      .setIn(['user', 'data'], Immutable.fromJS(filterUser(payload)))
+      .setIn(['userList', 'data'], userList)
+      .setIn(['editUser', 'data'], Immutable.fromJS(filterUser(payload)))
+      .setIn(['unarchiveUser', 'isPosting'], false)
+      .setIn(['unarchiveUser', 'isPostingFailure'], false);
+  }
+
+  if (type === actionTypes.UNARCHIVE_USER_FAILURE) {
+    return state
+      .setIn(['unarchiveUser', 'isPosting'], false)
+      .setIn(['unarchiveUser', 'isPostingFailure'], true);
   }
 
   return state;

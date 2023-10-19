@@ -6,6 +6,7 @@ import React, {
 } from 'react';
 import {
   Button,
+  CheckboxField,
   ScrollView,
   Table,
   TextField,
@@ -36,11 +37,14 @@ import { getWorkHoursString } from '../../services/workHoursService';
 import styles from './styles.scss';
 import { orderTableRows } from './_helpers/orderTableRows';
 
+const lighterRow = (row) => (row.user.isArchived ? styles.lighterRow : '');
+
 const ChangesAndAbsenceRegistrationComponent = (props) => {
   const { fetchConfig } = props;
 
   const [dateFrom, setDateFrom] = useState(toDayMonthYearFormat(localizedMoment().subtract(1, 'month')));
   const [dateTo, setDateTo] = useState(toDayMonthYearFormat(localizedMoment()));
+  const [includeArchived, setIncludeArchived] = useState(false);
 
   const [dateFromError, setDateFromError] = useState(null);
   const [dateToError, setDateToError] = useState(null);
@@ -66,7 +70,7 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
               {props.t('hr:title.changesAndAbsenceRegistration')}
             </h2>
           </ToolbarItem>
-          <ToolbarGroup dense>
+          <ToolbarGroup>
             <ToolbarGroup dense>
               <ToolbarGroup align="middle" dense>
                 <ToolbarItem>
@@ -109,6 +113,15 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
               </ToolbarGroup>
             </ToolbarGroup>
             <ToolbarItem>
+              <CheckboxField
+                checked={includeArchived}
+                label="Include archived users"
+                onChange={() => {
+                  setIncludeArchived((v) => !v);
+                }}
+              />
+            </ToolbarItem>
+            <ToolbarItem>
               <Button
                 feedbackIcon={props.isFetching && <LoadingIcon />}
                 label={props.t('hr:action.refresh')}
@@ -143,6 +156,7 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
                     props.fetchChangesAndAbsenceRegistrations({
                       dateFrom,
                       dateTo,
+                      includeArchived,
                     });
                   }
                 }}
@@ -155,13 +169,21 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
         <Table
           columns={[
             {
-              format: (rowData) => rowData.user.employeeId,
+              format: (rowData) => (
+                <span className={lighterRow(rowData)}>
+                  {rowData.user.employeeId}
+                </span>
+              ),
               isSortable: true,
               label: props.t('hr:element.employeeId'),
               name: 'employeeId',
             },
             {
-              format: (rowData) => `${rowData.user.lastName} ${rowData.user.firstName}`,
+              format: (rowData) => (
+                <span className={lighterRow(rowData)}>
+                  {`${rowData.user.lastName} ${rowData.user.firstName}`}
+                </span>
+              ),
               isSortable: true,
               label: props.t('hr:element.name'),
               name: 'name',
@@ -173,7 +195,7 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
                 }
 
                 return rowData.contracts.map((contract) => (
-                  <p className="mt-0 mb-0">
+                  <p className={`mt-0 mb-0 ${lighterRow(rowData)}`}>
                     {`${toDayMonthYearFormat(contract.startDateTime)} – ${contract.endDateTime ? toDayMonthYearFormat(contract.endDateTime) : props.t('hr:text.current')} (${getWorkHoursString((contract.weeklyWorkingHours / contract.weeklyWorkingDays) * 3600)})`}
                   </p>
                 ));
@@ -188,7 +210,7 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
               )
                 .map((sickDay, index, arr) => (
                   <div
-                    className={(arr.length === index + 1) ? undefined : 'mb-2'}
+                    className={(arr.length === index + 1) ? lighterRow(rowData) : `mb-2 ${lighterRow(rowData)}`}
                     key={generate()}
                   >
                     {toDayMonthYearFormat(sickDay.date)}
@@ -218,7 +240,7 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
               )
                 .map((sickDay, index, arr) => (
                   <div
-                    className={(arr.length === index + 1) ? undefined : 'mb-2'}
+                    className={(arr.length === index + 1) ? lighterRow(rowData) : `mb-2 ${lighterRow(rowData)}`}
                     key={generate()}
                   >
                     {toDayMonthYearFormat(sickDay.date)}
@@ -241,7 +263,7 @@ const ChangesAndAbsenceRegistrationComponent = (props) => {
               )
                 .map((sickDay, index, arr) => (
                   <div
-                    className={(arr.length === index + 1) ? undefined : 'mb-2'}
+                    className={(arr.length === index + 1) ? lighterRow(rowData) : `mb-2 ${lighterRow(rowData)}`}
                     key={generate()}
                   >
                     {toDayMonthYearFormat(sickDay.date)}

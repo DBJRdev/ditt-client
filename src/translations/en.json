@@ -71,6 +71,8 @@
   "general": {
     "action": {
       "approve": "Approve",
+      "archive": "Archive",
+      "unarchive": "Unarchive",
       "close": "Close",
       "edit": "Edit",
       "next": "Next",
@@ -286,6 +288,7 @@
     "action": {
       "addContract": "Add contract",
       "addUser": "Add user",
+      "archiveUser": "Archive user",
       "deleteUser": "Delete user",
       "disableICal": "Disable iCalendar",
       "downloadICal": "Download iCalendar",
@@ -298,7 +301,8 @@
       "show": "Show",
       "showApiToken": "Show API token",
       "showICalUrl": "Show iCalendar URL",
-      "terminateContract": "Terminate contract"
+      "terminateContract": "Terminate contract",
+      "unarchiveUser": "Unarchive user"
     },
     "element": {
       "apiToken": "API token",
@@ -336,9 +340,17 @@
       "workedAndRequiredHours": "Worked / Required hours"
     },
     "modal": {
+      "archive": {
+        "description": "Are you sure that you want to archive this user?",
+        "title": "Archive user"
+      },
       "delete": {
         "description": "Are you sure that you want to delete this user?",
         "title": "Delete user"
+      },
+      "unarchive": {
+        "description": "Are you sure that you want to unarchive this user?",
+        "title": "Unarchive user"
       }
     },
     "text": {
@@ -350,6 +362,8 @@
       "notificationSettings": "Notifications settings",
       "supervisorInfo": "Daily overview of the supervisor",
       "terminateContract": "Terminate contract",
+      "userArchiveDescription": "User archive page shows you a list of archived users in the system. If you want to see a list of active users, go to the <0>users</0> page.",
+      "usersDescription": "Users page shows you a list of active users in the system. If you want to see a list of archived users, go to the <0>user archive</0> page.",
       "vacationDays": "Vacation days",
       "vacationDaysLeft": "{{ remainingDays }} of {{ vacationDays }} days not scheduled yet"
     },
@@ -360,13 +374,16 @@
       "editContract": "Edit contract",
       "profile": "Profile",
       "removeContract": "Remove contract",
+      "userArchive": "User archive",
       "users": "Users"
     },
     "validation": {
       "cannotAddUser": "User cannot be added.",
+      "cannotArchiveUser": "User cannot be archived.",
       "cannotDeleteUser": "User cannot be deleted.",
       "cannotEditUser": "User cannot be edited.",
       "cannotTerminateContract": "There are some work months after entered date that are not opened.",
+      "cannotUnarchiveUser": "User cannot be unarchived.",
       "invalidContracts": "Contracts must not overlap.",
       "outOfContractRange": "Date is out of contract range.",
       "weeklyWorkingDaysInvalid": "Weekly working days must be between 0 and 5",

@@ -14,6 +14,7 @@ describe('rendering', () => {
       },
       isFetching: false,
       isFetchingPartial: false,
+      t: () => {},
       token,
       userList: Immutable.List([]),
       userListPartial: Immutable.List([]),

@@ -8,7 +8,7 @@ import {
   selectUserListPartial,
   selectUserListPartialMeta,
 } from '../../resources/user';
-import ListComponent from './ListComponent';
+import ListComponent from './ArchiveListComponent';
 
 const mapStateToProps = (state) => {
   const userListMeta = selectUserListMeta(state);

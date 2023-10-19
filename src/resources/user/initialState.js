@@ -6,6 +6,10 @@ export default Immutable.fromJS({
     isPosting: false,
     isPostingFailure: false,
   },
+  archiveUser: {
+    isPosting: false,
+    isPostingFailure: false,
+  },
   deleteUser: {
     isPosting: false,
     isPostingFailure: false,
@@ -19,6 +23,10 @@ export default Immutable.fromJS({
     data: [],
     isFetching: false,
     isFetchingFailure: false,
+  },
+  unarchiveUser: {
+    isPosting: false,
+    isPostingFailure: false,
   },
   user: {
     data: null,

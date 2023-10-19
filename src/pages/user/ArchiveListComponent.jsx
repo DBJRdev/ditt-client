@@ -5,19 +5,15 @@ import {
   Trans,
   withTranslation,
 } from 'react-i18next';
-import {
-  Button,
-} from '@react-ui-org/react-ui';
 import { Link } from 'react-router-dom';
 import routes from '../../routes';
 import Layout from '../../components/Layout';
 import { Users } from './_components/Users';
-import styles from './user.scss';
 
-class ListComponent extends React.Component {
+class ArchiveListComponent extends React.Component {
   componentDidMount() {
-    this.props.fetchUserList(false);
-    this.props.fetchUserListPartial(false);
+    this.props.fetchUserList(true);
+    this.props.fetchUserListPartial(true);
   }
 
   render() {
@@ -34,20 +30,14 @@ class ListComponent extends React.Component {
     return (
       <Layout
         loading={isFetchingPartial}
-        title={t('user:title.users')}
+        title={t('user:title.userArchive')}
       >
-        <div className={styles.actions}>
-          <Button
-            label={t('user:action.addUser')}
-            onClick={() => history.push(routes.addUser)}
-          />
-        </div>
         <div className="mb-5">
           <Trans
             components={[
-              <Link to={routes.userArchiveList} />,
+              <Link to={routes.userList} />,
             ]}
-            i18nKey="user:text.usersDescription"
+            i18nKey="user:text.userArchiveDescription"
             t={t}
           />
         </div>
@@ -63,7 +53,7 @@ class ListComponent extends React.Component {
   }
 }
 
-ListComponent.propTypes = {
+ArchiveListComponent.propTypes = {
   fetchUserList: PropTypes.func.isRequired,
   fetchUserListPartial: PropTypes.func.isRequired,
   history: PropTypes.shape({
@@ -103,4 +93,4 @@ ListComponent.propTypes = {
   })).isRequired,
 };
 
-export default withTranslation()(ListComponent);
+export default withTranslation()(ArchiveListComponent);

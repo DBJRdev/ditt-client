@@ -3,70 +3,39 @@
 exports[`rendering renders correctly 1`] = `
 <Connect(LayoutComponent)
   loading={false}
-  title="user:title.users"
 >
   <div
     className="actions"
   >
     <ForwardRef(withForwardedRef(WithProviderContextComponent))
-      label="user:action.addUser"
       onClick={[Function]}
     />
   </div>
-  <WithProviderContextComponent
-    direction="horizontal"
+  <div
+    className="mb-5"
   >
-    <WithProviderContextComponent
-      columns={
+    <Component
+      components={
         Array [
-          Object {
-            "format": [Function],
-            "isSortable": true,
-            "label": "user:element.name",
-            "name": "name",
-          },
-          Object {
-            "format": [Function],
-            "isSortable": true,
-            "label": "user:element.supervisor",
-            "name": "supervisorName",
-          },
-          Object {
-            "format": [Function],
-            "isSortable": false,
-            "label": "user:element.endMonthStatus",
-            "name": "endMonth",
-          },
-          Object {
-            "format": [Function],
-            "isSortable": false,
-            "label": "user:element.vacationDaysUsed",
-            "name": "vacationDaysUsed",
-          },
-          Object {
-            "format": [Function],
-            "label": "user:element.monthlyLogs",
-            "name": "showWorkLog",
-          },
+          <Link
+            to="/users/archive"
+          />,
         ]
       }
-      rows={Array []}
-      sort={
-        Object {
-          "ascendingIcon": <Icon
-            icon="arrow_upward"
-            size="medium"
-          />,
-          "column": "name",
-          "descendingIcon": <Icon
-            icon="arrow_downward"
-            size="medium"
-          />,
-          "direction": "asc",
-          "onClick": [Function],
-        }
-      }
+      i18nKey="user:text.usersDescription"
+      t={[Function]}
     />
-  </WithProviderContextComponent>
+  </div>
+  <Users
+    history={
+      Object {
+        "push": [Function],
+      }
+    }
+    isFetching={false}
+    token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0IiwidWlkIjoxLCJmaXJzdE5hbWUiOiJKYW4iLCJsYXN0TmFtZSI6Ik5vdmFrIiwicm9sZXMiOlsiUk9MRV9TVVBFUl9BRE1JTiIsIlJPTEVfRU1QTE9ZRUUiXSwiaWF0IjoxNTc3ODM2ODAwMDAwLCJleHAiOjE1Nzc4MzY4MDAwMDB9.D0JsAR_gABmhJo6bf8AzKp7dazsvZdN0_5-YOW2dKgI"
+    userList={Immutable.List []}
+    userListPartial={Immutable.List []}
+  />
 </Connect(LayoutComponent)>
 `;
