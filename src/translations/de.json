@@ -71,6 +71,8 @@
   "general": {
     "action": {
       "approve": "Gewähren",
+      "archive": "Archivieren",
+      "unarchive": "Reaktivieren",
       "close": "Schließen",
       "edit": "Bearbeiten",
       "next": "Nächster",
@@ -286,6 +288,7 @@
     "action": {
       "addContract": "Eintrag hinzufügen",
       "addUser": "Nutzer*in hinzufügen",
+      "archiveUser": "Nutzer*in archivieren",
       "deleteUser": "Nutzer*in löschen",
       "disableICal": "iCalendar deaktivieren",
       "downloadICal": "iCalendar herunterladen",
@@ -298,7 +301,8 @@
       "show": "Zeigen",
       "showApiToken": "Zeige API-Token",
       "showICalUrl": "iCalendar URL anzeigen",
-      "terminateContract": "Eintrag beenden"
+      "terminateContract": "Eintrag beenden",
+      "unarchiveUser": "Nutzer*in reaktivieren"
     },
     "element": {
       "apiToken": "API-Token",
@@ -336,9 +340,17 @@
       "workedAndRequiredHours": "Gearbeitete / Benötigte Stunden"
     },
     "modal": {
+      "archive": {
+        "description": "Sicher, dass Nutzer*in archiviert werden soll?",
+        "title": "Nutzer*in archivieren"
+      },
       "delete": {
         "description": "Sicher, dass Nutzer*in gelöscht werden soll?",
         "title": "Nutzer*in löschen"
+      },
+      "unarchive": {
+        "description": "Möchtest du den/die Nutzer*in reaktivieren?",
+        "title": "Nutzer*in reaktivieren"
       }
     },
     "text": {
@@ -350,6 +362,8 @@
       "notificationSettings": "Benachrichtigungseinstellungen",
       "supervisorInfo": "Versand Erinnerungsmails",
       "terminateContract": "Eintrag beenden",
+       "userArchiveDescription": "Die Archivseite zeigt eine Liste aller archivierten Nutzer*innen. Wenn du eine Liste aktiver Nutzer*innen sehen möchtest, gehe auf die Seite <0>Nutzer*innnen</0>.",
+      "usersDescription": "Die Users-Seite zeigt eine Liste aller aktiven Nutzer*innnen im System. Wenn du eine Liste archivierter Nutzer*innen sehen möchtest, gehe zur Seite <0>archivierte Nutzer*innen</0>.",
       "vacationDays": "Urlaubskonto",
       "vacationDaysLeft": "{{ remainingDays }} von {{ vacationDays }} Tagen nicht verplant"
     },
@@ -360,13 +374,16 @@
       "editContract": "Eintrag bearbeiten",
       "profile": "Profil",
       "removeContract": "Eintrag entfernen",
+      "userArchive": "Nutzer*innen-Archiv",
       "users": "Nutzer*innen"
     },
     "validation": {
       "cannotAddUser": "Nutzer*in kann nicht hinzugefügt werden.",
+      "cannotArchiveUser": "Nutzer*in kann nicht archiviert werden.",
       "cannotDeleteUser": "Nutzer*in kann nicht gelöscht werden.",
       "cannotEditUser": "Nutzer*in kann nicht bearbeitet werden.",
       "cannotTerminateContract": "Es gibt einige Arbeitsmonate nach dem eingegebenen Datum, die nicht geöffnet sind.",
+      "cannotUnarchiveUser": "Nutzer*in kann nicht reaktiviert werden.",
       "invalidContracts": "Arbeitszeiten dürfen sich nicht überschneiden.",
       "outOfContractRange": "Das Datum liegt außerhalb des Vertragsbereichs.",
       "weeklyWorkingDaysInvalid": "Die wöchentlichen Arbeitstage müssen zwischen 0 und 5 liegen",
