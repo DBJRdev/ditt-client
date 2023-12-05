@@ -14,6 +14,7 @@ export const getContractInfoOfSpecificDate = (currentDate, contracts, supportedH
     return {
       contract: null,
       dailyWorkingTime: 0,
+      dailyWorkingTimeRaw: 0,
       isDayWithinContractRange: false,
       isDayWorking: false,
     };
@@ -23,6 +24,7 @@ export const getContractInfoOfSpecificDate = (currentDate, contracts, supportedH
     return {
       contract: foundContract,
       dailyWorkingTime: 0,
+      dailyWorkingTimeRaw: (foundContract.weeklyWorkingHours / foundContract.weeklyWorkingDays) * 3600,
       isDayWithinContractRange: true,
       isDayWorking: false,
     };
@@ -47,6 +49,7 @@ export const getContractInfoOfSpecificDate = (currentDate, contracts, supportedH
       return {
         contract: foundContract,
         dailyWorkingTime: 0,
+        dailyWorkingTimeRaw: (foundContract.weeklyWorkingHours / foundContract.weeklyWorkingDays) * 3600,
         isDayWithinContractRange: true,
         isDayWorking: false,
       };
@@ -67,6 +70,7 @@ export const getContractInfoOfSpecificDate = (currentDate, contracts, supportedH
     return {
       contract: foundContract,
       dailyWorkingTime: 0,
+      dailyWorkingTimeRaw: (foundContract.weeklyWorkingHours / foundContract.weeklyWorkingDays) * 3600,
       isDayWithinContractRange: true,
       isDayWorking: false,
     };
@@ -75,6 +79,7 @@ export const getContractInfoOfSpecificDate = (currentDate, contracts, supportedH
   return {
     contract: foundContract,
     dailyWorkingTime: (foundContract.weeklyWorkingHours / foundContract.weeklyWorkingDays) * 3600,
+    dailyWorkingTimeRaw: (foundContract.weeklyWorkingHours / foundContract.weeklyWorkingDays) * 3600,
     isDayWithinContractRange: true,
     isDayWorking: true,
   };

@@ -2059,6 +2059,60 @@ describe('getWorkedTime', () => {
     expect(result.workTime.asSeconds()).toEqual(10 * 3600);
   });
 
+  it('test calculate approved business trip work logs without work logs during public holidays', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'BUSINESS_TRIP_WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      toMomentDateTime('2018-01-01T00:00:00.000Z'),
+      workLogs,
+      contracts,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(true);
+    expect(Math.round(result.workTime.asSeconds())).toEqual(29160);
+  });
+
+  it('test calculate approved business trip work logs without break during public holidays', () => {
+    const workLogs = [
+      {
+        date: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        status: 'APPROVED',
+        type: 'BUSINESS_TRIP_WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T12:00:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T10:00:00.000Z'),
+        type: 'WORK_LOG',
+      },
+      {
+        endTime: toMomentDateTime('2018-01-01T14:05:00.000Z'),
+        startTime: toMomentDateTime('2018-01-01T12:05:00.000Z'),
+        type: 'WORK_LOG',
+      },
+    ];
+
+    const result = getWorkedTime(
+      toMomentDateTime('2018-01-01T00:00:00.000Z'),
+      workLogs,
+      contracts,
+      workedHoursLimits,
+      supportedHolidays,
+    );
+
+    expect(result.breakTime.asSeconds()).toEqual(0);
+    expect(result.isWorkTimeCorrected).toEqual(true);
+    expect(result.workTime.asSeconds()).toEqual(19440);
+  });
+
   // Home office work logs
 
   it('test calculate approved home office work logs without work logs', () => {

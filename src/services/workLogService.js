@@ -234,9 +234,12 @@ export const getWorkedTime = (
   }
 
   // Special work log time calculations
-  if (
-    (standardWorkLogs.length === 0 && businessTripWorkLogs.length > 0)
-      || maternityProtectionWorkLogs.length > 0
+  if (standardWorkLogs.length === 0 && businessTripWorkLogs.length > 0) {
+    workTime = contract.dailyWorkingTimeRaw;
+    workTimeWithoutCorrection = workTime;
+    breakTime = 0;
+  } else if (
+    maternityProtectionWorkLogs.length > 0
       || sickDayWorkLogs.length > 0
       || specialLeaveWorkLogs.length > 0
       || vacationWorkLogs.length > 0
