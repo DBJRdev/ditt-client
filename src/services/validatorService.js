@@ -11,7 +11,7 @@ import {
   SICK_DAY_UNPAID_WORK_LOG,
   SICK_DAY_WORK_LOG,
   SPECIAL_LEAVE_WORK_LOG,
-  STATUS_OPENED,
+  STATUS_APPROVED,
   TIME_OFF_WORK_LOG,
   TRAINING_WORK_LOG,
   VACATION_WORK_LOG,
@@ -146,7 +146,7 @@ export const validateContractTermination = (t, dataAttr, contract, workMonths) =
     return errors;
   }
 
-  const filteredWorkMonths = workMonths.filter((workMonth) => workMonth.status !== STATUS_OPENED);
+  const filteredWorkMonths = workMonths.filter((workMonth) => workMonth.status === STATUS_APPROVED);
   const dateFrom = dateTime;
   const dateTo = contract.endDateTime;
 
